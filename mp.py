@@ -2,7 +2,8 @@
 
 import redis
 import random
-import curses
+#import curses
+import sys
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.set('foo','bar')
 
@@ -20,7 +21,7 @@ DLAW=1    # law governing dcc between t=0 and t=tpoint
           # 1 is linear
 CYCLE=200 # number of time per sec calc must be made
              # increasing cycle beyond 200 does not improve precision by more that 1 sec for the end-to-end journey
-X0=9900.0
+X0=9800.0
 T0=0.0
 TLEN=X0+16876.0   # track length in m
 VTHRESH=0.999
@@ -32,6 +33,7 @@ stas={}
 sigs={}
 trss={}
 trs={}
+segs={}
 ncyc=0
 t=0.0
 maxLine=60.0
@@ -40,60 +42,94 @@ projectDir='default/'
 schedulesDir='schedules/'
 segmentsDir='segments/'
 
-def initTIVs():
-  f=open(projectDir+segmentsDir+"TIVs.txt","r")
-  tsf=f.readlines()
-  ts=[]
+def initSEGs():
+  f=open(projectDir+"segments.txt","r")
+  ssf=f.readlines()
+  ss=[]
   f.close()
   cnt=0
-  for t in tsf:
-    if (t[0]!='#'):
-      t=t.rstrip().split(" ")
-      ts.append(t)
+  for s in ssf:
+    if (s[0]!='#'):
+      s=s.rstrip()
+      ss.append(s)
       cnt=cnt+1  
-  return ts
+  return ss
 
-def initTRSs():
-  f=open(projectDir+schedulesDir+"TRs.txt","r")
-  tsf=f.readlines()
-  ts=[]
-  f.close()
-  cnt=0
-  for t in tsf:
-    if (t[0]!='#'):
-      t=t.rstrip().split(" ")
-      #"ts[cnt]=t
-      ts.append(t)
-      cnt=cnt+1  
-  return ts
+def initTIVs():
+  global segs
+  gts={}
+  for se in segs:
+    f=open(projectDir+segmentsDir+se+"/TIVs.txt","r")
+    tsf=f.readlines()
+    ts=[]
+    f.close()
+    cnt=0
+    for t in tsf:
+      if (t[0]!='#'):
+        t=t.rstrip().split(" ")
+        ts.append(t)
+        cnt=cnt+1  
+    gts[se]=ts
+  return gts
+
+def initSchedule():
+    f=open(projectDir+schedulesDir+"default.txt","r")
+    tsf=f.readlines()
+    ts=[]
+    f.close()
+    cnt=0
+    for t in tsf:
+      if (t[0]!='#'):
+        t=t.rstrip().split(" ")
+        ts.append(t)
+        cnt=cnt+1  
+    return ts
 
 def initSTAs():
-  f=open(projectDir+segmentsDir+"STAs.txt","r")
-  ssf=f.readlines()
-  ss=[]
-  f.close()
-  cnt=0
-  for s in ssf:
-    if (s[0]!='#'):
-      s=s.rstrip().split(" ")
-      ss.append(s)
-      cnt=cnt+1  
-  return ss
+  global segs
+  gts={}
+  for se in segs:
+    f=open(projectDir+segmentsDir+se+"/STAs.txt","r")
+    ssf=f.readlines()
+    ss=[]
+    f.close()
+    cnt=0
+    for s in ssf:
+      if (s[0]!='#'):
+        s=s.rstrip().split(" ")
+        ss.append(s)
+        cnt=cnt+1  
+    gts[se]=ss
+    return gts
 
 def initSIGs():
-  f=open(projectDir+segmentsDir+"SIGs.txt","r")
-  ssf=f.readlines()
-  ss=[]
-  f.close()
-  cnt=0
-  for s in ssf:
-    if (s[0]!='#'):
-      s=s.rstrip().split(" ")
-      if (len(s)==2):
-        s.append('1')
-      ss.append(s)
-      cnt=cnt+1  
-  return ss
+  global segs
+  gts={}
+  for se in segs:
+    f=open(projectDir+segmentsDir+se+"/SIGs.txt","r")
+    ssf=f.readlines()
+    ss=[]
+    f.close()
+    cnt=0
+    for s in ssf:
+      redisSIG=""
+      if (s[0]!='#'):
+        s=s.rstrip().split(" ")
+        if (len(s)<=2):
+          s.append('1')
+          redisSIG="green"
+        else:
+          if (s[2]=='1'):
+            redisSIG="green"
+          elif (s[2]=='2'):
+            redisSIG="red"
+          elif (s[2]=='3'):
+            redisSIG="yellow"
+        r.set("sig:"+se+":"+s[1],redisSIG)
+        ss.append(s)
+        cnt=cnt+1  
+    gts[se]=ss
+  return gts
 
 def initAll():
   random.seed()
@@ -102,11 +138,15 @@ def initAll():
   global sigs
   global trss
   global trs
+  global segs
+  segs=initSEGs()
   tivs=initTIVs()
+#  print tivs
   stas=initSTAs()
+#  print stas
   sigs=initSIGs()
-  trss=initTRSs()
-  print "trss:"
+#  print sigs
+  trss=initSchedule()
   print trss
   cnt=0
   for aa in trss:
@@ -114,18 +154,18 @@ def initAll():
 #      break
     if ((aa[0]!="#") and (cnt==0)):
       found=False
-      for asi in sigs:
+      for asi in sigs[aa[1]]:
          if asi[1]==aa[2]:
            aPos=1000.0*float(asi[0])
-      trs=Tr(aa[0],aPos,float(aa[3]))
+      trs=Tr(aa[0],aa[1],aPos,float(aa[3]))
       #print "aa0:"+aa[0]+" aa1:"+str(aa[1])+" aa2:"+str(aa[2])
     else:
       if (aa[0]!="#"):
         found=False
-        for asi in sigs:
+        for asi in sigs[aa[1]]:
            if asi[1]==aa[2]:
              aPos=1000.0*float(asi[0])
-        aT=Tr(aa[0],aPos,float(aa[3]))
+        aT=Tr(aa[0],aa[1],aPos,float(aa[3]))
         trs.append(aT)
     cnt=cnt+1 
 
@@ -166,6 +206,7 @@ class Tr:
   atSig=False
   waitSta=0.0
   BDzero=0.0
+  segment=''
 
   def append(self,aTr):
     self.trs.append(aTr)
@@ -174,25 +215,26 @@ class Tr:
     for t in self.trs:
       for i in t:
         yield i
-  def __init__(self,missionName,initPos,initTime):
-    print "init..."+missionName+" at pos "+str(initPos)+" and t:"+str(initTime)
+  def __init__(self,name,initSegment,initPos,initTime):
+    print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
     self.trs=[]
     self.x=initPos
-    self.name=missionName
+    self.name=name
+    self.segment=initSegment
     self.BDtiv=0.0  #breaking distance for next TIV
     self.BDsta=0.0  #fornext station
     self.DBrt=0.0  #for next realtime event (sig or tvm)
-    self.TIVcnt=findMyTIVcnt(initPos)
+    self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
-    self.STAcnt=findMySTAcnt(initPos)
+    self.STAcnt=findMySTAcnt(initPos,initSegment)
     print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
-    self.SIGcnt=findMySIGcnt(initPos)
+    self.SIGcnt=findMySIGcnt(initPos,initSegment)
     print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
-    self.nextSTA=stas[self.STAcnt]
-    self.nextSIG=sigs[self.SIGcnt]
+    self.nextSTA=stas[initSegment][self.STAcnt]
+    self.nextSIG=sigs[initSegment][self.SIGcnt]
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
-    self.nextTIV=tivs[self.TIVcnt]
+    self.nextTIV=tivs[initSegment][self.TIVcnt]
     print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
     self.nTIVx=1000.0*float(self.nextTIV[0])
     self.nTIVvl=float(self.nextTIV[1])
@@ -216,11 +258,14 @@ class Tr:
     self.atSig=False
     self.waitSta=0.0
     self.BDzero=0.0
+    self.redisSIG=''
+    self.sigSpotted=False
+    updateSIG(initSegment,self.SIGcnt-1,self.name,"red")
   def step(self):
     global t
     global exitCondition
-    if (ncyc%1000==0):
-      print self.name+":t:"+str(t)+":x:"+str(self.x)
+#    if (ncyc%CYCLE==0):
+#      print self.name+":t:"+str(t)+":x:"+str(self.x)
     self.BDzero=-(self.v*self.v)/(2*DCC)
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
       print self.name+":t:"+str(t)+":ADVANCE STA "+str(self.vK)
@@ -228,17 +273,27 @@ class Tr:
       self.a=DCC
     if ((self.staBrake==True) and (self.vK<=0.8)):
       self.a=-0.002
-    if ((self.sigBrake==False) and (self.x>=(self.nSIGx-self.BDzero))):
-      print self.name+":t:"+str(t)+":ADVANCE SIG "+str(self.vK)
-      self.sigBrake=True
-#      a=DCC
-#    if ((staBrake==True) and (vK<=0.8)):
-#      a=-0.002
+    if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
+      self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
+      k=r.get(self.redisSIG)
+      print self.name+":t:"+str(t)+":ADVANCE "+k+" SIG "+str(self.vK)
+      self.sigSpotted=True
+      if (k=="red"):
+        self.a=DCC
+        self.sigBrake=True
+    if ((self.sigBrake==True) and (self.vK<=0.8)):
+      self.a=-0.002
     if (self.x>=(self.nSIGx)):
-      self.sigBrake=False
+      if (self.sigSpotted==True):
+        self.sigSpotted=False
+      if (self.sigBrake==True):
+        self.sigBrake=False
+        self.a=0.0
+        self.v=0.0
       print self.name+":t:"+str(t)+":AT SIG "+self.nextSIG[1]+" vK:"+str(self.vK)
+      updateSIG(self.segment,self.SIGcnt-1,self.name,"red")
       self.SIGcnt=self.SIGcnt+1 
-      self.nextSIG=sigs[self.SIGcnt] 
+      self.nextSIG=sigs[self.segment][self.SIGcnt] 
       print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
       self.nSIGx=1000.0*float(self.nextSIG[0])
     if (self.x>=(self.nSTAx)):
@@ -252,8 +307,8 @@ class Tr:
         exitCondition=True
       else:
         self.STAcnt=self.STAcnt+1 
-        self.nextSTA=stas[self.STAcnt] 
-        print self.name+":t:"+str(t)+" next STA ("+self.nextSTA[1]+") at PK"+self.nextSTA[0]
+        self.nextSTA=stas[self.segment][self.STAcnt] 
+        print self.name+":t:"+str(t)+":next STA ("+self.nextSTA[1]+") at PK"+self.nextSTA[0]
         self.nSTAx=1000.0*float(self.nextSTA[0])
     if (self.nTIVtype=='<<'):
       self.deltaBDtiv=self.BDtiv
@@ -271,7 +326,7 @@ class Tr:
       else:
         print self.name+":t:"+str(t)+":TIV "+str(self.TIVcnt)+" reached at curr speed "+str(self.vK)+", maxVk now "+str(self.maxVk)
       self.TIVcnt=self.TIVcnt+1
-      self.nextTIV=tivs[self.TIVcnt]
+      self.nextTIV=tivs[self.segment][self.TIVcnt]
       self.cTIVvl=self.nTIVvl
       self.nTIVx=1000.0*float(self.nextTIV[0])
       self.nTIVvl=float(self.nextTIV[1])
@@ -287,11 +342,11 @@ class Tr:
       if (self.nTIVvl<self.cTIVvl):
         print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
       if ((self.staBrake==False) and (self.maxVk>self.vK)):
-        print self.name+":t:"+str(t)+"vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
+        print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
         self.aGaussRamp=aGauss()
         self.a=ACC+self.aGaussRamp
       if (self.maxVk<self.vK):
-        print self.name+":t:"+str(t)+"vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
+        print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
         self.a=DCC
     if (self.a>0.0):
       if (self.vK>self.maxVk*VTHRESH):
@@ -346,38 +401,67 @@ class Tr:
 def aGauss():
   return random.gauss(ACCMU,ACCSIGMA)
 
-def findMySTAcnt(x):
+def findMySTAcnt(x,seg):
   global stas
   xK=x/1000.0
   cnt=0
   found=False
-  for ast in stas:
+  for ast in stas[seg]:
     if float(ast[0])>=xK:
       break
     cnt=cnt+1
   return cnt
 
-def findMySIGcnt(x):
+def findMySIGcnt(x,seg):
   global sigs
   xK=x/1000.0
   cnt=0
   found=False
-  for asi in sigs:
+  for asi in sigs[seg]:
     if float(asi[0])>=xK:
       break
     cnt=cnt+1
   return cnt
 
-def findMyTIVcnt(x):
+def findMyTIVcnt(x,seg):
   global tivs
   xK=x/1000.0
   cnt=0
   found=False
-  for ati in tivs:
+  for ati in tivs[seg]:
     if float(ati[0])>=xK:
       break
     cnt=cnt+1
   return cnt
+
+def updateSIG(seg,SIGcnt,name,state):
+  global sigs
+  redisSIG="sig:"+seg+":"+sigs[seg][SIGcnt][1]
+  SIGtype=sigs[seg][SIGcnt][2]
+  k=r.get(redisSIG)
+  print "(update SIG "+redisSIG+" from value "+k+" to value "+state+")"
+  if (k==state):
+    print "ALREADY"
+    return True
+  if (state=="red"):
+#    print redisSIG+" "+k 
+    if (SIGcnt>=1):
+      updateSIG(seg,SIGcnt-1,name,"yellow")
+    if (SIGcnt>=2):
+      updateSIG(seg,SIGcnt-2,name,"green")
+    print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+    r.set(redisSIG,state)
+  elif (state=="yellow"):
+     if ((SIGtype=='1') and (k=="green")):
+       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+       r.set(redisSIG,state)
+     if ((SIGtype=='1') and (k=="red")):
+       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+       r.set(redisSIG,state)
+  elif (state=="green"):
+     if ((SIGtype=='1') and (k=="yellow")):
+       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+       r.set(redisSIG,state)
 
 initAll()
 for aT in trs:
@@ -390,4 +474,5 @@ while (exitCondition==False):
   if (t>3500):
     exitCondition=True
   ncyc=ncyc+1
-print r.get('foo')
+#for k in r.scan_iter("sig:*"):
+#  print k+":"+r.get(k)

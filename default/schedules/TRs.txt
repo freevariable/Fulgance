@@ -1,4 +1,0 @@
-#name segment xPos (SigName) t0
-E500 Westbound E 0.0
-E501 Westbound Ber-50 0.0
-E502 Westbound CDE-50 0.0

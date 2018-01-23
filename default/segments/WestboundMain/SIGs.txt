@@ -1,5 +1,9 @@
 #PK Name Type
-9.900 E 2
+#Type 1: 3 colors carre (VL,A,S) 
+#Type 2: feu de heurtoir (always red)
+#Type 3: avertissement (always yellow, always before type 2)
+9.800 E 2 
+9.910 991 1
 10.010 ChV+10 1
 10.902 Ber-50 1
 11.052 Ber+10
@@ -68,6 +72,6 @@
 25.900 2590
 26.200 2620
 26.545 LaD-30
-26.585 LaD+10
+26.585 LaD+10 3
 26.775 W 2
 99999999.999 Inf 2
