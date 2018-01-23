@@ -1,4 +1,17 @@
 #!/usr/bin/python
+#Copyright 2018 freevariable (https://github.com/freevariable)
+
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+
+#      http://www.apache.org/licenses/LICENSE-2.0
+
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
 
 import redis
 import random
@@ -268,7 +281,7 @@ class Tr:
 #      print self.name+":t:"+str(t)+":x:"+str(self.x)
     self.BDzero=-(self.v*self.v)/(2*DCC)
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
-      print self.name+":t:"+str(t)+":ADVANCE STA "+str(self.vK)
+      print self.name+":t:"+str(t)+":ADVANCE STA vK:"+str(self.vK)
       self.staBrake=True
       self.a=DCC
     if ((self.staBrake==True) and (self.vK<=0.8)):
@@ -276,7 +289,7 @@ class Tr:
     if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
       self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       k=r.get(self.redisSIG)
-      print self.name+":t:"+str(t)+":ADVANCE "+k+" SIG "+str(self.vK)
+      print self.name+":t:"+str(t)+":ADVANCE "+k+" SIG vK:"+str(self.vK)
       self.sigSpotted=True
       if (k=="red"):
         self.a=DCC
@@ -290,6 +303,8 @@ class Tr:
         self.sigBrake=False
         self.a=0.0
         self.v=0.0
+        self.vK=0.0
+        self.atSig=True
       print self.name+":t:"+str(t)+":AT SIG "+self.nextSIG[1]+" vK:"+str(self.vK)
       updateSIG(self.segment,self.SIGcnt-1,self.name,"red")
       self.SIGcnt=self.SIGcnt+1 
@@ -299,6 +314,7 @@ class Tr:
     if (self.x>=(self.nSTAx)):
       self.a=0.0
       self.v=0.0
+      self.vK=0.0
       self.inSta=True
       self.waitSta=t+WAITTIME
       self.staBrake=False 
@@ -341,7 +357,7 @@ class Tr:
       print self.name+":t:"+str(t)+"  next TIV at PK"+self.nextTIV[0]+" with limit "+self.nTIVtype+self.nextTIV[1]+" (currspeed:"+str(self.vK)+")"
       if (self.nTIVvl<self.cTIVvl):
         print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
-      if ((self.staBrake==False) and (self.maxVk>self.vK)):
+      if ((self.staBrake==False) and (self.sigBrake==False) and (self.maxVk>self.vK)):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
         self.aGaussRamp=aGauss()
         self.a=ACC+self.aGaussRamp
@@ -367,13 +383,13 @@ class Tr:
 #          print str(t)+":coasting at "+str(vK)
           self.a=0.0 
     elif (self.a<0.0):
-      if ((self.staBrake==False) and (self.vK<self.maxVk)):
+      if ((self.staBrake==False) and (self.sigBrake==False) and (self.vK<self.maxVk)):
         self.a=0.0
 #        print str(t)+":coasting at "+str(vK)
     else:  # a=0.0
-#      if (ncyc%1000==0):
-#        if (inSta==False):
-#          print str(t)+" COCO vK:"+str(vK)+" maxVk:"+str(maxVk)+" aF:"+str(aFull)+" a:"+str(a)
+      if (ncyc%1000==0):
+        if (self.inSta==False):
+          print str(t)+" COCO vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)
       if ((self.vK>4.0) and (self.vK<0.965*self.maxVk)):
         print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(self.maxVk)+" with aFull:"+str(self.aFull)
         self.a=ACC+aGauss()
@@ -392,6 +408,8 @@ class Tr:
         self.waitSta=0.0
         self.a=ACC+aGauss()
         print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)
+    if (self.atSig==True):
+      print "waiting at sig..."
 #    if (a==DCC):
 #      print str(t)+' '+str(a)+' '+str(v)+'('+str(vK)+') '+str(x)
 #    print t
