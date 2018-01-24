@@ -20,9 +20,9 @@ import sys
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.set('foo','bar')
 
-ACCMU=0.00
-ACCSIGMA=0.027
-ACC=1.36 # m/s2  au demarrage
+RESFACTOR=0.2
+ACCSIGMA=0.27
+ACC=1.35 # m/s2  au demarrage
 VPOINT=29.0 # speed in km/h at which acc starts to fall
 ALAW=1   # law governing acc between vpoint and vmx
          # 1 is linear
@@ -271,9 +271,13 @@ class Tr:
     self.atSig=False
     self.waitSta=0.0
     self.BDzero=0.0
-    self.redisSIG=''
+    self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
+    self.advSIGcol=r.get(self.redisSIG)
+#    print "redisSIG:"+self.redisSIG+" col:"+self.advSIGcol
+#    self.redisSIG=''
     self.sigSpotted=False
     updateSIG(initSegment,self.SIGcnt-1,self.name,"red")
+
   def step(self):
     global t
     global exitCondition
@@ -283,16 +287,16 @@ class Tr:
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
       print self.name+":t:"+str(t)+":ADVANCE STA vK:"+str(self.vK)
       self.staBrake=True
-      self.a=DCC
+      self.a=DCC#+aGauss()
     if ((self.staBrake==True) and (self.vK<=0.8)):
       self.a=-0.002
     if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
       self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
-      k=r.get(self.redisSIG)
-      print self.name+":t:"+str(t)+":ADVANCE "+k+" SIG vK:"+str(self.vK)
+      self.advSIGcol=r.get(self.redisSIG)
+      print self.name+":t:"+str(t)+":ADVANCE "+self.advSIGcol+" SIG vK:"+str(self.vK)
       self.sigSpotted=True
-      if (k=="red"):
-        self.a=DCC
+      if (self.advSIGcol=="red"):
+        self.a=DCC#+aGauss()
         self.sigBrake=True
     if ((self.sigBrake==True) and (self.vK<=0.8)):
       self.a=-0.002
@@ -395,7 +399,7 @@ class Tr:
         self.a=ACC+aGauss()
 #          else:
 #            print str(t)+":not boosting vK:"+str(vK)+" to maxVk:"+str(maxVk)
-    self.aFull=self.a-(0.1*self.v*self.v/400)
+    self.aFull=self.a-(RESFACTOR*self.v*self.v/400)
 #    aFull=a
     self.v=self.v+(self.aFull/CYCLE)
     self.vK=self.v*3.6
@@ -417,7 +421,7 @@ class Tr:
 #    print self.PK
   
 def aGauss():
-  return random.gauss(ACCMU,ACCSIGMA)
+  return random.gauss(0.0,ACCSIGMA)
 
 def findMySTAcnt(x,seg):
   global stas
