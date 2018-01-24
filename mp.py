@@ -40,6 +40,7 @@ TLEN=X0+16876.0   # track length in m
 VTHRESH=0.999
 REALTIME="SIG"    # two mutually exclusive values: SIG or TVM
 WAITTIME=10.0   # average wait in station (in sec)
+SIGPOLL=1.0   # check for sig clearance (in sec)
 
 tivs={}
 stas={}
@@ -215,6 +216,8 @@ class Tr:
   advTIV=-1.0
   staBrake=False
   sigBrake=False
+  sigPoll=0.0
+  sigToPoll=''
   inSta=False
   atSig=False
   waitSta=0.0
@@ -289,7 +292,7 @@ class Tr:
       self.staBrake=True
       self.a=DCC#+aGauss()
     if ((self.staBrake==True) and (self.vK<=0.8)):
-      self.a=-0.002
+      self.a=-0.004
     if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
       self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       self.advSIGcol=r.get(self.redisSIG)
@@ -298,17 +301,23 @@ class Tr:
       if (self.advSIGcol=="red"):
         self.a=DCC#+aGauss()
         self.sigBrake=True
-    if ((self.sigBrake==True) and (self.vK<=0.8)):
-      self.a=-0.002
+    if ((self.sigBrake==True) and (self.vK<=0.7)):
+      self.a=-0.004
     if (self.x>=(self.nSIGx)):
       if (self.sigSpotted==True):
         self.sigSpotted=False
       if (self.sigBrake==True):
         self.sigBrake=False
+#        print "AT SIG stop data:"+" vK:"+str(self.vK)+" aFull:"+str(self.aFull)
+        if (self.vK>1.0):
+          print "FATAL at SIG"
+          sys.exit()
         self.a=0.0
         self.v=0.0
         self.vK=0.0
         self.atSig=True
+        self.sigPoll=t+SIGPOLL
+        self.sigToPoll="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       print self.name+":t:"+str(t)+":AT SIG "+self.nextSIG[1]+" vK:"+str(self.vK)
       updateSIG(self.segment,self.SIGcnt-1,self.name,"red")
       self.SIGcnt=self.SIGcnt+1 
@@ -316,6 +325,10 @@ class Tr:
       print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
       self.nSIGx=1000.0*float(self.nextSIG[0])
     if (self.x>=(self.nSTAx)):
+#      print "AT STA stop data:"+" vK:"+str(self.vK)+" aFull:"+str(self.aFull)
+      if (self.vK>1.0):
+        print "FATAL at STA"
+        sys.exit()
       self.a=0.0
       self.v=0.0
       self.vK=0.0
@@ -413,12 +426,15 @@ class Tr:
         self.a=ACC+aGauss()
         print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)
     if (self.atSig==True):
-      print "waiting at sig..."
-#    if (a==DCC):
-#      print str(t)+' '+str(a)+' '+str(v)+'('+str(vK)+') '+str(x)
-#    print t
-#  print ncyc
-#    print self.PK
+      if (t>self.sigPoll):
+        k=r.get(self.sigToPoll)
+        print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
+        if (k=="red"):
+          self.sigPoll=t+SIGPOLL
+        else:
+          self.atSig=False
+          self.a=ACC+aGauss()
+          print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)
   
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
@@ -487,7 +503,7 @@ def updateSIG(seg,SIGcnt,name,state):
 
 initAll()
 for aT in trs:
-  print "name:"+aT.name
+  print aT.name+" has been initialized"
 
 while (exitCondition==False):
   t=ncyc/CYCLE
