@@ -322,10 +322,13 @@ class Tr:
         self.sigToPoll="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       print self.name+":t:"+str(t)+":AT SIG "+self.nextSIG[1]+" vK:"+str(self.vK)
       updateSIG(self.segment,self.SIGcnt-1,self.name,"red")
-      self.SIGcnt=self.SIGcnt+1 
-      self.nextSIG=sigs[self.segment][self.SIGcnt] 
-      print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
-      self.nSIGx=1000.0*float(self.nextSIG[0])
+      if (self.SIGcnt<len(sigs[self.segment])-1):
+        self.SIGcnt=self.SIGcnt+1 
+        self.nextSIG=sigs[self.segment][self.SIGcnt] 
+        print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
+        self.nSIGx=1000.0*float(self.nextSIG[0])
+      else:
+        print self.name+":t:"+str(t)+"no more SIG..." 
     if (self.x>=(self.nSTAx)):
 #      print "AT STA stop data:"+" vK:"+str(self.vK)+" aFull:"+str(self.aFull)
       if (self.vK>1.0):
