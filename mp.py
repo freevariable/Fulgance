@@ -204,6 +204,7 @@ class Tr:
   initPos=0.0
   PK=0.0
   aGaussRamp=0.0
+  aFull=0.0
   a=0.0
   v=0.0
   x=0.0
@@ -260,6 +261,7 @@ class Tr:
     self.PK=self.x
     self.aGaussRamp=aGauss()
     self.a=ACC+self.aGaussRamp
+    self.aFull=0.0
     self.v=0.0
     self.vK=0.0
     self.nv=0.0
