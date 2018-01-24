@@ -114,7 +114,7 @@ def initSTAs():
         ss.append(s)
         cnt=cnt+1  
     gts[se]=ss
-    return gts
+  return gts
 
 def initSIGs():
   global segs
@@ -338,7 +338,7 @@ class Tr:
       self.waitSta=t+WAITTIME
       self.staBrake=False 
       print self.name+":t:"+str(t)+":IN STA "+self.nextSTA[1]+" vK:"+str(self.vK)
-      if (self.nextSTA[1]=='W'):
+      if ((self.nextSTA[1]=='W') or (self.nextSTA[1]=='E')):
         exitCondition=True
       else:
         self.STAcnt=self.STAcnt+1 

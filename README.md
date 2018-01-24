@@ -14,7 +14,7 @@
 Notes for route designers:
 - routes may use on-track signals or electronic signals (only on-track for now) for trains separation
 - Fulgance will run the default route located in default/ 
-- Routes are made of segments (only one segment is supported for now) located in (routeName)/segments/(segmentName)/. For exemple: default/segments/WestboundMain/ for the default route
+- Routes are made of segments located in (routeName)/segments/(segmentName)/. For exemple: default/segments/WestboundMain/ for the default route
 - In each segment, you need to describe the location of signals (SIGs), stations (STAs) and speed limits (TIVs). 
 - All route and schedule data are kept in simple, self-explanatory text files. Lines beginning with a hash are ignored, as one would expect.
 
