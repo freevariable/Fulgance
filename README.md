@@ -24,12 +24,11 @@
 ####Signalling guide
 The following on-track signals are or will be implemented:
 - "Type 1": this is the usual 3-aspect signal. The possible states are: VL (green, all clear), A (yellow, prepare to stop at next signal) and C (red, impassable stop).
-- "Type 2A": this is both a buffer (i.e a segment termination) signal and a reversing signal. Its only possible state is C (red, impassable).
-- "Type 2B": this is a buffer signal, a reversing signal and a diverging/converging junction signal. It allows reversing to a segment which is different from the origin segment. Its only possible state is C (red, impassable).
-- "Type 3": this is a single aspect signal, its state is always A (yellow). Type 3 must always precede a type 2.
+- "Type 2": this is a buffer signal that allows reversing to a segment which is different from the origin segment. As far as the origin segment is concerned, its only possible state is C (red, impassable). As for the next segment (in the reversed direction), the state depends on (a) the switch position and (b) the next block occupation.
+- "Type 3": this is a 3-aspect signal, like type 1. But type 3 must always **precede** a type 2 or 4D, as it manages the switch in the upcoming junction.
 - "Type 4D": this is a diverging junction signal, used to stitch segments together.
 - "Type 4C": this is a converging junction signal, used to stitch segments together.
-Junction signals can manage only two legs, not more: one to the main segment (left or right), the other one to the diverging/converging segment (left or right).They must have a unique name in both segments, so that the engine may stich segments properly.
+Junction signals can manage only two legs, no less, no more. One leg is the main segment (left or right), the other one to the diverging/converging segment (left or right).Junction signals must have a unique name in both segments so that the engine may perform the segments stitching properly.
 
 ### Requirements
 #### Single and multi core environnement

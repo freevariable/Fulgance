@@ -15,10 +15,8 @@
 
 import redis
 import random
-#import curses
 import sys
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
-r.set('foo','bar')
 
 RESFACTOR=0.2
 ACCSIGMA=0.27
@@ -135,8 +133,34 @@ def initSIGs():
         else:
           if (s[2]=='1'):
             redisSIG="green"
-          elif (s[2]=='2'):
+          elif (s[2]=='2'):   #type 2
+            print "type 2"
             redisSIG="red"
+            if (len(s)<=3):
+              print "FATAL: type 2 sig requires verb:noun"
+              print s
+              sys.exit()
+            verbnoun=s[3].split(":") 
+            if verbnoun[0]=="Reverse":
+              print "Reverse: "+verbnoun[1]
+              k=r.get("switch:"+s[1]+":position")
+              if (k is None):
+                r.set("switch:"+s[1]+":position",verbnoun[1])
+            else:
+              print "FATAL: unkwnown Verb "+ verbnoun[0]+". Reverse was expected."
+              sys.exit()
+            if (len(s)==5):
+              verbnoun=s[4].split(":")
+              if verbnoun[0]=="Default":
+                print "switch:"+s[1]+" set to: "+verbnoun[1]
+                r.set("switch:"+s[1]+":position",verbnoun[1])
+              else:
+                print "FATAL: unkwnown Verb "+ verbnoun[0]
+                sys.exit()
+            elif (len(s)>5):
+              print "FATAL: reverse swtiches requires at most 2 verb:nouns" 
+              print s
+              sys.exit()
           elif (s[2]=='3'):
             redisSIG="yellow"
         r.set("sig:"+se+":"+s[1],redisSIG)
@@ -521,5 +545,5 @@ while (exitCondition==False):
   if (t>3500):
     exitCondition=True
   ncyc=ncyc+1
-#for k in r.scan_iter("sig:*"):
-#  print k+":"+r.get(k)
+for k in r.scan_iter("switch:*"):
+  print k+":"+r.get(k)
