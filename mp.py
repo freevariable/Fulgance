@@ -328,7 +328,11 @@ class Tr:
         print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
         self.nSIGx=1000.0*float(self.nextSIG[0])
       else:
-        print self.name+":t:"+str(t)+"no more SIG..." 
+        if (sigs[self.segment][self.SIGcnt][2]=='2'):
+          print self.name+":t:"+str(t)+"Buffer reached. Initiating reverse sequence" 
+        else:
+          print self.name+":t:"+str(t)+"FATAL: no more SIG..." 
+          sys.exit()
     if (self.x>=(self.nSTAx)):
 #      print "AT STA stop data:"+" vK:"+str(self.vK)+" aFull:"+str(self.aFull)
       if (self.vK>1.0):
