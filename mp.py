@@ -127,49 +127,99 @@ def initSIGs():
     ss=[]
     f.close()
     cnt=0
-    for s in ssf:
+    for s in ssf:    # FIRST pass for type 1 and type 2 sigs
       redisSIG=""
       if (s[0]!='#'):
         s=s.rstrip().split(" ")
         if (len(s)<=2):
-          s.append('1')
+          s.append('1')   # this is a type 1 sig by default
           redisSIG="green"
         else:
-          if (s[2]=='1'):
+          if (s[2]=='1'):    # type 1
             redisSIG="green"
           elif (s[2]=='2'):   #type 2
-            print "type 2"
             redisSIG="red"
-            if (len(s)<=3):
-              print "FATAL: type 2 sig requires verb:noun"
+            if (len(s)!=6):
+              print "FATAL: type 2 sig requires 3 x verb:noun"
               print s
+              print len(s)
               sys.exit()
             verbnoun=s[3].split(":") 
             if verbnoun[0]=="Reverse":
-              print "Reverse: "+verbnoun[1]
-              k=r.get("switch:"+s[1]+":position")
-              if (k is None):
-                r.set("switch:"+s[1]+":position",verbnoun[1])
+              print "switch:"+s[1]+" reverse set to: "+verbnoun[1]
+#              k=r.get("switch:"+s[1]+":reversePosition")
+#              if (k is None):
+              r.set("switch:"+s[1]+":reversePosition",verbnoun[1])
             else:
               print "FATAL: unkwnown Verb "+ verbnoun[0]+". Reverse was expected."
               sys.exit()
-            if (len(s)==5):
-              verbnoun=s[4].split(":")
-              if verbnoun[0]=="Default":
-                print "switch:"+s[1]+" set to: "+verbnoun[1]
-                r.set("switch:"+s[1]+":position",verbnoun[1])
-              else:
-                print "FATAL: unkwnown Verb "+ verbnoun[0]
-                sys.exit()
-            elif (len(s)>5):
-              print "FATAL: reverse swtiches requires at most 2 verb:nouns" 
-              print s
+            verbnoun=s[4].split(":")
+            if verbnoun[0]=="Forward":
+              print "switch:"+s[1]+" forward set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":forwardPosition",verbnoun[1])
+            else:
+              print "FATAL: unkwnown Verb "+ verbnoun[0]
               sys.exit()
-          elif (s[2]=='3'):
-            redisSIG="yellow"
-        r.set("sig:"+se+":"+s[1],redisSIG)
+            verbnoun=s[5].split(":")
+            if verbnoun[0]=="Default":
+              print "switch:"+s[1]+" default set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":defaultPosition",verbnoun[1])
+            else:
+              print "FATAL: unkwnown Verb "+ verbnoun[0]
+              sys.exit()
+            r.set("switch:"+s[1]+":isLocked",False)
+        if (len(redisSIG)>2):
+          r.set("sig:"+se+":"+s[1],redisSIG)
         ss.append(s)
         cnt=cnt+1  
+    prevs=None
+    print "______"+se+"_______"
+    cnt=0
+    for s in ss:    # SECOND PASS
+      aligned=False
+      if (s[2]=='2'):
+        k=r.get("switch:"+s[1]+":defaultPosition")       
+        print "switch of sig "+s[1]+" is in position "+k
+        if (k==se):
+          print "  switch of sig "+s[1]+" is aligned to segment"
+          aligned=True
+        if (cnt<len(ss)-1):
+          print "  switch of sig "+s[1]+" has a next sig: "+ss[cnt+1][1]+" of type: "+ss[cnt+1][2]
+          if (ss[cnt+1][2]!='5'):
+            print "FATAL: a sig type 2 must be followed by a type 5!"
+            sys.exit()
+          else:
+            k1=r.get("sig:"+se+":"+ss[cnt+1][1])
+            if k1 is None:
+              if (aligned==True):
+                r.set("sig:"+se+":"+ss[cnt+1][1],"green")
+              else:
+                r.set("sig:"+se+":"+ss[cnt+1][1],"red")
+            k1=r.get("sig:"+se+":"+ss[cnt+1][1])       
+            print "  follower color set to: "+k1
+        else:
+          print "  (switch has no succ)"
+        if prevs is not None:
+          print "  switch of sig "+s[1]+" has a prev sig: "+prevs[1]+" of type: "+prevs[2]
+          r.set("switch:"+s[1]+":forwardPrevSig",cnt-1)
+          if (prevs[2]!='3'):
+            print "FATAL: a sig type 2 must be preceded by a type 3 or no sig!"
+            sys.exit()
+          else:
+            k1=r.get("sig:"+se+":"+prevs[1])       
+            if k1 is None:
+              if (aligned==True):
+                r.set("sig:"+se+":"+prevs[1],"yellow")
+              else:
+                r.set("sig:"+se+":"+prevs[1],"red")
+            k1=r.get("sig:"+se+":"+prevs[1])       
+            print "  prev color set to: "+k1
+        else:
+          print "  (switch has no prev)"
+      elif (s[2]=='5'):
+        print s
+      prevs=s
+      cnt=cnt+1
     gts[se]=ss
   return gts
 
@@ -314,7 +364,7 @@ class Tr:
 #    print "redisSIG:"+self.redisSIG+" col:"+self.advSIGcol
 #    self.redisSIG=''
     self.sigSpotted=False
-    updateSIG(initSegment,self.SIGcnt-1,self.name,"red")
+    updateSIGbyTrOccupation(initSegment,self.SIGcnt-1,self.name,"red")
 
   def step(self):
     global t
@@ -354,7 +404,7 @@ class Tr:
         self.sigPoll=t+SIGPOLL
         self.sigToPoll="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       print self.name+":t:"+str(t)+":AT SIG "+self.nextSIG[1]+" vK:"+str(self.vK)
-      updateSIG(self.segment,self.SIGcnt-1,self.name,"red")
+      updateSIGbyTrOccupation(self.segment,self.SIGcnt-1,self.name,"red")
       if (self.SIGcnt<len(sigs[self.segment])-1):
         self.SIGcnt=self.SIGcnt+1 
         self.nextSIG=sigs[self.segment][self.SIGcnt] 
@@ -464,7 +514,7 @@ class Tr:
         self.power=mv*self.a+self.v*factors+mv*G*math.sin(self.gradient)
       else:
         self.power=self.v*factors+mv*G*math.sin(self.gradient)
-      print self.name+":t:"+str(t)+" State update vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)
+      print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
@@ -518,35 +568,49 @@ def findMyTIVcnt(x,seg):
     cnt=cnt+1
   return cnt
 
-def updateSIG(seg,SIGcnt,name,state):
+def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
   global sigs
   redisSIG="sig:"+seg+":"+sigs[seg][SIGcnt][1]
   SIGtype=sigs[seg][SIGcnt][2]
   k=r.get(redisSIG)
-  print "(update SIG "+redisSIG+" from value "+k+" to value "+state+")"
+  print "(Tr occup attempt update SIG "+redisSIG+" from value "+k+" to value "+state+")"
   if (k==state):
     print "ALREADY"
     return True
-  if (state=="red"):
-#    print redisSIG+" "+k 
-    if (SIGcnt>=1):
-      updateSIG(seg,SIGcnt-1,name,"yellow")
-    if (SIGcnt>=2):
-      updateSIG(seg,SIGcnt-2,name,"green")
-    print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-    r.set(redisSIG,state)
-  elif (state=="yellow"):
-     if ((SIGtype=='1') and (k=="green")):
-       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-       r.set(redisSIG,state)
-     if ((SIGtype=='1') and (k=="red")):
-       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-       r.set(redisSIG,state)
-  elif (state=="green"):
-     if ((SIGtype=='1') and (k=="yellow")):
-       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-       r.set(redisSIG,state)
-
+  if (SIGtype=='1'):
+    if (state=="red"):
+      if (SIGcnt>=1):
+        updateSIGbyTrOccupation(seg,SIGcnt-1,name,"yellow")
+      if (SIGcnt>=2):
+        updateSIGbyTrOccupation(seg,SIGcnt-2,name,"green")
+      print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+      r.set(redisSIG,state)
+    elif (state=="yellow"):
+       if (k=="green"):
+         print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+         r.set(redisSIG,state)
+       if (k=="red"):
+         print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+         r.set(redisSIG,state)
+    elif (state=="green"):
+       if (k=="yellow"):
+         print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+         r.set(redisSIG,state)
+  if (SIGtype=='5'):
+    if (state=="red"):
+      if (SIGcnt>=1):
+        prevRedisSIG="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
+        r.set("switch:"+sigs[seg][SIGcnt-1][1]+":isLocked",True)
+#        print prevRedisSIG
+#        print r.get("switch:"+sigs[seg][SIGcnt-1][1]+":isLocked")
+        fw=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPosition")
+        prevNum=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPrevSig")
+        prevNum=int(prevNum)
+        prevSig=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
+        print "need to update "+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment..."
+        print prevSig
+        sys.exit()
+  
 initAll()
 for aT in trs:
   print aT.name+" has been initialized"
@@ -558,5 +622,5 @@ while (exitCondition==False):
   if (t>3500):
     exitCondition=True
   ncyc=ncyc+1
-for k in r.scan_iter("switch:*"):
-  print k+":"+r.get(k)
+#for k in r.scan_iter("switch:*"):
+#  print k+":"+r.get(k)

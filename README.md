@@ -1,15 +1,16 @@
 ## FAQ 
 ### What's this?
 **Fulgance** is a text-based railroad simulator that will let you perform various tasks:
-- define realistic or custom (fancy) routes (without ramps and curves for now)
+- define realistic or fancy routes (without gradient and curves for now)
 - define schedules
 - define rolling stock (only EMUs for now, next on the list are steam engines)
-- distribute schedules over mutiple cores if you have many trains (only single process so single core for now)
-- run schedules in real-time or accelerated time on the default route or your own routes (only accelerated-time for now)
-- jump into a train to check its real-time progress (the jumpseat is not implemented yet)
+- distribute schedules over mutiple simulation engines if you have many trains (only single engine for now)
+- run schedules in real-time or accelerated time (only accelerated-time for now)
+- jump into a train to check its real-time progress (not implemented yet)
 - calibrate trains frequency at peak and off peak hours (not yet implemented)
-- calculate power consumption (not yet implemented, depends on ramps and curves)
+- calculate power consumption
 - get lots of statistics for data crunching and rendering
+- access the route control room
 
 ### Notes for route designers
 #### Layout
@@ -25,9 +26,10 @@
 The following on-track signals are or will be implemented:
 - *Type 1*: this is the usual 3-aspect signal. The possible states are: VL (green, all clear), A (yellow, prepare to stop at next signal) and C (red, impassable stop).
 - *Type 2*: this is a buffer signal that allows reversing to a segment which is different from the origin segment. As far as the origin segment is concerned, its only possible state is C (red, impassable). As for the next segment (in the reversed direction), the state depends on (a) the switch position and (b) the next block occupation.
-- *Type 3*: this is a 3-aspect signal, like type 1. But type 3 must always **precede** a type 2 or 4D, as it manages the switch in the upcoming junction.
-- "Type 4D": this is a diverging junction signal, used to stitch segments together.
-- "Type 4C": this is a converging junction signal, used to stitch segments together.
+- *Type 3*: this is a 2-aspect signal (A and C). It  must always **precede** a type 2 or 4D, as it accesses the switch in the upcoming junction.
+- *Type 4D*: this is a diverging junction signal, used to stitch segments together.
+- *Type 4C*: this is a converging junction signal, used to stitch segments together.
+- *Type 5*: this is a diverging junction signal controled by a type 2. To be explained later...
 Junction signals can manage only two legs, no less, no more. One leg is the main segment (left or right), the other one to the diverging/converging segment (left or right).Junction signals must have a unique name in both segments so that the engine may perform the segments stitching properly.
 
 ### Requirements
@@ -37,11 +39,9 @@ Junction signals can manage only two legs, no less, no more. One leg is the main
 #### Multi engines environment
 - taskset (part of utils-linux in Ubuntu).
 Note: in multi-core environments, redis is also used for inter-process synchronisation.
-#### Jumpseat
-- Python curses (the jumpseat will not work on Windows, sorry...)
-Note: jumpseat relies on redis for getting the real-time state of a train.
+#### Jumpseat and control room
+- Python curses (the jumpseat a dn the control room will not work on Windows, sorry...)
+Note: jumpseat and control room rely on redis for getting the real-time state of a train.
 
 ### Let's get started
-- To run the engine in single-core mode, simply run mp.py without arguments
-- Schedules are located in default/schedules/
-- The engine (mp.py) will start the default schedule of the default route located in default/schedules/default.txt
+To run the simulation in single engine mode, simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route located in default/schedules/default.txt

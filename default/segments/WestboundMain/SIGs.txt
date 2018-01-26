@@ -1,9 +1,9 @@
 #PK Name Type Verb:Noun Verb:Noun...
 #Type 1: 3 colors carre (VL,A,S). Verb:Noun=n/a.
 #Type 2: feu de heurtoir (always red). Verb:Noun=Reverse:(a segment)
-#Type 3: avertissement (always yellow, always before type 2).Verb:Noun=n/a
-9.800 E 2 Reverse:EastboundMain Default:WestboundMain
-9.910 991 1
+#Type 3: avertissement (A or C, always before type 2).Verb:Noun=n/a
+9.800 E 2 Reverse:EastboundMain Forward:WestboundMain Default:WestboundMain
+9.900 990 5
 10.010 ChV+10 1
 10.812 Ber-140
 10.962 Ber+10
@@ -77,4 +77,4 @@
 26.200 2620
 26.475 LaD-100
 26.585 LaD+10 3
-26.775 W 2 Reverse:EastboundMain Default:WestboundMain
+26.775 W 2 Reverse:EastboundMain Forward:WestboundMain Default:EastboundMain
