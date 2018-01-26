@@ -15,17 +15,20 @@
 
 import redis
 import random
+import math
 import sys
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
+r.flushall()
 
-RESFACTOR=0.2
+AIRFACTOR=(0.2/400.0)
+WHEELFACTOR=0.0
 ACCSIGMA=0.27
 ACC=1.35 # m/s2  au demarrage
 VPOINT=29.0 # speed in km/h at which acc starts to fall
 ALAW=1   # law governing acc between vpoint and vmx
          # 1 is linear
-WEIGHT=143.0   #in tons
-POWER=2000 #in kW
+WEIGHT=143000.0   #in kg
+POWER=2000000.0 #in W
 VMX=80.0   #km/h  max speed
 DCC=-1.50  #m/s2 at tpoint
 DLAW=1    # law governing dcc between t=0 and t=tpoint
@@ -39,6 +42,7 @@ VTHRESH=0.999
 REALTIME="SIG"    # two mutually exclusive values: SIG or TVM
 WAITTIME=10.0   # average wait in station (in sec)
 SIGPOLL=1.0   # check for sig clearance (in sec)
+G=9.81  # N/kg
 
 tivs={}
 stas={}
@@ -248,6 +252,10 @@ class Tr:
   waitSta=0.0
   BDzero=0.0
   segment=''
+  grade=2.5  # percentage
+  gradient=0.0 # angle of inclination, in radian
+  power=0.0
+  m=WEIGHT
 
   def append(self,aTr):
     self.trs.append(aTr)
@@ -265,6 +273,7 @@ class Tr:
     self.BDtiv=0.0  #breaking distance for next TIV
     self.BDsta=0.0  #fornext station
     self.DBrt=0.0  #for next realtime event (sig or tvm)
+    self.gradient=math.atan(self.grade/100.0)
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
@@ -437,21 +446,25 @@ class Tr:
         self.a=0.0
 #        print str(t)+":coasting at "+str(vK)
     else:  # a=0.0
-      if (ncyc%1000==0):
-        if (self.inSta==False):
-          print str(t)+" COCO vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)
       if ((self.vK>4.0) and (self.vK<0.965*self.maxVk)):
         print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(self.maxVk)+" with aFull:"+str(self.aFull)
         self.a=ACC+aGauss()
 #          else:
 #            print str(t)+":not boosting vK:"+str(vK)+" to maxVk:"+str(maxVk)
-    self.aFull=self.a-(RESFACTOR*self.v*self.v/400)
-#    aFull=a
+    vSquare=self.v*self.v
+    factors=(AIRFACTOR*vSquare)+(WHEELFACTOR*self.v)
+    mv=self.m*self.v
+    self.aFull=self.a-factors
     self.v=self.v+(self.aFull/CYCLE)
     self.vK=self.v*3.6
-#    t=ncyc/CYCLE
     self.x=self.x+(self.v/CYCLE)
     self.PK=self.x/1000.0
+    if (ncyc%CYCLE==0):
+      if (self.a>=0.0):
+        self.power=mv*self.a+self.v*factors+mv*G*math.sin(self.gradient)
+      else:
+        self.power=self.v*factors+mv*G*math.sin(self.gradient)
+      print self.name+":t:"+str(t)+" State update vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
