@@ -20,8 +20,9 @@ import sys
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
-AIRFACTOR=(0.2/400.0)
-WHEELFACTOR=0.0
+#AIRFACTOR=(0.2/400.0)
+WHEELFACTOR=0.00245
+#WHEELFACTOR=0.0
 ACCSIGMA=0.27
 ACC=1.35 # m/s2  au demarrage
 VPOINT=29.0 # speed in km/h at which acc starts to fall
@@ -29,7 +30,11 @@ ALAW=1   # law governing acc between vpoint and vmx
          # 1 is linear
 WEIGHT=143000.0   #in kg
 POWER=2000000.0 #in W
+POWERWEIGHT=POWER/WEIGHT
 VMX=80.0   #km/h  max speed
+VMX2=(VMX*VMX)/12.96  # VMX squared, in m/s
+AIRFACTOR=ACC/VMX2
+VMXROOT=math.pow(VMX,0.3)
 DCC=-1.50  #m/s2 at tpoint
 DLAW=1    # law governing dcc between t=0 and t=tpoint
           # 1 is linear
@@ -302,7 +307,7 @@ class Tr:
   waitSta=0.0
   BDzero=0.0
   segment=''
-  grade=2.5  # percentage
+  grade=0.0  # percentage
   gradient=0.0 # angle of inclination, in radian
   power=0.0
   m=WEIGHT
@@ -323,7 +328,8 @@ class Tr:
     self.BDtiv=0.0  #breaking distance for next TIV
     self.BDsta=0.0  #fornext station
     self.DBrt=0.0  #for next realtime event (sig or tvm)
-    self.gradient=math.atan(self.grade/100.0)
+#    self.gradient=math.atan(self.grade/100.0)
+    self.gradient=self.grade/100.0    #good approx even for gred 2.5%
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
@@ -343,12 +349,12 @@ class Tr:
     self.maxVk=min(maxLine,VMX)
     self.PK=self.x
     self.aGaussRamp=aGauss()
-    self.a=ACC+self.aGaussRamp
     self.aFull=0.0
     self.v=0.0
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
+    self.a=availableAcc(self.v)+self.aGaussRamp
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -418,7 +424,7 @@ class Tr:
           sys.exit()
     if (self.x>=(self.nSTAx)):
 #      print "AT STA stop data:"+" vK:"+str(self.vK)+" aFull:"+str(self.aFull)
-      if (self.vK>1.0):
+      if (self.vK>3.0):
         print "FATAL at STA"
         sys.exit()
       self.a=0.0
@@ -469,7 +475,7 @@ class Tr:
       if ((self.staBrake==False) and (self.sigBrake==False) and (self.maxVk>self.vK)):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
         self.aGaussRamp=aGauss()
-        self.a=ACC+self.aGaussRamp
+        self.a=availableAcc(self.v)+self.aGaussRamp
       if (self.maxVk<self.vK):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
         self.a=DCC
@@ -477,12 +483,12 @@ class Tr:
       if (self.vK>self.maxVk*VTHRESH):
         print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
         self.a=0.0
-      elif (self.vK<=VPOINT):
-        nop='nop'
       else:
         if (self.vK<=(self.maxVk*VTHRESH)):
           if (ALAW==1):
-            self.a=0.1+(ACC)*(1.0-(self.vK/self.maxVk))
+            self.a=availableAcc(self.v)#+self.aGaussRamp
+            if (ncyc%CYCLE==0):
+              print "need to go faster..."+str(self.a)
 #            if (ncyc%1000==0):
 #              print str(t)+" ACCLAW vK:"+str(vK)+" maxVk:"+str(maxVk)+" aF:"+str(aFull)+" a:"+str(a)
           else:
@@ -498,28 +504,38 @@ class Tr:
     else:  # a=0.0
       if ((self.vK>4.0) and (self.vK<0.965*self.maxVk)):
         print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(self.maxVk)+" with aFull:"+str(self.aFull)
-        self.a=ACC+aGauss()
+        self.a=availableAcc(self.v)+aGauss()
 #          else:
 #            print str(t)+":not boosting vK:"+str(vK)+" to maxVk:"+str(maxVk)
     vSquare=self.v*self.v
-    factors=(AIRFACTOR*vSquare)+(WHEELFACTOR*self.v)
+    factors=(AIRFACTOR*vSquare)#+(WHEELFACTOR*self.v)#+G*self.gradient
     mv=self.m*self.v
-    self.aFull=self.a-factors
+    if (self.a>0.0):
+      self.aFull=self.a-factors
+      if (self.aFull<0.0):
+        self.aFull=0.0 
+    else:
+#      self.aFull=self.a+factors
+     self.aFull=self.a
+     if (self.aFull>0.0):
+       self.aFull=0.0 
     self.v=self.v+(self.aFull/CYCLE)
     self.vK=self.v*3.6
     self.x=self.x+(self.v/CYCLE)
     self.PK=self.x/1000.0
     if (ncyc%CYCLE==0):
       if (self.a>=0.0):
-        self.power=mv*self.a+self.v*factors+mv*G*math.sin(self.gradient)
+#        self.power=mv*self.a+self.v*factors+mv*G*math.sin(self.gradient)
+        self.power=mv*self.a
       else:
-        self.power=self.v*factors+mv*G*math.sin(self.gradient)
-      print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)
+#        self.power=self.v*factors+mv*G*math.sin(self.gradient)
+        self.power=0.0
+      print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" factors: "+str(factors)+" AIRFACTOR:"+str(AIRFACTOR)+" vSquare:"+str(vSquare)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
         self.waitSta=0.0
-        self.a=ACC+aGauss()
+        self.a=availableAcc(self.v)+aGauss()
         print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)
     if (self.atSig==True):
       if (t>self.sigPoll):
@@ -529,7 +545,7 @@ class Tr:
           self.sigPoll=t+SIGPOLL
         else:
           self.atSig=False
-          self.a=ACC+aGauss()
+          self.a=availableAcc(self.v)+aGauss()
           print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)
   
 def aGauss():
@@ -610,7 +626,15 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
         print "need to update "+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment..."
         print prevSig
         sys.exit()
-  
+
+def availableAcc(v):
+  if (v<0.1): 
+    return ACC
+  aux1=POWERWEIGHT/v
+  if (ACC>aux1):
+    return aux1
+  return ACC
+
 initAll()
 for aT in trs:
   print aT.name+" has been initialized"
