@@ -33,7 +33,7 @@ POWER=2000000.0 #in W
 POWERWEIGHT=POWER/WEIGHT
 VMX=80.0   #km/h  max speed
 VMX2=(VMX*VMX)/12.96  # VMX squared, in m/s
-AIRFACTOR=ACC/VMX2
+AIRFACTOR=0.68/VMX2
 VMXROOT=math.pow(VMX,0.3)
 DCC=-1.50  #m/s2 at tpoint
 DLAW=1    # law governing dcc between t=0 and t=tpoint
@@ -57,9 +57,9 @@ trs={}
 segs={}
 ncyc=0
 t=0.0
-maxLine=60.0
+maxLine=160.0
 exitCondition=False
-projectDir='default/'
+projectDir='testTrack/'
 schedulesDir='schedules/'
 segmentsDir='segments/'
 
@@ -346,7 +346,8 @@ class Tr:
     self.nTIVvl=float(self.nextTIV[1])
     self.cTIVvl=0.0
     self.nTIVtype='>>'    # tiv increases speed
-    self.maxVk=min(maxLine,VMX)
+#    self.maxVk=min(maxLine,VMX)
+    self.maxVk=maxLine
     self.PK=self.x
     self.aGaussRamp=aGauss()
     self.aFull=0.0
@@ -377,6 +378,7 @@ class Tr:
     global exitCondition
 #    if (ncyc%CYCLE==0):
 #      print self.name+":t:"+str(t)+":x:"+str(self.x)
+    gFactor=G*self.gradient
     self.BDzero=-(self.v*self.v)/(2*DCC)
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
       print self.name+":t:"+str(t)+":ADVANCE STA vK:"+str(self.vK)
@@ -519,6 +521,7 @@ class Tr:
      self.aFull=self.a
      if (self.aFull>0.0):
        self.aFull=0.0 
+    self.aFull=self.aFull-gFactor
     self.v=self.v+(self.aFull/CYCLE)
     self.vK=self.v*3.6
     self.x=self.x+(self.v/CYCLE)
@@ -530,7 +533,7 @@ class Tr:
       else:
 #        self.power=self.v*factors+mv*G*math.sin(self.gradient)
         self.power=0.0
-      print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" factors: "+str(factors)+" AIRFACTOR:"+str(AIRFACTOR)+" vSquare:"+str(vSquare)
+      print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" factors: "+str(factors)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)+" AIRFACTOR: "+str(AIRFACTOR)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
