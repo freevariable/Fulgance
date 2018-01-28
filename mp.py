@@ -307,7 +307,7 @@ class Tr:
   waitSta=0.0
   BDzero=0.0
   segment=''
-  grade=0.0  # percentage
+  grade=2.5  # percentage
   gradient=0.0 # angle of inclination, in radian
   power=0.0
   m=WEIGHT
@@ -379,20 +379,25 @@ class Tr:
 #    if (ncyc%CYCLE==0):
 #      print self.name+":t:"+str(t)+":x:"+str(self.x)
     gFactor=G*self.gradient
-    self.BDzero=-(self.v*self.v)/(2*DCC)
+    dcc=DCC-gFactor
+    if (dcc<DCC):
+      dcc=DCC
+    self.BDzero=-(self.v*self.v)/(2*(dcc))
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
-      print self.name+":t:"+str(t)+":ADVANCE STA vK:"+str(self.vK)
+      print self.name+":t:"+str(t)+":ADVANCE STA x:"+str(self.nSTAx)+" vK:"+str(self.vK)
       self.staBrake=True
-      self.a=DCC#+aGauss()
+      self.a=dcc-gFactor#+aGauss()
     if ((self.staBrake==True) and (self.vK<=0.8)):
       self.a=-0.004
+    elif (self.staBrake==True):
+      self.a=dcc
     if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
       self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       self.advSIGcol=r.get(self.redisSIG)
       print self.name+":t:"+str(t)+":ADVANCE "+self.advSIGcol+" SIG vK:"+str(self.vK)
       self.sigSpotted=True
       if (self.advSIGcol=="red"):
-        self.a=DCC#+aGauss()
+        self.a=dcc#+aGauss()
         self.sigBrake=True
     if ((self.sigBrake==True) and (self.vK<=0.7)):
       self.a=-0.004
@@ -480,7 +485,7 @@ class Tr:
         self.a=availableAcc(self.v)+self.aGaussRamp
       if (self.maxVk<self.vK):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
-        self.a=DCC
+        self.a=dcc
     if (self.a>0.0):
       if (self.vK>self.maxVk*VTHRESH):
         print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
@@ -513,7 +518,7 @@ class Tr:
     factors=(AIRFACTOR*vSquare)#+(WHEELFACTOR*self.v)#+G*self.gradient
     mv=self.m*self.v
     if (self.a>0.0):
-      self.aFull=self.a-factors
+      self.aFull=self.a-factors-gFactor
       if (self.aFull<0.0):
         self.aFull=0.0 
     else:
@@ -521,7 +526,6 @@ class Tr:
      self.aFull=self.a
      if (self.aFull>0.0):
        self.aFull=0.0 
-    self.aFull=self.aFull-gFactor
     self.v=self.v+(self.aFull/CYCLE)
     self.vK=self.v*3.6
     self.x=self.x+(self.v/CYCLE)
