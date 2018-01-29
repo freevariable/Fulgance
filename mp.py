@@ -21,11 +21,10 @@ r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
 #AIRFACTOR=(0.2/400.0)
-WHEELFACTOR=0.00245
+WHEELFACTOR=0.0145
 #WHEELFACTOR=0.0
-ACCSIGMA=0.27
+ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
-VPOINT=29.0 # speed in km/h at which acc starts to fall
 ALAW=1   # law governing acc between vpoint and vmx
          # 1 is linear
 WEIGHT=143000.0   #in kg
@@ -57,9 +56,9 @@ trs={}
 segs={}
 ncyc=0
 t=0.0
-maxLine=160.0
+maxLine=160.0    # max speed allowed on a line, km/h
 exitCondition=False
-projectDir='testTrack/'
+projectDir='default/'
 schedulesDir='schedules/'
 segmentsDir='segments/'
 
@@ -286,7 +285,7 @@ class Tr:
   maxVk=0.0
   initPos=0.0
   PK=0.0
-  aGaussRamp=0.0
+  aGaussFactor=0.0
   aFull=0.0
   a=0.0
   v=0.0
@@ -307,7 +306,7 @@ class Tr:
   waitSta=0.0
   BDzero=0.0
   segment=''
-  grade=2.5  # percentage
+  grade=0.0 # percentage
   gradient=0.0 # angle of inclination, in radian
   power=0.0
   m=WEIGHT
@@ -321,6 +320,7 @@ class Tr:
         yield i
   def __init__(self,name,initSegment,initPos,initTime):
     print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
+    gFactor=G*self.gradient
     self.trs=[]
     self.x=initPos
     self.name=name
@@ -349,13 +349,13 @@ class Tr:
 #    self.maxVk=min(maxLine,VMX)
     self.maxVk=maxLine
     self.PK=self.x
-    self.aGaussRamp=aGauss()
+    self.aGaussFactor=aGauss()
     self.aFull=0.0
     self.v=0.0
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
-    self.a=availableAcc(self.v)+self.aGaussRamp
+    self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -383,6 +383,8 @@ class Tr:
     if (dcc<DCC):
       dcc=DCC
     self.BDzero=-(self.v*self.v)/(2*(dcc))
+    if (ncyc%CYCLE==0):
+      self.aGaussFactor=aGauss()
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
       print self.name+":t:"+str(t)+":ADVANCE STA x:"+str(self.nSTAx)+" vK:"+str(self.vK)
       self.staBrake=True
@@ -444,10 +446,15 @@ class Tr:
       if ((self.nextSTA[1]=='W') or (self.nextSTA[1]=='E')):
         exitCondition=True
       else:
-        self.STAcnt=self.STAcnt+1 
-        self.nextSTA=stas[self.segment][self.STAcnt] 
-        print self.name+":t:"+str(t)+":next STA ("+self.nextSTA[1]+") at PK"+self.nextSTA[0]
-        self.nSTAx=1000.0*float(self.nextSTA[0])
+        if (self.STAcnt<len(stas[self.segment])):
+          self.STAcnt=self.STAcnt+1 
+          self.nextSTA=stas[self.segment][self.STAcnt] 
+          print self.name+":t:"+str(t)+":next STA ("+self.nextSTA[1]+") at PK"+self.nextSTA[0]
+          self.nSTAx=1000.0*float(self.nextSTA[0])
+        else:
+           print self.name+":t:"+str(t)+":no more STAS..."
+           print stas
+           exitCondition=True
     if (self.nTIVtype=='<<'):
       self.deltaBDtiv=self.BDtiv
     else:
@@ -481,8 +488,7 @@ class Tr:
         print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
       if ((self.staBrake==False) and (self.sigBrake==False) and (self.maxVk>self.vK)):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
-        self.aGaussRamp=aGauss()
-        self.a=availableAcc(self.v)+self.aGaussRamp
+        self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
       if (self.maxVk<self.vK):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
         self.a=dcc
@@ -493,7 +499,7 @@ class Tr:
       else:
         if (self.vK<=(self.maxVk*VTHRESH)):
           if (ALAW==1):
-            self.a=availableAcc(self.v)#+self.aGaussRamp
+            self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
             if (ncyc%CYCLE==0):
               print "need to go faster..."+str(self.a)
 #            if (ncyc%1000==0):
@@ -511,16 +517,16 @@ class Tr:
     else:  # a=0.0
       if ((self.vK>4.0) and (self.vK<0.965*self.maxVk)):
         print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(self.maxVk)+" with aFull:"+str(self.aFull)
-        self.a=availableAcc(self.v)+aGauss()
+        self.a=availableAcc(self.v,gFactor)+aGauss()
 #          else:
 #            print str(t)+":not boosting vK:"+str(vK)+" to maxVk:"+str(maxVk)
     vSquare=self.v*self.v
-    factors=(AIRFACTOR*vSquare)#+(WHEELFACTOR*self.v)#+G*self.gradient
+    factors=(AIRFACTOR*vSquare)
     mv=self.m*self.v
     if (self.a>0.0):
       self.aFull=self.a-factors-gFactor
-      if (self.aFull<0.0):
-        self.aFull=0.0 
+#      if (self.aFull<0.0):
+#        self.aFull=0.0 
     else:
 #      self.aFull=self.a+factors
      self.aFull=self.a
@@ -542,7 +548,7 @@ class Tr:
       if (t>self.waitSta):
         self.inSta=False
         self.waitSta=0.0
-        self.a=availableAcc(self.v)+aGauss()
+        self.a=availableAcc(self.v,gFactor)+aGauss()
         print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)
     if (self.atSig==True):
       if (t>self.sigPoll):
@@ -552,7 +558,7 @@ class Tr:
           self.sigPoll=t+SIGPOLL
         else:
           self.atSig=False
-          self.a=availableAcc(self.v)+aGauss()
+          self.a=availableAcc(self.v,gFactor)+aGauss()
           print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)
   
 def aGauss():
@@ -634,12 +640,18 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
         print prevSig
         sys.exit()
 
-def availableAcc(v):
+def availableAcc(v,gF):
   if (v<0.1): 
+    if (gF<0.0):
+      return (ACC+gF)
     return ACC
   aux1=POWERWEIGHT/v
   if (ACC>aux1):
+    if (gF<0.0):
+      return (aux1+gF)
     return aux1
+  if (gF<0.0):
+    return (ACC+gF)
   return ACC
 
 initAll()
