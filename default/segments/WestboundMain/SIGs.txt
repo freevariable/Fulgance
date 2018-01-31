@@ -1,80 +1,80 @@
-#PK Name Type Verb:Noun Verb:Noun...
-#Type 1: 3 colors carre (VL,A,S). Verb:Noun=n/a.
-#Type 2: feu de heurtoir (always red). Verb:Noun=Reverse:(a segment)
-#Type 3: avertissement (A or C, always before type 2).Verb:Noun=n/a
-9.800 E 2 Reverse:EastboundMain Forward:WestboundMain Default:WestboundMain
-9.900 990 5
-10.010 ChV+10 1
-10.812 Ber-140
-10.962 Ber+10
-11.300 1130
-11.541 StM-140
-11.691 StM+10
-11.850 1185
-12.035 PoV-140 1
-12.185 PoV+10
-12.600 1260
-12.950 1295
-13.212 Nat-140
-13.362 Nat+10
-13.700 1370
-13.929 ReD-140
-14.079 ReD+10
-14.300 1430
-14.650 1465
-15.012 GdL-140
-15.162 GdL+10
-15.400 1540
-15.650 1565
-15.880 1588
-16.010 Bas-95
-16.115 Bas+10
-16.300 1630
-16.450 1645
-16.670 StP-140
-16.820 StP+10
-17.100 1710
-17.376 HoV-140
-17.526 HoV+10
-17.729 Cha-140
-17.879 Cha+10
-18.100 1810
-18.259 LoR-140
-18.409 LoR+10
-18.612 PaR-140
-18.762 PaR+10
-19.082 Tui-140
-19.232 Tui+10
-19.494 Con-140
-19.644 Con+10
-20.000 2000
-20.294 ChE-140
-20.444 ChE+10
-20.741 Fra-140
-20.891 Fra+10
-21.200 2120
-21.388 Geo-140
-21.538 Geo+10
-21.750 2175
-21.859 CDE-140
-22.009 CDE+10
-22.280 2228
-22.415 Arg-90
-22.515 Arg+10
-22.918 PoM-140
-23.068 PoM+10
-23.400 2340
-23.765 Sab-140
-23.915 Sab+10
-24.200 2420
-24.500 2450
-24.788 PoN-140
-24.938 PoN+10 
-25.250 2525
-25.594 Esp-140
-25.644 Esp+10
-25.900 2590
-26.200 2620
-26.475 LaD-100
-26.585 LaD+10 3
-26.775 W 2 Reverse:EastboundMain Forward:WestboundMain Default:EastboundMain
+#Name Type Verb:Noun Verb:Noun...  
+#1: 3 colors carre (VL,A,S). Verb:Noun=n/a.
+#2: feu de heurtoir (always red).
+#3: avertissement (A or C, always
+0.0 E 2 Reverse:EastboundMain Forward:WestboundMain Default:WestboundMain 
+0.1 990 5    
+0.21 ChV+10 1    
+1.012 Ber-140     
+1.162 Ber+10     
+1.5 1130     
+1.741 StM-140     
+1.891 StM+10     
+2.05 1185     
+2.235 PoV-140 1    
+2.385 PoV+10     
+2.8 1260     
+3.15 1295     
+3.412 Nat-140     
+3.562 Nat+10     
+3.9 1370     
+4.129 ReD-140     
+4.279 ReD+10     
+4.5 1430     
+4.85 1465     
+5.212 GdL-140     
+5.362 GdL+10     
+5.6 1540     
+5.85 1565     
+6.08 1588     
+6.21 Bas-95     
+6.315 Bas+10     
+6.5 1630     
+6.65 1645     
+6.87 StP-140     
+7.02 StP+10     
+7.3 1710     
+7.576 HoV-140     
+7.726 HoV+10     
+7.929 Cha-140     
+8.079 Cha+10     
+8.3 1810     
+8.459 LoR-140     
+8.609 LoR+10     
+8.812 PaR-140     
+8.962 PaR+10     
+9.282 Tui-140     
+9.432 Tui+10     
+9.694 Con-140     
+9.844 Con+10     
+10.2 2000     
+10.494 ChE-140     
+10.644 ChE+10     
+10.941 Fra-140     
+11.091 Fra+10     
+11.4 2120     
+11.588 Geo-140     
+11.738 Geo+10     
+11.95 2175     
+12.059 CDE-140     
+12.209 CDE+10     
+12.48 2228     
+12.615 Arg-90     
+12.715 Arg+10     
+13.118 PoM-140     
+13.268 PoM+10     
+13.6 2340     
+13.965 Sab-140     
+14.115 Sab+10     
+14.4 2420     
+14.7 2450     
+14.988 PoN-140     
+15.138 PoN+10     
+15.45 2525     
+15.794 Esp-140     
+15.844 Esp+10     
+16.1 2590     
+16.4 2620     
+16.675 LaD-100     
+16.785 LaD+10 3    
+16.975 W 2 Reverse:EastboundMain Forward:WestboundMain Default:EastboundMain 

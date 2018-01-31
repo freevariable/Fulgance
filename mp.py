@@ -23,6 +23,7 @@ r.flushall()
 #AIRFACTOR=(0.2/400.0)
 WHEELFACTOR=0.0145
 #WHEELFACTOR=0.0
+GSENSITIVITY=6.03   # sensitivity to grade
 ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
 ALAW=1   # law governing acc between vpoint and vmx
@@ -39,9 +40,7 @@ DLAW=1    # law governing dcc between t=0 and t=tpoint
           # 1 is linear
 CYCLE=200 # number of time per sec calc must be made
              # increasing cycle beyond 200 does not improve precision by more that 1 sec for the end-to-end journey
-X0=9800.0
 T0=0.0
-TLEN=X0+16876.0   # track length in m
 VTHRESH=0.999
 REALTIME="SIG"    # two mutually exclusive values: SIG or TVM
 WAITTIME=10.0   # average wait in station (in sec)
@@ -166,8 +165,8 @@ def initSIGs():
               sys.exit()
             verbnoun=s[5].split(":")
             if verbnoun[0]=="Default":
-              print "switch:"+s[1]+" default set to: "+verbnoun[1]
-              r.set("switch:"+s[1]+":defaultPosition",verbnoun[1])
+              print "switch:"+s[1]+" current set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":position",verbnoun[1])
             else:
               print "FATAL: unkwnown Verb "+ verbnoun[0]
               sys.exit()
@@ -182,7 +181,7 @@ def initSIGs():
     for s in ss:    # SECOND PASS
       aligned=False
       if (s[2]=='2'):
-        k=r.get("switch:"+s[1]+":defaultPosition")       
+        k=r.get("switch:"+s[1]+":position")       
         print "switch of sig "+s[1]+" is in position "+k
         if (k==se):
           print "  switch of sig "+s[1]+" is aligned to segment"
@@ -320,7 +319,9 @@ class Tr:
         yield i
   def __init__(self,name,initSegment,initPos,initTime):
     print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
-    gFactor=G*self.gradient
+    gFactor=G*self.gradient*GSENSITIVITY
+    v2factor=0.0
+    factors=gFactor+v2factor+WHEELFACTOR
     self.trs=[]
     self.x=initPos
     self.name=name
@@ -346,8 +347,10 @@ class Tr:
     self.nTIVvl=float(self.nextTIV[1])
     self.cTIVvl=0.0
     self.nTIVtype='>>'    # tiv increases speed
-#    self.maxVk=min(maxLine,VMX)
-    self.maxVk=maxLine
+    if (self.TIVcnt>0):
+      self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
+    else:
+      self.maxVk=min(maxLine,VMX)
     self.PK=self.x
     self.aGaussFactor=aGauss()
     self.aFull=0.0
@@ -355,7 +358,8 @@ class Tr:
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
-    self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
+#    self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
+    self.a=getAccFromFactorsAndSpeed(factors,self.v)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -380,7 +384,12 @@ class Tr:
 #      print self.name+":t:"+str(t)+":x:"+str(self.x)
     gFactor=G*self.gradient
     dcc=DCC-gFactor
-    if (dcc<DCC):
+    gFactor=gFactor*GSENSITIVITY
+    vSquare=self.v*self.v
+    v2factor=(AIRFACTOR*vSquare)
+    factors=v2factor+gFactor+WHEELFACTOR
+    mv=self.m*self.v
+    if (dcc<DCC):  #since DCC is always negative...
       dcc=DCC
     self.BDzero=-(self.v*self.v)/(2*(dcc))
     if (ncyc%CYCLE==0):
@@ -436,13 +445,13 @@ class Tr:
       if (self.vK>3.0):
         print "FATAL at STA"
         sys.exit()
-      self.a=0.0
-      self.v=0.0
-      self.vK=0.0
       self.inSta=True
       self.waitSta=t+WAITTIME
       self.staBrake=False 
-      print self.name+":t:"+str(t)+":IN STA "+self.nextSTA[1]+" vK:"+str(self.vK)
+      print self.name+":t:"+str(t)+":IN STA "+self.nextSTA[1]+" vK:"+str(self.vK)+" a:"+str(self.a)
+      self.a=0.0
+      self.v=0.0
+      self.vK=0.0
       if ((self.nextSTA[1]=='W') or (self.nextSTA[1]=='E')):
         exitCondition=True
       else:
@@ -470,28 +479,31 @@ class Tr:
         self.advTIV=self.nTIVx
       else:
         print self.name+":t:"+str(t)+":TIV "+str(self.TIVcnt)+" reached at curr speed "+str(self.vK)+", maxVk now "+str(self.maxVk)
-      self.TIVcnt=self.TIVcnt+1
-      self.nextTIV=tivs[self.segment][self.TIVcnt]
-      self.cTIVvl=self.nTIVvl
-      self.nTIVx=1000.0*float(self.nextTIV[0])
-      self.nTIVvl=float(self.nextTIV[1])
-      if (self.nTIVvl>self.cTIVvl):
-        self.nTIVtype='>>'
+      if (self.TIVcnt<len(tivs[self.segment])-1):
+        self.TIVcnt=self.TIVcnt+1
+        self.nextTIV=tivs[self.segment][self.TIVcnt]
+        self.cTIVvl=self.nTIVvl
+        self.nTIVx=1000.0*float(self.nextTIV[0])
+        self.nTIVvl=float(self.nextTIV[1])
+        if (self.nTIVvl>self.cTIVvl):
+          self.nTIVtype='>>'
+        else:
+          self.nTIVtype='<<'  # next TIV decreases speed
+          self.nv=self.nTIVvl/3.6
+          self.cv=self.cTIVvl/3.6
+          self.BDtiv=((self.nv*self.nv)-(self.cv*self.cv))/(2*DCC)
+          self.BDtiv=1.5*self.BDtiv   # safety margin
+        print self.name+":t:"+str(t)+"  next TIV at PK"+self.nextTIV[0]+" with limit "+self.nTIVtype+self.nextTIV[1]+" (currspeed:"+str(self.vK)+")"
+        if (self.nTIVvl<self.cTIVvl):
+          print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
       else:
-        self.nTIVtype='<<'  # next TIV decreases speed
-        self.nv=self.nTIVvl/3.6
-        self.cv=self.cTIVvl/3.6
-        self.BDtiv=((self.nv*self.nv)-(self.cv*self.cv))/(2*DCC)
-        self.BDtiv=1.5*self.BDtiv   # safety margin
-      print self.name+":t:"+str(t)+"  next TIV at PK"+self.nextTIV[0]+" with limit "+self.nTIVtype+self.nextTIV[1]+" (currspeed:"+str(self.vK)+")"
-      if (self.nTIVvl<self.cTIVvl):
-        print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
+        self.nTIVx=999999999.9
       if ((self.staBrake==False) and (self.sigBrake==False) and (self.maxVk>self.vK)):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
-        self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
+        self.a=10.0 #any arbitrary value as long as it is positive
       if (self.maxVk<self.vK):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
-        self.a=dcc
+        self.a=-10.0  #any arbitrary value as long as it is neg
     if (self.a>0.0):
       if (self.vK>self.maxVk*VTHRESH):
         print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
@@ -499,7 +511,10 @@ class Tr:
       else:
         if (self.vK<=(self.maxVk*VTHRESH)):
           if (ALAW==1):
-            self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
+            self.a=getAccFromFactorsAndSpeed(factors,self.v)
+            if (self.a>ACC):
+              print "FATAL ACC "+str(self.a)
+              sys.exit()
             if (ncyc%CYCLE==0):
               print "need to go faster..."+str(self.a)
 #            if (ncyc%1000==0):
@@ -513,22 +528,22 @@ class Tr:
     elif (self.a<0.0):
       if ((self.staBrake==False) and (self.sigBrake==False) and (self.vK<self.maxVk)):
         self.a=0.0
-#        print str(t)+":coasting at "+str(vK)
+      else:
+        if (self.maxVk<self.vK):
+          self.a=dcc
     else:  # a=0.0
       if ((self.vK>4.0) and (self.vK<0.965*self.maxVk)):
         print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(self.maxVk)+" with aFull:"+str(self.aFull)
-        self.a=availableAcc(self.v,gFactor)+aGauss()
+#        self.a=availableAcc(self.v,gFactor)+aGauss()
+        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
 #          else:
 #            print str(t)+":not boosting vK:"+str(vK)+" to maxVk:"+str(maxVk)
-    vSquare=self.v*self.v
-    factors=(AIRFACTOR*vSquare)
-    mv=self.m*self.v
     if (self.a>0.0):
-      self.aFull=self.a-factors-gFactor
-#      if (self.aFull<0.0):
-#        self.aFull=0.0 
+      self.aFull=self.a-v2factor-gFactor-WHEELFACTOR
+      if (self.aFull<0.0):
+        self.aFull=0.0 
     else:
-#      self.aFull=self.a+factors
+#      self.aFull=self.a+v2factor
      self.aFull=self.a
      if (self.aFull>0.0):
        self.aFull=0.0 
@@ -537,28 +552,51 @@ class Tr:
     self.x=self.x+(self.v/CYCLE)
     self.PK=self.x/1000.0
     if (ncyc%CYCLE==0):
-      if (self.a>=0.0):
-#        self.power=mv*self.a+self.v*factors+mv*G*math.sin(self.gradient)
-        self.power=mv*self.a
-      else:
-#        self.power=self.v*factors+mv*G*math.sin(self.gradient)
+      self.power=WEIGHT*self.a*self.v+factors*self.v
+      if (self.power<0.0):
         self.power=0.0
-      print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" factors: "+str(factors)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)+" AIRFACTOR: "+str(AIRFACTOR)
+#      if (self.a>=0.0):
+#        self.power=mv*self.a+self.v*v2factor+mv*G*math.sin(self.gradient)
+#        self.power=mv*self.a
+#      else:
+#        self.power=self.v*v2factor+mv*G*math.sin(self.gradient)
+#        self.power=0.0
+      print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
         self.waitSta=0.0
-        self.a=availableAcc(self.v,gFactor)+aGauss()
+#        self.a=availableAcc(self.v,gFactor)+aGauss()
+        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
         print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)
     if (self.atSig==True):
       if (t>self.sigPoll):
         k=r.get(self.sigToPoll)
         print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
-        if (k=="red"):
-          self.sigPoll=t+SIGPOLL
-        else:
-          self.atSig=False
-          self.a=availableAcc(self.v,gFactor)+aGauss()
+        if (sigs[self.segment][self.SIGcnt][2]=='2'):  #type 2
+          print "next SIG is a type 2:"
+          print sigs[self.segment][self.SIGcnt]
+          k=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked")
+          print "switch is locked?"+k
+          kpos=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
+          print "switch position:"+str(kpos)
+          if (k=="False"):
+            r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
+            r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",self.segment)
+            kpos=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
+            print "switch NEW position:"+str(kpos)
+            k=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked")
+            print "switch NEW lock:"+str(k=="True")
+            r.set(self.sigToPoll,"yellow")           
+            self.atSig=False
+          else:
+            self.sigPoll=t+SIGPOLL
+#        if (k=="red"):
+#          self.sigPoll=t+SIGPOLL
+#        else:
+#          self.atSig=False
+#          self.a=availableAcc(self.v,gFactor)+aGauss()
+          self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
           print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)
   
 def aGauss():
@@ -639,20 +677,21 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
         print "need to update "+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment..."
         print prevSig
         sys.exit()
+  if (SIGtype=='2'):
+    if (state=="red"):
+      print "updating a SIG 2"
+      sys.exit()
 
-def availableAcc(v,gF):
-  if (v<0.1): 
-    if (gF<0.0):
-      return (ACC+gF)
+def getAccFromFactorsAndSpeed(f,v):
+  powerFromFactors=v*f
+  availablePower=POWER-powerFromFactors
+  if (availablePower<0.0):
+    return 0.0
+  if (v>0.0):
+    acc=availablePower/(WEIGHT*v)
+    return min(acc,ACC)
+  else:
     return ACC
-  aux1=POWERWEIGHT/v
-  if (ACC>aux1):
-    if (gF<0.0):
-      return (aux1+gF)
-    return aux1
-  if (gF<0.0):
-    return (ACC+gF)
-  return ACC
 
 initAll()
 for aT in trs:
