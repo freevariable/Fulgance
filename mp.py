@@ -35,6 +35,7 @@ VMX=80.0   #km/h  max speed
 VMX2=(VMX*VMX)/12.96  # VMX squared, in m/s
 AIRFACTOR=0.68/VMX2
 VMXROOT=math.pow(VMX,0.3)
+TLENGTH=90.0  #length in m
 DCC=-1.50  #m/s2 at tpoint
 DLAW=1    # law governing dcc between t=0 and t=tpoint
           # 1 is linear
@@ -317,6 +318,66 @@ class Tr:
     for t in self.trs:
       for i in t:
         yield i
+
+  def reinit(self,initSegment,initPos,initTime):
+    print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
+    gFactor=G*self.gradient*GSENSITIVITY
+    v2factor=0.0
+    factors=gFactor+v2factor+WHEELFACTOR
+    self.trs=[]
+    self.x=initPos
+    self.segment=initSegment
+    self.BDtiv=0.0  #breaking distance for next TIV
+    self.BDsta=0.0  #fornext station
+    self.DBrt=0.0  #for next realtime event (sig or tvm)
+#    self.gradient=math.atan(self.grade/100.0)
+    self.gradient=self.grade/100.0    #good approx even for gred 2.5%
+    self.TIVcnt=findMyTIVcnt(initPos,initSegment)
+    print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
+    self.STAcnt=findMySTAcnt(initPos,initSegment)
+    print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
+    self.SIGcnt=findMySIGcnt(initPos,initSegment)
+    print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
+    self.nextSTA=stas[initSegment][self.STAcnt]
+    self.nextSIG=sigs[initSegment][self.SIGcnt]
+    self.nSTAx=1000.0*float(self.nextSTA[0])
+    self.nSIGx=1000.0*float(self.nextSIG[0])
+    self.nextTIV=tivs[initSegment][self.TIVcnt]
+    print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
+    self.nTIVx=1000.0*float(self.nextTIV[0])
+    self.nTIVvl=float(self.nextTIV[1])
+    self.cTIVvl=0.0
+    self.nTIVtype='>>'    # tiv increases speed
+    if (self.TIVcnt>0):
+      self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
+    else:
+      self.maxVk=min(maxLine,VMX)
+    self.PK=self.x
+    self.aGaussFactor=aGauss()
+    self.aFull=0.0
+    self.v=0.0
+    self.vK=0.0
+    self.nv=0.0
+    self.cv=0.0
+#    self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
+    self.a=getAccFromFactorsAndSpeed(factors,self.v)+self.aGaussFactor
+    self.tBreak=0.0
+    self.deltaBDtiv=0.0
+    self.deltaBDsta=0.0
+    self.advTIV=-1.0
+    self.staBrake=False
+    self.sigBrake=False
+    self.inSta=False
+    self.atSig=False
+    self.waitSta=0.0
+    self.BDzero=0.0
+    self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
+    self.advSIGcol=r.get(self.redisSIG)
+#    print "redisSIG:"+self.redisSIG+" col:"+self.advSIGcol
+#    self.redisSIG=''
+    self.sigSpotted=False
+    updateSIGbyTrOccupation(initSegment,self.SIGcnt-1,self.name,"red")
+
   def __init__(self,name,initSegment,initPos,initTime):
     print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient*GSENSITIVITY
@@ -437,6 +498,23 @@ class Tr:
       else:
         if (sigs[self.segment][self.SIGcnt][2]=='2'):
           print self.name+":t:"+str(t)+"Buffer reached. Initiating reverse sequence" 
+          kCur=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
+          kRev=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":reversePosition")
+          kFor=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPosition")
+          print "current switch pos: "+str(kCur)
+          if (kCur==kFor):
+            kCur=kRev
+          else:
+            kCur=kFor
+          print "new switch pos: "+str(kCur)
+          r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",kCur)
+          r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
+          prevNum=int(r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPrevSig"))
+          prevSig=r.get("sig:"+kCur+":"+sigs[self.segment][prevNum][1])
+          print "hello "+prevSig
+          r.set("sig:"+kCur+":"+sigs[self.segment][prevNum][1],"red")
+          self.reinit(kCur,0.0+TLENGTH,t)
+#          sys.exit()
         else:
           print self.name+":t:"+str(t)+"FATAL: no more SIG..." 
           sys.exit()
@@ -673,9 +751,9 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
         fw=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPosition")
         prevNum=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPrevSig")
         prevNum=int(prevNum)
-        prevSig=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
+        prevSigName=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
         print "need to update "+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment..."
-        print prevSig
+        print prevSigName+" "
         sys.exit()
   if (SIGtype=='2'):
     if (state=="red"):
