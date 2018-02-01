@@ -479,8 +479,8 @@ class Tr:
       if (self.sigBrake==True):
         self.sigBrake=False
 #        print "AT SIG stop data:"+" vK:"+str(self.vK)+" aFull:"+str(self.aFull)
-        if (self.vK>1.0):
-          print "FATAL at SIG"
+        if (self.vK>2.0):
+          print self.name+":t:"+str(t)+" **** FATAL AT SIG "+self.nextSIG[1]+" **** State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
           sys.exit()
         self.a=0.0
         self.v=0.0
@@ -488,6 +488,7 @@ class Tr:
         self.atSig=True
         self.sigPoll=t+SIGPOLL
         self.sigToPoll="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
+        print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll
       print self.name+":t:"+str(t)+":AT SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
       updateSIGbyTrOccupation(self.segment,self.SIGcnt-1,self.name,"red")
       if (self.SIGcnt<len(sigs[self.segment])-1):
@@ -515,7 +516,14 @@ class Tr:
           r.set("sig:"+kOld+":"+sigs[self.segment][prevNum][1],"red")
           print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
           self.reinit(kCur,0.0+TLENGTH,t)
-#          sys.exit()
+#          cc1=0
+#          for aT in trs:
+#            print aT.name
+#            cc1=cc1+1
+#          print "end reinit "+str(cc1)
+#          if (cc1<8):
+#            print "FATAL cc1"
+#            sys.exit()
         else:
           print self.name+":t:"+str(t)+"FATAL: no more SIG..." 
           sys.exit()
@@ -632,12 +640,6 @@ class Tr:
       self.power=WEIGHT*self.a*self.v+factors*self.v
       if (self.power<0.0):
         self.power=0.0
-#      if (self.a>=0.0):
-#        self.power=mv*self.a+self.v*v2factor+mv*G*math.sin(self.gradient)
-#        self.power=mv*self.a
-#      else:
-#        self.power=self.v*v2factor+mv*G*math.sin(self.gradient)
-#        self.power=0.0
       if ((self.inSta==False) and (self.atSig==False)):
         print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
     if (self.inSta==True):
@@ -649,7 +651,8 @@ class Tr:
     if (self.atSig==True):
       if (t>self.sigPoll):
         k=r.get(self.sigToPoll)
-#        print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
+#        if (ncyc%CYCLE==0):
+#          print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
         if (sigs[self.segment][self.SIGcnt][2]=='2'):  #type 2
           print "next SIG is a type 2:"
           print sigs[self.segment][self.SIGcnt]
@@ -707,34 +710,34 @@ def findMyTIVcnt(x,seg):
     cnt=cnt+1
   return cnt
 
+def updateSIGbyTrOccupationIf(seg,SIGcnt,name,state,ifState):
+  global sigs
+  redisSIG="sig:"+seg+":"+sigs[seg][SIGcnt][1]
+  SIGtype=sigs[seg][SIGcnt][2]
+  k=r.get(redisSIG)
+  if (k==ifState):
+    updateSIGbyTrOccupation(seg,SIGcnt,name,state)
+
 def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
   global sigs
   redisSIG="sig:"+seg+":"+sigs[seg][SIGcnt][1]
   SIGtype=sigs[seg][SIGcnt][2]
   k=r.get(redisSIG)
-  print "(UPDATE SIG "+redisSIG+" from value "+k+" to value "+state+")"
+  print name+":"+str(t)+":START UPDATE SIG BY OCCU "+redisSIG+" from value "+k+" to value "+state
   if (k==state):
     print "ALREADY"
     return True
   if (SIGtype=='1'):
     if (state=="red"):
       if (SIGcnt>=1):
-        updateSIGbyTrOccupation(seg,SIGcnt-1,name,"yellow")
+        updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"yellow","red")
       if (SIGcnt>=2):
-        updateSIGbyTrOccupation(seg,SIGcnt-2,name,"green")
-      print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-      r.set(redisSIG,state)
-    elif (state=="yellow"):
-       if (k=="green"):
-         print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-         r.set(redisSIG,state)
-       if (k=="red"):
-         print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-         r.set(redisSIG,state)
-    elif (state=="green"):
-       if (k=="yellow"):
-         print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-         r.set(redisSIG,state)
+        updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
+    if (state=="yellow"):
+      if (SIGcnt>=1):
+        updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
+    print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+    r.set(redisSIG,state)
   if (SIGtype=='5'):
     if (state=="red"):
       if (SIGcnt>=1):
@@ -755,19 +758,20 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
   if (SIGtype=='3'):
     if (state=="red"):
       if (SIGcnt>=1):
-        updateSIGbyTrOccupation(seg,SIGcnt-1,name,"yellow")
+        updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"yellow","red")
       if (SIGcnt>=2):
-        updateSIGbyTrOccupation(seg,SIGcnt-2,name,"green")
+        updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
     if (state=="yellow"):
       if (SIGcnt>=1):
-        updateSIGbyTrOccupation(seg,SIGcnt-1,name,"green")
+        updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
     r.set(redisSIG,state)
     print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-
   if (SIGtype=='2'):
-    if (state=="red"):
-      print "updating a SIG 2"
-      sys.exit()
+    return True
+  k=r.get(redisSIG)
+  if (k!=state):
+    print "FATAL : "+name+":"+str(t)+":END UPDATE SIG BY OCCU"+redisSIG+" new value "+str(k)
+    sys.exit()
 
 def getAccFromFactorsAndSpeed(f,v):
   powerFromFactors=v*f
