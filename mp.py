@@ -21,7 +21,7 @@ r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
 #AIRFACTOR=(0.2/400.0)
-WHEELFACTOR=0.0145
+WHEELFACTOR=0.025
 #WHEELFACTOR=0.0
 GSENSITIVITY=6.03   # sensitivity to grade
 ACCSIGMA=0.027
@@ -174,6 +174,8 @@ def initSIGs():
             r.set("switch:"+s[1]+":isLocked",False)
         if (len(redisSIG)>2):
           r.set("sig:"+se+":"+s[1],redisSIG)
+#          k=r.get("sig:"+se+":"+s[1])
+#          print "sig:"+se+":"+s[1]+" "+str(k)
         ss.append(s)
         cnt=cnt+1  
     prevs=None
@@ -488,7 +490,7 @@ class Tr:
         self.atSig=True
         self.sigPoll=t+SIGPOLL
         self.sigToPoll="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
-      print self.name+":t:"+str(t)+":AT SIG "+self.nextSIG[1]+" vK:"+str(self.vK)
+      print self.name+":t:"+str(t)+":AT SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
       updateSIGbyTrOccupation(self.segment,self.SIGcnt-1,self.name,"red")
       if (self.SIGcnt<len(sigs[self.segment])-1):
         self.SIGcnt=self.SIGcnt+1 
@@ -502,6 +504,7 @@ class Tr:
           kRev=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":reversePosition")
           kFor=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPosition")
           print "current switch pos: "+str(kCur)
+          kOld=kCur
           if (kCur==kFor):
             kCur=kRev
           else:
@@ -510,9 +513,9 @@ class Tr:
           r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",kCur)
           r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
           prevNum=int(r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPrevSig"))
-          prevSig=r.get("sig:"+kCur+":"+sigs[self.segment][prevNum][1])
-          print "hello "+prevSig
-          r.set("sig:"+kCur+":"+sigs[self.segment][prevNum][1],"red")
+          prevSig=r.get("sig:"+kOld+":"+sigs[self.segment][prevNum][1])
+          r.set("sig:"+kOld+":"+sigs[self.segment][prevNum][1],"red")
+          print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
           self.reinit(kCur,0.0+TLENGTH,t)
 #          sys.exit()
         else:
@@ -639,7 +642,8 @@ class Tr:
 #      else:
 #        self.power=self.v*v2factor+mv*G*math.sin(self.gradient)
 #        self.power=0.0
-      print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
+      if ((self.inSta==False) and (self.atSig==False)):
+        print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
@@ -718,7 +722,7 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
   redisSIG="sig:"+seg+":"+sigs[seg][SIGcnt][1]
   SIGtype=sigs[seg][SIGcnt][2]
   k=r.get(redisSIG)
-  print "(Tr occup attempt update SIG "+redisSIG+" from value "+k+" to value "+state+")"
+  print "(UPDATE SIG "+redisSIG+" from value "+k+" to value "+state+")"
   if (k==state):
     print "ALREADY"
     return True
@@ -751,10 +755,27 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
         fw=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPosition")
         prevNum=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPrevSig")
         prevNum=int(prevNum)
-        prevSigName=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
-        print "need to update "+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment..."
-        print prevSigName+" "
-        sys.exit()
+        prevSigState=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
+        print "need to update "+fw+":"+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment since the witch is not aligned with said segment..."
+        print "prev sig before: "+prevSigState+" "
+        r.set("sig:"+fw+":"+sigs[fw][prevNum][1],"red")
+        prevSigState=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
+        print "prev sig after: "+str(prevSigState)
+        r.set(redisSIG,state)
+        print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+#        k=r.get(redisSIG)
+  #if (SIGtype=='3'):
+  #  if (state=="red"):
+  #    if (SIGcnt>=1):
+  #      updateSIGbyTrOccupation(seg,SIGcnt-1,name,"yellow")
+  #    if (SIGcnt>=2):
+  #      updateSIGbyTrOccupation(seg,SIGcnt-2,name,"green")
+  #  if (state=="yellow"):
+  #    if (SIGcnt>=1):
+  #      updateSIGbyTrOccupation(seg,SIGcnt-1,name,"green")
+  #  r.set(redisSIG,state)
+  #  print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+
   if (SIGtype=='2'):
     if (state=="red"):
       print "updating a SIG 2"
@@ -779,7 +800,7 @@ while (exitCondition==False):
   t=ncyc/CYCLE
   for aT in trs:
     aT.step()
-  if (t>3500):
+  if (t>8500):
     exitCondition=True
   ncyc=ncyc+1
 #for k in r.scan_iter("switch:*"):

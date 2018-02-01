@@ -1,10 +1,10 @@
 ## FAQ 
 ### What's this?
 **Fulgance** is a text-based railroad simulator that will let you perform various tasks:
-- define realistic or fancy routes (without gradient and curves for now)
+- define realistic or fancy routes
 - define schedules
-- define rolling stock (only EMUs for now, next on the list are steam engines)
-- distribute schedules over mutiple simulation engines if you have many trains (only single engine for now)
+- define rolling stock (only EMUs for now)
+- distribute train services over mutiple simulation engines if you have many trains (only single engine for now)
 - run schedules in real-time or accelerated time (only accelerated-time for now)
 - jump into a train to check its real-time progress (not implemented yet)
 - calibrate trains frequency at peak and off peak hours (not yet implemented)
