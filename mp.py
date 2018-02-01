@@ -325,7 +325,7 @@ class Tr:
     print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient*GSENSITIVITY
     v2factor=0.0
-    factors=gFactor+v2factor+WHEELFACTOR
+    factors=gFactor+v2factor+G*WHEELFACTOR
 #    self.trs=[]
     self.x=initPos
     self.segment=initSegment
@@ -383,7 +383,7 @@ class Tr:
     print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient*GSENSITIVITY
     v2factor=0.0
-    factors=gFactor+v2factor+WHEELFACTOR
+    factors=gFactor+v2factor+G*WHEELFACTOR
     self.trs=[]
     self.x=initPos
     self.name=name
@@ -448,7 +448,7 @@ class Tr:
     gFactor=gFactor*GSENSITIVITY
     vSquare=self.v*self.v
     v2factor=(AIRFACTOR*vSquare)
-    factors=v2factor+gFactor+WHEELFACTOR
+    factors=v2factor+gFactor+G*WHEELFACTOR
     mv=self.m*self.v
     if (dcc<DCC):  #since DCC is always negative...
       dcc=DCC
@@ -515,7 +515,8 @@ class Tr:
           prevSig=r.get("sig:"+kOld+":"+sigs[self.segment][prevNum][1])
           r.set("sig:"+kOld+":"+sigs[self.segment][prevNum][1],"red")
           print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
-          self.reinit(kCur,0.0+TLENGTH,t)
+          print self.name+":delta buffer: "+str(-self.nSIGx+self.x)
+          self.reinit(kCur,0.0+TLENGTH-self.nSIGx+self.x,t)
 #          cc1=0
 #          for aT in trs:
 #            print aT.name
@@ -625,7 +626,7 @@ class Tr:
 #          else:
 #            print str(t)+":not boosting vK:"+str(vK)+" to maxVk:"+str(maxVk)
     if (self.a>0.0):
-      self.aFull=self.a-v2factor-gFactor-WHEELFACTOR
+      self.aFull=self.a-v2factor-gFactor-G*WHEELFACTOR
       if (self.aFull<0.0):
         self.aFull=0.0 
     else:
