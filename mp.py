@@ -749,9 +749,7 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
     if (state=="red"):
       if (SIGcnt>=1):
         prevRedisSIG="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
-        r.set("switch:"+sigs[seg][SIGcnt-1][1]+":isLocked",True)
-#        print prevRedisSIG
-#        print r.get("switch:"+sigs[seg][SIGcnt-1][1]+":isLocked")
+        r.set("switch:"+sigs[seg][SIGcnt-1][1]+":isLocked",False)
         fw=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPosition")
         prevNum=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPrevSig")
         prevNum=int(prevNum)
@@ -761,20 +759,20 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
         r.set("sig:"+fw+":"+sigs[fw][prevNum][1],"red")
         prevSigState=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
         print "prev sig after: "+str(prevSigState)
-        r.set(redisSIG,state)
-        print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+    r.set(redisSIG,state)
+    print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
 #        k=r.get(redisSIG)
-  #if (SIGtype=='3'):
-  #  if (state=="red"):
-  #    if (SIGcnt>=1):
-  #      updateSIGbyTrOccupation(seg,SIGcnt-1,name,"yellow")
-  #    if (SIGcnt>=2):
-  #      updateSIGbyTrOccupation(seg,SIGcnt-2,name,"green")
-  #  if (state=="yellow"):
-  #    if (SIGcnt>=1):
-  #      updateSIGbyTrOccupation(seg,SIGcnt-1,name,"green")
-  #  r.set(redisSIG,state)
-  #  print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+  if (SIGtype=='3'):
+    if (state=="red"):
+      if (SIGcnt>=1):
+        updateSIGbyTrOccupation(seg,SIGcnt-1,name,"yellow")
+      if (SIGcnt>=2):
+        updateSIGbyTrOccupation(seg,SIGcnt-2,name,"green")
+    if (state=="yellow"):
+      if (SIGcnt>=1):
+        updateSIGbyTrOccupation(seg,SIGcnt-1,name,"green")
+    r.set(redisSIG,state)
+    print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
 
   if (SIGtype=='2'):
     if (state=="red"):
