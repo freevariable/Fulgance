@@ -39,7 +39,7 @@ TLENGTH=90.0  #length in m
 DCC=-1.50  #m/s2 at tpoint
 DLAW=1    # law governing dcc between t=0 and t=tpoint
           # 1 is linear
-CYCLE=200 # number of time per sec calc must be made
+CYCLE=100 # number of time per sec calc must be made
              # increasing cycle beyond 200 does not improve precision by more that 1 sec for the end-to-end journey
 T0=0.0
 VTHRESH=0.999
@@ -326,7 +326,7 @@ class Tr:
     gFactor=G*self.gradient*GSENSITIVITY
     v2factor=0.0
     factors=gFactor+v2factor+WHEELFACTOR
-    self.trs=[]
+#    self.trs=[]
     self.x=initPos
     self.segment=initSegment
     self.BDtiv=0.0  #breaking distance for next TIV
@@ -361,7 +361,6 @@ class Tr:
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
-#    self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
     self.a=getAccFromFactorsAndSpeed(factors,self.v)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
@@ -421,7 +420,6 @@ class Tr:
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
-#    self.a=availableAcc(self.v,gFactor)+self.aGaussFactor
     self.a=getAccFromFactorsAndSpeed(factors,self.v)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
@@ -615,7 +613,6 @@ class Tr:
     else:  # a=0.0
       if ((self.vK>4.0) and (self.vK<0.965*self.maxVk)):
         print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(self.maxVk)+" with aFull:"+str(self.aFull)
-#        self.a=availableAcc(self.v,gFactor)+aGauss()
         self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
 #          else:
 #            print str(t)+":not boosting vK:"+str(vK)+" to maxVk:"+str(maxVk)
@@ -624,7 +621,6 @@ class Tr:
       if (self.aFull<0.0):
         self.aFull=0.0 
     else:
-#      self.aFull=self.a+v2factor
      self.aFull=self.a
      if (self.aFull>0.0):
        self.aFull=0.0 
@@ -648,13 +644,12 @@ class Tr:
       if (t>self.waitSta):
         self.inSta=False
         self.waitSta=0.0
-#        self.a=availableAcc(self.v,gFactor)+aGauss()
         self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
         print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)
     if (self.atSig==True):
       if (t>self.sigPoll):
         k=r.get(self.sigToPoll)
-        print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
+#        print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
         if (sigs[self.segment][self.SIGcnt][2]=='2'):  #type 2
           print "next SIG is a type 2:"
           print sigs[self.segment][self.SIGcnt]
@@ -673,11 +668,6 @@ class Tr:
             self.atSig=False
           else:
             self.sigPoll=t+SIGPOLL
-#        if (k=="red"):
-#          self.sigPoll=t+SIGPOLL
-#        else:
-#          self.atSig=False
-#          self.a=availableAcc(self.v,gFactor)+aGauss()
           self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
           print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)
   
@@ -798,7 +788,7 @@ while (exitCondition==False):
   t=ncyc/CYCLE
   for aT in trs:
     aT.step()
-  if (t>8500):
+  if (t>3000):
     exitCondition=True
   ncyc=ncyc+1
 #for k in r.scan_iter("switch:*"):
