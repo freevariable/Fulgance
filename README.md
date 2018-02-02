@@ -50,3 +50,5 @@ To run the simulation in single simulation engine mode, simply run mp.py without
 To run the sim in realtime, set REALTIME constant to True. Otherwise it will run as fast as possible on your CPU.
 
 To adjust simulation precision, you may set the CYCLE variable to your wishing. I recommend to keep the default value to get the best trade off between precision and speed of execution though.
+
+To run engine in debug mode, modify the first line to add the -O option to python

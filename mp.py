@@ -20,6 +20,8 @@ r.flushall()
 
 G=9.81  # N/kg
 WHEELFACTOR=G*0.025
+DUMPDATA=True
+TPROGRESS=True
 GSENSITIVITY=6.03   # sensitivity to grade
 ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
@@ -149,23 +151,24 @@ def initSIGs():
               sys.exit()
             verbnoun=s[3].split(":") 
             if verbnoun[0]=="Reverse":
-              print "switch:"+s[1]+" reverse set to: "+verbnoun[1]
-#              k=r.get("switch:"+s[1]+":reversePosition")
-#              if (k is None):
+              if not __debug__:
+                print "switch:"+s[1]+" reverse set to: "+verbnoun[1]
               r.set("switch:"+s[1]+":reversePosition",verbnoun[1])
             else:
               print "FATAL: unkwnown Verb "+ verbnoun[0]+". Reverse was expected."
               sys.exit()
             verbnoun=s[4].split(":")
             if verbnoun[0]=="Forward":
-              print "switch:"+s[1]+" forward set to: "+verbnoun[1]
+              if not __debug__:
+                print "switch:"+s[1]+" forward set to: "+verbnoun[1]
               r.set("switch:"+s[1]+":forwardPosition",verbnoun[1])
             else:
               print "FATAL: unkwnown Verb "+ verbnoun[0]
               sys.exit()
             verbnoun=s[5].split(":")
             if verbnoun[0]=="Default":
-              print "switch:"+s[1]+" current set to: "+verbnoun[1]
+              if not __debug__:
+                print "switch:"+s[1]+" current set to: "+verbnoun[1]
               r.set("switch:"+s[1]+":position",verbnoun[1])
             else:
               print "FATAL: unkwnown Verb "+ verbnoun[0]
@@ -178,18 +181,22 @@ def initSIGs():
         ss.append(s)
         cnt=cnt+1  
     prevs=None
-    print "______"+se+"_______"
+    if not __debug__:
+      print "______"+se+"_______"
     cnt=0
     for s in ss:    # SECOND PASS
       aligned=False
       if (s[2]=='2'):
         k=r.get("switch:"+s[1]+":position")       
-        print "switch of sig "+s[1]+" is in position "+k
+        if not __debug__:
+          print "switch of sig "+s[1]+" is in position "+k
         if (k==se):
-          print "  switch of sig "+s[1]+" is aligned to segment"
+          if not __debug__:
+            print "  switch of sig "+s[1]+" is aligned to segment"
           aligned=True
         if (cnt<len(ss)-1):
-          print "  switch of sig "+s[1]+" has a next sig: "+ss[cnt+1][1]+" of type: "+ss[cnt+1][2]
+          if not __debug__:
+            print "  switch of sig "+s[1]+" has a next sig: "+ss[cnt+1][1]+" of type: "+ss[cnt+1][2]
           if (ss[cnt+1][2]!='5'):
             print "FATAL: a sig type 2 must be followed by a type 5!"
             sys.exit()
@@ -201,11 +208,13 @@ def initSIGs():
               else:
                 r.set("sig:"+se+":"+ss[cnt+1][1],"red")
             k1=r.get("sig:"+se+":"+ss[cnt+1][1])       
-            print "  follower color set to: "+k1
+ #           print "  follower color set to: "+k1
         else:
-          print "  (switch has no succ)"
+          if not __debug__:
+            print "  (switch has no succ)"
         if prevs is not None:
-          print "  switch of sig "+s[1]+" has a prev sig: "+prevs[1]+" of type: "+prevs[2]
+          if not __debug__:
+            print "  switch of sig "+s[1]+" has a prev sig: "+prevs[1]+" of type: "+prevs[2]
           r.set("switch:"+s[1]+":forwardPrevSig",cnt-1)
           if (prevs[2]!='3'):
             print "FATAL: a sig type 2 must be preceded by a type 3 or no sig!"
@@ -218,11 +227,13 @@ def initSIGs():
               else:
                 r.set("sig:"+se+":"+prevs[1],"red")
             k1=r.get("sig:"+se+":"+prevs[1])       
-            print "  prev color set to: "+k1
+            if not __debug__:
+              print "  prev color set to: "+k1
         else:
-          print "  (switch has no prev)"
-      elif (s[2]=='5'):
-        print s
+          if not __debug__:
+            print "  (switch has no prev)"
+#      elif (s[2]=='5'):
+#        print s
       prevs=s
       cnt=cnt+1
     gts[se]=ss
@@ -241,17 +252,12 @@ def initAll():
   r.set('realtime:',REALTIME)
   segs=initSEGs()
   tivs=initTIVs()
-#  print tivs
   stas=initSTAs()
-#  print stas
   sigs=initSIGs()
-#  print sigs
   trss=initSchedule()
-  print trss
+#  print trss
   cnt=0
   for aa in trss:
-#    if (cnt>=1):
-#      break
     if ((aa[0]!="#") and (cnt==0)):
       found=False
       for asi in sigs[aa[1]]:
@@ -260,7 +266,6 @@ def initAll():
       trs=Tr(aa[0],aa[1],aPos,float(aa[3]))
       jumpseat=aa[0]
       r.set("jumpseat:",jumpseat)
-      #print "aa0:"+aa[0]+" aa1:"+str(aa[1])+" aa2:"+str(aa[2])
     else:
       if (aa[0]!="#"):
         found=False
@@ -326,11 +331,11 @@ class Tr:
         yield i
 
   def reinit(self,initSegment,initPos,initTime):
-    print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
+    if not __debug__:
+      print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient*GSENSITIVITY
     v2factor=0.0
     factors=gFactor+v2factor+WHEELFACTOR
-#    self.trs=[]
     self.x=initPos
     self.coasting=False
     self.segment=initSegment
@@ -340,17 +345,18 @@ class Tr:
 #    self.gradient=math.atan(self.grade/100.0)
     self.gradient=self.grade/100.0    #good approx even for gred 2.5%
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
-    print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
-    print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
-    print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
     self.nextSTA=stas[initSegment][self.STAcnt]
     self.nextSIG=sigs[initSegment][self.SIGcnt]
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
     self.nextTIV=tivs[initSegment][self.TIVcnt]
-    print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
+    if not __debug__:
+      print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
     self.nTIVx=1000.0*float(self.nextTIV[0])
     self.nTIVvl=float(self.nextTIV[1])
     self.cTIVvl=0.0
@@ -379,8 +385,6 @@ class Tr:
     self.BDzero=0.0
     self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
     self.advSIGcol=r.get(self.redisSIG)
-#    print "redisSIG:"+self.redisSIG+" col:"+self.advSIGcol
-#    self.redisSIG=''
     self.sigSpotted=False
     updateSIGbyTrOccupation(initSegment,self.SIGcnt-1,self.name,"red")
 
@@ -390,7 +394,8 @@ class Tr:
 
   def __init__(self,name,initSegment,initPos,initTime):
     global r
-    print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
+    if not __debug__:
+      print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient*GSENSITIVITY
     v2factor=0.0
     factors=gFactor+v2factor+WHEELFACTOR
@@ -405,20 +410,21 @@ class Tr:
 #    self.gradient=math.atan(self.grade/100.0)
     self.gradient=self.grade/100.0    #good approx even for gred 2.5%
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
-    print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
+    self.SIGcnt=findMySIGcnt(initPos,initSegment)
     if (self.STAcnt==0):
        print "FATAL: "+str(self.name)+" must be located at least at PK"+str(float(TLENGTH/1000))+". Currently it is located at PK"+str(initPos)
        sys.exit()
-    print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
-    self.SIGcnt=findMySIGcnt(initPos,initSegment)
-    print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
     self.nextSTA=stas[initSegment][self.STAcnt]
     self.nextSIG=sigs[initSegment][self.SIGcnt]
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
     self.nextTIV=tivs[initSegment][self.TIVcnt]
-    print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
+    if not __debug__:
+      print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
     self.nTIVx=1000.0*float(self.nextTIV[0])
     self.nTIVvl=float(self.nextTIV[1])
     self.cTIVvl=0.0
@@ -484,8 +490,6 @@ class Tr:
   def step(self):
     global t
     global exitCondition
-#    if (ncyc%CYCLE==0):
-#      print self.name+":t:"+str(t)+":x:"+str(self.x)
     gFactor=G*self.gradient
     dcc=DCC-gFactor
     gFactor=gFactor*GSENSITIVITY
@@ -499,7 +503,8 @@ class Tr:
     if (ncyc%CYCLE==0):
       self.aGaussFactor=aGauss()
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
-      print self.name+":t:"+str(t)+":ADVANCE STA x:"+str(self.nSTAx)+" vK:"+str(self.vK)
+      if not __debug__:
+        print self.name+":t:"+str(t)+":ADVANCE STA x:"+str(self.nSTAx)+" vK:"+str(self.vK)
       self.staBrake=True
       self.a=dcc-gFactor#+aGauss()
     if ((self.staBrake==True) and (self.vK<=0.8)):
@@ -509,7 +514,8 @@ class Tr:
     if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
       self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       self.advSIGcol=r.get(self.redisSIG)
-      print self.name+":t:"+str(t)+":ADVANCE "+self.advSIGcol+" SIG vK:"+str(self.vK)
+      if not __debug__:
+        print self.name+":t:"+str(t)+":ADVANCE "+self.advSIGcol+" SIG vK:"+str(self.vK)
       self.sigSpotted=True
       if (self.advSIGcol=="red"):
         self.a=dcc#+aGauss()
@@ -521,7 +527,6 @@ class Tr:
         self.sigSpotted=False
       if (self.sigBrake==True):
         self.sigBrake=False
-#        print "AT SIG stop data:"+" vK:"+str(self.vK)+" aFull:"+str(self.aFull)
         if (self.vK>2.0):
           print self.name+":t:"+str(t)+" **** FATAL AT SIG "+self.nextSIG[1]+" **** State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
           sys.exit()
@@ -531,34 +536,41 @@ class Tr:
         self.atSig=True
         self.sigPoll=t+SIGPOLL
         self.sigToPoll="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
-        print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll
-      print self.name+":t:"+str(t)+":AT SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
+        if not __debug__:
+          print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll
+      if not __debug__:
+        print self.name+":t:"+str(t)+":AT SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
       updateSIGbyTrOccupation(self.segment,self.SIGcnt-1,self.name,"red")
       if (self.SIGcnt<len(sigs[self.segment])-1):
         self.SIGcnt=self.SIGcnt+1 
         self.nextSIG=sigs[self.segment][self.SIGcnt] 
-        print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
+        if not __debug__:
+          print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
         self.nSIGx=1000.0*float(self.nextSIG[0])
       else:
         if (sigs[self.segment][self.SIGcnt][2]=='2'):
-          print self.name+":t:"+str(t)+"Buffer reached. Initiating reverse sequence" 
+          if not __debug__:
+            print self.name+":t:"+str(t)+"Buffer reached. Initiating reverse sequence" 
           kCur=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
           kRev=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":reversePosition")
           kFor=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPosition")
-          print "current switch pos: "+str(kCur)
+          if not __debug__:
+            print "current switch pos: "+str(kCur)
           kOld=kCur
           if (kCur==kFor):
             kCur=kRev
           else:
             kCur=kFor
-          print "new switch pos: "+str(kCur)
+          if not __debug__:
+            print "new switch pos: "+str(kCur)
           r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",kCur)
           r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
           prevNum=int(r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPrevSig"))
           prevSig=r.get("sig:"+kOld+":"+sigs[self.segment][prevNum][1])
           r.set("sig:"+kOld+":"+sigs[self.segment][prevNum][1],"red")
-          print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
-          print self.name+":delta buffer: "+str(-self.nSIGx+self.x)
+          if not __debug__:
+            print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
+            print self.name+":delta buffer: "+str(-self.nSIGx+self.x)
           self.reinit(kCur,0.0+TLENGTH-self.nSIGx+self.x,t)
         else:
           print self.name+":t:"+str(t)+"FATAL: no more SIG..." 
@@ -570,7 +582,8 @@ class Tr:
       self.inSta=True
       self.waitSta=t+WAITTIME
       self.staBrake=False 
-      print self.name+":t:"+str(t)+":IN STA "+self.nextSTA[1]+" vK:"+str(self.vK)+" a:"+str(self.a)
+      if not __debug__:
+        print self.name+":t:"+str(t)+":IN STA "+self.nextSTA[1]+" vK:"+str(self.vK)+" a:"+str(self.a)
       self.a=0.0
       self.v=0.0
       self.vK=0.0
@@ -580,11 +593,12 @@ class Tr:
         if (self.STAcnt<len(stas[self.segment])):
           self.STAcnt=self.STAcnt+1 
           self.nextSTA=stas[self.segment][self.STAcnt] 
-          print self.name+":t:"+str(t)+":next STA ("+self.nextSTA[1]+") at PK"+self.nextSTA[0]
+          if not __debug__:
+            print self.name+":t:"+str(t)+":next STA ("+self.nextSTA[1]+") at PK"+self.nextSTA[0]
           self.nSTAx=1000.0*float(self.nextSTA[0])
         else:
-           print self.name+":t:"+str(t)+":no more STAS..."
-           print stas
+#           print self.name+":t:"+str(t)+":no more STAS..."
+#           print stas
            exitCondition=True
     if (self.nTIVtype=='<<'):
       self.deltaBDtiv=self.BDtiv
@@ -592,15 +606,18 @@ class Tr:
       self.deltaBDtiv=0.0
     if ((self.advTIV>0.0) and (self.x>=self.advTIV)):
       self.advTIV=-1.0
-      print self.name+":t:"+str(t)+":TIV "+str(self.TIVcnt-1)+" reached at curr speed "+str(self.vK)+", maxVk now "+str(self.maxVk)
+      if not __debug__:
+        print self.name+":t:"+str(t)+":TIV "+str(self.TIVcnt-1)+" reached at curr speed "+str(self.vK)+", maxVk now "+str(self.maxVk)
     if (self.x>=self.nTIVx-self.deltaBDtiv):
       self.maxTIV=self.nTIVvl
       self.maxVk=min(self.maxTIV,maxLine,VMX)
       if (self.nTIVtype=='<<'):
-        print self.name+":t:"+str(t)+":ADVANCE TIV "+str(self.TIVcnt)+" reached at curr speed "+str(self.vK)+", maxVk will be "+str(self.maxVk)
+        if not __debug__:
+          print self.name+":t:"+str(t)+":ADVANCE TIV "+str(self.TIVcnt)+" reached at curr speed "+str(self.vK)+", maxVk will be "+str(self.maxVk)
         self.advTIV=self.nTIVx
       else:
-        print self.name+":t:"+str(t)+":TIV "+str(self.TIVcnt)+" reached at curr speed "+str(self.vK)+", maxVk now "+str(self.maxVk)
+        if not __debug__:
+          print self.name+":t:"+str(t)+":TIV "+str(self.TIVcnt)+" reached at curr speed "+str(self.vK)+", maxVk now "+str(self.maxVk)
       if (self.TIVcnt<len(tivs[self.segment])-1):
         self.TIVcnt=self.TIVcnt+1
         self.nextTIV=tivs[self.segment][self.TIVcnt]
@@ -615,16 +632,20 @@ class Tr:
           self.cv=self.cTIVvl/3.6
           self.BDtiv=((self.nv*self.nv)-(self.cv*self.cv))/(2*DCC)
           self.BDtiv=1.5*self.BDtiv   # safety margin
-        print self.name+":t:"+str(t)+"  next TIV at PK"+self.nextTIV[0]+" with limit "+self.nTIVtype+self.nextTIV[1]+" (currspeed:"+str(self.vK)+")"
+        if not __debug__:
+          print self.name+":t:"+str(t)+"  next TIV at PK"+self.nextTIV[0]+" with limit "+self.nTIVtype+self.nextTIV[1]+" (currspeed:"+str(self.vK)+")"
         if (self.nTIVvl<self.cTIVvl):
-          print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
+          if not __debug__:
+            print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
       else:
         self.nTIVx=999999999.9
       if ((self.staBrake==False) and (self.sigBrake==False) and (self.maxVk>self.vK)):
-        print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
+        if not __debug__:
+          print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
         self.a=10.0 #any arbitrary value as long as it is positive
       if (self.maxVk<self.vK):
-        print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
+        if not __debug__:
+          print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
         self.a=-10.0  #any arbitrary value as long as it is neg
 #
 # STAGE 2
@@ -632,7 +653,8 @@ class Tr:
     if (self.advSIGcol=="yellow"):
       auxMaxVk=0.65*self.maxVk
       if ((self.vK>20.0) and (auxMaxVk<self.vK)):
-        print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc to "+str(auxMaxVk)+" due to yellow"
+        if not __debug__:
+          print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc to "+str(auxMaxVk)+" due to yellow"
         a=-10.0
     else:
       auxMaxVk=self.maxVk
@@ -640,7 +662,8 @@ class Tr:
     if (self.a>0.0):
       if ((self.gradient<0.0025) and (self.vK>auxMaxVk*VTHRESH)):
         if (ncyc%CYCLE==0):
-          print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
+          if not __debug__:
+            print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
         self.coasting=True
         self.a=0.0
       else:
@@ -651,12 +674,13 @@ class Tr:
               print "FATAL ACC "+str(self.a)
               sys.exit()
             if (ncyc%CYCLE==0):
-              print "need to go faster..."+str(self.a)
+              if not __debug__:
+                print "need to go faster..."+str(self.a)
           else:
             self.a=0.0
-            print "ALAW unknown"
+            print "FATAL: ALAW unknown"
+            sys.exit()
         else:
-#          print str(t)+":coasting at "+str(vK)
           self.a=0.0 
     elif (self.a<0.0):
       if ((self.staBrake==False) and (self.sigBrake==False) and (self.vK<auxMaxVk)):
@@ -666,12 +690,14 @@ class Tr:
           self.a=dcc
     else:  # a=0.0
       if ((self.vK>4.0) and (self.vK<0.910*auxMaxVk)):
-        print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(auxMaxVk)+" with aFull:"+str(self.aFull)
+        if not __debug__:
+          print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(auxMaxVk)+" with aFull:"+str(self.aFull)
         self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
       elif (self.vK>4.0):
         self.coasting=True
         if (ncyc%CYCLE==0):
-          print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
+          if not __debug__:
+            print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
 #
 # STAGE 3
 #
@@ -700,38 +726,46 @@ class Tr:
       if (self.power<0.0):
         self.power=0.0
       if ((self.inSta==False) and (self.atSig==False)):
-        print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
+        if not __debug__:
+          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
+        if TPROGRESS==True:
+          print str(self.name)+','+str(t)+","+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
         self.waitSta=0.0
         self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
-        print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)
+        if not __debug__:
+          print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)
     if (self.atSig==True):
       if (t>self.sigPoll):
         k=r.get(self.sigToPoll)
 #        if (ncyc%CYCLE==0):
 #          print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
         if (sigs[self.segment][self.SIGcnt][2]=='2'):  #type 2
-          print "next SIG is a type 2:"
-          print sigs[self.segment][self.SIGcnt]
           k=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked")
-          print "switch is locked?"+k
           kpos=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
-          print "switch position:"+str(kpos)
+          if not __debug__:
+            print "next SIG is a type 2:"
+            print sigs[self.segment][self.SIGcnt]
+            print "switch is locked?"+k
+            print "switch position:"+str(kpos)
           if (k=="False"):
             r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
             r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",self.segment)
             kpos=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
-            print "switch NEW position:"+str(kpos)
+            if not __debug__:
+              print "switch NEW position:"+str(kpos)
             k=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked")
-            print "switch NEW lock:"+str(k=="True")
+            if not __debug__:
+              print "switch NEW lock:"+str(k=="True")
             r.set(self.sigToPoll,"yellow")           
             self.atSig=False
           else:
             self.sigPoll=t+SIGPOLL
           self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
-          print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)
+          if not __debug__:
+            print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)
   
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
@@ -782,9 +816,11 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
   redisSIG="sig:"+seg+":"+sigs[seg][SIGcnt][1]
   SIGtype=sigs[seg][SIGcnt][2]
   k=r.get(redisSIG)
-  print name+":"+str(t)+":START UPDATE SIG BY OCCU "+redisSIG+" from value "+k+" to value "+state
+  if not __debug__:
+    print name+":"+str(t)+":START UPDATE SIG BY OCCU "+redisSIG+" from value "+k+" to value "+state
   if (k==state):
-    print "ALREADY"
+    if not __debug__:
+      print "ALREADY"
     return True
   if (SIGtype=='1'):
     if (state=="red"):
@@ -795,7 +831,8 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
     if (state=="yellow"):
       if (SIGcnt>=1):
         updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
-    print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+    if not __debug__:
+      print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
     r.set(redisSIG,state)
   if (SIGtype=='5'):
     if (state=="red"):
@@ -806,13 +843,16 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
         prevNum=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPrevSig")
         prevNum=int(prevNum)
         prevSigState=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
-        print "need to update "+fw+":"+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment since the witch is not aligned with said segment..."
-        print "prev sig before: "+prevSigState+" "
+        if not __debug__:
+          print "need to update "+fw+":"+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment since the witch is not aligned with said segment..."
+          print "prev sig before: "+prevSigState+" "
         r.set("sig:"+fw+":"+sigs[fw][prevNum][1],"red")
         prevSigState=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
-        print "prev sig after: "+str(prevSigState)
+        if not __debug__:
+          print "prev sig after: "+str(prevSigState)
     r.set(redisSIG,state)
-    print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+    if not __debug__:
+      print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
 #        k=r.get(redisSIG)
   if (SIGtype=='3'):
     if (state=="red"):
@@ -824,7 +864,8 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
       if (SIGcnt>=1):
         updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
     r.set(redisSIG,state)
-    print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+    if not __debug__:
+      print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
   if (SIGtype=='2'):
     return True
   k=r.get(redisSIG)
@@ -862,7 +903,6 @@ def hello(s):
   global trs
   global exitCondition
   global t
-#  print('hello {} ({:.4f})'.format(s,time.time()))
   ccc=0
   while (ccc<CYCLE):
     t=ncyc/CYCLE
@@ -878,7 +918,12 @@ def hello(s):
   time.sleep(.3)
 
 for aT in trs:
-  print aT.name+" has been initialized"
+  if not __debug__:
+    print aT.name+" has been initialized"
+
+if (DUMPDATA==True):
+  if (TPROGRESS==True):
+    print "service,t,x,v,a,P"
 
 if (REALTIME==True):
   scheduler(0.5,hello,'foo')
