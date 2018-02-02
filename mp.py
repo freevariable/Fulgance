@@ -55,6 +55,7 @@ segs={}
 ncyc=0
 t=0.0
 maxLine=160.0    # max speed allowed on a line, km/h
+jumpseat=''
 exitCondition=False
 projectDir='default/'
 schedulesDir='schedules/'
@@ -235,6 +236,9 @@ def initAll():
   global trss
   global trs
   global segs
+  global jumpseat
+  global r
+  r.set('realtime:',REALTIME)
   segs=initSEGs()
   tivs=initTIVs()
 #  print tivs
@@ -254,6 +258,8 @@ def initAll():
          if asi[1]==aa[2]:
            aPos=1000.0*float(asi[0])
       trs=Tr(aa[0],aa[1],aPos,float(aa[3]))
+      jumpseat=aa[0]
+      r.set("jumpseat:",jumpseat)
       #print "aa0:"+aa[0]+" aa1:"+str(aa[1])+" aa2:"+str(aa[2])
     else:
       if (aa[0]!="#"):
@@ -377,6 +383,10 @@ class Tr:
 #    self.redisSIG=''
     self.sigSpotted=False
     updateSIGbyTrOccupation(initSegment,self.SIGcnt-1,self.name,"red")
+
+  def dumpstate(self):
+    r.hmset(self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'PK':self.PK,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA,'nextSIG':self.nextSIG,'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'vK':self.vK})
+#    print r.hgetall(self.name)
 
   def __init__(self,name,initSegment,initPos,initTime):
     print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
@@ -825,6 +835,8 @@ def hello(s):
     t=ncyc/CYCLE
     for aT in trs:
       aT.step()
+      if (aT.name==jumpseat):
+        aT.dumpstate()
     if (t>3000):
       exitCondition=True
       sys.exit()
