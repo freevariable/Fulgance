@@ -20,9 +20,8 @@ import sys
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
-#AIRFACTOR=(0.2/400.0)
-WHEELFACTOR=0.025
-#WHEELFACTOR=0.0
+G=9.81  # N/kg
+WHEELFACTOR=G*0.025
 GSENSITIVITY=6.03   # sensitivity to grade
 ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
@@ -36,17 +35,17 @@ VMX2=(VMX*VMX)/12.96  # VMX squared, in m/s
 AIRFACTOR=0.68/VMX2
 VMXROOT=math.pow(VMX,0.3)
 TLENGTH=90.0  #length in m
-DCC=-1.50  #m/s2 at tpoint
+DCC=-1.10  #m/s2
+EMR=-1.80   #m/s2 emergency dcc
 DLAW=1    # law governing dcc between t=0 and t=tpoint
           # 1 is linear
-CYCLE=100 # number of time per sec calc must be made
+CYCLE=200 # number of time per sec calc must be made
              # increasing cycle beyond 200 does not improve precision by more that 1 sec for the end-to-end journey
 T0=0.0
 VTHRESH=0.999
 REALTIME="SIG"    # two mutually exclusive values: SIG or TVM
 WAITTIME=10.0   # average wait in station (in sec)
 SIGPOLL=1.0   # check for sig clearance (in sec)
-G=9.81  # N/kg
 
 tivs={}
 stas={}
@@ -325,9 +324,10 @@ class Tr:
     print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient*GSENSITIVITY
     v2factor=0.0
-    factors=gFactor+v2factor+G*WHEELFACTOR
+    factors=gFactor+v2factor+WHEELFACTOR
 #    self.trs=[]
     self.x=initPos
+    self.coasting=False
     self.segment=initSegment
     self.BDtiv=0.0  #breaking distance for next TIV
     self.BDsta=0.0  #fornext station
@@ -383,8 +383,9 @@ class Tr:
     print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient*GSENSITIVITY
     v2factor=0.0
-    factors=gFactor+v2factor+G*WHEELFACTOR
+    factors=gFactor+v2factor+WHEELFACTOR
     self.trs=[]
+    self.coasting=False
     self.x=initPos
     self.name=name
     self.segment=initSegment
@@ -448,7 +449,7 @@ class Tr:
     gFactor=gFactor*GSENSITIVITY
     vSquare=self.v*self.v
     v2factor=(AIRFACTOR*vSquare)
-    factors=v2factor+gFactor+G*WHEELFACTOR
+    factors=v2factor+gFactor+WHEELFACTOR
     mv=self.m*self.v
     if (dcc<DCC):  #since DCC is always negative...
       dcc=DCC
@@ -592,12 +593,25 @@ class Tr:
       if (self.maxVk<self.vK):
         print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
         self.a=-10.0  #any arbitrary value as long as it is neg
+#
+# STAGE 2
+#
+    if (self.advSIGcol=="yellow"):
+      auxMaxVk=0.65*self.maxVk
+      if ((self.vK>20.0) and (auxMaxVk<self.vK)):
+        print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc to "+str(auxMaxVk)+" due to yellow"
+        a=-10.0
+    else:
+      auxMaxVk=self.maxVk
+    self.coasting=False
     if (self.a>0.0):
-      if (self.vK>self.maxVk*VTHRESH):
-        print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
+      if ((self.gradient<0.0025) and (self.vK>auxMaxVk*VTHRESH)):
+        if (ncyc%CYCLE==0):
+          print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
+        self.coasting=True
         self.a=0.0
       else:
-        if (self.vK<=(self.maxVk*VTHRESH)):
+        if (self.vK<=(auxMaxVk*VTHRESH)):
           if (ALAW==1):
             self.a=getAccFromFactorsAndSpeed(factors,self.v)
             if (self.a>ACC):
@@ -605,8 +619,6 @@ class Tr:
               sys.exit()
             if (ncyc%CYCLE==0):
               print "need to go faster..."+str(self.a)
-#            if (ncyc%1000==0):
-#              print str(t)+" ACCLAW vK:"+str(vK)+" maxVk:"+str(maxVk)+" aF:"+str(aFull)+" a:"+str(a)
           else:
             self.a=0.0
             print "ALAW unknown"
@@ -614,21 +626,23 @@ class Tr:
 #          print str(t)+":coasting at "+str(vK)
           self.a=0.0 
     elif (self.a<0.0):
-      if ((self.staBrake==False) and (self.sigBrake==False) and (self.vK<self.maxVk)):
+      if ((self.staBrake==False) and (self.sigBrake==False) and (self.vK<auxMaxVk)):
         self.a=0.0
       else:
-        if (self.maxVk<self.vK):
+        if (auxMaxVk<self.vK):
           self.a=dcc
     else:  # a=0.0
-      if ((self.vK>4.0) and (self.vK<0.965*self.maxVk)):
-        print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(self.maxVk)+" with aFull:"+str(self.aFull)
+      if ((self.vK>4.0) and (self.vK<0.910*auxMaxVk)):
+        print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(auxMaxVk)+" with aFull:"+str(self.aFull)
         self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
-#          else:
-#            print str(t)+":not boosting vK:"+str(vK)+" to maxVk:"+str(maxVk)
-    if (self.a>0.0):
-      self.aFull=self.a-v2factor-gFactor-G*WHEELFACTOR
-      if (self.aFull<0.0):
-        self.aFull=0.0 
+      elif (self.vK>4.0):
+        self.coasting=True
+        if (ncyc%CYCLE==0):
+          print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
+    if (self.a>=0.0):
+      self.aFull=self.a-v2factor-gFactor-WHEELFACTOR
+#      if (self.aFull<0.0):
+#        self.aFull=0.0 
     else:
      self.aFull=self.a
      if (self.aFull>0.0):
@@ -642,13 +656,13 @@ class Tr:
       if (self.power<0.0):
         self.power=0.0
       if ((self.inSta==False) and (self.atSig==False)):
-        print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
+        print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
         self.waitSta=0.0
         self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
-        print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)
+        print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)
     if (self.atSig==True):
       if (t>self.sigPoll):
         k=r.get(self.sigToPoll)
