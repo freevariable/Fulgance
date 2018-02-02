@@ -389,6 +389,7 @@ class Tr:
 #    print r.hgetall(self.name)
 
   def __init__(self,name,initSegment,initPos,initTime):
+    global r
     print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient*GSENSITIVITY
     v2factor=0.0
@@ -406,6 +407,9 @@ class Tr:
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
+    if (self.STAcnt==0):
+       print "FATAL: "+str(self.name)+" must be located at least at PK"+str(float(TLENGTH/1000))+". Currently it is located at PK"+str(initPos)
+       sys.exit()
     print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
     print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
@@ -442,10 +446,39 @@ class Tr:
     self.waitSta=0.0
     self.BDzero=0.0
     self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
-    self.advSIGcol=r.get(self.redisSIG)
-#    print "redisSIG:"+self.redisSIG+" col:"+self.advSIGcol
-#    self.redisSIG=''
+#    self.advSIGcol=r.get(self.redisSIG)
+    self.advSIGcol="red"   # safeguard before we run step()
     self.sigSpotted=False
+    sigAlreadyOccupied=r.get(self.redisSIG+":isOccupied")
+    if sigAlreadyOccupied is not None:
+      print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share the same signal block"
+      sys.exit()
+    else:
+      if (sigs[self.segment][self.SIGcnt][2]=='2'):
+        kCur=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
+        if (kCur!=self.segment):
+           print "FATAL: "+str(self.name)+" is derailed according to switch position..."
+           sys.exit()
+        kRev=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":reversePosition")
+        kFor=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPosition")
+        if (self.segment==kRev):
+          kOther=kFor
+        else:
+          kOther=kRev
+        sigAlreadyOccupied=r.get("sig:"+kOther+":"+sigs[self.segment][self.SIGcnt][1]+":isOccupied")
+        if sigAlreadyOccupied is not None:
+          print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share the same signal block, but in two different segments"
+          sys.exit()
+        sigAlreadyOccupied=r.get("sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt+1][1]+":isOccupied")
+        if sigAlreadyOccupied is not None:
+          print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share a signal 2 and signal 5 block"
+          sys.exit()
+      elif (sigs[self.segment][self.SIGcnt][2]=='5'):
+        sigAlreadyOccupied=r.get("sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt-1][1]+":isOccupied")
+        if sigAlreadyOccupied is not None:
+          print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share a signal 2 and signal 5 block"
+          sys.exit()
+      r.set(self.redisSIG+":isOccupied",self.name)
     updateSIGbyTrOccupation(initSegment,self.SIGcnt-1,self.name,"red")
 
   def step(self):
