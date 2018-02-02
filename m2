@@ -1,0 +1,6555 @@
+switch:E reverse set to: EastboundMain
+switch:E forward set to: WestboundMain
+switch:E current set to: WestboundMain
+switch:W reverse set to: EastboundMain
+switch:W forward set to: WestboundMain
+switch:W current set to: EastboundMain
+______WestboundMain_______
+switch of sig E is in position WestboundMain
+  switch of sig E is aligned to segment
+  switch of sig E has a next sig: 990 of type: 5
+  follower color set to: green
+  (switch has no prev)
+['0.1', '990', '5']
+switch of sig W is in position EastboundMain
+  (switch has no succ)
+  switch of sig W has a prev sig: LaD+10 of type: 3
+  prev color set to: red
+switch:W reverse set to: EastboundMain
+switch:W forward set to: WestboundMain
+switch:W current set to: EastboundMain
+switch:E reverse set to: WestboundMain
+switch:E forward set to: EastboundMain
+switch:E current set to: WestboundMain
+______EastboundMain_______
+switch of sig W is in position EastboundMain
+  switch of sig W is aligned to segment
+  switch of sig W has a next sig: LaD-100 of type: 5
+  follower color set to: green
+  (switch has no prev)
+['0.19', 'LaD-100', '5']
+switch of sig E is in position WestboundMain
+  (switch has no succ)
+  switch of sig E has a prev sig: ChV+10 of type: 3
+  prev color set to: red
+[['E500', 'WestboundMain', 'ChV+10', '0.0']]
+init...E500 at pos 210.0 and t:0.0
+E500:t:0.0 My TIVcnt is: 2 based on pos:210.0
+E500:t:0.0 My STAcnt is: 2 based on pos:210.0
+E500:t:0.0 My SIGcnt is: 2 based on pos:210.0
+E500:t:0.0 next TIV at PK0.6 with limit 50
+E500:0.0:START UPDATE SIG BY OCCU sig:WestboundMain:990 from value green to value red
+need to update EastboundMain:ChV+10 the previous signal 3 on the other segment since the witch is not aligned with said segment...
+prev sig before: red 
+prev sig after: red
+SIG 990 was green now red
+E500 has been initialized
+E500:t:0:ADVANCE green SIG vK:0.0
+E500:t:0:AT SIG WestboundMain:ChV+10 vK:0.0
+E500:0:START UPDATE SIG BY OCCU sig:WestboundMain:990 from value red to value red
+ALREADY
+E500:t:0next SIG (Ber-140) at PK1.012
+need to go faster...1.35
+E500:t:0 State update PK:0.210000027619 vK:0.0198855 maxVk:15.0 aF:1.10475 a:1.35 power: 1066.3612922 v2factor: 0.0 gFactor:0.0 vSquare:0.0
+need to go faster...1.35
+E500:t:1 State update PK:0.210560545434 vK:3.99495487082 maxVk:15.0 aF:1.10307109947 a:1.35 power: 214229.728967 v2factor: 0.0016789005306 gFactor:0.0 vSquare:1.21924512026
+need to go faster...1.35
+E500:t:2 State update PK:0.212223839267 vK:7.95793051138 maxVk:15.0 aF:1.09805471236 a:1.35 power: 426744.580607 v2factor: 0.00669528764224 gFactor:0.0 vSquare:4.86222777215
+need to go faster...1.35
+E500:t:3 State update PK:0.214984881226 vK:11.8968950264 maxVk:15.0 aF:1.08976133756 a:1.35 power: 637971.855797 v2factor: 0.0149886624356 gFactor:0.0 vSquare:10.885012662
+E500:t:4:coasting at 14.8099110178
+E500:t:4 State update PK:0.218806333754 vK:14.8050770426 maxVk:15.0 aF:-0.268554180588 a:0.0 power: 1.10443481492 v2factor: 0.0233041805879 gFactor:0.0 vSquare:16.9238784226
+E500:t:5:coasting at 13.8484279798
+E500:t:5 State update PK:0.222784411597 vK:13.8436467025 maxVk:15.0 aF:-0.265626514235 a:0.0 power: 1.02145544941 v2factor: 0.0203765142355 gFactor:0.0 vSquare:14.7977590672
+E500:t:5:boosting from vK:13.6478312033 to maxVk:15.0 with aFull:-0.265054314296
+E500:t:6:coasting at 14.5621734221
+E500:t:6 State update PK:0.22678682302 vK:14.5573533633 maxVk:15.0 aF:-0.26778104507 a:0.0 power: 1.08282869364 v2factor: 0.02253104507 gFactor:0.0 vSquare:16.3624147204
+E500:t:6:boosting from vK:13.6462953528 to maxVk:15.0 with aFull:-0.265049858538
+need to go faster...1.35
+E500:t:7 State update PK:0.230698325143 vK:13.841681121 maxVk:15.0 aF:1.08445071066 a:1.35 power: 742261.17113 v2factor: 0.0202992893372 gFactor:0.0 vSquare:14.7416770786
+E500:t:8:coasting at 14.3159419674
+E500:t:8 State update PK:0.23474916371 vK:14.3111355078 maxVk:15.0 aF:-0.267025533157 a:0.0 power: 1.06151071918 v2factor: 0.0217755331566 gFactor:0.0 vSquare:15.8137495691
+SCHEDULER:2018-02-02 11:54:58.825104
+E500:t:8:boosting from vK:13.6455523846 to maxVk:15.0 with aFull:-0.265047703244
+need to go faster...1.35
+E500:t:9 State update PK:0.238654547452 vK:14.8350454265 maxVk:15.0 aF:1.08142797598 a:1.35 power: 795530.417738 v2factor: 0.0233220240183 gFactor:0.0 vSquare:16.9368366146
+E500:t:10:coasting at 14.0703931898
+E500:t:10 State update PK:0.242693670066 vK:14.0656000608 maxVk:15.0 aF:-0.26628494623 a:0.0 power: 1.04040487663 v2factor: 0.0210349462298 gFactor:0.0 vSquare:15.2759231879
+E500:t:10:boosting from vK:13.6495740278 to maxVk:15.0 with aFull:-0.265059371127
+E500:t:11:coasting at 14.786802135
+E500:t:11 State update PK:0.246651050098 vK:14.7819694678 maxVk:15.0 aF:-0.268481511222 a:0.0 power: 1.10241263932 v2factor: 0.0232315112216 gFactor:0.0 vSquare:16.8711047361
+E500:t:12:coasting at 13.8255708615
+E500:t:12 State update PK:0.250622744753 vK:13.8207907939 maxVk:15.0 aF:-0.265559306025 a:0.0 power: 1.01951100332 v2factor: 0.0203093060248 gFactor:0.0 vSquare:14.7489513615
+E500:t:12:boosting from vK:13.6488759067 to maxVk:15.0 with aFull:-0.26505734544
+E500:t:13:coasting at 14.5406811029
+E500:t:13 State update PK:0.254630760072 vK:14.5358622403 maxVk:15.0 aF:-0.267714586987 a:0.0 power: 1.0809617656 v2factor: 0.022464586987 gFactor:0.0 vSquare:16.3141517698
+E500:t:13:boosting from vK:13.6488746483 to maxVk:15.0 with aFull:-0.265057341789
+need to go faster...1.35
+E500:t:14 State update PK:0.258538504005 vK:13.9411247723 maxVk:15.0 aF:1.08415755753 a:1.35 power: 747593.845398 v2factor: 0.0205924424668 gFactor:0.0 vSquare:14.9545696927
+E500:t:15:coasting at 14.2937503743
+E500:t:15 State update PK:0.262592609324 vK:14.2889451289 maxVk:15.0 aF:-0.2669580756 a:0.0 power: 1.0595970261 v2factor: 0.0217080755997 gFactor:0.0 vSquare:15.7647607841
+E500:t:15:boosting from vK:13.6473772453 to maxVk:15.0 with aFull:-0.265052997236
+need to go faster...1.35
+E500:t:16 State update PK:0.266502566159 vK:14.933319977 maxVk:15.0 aF:1.0811175333 a:1.35 power: 800800.399131 v2factor: 0.0236324666964 gFactor:0.0 vSquare:17.1622851826
+E500:t:17:coasting at 14.0473821548
+E500:t:17 State update PK:0.270536105967 vK:14.0425902632 maxVk:15.0 aF:-0.266216200449 a:0.0 power: 1.03843472898 v2factor: 0.0209662004492 gFactor:0.0 vSquare:15.2259988738
+E500:t:17:boosting from vK:13.6457510136 to maxVk:15.0 with aFull:-0.26504827944
+E500:t:18:coasting at 14.7632410848
+E500:t:18 State update PK:0.274496333697 vK:14.7584097491 maxVk:15.0 aF:-0.268407536779 a:0.0 power: 1.10035233542 v2factor: 0.0231575367785 gFactor:0.0 vSquare:16.8173832814
+E500:t:19:coasting at 13.8022660883
+E500:t:19 State update PK:0.278461520208 vK:13.7974872521 maxVk:15.0 aF:-0.265490895849 a:0.0 power: 1.01752979196 v2factor: 0.0202408958495 gFactor:0.0 vSquare:14.6992707694
+E500:t:19:boosting from vK:13.649467949 to maxVk:15.0 with aFull:-0.265059063319
+E500:t:20:coasting at 14.5164949758
+E500:t:20 State update PK:0.28247450372 vK:14.5116774573 maxVk:15.0 aF:-0.267639916553 a:0.0 power: 1.07886226214 v2factor: 0.022389916553 gFactor:0.0 vSquare:16.2599248751
+E500:t:20:boosting from vK:13.6487810723 to maxVk:15.0 with aFull:-0.265057070274
+need to go faster...1.35
+E500:t:21 State update PK:0.28637863331 vK:14.0398489979 maxVk:15.0 aF:1.08386444622 a:1.35 power: 752887.940432 v2factor: 0.0208855537826 gFactor:0.0 vSquare:15.1674319409
+E500:t:22:coasting at 14.2708795598
+E500:t:22 State update PK:0.290434969426 vK:14.2660755638 maxVk:15.0 aF:-0.266888662862 a:0.0 power: 1.05762606431 v2factor: 0.0216386628623 gFactor:0.0 vSquare:15.714352115
+E500:t:22:boosting from vK:13.6485220566 to maxVk:15.0 with aFull:-0.265056318739
+E500:t:23:coasting at 14.9887993011
+E500:t:23 State update PK:0.294350203764 vK:14.983955131 maxVk:15.0 aF:-0.269120561102 a:0.0 power: 1.12013622566 v2factor: 0.023870561102 gFactor:0.0 vSquare:17.3351932477
+E500:t:24:coasting at 14.0253537315
+E500:t:24 State update PK:0.298377692602 vK:14.0205630226 maxVk:15.0 aF:-0.26615049565 a:0.0 power: 1.03654994382 v2factor: 0.02090049565 gFactor:0.0 vSquare:15.1782829702
+E500:t:24:boosting from vK:13.6476714279 to maxVk:15.0 with aFull:-0.265053850737
+E500:t:25:coasting at 14.741405987
+E500:t:25 State update PK:0.302343493186 vK:14.7365758834 maxVk:15.0 aF:-0.268339086613 a:0.0 power: 1.09844425343 v2factor: 0.0230890866128 gFactor:0.0 vSquare:16.7676736477
+E500:t:26:coasting at 13.7806681211
+E500:t:26 State update PK:0.306302648251 vK:13.7758904243 maxVk:15.0 aF:-0.265427598973 a:0.0 power: 1.0156948664 v2factor: 0.020177598973 gFactor:0.0 vSquare:14.6533035389
+E500:t:26:boosting from vK:13.6469874602 to maxVk:15.0 with aFull:-0.265051866394
+E500:t:27:coasting at 14.4951235548
+E500:t:27 State update PK:0.310318998155 vK:14.4903072221 maxVk:15.0 aF:-0.26757403948 a:0.0 power: 1.07700834354 v2factor: 0.0223240394799 gFactor:0.0 vSquare:16.2120838634
+E500:t:27:boosting from vK:13.6466980638 to maxVk:15.0 with aFull:-0.265051026821
+need to go faster...1.35
+E500:t:28 State update PK:0.314220246015 vK:14.1152761686 maxVk:15.0 aF:1.08363910775 a:1.35 power: 756932.728918 v2factor: 0.0211108922545 gFactor:0.0 vSquare:15.3310764375
+E500:t:29:coasting at 14.2490933163
+E500:t:29 State update PK:0.318276782964 vK:14.2442905087 maxVk:15.0 aF:-0.266822645161 a:0.0 power: 1.05574979777 v2factor: 0.0215726451608 gFactor:0.0 vSquare:15.6664089766
+E500:t:29:boosting from vK:13.6459674586 to maxVk:15.0 with aFull:-0.265048907327
+E500:t:30:coasting at 14.9667164844
+E500:t:30 State update PK:0.322195277367 vK:14.9618735794 maxVk:15.0 aF:-0.269050276497 a:0.0 power: 1.1181933954 v2factor: 0.0238002764969 gFactor:0.0 vSquare:17.2841514138
+E500:t:31:coasting at 14.0035144817
+E500:t:31 State update PK:0.326216666863 vK:13.9987249435 maxVk:15.0 aF:-0.266085456895 a:0.0 power: 1.03468253404 v2factor: 0.0208354568954 gFactor:0.0 vSquare:15.1310507592
+E500:t:31:boosting from vK:13.6497749047 to maxVk:15.0 with aFull:-0.265059954015
+E500:t:32:coasting at 14.7187173475
+E500:t:32 State update PK:0.330187910894 vK:14.7138885223 maxVk:15.0 aF:-0.268268068038 a:0.0 power: 1.096462902 v2factor: 0.0230180680379 gFactor:0.0 vSquare:16.7160987929
+E500:t:33:coasting at 13.7582255016
+E500:t:33 State update PK:0.334140798686 vK:13.7534489868 maxVk:15.0 aF:-0.265361931701 a:0.0 power: 1.01378938631 v2factor: 0.0201119317013 gFactor:0.0 vSquare:14.6056148884
+E500:t:33:boosting from vK:13.6484290684 to maxVk:15.0 with aFull:-0.265056048937
+E500:t:34:coasting at 14.4714996543
+E500:t:34 State update PK:0.338162266151 vK:14.4666846304 maxVk:15.0 aF:-0.267501332114 a:0.0 power: 1.07496039164 v2factor: 0.0222513321136 gFactor:0.0 vSquare:16.1592825807
+E500:t:34:boosting from vK:13.6471489674 to maxVk:15.0 with aFull:-0.265052334954
+need to go faster...1.35
+E500:t:35 State update PK:0.342061557304 vK:14.2136179338 maxVk:15.0 aF:1.08334349601 a:1.35 power: 762206.314519 v2factor: 0.0214065039895 gFactor:0.0 vSquare:15.5457545312
+E500:t:36:coasting at 14.2259027755
+E500:t:36 State update PK:0.346118713102 vK:14.2211012308 maxVk:15.0 aF:-0.266752482914 a:0.0 power: 1.05375390641 v2factor: 0.0215024829139 gFactor:0.0 vSquare:15.6154560014
+E500:t:36:boosting from vK:13.6467830612 to maxVk:15.0 with aFull:-0.265051273407
+E500:t:37:coasting at 14.9440248987
+E500:t:37 State update PK:0.350042495521 vK:14.9391832918 maxVk:15.0 aF:-0.268978162268 a:0.0 power: 1.11619835212 v2factor: 0.0237281622685 gFactor:0.0 vSquare:17.2317808776
+E500:t:38:coasting at 13.9810727953
+E500:t:38 State update PK:0.354057617477 vK:13.9762844582 maxVk:15.0 aF:-0.266018729629 a:0.0 power: 1.03276484347 v2factor: 0.0207687296289 gFactor:0.0 vSquare:15.0825923231
+E500:t:38:boosting from vK:13.6465019643 to maxVk:15.0 with aFull:-0.265050457923
+E500:t:39:coasting at 14.6962716069
+E500:t:39 State update PK:0.358031947949 vK:14.6914440444 maxVk:15.0 aF:-0.268197917409 a:0.0 power: 1.09450408235 v2factor: 0.0229479174091 gFactor:0.0 vSquare:16.665154255
+E500:t:40:coasting at 13.736022766
+E500:t:40 State update PK:0.361978635511 vK:13.7312474187 maxVk:15.0 aF:-0.265297071652 a:0.0 power: 1.01190548064 v2factor: 0.0200470716516 gFactor:0.0 vSquare:14.5585124558
+E500:t:40:boosting from vK:13.6453339664 to maxVk:15.0 with aFull:-0.265047069651
+E500:t:41:coasting at 14.4500217996
+E500:t:41 State update PK:0.366003423621 vK:14.4452079636 maxVk:15.0 aF:-0.267435332563 a:0.0 power: 1.07309972103 v2factor: 0.0221853325635 gFactor:0.0 vSquare:16.1113526242
+E500:t:41:boosting from vK:13.6497203857 to maxVk:15.0 with aFull:-0.265059795815
+need to go faster...1.35
+E500:t:42 State update PK:0.369902141197 vK:14.312834977 maxVk:15.0 aF:1.08304317026 a:1.35 power: 767526.837004 v2factor: 0.021706829745 gFactor:0.0 vSquare:15.7638560239
+E500:t:43:coasting at 14.203610559
+E500:t:43 State update PK:0.373959321157 vK:14.1988102264 maxVk:15.0 aF:-0.266685146247 a:0.0 power: 1.05183660604 v2factor: 0.0214351462469 gFactor:0.0 vSquare:15.5665550086
+E500:t:43:boosting from vK:13.6484854043 to maxVk:15.0 with aFull:-0.265056212394
+E500:t:44:coasting at 14.9210828126
+E500:t:44 State update PK:0.377888511617 vK:14.916242516 maxVk:15.0 aF:-0.268905363182 a:0.0 power: 1.11418266974 v2factor: 0.0236553631818 gFactor:0.0 vSquare:17.1789129861
+E500:t:45:coasting at 13.9583829732
+E500:t:45 State update PK:0.381897296786 vK:13.9535958485 maxVk:15.0 aF:-0.265951373368 a:0.0 power: 1.03082721648 v2factor: 0.0207013733679 gFactor:0.0 vSquare:15.0336771009
+E500:t:45:boosting from vK:13.647746988 to maxVk:15.0 with aFull:-0.26505406996
+E500:t:46:coasting at 14.6742795921
+E500:t:46 State update PK:0.385877110008 vK:14.6694532649 maxVk:15.0 aF:-0.268129288664 a:0.0 power: 1.09258613028 v2factor: 0.0228792886644 gFactor:0.0 vSquare:16.6153149342
+E500:t:47:coasting at 13.7142684761
+E500:t:47 State update PK:0.389817722621 vK:13.7094942709 maxVk:15.0 aF:-0.265233623232 a:0.0 power: 1.01006078838 v2factor: 0.0199836232324 gFactor:0.0 vSquare:14.5124351724
+E500:t:47:boosting from vK:13.6474523527 to maxVk:15.0 with aFull:-0.26505321514
+E500:t:48:coasting at 14.4270396599
+E500:t:48 State update PK:0.393847789344 vK:14.4222270931 maxVk:15.0 aF:-0.267364819043 a:0.0 power: 1.07111003804 v2factor: 0.0221148190432 gFactor:0.0 vSquare:16.0601445484
+E500:t:48:boosting from vK:13.6460244899 to maxVk:15.0 with aFull:-0.265049072772
+need to go faster...1.35
+E500:t:49 State update PK:0.397745093473 vK:14.3873872631 maxVk:15.0 aF:1.08281612698 a:1.35 power: 771524.709784 v2factor: 0.0219338730173 gFactor:0.0 vSquare:15.9287385747
+E500:t:50:coasting at 14.1810324147
+E500:t:50 State update PK:0.401800358983 vK:14.1762333077 maxVk:15.0 aF:-0.266617053537 a:0.0 power: 1.04989598743 v2factor: 0.0213670535368 gFactor:0.0 vSquare:15.517104965
+E500:t:50:boosting from vK:13.6498979454 to maxVk:15.0 with aFull:-0.265060311049
+E500:t:51:coasting at 14.8976286431
+E500:t:51 State update PK:0.405734840505 vK:14.8927896841 maxVk:15.0 aF:-0.268831054789 a:0.0 power: 1.1121234332 v2factor: 0.0235810547887 gFactor:0.0 vSquare:17.1249490114
+E500:t:52:coasting at 13.9351862892
+E500:t:52 State update PK:0.409737147389 vK:13.9304004019 maxVk:15.0 aF:-0.265882625547 a:0.0 power: 1.0288476205 v2factor: 0.0206326255472 gFactor:0.0 vSquare:14.9837513051
+E500:t:52:boosting from vK:13.6484810456 to maxVk:15.0 with aFull:-0.265056199747
+E500:t:53:coasting at 14.6503582961
+E500:t:53 State update PK:0.413722032091 vK:14.6455333105 maxVk:15.0 aF:-0.268054756059 a:0.0 power: 1.0905013497 v2factor: 0.0228047560593 gFactor:0.0 vSquare:16.5611881331
+E500:t:54:coasting at 13.6906053466
+E500:t:54 State update PK:0.417656036763 vK:13.6858323816 maxVk:15.0 aF:-0.265164721693 a:0.0 power: 1.00805553739 v2factor: 0.0199147216927 gFactor:0.0 vSquare:14.4623977434
+E500:t:54:boosting from vK:13.6476576496 to maxVk:15.0 with aFull:-0.265053810762
+E500:t:55:coasting at 14.4039272327
+E500:t:55 State update PK:0.421691308578 vK:14.3991159404 maxVk:15.0 aF:-0.267294018971 a:0.0 power: 1.06911043592 v2factor: 0.0220440189708 gFactor:0.0 vSquare:16.0087283738
+E500:t:55:boosting from vK:13.6469642417 to maxVk:15.0 with aFull:-0.265051799034
+need to go faster...1.35
+E500:t:56 State update PK:0.425589156983 vK:14.4860655433 maxVk:15.0 aF:1.0825137933 a:1.35 power: 776816.341098 v2factor: 0.0222362067021 gFactor:0.0 vSquare:16.1482982586
+E500:t:57:coasting at 14.1582667051
+E500:t:57 State update PK:0.429642792935 vK:14.153468832 maxVk:15.0 aF:-0.266548504835 a:0.0 power: 1.04794054316 v2factor: 0.0212985048348 gFactor:0.0 vSquare:15.4673237725
+E500:t:57:boosting from vK:13.6463473686 to maxVk:15.0 with aFull:-0.265050009436
+E500:t:58:coasting at 14.8754519547
+E500:t:58 State update PK:0.433580361156 vK:14.8706142585 maxVk:15.0 aF:-0.268760901279 a:0.0 power: 1.11017769186 v2factor: 0.0235109012786 gFactor:0.0 vSquare:17.074002381
+E500:t:59:coasting at 13.913252681
+E500:t:59 State update PK:0.437576542554 vK:13.908467962 maxVk:15.0 aF:-0.265817726268 a:0.0 power: 1.02697703598 v2factor: 0.0205677262677 gFactor:0.0 vSquare:14.9366203832
+E500:t:59:boosting from vK:13.6456976864 to maxVk:15.0 with aFull:-0.265048124744
+E500:t:60:coasting at 14.6275215706
+E500:t:60 State update PK:0.4415644713 vK:14.6226978637 maxVk:15.0 aF:-0.26798371615 a:0.0 power: 1.08851247601 v2factor: 0.0227337161503 gFactor:0.0 vSquare:16.5095977853
+E500:t:61:coasting at 13.6680146805
+E500:t:61 State update PK:0.445492167572 vK:13.6632428975 maxVk:15.0 aF:-0.265099053939 a:0.0 power: 1.00614243496 v2factor: 0.0198490539388 gFactor:0.0 vSquare:14.4147087428
+E500:t:61:boosting from vK:13.6489290448 to maxVk:15.0 with aFull:-0.265057499623
+E500:t:62:coasting at 14.3813298602
+E500:t:62 State update PK:0.449532797914 vK:14.3765198119 maxVk:15.0 aF:-0.267224906408 a:0.0 power: 1.06715671145 v2factor: 0.0219749064082 gFactor:0.0 vSquare:15.9585376966
+E500:t:62:boosting from vK:13.6484087836 to maxVk:15.0 with aFull:-0.265055990082
+need to go faster...1.35
+E500:t:63 State update PK:0.453432126094 vK:14.5844292522 maxVk:15.0 aF:1.08221036375 a:1.35 power: 782091.103527 v2factor: 0.0225396362496 gFactor:0.0 vSquare:16.368653776
+E500:t:64:coasting at 14.1352230845
+E500:t:64 State update PK:0.457483209931 vK:14.1304264584 maxVk:15.0 aF:-0.266479231488 a:0.0 power: 1.04596255089 v2factor: 0.0212292314877 gFactor:0.0 vSquare:15.417016331
+E500:t:64:boosting from vK:13.6472854181 to maxVk:15.0 with aFull:-0.265052730825
+E500:t:65:coasting at 14.8517986902
+E500:t:65 State update PK:0.461425962848 vK:14.8469623387 maxVk:15.0 aF:-0.268686191961 a:0.0 power: 1.10810382583 v2factor: 0.0234361919605 gFactor:0.0 vSquare:17.019747248
+E500:t:66:coasting at 13.8898582737
+E500:t:66 State update PK:0.465415610853 vK:13.8850747986 maxVk:15.0 aF:-0.265748617304 a:0.0 power: 1.02498317469 v2factor: 0.0204986173042 gFactor:0.0 vSquare:14.8864323197
+E500:t:66:boosting from vK:13.6462229167 to maxVk:15.0 with aFull:-0.265049648401
+E500:t:67:coasting at 14.6043973195
+E500:t:67 State update PK:0.469408742676 vK:14.5995749054 maxVk:15.0 aF:-0.267911894738 a:0.0 power: 1.08649993758 v2factor: 0.0226618947383 gFactor:0.0 vSquare:16.4574398971
+E500:t:67:boosting from vK:13.6499100241 to maxVk:15.0 with aFull:-0.265060346099
+need to go faster...1.35
+E500:t:68 State update PK:0.473330153716 vK:13.6894718717 maxVk:15.0 aF:1.08489534276 a:1.35 power: 734098.937214 v2factor: 0.0198546572421 gFactor:0.0 vSquare:14.4187779536
+E500:t:69:coasting at 14.3583397087
+E500:t:69 State update PK:0.477375929528 vK:14.3535309241 maxVk:15.0 aF:-0.267154703914 a:0.0 power: 1.06517036226 v2factor: 0.0219047039141 gFactor:0.0 vSquare:15.9075554931
+E500:t:69:boosting from vK:13.6494578784 to maxVk:15.0 with aFull:-0.265059034097
+need to go faster...1.35
+E500:t:70 State update PK:0.481277462882 vK:14.6823594192 maxVk:15.0 aF:1.08190622879 a:1.35 power: 787342.617257 v2factor: 0.0228437712142 gFactor:0.0 vSquare:16.589521579
+E500:t:71:coasting at 14.1117840554
+E500:t:71 State update PK:0.485325039469 vK:14.1069886955 maxVk:15.0 aF:-0.26640888523 a:0.0 power: 1.0439519812 v2factor: 0.0211588852304 gFactor:0.0 vSquare:15.3659297243
+E500:t:71:boosting from vK:13.647824146 to maxVk:15.0 with aFull:-0.26505429382
+E500:t:72:coasting at 14.8275739104
+E500:t:72 State update PK:0.489272832884 vK:14.822738934 maxVk:15.0 aF:-0.268609800732 a:0.0 power: 1.10598137538 v2factor: 0.0233598007323 gFactor:0.0 vSquare:16.9642706843
+E500:t:73:coasting at 13.8658981693
+E500:t:73 State update PK:0.493255789572 vK:13.861115966 maxVk:15.0 aF:-0.265677957779 a:0.0 power: 1.02294249511 v2factor: 0.0204279577793 gFactor:0.0 vSquare:14.835118213
+E500:t:73:boosting from vK:13.6461777574 to maxVk:15.0 with aFull:-0.265049517395
+E500:t:74:coasting at 14.5799841497
+E500:t:74 State update PK:0.497253813885 vK:14.5751630982 maxVk:15.0 aF:-0.267836193392 a:0.0 power: 1.08437672286 v2factor: 0.0225861933919 gFactor:0.0 vSquare:16.4024643369
+E500:t:74:boosting from vK:13.6496093982 to maxVk:15.0 with aFull:-0.265059473761
+need to go faster...1.35
+E500:t:75 State update PK:0.501169316409 vK:13.7855958655 maxVk:15.0 aF:1.08461511923 a:1.35 power: 739253.594534 v2factor: 0.0201348807661 gFactor:0.0 vSquare:14.6222808759
+E500:t:76:coasting at 14.332813759
+E500:t:76 State update PK:0.505218782101 vK:14.3280063749 maxVk:15.0 aF:-0.267076889714 a:0.0 power: 1.06296649401 v2factor: 0.021826889714 gFactor:0.0 vSquare:15.8510455439
+E500:t:76:boosting from vK:13.6479845328 to maxVk:15.0 with aFull:-0.265054759157
+need to go faster...1.35
+E500:t:77 State update PK:0.509122775637 vK:14.7792495898 maxVk:15.0 aF:1.08160331774 a:1.35 power: 792538.361113 v2factor: 0.0231466822649 gFactor:0.0 vSquare:16.8095005555
+E500:t:78:coasting at 14.0873499998
+E500:t:78 State update PK:0.513165722611 vK:14.0825559576 maxVk:15.0 aF:-0.266335676939 a:0.0 power: 1.04185752056 v2factor: 0.0210856769393 gFactor:0.0 vSquare:15.3127646618
+E500:t:78:boosting from vK:13.6473665421 to maxVk:15.0 with aFull:-0.265052966183
+E500:t:79:coasting at 14.8042307045
+E500:t:79 State update PK:0.517118553583 vK:14.7993970509 maxVk:15.0 aF:-0.268536307467 a:0.0 power: 1.10393762133 v2factor: 0.0232863074673 gFactor:0.0 vSquare:16.9108986691
+E500:t:80:coasting at 13.842809589
+E500:t:80 State update PK:0.521095062402 vK:13.8380286093 maxVk:15.0 aF:-0.26560998384 a:0.0 power: 1.02097737647 v2factor: 0.0203599838399 gFactor:0.0 vSquare:14.7857544226
+E500:t:80:boosting from vK:13.6469958927 to maxVk:15.0 with aFull:-0.265051890858
+E500:t:81:coasting at 14.5574184451
+E500:t:81 State update PK:0.525098433105 vK:14.5525986511 maxVk:15.0 aF:-0.267766333377 a:0.0 power: 1.08241555053 v2factor: 0.0225163333772 gFactor:0.0 vSquare:16.3517308477
+E500:t:81:boosting from vK:13.6463597708 to maxVk:15.0 with aFull:-0.265050045415
+need to go faster...1.35
+E500:t:82 State update PK:0.529008993158 vK:13.8612736069 maxVk:15.0 aF:1.0843931196 a:1.35 power: 743311.819848 v2factor: 0.0203568804019 gFactor:0.0 vSquare:14.783500655
+E500:t:83:coasting at 14.3112081032
+E500:t:83 State update PK:0.533060470237 vK:14.3064019028 maxVk:15.0 aF:-0.267011134471 a:0.0 power: 1.06110238952 v2factor: 0.0217611344709 gFactor:0.0 vSquare:15.8032930072
+E500:t:83:boosting from vK:13.6456244424 to maxVk:15.0 with aFull:-0.265047912273
+need to go faster...1.35
+E500:t:84 State update PK:0.536966665882 vK:14.8549352622 maxVk:15.0 aF:1.08136531101 a:1.35 power: 796597.01192 v2factor: 0.0233846889898 gFactor:0.0 vSquare:16.9823449454
+E500:t:85:coasting at 14.0660206152
+E500:t:85 State update PK:0.541004803587 vK:14.0612277214 maxVk:15.0 aF:-0.266271874444 a:0.0 power: 1.04003040621 v2factor: 0.0210218744443 gFactor:0.0 vSquare:15.2664302428
+E500:t:85:boosting from vK:13.6499926469 to maxVk:15.0 with aFull:-0.265060585852
+E500:t:86:coasting at 14.7818792133
+E500:t:86 State update PK:0.5449632143 vK:14.7770468244 maxVk:15.0 aF:-0.268466045014 a:0.0 power: 1.10198203276 v2factor: 0.0232160450142 gFactor:0.0 vSquare:16.8598729225
+E500:t:87:coasting at 13.8207015216
+E500:t:87 State update PK:0.548933549128 vK:13.8159217115 maxVk:15.0 aF:-0.265545002746 a:0.0 power: 1.01909693578 v2factor: 0.0202950027458 gFactor:0.0 vSquare:14.7385640856
+E500:t:87:boosting from vK:13.648786803 to maxVk:15.0 with aFull:-0.265057086902
+E500:t:88:coasting at 14.5342286106
+E500:t:88 State update PK:0.552942177128 vK:14.5294101069 maxVk:15.0 aF:-0.267694653889 a:0.0 power: 1.08040150271 v2factor: 0.0224446538888 gFactor:0.0 vSquare:16.2996760267
+E500:t:88:boosting from vK:13.6472572298 to maxVk:15.0 with aFull:-0.265052649044
+need to go faster...1.35
+E500:t:89 State update PK:0.556848663541 vK:13.9583927246 maxVk:15.0 aF:1.08410643862 a:1.35 power: 748519.840814 v2factor: 0.0206435613847 gFactor:0.0 vSquare:14.9916930898
+E500:t:90:coasting at 14.2867240979
+E500:t:90 State update PK:0.560902597813 vK:14.2819192366 maxVk:15.0 aF:-0.266936739079 a:0.0 power: 1.05899137467 v2factor: 0.021686739079 gFactor:0.0 vSquare:15.7492658526
+E500:t:90:boosting from vK:13.649942899 to maxVk:15.0 with aFull:-0.265060441494
+need to go faster...1.35
+E500:t:91 State update PK:0.564815201842 vK:14.9752400151 maxVk:15.0 aF:1.0809844862 a:1.35 power: 803048.364857 v2factor: 0.0237655138038 gFactor:0.0 vSquare:17.2589061756
+E500:t:92:coasting at 14.04076876
+E500:t:92 State update PK:0.568846995874 vK:14.0359772237 maxVk:15.0 aF:-0.266196463658 a:0.0 power: 1.03786875026 v2factor: 0.0209464636583 gFactor:0.0 vSquare:15.2116656923
+E500:t:92:boosting from vK:13.648708274 to maxVk:15.0 with aFull:-0.265056859048
+E500:t:93:coasting at 14.7568556755
+E500:t:93 State update PK:0.572810088612 vK:14.7520247003 maxVk:15.0 aF:-0.268387508877 a:0.0 power: 1.09979421117 v2factor: 0.0231375088765 gFactor:0.0 vSquare:16.8028386903
+E500:t:94:coasting at 13.795950062
+E500:t:94 State update PK:0.576773511305 vK:13.7911715593 maxVk:15.0 aF:-0.2654723753 a:0.0 power: 1.01699307556 v2factor: 0.0202223752996 gFactor:0.0 vSquare:14.6858208421
+E500:t:94:boosting from vK:13.6479332586 to maxVk:15.0 with aFull:-0.265054610393
+E500:t:95:coasting at 14.5093378252
+E500:t:95 State update PK:0.580786867687 vK:14.504520704 maxVk:15.0 aF:-0.267617843938 a:0.0 power: 1.07824126615 v2factor: 0.0223678439383 gFactor:0.0 vSquare:16.24389538
+E500:t:95:boosting from vK:13.646464013 to maxVk:15.0 with aFull:-0.265050347825
+need to go faster...1.35
+E500:t:96 State update PK:0.584689708782 vK:14.0563359608 maxVk:15.0 aF:1.08381529472 a:1.35 power: 753772.055229 v2factor: 0.0209347052759 gFactor:0.0 vSquare:15.203126562
+E500:t:97:coasting at 14.2630874145
+E500:t:97 State update PK:0.588745490721 vK:14.2582838438 maxVk:15.0 aF:-0.266865039151 a:0.0 power: 1.0569548545 v2factor: 0.0216150391506 gFactor:0.0 vSquare:15.6971961878
+E500:t:97:boosting from vK:13.6455544169 to maxVk:15.0 with aFull:-0.265047709139
+E500:t:98:coasting at 14.980809675
+E500:t:98 State update PK:0.592660877548 vK:14.9759659628 maxVk:15.0 aF:-0.269095119968 a:0.0 power: 1.11943315483 v2factor: 0.0238451199676 gFactor:0.0 vSquare:17.3167174783
+E500:t:99:coasting at 14.0174522709
+E500:t:99 State update PK:0.596686159633 vK:14.0126619858 maxVk:15.0 aF:-0.266126952868 a:0.0 power: 1.03587417662 v2factor: 0.0208769528679 gFactor:0.0 vSquare:15.1611858154
+E500:t:99:boosting from vK:13.6493442977 to maxVk:15.0 with aFull:-0.265058704524
+E500:t:99:TIV 2 reached at curr speed 14.8779081597, maxVk now 50.0
+E500:t:99  next TIV at PK2.5 with limit <<40 (currspeed:14.8779081597)
+E500:t:99  BDtiv: 47.3484848485
+E500:t:99:vK:14.8779081597 maxVk:50.0 =>ready to acc
+need to go faster...1.35
+E500:t:100 State update PK:0.600671054414 vK:15.4807136773 maxVk:50.0 aF:1.07935079459 a:1.35 power: 830154.434788 v2factor: 0.0253992054142 gFactor:0.0 vSquare:18.445319836
+need to go faster...1.35
+E500:t:101 State update PK:0.605511337967 vK:19.341456692 maxVk:50.0 aF:1.06508148745 a:1.35 power: 1037187.14587 v2factor: 0.0396685125472 gFactor:0.0 vSquare:28.8079248709
+need to go faster...1.35
+E500:t:102 State update PK:0.611416383434 vK:23.1455491456 maxVk:50.0 aF:1.04792286431 a:1.35 power: 1241182.01509 v2factor: 0.0568271356924 gFactor:0.0 vSquare:41.2687986147
+need to go faster...1.35
+E500:t:103 State update PK:0.618369034469 vK:26.8829336617 maxVk:50.0 aF:1.02806963917 a:1.35 power: 1441599.72162 v2factor: 0.0766803608304 gFactor:0.0 vSquare:55.6865365508
+need to go faster...1.35
+E500:t:104 State update PK:0.626349443206 vK:30.5442996878 maxVk:50.0 aF:1.0057410795 a:1.35 power: 1637940.99163 v2factor: 0.0990089204968 gFactor:0.0 vSquare:71.9019030478
+need to go faster...1.35
+E500:t:105 State update PK:0.635335289232 vK:34.1211630289 maxVk:50.0 aF:0.981176060845 a:1.35 power: 1829750.86318 v2factor: 0.123573939155 gFactor:0.0 vSquare:89.7414227703
+need to go faster...1.3395386571
+E500:t:106 State update PK:0.645302003078 vK:37.6042243443 maxVk:50.0 aF:0.944178679033 a:1.3395386571 power: 2000904.30801 v2factor: 0.150109978062 gFactor:0.0 vSquare:109.012329747
+need to go faster...1.23577644141
+E500:t:107 State update PK:0.656198626901 vK:40.7578899157 maxVk:50.0 aF:0.814150249765 a:1.23577644141 power: 2000719.36872 v2factor: 0.176376191645 gFactor:0.0 vSquare:128.087285145
+need to go faster...1.157884626
+E500:t:108 State update PK:0.667911096361 vK:43.496862625 maxVk:50.0 aF:0.711730460639 a:1.157884626 power: 2000589.23434 v2factor: 0.200904165363 gFactor:0.0 vSquare:145.899902224
+need to go faster...1.09713497688
+E500:t:109 State update PK:0.680336387214 vK:45.9031069148 maxVk:50.0 aF:0.628116379986 a:1.09713497688 power: 2000492.72831 v2factor: 0.223768596891 gFactor:0.0 vSquare:162.504427662
+need to go faster...1.04842021742
+E500:t:110 State update PK:0.693390539912 vK:48.0341923259 maxVk:50.0 aF:0.558123865294 a:1.04842021742 power: 2000418.38243 v2factor: 0.24504635213 gFactor:0.0 vSquare:177.956682738
+need to go faster...1.00852618099
+E500:t:111 State update PK:0.707003349971 vK:49.9327850936 maxVk:50.0 aF:0.498460053134 a:1.00852618099 power: 2000359.43893 v2factor: 0.264816127861 gFactor:0.0 vSquare:192.313818345
+E500:t:112:coasting at 48.1740826204
+E500:t:112 State update PK:0.720630271631 vK:48.1652297009 maxVk:50.0 aF:-0.491828862609 a:0.0 power: 6.58029170585 v2factor: 0.246578862609 gFactor:0.0 vSquare:179.069617
+E500:t:113:coasting at 46.4351875366
+E500:t:113 State update PK:0.733765369063 vK:46.4266492532 maxVk:50.0 aF:-0.474349080666 a:0.0 power: 6.11734399767 v2factor: 0.229099080666 gFactor:0.0 vSquare:166.375512466
+E500:t:113:boosting from vK:45.4965754807 to maxVk:50.0 with aFull:-0.465261927306
+need to go faster...1.08285421237
+E500:t:114 State update PK:0.746537950056 vK:46.5079638984 maxVk:50.0 aF:0.607894577308 a:1.08285421237 power: 2000470.6582 v2factor: 0.229709635065 gFactor:0.0 vSquare:166.818907091
+need to go faster...1.03680114185
+E500:t:115 State update PK:0.759750513443 vK:48.5720703489 maxVk:50.0 aF:0.540981750378 a:1.03680114185 power: 2000401.03805 v2factor: 0.250569391476 gFactor:0.0 vSquare:181.967604558
+E500:t:116:coasting at 49.4879579203
+E500:t:116 State update PK:0.773470043278 vK:49.4788595969 maxVk:50.0 aF:-0.505462410282 a:0.0 power: 6.94713989718 v2factor: 0.260212410282 gFactor:0.0 vSquare:188.970523081
+E500:t:117:coasting at 47.7017377657
+E500:t:117 State update PK:0.78696335412 vK:47.6929714565 maxVk:50.0 aF:-0.487017177248 a:0.0 power: 6.45202675925 v2factor: 0.241767177248 gFactor:0.0 vSquare:175.575292119
+E500:t:118:coasting at 45.9795506483
+E500:t:118 State update PK:0.799969628146 vK:45.9710928955 maxVk:50.0 aF:-0.469875152018 a:0.0 power: 6.0001872952 v2factor: 0.224625152018 gFactor:0.0 vSquare:163.126472054
+E500:t:118:boosting from vK:45.4998169786 to maxVk:50.0 with aFull:-0.465293278522
+need to go faster...1.06940940137
+E500:t:119 State update PK:0.812789038318 vK:47.0921827482 maxVk:50.0 aF:0.588637591239 a:1.06940940137 power: 2000450.09004 v2factor: 0.235521810126 gFactor:0.0 vSquare:171.039804013
+need to go faster...1.02580453635
+E500:t:120 State update PK:0.826154723398 vK:49.0923589269 maxVk:50.0 aF:0.524584188731 a:1.02580453635 power: 2000384.75772 v2factor: 0.255970347618 gFactor:0.0 vSquare:185.889867551
+E500:t:121:coasting at 49.0015018759
+E500:t:121 State update PK:0.839904376948 vK:48.9924951819 maxVk:50.0 aF:-0.500371888522 a:0.0 power: 6.80957426044 v2factor: 0.255121888522 gFactor:0.0 vSquare:185.273702631
+E500:t:122:coasting at 47.2329493395
+E500:t:122 State update PK:0.853265081908 vK:47.2242681448 maxVk:50.0 aF:-0.482288597227 a:0.0 power: 6.32659056627 v2factor: 0.237038597227 gFactor:0.0 vSquare:172.1413197
+E500:t:123:coasting at 45.527184431
+E500:t:123 State update PK:0.866143479529 vK:45.5188058454 maxVk:50.0 aF:-0.465476980485 a:0.0 power: 5.88554341672 v2factor: 0.220226980485 gFactor:0.0 vSquare:159.932447702
+E500:t:123:boosting from vK:45.4936788399 to maxVk:50.0 with aFull:-0.465233913378
+need to go faster...1.05711486441
+E500:t:124 State update PK:0.879081379649 vK:47.6394306097 maxVk:50.0 aF:0.570832865016 a:1.05711486441 power: 2000431.45806 v2factor: 0.241031999395 gFactor:0.0 vSquare:175.041393896
+need to go faster...1.01570002468
+E500:t:125 State update PK:0.892590595457 vK:49.5803741795 maxVk:50.0 aF:0.509361428789 a:1.01570002468 power: 2000369.91256 v2factor: 0.261088595895 gFactor:0.0 vSquare:189.606823453
+E500:t:126:coasting at 48.5217932154
+E500:t:126 State update PK:0.906295161232 vK:48.5128759935 maxVk:50.0 aF:-0.495401219289 a:0.0 power: 6.67592719955 v2factor: 0.250151219289 gFactor:0.0 vSquare:181.663921052
+E500:t:127:coasting at 46.7704954459
+E500:t:127 State update PK:0.919525075533 vK:46.7618973919 maxVk:50.0 aF:-0.477669669703 a:0.0 power: 6.20465002274 v2factor: 0.232419669703 gFactor:0.0 vSquare:168.786978724
+E500:t:127:boosting from vK:45.4976722634 to maxVk:50.0 with aFull:-0.465272534951
+need to go faster...1.09296783375
+E500:t:128 State update PK:0.932313751796 vK:46.0779711303 maxVk:50.0 aF:0.622239675323 a:1.09296783375 power: 2000486.26435 v2factor: 0.225478158427 gFactor:0.0 vSquare:163.745939308
+E500:t:128:ADVANCE green SIG vK:46.6620642098
+need to go faster...1.04503629719
+E500:t:129 State update PK:0.945413688148 vK:48.1896082266 maxVk:50.0 aF:0.553150422509 a:1.04503629719 power: 2000413.31588 v2factor: 0.246635874677 gFactor:0.0 vSquare:179.1110201
+E500:t:130:coasting at 49.8454560789
+E500:t:130 State update PK:0.959065006034 vK:49.8362898398 maxVk:50.0 aF:-0.509235508495 a:0.0 power: 7.04955788834 v2factor: 0.263985508495 gFactor:0.0 vSquare:191.710608929
+E500:t:131:coasting at 48.0461427582
+E500:t:131 State update PK:0.972655753704 vK:48.0373133823 maxVk:50.0 aF:-0.490520882356 a:0.0 power: 6.5453625962 v2factor: 0.245270882356 gFactor:0.0 vSquare:178.119740273
+E500:t:132:coasting at 46.3117891837
+E500:t:132 State update PK:0.985755960175 vK:46.3032727885 maxVk:50.0 aF:-0.473133068098 a:0.0 power: 6.08544708817 v2factor: 0.227883068098 gFactor:0.0 vSquare:165.492424182
+E500:t:132:boosting from vK:45.4926428673 to maxVk:50.0 with aFull:-0.465223894737
+need to go faster...1.07938917666
+E500:t:133 State update PK:0.998531931702 vK:46.6571379354 maxVk:50.0 aF:0.602952363885 a:1.07938917666 power: 2000465.33792 v2factor: 0.231186812779 gFactor:0.0 vSquare:167.891657792
+need to go faster...1.03397240382
+E500:t:134 State update PK:1.01178358244 vK:48.7048504798 maxVk:50.0 aF:0.536780132515 a:1.03397240382 power: 2000396.83766 v2factor: 0.251942271301 gFactor:0.0 vSquare:182.964612419
+E500:t:134:AT SIG WestboundMain:Ber-140 vK:48.7434437717
+E500:134:START UPDATE SIG BY OCCU sig:WestboundMain:ChV+10 from value green to value red
+E500:134:START UPDATE SIG BY OCCU sig:WestboundMain:990 from value red to value yellow
+SIG 990 was red now yellow
+SIG ChV+10 was green now red
+E500:t:134next SIG (Ber+10) at PK1.162
+E500:t:135:coasting at 49.3580201433
+E500:t:135 State update PK:1.0255172208 vK:49.3489463837 maxVk:50.0 aF:-0.504097753699 a:0.0 power: 6.9101925054 v2factor: 0.258847753699 gFactor:0.0 vSquare:187.979487073
+E500:t:136:coasting at 47.5765359703
+E500:t:136 State update PK:1.03897511355 vK:47.5677924753 maxVk:50.0 aF:-0.485749719836 a:0.0 power: 6.41834496337 v2factor: 0.240499719836 gFactor:0.0 vSquare:174.654843745
+E500:t:137:coasting at 45.8587504187
+E500:t:137 State update PK:1.05194723719 vK:45.8503138834 maxVk:50.0 aF:-0.468696405184 a:0.0 power: 5.96941035935 v2factor: 0.223446405184 gFactor:0.0 vSquare:162.270446756
+E500:t:137:boosting from vK:45.4973090502 to maxVk:50.0 with aFull:-0.465269022069
+need to go faster...1.06611630497
+E500:t:138 State update PK:1.06479053355 vK:47.2375253109 maxVk:50.0 aF:0.583887263564 a:1.06611630497 power: 2000445.083 v2factor: 0.236979041406 gFactor:0.0 vSquare:172.098069286
+E500:t:138:ADVANCE STA x:1152.0 vK:48.158764335
+E500:t:139 State update PK:1.07794364462 vK:45.980764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.224830516408 gFactor:0.0 vSquare:163.275611044
+E500:t:140 State update PK:1.09016332915 vK:42.020764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.18778721152 gFactor:0.0 vSquare:136.374155062
+E500:t:141 State update PK:1.10128301369 vK:38.060764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.154076246632 gFactor:0.0 vSquare:111.892699079
+E500:t:142 State update PK:1.11130269823 vK:34.100764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.123697621745 gFactor:0.0 vSquare:89.831243097
+E500:t:143 State update PK:1.12022238277 vK:30.140764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0966513368567 gFactor:0.0 vSquare:70.1897871145
+E500:t:144 State update PK:1.1280420673 vK:26.180764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0729373919688 gFactor:0.0 vSquare:52.968331132
+E500:t:145 State update PK:1.13476175184 vK:22.220764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0525557870809 gFactor:0.0 vSquare:38.1668751496
+E500:t:146 State update PK:1.14038143638 vK:18.260764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0355065221931 gFactor:0.0 vSquare:25.7854191671
+E500:t:147 State update PK:1.14490112092 vK:14.300764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0217895973052 gFactor:0.0 vSquare:15.8239631846
+E500:t:148 State update PK:1.14832080545 vK:10.340764335 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0114050124173 gFactor:0.0 vSquare:8.2825072021
+E500:t:149 State update PK:1.15064048999 vK:6.38076433498 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00435276752941 gFactor:0.0 vSquare:3.16105121961
+E500:t:150 State update PK:1.15186017453 vK:2.42076433498 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000632862641523 gFactor:0.0 vSquare:0.459595237127
+E500:t:150:IN STA Ber vK:1.35156433498 a:-1.1
+E500:t:150:next STA (StM) at PK1.881
+E500:t:161:OUT STA, a:1.35668358887 vK:0.0
+need to go faster...1.35
+E500:t:162 State update PK:1.15255589124 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:163 State update PK:1.15421368094 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:164 State update PK:1.15696925211 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:164:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:165 State update PK:1.16081431966 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:165:AT SIG WestboundMain:Ber+10 vK:16.807851537
+E500:165:START UPDATE SIG BY OCCU sig:WestboundMain:Ber-140 from value green to value red
+E500:165:START UPDATE SIG BY OCCU sig:WestboundMain:ChV+10 from value red to value yellow
+E500:165:START UPDATE SIG BY OCCU sig:WestboundMain:990 from value yellow to value green
+SIG 990 was yellow now green
+SIG ChV+10 was red now yellow
+SIG Ber-140 was green now red
+E500:t:165next SIG (1130) at PK1.5
+need to go faster...1.35
+E500:t:166 State update PK:1.16573742368 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:167 State update PK:1.17172406451 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:168 State update PK:1.17875687056 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:169 State update PK:1.18681579483 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:170 State update PK:1.19587833555 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:171 State update PK:1.2059196801 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:172 State update PK:1.21688358297 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:173 State update PK:1.22865451733 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:174 State update PK:1.24113119069 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:175 State update PK:1.2542308629 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:176:coasting at 49.8446509744
+E500:t:176 State update PK:1.26788194533 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:177:coasting at 48.045367244
+E500:t:177 State update PK:1.28147247359 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:178:coasting at 46.3110411619
+E500:t:178 State update PK:1.29457246856 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:178:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07941686344
+E500:t:179 State update PK:1.30734816304 vK:46.6559421887 maxVk:50.0 aF:0.602991910212 a:1.07941686344 power: 2000465.38038 v2factor: 0.231174953232 gFactor:0.0 vSquare:167.883045194
+need to go faster...1.03399502108
+E500:t:180 State update PK:1.32059950043 vK:48.7037859501 maxVk:50.0 aF:0.536813771386 a:1.03399502108 power: 2000396.87121 v2factor: 0.251931249693 gFactor:0.0 vSquare:182.956608347
+E500:t:181:coasting at 49.3570448649
+E500:t:181 State update PK:1.33433285808 vK:49.3479712895 maxVk:50.0 aF:-0.504087524516 a:0.0 power: 6.90991574644 v2factor: 0.258837524516 gFactor:0.0 vSquare:187.972058472
+E500:t:182:coasting at 47.5755961927
+E500:t:182 State update PK:1.34779048499 vK:47.5668528688 maxVk:50.0 aF:-0.485740218766 a:0.0 power: 6.41809264403 v2factor: 0.240490218766 gFactor:0.0 vSquare:174.647943912
+E500:t:183:coasting at 45.8578436368
+E500:t:183 State update PK:1.36076235229 vK:45.8494072605 maxVk:50.0 aF:-0.468687568695 a:0.0 power: 5.96917978196 v2factor: 0.223437568695 gFactor:0.0 vSquare:162.264029553
+E500:t:183:boosting from vK:45.4964090565 to maxVk:50.0 with aFull:-0.465260317739
+need to go faster...1.06612417473
+E500:t:184 State update PK:1.37360551582 vK:47.2371769044 maxVk:50.0 aF:0.58389863188 a:1.06612417473 power: 2000445.09495 v2factor: 0.236975542848 gFactor:0.0 vSquare:172.095528575
+need to go faster...1.0231090544
+E500:t:185 State update PK:1.38700922044 vK:49.2215989972 maxVk:50.0 aF:0.520538181072 a:1.0231090544 power: 2000380.78695 v2factor: 0.257320873326 gFactor:0.0 vSquare:186.870641486
+E500:t:186:coasting at 48.8733194105
+E500:t:186 State update PK:1.40075360881 vK:48.8643367104 maxVk:50.0 aF:-0.499038893458 a:0.0 power: 6.77366792264 v2factor: 0.253788893458 gFactor:0.0 vSquare:184.305659737
+E500:t:187:coasting at 47.1093938195
+E500:t:187 State update PK:1.41407936767 vK:47.1007349179 maxVk:50.0 aF:-0.481050092267 a:0.0 power: 6.29383691058 v2factor: 0.235800092267 gFactor:0.0 vSquare:171.241897071
+E500:t:187:boosting from vK:45.4999629125 to maxVk:50.0 with aFull:-0.465294690022
+need to go faster...1.10352194317
+E500:t:188 State update PK:1.42692620609 vK:45.6376572582 maxVk:50.0 aF:0.637086092017 a:1.10352194317 power: 2000502.674 v2factor: 0.221185851153 gFactor:0.0 vSquare:160.628795318
+E500:t:188:ADVANCE green SIG vK:45.6491178151
+need to go faster...1.05359625697
+E500:t:189 State update PK:1.43991087817 vK:47.7984003372 maxVk:50.0 aF:0.565701670858 a:1.05359625697 power: 2000426.15651 v2factor: 0.24264458611 gFactor:0.0 vSquare:176.212480835
+need to go faster...1.01279965189
+E500:t:190 State update PK:1.45346180551 vK:49.7222519711 maxVk:50.0 aF:0.50496355719 a:1.01279965189 power: 2000365.67153 v2factor: 0.262586094704 gFactor:0.0 vSquare:190.694331666
+E500:t:191:coasting at 48.3929430045
+E500:t:191 State update PK:1.4671424644 vK:48.3840496649 maxVk:50.0 aF:-0.494074424093 a:0.0 power: 6.64036707596 v2factor: 0.248824424093 gFactor:0.0 vSquare:180.700380605
+E500:t:192:coasting at 46.6462514827
+E500:t:192 State update PK:1.48033724413 vK:46.637675626 maxVk:50.0 aF:-0.476436482597 a:0.0 power: 6.17219170326 v2factor: 0.231186482597 gFactor:0.0 vSquare:167.891418008
+E500:t:192:boosting from vK:45.4937562981 to maxVk:50.0 with aFull:-0.465234662467
+need to go faster...1.08938418884
+E500:t:193 State update PK:1.49311433184 vK:46.2294205115 maxVk:50.0 aF:0.617170130563 a:1.08938418884 power: 2000480.72126 v2factor: 0.226964058279 gFactor:0.0 vSquare:164.825024168
+E500:t:193:AT SIG WestboundMain:1130 vK:47.3702305994
+E500:193:START UPDATE SIG BY OCCU sig:WestboundMain:Ber+10 from value green to value red
+E500:193:START UPDATE SIG BY OCCU sig:WestboundMain:Ber-140 from value red to value yellow
+E500:193:START UPDATE SIG BY OCCU sig:WestboundMain:ChV+10 from value yellow to value green
+SIG ChV+10 was yellow now green
+SIG Ber-140 was red now yellow
+SIG Ber+10 was green now red
+E500:t:193next SIG (StM-140) at PK1.741
+need to go faster...1.0421218926
+E500:t:194 State update PK:1.50625392981 vK:48.3242695234 maxVk:50.0 aF:0.548854611296 a:1.0421218926 power: 2000408.96234 v2factor: 0.248017281305 gFactor:0.0 vSquare:180.114220265
+E500:t:195:coasting at 49.7135561113
+E500:t:195 State update PK:1.51993339741 vK:49.7044149868 maxVk:50.0 aF:-0.507840251506 a:0.0 power: 7.0116396133 v2factor: 0.262590251506 gFactor:0.0 vSquare:190.697350404
+E500:t:196:coasting at 47.9190843162
+E500:t:196 State update PK:1.53348819703 vK:47.9102782598 maxVk:50.0 aF:-0.489225355681 a:0.0 power: 6.51081192289 v2factor: 0.243975355681 gFactor:0.0 vSquare:177.178907539
+E500:t:197:coasting at 46.1892292208
+E500:t:197 State update PK:1.54655375123 vK:46.1807345074 maxVk:50.0 aF:-0.471928520201 a:0.0 power: 6.05389047164 v2factor: 0.226678520201 gFactor:0.0 vSquare:164.617661729
+E500:t:197:boosting from vK:45.4975989057 to maxVk:50.0 with aFull:-0.465271825457
+need to go faster...1.07554742717
+E500:t:198 State update PK:1.55934164621 vK:46.8236539191 maxVk:50.0 aF:0.597456121883 a:1.07554742717 power: 2000459.45499 v2factor: 0.232841305286 gFactor:0.0 vSquare:169.093177404
+need to go faster...1.0308317921
+E500:t:199 State update PK:1.572636937 vK:48.8531237842 maxVk:50.0 aF:0.532102019144 a:1.0308317921 power: 2000392.18432 v2factor: 0.253479772955 gFactor:0.0 vSquare:184.081171355
+E500:t:200:coasting at 49.2257782625
+E500:t:200 State update PK:1.58638193499 vK:49.216729436 maxVk:50.0 aF:-0.502712582339 a:0.0 power: 6.87274143029 v2factor: 0.257462582339 gFactor:0.0 vSquare:186.973552897
+E500:t:201:coasting at 47.4491015043
+E500:t:201 State update PK:1.59980377981 vK:47.4403811688 maxVk:50.0 aF:-0.484463081066 a:0.0 power: 6.38419811888 v2factor: 0.239213081066 gFactor:0.0 vSquare:173.720465553
+E500:t:202:coasting at 45.7357843356
+E500:t:202 State update PK:1.6127411424 vK:45.7273693408 maxVk:50.0 aF:-0.467499709184 a:0.0 power: 5.93820329684 v2factor: 0.222249709184 gFactor:0.0 vSquare:161.401386481
+E500:t:202:boosting from vK:45.4923451859 to maxVk:50.0 with aFull:-0.465221015974
+need to go faster...1.06289393398
+E500:t:203 State update PK:1.62561312077 vK:47.3806184427 maxVk:50.0 aF:0.579225826848 a:1.06289393398 power: 2000440.19517 v2factor: 0.238418107129 gFactor:0.0 vSquare:173.143142432
+need to go faster...1.02045545156
+E500:t:204 State update PK:1.63905444433 vK:49.3494982049 maxVk:50.0 aF:0.516544567886 a:1.02045545156 power: 2000376.88547 v2factor: 0.258660883676 gFactor:0.0 vSquare:187.843778995
+E500:t:205:coasting at 48.7451528763
+E500:t:205 State update PK:1.65278848717 vK:48.7361941043 maxVk:50.0 aF:-0.497709554949 a:0.0 power: 6.73790818821 v2factor: 0.252459554949 gFactor:0.0 vSquare:183.340272294
+E500:t:205:ADVANCE green SIG vK:47.5593218901
+E500:t:206:coasting at 46.9858417594
+E500:t:206 State update PK:1.66607930257 vK:46.9772050918 maxVk:50.0 aF:-0.47981486587 a:0.0 power: 6.2612114889 v2factor: 0.23456486587 gFactor:0.0 vSquare:170.344855388
+E500:t:206:boosting from vK:45.4975689776 to maxVk:50.0 with aFull:-0.465271536001
+need to go faster...1.09971186497
+E500:t:207 State update PK:1.67889996655 vK:45.7956373062 maxVk:50.0 aF:0.631740720077 a:1.09971186497 power: 2000496.73541 v2factor: 0.222721144888 gFactor:0.0 vSquare:161.743750826
+need to go faster...1.05051007261
+E500:t:208 State update PK:1.69192598642 vK:47.9387102125 maxVk:50.0 aF:0.561187720984 a:1.05051007261 power: 2000421.51772 v2factor: 0.244072351627 gFactor:0.0 vSquare:177.249347586
+need to go faster...1.0102526047
+E500:t:209 State update PK:1.70551373555 vK:49.8475181067 maxVk:50.0 aF:0.501090787137 a:1.0102526047 power: 2000361.95449 v2factor: 0.263911817562 gFactor:0.0 vSquare:191.657093364
+E500:t:210:coasting at 48.2671904184
+E500:t:210 State update PK:1.71916536169 vK:48.2583203257 maxVk:50.0 aF:-0.492782927532 a:0.0 power: 6.60579899108 v2factor: 0.247532927532 gFactor:0.0 vSquare:179.762474606
+E500:t:211:coasting at 46.5249828087
+E500:t:211 State update PK:1.73232584983 vK:46.5164285608 maxVk:50.0 aF:-0.475235990193 a:0.0 power: 6.1406336076 v2factor: 0.229985990193 gFactor:0.0 vSquare:167.019600721
+E500:t:211:boosting from vK:45.4924391797 to maxVk:50.0 with aFull:-0.46522192495
+E500:t:211:AT SIG WestboundMain:StM-140 vK:45.6649134588
+E500:211:START UPDATE SIG BY OCCU sig:WestboundMain:1130 from value green to value red
+E500:211:START UPDATE SIG BY OCCU sig:WestboundMain:Ber+10 from value red to value yellow
+E500:211:START UPDATE SIG BY OCCU sig:WestboundMain:Ber-140 from value yellow to value green
+SIG Ber-140 was yellow now green
+SIG Ber+10 was red now yellow
+SIG 1130 was green now red
+E500:t:211next SIG (StM+10) at PK1.891
+need to go faster...1.08576176321
+E500:t:212 State update PK:1.74509755858 vK:46.3835251761 maxVk:50.0 aF:0.612030747888 a:1.08576176321 power: 2000475.13295 v2factor: 0.228481015321 gFactor:0.0 vSquare:165.926663269
+need to go faster...1.03917190167
+E500:t:213 State update PK:1.75827752158 vK:48.46134454 maxVk:50.0 aF:0.544494493058 a:1.03917190167 power: 2000404.56506 v2factor: 0.249427408607 gFactor:0.0 vSquare:181.138277856
+E500:t:214:coasting at 49.5851539089
+E500:t:214 State update PK:1.77198088789 vK:49.576037169 maxVk:50.0 aF:-0.506485545618 a:0.0 power: 6.9748739542 v2factor: 0.261235545618 gFactor:0.0 vSquare:189.713540754
+E500:t:215:coasting at 47.7953831595
+E500:t:215 State update PK:1.78550069101 vK:47.7865997471 maxVk:50.0 aF:-0.487967356708 a:0.0 power: 6.47730576796 v2factor: 0.242717356708 gFactor:0.0 vSquare:176.265328038
+E500:t:216:coasting at 46.0698964356
+E500:t:216 State update PK:1.79853250694 vK:46.061422778 maxVk:50.0 aF:-0.470758756744 a:0.0 power: 6.02328281135 v2factor: 0.225508756744 gFactor:0.0 vSquare:163.768160308
+E500:t:216:boosting from vK:45.4970621756 to maxVk:50.0 with aFull:-0.465266634393
+E500:t:216:ADVANCE STA x:1881.0 vK:46.133404642
+E500:t:217 State update PK:1.81120721209 vK:44.608804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.211619437431 gFactor:0.0 vSquare:153.681508664
+E500:t:218 State update PK:1.82304579671 vK:40.648804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.175730636625 gFactor:0.0 vSquare:127.618472494
+E500:t:219 State update PK:1.83378438134 vK:36.688804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.143174175819 gFactor:0.0 vSquare:103.975436324
+E500:t:220 State update PK:1.84342296596 vK:32.728804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.113950055012 gFactor:0.0 vSquare:82.7524001542
+E500:t:221 State update PK:1.85196155058 vK:28.768804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.088058274206 gFactor:0.0 vSquare:63.9493639841
+E500:t:222 State update PK:1.85940013521 vK:24.808804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0654988333998 gFactor:0.0 vSquare:47.5663278139
+E500:t:223 State update PK:1.86573871983 vK:20.848804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0462717325936 gFactor:0.0 vSquare:33.6032916438
+E500:t:224 State update PK:1.87097730445 vK:16.888804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0303769717873 gFactor:0.0 vSquare:22.0602554737
+E500:t:225 State update PK:1.87511588907 vK:12.928804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0178145509811 gFactor:0.0 vSquare:12.9372193036
+E500:t:226 State update PK:1.8781544737 vK:8.968804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00858447017483 gFactor:0.0 vSquare:6.2341831335
+E500:t:227 State update PK:1.88009305832 vK:5.008804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00268672936859 gFactor:0.0 vSquare:1.95114696339
+E500:t:228 State update PK:1.88093164294 vK:1.048804642 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000121328562346 gFactor:0.0 vSquare:0.0881107932796
+E500:t:228:IN STA StM vK:0.787948642 a:-0.004
+E500:t:228:next STA (PoV) at PK2.375
+E500:t:239:OUT STA, a:1.35698057537 vK:0.0
+need to go faster...1.35
+E500:t:240 State update PK:1.88155571679 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:241 State update PK:1.88321350649 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:242 State update PK:1.88596907766 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:242:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:243 State update PK:1.88981414521 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:243:AT SIG WestboundMain:StM+10 vK:16.807851537
+E500:243:START UPDATE SIG BY OCCU sig:WestboundMain:StM-140 from value green to value red
+E500:243:START UPDATE SIG BY OCCU sig:WestboundMain:1130 from value red to value yellow
+E500:243:START UPDATE SIG BY OCCU sig:WestboundMain:Ber+10 from value yellow to value green
+SIG Ber+10 was yellow now green
+SIG 1130 was red now yellow
+SIG StM-140 was green now red
+E500:t:243next SIG (1185) at PK2.05
+need to go faster...1.35
+E500:t:244 State update PK:1.89473724923 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:245 State update PK:1.90072389006 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:246 State update PK:1.90775669611 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:247 State update PK:1.91581562038 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:248 State update PK:1.9248781611 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:249 State update PK:1.93491950564 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:250 State update PK:1.94588340851 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:251 State update PK:1.95765434288 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:252 State update PK:1.97013101624 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+E500:t:252:ADVANCE green SIG vK:46.671931339
+need to go faster...1.04505575962
+E500:t:253 State update PK:1.98323068845 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:254:coasting at 49.8446509744
+E500:t:254 State update PK:1.99688177088 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:255:coasting at 48.045367244
+E500:t:255 State update PK:2.01047229913 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:256:coasting at 46.3110411619
+E500:t:256 State update PK:2.02357229411 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:256:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07941893149
+E500:t:257 State update PK:2.03634797528 vK:46.6558528756 maxVk:50.0 aF:0.602994864062 a:1.07941893149 power: 2000465.38355 v2factor: 0.231174067428 gFactor:0.0 vSquare:167.882401908
+need to go faster...1.03399671045
+E500:t:258 State update PK:2.04959928927 vK:48.7037064381 maxVk:50.0 aF:0.536816283975 a:1.03399671045 power: 2000396.87372 v2factor: 0.251930426475 gFactor:0.0 vSquare:182.956010512
+E500:t:258:AT SIG WestboundMain:1185 vK:48.7615674024
+E500:258:START UPDATE SIG BY OCCU sig:WestboundMain:StM+10 from value green to value red
+E500:258:START UPDATE SIG BY OCCU sig:WestboundMain:StM-140 from value red to value yellow
+E500:258:START UPDATE SIG BY OCCU sig:WestboundMain:1130 from value yellow to value green
+SIG 1130 was yellow now green
+SIG StM-140 was red now yellow
+SIG StM+10 was green now red
+E500:t:258next SIG (PoV-140) at PK2.235
+E500:t:259:coasting at 49.3569720193
+E500:t:259 State update PK:2.06333262595 vK:49.3478984576 maxVk:50.0 aF:-0.504086760485 a:0.0 power: 6.90989507507 v2factor: 0.258836760485 gFactor:0.0 vSquare:187.97150362
+E500:t:260:coasting at 47.5755259987
+E500:t:260 State update PK:2.076790233 vK:47.5667826876 maxVk:50.0 aF:-0.485739509119 a:0.0 power: 6.41807379806 v2factor: 0.240489509119 gFactor:0.0 vSquare:174.647428554
+E500:t:261:coasting at 45.8577759073
+E500:t:261 State update PK:2.08976208115 vK:45.8493395429 maxVk:50.0 aF:-0.468686908686 a:0.0 power: 5.9691625599 v2factor: 0.223436908686 gFactor:0.0 vSquare:162.263550244
+E500:t:261:boosting from vK:45.496341834 to maxVk:50.0 with aFull:-0.4652596676
+need to go faster...1.06613386756
+E500:t:262 State update PK:2.10260514205 vK:47.2367477946 maxVk:50.0 aF:0.583912633623 a:1.06613386756 power: 2000445.10967 v2factor: 0.236971233935 gFactor:0.0 vSquare:172.092399372
+need to go faster...1.02311701211
+E500:t:263 State update PK:2.11600873413 vK:49.2212164468 maxVk:50.0 aF:0.520550141581 a:1.02311701211 power: 2000380.79866 v2factor: 0.257316870531 gFactor:0.0 vSquare:186.867734591
+E500:t:264:coasting at 48.8729617121
+E500:t:264 State update PK:2.12975302067 vK:48.8639790789 maxVk:50.0 aF:-0.499035178567 a:0.0 power: 6.77356792364 v2factor: 0.253785178567 gFactor:0.0 vSquare:184.302961922
+E500:t:265:coasting at 47.1090490162
+E500:t:265 State update PK:2.14307868201 vK:47.1003901766 maxVk:50.0 aF:-0.481046640541 a:0.0 power: 6.29374568407 v2factor: 0.235796640541 gFactor:0.0 vSquare:171.239390371
+E500:t:265:boosting from vK:45.4996294612 to maxVk:50.0 with aFull:-0.465291464825
+need to go faster...1.10349182374
+E500:t:266 State update PK:2.15592545272 vK:45.6389018428 maxVk:50.0 aF:0.637043898106 a:1.10349182374 power: 2000502.62699 v2factor: 0.221197925632 gFactor:0.0 vSquare:160.637564003
+E500:t:266:ADVANCE green SIG vK:46.3253859229
+need to go faster...1.05357187779
+E500:t:267 State update PK:2.16891045051 vK:47.7995054867 maxVk:50.0 aF:0.565666062256 a:1.05357187779 power: 2000426.11983 v2factor: 0.242655815538 gFactor:0.0 vSquare:176.22063583
+need to go faster...1.01277954303
+E500:t:268 State update PK:2.18246166786 vK:49.7232384757 maxVk:50.0 aF:0.504933020931 a:1.01277954303 power: 2000365.64215 v2factor: 0.262596522094 gFactor:0.0 vSquare:190.701904208
+E500:t:269:coasting at 48.3938842238
+E500:t:269 State update PK:2.19614259325 vK:48.38499071 maxVk:50.0 aF:-0.494084103216 a:0.0 power: 6.64062631779 v2factor: 0.248834103216 gFactor:0.0 vSquare:180.707409743
+E500:t:270:coasting at 46.6471590981
+E500:t:270 State update PK:2.20933762963 vK:46.6385830795 maxVk:50.0 aF:-0.476445479267 a:0.0 power: 6.17242835212 v2factor: 0.231195479267 gFactor:0.0 vSquare:167.897951537
+E500:t:270:boosting from vK:45.4946424176 to maxVk:50.0 with aFull:-0.465243232111
+need to go faster...1.0893751378
+E500:t:271 State update PK:2.22211492078 vK:46.2298042818 maxVk:50.0 aF:0.617157308085 a:1.0893751378 power: 2000480.70727 v2factor: 0.226967829719 gFactor:0.0 vSquare:164.82776305
+E500:t:271:AT SIG WestboundMain:PoV-140 vK:48.2949562566
+E500:271:START UPDATE SIG BY OCCU sig:WestboundMain:1185 from value green to value red
+E500:271:START UPDATE SIG BY OCCU sig:WestboundMain:StM+10 from value red to value yellow
+E500:271:START UPDATE SIG BY OCCU sig:WestboundMain:StM-140 from value yellow to value green
+SIG StM-140 was yellow now green
+SIG StM+10 was red now yellow
+SIG 1185 was green now red
+E500:t:271next SIG (PoV+10) at PK2.385
+need to go faster...1.04211452679
+E500:t:272 State update PK:2.23525461927 vK:48.3246108185 maxVk:50.0 aF:0.548843739448 a:1.04211452679 power: 2000408.95135 v2factor: 0.248020787338 gFactor:0.0 vSquare:180.116766404
+E500:t:273:coasting at 49.7138641765
+E500:t:273 State update PK:2.24893417654 vK:49.7047229934 maxVk:50.0 aF:-0.507843505957 a:0.0 power: 7.01172799656 v2factor: 0.262593505957 gFactor:0.0 vSquare:190.69971384
+E500:t:274:coasting at 47.9193810882
+E500:t:274 State update PK:2.26248906012 vK:47.9105749774 maxVk:50.0 aF:-0.489228377662 a:0.0 power: 6.51089246362 v2factor: 0.243978377662 gFactor:0.0 vSquare:177.181102151
+E500:t:275:coasting at 46.1895154993
+E500:t:275 State update PK:2.27555469526 vK:46.1810207353 maxVk:50.0 aF:-0.471931330093 a:0.0 power: 6.05396403908 v2factor: 0.226681330093 gFactor:0.0 vSquare:164.619702319
+E500:t:275:boosting from vK:45.4978810966 to maxVk:50.0 with aFull:-0.465274554732
+need to go faster...1.07554023404
+E500:t:276 State update PK:2.2883426758 vK:46.8239668128 maxVk:50.0 aF:0.597445814309 a:1.07554023404 power: 2000459.44399 v2factor: 0.232844419727 gFactor:0.0 vSquare:169.095439163
+E500:t:276:ADVANCE STA x:2375.0 vK:47.847765676
+E500:t:277 State update PK:2.30142096659 vK:45.828165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.223341320392 gFactor:0.0 vSquare:162.194132456
+E500:t:278 State update PK:2.31359826261 vK:41.868165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.186426427276 gFactor:0.0 vSquare:135.38593121
+E500:t:279 State update PK:2.32467555863 vK:37.908165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.152843874159 gFactor:0.0 vSquare:110.997729963
+E500:t:280 State update PK:2.33465285465 vK:33.948165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.122593661043 gFactor:0.0 vSquare:89.0295287167
+E500:t:281 State update PK:2.34353015067 vK:29.988165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0956757879265 gFactor:0.0 vSquare:69.4813274702
+E500:t:282 State update PK:2.35130744669 vK:26.028165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0720902548101 gFactor:0.0 vSquare:52.3531262238
+E500:t:283 State update PK:2.35798474271 vK:22.068165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0518370616938 gFactor:0.0 vSquare:37.6449249773
+E500:t:284 State update PK:2.36356203873 vK:18.108165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0349162085774 gFactor:0.0 vSquare:25.3567237308
+E500:t:285 State update PK:2.36803933475 vK:14.148165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.021327695461 gFactor:0.0 vSquare:15.4885224844
+E500:t:286 State update PK:2.37141663078 vK:10.188165676 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0110715223446 gFactor:0.0 vSquare:8.0403212379
+E500:t:287 State update PK:2.3736939268 vK:6.22816567604 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0041476892282 gFactor:0.0 vSquare:3.01211999143
+E500:t:288 State update PK:2.37487122282 vK:2.26816567604 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000556196111816 gFactor:0.0 vSquare:0.403918744964
+E500:t:288:IN STA PoV vK:1.19896567604 a:-1.1
+E500:t:288:next STA (Nat) at PK3.552
+E500:t:299:OUT STA, a:1.32284198266 vK:0.0
+need to go faster...1.35
+E500:t:300 State update PK:2.37555549463 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:301 State update PK:2.37721328433 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:302 State update PK:2.3799688555 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:302:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:303 State update PK:2.38381392305 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:303:AT SIG WestboundMain:PoV+10 vK:16.807851537
+E500:303:START UPDATE SIG BY OCCU sig:WestboundMain:PoV-140 from value green to value red
+E500:303:START UPDATE SIG BY OCCU sig:WestboundMain:1185 from value red to value yellow
+E500:303:START UPDATE SIG BY OCCU sig:WestboundMain:StM+10 from value yellow to value green
+SIG StM+10 was yellow now green
+SIG 1185 was red now yellow
+SIG PoV-140 was green now red
+E500:t:303next SIG (1260) at PK2.8
+need to go faster...1.35
+E500:t:304 State update PK:2.38873702707 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:305 State update PK:2.3947236679 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:306 State update PK:2.40175647395 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:307 State update PK:2.40981539822 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:308 State update PK:2.41887793894 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:309 State update PK:2.42891928349 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:310 State update PK:2.43988318636 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:311 State update PK:2.45165412072 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+E500:t:311:ADVANCE TIV 3 reached at curr speed 43.9081910483, maxVk will be 40.0
+E500:t:311  next TIV at PK3.2 with limit <<30 (currspeed:43.9081910483)
+E500:t:311  BDtiv: 36.8265993266
+E500:t:311:vK:43.9081910483 maxVk:40.0 =>ready to dcc
+E500:t:312 State update PK:2.46338547289 vK:40.2847910483 maxVk:40.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.172598881329 gFactor:0.0 vSquare:125.344140399
+E500:t:313:coasting at 38.631678347
+E500:t:313 State update PK:2.47431916467 vK:38.6244096195 maxVk:40.0 aF:-0.403818198265 a:0.0 power: 4.33256652822 v2factor: 0.158568198265 gFactor:0.0 vSquare:115.154828079
+E500:t:314:coasting at 37.1988401296
+E500:t:314 State update PK:2.48484723425 vK:37.1917792007 maxVk:40.0 aF:-0.392273831368 a:0.0 power: 4.05260047845 v2factor: 0.147023831368 gFactor:0.0 vSquare:106.771119366
+E500:t:314:boosting from vK:36.3933367911 to maxVk:40.0 with aFull:-0.386029206934
+need to go faster...1.33011426319
+E500:t:315 State update PK:2.49510864777 vK:37.8703359205 maxVk:40.0 aF:0.932619578039 a:1.33011426319 power: 2000886.95263 v2factor: 0.152244685149 gFactor:0.0 vSquare:110.56258907
+E500:t:315:TIV 3 reached at curr speed 39.3612187288, maxVk now 40.0
+E500:t:316:coasting at 39.457774749
+E500:t:316 State update PK:2.50599871578 vK:39.4503826472 maxVk:40.0 aF:-0.410672323741 a:0.0 power: 4.50032786505 v2factor: 0.165422323741 gFactor:0.0 vSquare:120.132406493
+E500:t:317:coasting at 38.0010679831
+E500:t:317 State update PK:2.51675285476 vK:37.9938916779 maxVk:40.0 aF:-0.398683624085 a:0.0 power: 4.20765067424 v2factor: 0.153433624085 gFactor:0.0 vSquare:111.426016039
+E500:t:318:coasting at 36.5861136628
+E500:t:318 State update PK:2.52710830351 vK:36.579139198 maxVk:40.0 aF:-0.387470269501 a:0.0 power: 3.93703581198 v2factor: 0.142220269501 gFactor:0.0 vSquare:103.2826939
+E500:t:318:boosting from vK:36.3981447207 to maxVk:40.0 with aFull:-0.386066404197
+need to go faster...1.28155967345
+E500:t:319 State update PK:2.53758156165 vK:39.3034062123 maxVk:40.0 aF:0.872310276619 a:1.28155967345 power: 2000799.31292 v2factor: 0.163999396831 gFactor:0.0 vSquare:119.099053617
+E500:t:320:coasting at 38.816130541
+E500:t:320 State update PK:2.54853679368 vK:38.8088344926 maxVk:40.0 aF:-0.405336023956 a:0.0 power: 4.36961629656 v2factor: 0.160086023956 gFactor:0.0 vSquare:116.257098007
+E500:t:321:coasting at 37.3780062469
+E500:t:321 State update PK:2.55911534662 vK:37.3709197638 maxVk:40.0 aF:-0.393693506043 a:0.0 power: 4.08685789608 v2factor: 0.148443506043 gFactor:0.0 vSquare:107.802110416
+E500:t:321:boosting from vK:36.395606928 to maxVk:40.0 with aFull:-0.386046769574
+need to go faster...1.34511198945
+E500:t:322 State update PK:2.56936378726 vK:37.4486087754 maxVk:40.0 aF:0.950993360195 a:1.34511198945 power: 2000914.62456 v2factor: 0.148868629253 gFactor:0.0 vSquare:108.110841869
+E500:t:323:coasting at 39.644631362
+E500:t:323 State update PK:2.58018936655 vK:39.6372109919 maxVk:40.0 aF:-0.412242784557 a:0.0 power: 4.53893173094 v2factor: 0.166992784557 gFactor:0.0 vSquare:121.272900913
+E500:t:324:coasting at 38.182456436
+E500:t:324 State update PK:2.59099463077 vK:38.1752537023 maxVk:40.0 aF:-0.40015187282 a:0.0 power: 4.24330535121 v2factor: 0.15490187282 gFactor:0.0 vSquare:112.492282368
+E500:t:325:coasting at 36.7623878577
+E500:t:325 State update PK:2.60139973636 vK:36.7553886653 maxVk:40.0 aF:-0.388844023356 a:0.0 power: 3.97003144684 v2factor: 0.143594023356 gFactor:0.0 vSquare:104.280336497
+E500:t:325:boosting from vK:36.3997276114 to maxVk:40.0 with aFull:-0.386078651542
+need to go faster...1.29457056016
+E500:t:326 State update PK:2.61178832814 vK:38.9088458425 maxVk:40.0 aF:0.888601087459 a:1.29457056016 power: 2000822.50692 v2factor: 0.160719472699 gFactor:0.0 vSquare:116.717118881
+E500:t:327:coasting at 39.0002758602
+E500:t:327 State update PK:2.62275150453 vK:38.9929524065 maxVk:40.0 aF:-0.406858536199 a:0.0 power: 4.4068376495 v2factor: 0.161608536199 gFactor:0.0 vSquare:117.362771387
+E500:t:328:coasting at 37.5568494281
+E500:t:328 State update PK:2.63338045328 vK:37.5497373144 maxVk:40.0 aF:-0.395117424765 a:0.0 power: 4.12126541896 v2factor: 0.149867424765 gFactor:0.0 vSquare:108.836183562
+E500:t:328:boosting from vK:36.3969266345 to maxVk:40.0 with aFull:-0.386056979827
+need to go faster...1.35
+E500:t:329 State update PK:2.64363672505 vK:37.0201835784 maxVk:40.0 aF:0.959270816514 a:1.35 power: 1985211.36241 v2factor: 0.145479183486 gFactor:0.0 vSquare:105.649370724
+E500:t:330:coasting at 39.8323225406
+E500:t:330 State update PK:2.65437658806 vK:39.8248736415 maxVk:40.0 aF:-0.413827728892 a:0.0 power: 4.57795472568 v2factor: 0.168577728892 gFactor:0.0 vSquare:122.423913502
+E500:t:331:coasting at 38.3646293123
+E500:t:331 State update PK:2.66523320219 vK:38.3573999091 maxVk:40.0 aF:-0.401633508116 a:0.0 power: 4.27933807992 v2factor: 0.156383508116 gFactor:0.0 vSquare:113.568270237
+E500:t:332:coasting at 36.9394000883
+E500:t:332 State update PK:2.67568817589 vK:36.9323759452 maxVk:40.0 aF:-0.390230173381 a:0.0 power: 4.00336874125 v2factor: 0.144980173381 gFactor:0.0 vSquare:105.286981395
+E500:t:332:boosting from vK:36.394472169 to maxVk:40.0 with aFull:-0.386037990511
+need to go faster...1.30887619138
+E500:t:333 State update PK:2.68600798182 vK:38.4840804712 maxVk:40.0 aF:0.906400738959 a:1.30887619138 power: 2000848.25376 v2factor: 0.157225452419 gFactor:0.0 vSquare:114.179704008
+E500:t:334:coasting at 39.186510595
+E500:t:334 State update PK:2.69695624543 vK:39.1791592932 maxVk:40.0 aF:-0.40840565259 a:0.0 power: 4.44471947752 v2factor: 0.16315565259 gFactor:0.0 vSquare:118.486312701
+E500:t:335:coasting at 37.7376966097
+E500:t:335 State update PK:2.70763615819 vK:37.7305584539 maxVk:40.0 aF:-0.39656421045 a:0.0 power: 4.15627475642 v2factor: 0.15131421045 gFactor:0.0 vSquare:109.886863072
+E500:t:335:boosting from vK:36.3995658889 to maxVk:40.0 with aFull:-0.386077400217
+need to go faster...1.35
+E500:t:336 State update PK:2.7179217206 vK:36.5898939665 maxVk:40.0 aF:0.962635033804 a:1.35 power: 1962137.00108 v2factor: 0.142114966196 gFactor:0.0 vSquare:103.206220912
+need to go faster...1.26310536846
+E500:t:337 State update PK:2.72855491851 vK:39.8769885823 maxVk:40.0 aF:0.84902883487 a:1.26310536846 power: 2000766.77697 v2factor: 0.168826533591 gFactor:0.0 vSquare:122.604599558
+E500:t:338:coasting at 38.5475122318
+E500:t:338 State update PK:2.73946261329 vK:38.5402559276 maxVk:40.0 aF:-0.403128011797 a:0.0 power: 4.31573798507 v2factor: 0.157878011797 gFactor:0.0 vSquare:114.653603338
+E500:t:339:coasting at 37.1170777872
+E500:t:339 State update PK:2.74996764598 vK:37.1100284791 maxVk:40.0 aF:-0.391628230493 a:0.0 power: 4.03703744078 v2factor: 0.146378230493 gFactor:0.0 vSquare:106.302273415
+E500:t:339:ADVANCE green SIG vK:36.7378389736
+E500:t:339:boosting from vK:36.3961976337 to maxVk:40.0 with aFull:-0.386051339676
+need to go faster...1.32298734876
+E500:t:340 State update PK:2.76024381918 vK:38.0740938126 maxVk:40.0 aF:0.923847971667 a:1.32298734876 power: 2000873.90286 v2factor: 0.15388937709 gFactor:0.0 vSquare:111.756991351
+E500:t:341:coasting at 39.3721486005
+E500:t:341 State update PK:2.77115847446 vK:39.3647694079 maxVk:40.0 aF:-0.409955146576 a:0.0 power: 4.48271939237 v2factor: 0.164705146576 gFactor:0.0 vSquare:119.611580665
+E500:t:342:coasting at 37.9179390553
+E500:t:342 State update PK:2.78188918433 vK:37.91077482 maxVk:40.0 aF:-0.398013073359 a:0.0 power: 4.19138444432 v2factor: 0.152763073359 gFactor:0.0 vSquare:110.939051096
+E500:t:343:coasting at 36.5053205005
+E500:t:343 State update PK:2.79222187458 vK:36.4983573295 maxVk:40.0 aF:-0.38684283264 a:0.0 power: 3.92197998224 v2factor: 0.14159283264 gFactor:0.0 vSquare:102.827038954
+E500:t:343:boosting from vK:36.3940262485 to maxVk:40.0 with aFull:-0.386034540722
+E500:t:343:AT SIG WestboundMain:1260 vK:38.678506693
+E500:343:START UPDATE SIG BY OCCU sig:WestboundMain:PoV+10 from value green to value red
+E500:343:START UPDATE SIG BY OCCU sig:WestboundMain:PoV-140 from value red to value yellow
+E500:343:START UPDATE SIG BY OCCU sig:WestboundMain:1185 from value yellow to value green
+SIG 1185 was yellow now green
+SIG PoV-140 was red now yellow
+SIG PoV+10 was green now red
+E500:t:343next SIG (1295) at PK3.15
+need to go faster...1.27608956832
+E500:t:344 State update PK:2.80273773424 vK:39.4716929835 maxVk:40.0 aF:0.865431159045 a:1.27608956832 power: 2000789.62466 v2factor: 0.165408409274 gFactor:0.0 vSquare:120.122301579
+E500:t:345:coasting at 38.7324369686
+E500:t:345 State update PK:2.81368232003 vK:38.7251533329 maxVk:40.0 aF:-0.404646427812 a:0.0 power: 4.35277637851 v2factor: 0.159396427812 gFactor:0.0 vSquare:115.75630197
+E500:t:346:coasting at 37.296714274
+E500:t:346 State update PK:2.82423796702 vK:37.2896394007 maxVk:40.0 aF:-0.393048520162 a:0.0 power: 4.07128821772 v2factor: 0.147798520162 gFactor:0.0 vSquare:107.333711083
+E500:t:346:boosting from vK:36.3992201815 to maxVk:40.0 with aFull:-0.386074725332
+need to go faster...1.33767498666
+E500:t:347 State update PK:2.83449132885 vK:37.6565502095 maxVk:40.0 aF:0.941896447445 a:1.33767498666 power: 2000900.86706 v2factor: 0.15052853921 gFactor:0.0 vSquare:109.316295723
+E500:t:348:coasting at 39.5588437709
+E500:t:348 State update PK:2.84535165954 vK:39.5514363956 maxVk:40.0 aF:-0.411520850302 a:0.0 power: 4.52117798227 v2factor: 0.166270850302 gFactor:0.0 vSquare:120.748620408
+E500:t:349:coasting at 38.0991824999
+E500:t:349 State update PK:2.85613345215 vK:38.0919919149 maxVk:40.0 aF:-0.399476943886 a:0.0 power: 4.22690903242 v2factor: 0.154226943886 gFactor:0.0 vSquare:112.002137898
+E500:t:350:coasting at 36.6814648295
+E500:t:350 State update PK:2.86651576112 vK:36.6744770037 maxVk:40.0 aF:-0.388212547842 a:0.0 power: 3.95485893288 v2factor: 0.142962547842 gFactor:0.0 vSquare:103.821748614
+E500:t:350:boosting from vK:36.3957644077 to maxVk:40.0 with aFull:-0.386047987937
+need to go faster...1.28888210232
+E500:t:351 State update PK:2.87693828106 vK:39.080370073 maxVk:40.0 aF:0.881490839663 a:1.28888210232 power: 2000812.3403 v2factor: 0.162141262655 gFactor:0.0 vSquare:117.749646082
+E500:t:352:coasting at 38.9163672317
+E500:t:352 State update PK:2.88789964395 vK:38.9090562818 maxVk:40.0 aF:-0.406163886592 a:0.0 power: 4.38984820085 v2factor: 0.160913886592 gFactor:0.0 vSquare:116.858305441
+E500:t:353:coasting at 37.4753598795
+E500:t:353 State update PK:2.89850562951 vK:37.4682594595 maxVk:40.0 aF:-0.394467776048 a:0.0 power: 4.10556138372 v2factor: 0.149217776048 gFactor:0.0 vSquare:108.364398001
+E500:t:353:boosting from vK:36.3936855034 to maxVk:40.0 with aFull:-0.386031904633
+need to go faster...1.35
+E500:t:354 State update PK:2.90875509698 vK:37.2061233255 maxVk:40.0 aF:0.957804868035 a:1.35 power: 1995182.41668 v2factor: 0.146945131965 gFactor:0.0 vSquare:106.713966569
+E500:t:355:coasting at 39.7470772915
+E500:t:355 State update PK:2.919534553 vK:39.7396413664 maxVk:40.0 aF:-0.41310695378 a:0.0 power: 4.5602006081 v2factor: 0.16785695378 gFactor:0.0 vSquare:121.900474785
+E500:t:356:coasting at 38.2818935507
+E500:t:356 State update PK:2.93036784558 vK:38.2746762755 maxVk:40.0 aF:-0.400959733469 a:0.0 power: 4.26294555501 v2factor: 0.155709733469 gFactor:0.0 vSquare:113.07896403
+E500:t:357:coasting at 36.8590111037
+E500:t:357 State update PK:2.94080017157 vK:36.8519983067 maxVk:40.0 aF:-0.389599836827 a:0.0 power: 3.98820347973 v2factor: 0.144349836827 gFactor:0.0 vSquare:104.829220644
+E500:t:357:boosting from vK:36.3982721729 to maxVk:40.0 with aFull:-0.386067390316
+need to go faster...1.30215431543
+E500:t:358 State update PK:2.95114941263 vK:38.6825046109 maxVk:40.0 aF:0.898051446569 a:1.30215431543 power: 2000836.12393 v2factor: 0.158852868866 gFactor:0.0 vSquare:115.361560542
+E500:t:359:coasting at 39.1016999774
+E500:t:359 State update PK:2.96210765268 vK:39.094361374 maxVk:40.0 aF:-0.407700187494 a:0.0 power: 4.42743846172 v2factor: 0.162450187494 gFactor:0.0 vSquare:117.973992371
+E500:t:360:coasting at 37.6553426132
+E500:t:360 State update PK:2.97276435706 vK:37.6482163319 maxVk:40.0 aF:-0.395904512902 a:0.0 power: 4.14030520792 v2factor: 0.150654512902 gFactor:0.0 vSquare:109.407779885
+E500:t:360:boosting from vK:36.3957724079 to maxVk:40.0 with aFull:-0.386048049832
+need to go faster...1.35
+E500:t:361 State update PK:2.98303369772 vK:36.77750509 maxVk:40.0 aF:0.961173036642 a:1.35 power: 1972197.6827 v2factor: 0.143576963358 gFactor:0.0 vSquare:104.267947246
+E500:t:362:coasting at 39.9360935063
+E500:t:362 State update PK:2.99371571078 vK:39.9286287762 maxVk:40.0 aF:-0.414707228733 a:0.0 power: 4.59963638525 v2factor: 0.169457228733 gFactor:0.0 vSquare:123.062620721
+E500:t:363:coasting at 38.4653382478
+E500:t:363 State update PK:3.00460071373 vK:38.4580940467 maxVk:40.0 aF:-0.402455613692 a:0.0 power: 4.29935440028 v2factor: 0.157205613692 gFactor:0.0 vSquare:114.165296799
+E500:t:364:coasting at 37.037245674
+E500:t:364 State update PK:3.01508325406 vK:37.0302076876 maxVk:40.0 aF:-0.390999241506 a:0.0 power: 4.02188419963 v2factor: 0.145749241506 gFactor:0.0 vSquare:105.84549129
+E500:t:364:boosting from vK:36.39388303 to maxVk:40.0 with aFull:-0.386033432746
+need to go faster...1.31677065365
+E500:t:365 State update PK:3.02537562843 vK:38.2536306917 maxVk:40.0 aF:0.916174776832 a:1.31677065365 power: 2000862.57216 v2factor: 0.155345876818 gFactor:0.0 vSquare:112.814725358
+E500:t:366:coasting at 39.2887239702
+E500:t:366 State update PK:3.03630714314 vK:39.2813573278 maxVk:40.0 aF:-0.409257907065 a:0.0 power: 4.46561280186 v2factor: 0.164007907065 gFactor:0.0 vSquare:119.105233889
+E500:t:367:coasting at 37.8369422789
+E500:t:367 State update PK:3.04701502553 vK:37.8297897785 maxVk:40.0 aF:-0.397361133858 a:0.0 power: 4.17558004445 v2factor: 0.152111133858 gFactor:0.0 vSquare:110.46560193
+E500:t:368:coasting at 36.4265947072
+E500:t:368 State update PK:3.0573255403 vK:36.4196425171 maxVk:40.0 aF:-0.386232785209 a:0.0 power: 3.90734999046 v2factor: 0.140982785209 gFactor:0.0 vSquare:102.384012497
+E500:t:368:boosting from vK:36.3987917568 to maxVk:40.0 with aFull:-0.386071410463
+need to go faster...1.26997970001
+E500:t:369 State update PK:3.06789447873 vK:39.6613767568 maxVk:40.0 aF:0.857725910127 a:1.26997970001 power: 2000778.84733 v2factor: 0.167003789881 gFactor:0.0 vSquare:121.28089316
+E500:t:370:coasting at 38.6485939488
+E500:t:370 State update PK:3.07882513611 vK:38.6413227212 maxVk:40.0 aF:-0.403957092761 a:0.0 power: 4.33595455191 v2factor: 0.158707092761 gFactor:0.0 vSquare:115.255695542
+E500:t:371:coasting at 37.2152719978
+E500:t:371 State update PK:3.08935783553 vK:37.2082087303 maxVk:40.0 aF:-0.392403749924 a:0.0 power: 4.05573350937 v2factor: 0.147153749924 gFactor:0.0 vSquare:106.865468354
+E500:t:371:boosting from vK:36.3956060944 to maxVk:40.0 with aFull:-0.386046763124
+need to go faster...1.33120699136
+E500:t:372 State update PK:3.09961806873 vK:37.8392879193 maxVk:40.0 aF:0.933962144385 a:1.33120699136 power: 2000888.95916 v2factor: 0.151994846972 gFactor:0.0 vSquare:110.381152485
+E500:t:372:ADVANCE green SIG vK:37.8728713396
+E500:t:373:coasting at 39.4748382146
+E500:t:373 State update PK:3.11050437301 vK:39.4674435369 maxVk:40.0 aF:-0.410815428032 a:0.0 power: 4.50384297498 v2factor: 0.165565428032 gFactor:0.0 vSquare:120.236331178
+E500:t:374:coasting at 38.0176331646
+E500:t:374 State update PK:3.12126318082 vK:38.0104544511 maxVk:40.0 aF:-0.398817420841 a:0.0 power: 4.21089761365 v2factor: 0.153567420841 gFactor:0.0 vSquare:111.523181438
+E500:t:375:coasting at 36.6022127887
+E500:t:375 State update PK:3.13162316459 vK:36.5952360704 maxVk:40.0 aF:-0.387595460485 a:0.0 power: 3.94004093785 v2factor: 0.142345460485 gFactor:0.0 vSquare:103.373609648
+E500:t:375:boosting from vK:36.3933347848 to maxVk:40.0 with aFull:-0.386029191413
+need to go faster...1.28326544684
+E500:t:376 State update PK:3.14208369955 vK:39.2512220076 maxVk:40.0 aF:0.874451749049 a:1.28326544684 power: 2000802.34169 v2factor: 0.163563697793 gFactor:0.0 vSquare:118.782641825
+E500:t:376:AT SIG WestboundMain:1295 vK:39.2363609034
+E500:376:START UPDATE SIG BY OCCU sig:WestboundMain:1260 from value green to value red
+E500:376:START UPDATE SIG BY OCCU sig:WestboundMain:PoV+10 from value red to value yellow
+E500:376:START UPDATE SIG BY OCCU sig:WestboundMain:PoV-140 from value yellow to value green
+SIG PoV-140 was yellow now green
+SIG PoV+10 was red now yellow
+SIG 1260 was green now red
+E500:t:376next SIG (Nat-140) at PK3.412
+E500:t:377:coasting at 38.8332582354
+E500:t:377 State update PK:3.15303954841 vK:38.8259596434 maxVk:40.0 aF:-0.405477331675 a:0.0 power: 4.37306847665 v2factor: 0.160227331675 gFactor:0.0 vSquare:116.359717992
+E500:t:377:ADVANCE TIV 4 reached at curr speed 37.4442922778, maxVk will be 30.0
+E500:t:377  next TIV at PK6.1 with limit <<20 (currspeed:37.4442922778)
+E500:t:377  BDtiv: 26.3047138047
+E500:t:377:vK:37.4442922778 maxVk:30.0 =>ready to dcc
+E500:t:378 State update PK:3.16362215359 vK:37.2858922778 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.14786968436 gFactor:0.0 vSquare:107.385391692
+E500:t:379 State update PK:3.17342659588 vK:33.3258922778 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.118143114308 gFactor:0.0 vSquare:85.7974686331
+E500:t:380:coasting at 29.8096121798
+E500:t:380 State update PK:3.182141064 vK:29.8034982075 maxVk:30.0 aF:-0.339665128946 a:0.0 power: 2.81200251713 v2factor: 0.0944151289456 gFactor:0.0 vSquare:68.5658162277
+E500:t:381:coasting at 28.6004016779
+E500:t:381 State update PK:3.19025042151 vK:28.5944227854 maxVk:30.0 aF:-0.332160691214 a:0.0 power: 2.63831756591 v2factor: 0.0869106912144 gFactor:0.0 vSquare:63.1159703808
+E500:t:382:coasting at 27.4173686076
+E500:t:382 State update PK:3.1980276161 vK:27.4115164582 maxVk:30.0 aF:-0.32511941077 a:0.0 power: 2.475560022 v2factor: 0.0798694107698 gFactor:0.0 vSquare:58.002476957
+E500:t:382:boosting from vK:27.294602079 to maxVk:30.0 with aFull:-0.324439626629
+E500:t:382:TIV 4 reached at curr speed 27.8847718885, maxVk now 30.0
+E500:t:383:coasting at 29.7915078217
+E500:t:383 State update PK:3.20600718371 vK:29.7853959131 maxVk:30.0 aF:-0.339550480943 a:0.0 power: 2.80934597427 v2factor: 0.0943004809435 gFactor:0.0 vSquare:68.4825569669
+E500:t:384:coasting at 28.5826972306
+E500:t:384 State update PK:3.2141115692 vK:28.5767202743 maxVk:30.0 aF:-0.332053124228 a:0.0 power: 2.63583034647 v2factor: 0.0868031242284 gFactor:0.0 vSquare:63.0378534702
+E500:t:385:coasting at 27.4000393896
+E500:t:385 State update PK:3.22188389933 vK:27.3941890569 maxVk:30.0 aF:-0.325018479346 a:0.0 power: 2.47322713061 v2factor: 0.079768479346 gFactor:0.0 vSquare:57.9291789005
+E500:t:385:boosting from vK:27.2948270444 to maxVk:30.0 with aFull:-0.324440931872
+E500:t:386:coasting at 29.7735120028
+E500:t:386 State update PK:3.229873448 vK:29.7674021442 maxVk:30.0 aF:-0.339436589304 a:0.0 power: 2.80670707118 v2factor: 0.094186589304 gFactor:0.0 vSquare:68.3998469891
+E500:t:387:coasting at 28.5650986845
+E500:t:387 State update PK:3.23797289124 vK:28.5591236517 maxVk:30.0 aF:-0.331946266678 a:0.0 power: 2.63335957661 v2factor: 0.0866962666785 gFactor:0.0 vSquare:62.9602517636
+E500:t:388:coasting at 27.3828135982
+E500:t:388 State update PK:3.24574038599 vK:27.3769650704 maxVk:30.0 aF:-0.324918213559 a:0.0 power: 2.47090960648 v2factor: 0.0796682135591 gFactor:0.0 vSquare:57.8563642404
+E500:t:388:boosting from vK:27.295149905 to maxVk:30.0 with aFull:-0.324442805119
+E500:t:389:coasting at 29.7545987524
+E500:t:389 State update PK:3.25373967427 vK:29.748491047 maxVk:30.0 aF:-0.33931696561 a:0.0 power: 2.80393547598 v2factor: 0.0940669656098 gFactor:0.0 vSquare:68.3129742991
+E500:t:390:coasting at 28.5466027019
+E500:t:390 State update PK:3.26183392328 vK:28.5406296893 maxVk:30.0 aF:-0.331834030868 a:0.0 power: 2.63076449815 v2factor: 0.0865840308683 gFactor:0.0 vSquare:62.8787442762
+E500:t:391:coasting at 27.3647091316
+E500:t:391 State update PK:3.26959633602 vK:27.3588624994 maxVk:30.0 aF:-0.324812901247 a:0.0 power: 2.46847541757 v2factor: 0.0795629012473 gFactor:0.0 vSquare:57.7798847112
+E500:t:391:boosting from vK:27.2945898876 to maxVk:30.0 with aFull:-0.324439555895
+E500:t:392:coasting at 29.7364029032
+E500:t:392 State update PK:3.27760552815 vK:29.7302972681 maxVk:30.0 aF:-0.339201951122 a:0.0 power: 2.80127078911 v2factor: 0.0939519511224 gFactor:0.0 vSquare:68.2294488906
+E500:t:393:coasting at 28.5288080432
+E500:t:393 State update PK:3.2856947799 vK:28.5228369731 maxVk:30.0 aF:-0.331726119389 a:0.0 power: 2.62826945084 v2factor: 0.0864761193889 gFactor:0.0 vSquare:62.8003771887
+E500:t:394:coasting at 27.3472909043
+E500:t:394 State update PK:3.2934523033 vK:27.3414460947 maxVk:30.0 aF:-0.324711646479 a:0.0 power: 2.46613499403 v2factor: 0.0794616464792 gFactor:0.0 vSquare:57.7063518368
+E500:t:394:boosting from vK:27.2947096088 to maxVk:30.0 with aFull:-0.324440250512
+E500:t:395:coasting at 29.7177333728
+E500:t:395 State update PK:3.30147127998 vK:29.7116298605 maxVk:30.0 aF:-0.339084015662 a:0.0 power: 2.79853854582 v2factor: 0.0938340156618 gFactor:0.0 vSquare:68.1438022235
+E500:t:396:coasting at 28.5105498926
+E500:t:396 State update PK:3.30955540435 vK:28.5045808142 maxVk:30.0 aF:-0.331615467113 a:0.0 power: 2.62571107821 v2factor: 0.0863654671126 gFactor:0.0 vSquare:62.7200196896
+E500:t:397:coasting at 27.329418746
+E500:t:397 State update PK:3.31730791102 vK:27.3235758052 maxVk:30.0 aF:-0.324607819956 a:0.0 power: 2.46373510431 v2factor: 0.0793578199556 gFactor:0.0 vSquare:57.6309513113
+E500:t:397:boosting from vK:27.2943702585 to maxVk:30.0 with aFull:-0.324438281623
+E500:t:398:coasting at 29.6991113285
+E500:t:398 State update PK:3.3253366731 vK:29.6930099323 maxVk:30.0 aF:-0.338966453956 a:0.0 power: 2.7958150789 v2factor: 0.0937164539557 gFactor:0.0 vSquare:68.0584269831
+E500:t:399:coasting at 28.4923379248
+E500:t:399 State update PK:3.33341568309 vK:28.4863708318 maxVk:30.0 aF:-0.331505165295 a:0.0 power: 2.62316085312 v2factor: 0.0862551652947 gFactor:0.0 vSquare:62.6399166991
+E500:t:400:coasting at 27.3115915481
+E500:t:400 State update PK:3.3411631857 vK:27.3057504703 maxVk:30.0 aF:-0.324504322245 a:0.0 power: 2.4613427916 v2factor: 0.0792543222446 gFactor:0.0 vSquare:57.5557895749
+E500:t:400:boosting from vK:27.2999100026 to maxVk:30.0 with aFull:-0.324470425929
+E500:t:401:coasting at 29.6558724153
+E500:t:401 State update PK:3.34920481912 vK:29.6497759275 maxVk:30.0 aF:-0.338693769176 a:0.0 power: 2.78949843447 v2factor: 0.0934437691757 gFactor:0.0 vSquare:67.8603988204
+E500:t:402:coasting at 28.4500501872
+E500:t:402 State update PK:3.35727195379 vK:28.4440876995 maxVk:30.0 aF:-0.331249319039 a:0.0 power: 2.61724574476 v2factor: 0.0859993190385 gFactor:0.0 vSquare:62.4541169488
+E500:t:402:boosting from vK:27.2993892103 to maxVk:30.0 with aFull:-0.324467403759
+need to go faster...1.35
+E500:t:403 State update PK:3.36500854505 vK:27.4100604456 maxVk:30.0 aF:1.02503059391 a:1.35 power: 1469866.96568 v2factor: 0.0797194060926 gFactor:0.0 vSquare:57.8935410984
+E500:t:404:coasting at 29.612922251
+E500:t:404 State update PK:3.37307217019 vK:29.6068306316 maxVk:30.0 aF:-0.338423298701 a:0.0 power: 2.78323369068 v2factor: 0.093173298701 gFactor:0.0 vSquare:67.6639787226
+E500:t:405:coasting at 28.408043477
+E500:t:405 State update PK:3.38112750865 vK:28.4020855571 maxVk:30.0 aF:-0.330995549258 a:0.0 power: 2.61137886362 v2factor: 0.0857455492575 gFactor:0.0 vSquare:62.2698251689
+E500:t:405:ADVANCE green SIG vK:27.8390057405
+E500:t:405:boosting from vK:27.2991119078 to maxVk:30.0 with aFull:-0.324465794591
+need to go faster...1.35
+E500:t:406 State update PK:3.38885490887 vK:27.5383652609 maxVk:30.0 aF:1.02428193997 a:1.35 power: 1476747.32871 v2factor: 0.080468060032 gFactor:0.0 vSquare:58.4372258765
+E500:t:407:coasting at 29.5695179705
+E500:t:407 State update PK:3.39693871901 vK:29.5634312639 maxVk:30.0 aF:-0.338150366757 a:0.0 power: 2.77691253457 v2factor: 0.0929003667568 gFactor:0.0 vSquare:67.4657710652
+E500:t:408:coasting at 28.3655912388
+E500:t:408 State update PK:3.40498213635 vK:28.3596379283 maxVk:30.0 aF:-0.330739468922 a:0.0 power: 2.60545877423 v2factor: 0.085489468922 gFactor:0.0 vSquare:62.0838554263
+E500:t:408:boosting from vK:27.2983660353 to maxVk:30.0 with aFull:-0.32446146642
+E500:t:408:AT SIG WestboundMain:Nat-140 vK:27.3346189395
+E500:408:START UPDATE SIG BY OCCU sig:WestboundMain:1295 from value green to value red
+E500:408:START UPDATE SIG BY OCCU sig:WestboundMain:1260 from value red to value yellow
+E500:408:START UPDATE SIG BY OCCU sig:WestboundMain:PoV+10 from value yellow to value green
+SIG PoV+10 was yellow now green
+SIG 1260 was red now yellow
+SIG 1295 was green now red
+E500:t:408next SIG (Nat+10) at PK3.562
+need to go faster...1.35
+E500:t:409 State update PK:3.41270187634 vK:27.6665399766 maxVk:30.0 aF:1.02353055117 a:1.35 power: 1483620.71521 v2factor: 0.0812194488313 gFactor:0.0 vSquare:58.9828967547
+E500:t:410:coasting at 29.5261133117
+E500:t:410 State update PK:3.42080419311 vK:29.5200315107 maxVk:30.0 aF:-0.337877832775 a:0.0 power: 2.77060118619 v2factor: 0.0926278327749 gFactor:0.0 vSquare:67.2678524146
+E500:t:411:coasting at 28.3231372364
+E500:t:411 State update PK:3.42883568901 vK:28.3171885287 maxVk:30.0 aF:-0.330483760934 a:0.0 power: 2.59954749001 v2factor: 0.0852337609342 gFactor:0.0 vSquare:61.8981560887
+E500:t:411:boosting from vK:27.29758622 to maxVk:30.0 with aFull:-0.324456941411
+need to go faster...1.35
+E500:t:412 State update PK:3.43654944552 vK:27.7953536266 maxVk:30.0 aF:1.02277189842 a:1.35 power: 1490528.36473 v2factor: 0.0819781015808 gFactor:0.0 vSquare:59.5338428328
+E500:t:413:coasting at 29.483460678
+E500:t:413 State update PK:3.44466880314 vK:29.4773836906 maxVk:30.0 aF:-0.33761041069 a:0.0 power: 2.76440878162 v2factor: 0.0923604106895 gFactor:0.0 vSquare:67.0736461071
+E500:t:414:coasting at 28.2814174298
+E500:t:414 State update PK:3.45268858396 vK:28.2754732385 maxVk:30.0 aF:-0.330232848258 a:0.0 power: 2.59374723983 v2factor: 0.0849828482577 gFactor:0.0 vSquare:61.7159391849
+E500:t:414:boosting from vK:27.2974954678 to maxVk:30.0 with aFull:-0.324456414815
+need to go faster...1.35
+E500:t:415 State update PK:3.46039819826 vK:27.9242802189 maxVk:30.0 aF:1.02200904872 a:1.35 power: 1497442.07088 v2factor: 0.0827409512757 gFactor:0.0 vSquare:60.0878368015
+E500:t:416:coasting at 29.4410458565
+E500:t:416 State update PK:3.4685329878 vK:29.434973649 maxVk:30.0 aF:-0.337344862995 a:0.0 power: 2.75826032024 v2factor: 0.0920948629946 gFactor:0.0 vSquare:66.8808010128
+E500:t:417:coasting at 28.2399288992
+E500:t:417 State update PK:3.47654111868 vK:28.2339891927 maxVk:30.0 aF:-0.329983693324 a:0.0 power: 2.58798778641 v2factor: 0.0847336933244 gFactor:0.0 vSquare:61.5349987831
+E500:t:417:boosting from vK:27.2976009727 to maxVk:30.0 with aFull:-0.324457027015
+need to go faster...1.35
+E500:t:418 State update PK:3.48424829408 vK:28.0530985533 maxVk:30.0 aF:1.02124331071 a:1.35 power: 1504349.97176 v2factor: 0.0835066892872 gFactor:0.0 vSquare:60.6439283131
+E500:t:419:coasting at 29.3986527952
+E500:t:419 State update PK:3.49239684722 vK:29.3925853582 maxVk:30.0 aF:-0.337079833531 a:0.0 power: 2.75212438322 v2factor: 0.0918298335311 gFactor:0.0 vSquare:66.6883322666
+E500:t:420:coasting at 28.1984603229
+E500:t:420 State update PK:3.50039333394 vK:28.1925250925 maxVk:30.0 aF:-0.329735023737 a:0.0 power: 2.58223970294 v2factor: 0.084485023737 gFactor:0.0 vSquare:61.3544108475
+E500:t:420:boosting from vK:27.2976953319 to maxVk:30.0 with aFull:-0.324457574544
+need to go faster...1.35
+E500:t:421 State update PK:3.50809972795 vK:28.1818941471 maxVk:30.0 aF:1.02047418142 a:1.35 power: 1511256.65327 v2factor: 0.0842758185818 gFactor:0.0 vSquare:61.2024826302
+E500:t:422:coasting at 29.3563654118
+E500:t:422 State update PK:3.51626040121 vK:29.3503027266 maxVk:30.0 aF:-0.336815845208 a:0.0 power: 2.74601306111 v2factor: 0.0915658452081 gFactor:0.0 vSquare:66.4966196137
+E500:t:423:ADVANCE STA x:3552.0 vK:28.1570937947
+E500:t:423 State update PK:3.52424525335 vK:28.1372937947 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0842373301647 gFactor:0.0 vSquare:61.17453171
+E500:t:424 State update PK:3.53150841829 vK:24.1772937947 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0622093057365 gFactor:0.0 vSquare:45.1774188355
+E500:t:425 State update PK:3.53767158323 vK:20.2172937947 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0435136213083 gFactor:0.0 vSquare:31.600305961
+E500:t:426 State update PK:3.54273474818 vK:16.2572937947 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0281502768801 gFactor:0.0 vSquare:20.4431930865
+E500:t:427 State update PK:3.54669791312 vK:12.2972937947 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0161192724519 gFactor:0.0 vSquare:11.706080212
+E500:t:428 State update PK:3.54956107806 vK:8.33729379468 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00742060802363 gFactor:0.0 vSquare:5.38896733743
+E500:t:429 State update PK:3.55132424301 vK:4.37729379468 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00205428359541 gFactor:0.0 vSquare:1.4918544629
+E500:t:430 State update PK:3.55199261395 vK:0.792125794677 maxVk:30.0 aF:-0.004 a:-0.004 power: 0.0 v2factor: 6.6680093001e-05 gFactor:0.0 vSquare:0.0484241779237
+E500:t:430:IN STA Nat vK:0.791621794677 a:-0.004
+E500:t:430:next STA (ReD) at PK4.269
+E500:t:441:OUT STA, a:1.34439813276 vK:0.0
+need to go faster...1.35
+E500:t:442 State update PK:3.55255530926 vK:3.97509959103 maxVk:30.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:443 State update PK:3.55421309896 vK:7.93816552656 maxVk:30.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:444 State update PK:3.55696867013 vK:11.8772793223 maxVk:30.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:444:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:445 State update PK:3.56081373768 vK:15.7808101534 maxVk:30.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:445:AT SIG WestboundMain:Nat+10 vK:16.807851537
+E500:445:START UPDATE SIG BY OCCU sig:WestboundMain:Nat-140 from value green to value red
+E500:445:START UPDATE SIG BY OCCU sig:WestboundMain:1295 from value red to value yellow
+E500:445:START UPDATE SIG BY OCCU sig:WestboundMain:1260 from value yellow to value green
+SIG 1260 was yellow now green
+SIG 1295 was red now yellow
+SIG Nat-140 was green now red
+E500:t:445next SIG (1370) at PK3.9
+need to go faster...1.35
+E500:t:446 State update PK:3.5657368417 vK:19.6375498514 maxVk:30.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:447 State update PK:3.57172348253 vK:23.4368373444 maxVk:30.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:448 State update PK:3.57875628858 vK:27.1686697263 maxVk:30.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+E500:t:449:coasting at 29.6908231124
+E500:t:449 State update PK:3.58677721 vK:29.6847226576 maxVk:30.0 aF:-0.338914153816 a:0.0 power: 2.79460351688 v2factor: 0.0936641538161 gFactor:0.0 vSquare:68.0204457633
+E500:t:450:coasting at 28.4842321412
+E500:t:450 State update PK:3.59485394369 vK:28.4782659315 maxVk:30.0 aF:-0.331456094822 a:0.0 power: 2.62202633693 v2factor: 0.0862060948218 gFactor:0.0 vSquare:62.6042809164
+E500:t:451:coasting at 27.3036569389
+E500:t:451 State update PK:3.60259921907 vK:27.2978166899 maxVk:30.0 aF:-0.324458278738 a:0.0 power: 2.46027850459 v2factor: 0.0792082787379 gFactor:0.0 vSquare:57.5223520246
+E500:t:451:boosting from vK:27.2978166899 to maxVk:30.0 with aFull:-0.324458278738
+E500:t:452:coasting at 29.646598725
+E500:t:452 State update PK:3.61064321532 vK:29.640503289 maxVk:30.0 aF:-0.338635336696 a:0.0 power: 2.78814494753 v2factor: 0.0933853366961 gFactor:0.0 vSquare:67.8179641947
+E500:t:453:coasting at 28.4409803207
+E500:t:453 State update PK:3.618707803 vK:28.4350188198 maxVk:30.0 aF:-0.33119449467 a:0.0 power: 2.61597824694 v2factor: 0.0859444946703 gFactor:0.0 vSquare:62.4143025928
+E500:t:453:boosting from vK:27.296345441 to maxVk:30.0 with aFull:-0.32444974185
+need to go faster...1.35
+E500:t:454 State update PK:3.62644214504 vK:27.4261720014 maxVk:30.0 aF:1.02493677568 a:1.35 power: 1470730.95003 v2factor: 0.079813224317 gFactor:0.0 vSquare:57.9616734328
+E500:t:455:coasting at 29.6045446401
+E500:t:455 State update PK:3.63450814506 vK:29.5984539695 maxVk:30.0 aF:-0.33837058798 a:0.0 power: 2.7820128536 v2factor: 0.0931205879804 gFactor:0.0 vSquare:67.6256993322
+E500:t:456:coasting at 28.3998497316
+E500:t:456 State update PK:3.64256118261 vK:28.3938927019 maxVk:30.0 aF:-0.330946093132 a:0.0 power: 2.61023551626 v2factor: 0.0856960931325 gFactor:0.0 vSquare:62.2339093192
+E500:t:456:boosting from vK:27.2969201835 to maxVk:30.0 with aFull:-0.324453076726
+need to go faster...1.35
+E500:t:457 State update PK:3.65028682807 vK:27.5559141733 maxVk:30.0 aF:1.02417927066 a:1.35 power: 1477688.39151 v2factor: 0.0805707293397 gFactor:0.0 vSquare:58.5117860129
+E500:t:458:coasting at 29.5625644574
+E500:t:458 State update PK:3.65837317327 vK:29.5564785371 maxVk:30.0 aF:-0.338106679338 a:0.0 power: 2.77590078086 v2factor: 0.0928566793376 gFactor:0.0 vSquare:67.4340445444
+E500:t:459:coasting at 28.3587901165
+E500:t:459 State update PK:3.66641468079 vK:28.3528375439 maxVk:30.0 aF:-0.330698478793 a:0.0 power: 2.60451117923 v2factor: 0.0854484787927 gFactor:0.0 vSquare:62.0540877216
+E500:t:459:boosting from vK:27.2975343145 to maxVk:30.0 with aFull:-0.324456640225
+need to go faster...1.35
+E500:t:460 State update PK:3.67413329097 vK:27.6852257243 maxVk:30.0 aF:1.02342071948 a:1.35 power: 1484622.74097 v2factor: 0.0813292805193 gFactor:0.0 vSquare:59.0626583292
+E500:t:461:coasting at 29.5202898574
+E500:t:461 State update PK:3.68223822057 vK:29.5142087141 maxVk:30.0 aF:-0.337841298285 a:0.0 power: 2.76975516384 v2factor: 0.0925912982847 gFactor:0.0 vSquare:67.2413204682
+E500:t:462:coasting at 28.3174412224
+E500:t:462 State update PK:3.690268117 vK:28.3114931317 maxVk:30.0 aF:-0.330449481972 a:0.0 power: 2.59875506645 v2factor: 0.0851994819719 gFactor:0.0 vSquare:61.8732621437
+E500:t:462:boosting from vK:27.297834306 to maxVk:30.0 with aFull:-0.324458380958
+need to go faster...1.35
+E500:t:463 State update PK:3.69798125816 vK:27.8141670563 maxVk:30.0 aF:1.02266080084 a:1.35 power: 1491537.23747 v2factor: 0.0820891991597 gFactor:0.0 vSquare:59.614523718
+E500:t:464:coasting at 29.4777802604
+E500:t:464 State update PK:3.70610302932 vK:29.4717039136 maxVk:30.0 aF:-0.337574824965 a:0.0 power: 2.76358480279 v2factor: 0.0923248249651 gFactor:0.0 vSquare:67.04780317
+E500:t:465:coasting at 28.2758611433
+E500:t:465 State update PK:3.71412124994 vK:28.269917553 maxVk:30.0 aF:-0.33019945936 a:0.0 power: 2.59297541449 v2factor: 0.0849494593605 gFactor:0.0 vSquare:61.6916916198
+E500:t:465:boosting from vK:27.297876588 to maxVk:30.0 with aFull:-0.324458626305
+need to go faster...1.35
+E500:t:466 State update PK:3.72183050339 vK:27.9427776854 maxVk:30.0 aF:1.02189931067 a:1.35 power: 1498434.00006 v2factor: 0.082850689334 gFactor:0.0 vSquare:60.1675303805
+E500:t:467:coasting at 29.4350746403
+E500:t:467 State update PK:3.72996738551 vK:29.4290031051 maxVk:30.0 aF:-0.337307509527 a:0.0 power: 2.75739548479 v2factor: 0.0920575095272 gFactor:0.0 vSquare:66.8536743117
+E500:t:468:coasting at 28.2340879805
+E500:t:468 State update PK:3.73797387628 vK:28.2281489049 maxVk:30.0 aF:-0.329948645685 a:0.0 power: 2.58717763926 v2factor: 0.0846986456845 gFactor:0.0 vSquare:61.5095466119
+E500:t:468:boosting from vK:27.2976981061 to maxVk:30.0 with aFull:-0.324457590641
+need to go faster...1.35
+E500:t:469 State update PK:3.74568083567 vK:28.0711362732 maxVk:30.0 aF:1.02113580711 a:1.35 power: 1505317.24698 v2factor: 0.0836141928933 gFactor:0.0 vSquare:60.7219991963
+E500:t:470:coasting at 29.3922502378
+E500:t:470 State update PK:3.75383112112 vK:29.3861835207 maxVk:30.0 aF:-0.337039839742 a:0.0 power: 2.75119849568 v2factor: 0.0917898397419 gFactor:0.0 vSquare:66.6592881204
+E500:t:471:coasting at 28.1921972734
+E500:t:471 State update PK:3.76182584923 vK:28.1862627184 maxVk:30.0 aF:-0.329697498629 a:0.0 power: 2.58137230944 v2factor: 0.0844474986294 gFactor:0.0 vSquare:61.3271594985
+E500:t:471:boosting from vK:27.297372759 to maxVk:30.0 with aFull:-0.324455702791
+need to go faster...1.35
+E500:t:472 State update PK:3.7695322343 vK:28.2008507997 maxVk:30.0 aF:1.02036068019 a:1.35 power: 1512273.20639 v2factor: 0.0843893198098 gFactor:0.0 vSquare:61.2849090849
+E500:t:473:coasting at 29.3508797731
+E500:t:473 State update PK:3.77769465852 vK:29.3448177038 maxVk:30.0 aF:-0.336781627742 a:0.0 power: 2.74522096447 v2factor: 0.091531627742 gFactor:0.0 vSquare:66.4717703283
+E500:t:474:coasting at 28.1517275149
+E500:t:474 State update PK:3.78567802313 vK:28.1457973208 maxVk:30.0 aF:-0.32945522472 a:0.0 power: 2.57577221702 v2factor: 0.0842052247201 gFactor:0.0 vSquare:61.1512162092
+E500:t:474:boosting from vK:27.2984152982 to maxVk:30.0 with aFull:-0.32446175228
+need to go faster...1.35
+E500:t:475 State update PK:3.79338567217 vK:28.3289417723 maxVk:30.0 aF:1.01959174526 a:1.35 power: 1519142.10257 v2factor: 0.0851582547397 gFactor:0.0 vSquare:61.843322251
+E500:t:476:coasting at 29.3080498899
+E500:t:476 State update PK:3.80155815352 vK:29.3019926254 maxVk:30.0 aF:-0.336514690012 a:0.0 power: 2.73904193475 v2factor: 0.0912646900119 gFactor:0.0 vSquare:66.2779157675
+E500:t:477:coasting at 28.1098287771
+E500:t:477 State update PK:3.80952975358 vK:28.1039030914 maxVk:30.0 aF:-0.32920476285 a:0.0 power: 2.56998298676 v2factor: 0.0839547628496 gFactor:0.0 vSquare:60.9693266881
+E500:t:477:boosting from vK:27.2980203363 to maxVk:30.0 with aFull:-0.324459460428
+need to go faster...1.35
+E500:t:478 State update PK:3.81724009732 vK:28.4578761399 maxVk:30.0 aF:1.01881422519 a:1.35 power: 1526056.22602 v2factor: 0.0859357748066 gFactor:0.0 vSquare:62.4079700847
+E500:t:479:coasting at 29.2661732608
+E500:t:479 State update PK:3.82542123316 vK:29.2601206876 maxVk:30.0 aF:-0.336254070342 a:0.0 power: 2.7330096333 v2factor: 0.0910040703416 gFactor:0.0 vSquare:66.0886494856
+E500:t:480:coasting at 28.0688612563
+E500:t:480 State update PK:3.83338133033 vK:28.0629399722 maxVk:30.0 aF:-0.328960228299 a:0.0 power: 2.56433087222 v2factor: 0.0837102282988 gFactor:0.0 vSquare:60.791741684
+E500:t:480:boosting from vK:27.2985123707 to maxVk:30.0 with aFull:-0.32446231557
+need to go faster...1.35
+E500:t:481 State update PK:3.84109604221 vK:28.5851045175 maxVk:30.0 aF:1.01804352891 a:1.35 power: 1532878.86559 v2factor: 0.0867064710892 gFactor:0.0 vSquare:62.9676623741
+E500:t:482:coasting at 29.2227572884
+E500:t:482 State update PK:3.84928373107 vK:29.2167095717 maxVk:30.0 aF:-0.335984264001 a:0.0 power: 2.72676518388 v2factor: 0.0907342640009 gFactor:0.0 vSquare:65.8927116927
+E500:t:483:coasting at 28.0263864393
+E500:t:483 State update PK:3.8572319023 vK:28.0204697119 maxVk:30.0 aF:-0.32870707329 a:0.0 power: 2.55847960867 v2factor: 0.0834570732896 gFactor:0.0 vSquare:60.6078963613
+E500:t:483:boosting from vK:27.2974867475 to maxVk:30.0 with aFull:-0.324456364215
+need to go faster...1.35
+E500:t:484 State update PK:3.8649525172 vK:28.7138820598 maxVk:30.0 aF:1.01725994446 a:1.35 power: 1539784.57942 v2factor: 0.0874900555425 gFactor:0.0 vSquare:63.5367142647
+E500:t:484:ADVANCE green SIG vK:29.8131867879
+E500:t:485:coasting at 29.180985221
+E500:t:485 State update PK:3.87314555302 vK:29.17494217 maxVk:30.0 aF:-0.335725051712 a:0.0 power: 2.7207663802 v2factor: 0.0904750517121 gFactor:0.0 vSquare:65.7044674743
+E500:t:486:coasting at 27.985518574
+E500:t:486 State update PK:3.8810822497 vK:27.9796062245 maxVk:30.0 aF:-0.328463857797 a:0.0 power: 2.55285816671 v2factor: 0.083213857797 gFactor:0.0 vSquare:60.4312692789
+E500:t:486:boosting from vK:27.2980160727 to maxVk:30.0 with aFull:-0.324459435687
+need to go faster...1.35
+E500:t:487 State update PK:3.88881059469 vK:28.8416669995 maxVk:30.0 aF:1.01647891525 a:1.35 power: 1546637.06488 v2factor: 0.0882710847507 gFactor:0.0 vSquare:64.1039104943
+E500:t:488:coasting at 29.138371965
+E500:t:488 State update PK:3.89700707467 vK:29.132333667 maxVk:30.0 aF:-0.335461001582 a:0.0 power: 2.71465606399 v2factor: 0.0902110015821 gFactor:0.0 vSquare:65.5127099362
+E500:t:488:AT SIG WestboundMain:1370 vK:28.6813641646
+E500:488:START UPDATE SIG BY OCCU sig:WestboundMain:Nat+10 from value green to value red
+E500:488:START UPDATE SIG BY OCCU sig:WestboundMain:Nat-140 from value red to value yellow
+E500:488:START UPDATE SIG BY OCCU sig:WestboundMain:1295 from value yellow to value green
+SIG 1295 was yellow now green
+SIG Nat-140 was red now yellow
+SIG Nat+10 was green now red
+E500:t:488next SIG (ReD-140) at PK4.129
+E500:t:489:coasting at 27.9438263974
+E500:t:489 State update PK:3.90493206554 vK:27.9379185076 maxVk:30.0 aF:-0.328216102334 a:0.0 power: 2.54713186664 v2factor: 0.0829661023339 gFactor:0.0 vSquare:60.2513451953
+E500:t:489:boosting from vK:27.2977007465 to maxVk:30.0 with aFull:-0.324457605962
+need to go faster...1.35
+E500:t:490 State update PK:3.91266963644 vK:28.9693058462 maxVk:30.0 aF:1.01569531386 a:1.35 power: 1553481.71616 v2factor: 0.0890546861377 gFactor:0.0 vSquare:64.6729746825
+E500:t:491:coasting at 29.0957455279
+E500:t:491 State update PK:3.92086789168 vK:29.0897119773 maxVk:30.0 aF:-0.335197255832 a:0.0 power: 2.70855322993 v2factor: 0.0899472558316 gFactor:0.0 vSquare:65.3211734434
+E500:t:492:coasting at 27.9021199795
+E500:t:492 State update PK:3.92878117293 vK:27.8962165441 maxVk:30.0 aF:-0.327968631806 a:0.0 power: 2.54141221459 v2factor: 0.0827186318059 gFactor:0.0 vSquare:60.0716280363
+E500:t:492:boosting from vK:27.297340247 to maxVk:30.0 with aFull:-0.324455514139
+need to go faster...1.35
+E500:t:493 State update PK:3.93652968721 vK:29.0974233982 maxVk:30.0 aF:1.01490529097 a:1.35 power: 1560352.03817 v2factor: 0.0898447090347 gFactor:0.0 vSquare:65.2467022765
+E500:t:494:coasting at 29.0537171025
+E500:t:494 State update PK:3.94472822178 vK:29.0476882259 maxVk:30.0 aF:-0.334937588231 a:0.0 power: 2.70254517724 v2factor: 0.0896875882313 gFactor:0.0 vSquare:65.1325985703
+E500:t:495:coasting at 27.8609973489
+E500:t:495 State update PK:3.95262995749 vK:27.8550982991 maxVk:30.0 aF:-0.32772498716 a:0.0 power: 2.53578103678 v2factor: 0.0824749871603 gFactor:0.0 vSquare:59.8946892958
+E500:t:495:boosting from vK:27.2975265449 to maxVk:30.0 with aFull:-0.324456595142
+need to go faster...1.35
+E500:t:496 State update PK:3.9603911973 vK:29.2258085851 maxVk:30.0 aF:1.01411011762 a:1.35 power: 1567236.71222 v2factor: 0.0906398823754 gFactor:0.0 vSquare:65.8241702073
+E500:t:497:coasting at 29.0120805868
+E500:t:497 State update PK:3.96858845868 vK:29.006056334 maxVk:30.0 aF:-0.334680712122 a:0.0 power: 2.69660210826 v2factor: 0.0894307121225 gFactor:0.0 vSquare:64.9460509241
+E500:t:498:coasting at 27.8202568918
+E500:t:498 State update PK:3.97647875633 vK:27.8143621805 maxVk:30.0 aF:-0.327483961187 a:0.0 power: 2.53021041799 v2factor: 0.0822339611873 gFactor:0.0 vSquare:59.7196522784
+E500:t:498:boosting from vK:27.2980612026 to maxVk:30.0 with aFull:-0.324459697562
+need to go faster...1.35
+E500:t:499 State update PK:3.98425421604 vK:29.352819522 maxVk:30.0 aF:1.01332000821 a:1.35 power: 1574047.69201 v2factor: 0.0914299917916 gFactor:0.0 vSquare:66.397960633
+E500:t:500:coasting at 28.9692308488
+E500:t:500 State update PK:3.99244820217 vK:28.9632113476 maxVk:30.0 aF:-0.334416735697 a:0.0 power: 2.69049516504 v2factor: 0.0891667356969 gFactor:0.0 vSquare:64.7543469114
+E500:t:501:coasting at 27.7783279817
+E500:t:501 State update PK:4.00032672829 vK:27.7724377288 maxVk:30.0 aF:-0.327236272455 a:0.0 power: 2.52448583316 v2factor: 0.0819862724553 gFactor:0.0 vSquare:59.539776656
+E500:t:501:boosting from vK:27.2973879485 to maxVk:30.0 with aFull:-0.324455790928
+need to go faster...1.35
+E500:t:502 State update PK:4.00811801557 vK:29.4804895753 maxVk:30.0 aF:1.01252234267 a:1.35 power: 1580894.01709 v2factor: 0.0922276573343 gFactor:0.0 vSquare:66.9772384418
+E500:t:503:coasting at 28.9271563611
+E500:t:503 State update PK:4.01630728424 vK:28.9211415186 maxVk:30.0 aF:-0.334157914858 a:0.0 power: 2.68450787366 v2factor: 0.0889079148585 gFactor:0.0 vSquare:64.5663869706
+E500:t:504:coasting at 27.737156339
+E500:t:504 State update PK:4.0241742516 vK:27.7312704574 maxVk:30.0 aF:-0.326993420688 a:0.0 power: 2.51887305192 v2factor: 0.0817434206884 gFactor:0.0 vSquare:59.363413717
+E500:t:504:boosting from vK:27.297434572 to maxVk:30.0 with aFull:-0.324456061463
+need to go faster...1.35
+E500:t:505 State update PK:4.03198303192 vK:29.6076956536 maxVk:30.0 aF:1.01172413 a:1.35 power: 1587715.46153 v2factor: 0.0930258700036 gFactor:0.0 vSquare:67.5569135828
+E500:t:506:coasting at 28.8847592463
+E500:t:506 State update PK:4.04016583385 vK:28.8787490915 maxVk:30.0 aF:-0.333897489901 a:0.0 power: 2.67848384253 v2factor: 0.088647489901 gFactor:0.0 vSquare:64.3772620922
+E500:t:507:coasting at 27.6956676659
+E500:t:507 State update PK:4.04802115364 vK:27.6897861828 maxVk:30.0 aF:-0.326749063293 a:0.0 power: 2.51322547167 v2factor: 0.0814990632928 gFactor:0.0 vSquare:59.1859573659
+E500:t:507:boosting from vK:27.2971361072 to maxVk:30.0 with aFull:-0.324454329615
+need to go faster...1.35
+E500:t:508 State update PK:4.05584902268 vK:29.7347753763 maxVk:30.0 aF:1.01092327561 a:1.35 power: 1594530.13021 v2factor: 0.0938267243859 gFactor:0.0 vSquare:68.1385071793
+E500:t:509:coasting at 28.8423698956
+E500:t:509 State update PK:4.06402370271 vK:28.8363644207 maxVk:30.0 aF:-0.333637494502 a:0.0 power: 2.6724701044 v2factor: 0.0883874945017 gFactor:0.0 vSquare:64.1884491661
+E500:t:510:coasting at 27.6541852597
+E500:t:510 State update PK:4.07186737687 vK:27.6483081678 maxVk:30.0 aF:-0.326505108503 a:0.0 power: 2.50758718284 v2factor: 0.0812551085027 gFactor:0.0 vSquare:59.0087933934
+E500:t:510:boosting from vK:27.2968130848 to maxVk:30.0 with aFull:-0.324452455292
+need to go faster...1.35
+E500:t:511 State update PK:4.07971606724 vK:29.8622490306 maxVk:30.0 aF:1.01011648982 a:1.35 power: 1601365.92362 v2factor: 0.0946335101845 gFactor:0.0 vSquare:68.7244082676
+E500:t:512:coasting at 28.8004973485
+E500:t:512 State update PK:4.08788111449 vK:28.7944964898 maxVk:30.0 aF:-0.333381043799 a:0.0 power: 2.66653869318 v2factor: 0.0881310437994 gFactor:0.0 vSquare:64.0022104571
+E500:t:513:coasting at 27.6132072932
+E500:t:513 State update PK:4.09571328482 vK:27.6073345326 maxVk:30.0 aF:-0.326264479308 a:0.0 power: 2.50202572954 v2factor: 0.081014479308 gFactor:0.0 vSquare:58.8340445229
+E500:t:513:boosting from vK:27.2969608747 to maxVk:30.0 with aFull:-0.324453312834
+E500:t:513:ADVANCE green SIG vK:28.5660159729
+E500:t:514:coasting at 29.9710930223
+E500:t:514 State update PK:4.10358436991 vK:29.9649605877 maxVk:30.0 aF:-0.340690806801 a:0.0 power: 2.83577405511 v2factor: 0.0954408068009 gFactor:0.0 vSquare:69.3106803202
+E500:t:515:coasting at 28.7583048103
+E500:t:515 State update PK:4.11173807358 vK:28.7523085961 maxVk:30.0 aF:-0.333123010153 a:0.0 power: 2.66057099678 v2factor: 0.0878730101534 gFactor:0.0 vSquare:63.8148221884
+E500:t:516:coasting at 27.5719148582
+E500:t:516 State update PK:4.11955865197 vK:27.5660464557 maxVk:30.0 aF:-0.326022364451 a:0.0 power: 2.49642990112 v2factor: 0.0807723644508 gFactor:0.0 vSquare:58.6582167399
+E500:t:516:boosting from vK:27.2967657115 to maxVk:30.0 with aFull:-0.324452180413
+E500:t:517:coasting at 29.9276101595
+E500:t:517 State update PK:4.12745251277 vK:29.9214827062 maxVk:30.0 aF:-0.340414071548 a:0.0 power: 2.82935937633 v2factor: 0.0951640715477 gFactor:0.0 vSquare:69.1097106374
+E500:t:517:AT SIG WestboundMain:ReD-140 vK:29.6891571469
+E500:517:START UPDATE SIG BY OCCU sig:WestboundMain:1370 from value green to value red
+E500:517:START UPDATE SIG BY OCCU sig:WestboundMain:Nat+10 from value red to value yellow
+E500:517:START UPDATE SIG BY OCCU sig:WestboundMain:Nat-140 from value yellow to value green
+SIG Nat-140 was yellow now green
+SIG Nat+10 was red now yellow
+SIG 1370 was green now red
+E500:t:517next SIG (ReD+10) at PK4.279
+E500:t:518:coasting at 28.7157872357
+E500:t:518 State update PK:4.13559427537 vK:28.709795695 maxVk:30.0 aF:-0.332863371385 a:0.0 power: 2.65456649634 v2factor: 0.0876133713853 gFactor:0.0 vSquare:63.6262682536
+E500:t:519:coasting at 27.5303029871
+E500:t:519 State update PK:4.14340317233 vK:27.5244389697 maxVk:30.0 aF:-0.325778743147 a:0.0 power: 2.49079920371 v2factor: 0.080528743147 gFactor:0.0 vSquare:58.4812949506
+E500:t:519:boosting from vK:27.2962219556 to maxVk:30.0 with aFull:-0.32444902535
+E500:t:520:coasting at 29.9081110049
+E500:t:520 State update PK:4.15132019969 vK:29.9019857831 maxVk:30.0 aF:-0.340290104788 a:0.0 power: 2.82648607652 v2factor: 0.0950401047877 gFactor:0.0 vSquare:69.0196839417
+E500:t:521:coasting at 28.696720494
+E500:t:521 State update PK:4.15945660746 vK:28.6907310469 maxVk:30.0 aF:-0.332747062756 a:0.0 power: 2.65187680116 v2factor: 0.0874970627558 gFactor:0.0 vSquare:63.541803018
+E500:t:522:coasting at 27.5116419675
+E500:t:522 State update PK:4.1672602659 vK:27.5057799146 maxVk:30.0 aF:-0.325669609648 a:0.0 power: 2.48827683551 v2factor: 0.0804196096484 gFactor:0.0 vSquare:58.4020404128
+E500:t:522:boosting from vK:27.2951552816 to maxVk:30.0 with aFull:-0.324442836315
+E500:t:523:coasting at 29.889430789
+E500:t:523 State update PK:4.17518707362 vK:29.8833077034 maxVk:30.0 aF:-0.340171420245 a:0.0 power: 2.82373533975 v2factor: 0.0949214202446 gFactor:0.0 vSquare:68.9334932786
+E500:t:524:coasting at 28.6784542664
+E500:t:524 State update PK:4.1833183514 vK:28.6724668237 maxVk:30.0 aF:-0.332635709781 a:0.0 power: 2.64930176474 v2factor: 0.0873857097806 gFactor:0.0 vSquare:63.4609366599
+E500:t:525:coasting at 27.4937641753
+E500:t:525 State update PK:4.19111699123 vK:27.487904003 maxVk:30.0 aF:-0.325565126031 a:0.0 power: 2.4858619253 v2factor: 0.0803151260309 gFactor:0.0 vSquare:58.3261626949
+E500:t:525:boosting from vK:27.294862842 to maxVk:30.0 with aFull:-0.324441139569
+E500:t:526:coasting at 29.870929632
+E500:t:526 State update PK:4.19905365834 vK:29.8648086609 maxVk:30.0 aF:-0.340053946439 a:0.0 power: 2.82101279022 v2factor: 0.0948039464394 gFactor:0.0 vSquare:68.8481818732
+E500:t:527:coasting at 28.660362875
+E500:t:527 State update PK:4.20717985529 vK:28.6543774161 maxVk:30.0 aF:-0.332525492513 a:0.0 power: 2.64675304527 v2factor: 0.0872754925134 gFactor:0.0 vSquare:63.3808950714
+E500:t:528:coasting at 27.4760572577
+E500:t:528 State update PK:4.21497352449 vK:27.4701989469 maxVk:30.0 aF:-0.325461708008 a:0.0 power: 2.48347163016 v2factor: 0.0802117080077 gFactor:0.0 vSquare:58.2510588291
+E500:t:528:boosting from vK:27.2947350086 to maxVk:30.0 with aFull:-0.324440397881
+E500:t:529:coasting at 29.8523925302
+E500:t:529 State update PK:4.22292004585 vK:29.8462736765 maxVk:30.0 aF:-0.339936317351 a:0.0 power: 2.81828676674 v2factor: 0.0946863173514 gFactor:0.0 vSquare:68.7627576989
+E500:t:530:coasting at 28.642236081
+E500:t:530 State update PK:4.23104115205 vK:28.6362526086 maxVk:30.0 aF:-0.33241512932 a:0.0 power: 2.64420100393 v2factor: 0.0871651293201 gFactor:0.0 vSquare:63.3007475091
+E500:t:531:coasting at 27.4583154466
+E500:t:531 State update PK:4.23882984087 vK:27.4524589999 maxVk:30.0 aF:-0.325358153011 a:0.0 power: 2.4810781544 v2factor: 0.0801081530115 gFactor:0.0 vSquare:58.1758554913
+E500:t:531:boosting from vK:27.2945667772 to maxVk:30.0 with aFull:-0.324439421809
+E500:t:531:ADVANCE STA x:4269.0 vK:28.050198845
+E500:t:532 State update PK:4.24633371615 vK:25.436598845 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.068853000729 gFactor:0.0 vSquare:50.0021791787
+E500:t:533 State update PK:4.25284668805 vK:21.476598845 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0490976111009 gFactor:0.0 vSquare:35.6554909956
+E500:t:534 State update PK:4.25825965995 vK:17.516598845 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0326745614729 gFactor:0.0 vSquare:23.7288028126
+E500:t:535 State update PK:4.26257263185 vK:13.556598845 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0195838518448 gFactor:0.0 vSquare:14.2221146295
+E500:t:536 State update PK:4.26578560375 vK:9.59659884499 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00982548221676 gFactor:0.0 vSquare:7.13542644645
+E500:t:537 State update PK:4.26789857565 vK:5.63659884499 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0033994525887 gFactor:0.0 vSquare:2.4687382634
+E500:t:538 State update PK:4.26891154755 vK:1.67659884499 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000305762960638 gFactor:0.0 vSquare:0.222050080347
+E500:t:538:IN STA ReD vK:0.784734844994 a:-0.004
+E500:t:538:next STA (GdL) at PK5.352
+E500:t:549:OUT STA, a:1.35227761737 vK:0.0
+need to go faster...1.35
+E500:t:550 State update PK:4.26955595488 vK:3.97509959103 maxVk:30.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:551 State update PK:4.27121374458 vK:7.93816552656 maxVk:30.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:552 State update PK:4.27396931576 vK:11.8772793223 maxVk:30.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:552:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:553 State update PK:4.27781438331 vK:15.7808101534 maxVk:30.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:553:AT SIG WestboundMain:ReD+10 vK:16.807851537
+E500:553:START UPDATE SIG BY OCCU sig:WestboundMain:ReD-140 from value green to value red
+E500:553:START UPDATE SIG BY OCCU sig:WestboundMain:1370 from value red to value yellow
+E500:553:START UPDATE SIG BY OCCU sig:WestboundMain:Nat+10 from value yellow to value green
+SIG Nat+10 was yellow now green
+SIG 1370 was red now yellow
+SIG ReD-140 was green now red
+E500:t:553next SIG (1430) at PK4.5
+need to go faster...1.35
+E500:t:554 State update PK:4.28273748732 vK:19.6375498514 maxVk:30.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:555 State update PK:4.28872412816 vK:23.4368373444 maxVk:30.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:556 State update PK:4.29575693421 vK:27.1686697263 maxVk:30.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+E500:t:557:coasting at 29.6908231124
+E500:t:557 State update PK:4.30377785562 vK:29.6847226576 maxVk:30.0 aF:-0.338914153816 a:0.0 power: 2.79460351688 v2factor: 0.0936641538161 gFactor:0.0 vSquare:68.0204457633
+E500:t:558:coasting at 28.4842321412
+E500:t:558 State update PK:4.31185458932 vK:28.4782659315 maxVk:30.0 aF:-0.331456094822 a:0.0 power: 2.62202633693 v2factor: 0.0862060948218 gFactor:0.0 vSquare:62.6042809164
+E500:t:559:coasting at 27.3036569389
+E500:t:559 State update PK:4.3195998647 vK:27.2978166899 maxVk:30.0 aF:-0.324458278738 a:0.0 power: 2.46027850459 v2factor: 0.0792082787379 gFactor:0.0 vSquare:57.5223520246
+E500:t:559:boosting from vK:27.2978166899 to maxVk:30.0 with aFull:-0.324458278738
+E500:t:560:coasting at 29.6478215838
+E500:t:560 State update PK:4.32764420442 vK:29.6417260091 maxVk:30.0 aF:-0.338643040746 a:0.0 power: 2.78832339685 v2factor: 0.0933930407457 gFactor:0.0 vSquare:67.823559002
+E500:t:561:coasting at 28.4421763063
+E500:t:561 State update PK:4.33570912796 vK:28.4362146753 maxVk:30.0 aF:-0.33120172301 a:0.0 power: 2.61614536009 v2factor: 0.0859517230102 gFactor:0.0 vSquare:62.4195519319
+E500:t:561:boosting from vK:27.297516945 to maxVk:30.0 with aFull:-0.324456539438
+need to go faster...1.35
+E500:t:562 State update PK:4.34344378735 vK:27.426183935 maxVk:30.0 aF:1.02493670617 a:1.35 power: 1470731.58997 v2factor: 0.0798132938271 gFactor:0.0 vSquare:57.9617239122
+E500:t:563:coasting at 29.6045563129
+E500:t:563 State update PK:4.35150979065 vK:29.598465641 maxVk:30.0 aF:-0.338370661414 a:0.0 power: 2.78201455438 v2factor: 0.0931206614136 gFactor:0.0 vSquare:67.6257526606
+E500:t:564:coasting at 28.3998611482
+E500:t:564 State update PK:4.3595628314 vK:28.3939041173 maxVk:30.0 aF:-0.330946162032 a:0.0 power: 2.61023710909 v2factor: 0.0856961620317 gFactor:0.0 vSquare:62.2339593549
+E500:t:564:boosting from vK:27.296931375 to maxVk:30.0 with aFull:-0.324453141663
+need to go faster...1.35
+E500:t:565 State update PK:4.36728846757 vK:27.5552862952 maxVk:30.0 aF:1.02418294517 a:1.35 power: 1477654.72146 v2factor: 0.0805670548309 gFactor:0.0 vSquare:58.5091175243
+E500:t:566:coasting at 29.5619503338
+E500:t:566 State update PK:4.37537464027 vK:29.555864483 maxVk:30.0 aF:-0.338102821426 a:0.0 power: 2.7758114365 v2factor: 0.0928528214261 gFactor:0.0 vSquare:67.4312428657
+E500:t:567:coasting at 28.3581894502
+E500:t:567 State update PK:4.38341597911 vK:28.3522369427 maxVk:30.0 aF:-0.33069485907 a:0.0 power: 2.60442750002 v2factor: 0.0854448590698 gFactor:0.0 vSquare:62.0514590195
+E500:t:567:boosting from vK:27.2969450482 to maxVk:30.0 with aFull:-0.324453221001
+need to go faster...1.35
+E500:t:568 State update PK:4.39113441509 vK:27.6843240838 maxVk:30.0 aF:1.02342602088 a:1.35 power: 1484574.39038 v2factor: 0.0813239791237 gFactor:0.0 vSquare:59.0588083687
+E500:t:569:coasting at 29.5194080146
+E500:t:569 State update PK:4.39923909698 vK:29.5133269708 maxVk:30.0 aF:-0.337835766513 a:0.0 power: 2.76962706653 v2factor: 0.0925857665126 gFactor:0.0 vSquare:67.2373032045
+E500:t:570:coasting at 28.3165786755
+E500:t:570 State update PK:4.4072687512 vK:28.3106306783 maxVk:30.0 aF:-0.330444291713 a:0.0 power: 2.59863508401 v2factor: 0.085194291713 gFactor:0.0 vSquare:61.8694928925
+E500:t:570:boosting from vK:27.2969874871 to maxVk:30.0 with aFull:-0.324453467251
+need to go faster...1.35
+E500:t:571 State update PK:4.41498165046 vK:27.8131970495 maxVk:30.0 aF:1.02266653079 a:1.35 power: 1491485.22072 v2factor: 0.0820834692094 gFactor:0.0 vSquare:59.6103625341
+E500:t:572:coasting at 29.4768315971
+E500:t:572 State update PK:4.42310315514 vK:29.4707553572 maxVk:30.0 aF:-0.337568882607 a:0.0 power: 2.76344720987 v2factor: 0.0923188826069 gFactor:0.0 vSquare:67.0434877319
+E500:t:573:coasting at 28.2749332082
+E500:t:573 State update PK:4.43112111519 vK:28.2689897183 maxVk:30.0 aF:-0.330193883843 a:0.0 power: 2.59284652983 v2factor: 0.0849438838425 gFactor:0.0 vSquare:61.6876425872
+E500:t:573:boosting from vK:27.2969648827 to maxVk:30.0 with aFull:-0.32445333609
+need to go faster...1.35
+E500:t:574 State update PK:4.43883011686 vK:27.9419349997 maxVk:30.0 aF:1.02190431156 a:1.35 power: 1498388.81092 v2factor: 0.0828456884364 gFactor:0.0 vSquare:60.1638986466
+E500:t:575:coasting at 29.4342505317
+E500:t:575 State update PK:4.44696676748 vK:29.4281790893 maxVk:30.0 aF:-0.337302354838 a:0.0 power: 2.75727614039 v2factor: 0.0920523548383 gFactor:0.0 vSquare:66.849930892
+E500:t:576:coasting at 28.2332818526
+E500:t:576 State update PK:4.4549730319 vK:28.227342864 maxVk:30.0 aF:-0.329943809193 a:0.0 power: 2.5870658411 v2factor: 0.0846938091929 gFactor:0.0 vSquare:61.5060342723
+E500:t:576:boosting from vK:27.296905478 to maxVk:30.0 with aFull:-0.324452991397
+need to go faster...1.35
+E500:t:577 State update PK:4.46267980386 vK:28.0709302178 maxVk:30.0 aF:1.02113703557 a:1.35 power: 1505306.19723 v2factor: 0.0836129644261 gFactor:0.0 vSquare:60.7211070632
+E500:t:577:ADVANCE green SIG vK:29.623090621
+E500:t:578:coasting at 29.3920487325
+E500:t:578 State update PK:4.47083003271 vK:29.385982038 maxVk:30.0 aF:-0.337038581174 a:0.0 power: 2.75116935902 v2factor: 0.0917885811736 gFactor:0.0 vSquare:66.6583741275
+E500:t:579:coasting at 28.1920001582
+E500:t:579 State update PK:4.47882470546 vK:28.1860656245 maxVk:30.0 aF:-0.329696317748 a:0.0 power: 2.58134501339 v2factor: 0.084446317748 gFactor:0.0 vSquare:61.326301923
+E500:t:579:boosting from vK:27.2971787984 to maxVk:30.0 with aFull:-0.32445457733
+need to go faster...1.35
+E500:t:580 State update PK:4.48653098939 vK:28.1999693559 maxVk:30.0 aF:1.02036595945 a:1.35 power: 1512225.93884 v2factor: 0.0843840405519 gFactor:0.0 vSquare:61.2810752011
+E500:t:581:coasting at 29.3500178227
+E500:t:581 State update PK:4.49469317149 vK:29.3439558502 maxVk:30.0 aF:-0.336776251783 a:0.0 power: 2.7450965177 v2factor: 0.0915262517831 gFactor:0.0 vSquare:66.4678662187
+E500:t:581:AT SIG WestboundMain:1430 vK:28.5436930291
+E500:581:START UPDATE SIG BY OCCU sig:WestboundMain:ReD+10 from value green to value red
+E500:581:START UPDATE SIG BY OCCU sig:WestboundMain:ReD-140 from value red to value yellow
+E500:581:START UPDATE SIG BY OCCU sig:WestboundMain:1370 from value yellow to value green
+SIG 1370 was yellow now green
+SIG ReD-140 was red now yellow
+SIG ReD+10 was green now red
+E500:t:581next SIG (1465) at PK4.85
+E500:t:582:coasting at 28.1508843172
+E500:t:582 State update PK:4.50267629934 vK:28.1449542139 maxVk:30.0 aF:-0.329450180583 a:0.0 power: 2.57565562452 v2factor: 0.0842001805828 gFactor:0.0 vSquare:61.147553074
+E500:t:582:boosting from vK:27.2975849685 to maxVk:30.0 with aFull:-0.324456934149
+need to go faster...1.35
+E500:t:583 State update PK:4.51038377394 vK:28.3288504925 maxVk:30.0 aF:1.01959229446 a:1.35 power: 1519137.20768 v2factor: 0.0851577055416 gFactor:0.0 vSquare:61.8429234144
+E500:t:584:coasting at 29.3079606313
+E500:t:584 State update PK:4.51855623022 vK:29.3019033769 maxVk:30.0 aF:-0.336514134114 a:0.0 power: 2.73902906743 v2factor: 0.0912641341138 gFactor:0.0 vSquare:66.2775120652
+E500:t:585:coasting at 28.1097414576
+E500:t:585 State update PK:4.52652780576 vK:28.1038157813 maxVk:30.0 aF:-0.329204241262 a:0.0 power: 2.56997093079 v2factor: 0.0839542412617 gFactor:0.0 vSquare:60.9689479025
+E500:t:585:boosting from vK:27.2979342846 to maxVk:30.0 with aFull:-0.324458961098
+need to go faster...1.35
+E500:t:586 State update PK:4.5342380879 vK:28.4573623979 maxVk:30.0 aF:1.01881733025 a:1.35 power: 1526028.67653 v2factor: 0.0859326697471 gFactor:0.0 vSquare:62.4057151395
+E500:t:587:coasting at 29.2656709071
+E500:t:587 State update PK:4.54241908264 vK:29.2596183901 maxVk:30.0 aF:-0.3362509462 a:0.0 power: 2.73293732475 v2factor: 0.0910009461998 gFactor:0.0 vSquare:66.0863806825
+E500:t:588:coasting at 28.0683698004
+E500:t:588 State update PK:4.55037904181 vK:28.0624485691 maxVk:30.0 aF:-0.328957296971 a:0.0 power: 2.56426311879 v2factor: 0.0837072969705 gFactor:0.0 vSquare:60.7896129053
+E500:t:588:boosting from vK:27.2980276858 to maxVk:30.0 with aFull:-0.324459503074
+need to go faster...1.35
+E500:t:589 State update PK:4.55809370856 vK:28.585544851 maxVk:30.0 aF:1.01804085558 a:1.35 power: 1532902.47854 v2factor: 0.0867091444207 gFactor:0.0 vSquare:62.9696037913
+E500:t:590:coasting at 29.2231878526
+E500:t:590 State update PK:4.56628151836 vK:29.2171400877 maxVk:30.0 aF:-0.335986937754 a:0.0 power: 2.72682706333 v2factor: 0.0907369377535 gFactor:0.0 vSquare:65.8946534158
+E500:t:591:coasting at 28.0268076767
+E500:t:591 State update PK:4.57422980786 vK:28.0208909042 maxVk:30.0 aF:-0.328709582033 a:0.0 power: 2.5585375937 v2factor: 0.083459582033 gFactor:0.0 vSquare:60.609718252
+E500:t:591:boosting from vK:27.2979024936 to maxVk:30.0 with aFull:-0.324458776626
+need to go faster...1.35
+E500:t:592 State update PK:4.58195042361 vK:28.7132243523 maxVk:30.0 aF:1.01726395543 a:1.35 power: 1539749.30976 v2factor: 0.0874860445738 gFactor:0.0 vSquare:63.5338014334
+E500:t:593:coasting at 29.1803421153
+E500:t:593 State update PK:4.59014327879 vK:29.1742991362 maxVk:30.0 aF:-0.335721063884 a:0.0 power: 2.72067409558 v2factor: 0.0904710638842 gFactor:0.0 vSquare:65.7015714482
+E500:t:594:coasting at 27.984889379
+E500:t:594 State update PK:4.59807979881 vK:27.9789770969 maxVk:30.0 aF:-0.328460116065 a:0.0 power: 2.55277168462 v2factor: 0.0832101160651 gFactor:0.0 vSquare:60.4285519717
+E500:t:594:boosting from vK:27.297394614 to maxVk:30.0 with aFull:-0.324455829605
+need to go faster...1.35
+E500:t:595 State update PK:4.60580793313 vK:28.8407288546 maxVk:30.0 aF:1.0164846619 a:1.35 power: 1546586.75672 v2factor: 0.0882653381046 gFactor:0.0 vSquare:64.0997371856
+E500:t:596:coasting at 29.1374546573
+E500:t:596 State update PK:4.61400415545 vK:29.1314164615 maxVk:30.0 aF:-0.33545532179 a:0.0 power: 2.71452463425 v2factor: 0.0902053217901 gFactor:0.0 vSquare:65.508585178
+E500:t:597:coasting at 27.9429289024
+E500:t:597 State update PK:4.62192889433 vK:27.9370211085 maxVk:30.0 aF:-0.328210773037 a:0.0 power: 2.54700869288 v2factor: 0.0829607730373 gFactor:0.0 vSquare:60.2474749726
+E500:t:597:boosting from vK:27.2968136225 to maxVk:30.0 with aFull:-0.324452458413
+need to go faster...1.35
+E500:t:598 State update PK:4.62966636151 vK:28.9695526532 maxVk:30.0 aF:1.01569379531 a:1.35 power: 1553494.95122 v2factor: 0.0890562046919 gFactor:0.0 vSquare:64.6740774814
+E500:t:599:coasting at 29.0959868516
+E500:t:599 State update PK:4.63786468454 vK:29.0899532741 maxVk:30.0 aF:-0.335198747905 a:0.0 power: 2.70858775392 v2factor: 0.0899487479048 gFactor:0.0 vSquare:65.3222570115
+E500:t:600:coasting at 27.9023560984
+E500:t:600 State update PK:4.64577803208 vK:27.8964526378 maxVk:30.0 aF:-0.327970031808 a:0.0 power: 2.54144457193 v2factor: 0.0827200318081 gFactor:0.0 vSquare:60.0726447408
+E500:t:600:boosting from vK:27.297573812 to maxVk:30.0 with aFull:-0.324456869413
+need to go faster...1.35
+E500:t:601 State update PK:4.6535266647 vK:29.0980451777 maxVk:30.0 aF:1.01490144832 a:1.35 power: 1560385.38118 v2factor: 0.0898485516776 gFactor:0.0 vSquare:65.2494928668
+E500:t:602:coasting at 29.0543250667
+E500:t:602 State update PK:4.66172537004 vK:29.0482961226 maxVk:30.0 aF:-0.33494134179 a:0.0 power: 2.70263202223 v2factor: 0.0896913417902 gFactor:0.0 vSquare:65.1353244664
+E500:t:603:coasting at 27.8615922196
+E500:t:603 State update PK:4.66962727276 vK:27.8556931065 maxVk:30.0 aF:-0.327728509108 a:0.0 power: 2.53586243665 v2factor: 0.0824785091076 gFactor:0.0 vSquare:59.8972469917
+E500:t:603:boosting from vK:27.2981154208 to maxVk:30.0 with aFull:-0.324460012173
+need to go faster...1.35
+E500:t:604 State update PK:4.67738861031 vK:29.2259425828 maxVk:30.0 aF:1.01410928586 a:1.35 power: 1567243.89787 v2factor: 0.0906407141412 gFactor:0.0 vSquare:65.8247742492
+E500:t:605:coasting at 29.0122116076
+E500:t:605 State update PK:4.68558590849 vK:29.0061873403 maxVk:30.0 aF:-0.334681519876 a:0.0 power: 2.6966207958 v2factor: 0.0894315198764 gFactor:0.0 vSquare:64.9466375283
+E500:t:606:coasting at 27.820385095
+E500:t:606 State update PK:4.69347624214 vK:27.81449037 maxVk:30.0 aF:-0.327484719101 a:0.0 power: 2.53022793494 v2factor: 0.082234719101 gFactor:0.0 vSquare:59.7202026877
+E500:t:606:boosting from vK:27.2981882084 to maxVk:30.0 with aFull:-0.324460434538
+need to go faster...1.35
+E500:t:607 State update PK:4.7012518715 vK:29.3538039508 maxVk:30.0 aF:1.01331387088 a:1.35 power: 1574100.48214 v2factor: 0.0914361291169 gFactor:0.0 vSquare:66.4024176593
+E500:t:608:coasting at 28.9701934152
+E500:t:608 State update PK:4.709446128 vK:28.9641738073 maxVk:30.0 aF:-0.334422661317 a:0.0 power: 2.69063224652 v2factor: 0.089172661317 gFactor:0.0 vSquare:64.7586501939
+E500:t:609:coasting at 27.7792698778
+E500:t:609 State update PK:4.71732491855 vK:27.7733795248 maxVk:30.0 aF:-0.327241832463 a:0.0 power: 2.52461433594 v2factor: 0.0819918324627 gFactor:0.0 vSquare:59.5438144246
+E500:t:609:boosting from vK:27.2983217429 to maxVk:30.0 with aFull:-0.324461209402
+need to go faster...1.35
+E500:t:610 State update PK:4.72511637936 vK:29.4808985008 maxVk:30.0 aF:1.01251978219 a:1.35 power: 1580915.94578 v2factor: 0.0922302178136 gFactor:0.0 vSquare:66.9790979039
+E500:t:611:coasting at 28.9275562101
+E500:t:611 State update PK:4.73330576033 vK:28.9215413234 maxVk:30.0 aF:-0.334160372756 a:0.0 power: 2.68456473036 v2factor: 0.0889103727556 gFactor:0.0 vSquare:64.5681719358
+E500:t:612:coasting at 27.7375476141
+E500:t:612 State update PK:4.74117283754 vK:27.731661691 maxVk:30.0 aF:-0.326995726937 a:0.0 power: 2.51892635384 v2factor: 0.0817457269372 gFactor:0.0 vSquare:59.3650885528
+E500:t:612:boosting from vK:27.29782277 to maxVk:30.0 with aFull:-0.324458314019
+need to go faster...1.35
+E500:t:613 State update PK:4.74898168248 vK:29.6078350693 maxVk:30.0 aF:1.01172325328 a:1.35 power: 1587722.93772 v2factor: 0.0930267467184 gFactor:0.0 vSquare:67.5575502675
+E500:t:614:coasting at 28.8848955699
+E500:t:614 State update PK:4.75716452269 vK:28.8788854 maxVk:30.0 aF:-0.333898326659 a:0.0 power: 2.67850319745 v2factor: 0.0886483266587 gFactor:0.0 vSquare:64.3778697594
+E500:t:615:coasting at 27.6958010707
+E500:t:615 State update PK:4.76501987993 vK:27.6899195734 maxVk:30.0 aF:-0.326749848425 a:0.0 power: 2.51324361764 v2factor: 0.0814998484255 gFactor:0.0 vSquare:59.1865275421
+E500:t:615:boosting from vK:27.2972685611 to maxVk:30.0 with aFull:-0.324455098179
+need to go faster...1.35
+E500:t:616 State update PK:4.77284784733 vK:29.7352374712 maxVk:30.0 aF:1.01092035724 a:1.35 power: 1594554.91012 v2factor: 0.0938296427646 gFactor:0.0 vSquare:68.1406265538
+E500:t:617:coasting at 28.8428217512
+E500:t:617 State update PK:4.78102265426 vK:28.8368162264 maxVk:30.0 aF:-0.333640263948 a:0.0 power: 2.67253416033 v2factor: 0.0883902639479 gFactor:0.0 vSquare:64.1904603834
+E500:t:618:coasting at 27.6546274546
+E500:t:618 State update PK:4.78886645256 vK:27.6487503159 maxVk:30.0 aF:-0.326507707088 a:0.0 power: 2.50764724152 v2factor: 0.0812577070881 gFactor:0.0 vSquare:59.0106805287
+E500:t:618:boosting from vK:27.2972524535 to maxVk:30.0 with aFull:-0.324455004715
+need to go faster...1.35
+E500:t:619 State update PK:4.79671511494 vK:29.8619187497 maxVk:30.0 aF:1.01011858464 a:1.35 power: 1601348.21226 v2factor: 0.0946314153605 gFactor:0.0 vSquare:68.722886972
+E500:t:620:coasting at 28.8001743778
+E500:t:620 State update PK:4.80488007149 vK:28.7941735546 maxVk:30.0 aF:-0.333379067195 a:0.0 power: 2.66649297785 v2factor: 0.0881290671952 gFactor:0.0 vSquare:64.0007750147
+E500:t:621:coasting at 27.6128912174
+E500:t:621 State update PK:4.81271215308 vK:27.6070184902 maxVk:30.0 aF:-0.326262624647 a:0.0 power: 2.50198286425 v2factor: 0.0810126246473 gFactor:0.0 vSquare:58.8326976378
+E500:t:621:boosting from vK:27.2966465866 to maxVk:30.0 with aFull:-0.324451489203
+E500:t:621:ADVANCE green SIG vK:29.5151270609
+need to go faster...1.35
+E500:t:622 State update PK:4.82058302242 vK:29.9881611049 maxVk:30.0 aF:1.00931619632 a:1.35 power: 1608117.97716 v2factor: 0.0954338036771 gFactor:0.0 vSquare:69.3055945367
+E500:t:623:coasting at 28.7809923223
+E500:t:623 State update PK:4.82874309796 vK:28.7749936115 maxVk:30.0 aF:-0.3332617114 a:0.0 power: 2.66377878236 v2factor: 0.0880117113999 gFactor:0.0 vSquare:63.91554931
+E500:t:624:coasting at 27.5941185362
+E500:t:624 State update PK:4.83656990952 vK:27.588247791 maxVk:30.0 aF:-0.32615250889 a:0.0 power: 2.49943784247 v2factor: 0.0809025088899 gFactor:0.0 vSquare:58.7527297675
+E500:t:624:boosting from vK:27.295496402 to maxVk:30.0 with aFull:-0.324444815531
+E500:t:625:coasting at 29.9749826948
+E500:t:625 State update PK:4.8444504268 vK:29.9688498143 maxVk:30.0 aF:-0.340715581178 a:0.0 power: 2.83634835603 v2factor: 0.0954655811775 gFactor:0.0 vSquare:69.3286718791
+E500:t:625:AT SIG WestboundMain:1465 vK:29.1412350016
+E500:625:START UPDATE SIG BY OCCU sig:WestboundMain:1430 from value green to value red
+E500:625:START UPDATE SIG BY OCCU sig:WestboundMain:ReD+10 from value red to value yellow
+E500:625:START UPDATE SIG BY OCCU sig:WestboundMain:ReD-140 from value yellow to value green
+SIG ReD-140 was yellow now green
+SIG ReD+10 was red now yellow
+SIG 1430 was green now red
+E500:t:625next SIG (GdL-140) at PK5.212
+E500:t:626:coasting at 28.7621080667
+E500:t:626 State update PK:4.85260519862 vK:28.7561114342 maxVk:30.0 aF:-0.333146253922 a:0.0 power: 2.66110855602 v2factor: 0.087896253922 gFactor:0.0 vSquare:63.8317021946
+E500:t:627:coasting at 27.575637033
+E500:t:627 State update PK:4.86042682192 vK:27.5697682379 maxVk:30.0 aF:-0.326044174264 a:0.0 power: 2.49693397771 v2factor: 0.0807941742636 gFactor:0.0 vSquare:58.6740553839
+E500:t:627:boosting from vK:27.2946296535 to maxVk:30.0 with aFull:-0.324439786614
+E500:t:628:coasting at 29.9557647894
+E500:t:628 State update PK:4.86831702347 vK:29.9496341116 maxVk:30.0 aF:-0.340593208437 a:0.0 power: 2.83351165934 v2factor: 0.0953432084374 gFactor:0.0 vSquare:69.2398027868
+E500:t:629:coasting at 28.7433170127
+E500:t:629 State update PK:4.87646651779 vK:28.7373224468 maxVk:30.0 aF:-0.333031441495 a:0.0 power: 2.65845331088 v2factor: 0.0877814414951 gFactor:0.0 vSquare:63.7483235258
+E500:t:630:coasting at 27.5572464815
+E500:t:630 State update PK:4.88428297841 vK:27.5513796254 maxVk:30.0 aF:-0.325936444824 a:0.0 power: 2.49444409031 v2factor: 0.0806864448242 gFactor:0.0 vSquare:58.5958204969
+E500:t:630:boosting from vK:27.2996871675 to maxVk:30.0 with aFull:-0.324469132805
+E500:t:631:coasting at 29.9123329625
+E500:t:631 State update PK:4.89218750871 vK:29.9062072576 maxVk:30.0 aF:-0.340316939221 a:0.0 power: 2.82710803267 v2factor: 0.0950669392213 gFactor:0.0 vSquare:69.0391715478
+E500:t:632:coasting at 28.7008488494
+E500:t:632 State update PK:4.90032507591 vK:28.6948589491 maxVk:30.0 aF:-0.332772239497 a:0.0 power: 2.6524590207 v2factor: 0.0875222394968 gFactor:0.0 vSquare:63.5600867805
+E500:t:633:coasting at 27.5156824982
+E500:t:633 State update PK:4.90812986861 vK:27.50982002 maxVk:30.0 aF:-0.32569323323 a:0.0 power: 2.48882284109 v2factor: 0.0804432332303 gFactor:0.0 vSquare:58.4191962457
+E500:t:633:boosting from vK:27.2991801689 to maxVk:30.0 with aFull:-0.324466190704
+E500:t:634:coasting at 29.868979859
+E500:t:634 State update PK:4.91605714548 vK:29.8628591107 maxVk:30.0 aF:-0.340041570518 a:0.0 power: 2.8207259756 v2factor: 0.0947915705179 gFactor:0.0 vSquare:68.8391942759
+E500:t:635:coasting at 28.658456271
+E500:t:635 State update PK:4.92418280697 vK:28.6524710212 maxVk:30.0 aF:-0.332513881058 a:0.0 power: 2.64648453921 v2factor: 0.0872638810578 gFactor:0.0 vSquare:63.3724626418
+E500:t:636:coasting at 27.4741911582
+E500:t:636 State update PK:4.93197595234 vK:27.4683330436 maxVk:30.0 aF:-0.325450812854 a:0.0 power: 2.48321981022 v2factor: 0.0802008128537 gFactor:0.0 vSquare:58.2431465895
+E500:t:636:boosting from vK:27.2987146926 to maxVk:30.0 with aFull:-0.324463489604
+E500:t:637:coasting at 29.8261079231
+E500:t:637 State update PK:4.93992606725 vK:29.8199920693 maxVk:30.0 aF:-0.339769650845 a:0.0 power: 2.814424526 v2factor: 0.0945196508453 gFactor:0.0 vSquare:68.6417217468
+E500:t:638:coasting at 28.6165328322
+E500:t:638 State update PK:4.94803995498 vK:28.6105521746 maxVk:30.0 aF:-0.332258757329 a:0.0 power: 2.64058514223 v2factor: 0.0870087573294 gFactor:0.0 vSquare:63.187187603
+E500:t:639:coasting at 27.4331576748
+E500:t:639 State update PK:4.95582158171 vK:27.4273038691 maxVk:30.0 aF:-0.325211427376 a:0.0 power: 2.47768684455 v2factor: 0.0799614273763 gFactor:0.0 vSquare:58.0693009269
+E500:t:639:boosting from vK:27.298675187 to maxVk:30.0 with aFull:-0.32446326036
+E500:t:640:coasting at 29.7829481078
+E500:t:640 State update PK:4.96379445801 vK:29.7768371744 maxVk:30.0 aF:-0.339496299787 a:0.0 power: 2.80809056669 v2factor: 0.0942462997868 gFactor:0.0 vSquare:68.4432097217
+E500:t:641:coasting at 28.5743265095
+E500:t:641 State update PK:4.97189649272 vK:28.5683504683 maxVk:30.0 aF:-0.332002289394 a:0.0 power: 2.63465493324 v2factor: 0.0867522893936 gFactor:0.0 vSquare:63.0009363788
+E500:t:642:coasting at 27.3918459973
+E500:t:642 State update PK:4.97966652291 vK:27.3859965232 maxVk:30.0 aF:-0.324970780384 a:0.0 power: 2.47212462826 v2factor: 0.0797207803836 gFactor:0.0 vSquare:57.8945391311
+E500:t:642:boosting from vK:27.2983278402 to maxVk:30.0 with aFull:-0.324461244783
+E500:t:643:coasting at 29.7392554467
+E500:t:643 State update PK:4.98766198305 vK:29.7331494872 maxVk:30.0 aF:-0.339219977168 a:0.0 power: 2.80168841394 v2factor: 0.0939699771685 gFactor:0.0 vSquare:68.2425397012
+E500:t:644:coasting at 28.5315977087
+E500:t:644 State update PK:4.99575201822 vK:28.5256263341 maxVk:30.0 aF:-0.331743032205 a:0.0 power: 2.62866049323 v2factor: 0.0864930322051 gFactor:0.0 vSquare:62.8126595535
+E500:t:645:coasting at 27.3500215723
+E500:t:645 State update PK:5.00351030812 vK:27.344176477 maxVk:30.0 aF:-0.324727516 a:0.0 power: 2.46650180679 v2factor: 0.0794775160003 gFactor:0.0 vSquare:57.7178765434
+E500:t:645:boosting from vK:27.2974377092 to maxVk:30.0 with aFull:-0.324456079667
+E500:t:646:coasting at 29.6963687555
+E500:t:646 State update PK:5.01152852494 vK:29.6902676709 maxVk:30.0 aF:-0.338949146209 a:0.0 power: 2.79541413272 v2factor: 0.0936991462093 gFactor:0.0 vSquare:68.0458578136
+E500:t:647:coasting at 28.4896557244
+E500:t:647 State update PK:5.01960678171 vK:28.4836889238 maxVk:30.0 aF:-0.33148892635 a:0.0 power: 2.62278540551 v2factor: 0.0862389263503 gFactor:0.0 vSquare:62.6281237112
+E500:t:648:coasting at 27.3089659947
+E500:t:648 State update PK:5.02735354733 vK:27.3031251911 maxVk:30.0 aF:-0.324489085018 a:0.0 power: 2.4609905865 v2factor: 0.0792390850179 gFactor:0.0 vSquare:57.5447240508
+E500:t:648:boosting from vK:27.2972849977 to maxVk:30.0 with aFull:-0.324455193553
+E500:t:649:coasting at 29.6542116862
+E500:t:649 State update PK:5.035394713 vK:29.6481153868 maxVk:30.0 aF:-0.338683303765 a:0.0 power: 2.78925601933 v2factor: 0.0934333037652 gFactor:0.0 vSquare:67.8527986675
+E500:t:650:coasting at 28.4484259635
+E500:t:650 State update PK:5.04346139156 vK:28.4424636525 maxVk:30.0 aF:-0.331239499854 a:0.0 power: 2.61701873191 v2factor: 0.0859894998539 gFactor:0.0 vSquare:62.4469860958
+E500:t:650:boosting from vK:27.2977984092 to maxVk:30.0 with aFull:-0.324458172662
+need to go faster...1.35
+E500:t:651 State update PK:5.05119754288 vK:27.4092334518 maxVk:30.0 aF:1.02503540804 a:1.35 power: 1469822.61803 v2factor: 0.0797145919637 gFactor:0.0 vSquare:57.8900449991
+E500:t:652:coasting at 29.6121133223
+E500:t:652 State update PK:5.0592609408 vK:29.6060217946 maxVk:30.0 aF:-0.338418208388 a:0.0 power: 2.78311579256 v2factor: 0.0931682083877 gFactor:0.0 vSquare:67.6602820535
+E500:t:653:coasting at 28.4072523043
+E500:t:653 State update PK:5.06731605709 vK:28.4012944704 maxVk:30.0 aF:-0.330990773245 a:0.0 power: 2.61126844942 v2factor: 0.0857407732447 gFactor:0.0 vSquare:62.26635675
+E500:t:653:boosting from vK:27.2983364255 to maxVk:30.0 with aFull:-0.324461294602
+need to go faster...1.35
+E500:t:654 State update PK:5.07504325286 vK:27.5383075038 maxVk:30.0 aF:1.02428227777 a:1.35 power: 1476744.23148 v2factor: 0.0804677222343 gFactor:0.0 vSquare:58.4369805623
+E500:t:655:coasting at 29.5694614783
+E500:t:655 State update PK:5.08312704714 vK:29.5633747781 maxVk:30.0 aF:-0.338150011787 a:0.0 power: 2.7769043138 v2factor: 0.0929000117872 gFactor:0.0 vSquare:67.4655132805
+E500:t:656:coasting at 28.3655359848
+E500:t:656 State update PK:5.09117044896 vK:28.3595826803 maxVk:30.0 aF:-0.330739135869 a:0.0 power: 2.6054510748 v2factor: 0.0854891358685 gFactor:0.0 vSquare:62.0836135574
+E500:t:656:boosting from vK:27.2983118359 to maxVk:30.0 with aFull:-0.324461151914
+need to go faster...1.35
+E500:t:657 State update PK:5.09889020271 vK:27.6675266847 maxVk:30.0 aF:1.02352475332 a:1.35 power: 1483673.62757 v2factor: 0.0812252466799 gFactor:0.0 vSquare:58.9871072476
+E500:t:658:coasting at 29.5270783607
+E500:t:658 State update PK:5.10699279054 vK:29.5209964507 maxVk:30.0 aF:-0.33788388788 a:0.0 power: 2.77074140413 v2factor: 0.0926338878802 gFactor:0.0 vSquare:67.2722497314
+E500:t:659:coasting at 28.3240811639
+E500:t:659 State update PK:5.11502455151 vK:28.3181323539 maxVk:30.0 aF:-0.330489442214 a:0.0 power: 2.59967882394 v2factor: 0.085239442214 gFactor:0.0 vSquare:61.9022819274
+E500:t:659:boosting from vK:27.2985128349 to maxVk:30.0 with aFull:-0.324462318263
+need to go faster...1.35
+E500:t:660 State update PK:5.12273856063 vK:27.7960973355 maxVk:30.0 aF:1.02276750808 a:1.35 power: 1490568.24622 v2factor: 0.0819824919228 gFactor:0.0 vSquare:59.5370311712
+E500:t:661:coasting at 29.4841880272
+E500:t:661 State update PK:5.13085812255 vK:29.4781109577 maxVk:30.0 aF:-0.33761496776 a:0.0 power: 2.76451430017 v2factor: 0.0923649677598 gFactor:0.0 vSquare:67.0769555263
+E500:t:662:coasting at 28.2821288829
+E500:t:662 State update PK:5.13887810316 vK:28.2761846147 maxVk:30.0 aF:-0.330237124003 a:0.0 power: 2.59384607915 v2factor: 0.0849871240033 gFactor:0.0 vSquare:61.7190443016
+E500:t:662:boosting from vK:27.2981944017 to maxVk:30.0 with aFull:-0.324460470476
+need to go faster...1.35
+E500:t:663 State update PK:5.14658789679 vK:27.9246349704 maxVk:30.0 aF:1.02200694481 a:1.35 power: 1497461.09448 v2factor: 0.0827430551901 gFactor:0.0 vSquare:60.0893646987
+E500:t:664:coasting at 29.4413927894
+E500:t:664 State update PK:5.15472278378 vK:29.4353205428 maxVk:30.0 aF:-0.337347033497 a:0.0 power: 2.75831057365 v2factor: 0.0920970334965 gFactor:0.0 vSquare:66.8823772669
+E500:t:665:coasting at 28.2402682608
+E500:t:665 State update PK:5.16273100995 vK:28.2343285177 maxVk:30.0 aF:-0.329985729841 a:0.0 power: 2.5880348618 v2factor: 0.0847357298408 gFactor:0.0 vSquare:61.5364777348
+E500:t:665:boosting from vK:27.2979346151 to maxVk:30.0 with aFull:-0.324458963016
+need to go faster...1.35
+E500:t:666 State update PK:5.17043824034 vK:28.0527602224 maxVk:30.0 aF:1.02124532648 a:1.35 power: 1504331.82873 v2factor: 0.0835046735188 gFactor:0.0 vSquare:60.642464429
+E500:t:667:coasting at 29.3983219338
+E500:t:667 State update PK:5.17858670054 vK:29.392254534 maxVk:30.0 aF:-0.337077766581 a:0.0 power: 2.75207653142 v2factor: 0.0918277665808 gFactor:0.0 vSquare:66.6868312134
+E500:t:667:ADVANCE green SIG vK:28.7229645838
+E500:t:668:coasting at 28.1981366715
+E500:t:668 State update PK:5.18658309638 vK:28.192201476 maxVk:30.0 aF:-0.329733084373 a:0.0 power: 2.58219487443 v2factor: 0.084483084373 gFactor:0.0 vSquare:61.3530024495
+E500:t:668:boosting from vK:27.2973768944 to maxVk:30.0 with aFull:-0.324455726786
+need to go faster...1.35
+E500:t:669 State update PK:5.19428940694 vK:28.1816593899 maxVk:30.0 aF:1.02047558653 a:1.35 power: 1511244.06438 v2factor: 0.0842744134736 gFactor:0.0 vSquare:61.2014622176
+E500:t:670:coasting at 29.3561358454
+E500:t:670 State update PK:5.20245001572 vK:29.3500731859 maxVk:30.0 aF:-0.336814413126 a:0.0 power: 2.74597990981 v2factor: 0.0915644131256 gFactor:0.0 vSquare:66.4955796119
+E500:t:671:coasting at 28.1568692236
+E500:t:671 State update PK:5.21043482406 vK:28.1509384759 maxVk:30.0 aF:-0.329485986476 a:0.0 power: 2.57648325943 v2factor: 0.0842359864757 gFactor:0.0 vSquare:61.173555901
+E500:t:671:AT SIG WestboundMain:GdL-140 vK:27.90832539
+E500:671:START UPDATE SIG BY OCCU sig:WestboundMain:1465 from value green to value red
+E500:671:START UPDATE SIG BY OCCU sig:WestboundMain:1430 from value red to value yellow
+E500:671:START UPDATE SIG BY OCCU sig:WestboundMain:ReD+10 from value yellow to value green
+SIG ReD+10 was yellow now green
+SIG 1430 was red now yellow
+SIG 1465 was green now red
+E500:t:671next SIG (GdL+10) at PK5.362
+E500:t:671:boosting from vK:27.2976383007 to maxVk:30.0 with aFull:-0.324457243614
+need to go faster...1.35
+E500:t:672 State update PK:5.21814201261 vK:28.3099566494 maxVk:30.0 aF:1.01970593382 a:1.35 power: 1518124.02272 v2factor: 0.0850440661757 gFactor:0.0 vSquare:61.7603966418
+E500:t:673:coasting at 29.3134893646
+E500:t:673 State update PK:5.22631296878 vK:29.3074314904 maxVk:30.0 aF:-0.33654856999 a:0.0 power: 2.73982615504 v2factor: 0.09129856999 gFactor:0.0 vSquare:66.3025199637
+E500:t:674:coasting at 28.1151500699
+E500:t:674 State update PK:5.23428606297 vK:28.109223812 maxVk:30.0 aF:-0.329236551742 a:0.0 power: 2.57071775556 v2factor: 0.0839865517421 gFactor:0.0 vSquare:60.9924123036
+E500:t:674:boosting from vK:27.2974241545 to maxVk:30.0 with aFull:-0.324456001015
+need to go faster...1.35
+E500:t:675 State update PK:5.24199569744 vK:28.4383505783 maxVk:30.0 aF:1.01893219832 a:1.35 power: 1525009.16505 v2factor: 0.085817801677 gFactor:0.0 vSquare:62.3222960617
+E500:t:676:coasting at 29.271065913
+E500:t:676 State update PK:5.25017539305 vK:29.2650127919 maxVk:30.0 aF:-0.336284500591 a:0.0 power: 2.73371394765 v2factor: 0.0910345005911 gFactor:0.0 vSquare:66.1107484322
+E500:t:677:coasting at 28.0736477598
+E500:t:677 State update PK:5.25813683416 vK:28.0677259618 maxVk:30.0 aF:-0.32898878047 a:0.0 power: 2.5649908152 v2factor: 0.0837387804701 gFactor:0.0 vSquare:60.8124767394
+E500:t:677:boosting from vK:27.2973927175 to maxVk:30.0 with aFull:-0.3244558186
+need to go faster...1.35
+E500:t:678 State update PK:5.26585066502 vK:28.5672924202 maxVk:30.0 aF:1.01815163429 a:1.35 power: 1531923.68937 v2factor: 0.0865983657139 gFactor:0.0 vSquare:62.8891544763
+E500:t:679:coasting at 29.2293069942
+E500:t:679 State update PK:5.27403761746 vK:29.2232585452 maxVk:30.0 aF:-0.336024941157 a:0.0 power: 2.72770659252 v2factor: 0.090774941157 gFactor:0.0 vSquare:65.9222521111
+E500:t:680:coasting at 28.0327942523
+E500:t:680 State update PK:5.28198758784 vK:28.026876838 maxVk:30.0 aF:-0.328745240069 a:0.0 power: 2.55936176514 v2factor: 0.0834952400692 gFactor:0.0 vSquare:60.6356137031
+E500:t:680:boosting from vK:27.2979707533 to maxVk:30.0 with aFull:-0.324459172714
+need to go faster...1.35
+E500:t:681 State update PK:5.28970735716 vK:28.6958883451 maxVk:30.0 aF:1.01736964432 a:1.35 power: 1538819.66393 v2factor: 0.0873803556765 gFactor:0.0 vSquare:63.4570484216
+E500:t:682:coasting at 29.1873388744
+E500:t:682 State update PK:5.29789983967 vK:29.1812951142 maxVk:30.0 aF:-0.335764454748 a:0.0 power: 2.72167823413 v2factor: 0.090514454748 gFactor:0.0 vSquare:65.7330826056
+E500:t:683:coasting at 27.9917347789
+E500:t:683 State update PK:5.30583828167 vK:27.985821764 maxVk:30.0 aF:-0.328500829193 a:0.0 power: 2.55371268198 v2factor: 0.0832508291929 gFactor:0.0 vSquare:60.4581185134
+E500:t:683:boosting from vK:27.2983155347 to maxVk:30.0 with aFull:-0.324461173378
+need to go faster...1.35
+E500:t:684 State update PK:5.31356542314 vK:28.8228938131 maxVk:30.0 aF:1.0165938756 a:1.35 power: 1545630.3501 v2factor: 0.0881561243983 gFactor:0.0 vSquare:64.0204243996
+E500:t:685:coasting at 29.1439449548
+E500:t:685 State update PK:5.32176136853 vK:29.1379060356 maxVk:30.0 aF:-0.3354955123 a:0.0 power: 2.71545464244 v2factor: 0.0902455123001 gFactor:0.0 vSquare:65.537772186
+E500:t:685:ADVANCE STA x:5352.0 vK:29.0353472217
+E500:t:686 State update PK:5.32936489192 vK:25.4119472217 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0687197127173 gFactor:0.0 vSquare:49.9053832369
+E500:t:687 State update PK:5.33587101615 vK:21.4519472217 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0489850674302 gFactor:0.0 vSquare:35.5737599348
+E500:t:688 State update PK:5.34127714038 vK:17.4919472217 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0325827621431 gFactor:0.0 vSquare:23.6621366326
+E500:t:689 State update PK:5.34558326461 vK:13.5319472217 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.019512796856 gFactor:0.0 vSquare:14.1705133304
+E500:t:690 State update PK:5.34878938883 vK:9.57194722175 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00977517156888 gFactor:0.0 vSquare:7.09889002823
+E500:t:691 State update PK:5.35089551306 vK:5.61194722175 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00336988628178 gFactor:0.0 vSquare:2.44726672605
+E500:t:692 State update PK:5.35190163729 vK:1.65194722175 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000296940994676 gFactor:0.0 vSquare:0.215643423875
+E500:t:692:IN STA GdL vK:0.779091221747 a:-0.004
+E500:t:692:next STA (Bas) at PK6.305
+E500:t:703:OUT STA, a:1.34681240237 vK:0.0
+need to go faster...1.35
+E500:t:704 State update PK:5.35255527444 vK:3.97509959103 maxVk:30.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:705 State update PK:5.35421306414 vK:7.93816552656 maxVk:30.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:706 State update PK:5.35696863532 vK:11.8772793223 maxVk:30.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:706:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:707 State update PK:5.36081370287 vK:15.7808101534 maxVk:30.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:707:AT SIG WestboundMain:GdL+10 vK:16.807851537
+E500:707:START UPDATE SIG BY OCCU sig:WestboundMain:GdL-140 from value green to value red
+E500:707:START UPDATE SIG BY OCCU sig:WestboundMain:1465 from value red to value yellow
+E500:707:START UPDATE SIG BY OCCU sig:WestboundMain:1430 from value yellow to value green
+SIG 1430 was yellow now green
+SIG 1465 was red now yellow
+SIG GdL-140 was green now red
+E500:t:707next SIG (1540) at PK5.6
+need to go faster...1.35
+E500:t:708 State update PK:5.36573680689 vK:19.6375498514 maxVk:30.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:709 State update PK:5.37172344772 vK:23.4368373444 maxVk:30.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:710 State update PK:5.37875625377 vK:27.1686697263 maxVk:30.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+E500:t:711:coasting at 29.6908231124
+E500:t:711 State update PK:5.38677717518 vK:29.6847226576 maxVk:30.0 aF:-0.338914153816 a:0.0 power: 2.79460351688 v2factor: 0.0936641538161 gFactor:0.0 vSquare:68.0204457633
+E500:t:712:coasting at 28.4842321412
+E500:t:712 State update PK:5.39485390888 vK:28.4782659315 maxVk:30.0 aF:-0.331456094822 a:0.0 power: 2.62202633693 v2factor: 0.0862060948218 gFactor:0.0 vSquare:62.6042809164
+E500:t:713:coasting at 27.3036569389
+E500:t:713 State update PK:5.40259918426 vK:27.2978166899 maxVk:30.0 aF:-0.324458278738 a:0.0 power: 2.46027850459 v2factor: 0.0792082787379 gFactor:0.0 vSquare:57.5223520246
+E500:t:713:boosting from vK:27.2978166899 to maxVk:30.0 with aFull:-0.324458278738
+E500:t:714:coasting at 29.6477788131
+E500:t:714 State update PK:5.41064351197 vK:29.6416832432 maxVk:30.0 aF:-0.338642771283 a:0.0 power: 2.78831715527 v2factor: 0.0933927712834 gFactor:0.0 vSquare:67.823363314
+E500:t:715:coasting at 28.4421344755
+E500:t:715 State update PK:5.41870842376 vK:28.436172849 maxVk:30.0 aF:-0.331201470187 a:0.0 power: 2.61613951502 v2factor: 0.0859514701867 gFactor:0.0 vSquare:62.4193683273
+E500:t:715:boosting from vK:27.2974759705 to maxVk:30.0 with aFull:-0.324456301681
+need to go faster...1.35
+E500:t:716 State update PK:5.4264430739 vK:27.4263738541 maxVk:30.0 aF:1.02493559994 a:1.35 power: 1470741.77441 v2factor: 0.0798144000631 gFactor:0.0 vSquare:57.9625272789
+E500:t:717:coasting at 29.604742082
+E500:t:717 State update PK:5.43450912939 vK:29.5986513891 maxVk:30.0 aF:-0.338371830085 a:0.0 power: 2.78204162182 v2factor: 0.0931218300851 gFactor:0.0 vSquare:67.626601369
+E500:t:718:coasting at 28.4000428408
+E500:t:718 State update PK:5.44256222116 vK:28.3940857902 maxVk:30.0 aF:-0.330947258544 a:0.0 power: 2.61026245865 v2factor: 0.0856972585445 gFactor:0.0 vSquare:62.2347556605
+E500:t:718:boosting from vK:27.2971094838 to maxVk:30.0 with aFull:-0.324454175134
+need to go faster...1.35
+E500:t:719 State update PK:5.45028790822 vK:27.5555139898 maxVk:30.0 aF:1.02418161265 a:1.35 power: 1477666.93162 v2factor: 0.0805683873506 gFactor:0.0 vSquare:58.5100852219
+E500:t:720:coasting at 29.5621730405
+E500:t:720 State update PK:5.45837414348 vK:29.5560871646 maxVk:30.0 aF:-0.338104220456 a:0.0 power: 2.77584383625 v2factor: 0.0928542204559 gFactor:0.0 vSquare:67.4322588641
+E500:t:721:coasting at 28.3584072768
+E500:t:721 State update PK:5.46641554348 vK:28.3524547457 maxVk:30.0 aF:-0.330696171723 a:0.0 power: 2.60445784538 v2factor: 0.0854461717231 gFactor:0.0 vSquare:62.0524122898
+E500:t:721:boosting from vK:27.2971587407 to maxVk:30.0 with aFull:-0.324454460946
+need to go faster...1.35
+E500:t:722 State update PK:5.47413403516 vK:27.6843950293 maxVk:30.0 aF:1.02342560374 a:1.35 power: 1484578.19484 v2factor: 0.0813243962574 gFactor:0.0 vSquare:59.059111298
+E500:t:723:coasting at 29.5194774023
+E500:t:723 State update PK:5.48223873654 vK:29.5133963507 maxVk:30.0 aF:-0.337836201774 a:0.0 power: 2.76963714571 v2factor: 0.0925862017739 gFactor:0.0 vSquare:67.2376192984
+E500:t:724:coasting at 28.316646545
+E500:t:724 State update PK:5.49026840983 vK:28.3106985404 maxVk:30.0 aF:-0.330444700103 a:0.0 power: 2.59864452469 v2factor: 0.0851947001027 gFactor:0.0 vSquare:61.8697894718
+E500:t:724:boosting from vK:27.297054119 to maxVk:30.0 with aFull:-0.324453853881
+need to go faster...1.35
+E500:t:725 State update PK:5.49798134702 vK:27.8137589299 maxVk:30.0 aF:1.02266321172 a:1.35 power: 1491515.35163 v2factor: 0.0820867882821 gFactor:0.0 vSquare:59.6127728991
+E500:t:726:coasting at 29.4773811143
+E500:t:726 State update PK:5.50610300606 vK:29.4713048125 maxVk:30.0 aF:-0.337572324719 a:0.0 power: 2.76352691057 v2factor: 0.0923223247193 gFactor:0.0 vSquare:67.0459874505
+E500:t:727:coasting at 28.2754707185
+E500:t:727 State update PK:5.51412111705 vK:28.2695271705 maxVk:30.0 aF:-0.330197113463 a:0.0 power: 2.59292118629 v2factor: 0.0849471134627 gFactor:0.0 vSquare:61.6899879904
+E500:t:727:boosting from vK:27.2974929919 to maxVk:30.0 with aFull:-0.324456400448
+need to go faster...1.35
+E500:t:728 State update PK:5.52183023437 vK:27.9418031754 maxVk:30.0 aF:1.02190509386 a:1.35 power: 1498381.74183 v2factor: 0.0828449061419 gFactor:0.0 vSquare:60.1633305315
+E500:t:729:coasting at 29.4341216134
+E500:t:729 State update PK:5.52996684879 vK:29.4280501855 maxVk:30.0 aF:-0.337301548485 a:0.0 power: 2.75725747124 v2factor: 0.0920515484848 gFactor:0.0 vSquare:66.8493453048
+E500:t:730:coasting at 28.2331557471
+E500:t:730 State update PK:5.53797307779 vK:28.2272167721 maxVk:30.0 aF:-0.329943052615 a:0.0 power: 2.5870483524 v2factor: 0.0846930526153 gFactor:0.0 vSquare:61.5054848332
+E500:t:730:boosting from vK:27.2967814842 to maxVk:30.0 with aFull:-0.324452271933
+need to go faster...1.35
+E500:t:731 State update PK:5.54567976977 vK:28.0700313738 maxVk:30.0 aF:1.02114239422 a:1.35 power: 1505257.9966 v2factor: 0.0836076057781 gFactor:0.0 vSquare:60.7172155251
+E500:t:732:coasting at 29.3911697366
+E500:t:732 State update PK:5.55382975171 vK:29.3851031409 maxVk:30.0 aF:-0.337033091214 a:0.0 power: 2.75104226312 v2factor: 0.0917830912138 gFactor:0.0 vSquare:66.6543872286
+E500:t:733:coasting at 28.1911403126
+E500:t:733 State update PK:5.56182418303 vK:28.1852058716 maxVk:30.0 aF:-0.329691166663 a:0.0 power: 2.58122594624 v2factor: 0.0844411666633 gFactor:0.0 vSquare:61.3225611208
+E500:t:733:boosting from vK:27.2963327127 to maxVk:30.0 with aFull:-0.324449667997
+need to go faster...1.35
+E500:t:734 State update PK:5.56953025656 vK:28.1995069757 maxVk:30.0 aF:1.02036872873 a:1.35 power: 1512201.14364 v2factor: 0.084381271271 gFactor:0.0 vSquare:61.2790641038
+E500:t:734:ADVANCE green SIG vK:28.8227872594
+E500:t:735:coasting at 29.3495656681
+E500:t:735 State update PK:5.57769231164 vK:29.3435037463 maxVk:30.0 aF:-0.336773431771 a:0.0 power: 2.74503123801 v2factor: 0.0915234317713 gFactor:0.0 vSquare:66.4658182798
+E500:t:736:coasting at 28.1504419994
+E500:t:736 State update PK:5.5856753153 vK:28.1445119438 maxVk:30.0 aF:-0.329447534631 a:0.0 power: 2.5755944648 v2factor: 0.0841975346312 gFactor:0.0 vSquare:61.1456315404
+E500:t:736:boosting from vK:27.2971494008 to maxVk:30.0 with aFull:-0.324454406751
+need to go faster...1.35
+E500:t:737 State update PK:5.59338264817 vK:28.3281588402 maxVk:30.0 aF:1.01959645583 a:1.35 power: 1519100.11773 v2factor: 0.0851535441746 gFactor:0.0 vSquare:61.8399013614
+E500:t:737:AT SIG WestboundMain:1540 vK:29.5318791829
+E500:737:START UPDATE SIG BY OCCU sig:WestboundMain:GdL+10 from value green to value red
+E500:737:START UPDATE SIG BY OCCU sig:WestboundMain:GdL-140 from value red to value yellow
+E500:737:START UPDATE SIG BY OCCU sig:WestboundMain:1465 from value yellow to value green
+SIG 1465 was yellow now green
+SIG GdL-140 was red now yellow
+SIG GdL+10 was green now red
+E500:t:737next SIG (1565) at PK5.85
+E500:t:738:coasting at 29.3072842944
+E500:t:738 State update PK:5.60155491447 vK:29.3012271158 maxVk:30.0 aF:-0.336509921976 a:0.0 power: 2.73893156959 v2factor: 0.0912599219758 gFactor:0.0 vSquare:66.2744531414
+E500:t:739:coasting at 28.1090798138
+E500:t:739 State update PK:5.60952630423 vK:28.1031542086 maxVk:30.0 aF:-0.329200289097 a:0.0 power: 2.56987958056 v2factor: 0.0839502890975 gFactor:0.0 vSquare:60.9660777759
+E500:t:739:boosting from vK:27.2972822469 to maxVk:30.0 with aFull:-0.324455177592
+need to go faster...1.35
+E500:t:740 State update PK:5.61723647105 vK:28.4574721926 maxVk:30.0 aF:1.01881666666 a:1.35 power: 1526034.56429 v2factor: 0.0859333333425 gFactor:0.0 vSquare:62.4061970534
+E500:t:741:coasting at 29.265778268
+E500:t:741 State update PK:5.62541749595 vK:29.259725739 maxVk:30.0 aF:-0.336251613874 a:0.0 power: 2.73295277812 v2factor: 0.0910016138737 gFactor:0.0 vSquare:66.0868655582
+E500:t:742:coasting at 28.0684748323
+E500:t:742 State update PK:5.63337748461 vK:28.0625535897 maxVk:30.0 aF:-0.328957923437 a:0.0 power: 2.56427759867 v2factor: 0.0837079234374 gFactor:0.0 vSquare:60.7900678558
+E500:t:742:boosting from vK:27.2981312707 to maxVk:30.0 with aFull:-0.324460104145
+need to go faster...1.35
+E500:t:743 State update PK:5.64109220876 vK:28.5859401678 maxVk:30.0 aF:1.01803845552 a:1.35 power: 1532923.67745 v2factor: 0.0867115444835 gFactor:0.0 vSquare:62.9713467564
+E500:t:744:coasting at 29.2235743986
+E500:t:744 State update PK:5.64928012714 vK:29.2175265905 maxVk:30.0 aF:-0.335989338192 a:0.0 power: 2.72688261744 v2factor: 0.0907393381922 gFactor:0.0 vSquare:65.8963966537
+E500:t:745:coasting at 28.0271858493
+E500:t:745 State update PK:5.65722852282 vK:28.0212690363 maxVk:30.0 aF:-0.32871183433 a:0.0 power: 2.55858965144 v2factor: 0.0834618343298 gFactor:0.0 vSquare:60.6113539069
+E500:t:745:boosting from vK:27.2982757363 to maxVk:30.0 with aFull:-0.324460942438
+need to go faster...1.35
+E500:t:746 State update PK:5.66494930762 vK:28.7142009391 maxVk:30.0 aF:1.01725799977 a:1.35 power: 1539801.67937 v2factor: 0.0874920002319 gFactor:0.0 vSquare:63.5381265301
+E500:t:747:coasting at 29.1812970207
+E500:t:747 State update PK:5.67314243102 vK:29.175253935 maxVk:30.0 aF:-0.33572698518 a:0.0 power: 2.72081112373 v2factor: 0.0904769851799 gFactor:0.0 vSquare:65.7058715903
+E500:t:748:coasting at 27.9858236292
+E500:t:748 State update PK:5.68107921335 vK:27.9799112471 maxVk:30.0 aF:-0.328465671947 a:0.0 power: 2.55290009689 v2factor: 0.083215671947 gFactor:0.0 vSquare:60.4325867444
+E500:t:748:boosting from vK:27.298317377 to maxVk:30.0 with aFull:-0.324461184068
+need to go faster...1.35
+E500:t:749 State update PK:5.68880769578 vK:28.8424230102 maxVk:30.0 aF:1.01647428414 a:1.35 power: 1546677.60606 v2factor: 0.0882757158619 gFactor:0.0 vSquare:64.1072736833
+E500:t:750:coasting at 29.1391111835
+E500:t:750 State update PK:5.6970043834 vK:29.133072803 maxVk:30.0 aF:-0.33546557881 a:0.0 power: 2.71476198066 v2factor: 0.0902155788097 gFactor:0.0 vSquare:65.5160339939
+E500:t:751:coasting at 27.9445496492
+E500:t:751 State update PK:5.70492957733 vK:27.9386416821 maxVk:30.0 aF:-0.328220397104 a:0.0 power: 2.54723112984 v2factor: 0.0829703971041 gFactor:0.0 vSquare:60.2544641279
+E500:t:751:boosting from vK:27.2984156405 to maxVk:30.0 with aFull:-0.324461754266
+need to go faster...1.35
+E500:t:752 State update PK:5.71266731308 vK:28.9697468134 maxVk:30.0 aF:1.01569260067 a:1.35 power: 1553505.36309 v2factor: 0.0890573993299 gFactor:0.0 vSquare:64.6749450471
+E500:t:753:coasting at 29.0961766981
+E500:t:753 State update PK:5.72086568944 vK:29.0901430995 maxVk:30.0 aF:-0.33519992171 a:0.0 power: 2.70861491375 v2factor: 0.08994992171 gFactor:0.0 vSquare:65.3231094481
+E500:t:754:coasting at 27.9025418503
+E500:t:754 State update PK:5.72877908913 vK:27.8966383699 maxVk:30.0 aF:-0.327971133182 a:0.0 power: 2.54147002726 v2factor: 0.0827211331816 gFactor:0.0 vSquare:60.0734445763
+E500:t:754:boosting from vK:27.2977575548 to maxVk:30.0 with aFull:-0.324457935599
+need to go faster...1.35
+E500:t:755 State update PK:5.73652772861 vK:29.0979040581 maxVk:30.0 aF:1.01490232046 a:1.35 power: 1560377.81362 v2factor: 0.0898476795409 gFactor:0.0 vSquare:65.2488595068
+E500:t:756:coasting at 29.0541870827
+E500:t:756 State update PK:5.74472639519 vK:29.0481581539 maxVk:30.0 aF:-0.334940489872 a:0.0 power: 2.70261231165 v2factor: 0.0896904898725 gFactor:0.0 vSquare:65.1347057898
+E500:t:757:coasting at 27.8614572073
+E500:t:757 State update PK:5.75262826001 vK:27.8555581085 maxVk:30.0 aF:-0.327727709757 a:0.0 power: 2.53584396192 v2factor: 0.0824777097571 gFactor:0.0 vSquare:59.8966664903
+E500:t:757:boosting from vK:27.2979817691 to maxVk:30.0 with aFull:-0.324459236635
+need to go faster...1.35
+E500:t:758 State update PK:5.76038945115 vK:29.2250651859 maxVk:30.0 aF:1.01411473207 a:1.35 power: 1567196.84734 v2factor: 0.0906352679332 gFactor:0.0 vSquare:65.8208191236
+E500:t:759:coasting at 29.0113537027
+E500:t:759 State update PK:5.76858650837 vK:29.0053295305 maxVk:30.0 aF:-0.334676230889 a:0.0 power: 2.69649843416 v2factor: 0.0894262308892 gFactor:0.0 vSquare:64.942796579
+E500:t:760:coasting at 27.8195456396
+E500:t:760 State update PK:5.77647660633 vK:27.813651004 maxVk:30.0 aF:-0.327479756457 a:0.0 power: 2.53011323804 v2factor: 0.0822297564567 gFactor:0.0 vSquare:59.716598734
+E500:t:760:boosting from vK:27.2973565929 to maxVk:30.0 with aFull:-0.324455608986
+need to go faster...1.35
+E500:t:761 State update PK:5.78425192354 vK:29.3524618188 maxVk:30.0 aF:1.01332223822 a:1.35 power: 1574028.51012 v2factor: 0.0914277617772 gFactor:0.0 vSquare:66.3963411599
+E500:t:762:coasting at 28.9688810894
+E500:t:762 State update PK:5.79244581143 vK:28.9628616269 maxVk:30.0 aF:-0.334414582605 a:0.0 power: 2.69044535611 v2factor: 0.0891645826047 gFactor:0.0 vSquare:64.7527833004
+E500:t:763:coasting at 27.777985733
+E500:t:763 State update PK:5.80032424146 vK:27.7720955165 maxVk:30.0 aF:-0.327234252209 a:0.0 power: 2.52443914128 v2factor: 0.0819842522095 gFactor:0.0 vSquare:59.5383095203
+E500:t:763:boosting from vK:27.2970486435 to maxVk:30.0 with aFull:-0.324453822109
+need to go faster...1.35
+E500:t:764 State update PK:5.80811536941 vK:29.4797621828 maxVk:30.0 aF:1.01252689713 a:1.35 power: 1580855.01056 v2factor: 0.0922231028684 gFactor:0.0 vSquare:66.9739309139
+E500:t:765:coasting at 28.9264451136
+E500:t:765 State update PK:5.81630443831 vK:28.9204303498 maxVk:30.0 aF:-0.334153542859 a:0.0 power: 2.68440673955 v2factor: 0.0889035428591 gFactor:0.0 vSquare:64.5632119528
+E500:t:765:ADVANCE green SIG vK:27.9783185035
+E500:t:766:coasting at 27.7364603423
+E500:t:766 State update PK:5.82417121028 vK:27.7305745346 maxVk:30.0 aF:-0.326989318434 a:0.0 power: 2.51877824079 v2factor: 0.0817393184342 gFactor:0.0 vSquare:59.3604345927
+E500:t:766:boosting from vK:27.2967440487 to maxVk:30.0 with aFull:-0.324452054717
+need to go faster...1.35
+E500:t:767 State update PK:5.8319797323 vK:29.6066341554 maxVk:30.0 aF:1.01173080508 a:1.35 power: 1587658.53853 v2factor: 0.093019194916 gFactor:0.0 vSquare:67.5520660247
+E500:t:768:coasting at 28.883721291
+E500:t:768 State update PK:5.84016224271 vK:28.8777112508 maxVk:30.0 aF:-0.333891119034 a:0.0 power: 2.67833647908 v2factor: 0.088641119034 gFactor:0.0 vSquare:64.3726354641
+E500:t:769:coasting at 27.6946519342
+E500:t:769 State update PK:5.84801727734 vK:27.6887705586 maxVk:30.0 aF:-0.326743085487 a:0.0 power: 2.51308731268 v2factor: 0.0814930854865 gFactor:0.0 vSquare:59.1816161848
+E500:t:769:AT SIG WestboundMain:1565 vK:27.3837928431
+E500:769:START UPDATE SIG BY OCCU sig:WestboundMain:1540 from value green to value red
+E500:769:START UPDATE SIG BY OCCU sig:WestboundMain:GdL+10 from value red to value yellow
+E500:769:START UPDATE SIG BY OCCU sig:WestboundMain:GdL-140 from value yellow to value green
+SIG GdL-140 was yellow now green
+SIG GdL+10 was red now yellow
+SIG 1540 was green now red
+E500:t:769next SIG (1588) at PK6.08
+E500:t:769:boosting from vK:27.2961276148 to maxVk:30.0 with aFull:-0.324448477958
+need to go faster...1.35
+E500:t:770 State update PK:5.85584512249 vK:29.7351530772 maxVk:30.0 aF:1.01092089023 a:1.35 power: 1594550.38448 v2factor: 0.0938291097673 gFactor:0.0 vSquare:68.1402394824
+E500:t:771:coasting at 28.8427392272
+E500:t:771 State update PK:5.86401990625 vK:28.8367337115 maxVk:30.0 aF:-0.333639758151 a:0.0 power: 2.67252246149 v2factor: 0.0883897581509 gFactor:0.0 vSquare:64.1900930653
+E500:t:772:coasting at 27.654546695
+E500:t:772 State update PK:5.87186368188 vK:27.6486695648 maxVk:30.0 aF:-0.326507232496 a:0.0 power: 2.50763627272 v2factor: 0.0812572324962 gFactor:0.0 vSquare:59.0103358723
+E500:t:772:boosting from vK:27.29717221 to maxVk:30.0 with aFull:-0.324454539102
+need to go faster...1.35
+E500:t:773 State update PK:5.87971246674 vK:29.862578072 maxVk:30.0 aF:1.01011440283 a:1.35 power: 1601383.56851 v2factor: 0.0946355971699 gFactor:0.0 vSquare:68.7259238707
+E500:t:774:coasting at 28.8008191072
+E500:t:774 State update PK:5.88787760437 vK:28.7948182129 maxVk:30.0 aF:-0.333383013007 a:0.0 power: 2.66658423745 v2factor: 0.0881330130071 gFactor:0.0 vSquare:64.0036405281
+E500:t:775:coasting at 27.6135221826
+E500:t:775 State update PK:5.89570986309 vK:27.6076493887 maxVk:30.0 aF:-0.326266327029 a:0.0 power: 2.50206843443 v2factor: 0.0810163270286 gFactor:0.0 vSquare:58.8353863679
+E500:t:775:boosting from vK:27.2972739832 to maxVk:30.0 with aFull:-0.324455129641
+E500:t:776:coasting at 29.9717364442
+E500:t:776 State update PK:5.90358110372 vK:29.9656039359 maxVk:30.0 aF:-0.340694904707 a:0.0 power: 2.83586904929 v2factor: 0.0954449047072 gFactor:0.0 vSquare:69.313656287
+E500:t:777:coasting at 28.7589339382
+E500:t:777 State update PK:5.91173498408 vK:28.7529376548 maxVk:30.0 aF:-0.333126854884 a:0.0 power: 2.66065991378 v2factor: 0.0878768548841 gFactor:0.0 vSquare:63.8176142949
+E500:t:778:coasting at 27.5725305745
+E500:t:778 State update PK:5.91955573532 vK:27.566662107 maxVk:30.0 aF:-0.326025971992 a:0.0 power: 2.49651328 v2factor: 0.0807759719924 gFactor:0.0 vSquare:58.6608365958
+E500:t:778:boosting from vK:27.2973783981 to maxVk:30.0 with aFull:-0.324455735511
+E500:t:779:coasting at 29.9295963369
+E500:t:779 State update PK:5.92745006377 vK:29.9234686563 maxVk:30.0 aF:-0.340426703295 a:0.0 power: 2.82965216272 v2factor: 0.0951767032946 gFactor:0.0 vSquare:69.1188840193
+E500:t:780:coasting at 28.7177293519
+E500:t:780 State update PK:5.93559237181 vK:28.7117375979 maxVk:30.0 aF:-0.332875222782 a:0.0 power: 2.65484056927 v2factor: 0.0876252227824 gFactor:0.0 vSquare:63.6348749327
+E500:t:781:coasting at 27.5322037617
+E500:t:781 State update PK:5.94340180236 vK:27.5263395442 maxVk:30.0 aF:-0.325789863423 a:0.0 power: 2.4910562224 v2factor: 0.0805398634226 gFactor:0.0 vSquare:58.4893706773
+E500:t:781:boosting from vK:27.2981147731 to maxVk:30.0 with aFull:-0.324460008415
+E500:t:782:coasting at 29.885608765
+E500:t:782 State update PK:5.95131882403 vK:29.8794861164 maxVk:30.0 aF:-0.340147146196 a:0.0 power: 2.82317275897 v2factor: 0.0948971461959 gFactor:0.0 vSquare:68.915865066
+E500:t:783:coasting at 28.6747169138
+E500:t:783 State update PK:5.9594490522 vK:28.668729881 maxVk:30.0 aF:-0.332612935197 a:0.0 power: 2.64877510946 v2factor: 0.0873629351967 gFactor:0.0 vSquare:63.4443973832
+E500:t:784:coasting at 27.4901062678
+E500:t:784 State update PK:5.96724666518 vK:27.4842464802 maxVk:30.0 aF:-0.325543756403 a:0.0 power: 2.48536801141 v2factor: 0.080293756403 gFactor:0.0 vSquare:58.3106437204
+E500:t:784:boosting from vK:27.2970575042 to maxVk:30.0 with aFull:-0.324453873523
+E500:t:785:coasting at 29.8427527609
+E500:t:785 State update PK:5.97518650469 vK:29.8366350078 maxVk:30.0 aF:-0.339875176062 a:0.0 power: 2.81686988233 v2factor: 0.0946251760623 gFactor:0.0 vSquare:68.7183558913
+E500:t:786:coasting at 28.6328095818
+E500:t:786 State update PK:5.98330496356 vK:28.626827142 maxVk:30.0 aF:-0.332357764608 a:0.0 power: 2.64287452132 v2factor: 0.0871077646082 gFactor:0.0 vSquare:63.2590883139
+E500:t:787:coasting at 27.4490890544
+E500:t:787 State update PK:5.99109106241 vK:27.4432335765 maxVk:30.0 aF:-0.325304327054 a:0.0 power: 2.47983406411 v2factor: 0.0800543270538 gFactor:0.0 vSquare:58.1367661974
+E500:t:787:boosting from vK:27.2970459047 to maxVk:30.0 with aFull:-0.324453806217
+E500:t:788:coasting at 29.8008448997
+E500:t:788 State update PK:5.99905398324 vK:29.7947319269 maxVk:30.0 aF:-0.339609600403 a:0.0 power: 2.81071583439 v2factor: 0.094359600403 gFactor:0.0 vSquare:68.5254904887
+E500:t:789:coasting at 28.5918280902
+E500:t:789 State update PK:6.00716093299 vK:28.5858501355 maxVk:30.0 aF:-0.332108592314 a:0.0 power: 2.63711290239 v2factor: 0.0868585923136 gFactor:0.0 vSquare:63.078135304
+E500:t:790:coasting at 27.4089767581
+E500:t:790 State update PK:6.01493577191 vK:27.4031254887 maxVk:30.0 aF:-0.325070525736 a:0.0 power: 2.47443011372 v2factor: 0.079820525736 gFactor:0.0 vSquare:57.9669758432
+E500:t:790:boosting from vK:27.297907337 to maxVk:30.0 with aFull:-0.32445880473
+E500:t:791:coasting at 29.7586334967
+E500:t:791 State update PK:6.02292171029 vK:29.7525253321 maxVk:30.0 aF:-0.339342478432 a:0.0 power: 2.80452657939 v2factor: 0.0940924784318 gFactor:0.0 vSquare:68.3315021291
+E500:t:792:coasting at 28.5505484531
+E500:t:792 State update PK:6.03101706738 vK:28.5445750097 maxVk:30.0 aF:-0.331857968054 a:0.0 power: 2.63131796158 v2factor: 0.0866079680536 gFactor:0.0 vSquare:62.896127853
+E500:t:793:coasting at 27.3685713819
+E500:t:793 State update PK:6.03878056427 vK:27.3627243454 maxVk:30.0 aF:-0.324835361821 a:0.0 power: 2.4689945731 v2factor: 0.0795853618207 gFactor:0.0 vSquare:57.7961959482
+E500:t:793:boosting from vK:27.298447295 to maxVk:30.0 with aFull:-0.32446193795
+E500:t:794:coasting at 29.7156177096
+E500:t:794 State update PK:6.04678926983 vK:29.7095144378 maxVk:30.0 aF:-0.339070655685 a:0.0 power: 2.79822903903 v2factor: 0.0938206556852 gFactor:0.0 vSquare:68.1340999892
+E500:t:794:ADVANCE green SIG vK:29.2234813295
+E500:t:795:coasting at 28.5084808313
+E500:t:795 State update PK:6.05487281315 vK:28.5025119786 maxVk:30.0 aF:-0.331602932177 a:0.0 power: 2.62542126292 v2factor: 0.0863529321768 gFactor:0.0 vSquare:62.7109166135
+E500:t:796:coasting at 27.3273934108
+E500:t:796 State update PK:6.06262475131 vK:27.3215506818 maxVk:30.0 aF:-0.324596058254 a:0.0 power: 2.46346323797 v2factor: 0.0793460582544 gFactor:0.0 vSquare:57.6224097708
+E500:t:796:boosting from vK:27.2981858702 to maxVk:30.0 with aFull:-0.32446042097
+E500:t:797:coasting at 29.672932867
+E500:t:797 State update PK:6.07065626795 vK:29.6668344433 maxVk:30.0 aF:-0.338801312898 a:0.0 power: 2.79198957193 v2factor: 0.0935513128985 gFactor:0.0 vSquare:67.9384988369
+E500:t:797:ADVANCE TIV 5 reached at curr speed 29.211409711, maxVk will be 20.0
+E500:t:797  next TIV at PK6.55 with limit >>50 (currspeed:29.211409711)
+E500:t:797:vK:29.211409711 maxVk:20.0 =>ready to dcc
+E500:t:798 State update PK:6.07857735631 vK:26.736409711 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0760638180482 gFactor:0.0 vSquare:55.2387930633
+E500:t:798:AT SIG WestboundMain:1588 vK:25.964209711
+E500:798:START UPDATE SIG BY OCCU sig:WestboundMain:1565 from value green to value red
+E500:798:START UPDATE SIG BY OCCU sig:WestboundMain:1540 from value red to value yellow
+E500:798:START UPDATE SIG BY OCCU sig:WestboundMain:GdL+10 from value yellow to value green
+SIG GdL+10 was yellow now green
+SIG 1540 was red now yellow
+SIG 1565 was green now red
+E500:t:798next SIG (Bas-95) at PK6.21
+E500:t:799 State update PK:6.08545138679 vK:22.776409711 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0552146375764 gFactor:0.0 vSquare:40.0977760177
+E500:t:800:coasting at 19.6849171214
+E500:t:800 State update PK:6.09126138094 vK:19.6797615354 maxVk:20.0 aF:-0.286421445971 a:0.0 power: 1.5657515987 v2factor: 0.0411714459707 gFactor:0.0 vSquare:29.8993797899
+E500:t:801:coasting at 18.661354053
+E500:t:801 State update PK:6.09658477206 vK:18.6562735323 maxVk:20.0 aF:-0.282251151853 a:0.0 power: 1.46270963716 v2factor: 0.0370011518535 gFactor:0.0 vSquare:26.8708437571
+E500:t:801:boosting from vK:18.1954484111 to maxVk:20.0 with aFull:-0.280446170016
+E500:t:801:TIV 5 reached at curr speed 19.0226712774, maxVk now 20.0
+E500:t:802:coasting at 19.90297729
+E500:t:802 State update PK:6.10182322613 vK:19.8978051942 maxVk:20.0 aF:-0.287338653657 a:0.0 power: 1.58816904312 v2factor: 0.0420886536567 gFactor:0.0 vSquare:30.5654710651
+E500:t:803:coasting at 18.8762210548
+E500:t:803 State update PK:6.10720673436 vK:18.8711251086 maxVk:20.0 aF:-0.283108120389 a:0.0 power: 1.48404687754 v2factor: 0.0378581203892 gFactor:0.0 vSquare:27.4931883727
+E500:t:803:boosting from vK:18.19659353 to maxVk:20.0 with aFull:-0.280450599332
+need to go faster...1.35
+E500:t:804 State update PK:6.11238389684 vK:19.4834863978 maxVk:20.0 aF:1.06449612862 a:1.35 power: 1044803.50325 v2factor: 0.0402538713774 gFactor:0.0 vSquare:29.2330220606
+E500:t:805:coasting at 19.0911372467
+E500:t:805 State update PK:6.11781656457 vK:19.0860256949 maxVk:20.0 aF:-0.283975099146 a:0.0 power: 1.50554334417 v2factor: 0.0387250991459 gFactor:0.0 vSquare:28.1228025751
+E500:t:805:boosting from vK:18.1971392176 to maxVk:20.0 with aFull:-0.280452710148
+need to go faster...1.35
+E500:t:806 State update PK:6.12298717262 vK:18.6774450034 maxVk:20.0 aF:1.06776125429 a:1.35 power: 1001579.45261 v2factor: 0.0369887457086 gFactor:0.0 vSquare:26.861834211
+E500:t:807:coasting at 19.306092621
+E500:t:807 State update PK:6.12841395204 vK:19.3009652841 maxVk:20.0 aF:-0.284852053806 a:0.0 power: 1.52719988933 v2factor: 0.039602053806 gFactor:0.0 vSquare:28.7596614422
+E500:t:808:coasting at 18.2879922576
+E500:t:808 State update PK:6.13363289286 vK:18.2829381207 maxVk:20.0 aF:-0.280785382711 a:0.0 power: 1.42599493814 v2factor: 0.0355353827114 gFactor:0.0 vSquare:25.8063781492
+E500:t:808:boosting from vK:18.1970717787 to maxVk:20.0 with aFull:-0.280452449279
+E500:t:809:coasting at 19.5224704685
+E500:t:809 State update PK:6.1389989375 vK:19.5173270634 maxVk:20.0 aF:-0.285744728152 a:0.0 power: 1.54915925444 v2factor: 0.0404947281519 gFactor:0.0 vSquare:29.4079362033
+E500:t:810:coasting at 18.5012630603
+E500:t:810 State update PK:6.14427754035 vK:18.4961939178 maxVk:20.0 aF:-0.281619028075 a:0.0 power: 1.44691115395 v2factor: 0.0363690280755 gFactor:0.0 vSquare:26.4117850947
+E500:t:810:boosting from vK:18.1977451574 to maxVk:20.0 with aFull:-0.280455054104
+E500:t:811:coasting at 19.7397367705
+E500:t:811 State update PK:6.14957170316 vK:19.7345770511 maxVk:20.0 aF:-0.286651078326 a:0.0 power: 1.57137160889 v2factor: 0.0414010783256 gFactor:0.0 vSquare:30.0661425749
+E500:t:812:coasting at 18.7153742982
+E500:t:812 State update PK:6.15491020801 vK:18.7102899159 maxVk:20.0 aF:-0.282465681232 a:0.0 power: 1.4680596631 v2factor: 0.0372156812317 gFactor:0.0 vSquare:27.0266385125
+E500:t:812:boosting from vK:18.1986205521 to maxVk:20.0 with aFull:-0.28045844053
+E500:t:813:coasting at 19.9574841713
+E500:t:813 State update PK:6.16013224085 vK:19.9523079203 maxVk:20.0 aF:-0.287569499785 a:0.0 power: 1.59379866894 v2factor: 0.042319499785 gFactor:0.0 vSquare:30.7331153123
+E500:t:814:coasting at 18.9299242056
+E500:t:814 State update PK:6.16553077531 vK:18.9248243765 maxVk:20.0 aF:-0.283323840733 a:0.0 power: 1.48940386877 v2factor: 0.0380738407333 gFactor:0.0 vSquare:27.6498480271
+E500:t:814:boosting from vK:18.1992892498 to maxVk:20.0 with aFull:-0.280461027467
+need to go faster...1.35
+E500:t:815 State update PK:6.17070166549 vK:19.2940602887 maxVk:20.0 aF:1.06527587205 a:1.35 power: 1034645.50895 v2factor: 0.039474127948 gFactor:0.0 vSquare:28.6667595846
+E500:t:816:coasting at 19.1444872873
+E500:t:816 State update PK:6.1761389557 vK:19.1393718342 maxVk:20.0 aF:-0.284191835559 a:0.0 power: 1.51090367028 v2factor: 0.0389418355586 gFactor:0.0 vSquare:28.2802001152
+E500:t:816:boosting from vK:18.1993239678 to maxVk:20.0 with aFull:-0.28046116178
+need to go faster...1.35
+E500:t:817 State update PK:6.18131738315 vK:18.4879997439 maxVk:20.0 aF:1.0685086202 a:1.35 power: 991420.431882 v2factor: 0.0362413798017 gFactor:0.0 vSquare:26.3190848233
+E500:t:818:coasting at 19.3601587014
+E500:t:818 State update PK:6.18673475626 vK:19.3550273663 maxVk:20.0 aF:-0.2850741729 a:0.0 power: 1.53267178275 v2factor: 0.0398241729003 gFactor:0.0 vSquare:28.9209679741
+E500:t:819:coasting at 18.3412852692
+E500:t:819 State update PK:6.19196860522 vK:18.3362273989 maxVk:20.0 aF:-0.280992791691 a:0.0 power: 1.43120770164 v2factor: 0.0357427916908 gFactor:0.0 vSquare:25.9570019541
+E500:t:819:boosting from vK:18.1997986106 to maxVk:20.0 with aFull:-0.280462998054
+E500:t:819:ADVANCE green SIG vK:19.7617826158
+E500:t:820:coasting at 19.5762175814
+E500:t:820 State update PK:6.19731815656 vK:19.5710701573 maxVk:20.0 aF:-0.285968006322 a:0.0 power: 1.55463886513 v2factor: 0.0407180063218 gFactor:0.0 vSquare:29.5700844748
+E500:t:821:coasting at 18.5542329656
+E500:t:821 State update PK:6.20261157838 vK:18.5491600692 maxVk:20.0 aF:-0.28182757835 a:0.0 power: 1.45212912854 v2factor: 0.0365775783502 gFactor:0.0 vSquare:26.5632377271
+E500:t:821:boosting from vK:18.1999927951 to maxVk:20.0 with aFull:-0.280463749319
+E500:t:822:coasting at 19.7927100788
+E500:t:822 State update PK:6.20788899933 vK:19.7875463543 maxVk:20.0 aF:-0.286873583303 a:0.0 power: 1.57681231318 v2factor: 0.041623583303 gFactor:0.0 vSquare:30.2277293413
+E500:t:822:AT SIG WestboundMain:Bas-95 vK:19.3859697889
+E500:822:START UPDATE SIG BY OCCU sig:WestboundMain:1588 from value green to value red
+E500:822:START UPDATE SIG BY OCCU sig:WestboundMain:1565 from value red to value yellow
+E500:822:START UPDATE SIG BY OCCU sig:WestboundMain:1540 from value yellow to value green
+SIG 1540 was yellow now green
+SIG 1565 was red now yellow
+SIG 1588 was green now red
+E500:t:822next SIG (Bas+10) at PK6.315
+E500:t:823:coasting at 18.7675729901
+E500:t:823 State update PK:6.21324210857 vK:18.7624848659 maxVk:20.0 aF:-0.282673565818 a:0.0 power: 1.4732384724 v2factor: 0.0374235658183 gFactor:0.0 vSquare:27.1776077112
+E500:t:823:boosting from vK:18.1999448488 to maxVk:20.0 with aFull:-0.280463563823
+need to go faster...1.35
+E500:t:824 State update PK:6.21844742642 vK:19.9079463585 maxVk:20.0 aF:1.06272121273 a:1.35 power: 1067565.21212 v2factor: 0.0420287872684 gFactor:0.0 vSquare:30.5219951114
+E500:t:825:coasting at 18.9820036581
+E500:t:825 State update PK:6.22386033057 vK:18.9769000529 maxVk:20.0 aF:-0.283533624181 a:0.0 power: 1.49460812436 v2factor: 0.0382836241806 gFactor:0.0 vSquare:27.8021962096
+E500:t:825:boosting from vK:18.1952905012 to maxVk:20.0 with aFull:-0.280445559243
+need to go faster...1.35
+E500:t:826 State update PK:6.22902641049 vK:19.0804959451 maxVk:20.0 aF:1.06614583045 a:1.35 power: 1023193.09952 v2factor: 0.0386041695539 gFactor:0.0 vSquare:28.0349815207
+E500:t:827:coasting at 19.1982577092
+E500:t:827 State update PK:6.23446350169 vK:19.1931383131 maxVk:20.0 aF:-0.284410891776 a:0.0 power: 1.51631599545 v2factor: 0.039160891776 gFactor:0.0 vSquare:28.4392823355
+E500:t:827:boosting from vK:18.196834972 to maxVk:20.0 with aFull:-0.280451533265
+need to go faster...1.35
+E500:t:828 State update PK:6.23965304472 vK:18.2738370253 maxVk:20.0 aF:1.06934431109 a:1.35 power: 979935.93511 v2factor: 0.0354056889099 gFactor:0.0 vSquare:25.7121923819
+E500:t:829:coasting at 19.4141420354
+E500:t:829 State update PK:6.24505461419 vK:19.4090066972 maxVk:20.0 aF:-0.285296571791 a:0.0 power: 1.53814529793 v2factor: 0.0400465717908 gFactor:0.0 vSquare:29.0824776985
+E500:t:830:coasting at 18.3944945341
+E500:t:830 State update PK:6.25030334818 vK:18.3894329256 maxVk:20.0 aF:-0.281200476849 a:0.0 power: 1.43642147435 v2factor: 0.0359504768489 gFactor:0.0 vSquare:26.1078263246
+E500:t:830:boosting from vK:18.197354533 to maxVk:20.0 with aFull:-0.280453543043
+E500:t:831:coasting at 19.6302497147
+E500:t:831 State update PK:6.25563330595 vK:19.6250982391 maxVk:20.0 aF:-0.286193087285 a:0.0 power: 1.56015762592 v2factor: 0.0409430872852 gFactor:0.0 vSquare:29.7335419646
+E500:t:832:coasting at 18.6074815905
+E500:t:832 State update PK:6.260941625 vK:18.6024049096 maxVk:20.0 aF:-0.282037826934 a:0.0 power: 1.45738384901 v2factor: 0.0367878269335 gFactor:0.0 vSquare:26.715923699
+E500:t:832:boosting from vK:18.1974304203 to maxVk:20.0 with aFull:-0.280453836597
+E500:t:833:coasting at 19.8470594116
+E500:t:833 State update PK:6.26619941899 vK:19.8418915668 maxVk:20.0 aF:-0.287102487774 a:0.0 power: 1.58240456416 v2factor: 0.0418524877741 gFactor:0.0 vSquare:30.3939635251
+E500:t:834:coasting at 18.8211254028
+E500:t:834 State update PK:6.27156751168 vK:18.8160334288 maxVk:20.0 aF:-0.282887443402 a:0.0 power: 1.47856099767 v2factor: 0.0376374434015 gFactor:0.0 vSquare:27.3329291224
+E500:t:834:boosting from vK:18.1975249257 to maxVk:20.0 with aFull:-0.280454202173
+need to go faster...1.35
+E500:t:835 State update PK:6.27675646887 vK:19.6946947251 maxVk:20.0 aF:1.06361772944 a:1.35 power: 1056129.57136 v2factor: 0.0411322705567 gFactor:0.0 vSquare:29.8709299613
+E500:t:836:coasting at 19.0354554003
+E500:t:836 State update PK:6.28218098684 vK:19.0303479087 maxVk:20.0 aF:-0.283749534744 a:0.0 power: 1.49995899031 v2factor: 0.0384995347442 gFactor:0.0 vSquare:27.9589940045
+E500:t:836:boosting from vK:18.1976578054 to maxVk:20.0 with aFull:-0.280454716195
+need to go faster...1.35
+E500:t:837 State update PK:6.28734776998 vK:18.8901453924 maxVk:20.0 aF:1.06691305616 a:1.35 power: 1012985.5321 v2factor: 0.0378369438405 gFactor:0.0 vSquare:27.4778096155
+E500:t:837:ADVANCE STA x:6305.0 vK:19.4408946087
+E500:t:838 State update PK:6.29276712807 vK:18.6884946087 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0371875305115 gFactor:0.0 vSquare:27.0061949974
+E500:t:839 State update PK:6.29740562657 vK:14.7284946087 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0231106705982 gFactor:0.0 vSquare:16.7833482921
+E500:t:840 State update PK:6.30094412508 vK:10.7684946087 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.012366150685 gFactor:0.0 vSquare:8.98050158678
+E500:t:841 State update PK:6.30338262358 vK:6.80849460873 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00495397077175 gFactor:0.0 vSquare:3.59765488145
+E500:t:842 State update PK:6.30472112208 vK:2.84849460873 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00087413085851 gFactor:0.0 vSquare:0.634808176114
+E500:t:842:IN STA Bas vK:0.788070608725 a:-0.004
+E500:t:842:next STA (StP) at PK7.01
+E500:t:853:OUT STA, a:1.33658270105 vK:0.0
+need to go faster...1.35
+E500:t:854 State update PK:6.30555603901 vK:3.97509959103 maxVk:20.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:855 State update PK:6.30721382871 vK:7.93816552656 maxVk:20.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:856 State update PK:6.30996939988 vK:11.8772793223 maxVk:20.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:856:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:857 State update PK:6.31381446743 vK:15.7808101534 maxVk:20.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:857:AT SIG WestboundMain:Bas+10 vK:16.807851537
+E500:857:START UPDATE SIG BY OCCU sig:WestboundMain:Bas-95 from value green to value red
+E500:857:START UPDATE SIG BY OCCU sig:WestboundMain:1588 from value red to value yellow
+E500:857:START UPDATE SIG BY OCCU sig:WestboundMain:1565 from value yellow to value green
+SIG 1565 was yellow now green
+SIG 1588 was red now yellow
+SIG Bas-95 was green now red
+E500:t:857next SIG (1630) at PK6.5
+need to go faster...1.35
+E500:t:858 State update PK:6.31873757145 vK:19.6375498514 maxVk:20.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+E500:t:859:coasting at 19.0510705574
+E500:t:859 State update PK:6.32416483776 vK:19.0459619284 maxVk:20.0 aF:-0.283812724497 a:0.0 power: 1.50152398488 v2factor: 0.0385627244969 gFactor:0.0 vSquare:28.00488344
+E500:t:859:boosting from vK:18.1979447995 to maxVk:20.0 with aFull:-0.280455826396
+need to go faster...1.35
+E500:t:860 State update PK:6.32933239294 vK:18.8329553802 maxVk:20.0 aF:1.06714206136 a:1.35 power: 1009918.712 v2factor: 0.0376079386367 gFactor:0.0 vSquare:27.3115022779
+E500:t:861:coasting at 19.2668601587
+E500:t:861 State update PK:6.33476538019 vK:19.2617357159 maxVk:20.0 aF:-0.284691264415 a:0.0 power: 1.52323552661 v2factor: 0.0394412644148 gFactor:0.0 vSquare:28.6428935474
+E500:t:862:coasting at 18.2493193939
+E500:t:862 State update PK:6.33997350288 vK:18.2442679594 maxVk:20.0 aF:-0.280635251199 a:0.0 power: 1.42221797826 v2factor: 0.0353852511989 gFactor:0.0 vSquare:25.6973501807
+E500:t:862:boosting from vK:18.1988208993 to maxVk:20.0 with aFull:-0.280459215587
+E500:t:863:coasting at 19.4832628051
+E500:t:863 State update PK:6.34535379567 vK:19.4781223248 maxVk:20.0 aF:-0.285582237513 a:0.0 power: 1.54516826557 v2factor: 0.0403322375127 gFactor:0.0 vSquare:29.2899328342
+E500:t:864:coasting at 18.4626209934
+E500:t:864 State update PK:6.35062158813 vK:18.4575545826 maxVk:20.0 aF:-0.281467264732 a:0.0 power: 1.44311038945 v2factor: 0.0362172647318 gFactor:0.0 vSquare:26.3015720637
+E500:t:864:boosting from vK:18.1996392749 to maxVk:20.0 with aFull:-0.280462381619
+E500:t:865:coasting at 19.6999359229
+E500:t:865 State update PK:6.35592994568 vK:19.6947792056 maxVk:20.0 aF:-0.286484294258 a:0.0 power: 1.56729025591 v2factor: 0.0412342942577 gFactor:0.0 vSquare:29.9450212474
+E500:t:866:coasting at 18.6761540675
+E500:t:866 State update PK:6.36125747751 vK:18.6710724899 maxVk:20.0 aF:-0.282309865142 a:0.0 power: 1.46417443241 v2factor: 0.0370598651425 gFactor:0.0 vSquare:26.9134823112
+E500:t:866:boosting from vK:18.1950076496 to maxVk:20.0 with aFull:-0.280444465227
+E500:t:867:coasting at 19.9414161839
+E500:t:867 State update PK:6.36649093807 vK:19.936241159 maxVk:20.0 aF:-0.287501383438 a:0.0 power: 1.5921380316 v2factor: 0.0422513834382 gFactor:0.0 vSquare:30.6836481033
+E500:t:868:coasting at 18.9140933796
+E500:t:868 State update PK:6.371885043 vK:18.9089946962 maxVk:20.0 aF:-0.283260186139 a:0.0 power: 1.48782371038 v2factor: 0.0380101861395 gFactor:0.0 vSquare:27.6036210163
+E500:t:868:boosting from vK:18.1987621065 to maxVk:20.0 with aFull:-0.280458988142
+need to go faster...1.35
+E500:t:869 State update PK:6.3770576036 vK:19.3519679224 maxVk:20.0 aF:1.06503831356 a:1.35 power: 1037750.81166 v2factor: 0.0397116864396 gFactor:0.0 vSquare:28.8392784601
+E500:t:870:coasting at 19.1295274936
+E500:t:870 State update PK:6.38249415474 vK:19.1244131356 maxVk:20.0 aF:-0.284130999851 a:0.0 power: 1.50939961828 v2factor: 0.0388809998513 gFactor:0.0 vSquare:28.2360202261
+E500:t:870:boosting from vK:18.1997044063 to maxVk:20.0 with aFull:-0.280462633598
+need to go faster...1.35
+E500:t:871 State update PK:6.38767019158 vK:18.5466417351 maxVk:20.0 aF:1.06827809137 a:1.35 power: 994565.114431 v2factor: 0.036471908635 gFactor:0.0 vSquare:26.4864986456
+E500:t:872:coasting at 19.3457025072
+E500:t:872 State update PK:6.39309123641 vK:19.3405722422 maxVk:20.0 aF:-0.285014721834 a:0.0 power: 1.53120772714 v2factor: 0.0397647218339 gFactor:0.0 vSquare:28.8777936339
+E500:t:873:coasting at 18.3270359925
+E500:t:873 State update PK:6.39832109926 vK:18.3219791215 maxVk:20.0 aF:-0.280937276379 a:0.0 power: 1.42981303118 v2factor: 0.0356872763787 gFactor:0.0 vSquare:25.9166858233
+E500:t:873:boosting from vK:18.1956722225 to maxVk:20.0 with aFull:-0.280447035696
+E500:t:874:coasting at 19.5859124108
+E500:t:874 State update PK:6.4036756773 vK:19.5807642606 maxVk:20.0 aF:-0.286008346277 a:0.0 power: 1.55562833472 v2factor: 0.0407583462773 gFactor:0.0 vSquare:29.5993800126
+E500:t:875:coasting at 18.5637873733
+E500:t:875 State update PK:6.4089717721 vK:18.5587137986 maxVk:20.0 aF:-0.281865258924 a:0.0 power: 1.45307129726 v2factor: 0.0366152589242 gFactor:0.0 vSquare:26.5906019783
+E500:t:875:boosting from vK:18.1994033217 to maxVk:20.0 with aFull:-0.280461468777
+E500:t:876:coasting at 19.8031841424
+E500:t:876 State update PK:6.41424572088 vK:19.7980196247 maxVk:20.0 aF:-0.286917648356 a:0.0 power: 1.57788923134 v2factor: 0.0416676483563 gFactor:0.0 vSquare:30.2597301062
+E500:t:877:coasting at 18.7778936452
+E500:t:877 State update PK:6.41960171771 vK:18.7728047799 maxVk:20.0 aF:-0.282714737036 a:0.0 power: 1.47426349077 v2factor: 0.0374647370359 gFactor:0.0 vSquare:27.2075069251
+E500:t:877:boosting from vK:18.195039006 to maxVk:20.0 with aFull:-0.280444586506
+need to go faster...1.35
+E500:t:878 State update PK:6.42480101809 vK:19.8458332326 maxVk:20.0 aF:1.06298333597 a:1.35 power: 1064234.38934 v2factor: 0.041766664025 gFactor:0.0 vSquare:30.33163691
+E500:t:879:coasting at 19.0166207766
+E500:t:879 State update PK:6.43022286583 vK:19.0115146557 maxVk:20.0 aF:-0.283673385737 a:0.0 power: 1.4980724251 v2factor: 0.0384233857372 gFactor:0.0 vSquare:27.9036933458
+E500:t:879:boosting from vK:18.1992327645 to maxVk:20.0 with aFull:-0.280460808943
+need to go faster...1.35
+E500:t:880 State update PK:6.4353896605 vK:18.9687620899 maxVk:20.0 aF:1.06659711772 a:1.35 power: 1017201.36035 v2factor: 0.0381528822772 gFactor:0.0 vSquare:27.7072492936
+E500:t:881:coasting at 19.2323621024
+E500:t:881 State update PK:6.44082625237 vK:19.2272401997 maxVk:20.0 aF:-0.284550148654 a:0.0 power: 1.51975390473 v2factor: 0.0393001486541 gFactor:0.0 vSquare:28.5404129659
+E500:t:882:coasting at 18.2153124541
+E500:t:882 State update PK:6.44602486228 vK:18.2102633912 maxVk:20.0 aF:-0.280503495829 a:0.0 power: 1.41890070589 v2factor: 0.0352534958289 gFactor:0.0 vSquare:25.6016672687
+E500:t:882:boosting from vK:18.1951183124 to maxVk:20.0 with aFull:-0.280444893247
+E500:t:883:coasting at 19.4489889315
+E500:t:883 State update PK:6.45141447195 vK:19.4438510032 maxVk:20.0 aF:-0.285440461861 a:0.0 power: 1.54168383631 v2factor: 0.040190461861 gFactor:0.0 vSquare:29.1869730291
+E500:t:884:coasting at 18.4288406005
+E500:t:884 State update PK:6.45667281424 vK:18.4237765731 maxVk:20.0 aF:-0.281334855125 a:0.0 power: 1.43979180918 v2factor: 0.0360848551247 gFactor:0.0 vSquare:26.2054140339
+E500:t:884:boosting from vK:18.1962628825 to maxVk:20.0 with aFull:-0.28044932036
+E500:t:885:coasting at 19.6667410704
+E500:t:885 State update PK:6.46199077862 vK:19.6615868523 maxVk:20.0 aF:-0.286345449835 a:0.0 power: 1.56389053658 v2factor: 0.041095449835 gFactor:0.0 vSquare:29.8441901489
+E500:t:886:coasting at 18.6434425566
+E500:t:886 State update PK:6.46730915855 vK:18.6383633138 maxVk:20.0 aF:-0.282180157226 a:0.0 power: 1.46093785842 v2factor: 0.0369301572258 gFactor:0.0 vSquare:26.8192862933
+E500:t:886:boosting from vK:18.1978419342 to maxVk:20.0 with aFull:-0.280455428473
+E500:t:887:coasting at 19.883256977
+E500:t:887 State update PK:6.47255495103 vK:19.8780863818 maxVk:20.0 aF:-0.287255290226 a:0.0 power: 1.58613485354 v2factor: 0.0420052902263 gFactor:0.0 vSquare:30.5049311738
+E500:t:888:coasting at 18.8567909798
+E500:t:888 State update PK:6.47793302276 vK:18.8516964358 maxVk:20.0 aF:-0.283030222644 a:0.0 power: 1.48211106651 v2factor: 0.0377802226436 gFactor:0.0 vSquare:27.4366177513
+E500:t:888:boosting from vK:18.1975363063 to maxVk:20.0 with aFull:-0.280454246197
+need to go faster...1.35
+E500:t:889 State update PK:6.48311413392 vK:19.5605218205 maxVk:20.0 aF:1.06417684268 a:1.35 power: 1048934.53564 v2factor: 0.0405731573184 gFactor:0.0 vSquare:29.4648927512
+E500:t:889:ADVANCE green SIG vK:19.3989200409
+E500:t:890:coasting at 19.0710932673
+E500:t:890 State update PK:6.48854436839 vK:19.0659831784 maxVk:20.0 aF:-0.283893826081 a:0.0 power: 1.50353192014 v2factor: 0.0386438260809 gFactor:0.0 vSquare:28.0637807414
+E500:t:890:boosting from vK:18.1975343323 to maxVk:20.0 with aFull:-0.28045423856
+need to go faster...1.35
+E500:t:891 State update PK:6.49371319721 vK:18.7557577822 maxVk:20.0 aF:1.06745008016 a:1.35 power: 1005778.98314 v2factor: 0.037299919842 gFactor:0.0 vSquare:27.0878139738
+E500:t:892:coasting at 19.2870118682
+E500:t:892 State update PK:6.49914350166 vK:19.2818859395 maxVk:20.0 aF:-0.284773812848 a:0.0 power: 1.52527116053 v2factor: 0.0395238128478 gFactor:0.0 vSquare:28.7028415743
+E500:t:892:AT SIG WestboundMain:1630 vK:19.1129416443
+E500:892:START UPDATE SIG BY OCCU sig:WestboundMain:Bas+10 from value green to value red
+E500:892:START UPDATE SIG BY OCCU sig:WestboundMain:Bas-95 from value red to value yellow
+E500:892:START UPDATE SIG BY OCCU sig:WestboundMain:1588 from value yellow to value green
+SIG 1588 was yellow now green
+SIG Bas-95 was red now yellow
+SIG Bas+10 was green now red
+E500:t:892next SIG (1645) at PK6.65
+E500:t:893:coasting at 18.2691838101
+E500:t:893 State update PK:6.50435718109 vK:18.2641309883 maxVk:20.0 aF:-0.280712326941 a:0.0 power: 1.42415741924 v2factor: 0.0354623269407 gFactor:0.0 vSquare:25.7533238494
+E500:t:893:boosting from vK:18.1984763859 to maxVk:20.0 with aFull:-0.280457882818
+E500:t:894:coasting at 19.5032850581
+E500:t:894 State update PK:6.50973047003 vK:19.4981430849 maxVk:20.0 aF:-0.285665176106 a:0.0 power: 1.54720568836 v2factor: 0.0404151761059 gFactor:0.0 vSquare:29.3501642018
+E500:t:895:coasting at 18.4823545559
+E500:t:895 State update PK:6.51500378307 vK:18.4772867508 maxVk:20.0 aF:-0.28154472693 a:0.0 power: 1.44505073685 v2factor: 0.0362947269301 gFactor:0.0 vSquare:26.3578263835
+E500:t:895:boosting from vK:18.1991057151 to maxVk:20.0 with aFull:-0.280460317432
+E500:t:896:coasting at 19.7195053917
+E500:t:896 State update PK:6.52030501069 vK:19.714347199 maxVk:20.0 aF:-0.28656625737 a:0.0 power: 1.5692963037 v2factor: 0.0413162573697 gFactor:0.0 vSquare:30.0045442046
+E500:t:897:coasting at 18.6954382039
+E500:t:897 State update PK:6.52563793781 vK:18.690355248 maxVk:20.0 aF:-0.282386437274 a:0.0 power: 1.46608411941 v2factor: 0.0371364372738 gFactor:0.0 vSquare:26.9690902497
+E500:t:897:boosting from vK:18.1990170521 to maxVk:20.0 with aFull:-0.280459974426
+E500:t:898:coasting at 19.93689487
+E500:t:898 State update PK:6.53086693934 vK:19.9317201899 maxVk:20.0 aF:-0.287482226312 a:0.0 power: 1.59167091512 v2factor: 0.0422322263123 gFactor:0.0 vSquare:30.669735884
+E500:t:899:coasting at 18.9096387649
+E500:t:899 State update PK:6.53625979786 vK:18.9045404037 maxVk:20.0 aF:-0.283242284061 a:0.0 power: 1.48737922308 v2factor: 0.0379922840606 gFactor:0.0 vSquare:27.5906202328
+E500:t:899:boosting from vK:18.1993998066 to maxVk:20.0 with aFull:-0.280461455179
+need to go faster...1.35
+E500:t:900 State update PK:6.54143310249 vK:19.3708000281 maxVk:20.0 aF:1.06496090373 a:1.35 power: 1038760.68524 v2factor: 0.039789096273 gFactor:0.0 vSquare:28.8954947517
+E500:t:901:coasting at 19.1240809564
+E500:t:901 State update PK:6.5468692109 vK:19.1189669969 maxVk:20.0 aF:-0.284108862695 a:0.0 power: 1.50885221372 v2factor: 0.0388588626954 gFactor:0.0 vSquare:28.2199438601
+E500:t:901:TIV 6 reached at curr speed 18.5079709213, maxVk now 50.0
+E500:t:901  next TIV at PK9.83 with limit <<30 (currspeed:18.5079709213)
+E500:t:901  BDtiv: 84.1750841751
+E500:t:901:vK:18.5079709213 maxVk:50.0 =>ready to acc
+need to go faster...1.35
+E500:t:902 State update PK:6.55214710497 vK:20.041989708 maxVk:50.0 aF:1.06215274285 a:1.35 power: 1074753.3006 v2factor: 0.0425972571516 gFactor:0.0 vSquare:30.9348272706
+need to go faster...1.35
+E500:t:903 State update PK:6.55824518373 vK:23.8346082429 maxVk:50.0 aF:1.04448577702 a:1.35 power: 1278132.88975 v2factor: 0.060264222975 gFactor:0.0 vSquare:43.7648678105
+need to go faster...1.35
+E500:t:904 State update PK:6.56538743173 vK:27.5587569891 maxVk:50.0 aF:1.0241626327 a:1.35 power: 1477840.83789 v2factor: 0.0805873672965 gFactor:0.0 vSquare:58.5238687702
+need to go faster...1.35
+E500:t:905 State update PK:6.57355353173 vK:31.2052711661 maxVk:50.0 aF:1.00140654274 a:1.35 power: 1673385.68794 v2factor: 0.103343457258 gFactor:0.0 vSquare:75.0497147845
+need to go faster...1.35
+E500:t:906 State update PK:6.58272073623 vK:34.7658249508 maxVk:50.0 aF:0.976459416443 a:1.35 power: 1864320.97033 v2factor: 0.128290583557 gFactor:0.0 vSquare:93.1667273472
+need to go faster...1.31803130627
+E500:t:907 State update PK:6.59286369636 vK:38.2170863297 maxVk:50.0 aF:0.917732452433 a:1.31803130627 power: 2000864.86591 v2factor: 0.155048853838 gFactor:0.0 vSquare:112.599022395
+E500:t:907:ADVANCE green SIG vK:39.2014390534
+need to go faster...1.21991824184
+E500:t:908 State update PK:6.60391839639 vK:41.2871564439 maxVk:50.0 aF:0.793676698484 a:1.21991824184 power: 2000692.27948 v2factor: 0.180991543351 gFactor:0.0 vSquare:131.439029304
+need to go faster...1.1456738231
+E500:t:909 State update PK:6.6157683288 vK:43.9600239576 maxVk:50.0 aF:0.695214310928 a:1.1456738231 power: 2000569.49108 v2factor: 0.205209512174 gFactor:0.0 vSquare:149.02651574
+need to go faster...1.08743641508
+E500:t:910 State update PK:6.62831448898 vK:46.3121547498 maxVk:50.0 aF:0.614408575126 a:1.08743641508 power: 2000477.71459 v2factor: 0.227777839949 gFactor:0.0 vSquare:165.416005773
+need to go faster...1.04053619162
+E500:t:911 State update PK:6.64147575674 vK:48.3978544672 maxVk:50.0 aF:0.546512419017 a:1.04053619162 power: 2000406.59751 v2factor: 0.248773772607 gFactor:0.0 vSquare:180.663596665
+E500:t:911:AT SIG WestboundMain:1645 vK:49.5937274764
+E500:911:START UPDATE SIG BY OCCU sig:WestboundMain:1630 from value green to value red
+E500:911:START UPDATE SIG BY OCCU sig:WestboundMain:Bas+10 from value red to value yellow
+E500:911:START UPDATE SIG BY OCCU sig:WestboundMain:Bas-95 from value yellow to value green
+SIG Bas-95 was yellow now green
+SIG Bas+10 was red now yellow
+SIG 1630 was green now red
+E500:t:911next SIG (StP-140) at PK6.87
+E500:t:912:coasting at 49.6537566973
+E500:t:912 State update PK:6.65516910946 vK:49.644626937 maxVk:50.0 aF:-0.507208902629 a:0.0 power: 6.99449909726 v2factor: 0.261958902629 gFactor:0.0 vSquare:190.238854487
+E500:t:913:coasting at 47.8614757551
+E500:t:913 State update PK:6.66870761073 vK:47.8526802515 maxVk:50.0 aF:-0.48863909153 a:0.0 power: 6.49519172371 v2factor: 0.24338909153 gFactor:0.0 vSquare:176.75315289
+E500:t:914:coasting at 46.1336564235
+E500:t:914 State update PK:6.68175745297 vK:46.1251715224 maxVk:50.0 aF:-0.471383389593 a:0.0 power: 6.03962213828 v2factor: 0.226133389593 gFactor:0.0 vSquare:164.221778935
+E500:t:914:boosting from vK:45.4930331164 to maxVk:50.0 with aFull:-0.465227668715
+need to go faster...1.07417194276
+E500:t:915 State update PK:6.69454997979 vK:46.8835622847 maxVk:50.0 aF:0.59548394964 a:1.07417194276 power: 2000457.35271 v2factor: 0.233437993122 gFactor:0.0 vSquare:169.526501904
+need to go faster...1.02970623258
+E500:t:916 State update PK:6.70786097341 vK:48.9064834726 maxVk:50.0 aF:0.530422009159 a:1.02970623258 power: 2000390.5192 v2factor: 0.254034223423 gFactor:0.0 vSquare:184.483822384
+E500:t:917:coasting at 49.1678229267
+E500:t:917 State update PK:6.72160740245 vK:49.1587850061 maxVk:50.0 aF:-0.502106698706 a:0.0 power: 6.85637645884 v2factor: 0.256856698706 gFactor:0.0 vSquare:186.533550258
+E500:t:918:coasting at 47.3932490405
+E500:t:918 State update PK:6.7350134486 vK:47.3845388359 maxVk:50.0 aF:-0.483900255803 a:0.0 power: 6.36927512884 v2factor: 0.238650255803 gFactor:0.0 vSquare:173.311732609
+E500:t:919:coasting at 45.6818865793
+E500:t:919 State update PK:6.74793557545 vK:45.6734810078 maxVk:50.0 aF:-0.466976193404 a:0.0 power: 5.92456341682 v2factor: 0.221726193404 gFactor:0.0 vSquare:161.021200729
+E500:t:919:boosting from vK:45.4973024432 to maxVk:50.0 with aFull:-0.465268958169
+need to go faster...1.06118941957
+E500:t:920 State update PK:6.7608253508 vK:47.4566609114 maxVk:50.0 aF:0.576754793508 a:1.06118941957 power: 2000437.61435 v2factor: 0.239184626066 gFactor:0.0 vSquare:173.699801065
+need to go faster...1.01905392213
+E500:t:921 State update PK:6.77428661986 vK:49.4173184535 maxVk:50.0 aF:0.514431069083 a:1.01905392213 power: 2000374.82789 v2factor: 0.259372853043 gFactor:0.0 vSquare:188.360822834
+E500:t:921:ADVANCE green SIG vK:48.9453999782
+E500:t:922:coasting at 48.6851920783
+E500:t:922 State update PK:6.78801476179 vK:48.6762444791 maxVk:50.0 aF:-0.497088842318 a:0.0 power: 6.72122722681 v2factor: 0.251838842318 gFactor:0.0 vSquare:182.889500594
+E500:t:923:coasting at 46.9280356892
+E500:t:923 State update PK:6.80128922883 vK:46.9194094042 maxVk:50.0 aF:-0.4792380567 a:0.0 power: 6.24599071788 v2factor: 0.2339880567 gFactor:0.0 vSquare:169.925967102
+E500:t:923:boosting from vK:45.4917365243 to maxVk:50.0 with aFull:-0.465215129899
+need to go faster...1.09823509557
+E500:t:924 State update PK:6.8140989541 vK:45.8571645398 maxVk:50.0 aF:0.629664576307 a:1.09823509557 power: 2000494.43809 v2factor: 0.223320519267 gFactor:0.0 vSquare:162.179026337
+need to go faster...1.04931266595
+E500:t:925 State update PK:6.82714107975 vK:47.9933712493 maxVk:50.0 aF:0.559432961469 a:1.04931266595 power: 2000419.72074 v2factor: 0.244629704478 gFactor:0.0 vSquare:177.654106375
+need to go faster...1.00926359352
+E500:t:926 State update PK:6.84074317528 vK:49.8963290514 maxVk:50.0 aF:0.499584294211 a:1.00926359352 power: 2000360.51302 v2factor: 0.264429299312 gFactor:0.0 vSquare:192.032897104
+E500:t:927:coasting at 48.2089944246
+E500:t:927 State update PK:6.85437962205 vK:48.2001350697 maxVk:50.0 aF:-0.492186383989 a:0.0 power: 6.58984727437 v2factor: 0.246936383989 gFactor:0.0 vSquare:179.329254894
+E500:t:928:coasting at 46.4688580085
+E500:t:928 State update PK:6.86752424012 vK:46.4603137426 maxVk:50.0 aF:-0.474681443741 a:0.0 power: 6.12606911221 v2factor: 0.229431443741 gFactor:0.0 vSquare:166.616879986
+E500:t:928:AT SIG WestboundMain:StP-140 vK:46.1282664336
+E500:928:START UPDATE SIG BY OCCU sig:WestboundMain:1645 from value green to value red
+E500:928:START UPDATE SIG BY OCCU sig:WestboundMain:1630 from value red to value yellow
+E500:928:START UPDATE SIG BY OCCU sig:WestboundMain:Bas+10 from value yellow to value green
+SIG Bas+10 was yellow now green
+SIG 1630 was red now yellow
+SIG 1645 was green now red
+E500:t:928next SIG (StP+10) at PK7.02
+E500:t:928:boosting from vK:45.4960876139 to maxVk:50.0 with aFull:-0.465257208934
+need to go faster...1.08387258182
+E500:t:929 State update PK:6.88029647174 vK:46.4643032537 maxVk:50.0 aF:0.609344395942 a:1.08387258182 power: 2000472.2244 v2factor: 0.22927818588 gFactor:0.0 vSquare:166.505581612
+need to go faster...1.03763179808
+E500:t:930 State update PK:6.89349759634 vK:48.5332171364 maxVk:50.0 aF:0.54221342037 a:1.03763179808 power: 2000402.27313 v2factor: 0.250168377709 gFactor:0.0 vSquare:181.676381778
+E500:t:931:coasting at 49.5244874812
+E500:t:931 State update PK:6.90721196588 vK:49.5153822405 maxVk:50.0 aF:-0.505846703904 a:0.0 power: 6.95755358304 v2factor: 0.260596703904 gFactor:0.0 vSquare:189.249603416
+E500:t:932:coasting at 47.736933694
+E500:t:932 State update PK:6.92071523354 vK:47.7281609607 maxVk:50.0 aF:-0.487374076592 a:0.0 power: 6.46151899323 v2factor: 0.242124076592 gFactor:0.0 vSquare:175.83447828
+E500:t:933:coasting at 46.0135071898
+E500:t:933 State update PK:6.93373110741 vK:46.0050434628 maxVk:50.0 aF:-0.470207052165 a:0.0 power: 6.00885996427 v2factor: 0.224957052165 gFactor:0.0 vSquare:163.367503388
+E500:t:933:ADVANCE STA x:7010.0 vK:45.5334363938
+E500:t:934 State update PK:6.94611016699 vK:42.6822363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.193743040669 gFactor:0.0 vSquare:140.69937594
+E500:t:935 State update PK:6.95741359377 vK:38.7222363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.159475447044 gFactor:0.0 vSquare:115.813687033
+E500:t:936 State update PK:6.96761702054 vK:34.7622363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.128540193418 gFactor:0.0 vSquare:93.3479981252
+E500:t:937 State update PK:6.97672044732 vK:30.8022363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.100937279793 gFactor:0.0 vSquare:73.3023092179
+E500:t:938 State update PK:6.9847238741 vK:26.8422363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0766667061676 gFactor:0.0 vSquare:55.6766203105
+E500:t:939 State update PK:6.99162730087 vK:22.8822363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0557284725422 gFactor:0.0 vSquare:40.4709314032
+E500:t:940 State update PK:6.99743072765 vK:18.9222363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0381225789167 gFactor:0.0 vSquare:27.6852424958
+E500:t:941 State update PK:7.00213415442 vK:14.9622363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0238490252913 gFactor:0.0 vSquare:17.3195535885
+E500:t:942 State update PK:7.0057375812 vK:11.0022363938 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0129078116659 gFactor:0.0 vSquare:9.37386468111
+E500:t:943 State update PK:7.00824100798 vK:7.04223639385 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00529893804047 gFactor:0.0 vSquare:3.84817577376
+E500:t:944 State update PK:7.00964443475 vK:3.08223639385 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00102240441505 gFactor:0.0 vSquare:0.742486866415
+E500:t:944:IN STA StP vK:0.782412393845 a:-0.004
+E500:t:944:next STA (HoV) at PK7.716
+E500:t:955:OUT STA, a:1.33091197434 vK:0.0
+need to go faster...1.35
+E500:t:956 State update PK:7.01055512599 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:957 State update PK:7.01221291569 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:958 State update PK:7.01496848686 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:958:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:959 State update PK:7.01881355441 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:959:AT SIG WestboundMain:StP+10 vK:16.807851537
+E500:959:START UPDATE SIG BY OCCU sig:WestboundMain:StP-140 from value green to value red
+E500:959:START UPDATE SIG BY OCCU sig:WestboundMain:1645 from value red to value yellow
+E500:959:START UPDATE SIG BY OCCU sig:WestboundMain:1630 from value yellow to value green
+SIG 1630 was yellow now green
+SIG 1645 was red now yellow
+SIG StP-140 was green now red
+E500:t:959next SIG (1710) at PK7.3
+need to go faster...1.35
+E500:t:960 State update PK:7.02373665843 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:961 State update PK:7.02972329927 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:962 State update PK:7.03675610532 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:963 State update PK:7.04481502958 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:964 State update PK:7.0538775703 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:965 State update PK:7.06391891485 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:966 State update PK:7.07488281772 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:967 State update PK:7.08665375208 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:968 State update PK:7.09913042544 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:969 State update PK:7.11223009766 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:970:coasting at 49.8446509744
+E500:t:970 State update PK:7.12588118008 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:971:coasting at 48.045367244
+E500:t:971 State update PK:7.13947170834 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:972:coasting at 46.3110411619
+E500:t:972 State update PK:7.15257170331 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:972:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07940437962
+E500:t:973 State update PK:7.16534747813 vK:46.656481337 maxVk:50.0 aF:0.602974079094 a:1.07940437962 power: 2000465.36123 v2factor: 0.231180300527 gFactor:0.0 vSquare:167.886928487
+need to go faster...1.0339848231
+E500:t:974 State update PK:7.1785989568 vK:48.7042659338 maxVk:50.0 aF:0.536798603928 a:1.0339848231 power: 2000396.85609 v2factor: 0.251936219175 gFactor:0.0 vSquare:182.960217266
+E500:t:975:coasting at 49.3574846061
+E500:t:975 State update PK:7.19233244102 vK:49.3484109476 maxVk:50.0 aF:-0.504092136706 a:0.0 power: 6.91004053267 v2factor: 0.258842136706 gFactor:0.0 vSquare:187.97540792
+E500:t:976:coasting at 47.5760199271
+E500:t:976 State update PK:7.2057901878 vK:47.5672765261 maxVk:50.0 aF:-0.485744502661 a:0.0 power: 6.41820641086 v2factor: 0.240494502661 gFactor:0.0 vSquare:174.651054946
+E500:t:977:coasting at 45.8582524939
+E500:t:977 State update PK:7.21876217067 vK:45.8498160459 maxVk:50.0 aF:-0.468691552941 a:0.0 power: 5.96928374572 v2factor: 0.223441552941 gFactor:0.0 vSquare:162.266922978
+E500:t:977:boosting from vK:45.4968148529 to maxVk:50.0 with aFull:-0.465264242396
+E500:t:977:ADVANCE green SIG vK:46.1773114812
+need to go faster...1.06611823954
+E500:t:978 State update PK:7.23160541841 vK:47.2374396639 maxVk:50.0 aF:0.583890058172 a:1.06611823954 power: 2000445.08593 v2factor: 0.236978181371 gFactor:0.0 vSquare:172.097444714
+need to go faster...1.02310418166
+E500:t:979 State update PK:7.24500919192 vK:49.2218332469 maxVk:50.0 aF:0.520530857259 a:1.02310418166 power: 2000380.77978 v2factor: 0.2573233244 gFactor:0.0 vSquare:186.872421496
+E500:t:980:coasting at 48.8735384424
+E500:t:980 State update PK:7.25875364265 vK:48.8645557013 maxVk:50.0 aF:-0.499041168237 a:0.0 power: 6.77372915627 v2factor: 0.253791168237 gFactor:0.0 vSquare:184.307311719
+E500:t:981:coasting at 47.1096049553
+E500:t:981 State update PK:7.27207946123 vK:47.1009460156 maxVk:50.0 aF:-0.481052205898 a:0.0 power: 6.29389277241 v2factor: 0.235802205898 gFactor:0.0 vSquare:171.243432025
+E500:t:981:boosting from vK:45.4917932147 to maxVk:50.0 with aFull:-0.465215678121
+need to go faster...1.10397917413
+E500:t:982 State update PK:7.28492603759 vK:45.6187720647 maxVk:50.0 aF:0.637726499423 a:1.10397917413 power: 2000503.38778 v2factor: 0.221002674702 gFactor:0.0 vSquare:160.495769573
+need to go faster...1.05396631265
+E500:t:983 State update PK:7.29790576748 vK:47.7816313619 maxVk:50.0 aF:0.566242084295 a:1.05396631265 power: 2000426.71344 v2factor: 0.242474228358 gFactor:0.0 vSquare:176.08876424
+E500:t:983:AT SIG WestboundMain:1710 vK:48.1046923045
+E500:983:START UPDATE SIG BY OCCU sig:WestboundMain:StP+10 from value green to value red
+E500:983:START UPDATE SIG BY OCCU sig:WestboundMain:StP-140 from value red to value yellow
+E500:983:START UPDATE SIG BY OCCU sig:WestboundMain:1645 from value yellow to value green
+SIG 1645 was yellow now green
+SIG StP-140 was red now yellow
+SIG StP+10 was green now red
+E500:t:983next SIG (HoV-140) at PK7.576
+need to go faster...1.01310486554
+E500:t:984 State update PK:7.3114522945 vK:49.7072835532 maxVk:50.0 aF:0.505426962195 a:1.01310486554 power: 2000366.1174 v2factor: 0.262427903347 gFactor:0.0 vSquare:190.579450506
+E500:t:985:coasting at 48.396230873
+E500:t:985 State update PK:7.32513322433 vK:48.3873369247 maxVk:50.0 aF:-0.494108236038 a:0.0 power: 6.6412726929 v2factor: 0.248858236038 gFactor:0.0 vSquare:180.724935394
+E500:t:986:coasting at 46.6494219632
+E500:t:986 State update PK:7.3383289006 vK:46.6408455408 maxVk:50.0 aF:-0.476467910509 a:0.0 power: 6.17301839422 v2factor: 0.231217910509 gFactor:0.0 vSquare:167.914241474
+E500:t:986:boosting from vK:45.4968516872 to maxVk:50.0 with aFull:-0.46526459864
+need to go faster...1.08929744777
+E500:t:987 State update PK:7.35110691414 vK:46.2330986553 maxVk:50.0 aF:0.617047241835 a:1.08929744777 power: 2000480.58727 v2factor: 0.227000205932 gFactor:0.0 vSquare:164.851275187
+need to go faster...1.0420513009
+E500:t:988 State update PK:7.36424747545 vK:48.3275405887 maxVk:50.0 aF:0.548750415803 a:1.0420513009 power: 2000408.857 v2factor: 0.248050885098 gFactor:0.0 vSquare:180.138623891
+E500:t:989:coasting at 49.7165087001
+E500:t:989 State update PK:7.37792780248 vK:49.7073670141 maxVk:50.0 aF:-0.507871443966 a:0.0 power: 7.01248673921 v2factor: 0.262621443966 gFactor:0.0 vSquare:190.72000288
+E500:t:990:coasting at 47.9219286648
+E500:t:990 State update PK:7.39148340682 vK:47.913122087 maxVk:50.0 aF:-0.489254319989 a:0.0 power: 6.51158387923 v2factor: 0.244004319989 gFactor:0.0 vSquare:177.199941895
+E500:t:991:coasting at 46.1919729938
+E500:t:991 State update PK:7.40454973677 vK:46.1834777957 maxVk:50.0 aF:-0.471955451713 a:0.0 power: 6.05459559021 v2factor: 0.226705451713 gFactor:0.0 vSquare:164.637219835
+E500:t:991:boosting from vK:45.4919295955 to maxVk:50.0 with aFull:-0.46521699699
+need to go faster...1.07592785776
+E500:t:992 State update PK:7.41733510589 vK:46.8071115516 maxVk:50.0 aF:0.598001180156 a:1.07592785776 power: 2000460.03681 v2factor: 0.232676677607 gFactor:0.0 vSquare:168.973622082
+need to go faster...1.03114299557
+E500:t:993 State update PK:7.4306260609 vK:48.8383910441 maxVk:50.0 aF:0.532566201089 a:1.03114299557 power: 2000392.64494 v2factor: 0.253326794478 gFactor:0.0 vSquare:183.970075874
+E500:t:994:coasting at 49.2300809344
+E500:t:994 State update PK:7.44436919192 vK:49.2210312977 maxVk:50.0 aF:-0.502757592311 a:0.0 power: 6.87395755175 v2factor: 0.257507592311 gFactor:0.0 vSquare:187.006239877
+E500:t:995:coasting at 47.4532479596
+E500:t:995 State update PK:7.45779220964 vK:47.4445268715 maxVk:50.0 aF:-0.484504891328 a:0.0 power: 6.38530703778 v2factor: 0.239254891328 gFactor:0.0 vSquare:173.750828851
+E500:t:996:coasting at 45.7397855843
+E500:t:996 State update PK:7.47073070331 vK:45.7313698895 maxVk:50.0 aF:-0.467538598438 a:0.0 power: 5.93921682856 v2factor: 0.222288598438 gFactor:0.0 vSquare:161.429628495
+E500:t:996:boosting from vK:45.4963262361 to maxVk:50.0 with aFull:-0.465259516746
+need to go faster...1.06283382782
+E500:t:997 State update PK:7.48360351004 vK:47.3832957723 maxVk:50.0 aF:0.579138753707 a:1.06283382782 power: 2000440.10411 v2factor: 0.238445074112 gFactor:0.0 vSquare:173.162726298
+E500:t:997:ADVANCE green SIG vK:48.7462260025
+need to go faster...1.02040604471
+E500:t:998 State update PK:7.49704553582 vK:49.3518858418 maxVk:50.0 aF:0.516470112501 a:1.02040604471 power: 2000376.8129 v2factor: 0.258685932212 gFactor:0.0 vSquare:187.861969653
+E500:t:999:coasting at 48.7473971561
+E500:t:999 State update PK:7.51078021634 vK:48.7384379656 maxVk:50.0 aF:-0.497732802509 a:0.0 power: 6.73853314404 v2factor: 0.252482802509 gFactor:0.0 vSquare:183.357155054
+E500:t:1000:coasting at 46.988005339
+E500:t:1000 State update PK:7.52407164364 vK:46.9793682826 maxVk:50.0 aF:-0.47983646861 a:0.0 power: 6.26178171507 v2factor: 0.23458646861 gFactor:0.0 vSquare:170.360543653
+E500:t:1000:boosting from vK:45.4996666059 to maxVk:50.0 with aFull:-0.465291824093
+need to go faster...1.09966385982
+E500:t:1001 State update PK:7.53689289503 vK:45.7976347644 maxVk:50.0 aF:0.631673269109 a:1.09966385982 power: 2000496.66069 v2factor: 0.222740590708 gFactor:0.0 vSquare:161.7578727
+need to go faster...1.05047115934
+E500:t:1002 State update PK:7.54991943774 vK:47.9404846249 maxVk:50.0 aF:0.561130724844 a:1.05047115934 power: 2000421.4593 v2factor: 0.244090434497 gFactor:0.0 vSquare:177.262479664
+need to go faster...1.01022047074
+E500:t:1003 State update PK:7.56350765257 vK:49.8491025201 maxVk:50.0 aF:0.501041863572 a:1.01022047074 power: 2000361.90764 v2factor: 0.263928607172 gFactor:0.0 vSquare:191.669286254
+E500:t:1003:AT SIG WestboundMain:HoV-140 vK:48.4108591552
+E500:1003:START UPDATE SIG BY OCCU sig:WestboundMain:1710 from value green to value red
+E500:1003:START UPDATE SIG BY OCCU sig:WestboundMain:StP+10 from value red to value yellow
+E500:1003:START UPDATE SIG BY OCCU sig:WestboundMain:StP-140 from value yellow to value green
+SIG StP-140 was yellow now green
+SIG StP+10 was red now yellow
+SIG 1710 was green now red
+E500:t:1003next SIG (HoV+10) at PK7.726
+E500:t:1004:coasting at 48.2687099809
+E500:t:1004 State update PK:7.57715970873 vK:48.2598396076 maxVk:50.0 aF:-0.492798513592 a:0.0 power: 6.60621589579 v2factor: 0.247548513592 gFactor:0.0 vSquare:179.773793458
+E500:t:1005:coasting at 46.5264482571
+E500:t:1005 State update PK:7.59032061126 vK:46.5178937484 maxVk:50.0 aF:-0.475250478663 a:0.0 power: 6.14101424176 v2factor: 0.230000478663 gFactor:0.0 vSquare:167.030122486
+E500:t:1005:boosting from vK:45.4938734955 to maxVk:50.0 with aFull:-0.465235795872
+need to go faster...1.08573189912
+E500:t:1006 State update PK:7.60309270682 vK:46.3847999245 maxVk:50.0 aF:0.611988314532 a:1.08573189912 power: 2000475.08694 v2factor: 0.228493584592 gFactor:0.0 vSquare:165.93579128
+need to go faster...1.03914756438
+E500:t:1007 State update PK:7.61627300375 vK:48.46247864 maxVk:50.0 aF:0.544458472322 a:1.03914756438 power: 2000404.52882 v2factor: 0.249439092061 gFactor:0.0 vSquare:181.146762571
+E500:t:1007:ADVANCE STA x:7716.0 vK:49.6135442682
+E500:t:1008 State update PK:7.62997652 vK:49.5343442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.260908904003 gFactor:0.0 vSquare:189.476328252
+E500:t:1009 State update PK:7.64318331007 vK:45.5743442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.220875261602 gFactor:0.0 vSquare:160.403240088
+E500:t:1010 State update PK:7.65529010015 vK:41.6143442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.1841739592 gFactor:0.0 vSquare:133.750151925
+E500:t:1011 State update PK:7.66629689022 vK:37.6543442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.150804996798 gFactor:0.0 vSquare:109.517063761
+E500:t:1012 State update PK:7.6762036803 vK:33.6943442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.120768374397 gFactor:0.0 vSquare:87.7039755968
+E500:t:1013 State update PK:7.68501047037 vK:29.7343442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0940640919952 gFactor:0.0 vSquare:68.3108874329
+E500:t:1014 State update PK:7.69271726045 vK:25.7743442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0706921495935 gFactor:0.0 vSquare:51.3377992691
+E500:t:1015 State update PK:7.69932405052 vK:21.8143442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0506525471918 gFactor:0.0 vSquare:36.7847111052
+E500:t:1016 State update PK:7.7048308406 vK:17.8543442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0339452847902 gFactor:0.0 vSquare:24.6516229413
+E500:t:1017 State update PK:7.70923763067 vK:13.8943442682 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0205703623885 gFactor:0.0 vSquare:14.9385347774
+E500:t:1018 State update PK:7.71254442074 vK:9.93434426817 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0105277799868 gFactor:0.0 vSquare:7.64544661354
+E500:t:1019 State update PK:7.71475121082 vK:5.97434426817 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00381753758518 gFactor:0.0 vSquare:2.77235844966
+E500:t:1020 State update PK:7.71585800089 vK:2.01434426817 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00043963518352 gFactor:0.0 vSquare:0.319270285781
+E500:t:1020:IN STA HoV vK:0.785232268167 a:-0.004
+E500:t:1020:next STA (Cha) at PK8.069
+E500:t:1031:OUT STA, a:1.36305181459 vK:0.0
+need to go faster...1.35
+E500:t:1032 State update PK:7.71655567131 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1033 State update PK:7.71821346101 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1034 State update PK:7.72096903219 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1034:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1035 State update PK:7.72481409974 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1035:AT SIG WestboundMain:HoV+10 vK:16.807851537
+E500:1035:START UPDATE SIG BY OCCU sig:WestboundMain:HoV-140 from value green to value red
+E500:1035:START UPDATE SIG BY OCCU sig:WestboundMain:1710 from value red to value yellow
+E500:1035:START UPDATE SIG BY OCCU sig:WestboundMain:StP+10 from value yellow to value green
+SIG StP+10 was yellow now green
+SIG 1710 was red now yellow
+SIG HoV-140 was green now red
+E500:t:1035next SIG (Cha-140) at PK7.929
+need to go faster...1.35
+E500:t:1036 State update PK:7.72973720375 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1037 State update PK:7.73572384459 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1038 State update PK:7.74275665064 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1039 State update PK:7.7508155749 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1040 State update PK:7.75987811562 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1041 State update PK:7.76991946017 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1042 State update PK:7.78088336304 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1043 State update PK:7.7926542974 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1044 State update PK:7.80513097076 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1045 State update PK:7.81823064298 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:1046:coasting at 49.8446509744
+E500:t:1046 State update PK:7.83188172541 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:1047:coasting at 48.045367244
+E500:t:1047 State update PK:7.84547225366 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:1047:ADVANCE green SIG vK:47.4137740941
+E500:t:1048:coasting at 46.3110411619
+E500:t:1048 State update PK:7.85857224863 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:1048:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07939990438
+E500:t:1049 State update PK:7.87134805225 vK:46.6566746157 maxVk:50.0 aF:0.60296768689 a:1.07939990438 power: 2000465.35437 v2factor: 0.231182217488 gFactor:0.0 vSquare:167.888320616
+need to go faster...1.03398116729
+E500:t:1050 State update PK:7.88459958157 vK:48.7044380028 maxVk:50.0 aF:0.536793166595 a:1.03398116729 power: 2000396.85066 v2factor: 0.251938000692 gFactor:0.0 vSquare:182.961511033
+E500:t:1051:coasting at 49.3576422487
+E500:t:1051 State update PK:7.89833311116 vK:49.3485685604 maxVk:50.0 aF:-0.504093790137 a:0.0 power: 6.91008526763 v2factor: 0.258843790137 gFactor:0.0 vSquare:187.976608669
+E500:t:1052:coasting at 47.5761718314
+E500:t:1052 State update PK:7.91179090091 vK:47.5674284027 maxVk:50.0 aF:-0.485746038401 a:0.0 power: 6.41824719543 v2factor: 0.240496038401 gFactor:0.0 vSquare:174.652170226
+E500:t:1053:coasting at 45.8583990648
+E500:t:1053 State update PK:7.92476292522 vK:45.8499625911 maxVk:50.0 aF:-0.468692981258 a:0.0 power: 5.96932101595 v2factor: 0.223442981258 gFactor:0.0 vSquare:162.267960246
+E500:t:1053:boosting from vK:45.4969603266 to maxVk:50.0 with aFull:-0.465265649352
+E500:t:1053:AT SIG WestboundMain:Cha-140 vK:45.7842141799
+E500:1053:START UPDATE SIG BY OCCU sig:WestboundMain:HoV+10 from value green to value red
+E500:1053:START UPDATE SIG BY OCCU sig:WestboundMain:HoV-140 from value red to value yellow
+E500:1053:START UPDATE SIG BY OCCU sig:WestboundMain:1710 from value yellow to value green
+SIG 1710 was yellow now green
+SIG HoV-140 was red now yellow
+SIG HoV+10 was green now red
+E500:t:1053next SIG (Cha+10) at PK8.079
+need to go faster...1.06610054052
+E500:t:1054 State update PK:7.93760636171 vK:47.2382232436 maxVk:50.0 aF:0.583864490675 a:1.06610054052 power: 2000445.05906 v2factor: 0.236986049843 gFactor:0.0 vSquare:172.103158927
+need to go faster...1.02308965084
+E500:t:1055 State update PK:7.95101034071 vK:49.2225318079 maxVk:50.0 aF:0.520509016967 a:1.02308965084 power: 2000380.75839 v2factor: 0.257330633868 gFactor:0.0 vSquare:186.877729751
+E500:t:1056:coasting at 48.8741916221
+E500:t:1056 State update PK:7.96475497739 vK:48.865208759 maxVk:50.0 aF:-0.499047951963 a:0.0 power: 6.77391176484 v2factor: 0.253797951963 gFactor:0.0 vSquare:184.312238172
+E500:t:1057:coasting at 47.1102345875
+E500:t:1057 State update PK:7.97808097405 vK:47.1015755344 maxVk:50.0 aF:-0.481058509057 a:0.0 power: 6.29405936134 v2factor: 0.235808509057 gFactor:0.0 vSquare:171.248009483
+E500:t:1057:boosting from vK:45.4924020111 to maxVk:50.0 with aFull:-0.465221565507
+need to go faster...1.10397456333
+E500:t:1058 State update PK:7.99092771581 vK:45.6189624282 maxVk:50.0 aF:0.637720042578 a:1.10397456333 power: 2000503.38058 v2factor: 0.22100452075 gFactor:0.0 vSquare:160.497110203
+E500:t:1058:ADVANCE STA x:8069.0 vK:46.1952398142
+E500:t:1059 State update PK:8.00343250981 vK:43.2450398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.19888367619 gFactor:0.0 vSquare:144.432589826
+E500:t:1060 State update PK:8.01489227087 vK:39.2850398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.164142483487 gFactor:0.0 vSquare:119.202965495
+E500:t:1061 State update PK:8.02525203193 vK:35.3250398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.132733630783 gFactor:0.0 vSquare:96.3933411642
+E500:t:1062 State update PK:8.03451179299 vK:31.3650398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.10465711808 gFactor:0.0 vSquare:76.0037168333
+E500:t:1063 State update PK:8.04267155405 vK:27.4050398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0799129453759 gFactor:0.0 vSquare:58.0340925025
+E500:t:1064 State update PK:8.04973131511 vK:23.4450398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0585011126723 gFactor:0.0 vSquare:42.4844681716
+E500:t:1065 State update PK:8.05569107617 vK:19.4850398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0404216199687 gFactor:0.0 vSquare:29.3548438407
+E500:t:1066 State update PK:8.06055083723 vK:15.5250398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0256744672651 gFactor:0.0 vSquare:18.6452195099
+E500:t:1067 State update PK:8.06431059829 vK:11.5650398142 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0142596545615 gFactor:0.0 vSquare:10.355595179
+E500:t:1068 State update PK:8.06697035935 vK:7.60503981415 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00617718185785 gFactor:0.0 vSquare:4.48597084811
+E500:t:1069 State update PK:8.06853012041 vK:3.64503981415 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00142704915424 gFactor:0.0 vSquare:1.03634651724
+E500:t:1069:IN STA Cha vK:0.791967814155 a:-0.004
+E500:t:1069:next STA (LoR) at PK8.599
+E500:t:1080:OUT STA, a:1.3317152312 vK:0.0
+need to go faster...1.35
+E500:t:1081 State update PK:8.06955565659 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1082 State update PK:8.07121344629 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1083 State update PK:8.07396901747 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1083:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1084 State update PK:8.07781408502 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1084:AT SIG WestboundMain:Cha+10 vK:16.807851537
+E500:1084:START UPDATE SIG BY OCCU sig:WestboundMain:Cha-140 from value green to value red
+E500:1084:START UPDATE SIG BY OCCU sig:WestboundMain:HoV+10 from value red to value yellow
+E500:1084:START UPDATE SIG BY OCCU sig:WestboundMain:HoV-140 from value yellow to value green
+SIG HoV-140 was yellow now green
+SIG HoV+10 was red now yellow
+SIG Cha-140 was green now red
+E500:t:1084next SIG (1810) at PK8.3
+need to go faster...1.35
+E500:t:1085 State update PK:8.08273718904 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1086 State update PK:8.08872382987 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1087 State update PK:8.09575663592 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1088 State update PK:8.10381556018 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1089 State update PK:8.1128781009 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1090 State update PK:8.12291944545 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1091 State update PK:8.13388334832 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1092 State update PK:8.14565428269 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1093 State update PK:8.15813095605 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1094 State update PK:8.17123062826 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:1095:coasting at 49.8446509744
+E500:t:1095 State update PK:8.18488171069 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:1096:coasting at 48.045367244
+E500:t:1096 State update PK:8.19847223894 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:1097:coasting at 46.3110411619
+E500:t:1097 State update PK:8.21157223391 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:1097:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+E500:t:1097:ADVANCE green SIG vK:46.5903888221
+need to go faster...1.07942455112
+E500:t:1098 State update PK:8.22434787892 vK:46.6556101812 maxVk:50.0 aF:0.603002890725 a:1.07942455112 power: 2000465.39217 v2factor: 0.2311716604 gFactor:0.0 vSquare:167.880653885
+need to go faster...1.03400130108
+E500:t:1099 State update PK:8.23759912931 vK:48.7034903765 maxVk:50.0 aF:0.53682311157 a:1.03400130108 power: 2000396.88053 v2factor: 0.251928189515 gFactor:0.0 vSquare:182.954385995
+E500:t:1100:coasting at 49.3567740728
+E500:t:1100 State update PK:8.25133240902 vK:49.3477005484 maxVk:50.0 aF:-0.504084684355 a:0.0 power: 6.90983890405 v2factor: 0.258834684355 gFactor:0.0 vSquare:187.9699959
+E500:t:1101:coasting at 47.5753352575
+E500:t:1101 State update PK:8.26478996212 vK:47.566591981 maxVk:50.0 aF:-0.485737580767 a:0.0 power: 6.41802258727 v2factor: 0.240487580767 gFactor:0.0 vSquare:174.646028153
+E500:t:1102:coasting at 45.8575918628
+E500:t:1102 State update PK:8.27776175824 vK:45.8491555308 maxVk:50.0 aF:-0.468685115217 a:0.0 power: 5.96911576182 v2factor: 0.223435115217 gFactor:0.0 vSquare:162.262247798
+E500:t:1102:boosting from vK:45.4961591673 to maxVk:50.0 with aFull:-0.465257900955
+need to go faster...1.06612762668
+E500:t:1103 State update PK:8.29060487199 vK:47.2370240825 maxVk:50.0 aF:0.583903618402 a:1.06612762668 power: 2000445.10019 v2factor: 0.23697400828 gFactor:0.0 vSquare:172.094414147
+E500:t:1103:AT SIG WestboundMain:1810 vK:48.669174721
+E500:1103:START UPDATE SIG BY OCCU sig:WestboundMain:Cha+10 from value green to value red
+E500:1103:START UPDATE SIG BY OCCU sig:WestboundMain:Cha-140 from value red to value yellow
+E500:1103:START UPDATE SIG BY OCCU sig:WestboundMain:HoV+10 from value yellow to value green
+SIG HoV+10 was yellow now green
+SIG Cha-140 was red now yellow
+SIG Cha+10 was green now red
+E500:t:1103next SIG (LoR-140) at PK8.459
+need to go faster...1.02311188842
+E500:t:1104 State update PK:8.30400853653 vK:49.2214627568 maxVk:50.0 aF:0.520542440642 a:1.02311188842 power: 2000380.79112 v2factor: 0.257319447779 gFactor:0.0 vSquare:186.86960623
+E500:t:1105:coasting at 48.8731920208
+E500:t:1105 State update PK:8.31775288863 vK:48.8642093445 maxVk:50.0 aF:-0.499037570444 a:0.0 power: 6.77363230916 v2factor: 0.253787570444 gFactor:0.0 vSquare:184.304698943
+E500:t:1106:coasting at 47.1092710223
+E500:t:1106 State update PK:8.33107861276 vK:47.1006121427 maxVk:50.0 aF:-0.481048862977 a:0.0 power: 6.29380442132 v2factor: 0.235798862977 gFactor:0.0 vSquare:171.24100434
+E500:t:1106:boosting from vK:45.4998441582 to maxVk:50.0 with aFull:-0.465293541407
+need to go faster...1.10353020851
+E500:t:1107 State update PK:8.34392541395 vK:45.6373157325 maxVk:50.0 aF:0.637097670655 a:1.10353020851 power: 2000502.6869 v2factor: 0.221182537859 gFactor:0.0 vSquare:160.62638915
+need to go faster...1.05360294703
+E500:t:1108 State update PK:8.35690999665 vK:47.7980970744 maxVk:50.0 aF:0.565711442326 a:1.05360294703 power: 2000426.16658 v2factor: 0.242641504701 gFactor:0.0 vSquare:176.210243065
+need to go faster...1.01280517008
+E500:t:1109 State update PK:8.37046084441 vK:49.721981266 maxVk:50.0 aF:0.5049719367 a:1.01280517008 power: 2000365.67959 v2factor: 0.262583233376 gFactor:0.0 vSquare:190.692253723
+E500:t:1109:ADVANCE green SIG vK:49.8937242572
+E500:t:1110:coasting at 48.3926847259
+E500:t:1110 State update PK:8.38414143017 vK:48.3837914341 maxVk:50.0 aF:-0.494071768092 a:0.0 power: 6.64029593912 v2factor: 0.248821768092 gFactor:0.0 vSquare:180.698451773
+E500:t:1111:coasting at 46.6460024252
+E500:t:1111 State update PK:8.39733613947 vK:46.6374266129 maxVk:50.0 aF:-0.476434013864 a:0.0 power: 6.17212676597 v2factor: 0.231184013864 gFactor:0.0 vSquare:167.889625174
+E500:t:1111:boosting from vK:45.4935131392 to maxVk:50.0 with aFull:-0.465232310912
+need to go faster...1.08938981176
+E500:t:1112 State update PK:8.41011315911 vK:46.2291820991 maxVk:50.0 aF:0.617178096428 a:1.08938981176 power: 2000480.72994 v2factor: 0.226961715335 gFactor:0.0 vSquare:164.823322683
+need to go faster...1.04212646857
+E500:t:1113 State update PK:8.42325269464 vK:48.3240574982 maxVk:50.0 aF:0.54886136533 a:1.04212646857 power: 2000408.96917 v2factor: 0.24801510324 gFactor:0.0 vSquare:180.112638519
+E500:t:1114:coasting at 49.7133647299
+E500:t:1114 State update PK:8.43693210653 vK:49.7042236418 maxVk:50.0 aF:-0.507838229732 a:0.0 power: 7.01158470679 v2factor: 0.262588229732 gFactor:0.0 vSquare:190.695882158
+E500:t:1115:coasting at 47.9188999505
+E500:t:1115 State update PK:8.45048685399 vK:47.9100939279 maxVk:50.0 aF:-0.489223478324 a:0.0 power: 6.5107618884 v2factor: 0.243973478324 gFactor:0.0 vSquare:177.177544172
+E500:t:1115:AT SIG WestboundMain:LoR-140 vK:46.778839657
+E500:1115:START UPDATE SIG BY OCCU sig:WestboundMain:1810 from value green to value red
+E500:1115:START UPDATE SIG BY OCCU sig:WestboundMain:Cha+10 from value red to value yellow
+E500:1115:START UPDATE SIG BY OCCU sig:WestboundMain:Cha-140 from value yellow to value green
+SIG Cha-140 was yellow now green
+SIG Cha+10 was red now yellow
+SIG 1810 was green now red
+E500:t:1115next SIG (LoR+10) at PK8.609
+E500:t:1116:coasting at 46.189051374
+E500:t:1116 State update PK:8.4635523579 vK:46.1805566921 maxVk:50.0 aF:-0.471926774601 a:0.0 power: 6.05384476916 v2factor: 0.226676774601 gFactor:0.0 vSquare:164.616394046
+E500:t:1116:boosting from vK:45.4974235983 to maxVk:50.0 with aFull:-0.465270129938
+need to go faster...1.07555289842
+E500:t:1117 State update PK:8.47634019227 vK:46.8234159282 maxVk:50.0 aF:0.597463962005 a:1.07555289842 power: 2000459.46336 v2factor: 0.232838936416 gFactor:0.0 vSquare:169.091457092
+need to go faster...1.03083626806
+E500:t:1118 State update PK:8.48963542068 vK:48.8529118238 maxVk:50.0 aF:0.53210869634 a:1.03083626806 power: 2000392.19094 v2factor: 0.253477571722 gFactor:0.0 vSquare:184.079572783
+E500:t:1119:coasting at 49.2255829646
+E500:t:1119 State update PK:8.50338036266 vK:49.2165341749 maxVk:50.0 aF:-0.502710539434 a:0.0 power: 6.87268623448 v2factor: 0.257460539434 gFactor:0.0 vSquare:186.972069306
+E500:t:1120:coasting at 47.4489132967
+E500:t:1120 State update PK:8.51680215425 vK:47.4401929954 maxVk:50.0 aF:-0.484461183386 a:0.0 power: 6.3841477885 v2factor: 0.239211183386 gFactor:0.0 vSquare:173.719087426
+E500:t:1120:ADVANCE STA x:8599.0 vK:46.6703569386
+E500:t:1121 State update PK:8.52964212079 vK:44.4725569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.210329294007 gFactor:0.0 vSquare:152.744585336
+E500:t:1122 State update PK:8.54144285883 vK:40.5125569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.174555145643 gFactor:0.0 vSquare:126.764811651
+E500:t:1123 State update PK:8.55214359686 vK:36.5525569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.14211333728 gFactor:0.0 vSquare:103.205037966
+E500:t:1124 State update PK:8.5617443349 vK:32.5925569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.113003868916 gFactor:0.0 vSquare:82.0652642815
+E500:t:1125 State update PK:8.57024507294 vK:28.6325569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0872267405519 gFactor:0.0 vSquare:63.3454905969
+E500:t:1126 State update PK:8.57764581098 vK:24.6725569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0647819521881 gFactor:0.0 vSquare:47.0457169122
+E500:t:1127 State update PK:8.58394654902 vK:20.7125569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0456695038243 gFactor:0.0 vSquare:33.1659432275
+E500:t:1128 State update PK:8.58914728706 vK:16.7525569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0298893954605 gFactor:0.0 vSquare:21.7061695428
+E500:t:1129 State update PK:8.59324802509 vK:12.7925569386 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0174416270967 gFactor:0.0 vSquare:12.6663958581
+E500:t:1130 State update PK:8.59624876313 vK:8.83255693857 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00832619873284 gFactor:0.0 vSquare:6.04662217345
+E500:t:1131 State update PK:8.59814950117 vK:4.87255693857 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00254311036903 gFactor:0.0 vSquare:1.84684848877
+E500:t:1132 State update PK:8.59895023921 vK:0.912556938574 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 9.23620052214e-05 gFactor:0.0 vSquare:0.0670748040823
+E500:t:1132:IN STA LoR vK:0.790948938574 a:-0.004
+E500:t:1132:next STA (PaR) at PK8.952
+E500:t:1143:OUT STA, a:1.35653456556 vK:0.0
+need to go faster...1.35
+E500:t:1144 State update PK:8.5995551804 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1145 State update PK:8.6012129701 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1146 State update PK:8.60396854128 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1146:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1147 State update PK:8.60781360883 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1147:AT SIG WestboundMain:LoR+10 vK:16.807851537
+E500:1147:START UPDATE SIG BY OCCU sig:WestboundMain:LoR-140 from value green to value red
+E500:1147:START UPDATE SIG BY OCCU sig:WestboundMain:1810 from value red to value yellow
+E500:1147:START UPDATE SIG BY OCCU sig:WestboundMain:Cha+10 from value yellow to value green
+SIG Cha+10 was yellow now green
+SIG 1810 was red now yellow
+SIG LoR-140 was green now red
+E500:t:1147next SIG (PaR-140) at PK8.812
+need to go faster...1.35
+E500:t:1148 State update PK:8.61273671285 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1149 State update PK:8.61872335368 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1150 State update PK:8.62575615973 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1151 State update PK:8.63381508399 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1152 State update PK:8.64287762471 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1153 State update PK:8.65291896926 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1154 State update PK:8.66388287213 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1155 State update PK:8.6756538065 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1156 State update PK:8.68813047986 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1157 State update PK:8.70123015207 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:1158:coasting at 49.8446509744
+E500:t:1158 State update PK:8.7148812345 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:1159:coasting at 48.045367244
+E500:t:1159 State update PK:8.72847176275 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:1159:ADVANCE green SIG vK:47.4137740941
+E500:t:1160:coasting at 46.3110411619
+E500:t:1160 State update PK:8.74157175772 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:1160:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07939272995
+E500:t:1161 State update PK:8.75434760751 vK:46.6569844714 maxVk:50.0 aF:0.602957439259 a:1.07939272995 power: 2000465.34337 v2factor: 0.231185290689 gFactor:0.0 vSquare:167.890552425
+need to go faster...1.0339753065
+E500:t:1162 State update PK:8.76759921803 vK:48.7047138562 maxVk:50.0 aF:0.536784449743 a:1.0339753065 power: 2000396.84197 v2factor: 0.251940856756 gFactor:0.0 vSquare:182.963585153
+E500:t:1163:coasting at 49.3578949743
+E500:t:1163 State update PK:8.78133282036 vK:49.3488212384 maxVk:50.0 aF:-0.504096440856 a:0.0 power: 6.9101569852 v2factor: 0.258846440856 gFactor:0.0 vSquare:187.978533665
+E500:t:1164:coasting at 47.5764153576
+E500:t:1164 State update PK:8.794790679 vK:47.5676718846 maxVk:50.0 aF:-0.485748500442 a:0.0 power: 6.41831257985 v2factor: 0.240498500442 gFactor:0.0 vSquare:174.653958201
+E500:t:1165:coasting at 45.8586340407
+E500:t:1165 State update PK:8.80776276974 vK:45.8501975259 maxVk:50.0 aF:-0.468695271084 a:0.0 power: 5.96938076629 v2factor: 0.223445271084 gFactor:0.0 vSquare:162.269623155
+E500:t:1165:boosting from vK:45.4971935435 to maxVk:50.0 with aFull:-0.465267904931
+E500:t:1165:AT SIG WestboundMain:PaR-140 vK:45.7833788598
+E500:1165:START UPDATE SIG BY OCCU sig:WestboundMain:LoR+10 from value green to value red
+E500:1165:START UPDATE SIG BY OCCU sig:WestboundMain:LoR-140 from value red to value yellow
+E500:1165:START UPDATE SIG BY OCCU sig:WestboundMain:1810 from value yellow to value green
+SIG 1810 was yellow now green
+SIG LoR-140 was red now yellow
+SIG LoR+10 was green now red
+E500:t:1165next SIG (PaR+10) at PK8.962
+need to go faster...1.06611796786
+E500:t:1166 State update PK:8.82060604241 vK:47.2374516916 maxVk:50.0 aF:0.583889665713 a:1.06611796786 power: 2000445.08552 v2factor: 0.236978302149 gFactor:0.0 vSquare:172.097532425
+need to go faster...1.02310395861
+E500:t:1167 State update PK:8.83400981908 vK:49.2218439697 maxVk:50.0 aF:0.520530522013 a:1.02310395861 power: 2000380.77945 v2factor: 0.257323436598 gFactor:0.0 vSquare:186.872502976
+E500:t:1168:coasting at 48.8735484685
+E500:t:1168 State update PK:8.84775427266 vK:48.8645657256 maxVk:50.0 aF:-0.499041272365 a:0.0 power: 6.77373195924 v2factor: 0.253791272365 gFactor:0.0 vSquare:184.307387338
+E500:t:1169:coasting at 47.10961462
+E500:t:1169 State update PK:8.86108009397 vK:47.1009556785 maxVk:50.0 aF:-0.48105230265 a:0.0 power: 6.29389532949 v2factor: 0.23580230265 gFactor:0.0 vSquare:171.243502287
+E500:t:1169:boosting from vK:45.4918025596 to maxVk:50.0 with aFull:-0.465215768491
+need to go faster...1.10397464792
+E500:t:1170 State update PK:8.87392667569 vK:45.6189589357 maxVk:50.0 aF:0.63772016104 a:1.10397464792 power: 2000503.38071 v2factor: 0.221004486881 gFactor:0.0 vSquare:160.497085607
+E500:t:1170:ADVANCE STA x:8952.0 vK:46.1952364279
+E500:t:1171 State update PK:8.88643146874 vK:43.2450364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.198883645058 gFactor:0.0 vSquare:144.432567217
+E500:t:1172 State update PK:8.89789122886 vK:39.2850364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.164142455204 gFactor:0.0 vSquare:119.202944955
+E500:t:1173 State update PK:8.90825098898 vK:35.3250364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.13273360535 gFactor:0.0 vSquare:96.3933226939
+E500:t:1174 State update PK:8.9175107491 vK:31.3650364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.104657095496 gFactor:0.0 vSquare:76.0037004325
+E500:t:1175 State update PK:8.92567050922 vK:27.4050364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0799129256414 gFactor:0.0 vSquare:58.034078171
+E500:t:1176 State update PK:8.93273026934 vK:23.4450364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0585010957874 gFactor:0.0 vSquare:42.4844559095
+E500:t:1177 State update PK:8.93869002946 vK:19.4850364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0404216059333 gFactor:0.0 vSquare:29.354833648
+E500:t:1178 State update PK:8.94354978957 vK:15.5250364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0256744560793 gFactor:0.0 vSquare:18.6452113865
+E500:t:1179 State update PK:8.94730954969 vK:11.5650364279 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0142596462252 gFactor:0.0 vSquare:10.3555891251
+E500:t:1180 State update PK:8.94996930981 vK:7.60503642788 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00617717637114 gFactor:0.0 vSquare:4.48596686358
+E500:t:1181 State update PK:8.95152906993 vK:3.64503642788 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00142704651708 gFactor:0.0 vSquare:1.03634460209
+E500:t:1181:IN STA PaR vK:0.791892427881 a:-0.004
+E500:t:1181:next STA (Tui) at PK9.422
+E500:t:1192:OUT STA, a:1.28710058523 vK:0.0
+need to go faster...1.35
+E500:t:1193 State update PK:8.95255570517 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1194 State update PK:8.95421349487 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1195 State update PK:8.95696906604 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1195:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1196 State update PK:8.96081413359 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1196:AT SIG WestboundMain:PaR+10 vK:16.807851537
+E500:1196:START UPDATE SIG BY OCCU sig:WestboundMain:PaR-140 from value green to value red
+E500:1196:START UPDATE SIG BY OCCU sig:WestboundMain:LoR+10 from value red to value yellow
+E500:1196:START UPDATE SIG BY OCCU sig:WestboundMain:LoR-140 from value yellow to value green
+SIG LoR-140 was yellow now green
+SIG LoR+10 was red now yellow
+SIG PaR-140 was green now red
+E500:t:1196next SIG (Tui-140) at PK9.282
+need to go faster...1.35
+E500:t:1197 State update PK:8.96573723761 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1198 State update PK:8.97172387844 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1199 State update PK:8.97875668449 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1200 State update PK:8.98681560876 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1201 State update PK:8.99587814948 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1202 State update PK:9.00591949403 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1203 State update PK:9.0168833969 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1204 State update PK:9.02865433126 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1205 State update PK:9.04113100462 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1206 State update PK:9.05423067683 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:1207:coasting at 49.8446509744
+E500:t:1207 State update PK:9.06788175926 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:1208:coasting at 48.045367244
+E500:t:1208 State update PK:9.08147228751 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:1209:coasting at 46.3110411619
+E500:t:1209 State update PK:9.09457228249 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:1209:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07942332903
+E500:t:1210 State update PK:9.10734793536 vK:46.6556629595 maxVk:50.0 aF:0.603001145178 a:1.07942332903 power: 2000465.39029 v2factor: 0.23117218385 gFactor:0.0 vSquare:167.881034023
+need to go faster...1.03400030277
+E500:t:1211 State update PK:9.12059919958 vK:48.703537363 maxVk:50.0 aF:0.536821626784 a:1.03400030277 power: 2000396.87905 v2factor: 0.251928675982 gFactor:0.0 vSquare:182.954739275
+E500:t:1212:coasting at 49.3568171198
+E500:t:1212 State update PK:9.13433249168 vK:49.3477435874 maxVk:50.0 aF:-0.504085135846 a:0.0 power: 6.90985111942 v2factor: 0.258835135846 gFactor:0.0 vSquare:187.970323781
+E500:t:1213:coasting at 47.5753767376
+E500:t:1213 State update PK:9.14779005651 vK:47.5666334536 maxVk:50.0 aF:-0.485738000121 a:0.0 power: 6.41803372395 v2factor: 0.240488000121 gFactor:0.0 vSquare:174.646332695
+E500:t:1214:coasting at 45.8576318866
+E500:t:1214 State update PK:9.16076186395 vK:45.8491955475 maxVk:50.0 aF:-0.468685505239 a:0.0 power: 5.96912593888 v2factor: 0.223435505239 gFactor:0.0 vSquare:162.262531038
+E500:t:1214:boosting from vK:45.4961988914 to maxVk:50.0 with aFull:-0.465258285143
+need to go faster...1.06611504692
+E500:t:1215 State update PK:9.17360510813 vK:47.2375810072 maxVk:50.0 aF:0.583885446232 a:1.06611504692 power: 2000445.08109 v2factor: 0.236979600689 gFactor:0.0 vSquare:172.098475446
+need to go faster...1.02310156054
+E500:t:1216 State update PK:9.18700891872 vK:49.2219592544 maxVk:50.0 aF:0.520526917652 a:1.02310156054 power: 2000380.77592 v2factor: 0.257324642885 gFactor:0.0 vSquare:186.873379001
+E500:t:1216:ADVANCE green SIG vK:49.4702625586
+E500:t:1217:coasting at 48.8736562639
+E500:t:1217 State update PK:9.20075340299 vK:48.8646735008 maxVk:50.0 aF:-0.499042391889 a:0.0 power: 6.77376209519 v2factor: 0.253792391889 gFactor:0.0 vSquare:184.308200355
+E500:t:1218:coasting at 47.1097185293
+E500:t:1218 State update PK:9.21407925369 vK:47.1010595691 maxVk:50.0 aF:-0.481053342865 a:0.0 power: 6.29392282172 v2factor: 0.235803342865 gFactor:0.0 vSquare:171.244257709
+E500:t:1218:boosting from vK:45.4919030303 to maxVk:50.0 with aFull:-0.465216740091
+need to go faster...1.10397676144
+E500:t:1219 State update PK:9.22692586088 vK:45.6188716759 maxVk:50.0 aF:0.637723120757 a:1.10397676144 power: 2000503.38401 v2factor: 0.22100364068 gFactor:0.0 vSquare:160.496471082
+need to go faster...1.05396436014
+E500:t:1220 State update PK:9.23990561684 vK:47.7817198087 maxVk:50.0 aF:0.566239233394 a:1.05396436014 power: 2000426.7105 v2factor: 0.242475126742 gFactor:0.0 vSquare:176.089416661
+need to go faster...1.01310325526
+E500:t:1221 State update PK:9.25345216707 vK:49.7073625017 maxVk:50.0 aF:0.505424517683 a:1.01310325526 power: 2000366.11505 v2factor: 0.262428737577 gFactor:0.0 vSquare:190.580056337
+E500:t:1222:coasting at 48.3963061695
+E500:t:1222 State update PK:9.26713311822 vK:48.3874122073 maxVk:50.0 aF:-0.494109010403 a:0.0 power: 6.64129343381 v2factor: 0.248859010403 gFactor:0.0 vSquare:180.725497751
+E500:t:1223:coasting at 46.6494945713
+E500:t:1223 State update PK:9.28032881503 vK:46.6409181359 maxVk:50.0 aF:-0.476468630274 a:0.0 power: 6.17303732748 v2factor: 0.231218630274 gFactor:0.0 vSquare:167.914764179
+E500:t:1223:AT SIG WestboundMain:Tui-140 vK:46.4184662966
+E500:1223:START UPDATE SIG BY OCCU sig:WestboundMain:PaR+10 from value green to value red
+E500:1223:START UPDATE SIG BY OCCU sig:WestboundMain:PaR-140 from value red to value yellow
+E500:1223:START UPDATE SIG BY OCCU sig:WestboundMain:LoR+10 from value yellow to value green
+SIG LoR+10 was yellow now green
+SIG PaR-140 was red now yellow
+SIG PaR+10 was green now red
+E500:t:1223next SIG (Tui+10) at PK9.432
+E500:t:1223:boosting from vK:45.4969225755 to maxVk:50.0 with aFull:-0.46526528424
+need to go faster...1.0892955513
+E500:t:1224 State update PK:9.29310684942 vK:46.2331790791 maxVk:50.0 aF:0.617044554955 a:1.0892955513 power: 2000480.58434 v2factor: 0.227000996344 gFactor:0.0 vSquare:164.851849197
+need to go faster...1.04204975749
+E500:t:1225 State update PK:9.30624743179 vK:48.327612112 maxVk:50.0 aF:0.548748137606 a:1.04204975749 power: 2000408.8547 v2factor: 0.248051619885 gFactor:0.0 vSquare:180.139157505
+E500:t:1226:coasting at 49.7165732599
+E500:t:1226 State update PK:9.31992777761 vK:49.7074315616 maxVk:50.0 aF:-0.507872126025 a:0.0 power: 7.0125052629 v2factor: 0.262622126025 gFactor:0.0 vSquare:190.720498202
+E500:t:1227:coasting at 47.9219908578
+E500:t:1227 State update PK:9.33348339955 vK:47.9131842686 maxVk:50.0 aF:-0.489254953326 a:0.0 power: 6.51160075918 v2factor: 0.244004953326 gFactor:0.0 vSquare:177.200401834
+E500:t:1228:coasting at 46.1920329877
+E500:t:1228 State update PK:9.34654974646 vK:46.1835377789 maxVk:50.0 aF:-0.4719560406 a:0.0 power: 6.05461100863 v2factor: 0.2267060406 gFactor:0.0 vSquare:164.637647495
+E500:t:1228:ADVANCE STA x:9422.0 vK:46.030880141
+E500:t:1229 State update PK:9.35887994575 vK:42.427280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.191436427577 gFactor:0.0 vSquare:139.024275655
+E500:t:1230 State update PK:9.37011255135 vK:38.467280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.157383379639 gFactor:0.0 vSquare:114.294393347
+E500:t:1231 State update PK:9.38024515694 vK:34.507280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.1266626717 gFactor:0.0 vSquare:91.9845110386
+E500:t:1232 State update PK:9.38927776254 vK:30.547280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0992743037615 gFactor:0.0 vSquare:72.0946287302
+E500:t:1233 State update PK:9.39721036813 vK:26.587280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0752182758229 gFactor:0.0 vSquare:54.6247464219
+E500:t:1234 State update PK:9.40404297373 vK:22.627280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0544945878843 gFactor:0.0 vSquare:39.5748641135
+E500:t:1235 State update PK:9.40977557932 vK:18.667280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0371032399457 gFactor:0.0 vSquare:26.9449818051
+E500:t:1236 State update PK:9.41440818491 vK:14.707280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0230442320071 gFactor:0.0 vSquare:16.7350994968
+E500:t:1237 State update PK:9.41794079051 vK:10.747280141 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0123175640684 gFactor:0.0 vSquare:8.94521718841
+E500:t:1238 State update PK:9.4203733961 vK:6.78728014096 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00492323612983 gFactor:0.0 vSquare:3.57533488005
+E500:t:1239 State update PK:9.4217060017 vK:2.82728014096 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000861248191211 gFactor:0.0 vSquare:0.625452571686
+E500:t:1239:IN STA Tui vK:0.785432140959 a:-0.004
+E500:t:1239:next STA (Con) at PK9.834
+E500:t:1250:OUT STA, a:1.3418607127 vK:0.0
+need to go faster...1.35
+E500:t:1251 State update PK:9.42255531267 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1252 State update PK:9.42421310237 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1253 State update PK:9.42696867354 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1253:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1254 State update PK:9.43081374109 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1254:AT SIG WestboundMain:Tui+10 vK:16.807851537
+E500:1254:START UPDATE SIG BY OCCU sig:WestboundMain:Tui-140 from value green to value red
+E500:1254:START UPDATE SIG BY OCCU sig:WestboundMain:PaR+10 from value red to value yellow
+E500:1254:START UPDATE SIG BY OCCU sig:WestboundMain:PaR-140 from value yellow to value green
+SIG PaR-140 was yellow now green
+SIG PaR+10 was red now yellow
+SIG Tui-140 was green now red
+E500:t:1254next SIG (Con-140) at PK9.694
+need to go faster...1.35
+E500:t:1255 State update PK:9.43573684511 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1256 State update PK:9.44172348594 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+SCHEDULER:2018-02-02 11:54:59.826166
+need to go faster...1.35
+E500:t:1257 State update PK:9.44875629199 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1258 State update PK:9.45681521626 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1259 State update PK:9.46587775698 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1260 State update PK:9.47591910152 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1261 State update PK:9.48688300439 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1262 State update PK:9.49865393876 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1263 State update PK:9.51113061212 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1264 State update PK:9.52423028433 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:1265:coasting at 49.8446509744
+E500:t:1265 State update PK:9.53788136676 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:1266:coasting at 48.045367244
+E500:t:1266 State update PK:9.55147189501 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:1267:coasting at 46.3110411619
+E500:t:1267 State update PK:9.56457188999 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:1267:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07939824396
+E500:t:1268 State update PK:9.57734770429 vK:46.656746327 maxVk:50.0 aF:0.602965315231 a:1.07939824396 power: 2000465.35182 v2factor: 0.23118292873 gFactor:0.0 vSquare:167.888837131
+need to go faster...1.03397981089
+E500:t:1269 State update PK:9.59059925241 vK:48.7045018447 maxVk:50.0 aF:0.536791149213 a:1.03397981089 power: 2000396.84865 v2factor: 0.251938661681 gFactor:0.0 vSquare:182.961991054
+E500:t:1270:coasting at 49.357700738
+E500:t:1270 State update PK:9.60433279883 vK:49.3486270387 maxVk:50.0 aF:-0.504094403603 a:0.0 power: 6.91010186547 v2factor: 0.258844403603 gFactor:0.0 vSquare:187.977054178
+E500:t:1270:ADVANCE green SIG vK:48.3164169916
+E500:t:1271:coasting at 47.5762281917
+E500:t:1271 State update PK:9.61779060452 vK:47.5674847527 maxVk:50.0 aF:-0.4857466082 a:0.0 power: 6.41826232757 v2factor: 0.2404966082 gFactor:0.0 vSquare:174.652584024
+E500:t:1272:coasting at 45.8584534462
+E500:t:1272 State update PK:9.63076264421 vK:45.850016963 maxVk:50.0 aF:-0.468693511201 a:0.0 power: 5.96933484418 v2factor: 0.223443511201 gFactor:0.0 vSquare:162.268345099
+E500:t:1272:boosting from vK:45.4970143009 to maxVk:50.0 with aFull:-0.465266171369
+need to go faster...1.06609774507
+E500:t:1273 State update PK:9.64360611232 vK:47.2383470074 maxVk:50.0 aF:0.583860452414 a:1.06609774507 power: 2000445.05481 v2factor: 0.236987292654 gFactor:0.0 vSquare:172.104061477
+need to go faster...1.02308735577
+E500:t:1274 State update PK:9.65701012378 vK:49.2226421434 maxVk:50.0 aF:0.520505567389 a:1.02308735577 power: 2000380.75501 v2factor: 0.257331788385 gFactor:0.0 vSquare:186.878568181
+E500:t:1275:coasting at 48.8742947899
+E500:t:1275 State update PK:9.67075478983 vK:48.8653119074 maxVk:50.0 aF:-0.499049023441 a:0.0 power: 6.77394060765 v2factor: 0.253799023441 gFactor:0.0 vSquare:184.313016297
+E500:t:1276:coasting at 47.110334036
+E500:t:1276 State update PK:9.68408081462 vK:47.1016749649 maxVk:50.0 aF:-0.48105950463 a:0.0 power: 6.29408567385 v2factor: 0.23580950463 gFactor:0.0 vSquare:171.248732483
+E500:t:1276:AT SIG WestboundMain:Con-140 vK:45.7864591658
+E500:1276:START UPDATE SIG BY OCCU sig:WestboundMain:Tui+10 from value green to value red
+E500:1276:START UPDATE SIG BY OCCU sig:WestboundMain:Tui-140 from value red to value yellow
+E500:1276:START UPDATE SIG BY OCCU sig:WestboundMain:PaR+10 from value yellow to value green
+SIG PaR+10 was yellow now green
+SIG Tui-140 was red now yellow
+SIG Tui+10 was green now red
+E500:t:1276next SIG (Con+10) at PK9.844
+E500:t:1276:boosting from vK:45.4924981686 to maxVk:50.0 with aFull:-0.465222495409
+need to go faster...1.10396767483
+E500:t:1277 State update PK:9.6969275864 vK:45.6192468327 maxVk:50.0 aF:0.637710396061 a:1.10396767483 power: 2000503.36983 v2factor: 0.221007278773 gFactor:0.0 vSquare:160.499113125
+need to go faster...1.05395700661
+E500:t:1278 State update PK:9.70990744054 vK:47.7820529185 maxVk:50.0 aF:0.566228496343 a:1.05395700661 power: 2000426.69943 v2factor: 0.242478510263 gFactor:0.0 vSquare:176.09187383
+need to go faster...1.01309719064
+E500:t:1279 State update PK:9.72345407818 vK:49.7076598386 maxVk:50.0 aF:0.50541531116 a:1.01309719064 power: 2000366.10619 v2factor: 0.262431879476 gFactor:0.0 vSquare:190.582338037
+E500:t:1280:coasting at 48.3965897524
+E500:t:1280 State update PK:9.73713510962 vK:48.3876957377 maxVk:50.0 aF:-0.494111926839 a:0.0 power: 6.64137154897 v2factor: 0.248861926839 gFactor:0.0 vSquare:180.727615715
+E500:t:1280:ADVANCE TIV 7 reached at curr speed 47.2365894034, maxVk will be 30.0
+E500:t:1280  next TIV at PK10.2 with limit >>55 (currspeed:47.2365894034)
+E500:t:1280:vK:47.2365894034 maxVk:30.0 =>ready to dcc
+E500:t:1281 State update PK:9.75029347311 vK:45.8703894034 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.22375288262 gFactor:0.0 vSquare:162.4930157
+E500:t:1282 State update PK:9.76248249795 vK:41.9103894034 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.186802458237 gFactor:0.0 vSquare:135.659011065
+E500:t:1283 State update PK:9.77357152278 vK:37.9503894034 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.153184373854 gFactor:0.0 vSquare:111.24500643
+E500:t:1284 State update PK:9.78356054762 vK:33.9903894034 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.122898629471 gFactor:0.0 vSquare:89.2510017943
+E500:t:1285 State update PK:9.79244957245 vK:30.0303894034 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0959452250878 gFactor:0.0 vSquare:69.6769971589
+E500:t:1286:coasting at 28.795562449
+E500:t:1286 State update PK:9.80061375907 vK:28.7895621338 maxVk:30.0 aF:-0.33335084428 a:0.0 power: 2.66584023438 v2factor: 0.0881008442802 gFactor:0.0 vSquare:63.9802790706
+E500:t:1286:ADVANCE STA x:9834.0 vK:27.8555747965
+E500:t:1287 State update PK:9.80842629701 vK:27.0041747965 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0775938664667 gFactor:0.0 vSquare:56.3499393367
+E500:t:1288 State update PK:9.81537470668 vK:23.0441747965 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0565193616754 gFactor:0.0 vSquare:41.0452880722
+E500:t:1289 State update PK:9.82122311634 vK:19.0841747965 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0387771968841 gFactor:0.0 vSquare:28.1606368076
+E500:t:1290 State update PK:9.82597152601 vK:15.1241747965 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0243673720928 gFactor:0.0 vSquare:17.6959855431
+E500:t:1291 State update PK:9.82961993568 vK:11.1641747965 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0132898873015 gFactor:0.0 vSquare:9.65133427851
+E500:t:1291:TIV 7 reached at curr speed 10.6493747965, maxVk now 30.0
+E500:t:1292 State update PK:9.83216834534 vK:7.20417479654 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00554474251023 gFactor:0.0 vSquare:4.02668301397
+E500:t:1293 State update PK:9.83361675501 vK:3.24417479654 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00113193771894 gFactor:0.0 vSquare:0.822031749415
+E500:t:1293:IN STA Con vK:0.786454796536 a:-0.004
+E500:t:1293:next STA (ChE) at PK10.634
+E500:t:1304:OUT STA, a:1.31084394543 vK:0.0
+need to go faster...1.35
+E500:t:1305 State update PK:9.83455563583 vK:3.97509959103 maxVk:30.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1306 State update PK:9.83621342553 vK:7.93816552656 maxVk:30.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1307 State update PK:9.8389689967 vK:11.8772793223 maxVk:30.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1307:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1308 State update PK:9.84281406425 vK:15.7808101534 maxVk:30.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1308:AT SIG WestboundMain:Con+10 vK:16.807851537
+E500:1308:START UPDATE SIG BY OCCU sig:WestboundMain:Con-140 from value green to value red
+E500:1308:START UPDATE SIG BY OCCU sig:WestboundMain:Tui+10 from value red to value yellow
+E500:1308:START UPDATE SIG BY OCCU sig:WestboundMain:Tui-140 from value yellow to value green
+SIG Tui-140 was yellow now green
+SIG Tui+10 was red now yellow
+SIG Con-140 was green now red
+E500:t:1308next SIG (2000) at PK10.2
+need to go faster...1.35
+E500:t:1309 State update PK:9.84773716827 vK:19.6375498514 maxVk:30.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1310 State update PK:9.8537238091 vK:23.4368373444 maxVk:30.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1311 State update PK:9.86075661515 vK:27.1686697263 maxVk:30.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+E500:t:1312:coasting at 29.6908231124
+E500:t:1312 State update PK:9.86877753657 vK:29.6847226576 maxVk:30.0 aF:-0.338914153816 a:0.0 power: 2.79460351688 v2factor: 0.0936641538161 gFactor:0.0 vSquare:68.0204457633
+E500:t:1313:coasting at 28.4842321412
+E500:t:1313 State update PK:9.87685427026 vK:28.4782659315 maxVk:30.0 aF:-0.331456094822 a:0.0 power: 2.62202633693 v2factor: 0.0862060948218 gFactor:0.0 vSquare:62.6042809164
+E500:t:1314:coasting at 27.3036569389
+E500:t:1314 State update PK:9.88459954564 vK:27.2978166899 maxVk:30.0 aF:-0.324458278738 a:0.0 power: 2.46027850459 v2factor: 0.0792082787379 gFactor:0.0 vSquare:57.5223520246
+E500:t:1314:boosting from vK:27.2978166899 to maxVk:30.0 with aFull:-0.324458278738
+E500:t:1315:coasting at 29.647987396
+E500:t:1315 State update PK:9.89264393194 vK:29.6418918025 maxVk:30.0 aF:-0.338644085393 a:0.0 power: 2.7883475941 v2factor: 0.0933940853925 gFactor:0.0 vSquare:67.8243176416
+E500:t:1316:coasting at 28.4423384746
+E500:t:1316 State update PK:9.90070890101 vK:28.4363768259 maxVk:30.0 aF:-0.331202703152 a:0.0 power: 2.61616802016 v2factor: 0.0859527031521 gFactor:0.0 vSquare:62.420263727
+E500:t:1316:boosting from vK:27.2976757937 to maxVk:30.0 with aFull:-0.324457461171
+need to go faster...1.35
+E500:t:1317 State update PK:9.90844361733 vK:27.4276135994 maxVk:30.0 aF:1.02492837851 a:1.35 power: 1470808.25592 v2factor: 0.0798216214885 gFactor:0.0 vSquare:57.9677715966
+E500:t:1318:coasting at 29.6059547367
+E500:t:1318 State update PK:9.91651001343 vK:29.5998639064 maxVk:30.0 aF:-0.338379459061 a:0.0 power: 2.78221831582 v2factor: 0.0931294590613 gFactor:0.0 vSquare:67.6321416567
+E500:t:1319:coasting at 28.4012288841
+E500:t:1319 State update PK:9.92456343826 vK:28.3952717046 maxVk:30.0 aF:-0.330954416476 a:0.0 power: 2.61042793824 v2factor: 0.085704416476 gFactor:0.0 vSquare:62.2399538678
+E500:t:1319:boosting from vK:27.298272133 to maxVk:30.0 with aFull:-0.324460921529
+need to go faster...1.35
+E500:t:1320 State update PK:9.93228945379 vK:27.556807038 maxVk:30.0 aF:1.02417404524 a:1.35 power: 1477736.2715 v2factor: 0.080575954764 gFactor:0.0 vSquare:58.5155808018
+E500:t:1321:coasting at 29.563437762
+E500:t:1321 State update PK:9.94037604429 vK:29.557351743 maxVk:30.0 aF:-0.338112165558 a:0.0 power: 2.77602783499 v2factor: 0.0928621655576 gFactor:0.0 vSquare:67.4380287273
+E500:t:1322:coasting at 28.359644284
+E500:t:1322 State update PK:9.94841779166 vK:28.3536916188 maxVk:30.0 aF:-0.330703626291 a:0.0 power: 2.60463017696 v2factor: 0.0854536262912 gFactor:0.0 vSquare:62.0578259196
+E500:t:1322:boosting from vK:27.2983722704 to maxVk:30.0 with aFull:-0.3244615026
+need to go faster...1.35
+E500:t:1323 State update PK:9.95613661442 vK:27.6853035053 maxVk:30.0 aF:1.02342026214 a:1.35 power: 1484626.91199 v2factor: 0.0813297378586 gFactor:0.0 vSquare:59.0629904565
+E500:t:1324:coasting at 29.5203659306
+E500:t:1324 State update PK:9.96424156538 vK:29.5142847787 maxVk:30.0 aF:-0.337841775497 a:0.0 power: 2.76976621449 v2factor: 0.0925917754971 gFactor:0.0 vSquare:67.2416670277
+E500:t:1325:coasting at 28.3175156309
+E500:t:1325 State update PK:9.97227148271 vK:28.3115675322 maxVk:30.0 aF:-0.330449929723 a:0.0 power: 2.59876541704 v2factor: 0.0851999297228 gFactor:0.0 vSquare:61.8735873078
+E500:t:1325:boosting from vK:27.2979073578 to maxVk:30.0 with aFull:-0.324458804851
+need to go faster...1.35
+E500:t:1326 State update PK:9.97998465409 vK:27.8144906774 maxVk:30.0 aF:1.02265888913 a:1.35 power: 1491554.59169 v2factor: 0.0820911108741 gFactor:0.0 vSquare:59.6159120364
+E500:t:1327:coasting at 29.4780967606
+E500:t:1327 State update PK:9.98810651414 vK:29.4720203781 maxVk:30.0 aF:-0.337576807542 a:0.0 power: 2.76363070862 v2factor: 0.0923268075416 gFactor:0.0 vSquare:67.0492429496
+E500:t:1328:coasting at 28.2761707277
+E500:t:1328 State update PK:9.99612482169 vK:28.270227104 maxVk:30.0 aF:-0.330201319546 a:0.0 power: 2.59301841489 v2factor: 0.0849513195463 gFactor:0.0 vSquare:61.6930425173
+E500:t:1328:boosting from vK:27.2981807577 to maxVk:30.0 with aFull:-0.324460391304
+need to go faster...1.35
+E500:t:1329 State update PK:10.0038341711 vK:27.9433034605 maxVk:30.0 aF:1.02189619039 a:1.35 power: 1498462.19482 v2factor: 0.0828538096101 gFactor:0.0 vSquare:60.1697963762
+E500:t:1330:coasting at 29.4355888244
+E500:t:1330 State update PK:10.0119711976 vK:29.4295172313 maxVk:30.0 aF:-0.337310725753 a:0.0 power: 2.75746994885 v2factor: 0.092060725753 gFactor:0.0 vSquare:66.8560099876
+E500:t:1331:coasting at 28.2345909457
+E500:t:1331 State update PK:10.0199778296 vK:28.2286518157 maxVk:30.0 aF:-0.329951663374 a:0.0 power: 2.58724739483 v2factor: 0.0847016633736 gFactor:0.0 vSquare:61.5117381072
+E500:t:1331:boosting from vK:27.2981926483 to maxVk:30.0 with aFull:-0.324460460301
+need to go faster...1.35
+E500:t:1332 State update PK:10.027684959 vK:28.0721719284 maxVk:30.0 aF:1.02112963257 a:1.35 power: 1505372.78413 v2factor: 0.0836203674286 gFactor:0.0 vSquare:60.7264832451
+E500:t:1333:coasting at 29.393263023
+E500:t:1333 State update PK:10.0358355289 vK:29.387196192 maxVk:30.0 aF:-0.337046165559 a:0.0 power: 2.75134494251 v2factor: 0.0917961655586 gFactor:0.0 vSquare:66.6638820324
+E500:t:1334:coasting at 28.1931879926
+E500:t:1334 State update PK:10.0438305352 vK:28.1872533308 maxVk:30.0 aF:-0.329703433976 a:0.0 power: 2.58150950487 v2factor: 0.0844534339762 gFactor:0.0 vSquare:61.3314698447
+E500:t:1334:boosting from vK:27.2983476233 to maxVk:30.0 with aFull:-0.324461359579
+need to go faster...1.35
+E500:t:1335 State update PK:10.0515370984 vK:28.2004411446 maxVk:30.0 aF:1.02036313377 a:1.35 power: 1512251.23857 v2factor: 0.0843868662297 gFactor:0.0 vSquare:61.2831272547
+E500:t:1336:coasting at 29.3504791777
+E500:t:1336 State update PK:10.0596994101 vK:29.3444171534 maxVk:30.0 aF:-0.336779129221 a:0.0 power: 2.74516312678 v2factor: 0.091529129221 gFactor:0.0 vSquare:66.4699558613
+E500:t:1337:coasting at 28.151335635
+E500:t:1337 State update PK:10.0676826647 vK:28.1454054831 maxVk:30.0 aF:-0.329452880416 a:0.0 power: 2.57571802969 v2factor: 0.0842028804159 gFactor:0.0 vSquare:61.1495137371
+E500:t:1337:boosting from vK:27.2980293988 to maxVk:30.0 with aFull:-0.324459513014
+need to go faster...1.35
+E500:t:1338 State update PK:10.0753902089 vK:28.3285946754 maxVk:30.0 aF:1.01959383361 a:1.35 power: 1519123.48945 v2factor: 0.0851561663909 gFactor:0.0 vSquare:61.8418056579
+E500:t:1339:coasting at 29.3077104788
+E500:t:1339 State update PK:10.0835625949 vK:29.3016532525 maxVk:30.0 aF:-0.336512576186 a:0.0 power: 2.73899300624 v2factor: 0.0912625761855 gFactor:0.0 vSquare:66.2763806721
+E500:t:1340:coasting at 28.1094967396
+E500:t:1340 State update PK:10.0915341017 vK:28.1035710896 maxVk:30.0 aF:-0.329202779489 a:0.0 power: 2.56993714341 v2factor: 0.083952779489 gFactor:0.0 vSquare:60.9678863391
+E500:t:1340:boosting from vK:27.2976931196 to maxVk:30.0 with aFull:-0.324457561706
+need to go faster...1.35
+E500:t:1341 State update PK:10.0992442794 vK:28.4566991447 maxVk:30.0 aF:1.01882133887 a:1.35 power: 1525993.10948 v2factor: 0.0859286611251 gFactor:0.0 vSquare:62.4028040124
+E500:t:1342:coasting at 29.2650223564
+E500:t:1342 State update PK:10.107425092 vK:29.258969912 maxVk:30.0 aF:-0.336246912937 a:0.0 power: 2.73284397461 v2factor: 0.0909969129365 gFactor:0.0 vSquare:66.0834516605
+E500:t:1343:coasting at 28.0677353187
+E500:t:1343 State update PK:10.115384873 vK:28.0618141555 maxVk:30.0 aF:-0.328953512629 a:0.0 power: 2.56417564922 v2factor: 0.0837035126292 gFactor:0.0 vSquare:60.7868646545
+E500:t:1343:boosting from vK:27.2974019455 to maxVk:30.0 with aFull:-0.324455872147
+need to go faster...1.35
+E500:t:1344 State update PK:10.1230993498 vK:28.5847639467 maxVk:30.0 aF:1.01804559654 a:1.35 power: 1532860.60243 v2factor: 0.0867044034609 gFactor:0.0 vSquare:62.9661608285
+E500:t:1345:coasting at 29.2224242736
+E500:t:1345 State update PK:10.1312869451 vK:29.216376594 maxVk:30.0 aF:-0.335982196045 a:0.0 power: 2.72671732459 v2factor: 0.090732196045 gFactor:0.0 vSquare:65.8912099092
+E500:t:1346:coasting at 28.026060638
+E500:t:1346 State update PK:10.1392350249 vK:28.0201439456 maxVk:30.0 aF:-0.328705132956 a:0.0 power: 2.55843476141 v2factor: 0.0834551329564 gFactor:0.0 vSquare:60.6064872595
+E500:t:1346:boosting from vK:27.2971651934 to maxVk:30.0 with aFull:-0.324454498388
+need to go faster...1.35
+E500:t:1347 State update PK:10.1469554935 vK:28.7130349641 maxVk:30.0 aF:1.01726511038 a:1.35 power: 1539739.15379 v2factor: 0.0874848896241 gFactor:0.0 vSquare:63.53296269
+E500:t:1348:coasting at 29.1801569317
+E500:t:1348 State update PK:10.1551482967 vK:29.1741139732 maxVk:30.0 aF:-0.335719915597 a:0.0 power: 2.72064752242 v2factor: 0.0904699155968 gFactor:0.0 vSquare:65.700737543
+E500:t:1349:coasting at 27.9847082009
+E500:t:1349 State update PK:10.1630847658 vK:27.9787959382 maxVk:30.0 aF:-0.32845903864 a:0.0 power: 2.55274678227 v2factor: 0.0832090386405 gFactor:0.0 vSquare:60.4277695283
+E500:t:1349:boosting from vK:27.2972156636 to maxVk:30.0 with aFull:-0.324454791241
+need to go faster...1.35
+E500:t:1350 State update PK:10.1708128835 vK:28.8408347867 maxVk:30.0 aF:1.01648401301 a:1.35 power: 1546592.43735 v2factor: 0.0882659869867 gFactor:0.0 vSquare:64.1002084145
+E500:t:1350:ADVANCE green SIG vK:28.8591294811
+E500:t:1351:coasting at 29.1375582366
+E500:t:1351 State update PK:10.179009135 vK:29.1315200292 maxVk:30.0 aF:-0.335455963124 a:0.0 power: 2.71453947463 v2factor: 0.0902059631239 gFactor:0.0 vSquare:65.5090509251
+E500:t:1352:coasting at 27.9430302445
+E500:t:1352 State update PK:10.1869339023 vK:27.9371224398 maxVk:30.0 aF:-0.328211374795 a:0.0 power: 2.54702260105 v2factor: 0.0829613747949 gFactor:0.0 vSquare:60.2479119789
+E500:t:1352:boosting from vK:27.2969137936 to maxVk:30.0 with aFull:-0.324453039648
+need to go faster...1.35
+E500:t:1353 State update PK:10.194671248 vK:28.9684762866 maxVk:30.0 aF:1.01570041788 a:1.35 power: 1553437.23091 v2factor: 0.0890495821183 gFactor:0.0 vSquare:64.6692680598
+E500:t:1353:AT SIG WestboundMain:2000 vK:29.5128768508
+E500:1353:START UPDATE SIG BY OCCU sig:WestboundMain:Con+10 from value green to value red
+E500:1353:START UPDATE SIG BY OCCU sig:WestboundMain:Con-140 from value red to value yellow
+E500:1353:START UPDATE SIG BY OCCU sig:WestboundMain:Tui+10 from value yellow to value green
+SIG Tui+10 was yellow now green
+SIG Con-140 was red now yellow
+SIG Con+10 was green now red
+E500:t:1353next SIG (ChE-140) at PK10.494
+E500:t:1353:TIV 8 reached at curr speed 29.5128768508, maxVk now 55.0
+E500:t:1353  next TIV at PK11.8 with limit <<20 (currspeed:29.5128768508)
+E500:t:1353  BDtiv: 138.099747475
+E500:t:1353:vK:29.5128768508 maxVk:55.0 =>ready to acc
+need to go faster...1.35
+E500:t:1354 State update PK:10.2029529253 vK:30.7832305148 maxVk:55.0 aF:1.0041849303 a:1.35 power: 1650753.69338 v2factor: 0.100565069697 gFactor:0.0 vSquare:73.0320041373
+need to go faster...1.35
+E500:t:1355 State update PK:10.2120043348 vK:34.3542353766 maxVk:55.0 aF:0.979480992492 a:1.35 power: 1842249.40787 v2factor: 0.125269007508 gFactor:0.0 vSquare:90.972409229
+need to go faster...1.33162335686
+E500:t:1356 State update PK:10.2220348549 vK:37.8274710202 maxVk:55.0 aF:0.9344735447 a:1.33162335686 power: 2000889.72412 v2factor: 0.151899812164 gFactor:0.0 vSquare:110.312136648
+need to go faster...1.22995767783
+E500:t:1357 State update PK:10.2329890327 vK:40.9505049575 maxVk:55.0 aF:0.806658722234 a:1.22995767783 power: 2000709.39331 v2factor: 0.178048955591 gFactor:0.0 vSquare:129.302073777
+need to go faster...1.15341357054
+E500:t:1358 State update PK:10.2447515123 vK:43.6653133727 maxVk:55.0 aF:0.705698837451 a:1.15341357054 power: 2000581.98485 v2factor: 0.202464733091 gFactor:0.0 vSquare:147.033212122
+need to go faster...1.09358926346
+E500:t:1359 State update PK:10.2572207528 vK:46.0518097397 maxVk:55.0 aF:0.623117285656 a:1.09358926346 power: 2000487.22704 v2factor: 0.225221977802 gFactor:0.0 vSquare:163.559896734
+need to go faster...1.04554127024
+E500:t:1360 State update PK:10.2703138388 vK:48.1663520625 maxVk:55.0 aF:0.553893575681 a:1.04554127024 power: 2000414.07116 v2factor: 0.246397694555 gFactor:0.0 vSquare:178.938049786
+need to go faster...1.00614570671
+E500:t:1361 State update PK:10.2839613409 vK:50.0508352516 maxVk:55.0 aF:0.494825030662 a:1.00614570671 power: 2000355.97551 v2factor: 0.266070676048 gFactor:0.0 vSquare:193.224891829
+need to go faster...0.973318604907
+E500:t:1362 State update PK:10.298104057 vK:51.7376662391 maxVk:55.0 aF:0.443747890355 a:0.973318604907 power: 2000308.81545 v2factor: 0.284320714552 gFactor:0.0 vSquare:206.478369319
+need to go faster...0.94560922317
+E500:t:1363 State update PK:10.312690819 vK:53.2526959768 maxVk:55.0 aF:0.399131494344 a:0.94560922317 power: 2000269.85812 v2factor: 0.301227728826 gFactor:0.0 vSquare:218.756520571
+need to go faster...0.921972292428
+E500:t:1364 State update PK:10.3276769468 vK:54.6170508671 maxVk:55.0 aF:0.359851351019 a:0.921972292428 power: 2000237.21869 v2factor: 0.316870941409 gFactor:0.0 vSquare:230.116878293
+E500:t:1365:coasting at 53.474082662
+E500:t:1365 State update PK:10.3427744857 vK:53.4641994113 maxVk:55.0 aF:-0.549069486133 a:0.0 power: 8.15432236035 v2factor: 0.303819486133 gFactor:0.0 vSquare:220.638697264
+E500:t:1366:coasting at 51.5366478253
+E500:t:1366 State update PK:10.3573534721 vK:51.5271536754 maxVk:55.0 aF:-0.527452769838 a:0.0 power: 7.54948331333 v2factor: 0.282202769838 gFactor:0.0 vSquare:204.940283107
+E500:t:1366:boosting from vK:50.0409187611 to maxVk:55.0 with aFull:-0.51140783553
+need to go faster...0.999132901886
+E500:t:1367 State update PK:10.3714265154 vK:50.4018778114 maxVk:55.0 aF:0.48406410344 a:0.999132901886 power: 2000345.80697 v2factor: 0.269818798447 gFactor:0.0 vSquare:195.946839831
+need to go faster...0.967426041181
+E500:t:1368 State update PK:10.3856615841 vK:52.0525790867 maxVk:55.0 aF:0.43438122783 a:0.967426041181 power: 2000300.46683 v2factor: 0.287794813352 gFactor:0.0 vSquare:209.001316886
+E500:t:1368:ADVANCE green SIG vK:53.0490759987
+need to go faster...0.940601522017
+E500:t:1369 State update PK:10.4003313177 vK:53.5360211505 maxVk:55.0 aF:0.390907849204 a:0.940601522017 power: 2000262.89836 v2factor: 0.304443672813 gFactor:0.0 vSquare:221.091991876
+need to go faster...0.917676694017
+E500:t:1370 State update PK:10.4153921831 vK:54.8725470322 maxVk:55.0 aF:0.352582322966 a:0.917676694017 power: 2000231.34395 v2factor: 0.319844371052 gFactor:0.0 vSquare:232.276231701
+E500:t:1371:coasting at 53.0794660674
+E500:t:1371 State update PK:10.430406884 vK:53.069663233 maxVk:55.0 aF:-0.544601907537 a:0.0 power: 8.02828884141 v2factor: 0.299351907537 gFactor:0.0 vSquare:217.394268364
+E500:t:1372:coasting at 51.1575124807
+E500:t:1372 State update PK:10.4448784647 vK:51.148092794 maxVk:55.0 aF:-0.523315927592 a:0.0 power: 7.43516989585 v2factor: 0.278065927592 gFactor:0.0 vSquare:201.936040372
+E500:t:1372:boosting from vK:50.0493208085 to maxVk:55.0 with aFull:-0.511497221393
+need to go faster...0.99200581601
+E500:t:1373 State update PK:10.4589114944 vK:50.7637274924 maxVk:55.0 aF:0.473046082186 a:0.99200581601 power: 2000335.52532 v2factor: 0.273709733824 gFactor:0.0 vSquare:198.772500961
+need to go faster...0.961422402586
+E500:t:1374 State update PK:10.473241791 vK:52.3773989648 maxVk:55.0 aF:0.42477210498 a:0.961422402586 power: 2000291.99671 v2factor: 0.291400297606 gFactor:0.0 vSquare:211.619678726
+need to go faster...0.935488933078
+E500:t:1375 State update PK:10.487997129 vK:53.828410541 maxVk:55.0 aF:0.382458534563 a:0.935488933078 power: 2000255.81785 v2factor: 0.307780398515 gFactor:0.0 vSquare:223.515176844
+E500:t:1375:AT SIG WestboundMain:ChE-140 vK:54.3677674587
+E500:1375:START UPDATE SIG BY OCCU sig:WestboundMain:2000 from value green to value red
+E500:1375:START UPDATE SIG BY OCCU sig:WestboundMain:Con+10 from value red to value yellow
+E500:1375:START UPDATE SIG BY OCCU sig:WestboundMain:Con-140 from value yellow to value green
+SIG Con-140 was yellow now green
+SIG Con+10 was red now yellow
+SIG 2000 was green now red
+E500:t:1375next SIG (ChE+10) at PK10.644
+E500:t:1376:coasting at 54.6539708339
+E500:t:1376 State update PK:10.5031245206 vK:54.6438435883 maxVk:55.0 aF:-0.562624756091 a:0.0 power: 8.53999421408 v2factor: 0.317374756091 gFactor:0.0 vSquare:230.482756783
+E500:t:1377:coasting at 52.6695786633
+E500:t:1377 State update PK:10.5180245498 vK:52.6598587266 maxVk:55.0 aF:-0.539996479885 a:0.0 power: 7.89892731768 v2factor: 0.294746479885 gFactor:0.0 vSquare:214.049731217
+E500:t:1378:coasting at 50.7635865792
+E500:t:1378 State update PK:10.5323845513 vK:50.7542436781 maxVk:55.0 aF:-0.519050058003 a:0.0 power: 7.31777586807 v2factor: 0.273800058003 gFactor:0.0 vSquare:198.838095863
+E500:t:1378:boosting from vK:50.0494410797 to maxVk:55.0 with aFull:-0.511498501017
+E500:t:1378:ADVANCE STA x:10634.0 vK:50.7799010389
+E500:t:1379 State update PK:10.546385236 vK:49.9879010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.26570682984 gFactor:0.0 vSquare:192.960660741
+E500:t:1380 State update PK:10.5597180141 vK:46.0279010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.225291519415 gFactor:0.0 vSquare:163.610398995
+E500:t:1381 State update PK:10.5719507921 vK:42.0679010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.188208548991 gFactor:0.0 vSquare:136.680137249
+E500:t:1382 State update PK:10.5830835702 vK:38.1079010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.154457918567 gFactor:0.0 vSquare:112.169875503
+E500:t:1383 State update PK:10.5931163483 vK:34.1479010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.124039628143 gFactor:0.0 vSquare:90.0796137565
+E500:t:1384 State update PK:10.6020491263 vK:30.1879010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0969536777185 gFactor:0.0 vSquare:70.4093520105
+E500:t:1385 State update PK:10.6098819044 vK:26.2279010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0732000672943 gFactor:0.0 vSquare:53.1590902645
+E500:t:1386 State update PK:10.6166146825 vK:22.2679010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.05277879687 gFactor:0.0 vSquare:38.3288285185
+E500:t:1387 State update PK:10.6222474605 vK:18.3079010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0356898664458 gFactor:0.0 vSquare:25.9185667725
+E500:t:1388 State update PK:10.6267802386 vK:14.3479010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0219332760215 gFactor:0.0 vSquare:15.9283050265
+E500:t:1389 State update PK:10.6302130167 vK:10.3879010389 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0115090255973 gFactor:0.0 vSquare:8.35804328052
+E500:t:1390 State update PK:10.6325457947 vK:6.42790103892 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00441711517302 gFactor:0.0 vSquare:3.20778153451
+E500:t:1391 State update PK:10.6337785728 vK:2.46790103892 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000657544748772 gFactor:0.0 vSquare:0.477519788506
+E500:t:1391:IN STA ChE vK:0.782813038918 a:-0.004
+E500:t:1391:next STA (Fra) at PK11.081
+E500:t:1402:OUT STA, a:1.36489210528 vK:0.0
+need to go faster...1.35
+E500:t:1403 State update PK:10.6345559772 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1404 State update PK:10.6362137669 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1405 State update PK:10.6389693381 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1405:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1406 State update PK:10.6428144056 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1406:AT SIG WestboundMain:ChE+10 vK:16.807851537
+E500:1406:START UPDATE SIG BY OCCU sig:WestboundMain:ChE-140 from value green to value red
+E500:1406:START UPDATE SIG BY OCCU sig:WestboundMain:2000 from value red to value yellow
+E500:1406:START UPDATE SIG BY OCCU sig:WestboundMain:Con+10 from value yellow to value green
+SIG Con+10 was yellow now green
+SIG 2000 was red now yellow
+SIG ChE-140 was green now red
+E500:t:1406next SIG (Fra-140) at PK10.941
+need to go faster...1.35
+E500:t:1407 State update PK:10.6477375096 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1408 State update PK:10.6537241505 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1409 State update PK:10.6607569565 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1410 State update PK:10.6688158808 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1411 State update PK:10.6778784215 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1412 State update PK:10.6879197661 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1413 State update PK:10.6988836689 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1414 State update PK:10.7106546033 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1415 State update PK:10.7231312766 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1416 State update PK:10.7362309489 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:1417 State update PK:10.7498843209 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:1418 State update PK:10.7640322913 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:1419 State update PK:10.7786237727 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:1420 State update PK:10.7936141506 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:1421:coasting at 53.4558144052
+E500:t:1421 State update PK:10.808708844 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:1422:coasting at 51.5190987296
+E500:t:1422 State update PK:10.8232828585 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:1422:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+need to go faster...0.998767766358
+E500:t:1423 State update PK:10.8373532209 vK:50.4202905874 maxVk:55.0 aF:0.483501649348 a:0.998767766358 power: 2000345.27894 v2factor: 0.27001611701 gFactor:0.0 vSquare:196.09013581
+E500:t:1423:ADVANCE green SIG vK:51.6252414716
+need to go faster...0.967118830476
+E500:t:1424 State update PK:10.8515931346 vK:52.0691024419 maxVk:55.0 aF:0.433891150287 a:0.967118830476 power: 2000300.03253 v2factor: 0.287977680189 gFactor:0.0 vSquare:209.134117784
+need to go faster...0.940340163802
+E500:t:1425 State update PK:10.8662672222 vK:53.5508911213 maxVk:55.0 aF:0.390477234736 a:0.940340163802 power: 2000262.53579 v2factor: 0.304612929066 gFactor:0.0 vSquare:221.214908545
+need to go faster...0.917452301887
+E500:t:1426 State update PK:10.8813320105 vK:54.8859593272 maxVk:55.0 aF:0.352201456919 a:0.917452301887 power: 2000231.03754 v2factor: 0.320000844968 gFactor:0.0 vSquare:232.389865627
+E500:t:1427:coasting at 53.0605599568
+E500:t:1427 State update PK:10.8963418339 vK:53.0507609602 maxVk:55.0 aF:-0.544388696186 a:0.0 power: 8.02228738634 v2factor: 0.299138696186 gFactor:0.0 vSquare:217.239430781
+E500:t:1428:coasting at 51.1393452609
+E500:t:1428 State update PK:10.9108082684 vK:51.1299291285 maxVk:55.0 aF:-0.523118467332 a:0.0 power: 7.42972504457 v2factor: 0.277868467332 gFactor:0.0 vSquare:201.79264149
+E500:t:1428:boosting from vK:50.04997611 to maxVk:55.0 with aFull:-0.511504193502
+need to go faster...0.991677880266
+E500:t:1429 State update PK:10.9248403831 vK:50.7805023323 maxVk:55.0 aF:0.472537092952 a:0.991677880266 power: 2000335.0535 v2factor: 0.273890787315 gFactor:0.0 vSquare:198.903984978
+need to go faster...0.96114579535
+E500:t:1430 State update PK:10.9391750951 vK:52.3924622853 maxVk:55.0 aF:0.424327751345 a:0.96114579535 power: 2000291.60734 v2factor: 0.291568044004 gFactor:0.0 vSquare:211.741498914
+E500:t:1430:AT SIG WestboundMain:Fra-140 vK:52.5896329244
+E500:1430:START UPDATE SIG BY OCCU sig:WestboundMain:ChE+10 from value green to value red
+E500:1430:START UPDATE SIG BY OCCU sig:WestboundMain:ChE-140 from value red to value yellow
+E500:1430:START UPDATE SIG BY OCCU sig:WestboundMain:2000 from value yellow to value green
+SIG 2000 was yellow now green
+SIG ChE-140 was red now yellow
+SIG ChE+10 was green now red
+E500:t:1430next SIG (Fra+10) at PK11.091
+need to go faster...0.935253124763
+E500:t:1431 State update PK:10.9539344036 vK:53.8419735748 maxVk:55.0 aF:0.382067504757 a:0.935253124763 power: 2000255.49188 v2factor: 0.307935620006 gFactor:0.0 vSquare:223.627901239
+E500:t:1432:coasting at 54.6335409809
+E500:t:1432 State update PK:10.9690639379 vK:54.6234180054 maxVk:55.0 aF:-0.562387528762 a:0.0 power: 8.53320251794 v2factor: 0.317137528762 gFactor:0.0 vSquare:230.310478404
+E500:t:1432:ADVANCE STA x:11081.0 vK:52.669408252
+E500:t:1433 State update PK:10.9839583255 vK:52.610008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.294301526144 gFactor:0.0 vSquare:213.726598507
+E500:t:1434 State update PK:10.9980194666 vK:48.650008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.2516797125 gFactor:0.0 vSquare:182.773937908
+E500:t:1435 State update PK:11.0109806078 vK:44.690008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.212390238856 gFactor:0.0 vSquare:154.24127731
+E500:t:1436 State update PK:11.022841749 vK:40.730008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.176433105211 gFactor:0.0 vSquare:128.128616711
+E500:t:1437 State update PK:11.0336028902 vK:36.770008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.143808311567 gFactor:0.0 vSquare:104.435956113
+E500:t:1438 State update PK:11.0432640314 vK:32.810008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.114515857923 gFactor:0.0 vSquare:83.1632955144
+E500:t:1439 State update PK:11.0518251726 vK:28.850008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0885557442792 gFactor:0.0 vSquare:64.3106349159
+E500:t:1440 State update PK:11.0592863137 vK:24.890008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0659279706351 gFactor:0.0 vSquare:47.8779743174
+E500:t:1441 State update PK:11.0656474549 vK:20.930008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.046632536991 gFactor:0.0 vSquare:33.8653137189
+E500:t:1442 State update PK:11.0709085961 vK:16.970008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0306694433469 gFactor:0.0 vSquare:22.2726531205
+E500:t:1443 State update PK:11.0750697373 vK:13.010008252 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0180386897028 gFactor:0.0 vSquare:13.099992522
+E500:t:1444 State update PK:11.0781308785 vK:9.05000825205 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0087402760587 gFactor:0.0 vSquare:6.34733192353
+E500:t:1445 State update PK:11.0800920196 vK:5.09000825205 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0027742024146 gFactor:0.0 vSquare:2.01467132505
+E500:t:1446 State update PK:11.0809531608 vK:1.13000825205 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000140468770501 gFactor:0.0 vSquare:0.10201072658
+E500:t:1446:IN STA Fra vK:0.791752252048 a:-0.004
+E500:t:1446:next STA (Geo) at PK11.728
+E500:t:1457:OUT STA, a:1.34085620146 vK:0.0
+need to go faster...1.35
+E500:t:1458 State update PK:11.0815559483 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1459 State update PK:11.083213738 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1460 State update PK:11.0859693092 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1460:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1461 State update PK:11.0898143768 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1461:AT SIG WestboundMain:Fra+10 vK:16.807851537
+E500:1461:START UPDATE SIG BY OCCU sig:WestboundMain:Fra-140 from value green to value red
+E500:1461:START UPDATE SIG BY OCCU sig:WestboundMain:ChE+10 from value red to value yellow
+E500:1461:START UPDATE SIG BY OCCU sig:WestboundMain:ChE-140 from value yellow to value green
+SIG ChE-140 was yellow now green
+SIG ChE+10 was red now yellow
+SIG Fra-140 was green now red
+E500:t:1461next SIG (2120) at PK11.4
+need to go faster...1.35
+E500:t:1462 State update PK:11.0947374808 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1463 State update PK:11.1007241216 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1464 State update PK:11.1077569277 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1465 State update PK:11.1158158519 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1466 State update PK:11.1248783926 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1467 State update PK:11.1349197372 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1468 State update PK:11.1458836401 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1469 State update PK:11.1576545744 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1470 State update PK:11.1701312478 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1471 State update PK:11.18323092 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:1472 State update PK:11.196884292 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:1473 State update PK:11.2110322624 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:1474 State update PK:11.2256237438 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:1475 State update PK:11.2406141217 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:1476:coasting at 53.4558144052
+E500:t:1476 State update PK:11.2557088151 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:1477:coasting at 51.5190987296
+E500:t:1477 State update PK:11.2702828297 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:1477:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+need to go faster...0.998753311384
+E500:t:1478 State update PK:11.2843532361 vK:50.4210197889 maxVk:55.0 aF:0.48347937848 a:0.998753311384 power: 2000345.25804 v2factor: 0.270023932904 gFactor:0.0 vSquare:196.09581184
+need to go faster...0.967106667809
+E500:t:1479 State update PK:11.2985933416 vK:52.0697568281 maxVk:55.0 aF:0.433871744219 a:0.967106667809 power: 2000300.01534 v2factor: 0.28798492359 gFactor:0.0 vSquare:209.139378061
+E500:t:1479:ADVANCE green SIG vK:52.5534819939
+need to go faster...0.940329815894
+E500:t:1480 State update PK:11.3132676018 vK:53.5514800355 maxVk:55.0 aF:0.390460182591 a:0.940329815894 power: 2000262.52144 v2factor: 0.304619633303 gFactor:0.0 vSquare:221.219777272
+need to go faster...0.917443417163
+E500:t:1481 State update PK:11.3283325454 vK:54.8864905171 maxVk:55.0 aF:0.352186374305 a:0.917443417163 power: 2000231.02541 v2factor: 0.320007042858 gFactor:0.0 vSquare:232.394366636
+E500:t:1482:coasting at 53.0610682038
+E500:t:1482 State update PK:11.3433425129 vK:53.0512691041 maxVk:55.0 aF:-0.544394426886 a:0.0 power: 8.02244867765 v2factor: 0.299144426886 gFactor:0.0 vSquare:217.24359251
+E500:t:1483:coasting at 51.1398336479
+E500:t:1483 State update PK:11.3578090857 vK:51.13041742 maxVk:55.0 aF:-0.523123774713 a:0.0 power: 7.42987137872 v2factor: 0.277873774713 gFactor:0.0 vSquare:201.796495798
+E500:t:1483:boosting from vK:50.0412481573 to maxVk:55.0 with aFull:-0.511411339556
+need to go faster...0.992011344915
+E500:t:1484 State update PK:11.3718392431 vK:50.7634447684 maxVk:55.0 aF:0.473054662063 a:0.992011344915 power: 2000335.53328 v2factor: 0.273706682852 gFactor:0.0 vSquare:198.770285296
+need to go faster...0.961427065832
+E500:t:1485 State update PK:11.3861694653 vK:52.3771450907 maxVk:55.0 aF:0.424779594976 a:0.961427065832 power: 2000292.00328 v2factor: 0.291397470856 gFactor:0.0 vSquare:211.617625894
+E500:t:1485:AT SIG WestboundMain:2120 vK:53.7453331658
+E500:1485:START UPDATE SIG BY OCCU sig:WestboundMain:Fra+10 from value green to value red
+E500:1485:START UPDATE SIG BY OCCU sig:WestboundMain:Fra-140 from value red to value yellow
+E500:1485:START UPDATE SIG BY OCCU sig:WestboundMain:ChE+10 from value yellow to value green
+SIG ChE+10 was yellow now green
+SIG Fra-140 was red now yellow
+SIG Fra+10 was green now red
+E500:t:1485next SIG (Geo-140) at PK11.588
+need to go faster...0.935492908314
+E500:t:1486 State update PK:11.4009247364 vK:53.8281819552 maxVk:55.0 aF:0.382465125504 a:0.935492908314 power: 2000255.82335 v2factor: 0.30777778281 gFactor:0.0 vSquare:223.513277277
+E500:t:1487:coasting at 54.653762663
+E500:t:1487 State update PK:11.4160520676 vK:54.6436354609 maxVk:55.0 aF:-0.562622338405 a:0.0 power: 8.53992498943 v2factor: 0.317372338405 gFactor:0.0 vSquare:230.48100102
+E500:t:1488:coasting at 52.6693788656
+E500:t:1488 State update PK:11.4309520402 vK:52.6596589692 maxVk:55.0 aF:-0.539994243696 a:0.0 power: 7.89886464399 v2factor: 0.294744243696 gFactor:0.0 vSquare:214.04810726
+E500:t:1489:coasting at 50.7633945323
+E500:t:1489 State update PK:11.4453119873 vK:50.7540516685 maxVk:55.0 aF:-0.519047986347 a:0.0 power: 7.31771897708 v2factor: 0.273797986347 gFactor:0.0 vSquare:198.836591392
+E500:t:1489:boosting from vK:50.0492518633 to maxVk:55.0 with aFull:-0.511496487853
+need to go faster...0.985167314529
+E500:t:1490 State update PK:11.4593447231 vK:51.1158484635 maxVk:55.0 aF:0.462394529987 a:0.985167314529 power: 2000325.70943 v2factor: 0.277522784542 gFactor:0.0 vSquare:201.541600974
+need to go faster...0.95564764592
+E500:t:1491 State update PK:11.4737677175 vK:52.6936870815 maxVk:55.0 aF:0.415465008406 a:0.95564764592 power: 2000283.8834 v2factor: 0.294932637515 gFactor:0.0 vSquare:214.184921942
+E500:t:1491:ADVANCE green SIG vK:53.8959507738
+need to go faster...0.930561295404
+E500:t:1492 State update PK:11.4886064331 vK:54.1132637387 maxVk:55.0 aF:0.374262692236 a:0.930561295404 power: 2000249.01722 v2factor: 0.311048603168 gFactor:0.0 vSquare:225.888600703
+E500:t:1493:coasting at 54.2294357643
+E500:t:1493 State update PK:11.5037598721 vK:54.2193969236 maxVk:55.0 aF:-0.557713368477 a:0.0 power: 8.39968958196 v2factor: 0.312463368477 gFactor:0.0 vSquare:226.91602649
+E500:t:1494:coasting at 52.2620547226
+E500:t:1494 State update PK:11.5185444037 vK:52.2524165686 maxVk:55.0 aF:-0.535453001157 a:0.0 power: 7.77186479705 v2factor: 0.290203001157 gFactor:0.0 vSquare:210.750182394
+E500:t:1495:coasting at 50.3718120019
+E500:t:1495 State update PK:11.5327934521 vK:50.3625448785 maxVk:55.0 aF:-0.514840190963 a:0.0 power: 7.20240617294 v2factor: 0.269590190963 gFactor:0.0 vSquare:195.780821324
+E500:t:1495:boosting from vK:50.0485205825 to maxVk:55.0 with aFull:-0.511488707478
+need to go faster...0.978553511076
+E500:t:1496 State update PK:11.5468692266 vK:51.4610822309 maxVk:55.0 aF:0.452016661297 a:0.978553511076 power: 2000316.26177 v2factor: 0.281286849779 gFactor:0.0 vSquare:204.275126927
+need to go faster...0.950049440364
+E500:t:1497 State update PK:11.561383134 vK:53.0039766315 maxVk:55.0 aF:0.406380785913 a:0.950049440364 power: 2000276.04962 v2factor: 0.298418654452 gFactor:0.0 vSquare:216.716524656
+need to go faster...0.925775016548
+E500:t:1498 State update PK:11.576303666 vK:54.3928490753 maxVk:55.0 aF:0.366251870858 a:0.925775016548 power: 2000242.43381 v2factor: 0.31427314569 gFactor:0.0 vSquare:228.230316406
+E500:t:1498:AT SIG WestboundMain:Geo-140 vK:54.249292007
+E500:1498:START UPDATE SIG BY OCCU sig:WestboundMain:2120 from value green to value red
+E500:1498:START UPDATE SIG BY OCCU sig:WestboundMain:Fra+10 from value red to value yellow
+E500:1498:START UPDATE SIG BY OCCU sig:WestboundMain:Fra-140 from value yellow to value green
+SIG Fra-140 was yellow now green
+SIG Fra+10 was red now yellow
+SIG 2120 was green now red
+E500:t:1498next SIG (Geo+10) at PK11.738
+E500:t:1499:coasting at 53.8093622173
+E500:t:1499 State update PK:11.5914422942 vK:53.799410174 maxVk:55.0 aF:-0.552891292862 a:0.0 power: 8.26256262397 v2factor: 0.307641292862 gFactor:0.0 vSquare:223.414156036
+E500:t:1500:coasting at 51.8586858337
+E500:t:1500 State update PK:11.6061125234 vK:51.8491280029 maxVk:55.0 aF:-0.530990600242 a:0.0 power: 7.64761100007 v2factor: 0.285740600242 gFactor:0.0 vSquare:207.509513611
+E500:t:1500:boosting from vK:50.0483118939 to maxVk:55.0 with aFull:-0.51148648718
+need to go faster...1.00477616271
+E500:t:1501 State update PK:11.6202526333 vK:50.1190058856 maxVk:55.0 aF:0.4927296709 a:1.00477616271 power: 2000353.98563 v2factor: 0.266796491809 gFactor:0.0 vSquare:193.751991146
+E500:t:1501:ADVANCE STA x:11728.0 vK:51.7589885719
+E500:t:1502 State update PK:11.6344127029 vK:51.6599885719 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.283772558101 gFactor:0.0 vSquare:206.080289107
+E500:t:1503 State update PK:11.6482099497 vK:47.6999885719 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.241950186018 gFactor:0.0 vSquare:175.708196091
+E500:t:1504 State update PK:11.6609071965 vK:43.7399885719 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.203460153934 gFactor:0.0 vSquare:147.756103075
+E500:t:1504:ADVANCE TIV 9 reached at curr speed 43.4033885719, maxVk will be 20.0
+E500:t:1504  next TIV at PK12.5 with limit >>55 (currspeed:43.4033885719)
+E500:t:1504:vK:43.4033885719 maxVk:20.0 =>ready to dcc
+E500:t:1505 State update PK:11.6725044433 vK:39.7799885719 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.168302461851 gFactor:0.0 vSquare:122.224010059
+E500:t:1506 State update PK:11.6830016902 vK:35.8199885719 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.136477109768 gFactor:0.0 vSquare:99.1119170428
+E500:t:1507 State update PK:11.692398937 vK:31.8599885719 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.107984097685 gFactor:0.0 vSquare:78.4198240267
+E500:t:1508 State update PK:11.7006961838 vK:27.8999885719 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0828234256016 gFactor:0.0 vSquare:60.1477310106
+E500:t:1509 State update PK:11.7078934307 vK:23.9399885719 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0609950935183 gFactor:0.0 vSquare:44.2956379944
+E500:t:1510 State update PK:11.7139906775 vK:19.9799885719 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0424991014351 gFactor:0.0 vSquare:30.8635449783
+E500:t:1511 State update PK:11.7189879243 vK:16.0199885719 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0273354493519 gFactor:0.0 vSquare:19.8514519622
+E500:t:1512 State update PK:11.7228851711 vK:12.0599885719 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0155041372687 gFactor:0.0 vSquare:11.259358946
+E500:t:1513 State update PK:11.725682418 vK:8.09998857185 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00700516518548 gFactor:0.0 vSquare:5.08726592991
+E500:t:1514 State update PK:11.7273796648 vK:4.13998857185 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00183853310227 gFactor:0.0 vSquare:1.33517291378
+E500:t:1515 State update PK:11.727990502 vK:0.791556571854 maxVk:20.0 aF:-0.004 a:-0.004 power: 0.0 v2factor: 6.65843033011e-05 gFactor:0.0 vSquare:0.0483546138715
+E500:t:1515:IN STA Geo vK:0.790908571854 a:-0.004
+E500:t:1515:next STA (CDE) at PK12.199
+E500:t:1526:OUT STA, a:1.33347004388 vK:0.0
+need to go faster...1.35
+E500:t:1527 State update PK:11.7285553888 vK:3.97509959103 maxVk:20.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1528 State update PK:11.7302131785 vK:7.93816552656 maxVk:20.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1529 State update PK:11.7329687497 vK:11.8772793223 maxVk:20.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1529:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1530 State update PK:11.7368138173 vK:15.7808101534 maxVk:20.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1530:AT SIG WestboundMain:Geo+10 vK:16.807851537
+E500:1530:START UPDATE SIG BY OCCU sig:WestboundMain:Geo-140 from value green to value red
+E500:1530:START UPDATE SIG BY OCCU sig:WestboundMain:2120 from value red to value yellow
+E500:1530:START UPDATE SIG BY OCCU sig:WestboundMain:Fra+10 from value yellow to value green
+SIG Fra+10 was yellow now green
+SIG 2120 was red now yellow
+SIG Geo-140 was green now red
+E500:t:1530next SIG (2175) at PK11.95
+need to go faster...1.35
+E500:t:1531 State update PK:11.7417369213 vK:19.6375498514 maxVk:20.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+E500:t:1532:coasting at 19.0510705574
+E500:t:1532 State update PK:11.7471641876 vK:19.0459619284 maxVk:20.0 aF:-0.283812724497 a:0.0 power: 1.50152398488 v2factor: 0.0385627244969 gFactor:0.0 vSquare:28.00488344
+E500:t:1532:boosting from vK:18.1979447995 to maxVk:20.0 with aFull:-0.280455826396
+need to go faster...1.35
+E500:t:1533 State update PK:11.7523317297 vK:18.8326698704 maxVk:20.0 aF:1.06714320288 a:1.35 power: 1009903.40151 v2factor: 0.0376067971177 gFactor:0.0 vSquare:27.3106732881
+E500:t:1534:coasting at 19.266578868
+E500:t:1534 State update PK:11.7577646382 vK:19.261454446 maxVk:20.0 aF:-0.284690112761 a:0.0 power: 1.52320712171 v2factor: 0.0394401127606 gFactor:0.0 vSquare:28.6420571973
+E500:t:1535:coasting at 18.2490421113
+E500:t:1535 State update PK:11.7629726833 vK:18.2439906961 maxVk:20.0 aF:-0.28063417591 a:0.0 power: 1.42219091509 v2factor: 0.0353841759104 gFactor:0.0 vSquare:25.6965692886
+E500:t:1535:boosting from vK:18.1985438099 to maxVk:20.0 with aFull:-0.280458143649
+E500:t:1536:coasting at 19.4831888868
+E500:t:1536 State update PK:11.7683529529 vK:19.478048412 maxVk:20.0 aF:-0.285581931477 a:0.0 power: 1.54516074636 v2factor: 0.0403319314772 gFactor:0.0 vSquare:29.2897105862
+E500:t:1537:coasting at 18.4625481403
+E500:t:1537 State update PK:11.773620725 vK:18.4574817347 maxVk:20.0 aF:-0.281466978907 a:0.0 power: 1.44310322836 v2factor: 0.0362169789074 gFactor:0.0 vSquare:26.3013644934
+E500:t:1537:boosting from vK:18.199566687 to maxVk:20.0 with aFull:-0.280462100794
+E500:t:1538:coasting at 19.7006458661
+E500:t:1538 State update PK:11.7789292251 vK:19.6954890953 maxVk:20.0 aF:-0.286487266301 a:0.0 power: 1.56736300816 v2factor: 0.0412372663014 gFactor:0.0 vSquare:29.9471795944
+E500:t:1539:coasting at 18.6768536644
+E500:t:1539 State update PK:11.7842569527 vK:18.6717720369 maxVk:20.0 aF:-0.282312641673 a:0.0 power: 1.46424369123 v2factor: 0.0370626416727 gFactor:0.0 vSquare:26.915498673
+E500:t:1539:boosting from vK:18.1957025747 to maxVk:20.0 with aFull:-0.280447153096
+E500:t:1540:coasting at 19.9182462609
+E500:t:1540 State update PK:11.7894902297 vK:19.9130730023 maxVk:20.0 aF:-0.287403256749 a:0.0 power: 1.58974500909 v2factor: 0.0421532567492 gFactor:0.0 vSquare:30.6123868912
+E500:t:1541:coasting at 18.8912651015
+E500:t:1541 State update PK:11.7948779473 vK:18.8861680687 maxVk:20.0 aF:-0.28316848907 a:0.0 power: 1.48554657676 v2factor: 0.0379184890705 gFactor:0.0 vSquare:27.5370290998
+E500:t:1541:boosting from vK:18.1963499089 to maxVk:20.0 with aFull:-0.280449656983
+E500:t:1542:TIV 9 reached at curr speed 19.4060187359, maxVk now 20.0
+need to go faster...1.35
+E500:t:1542 State update PK:11.8000525404 vK:19.4251840007 maxVk:20.0 aF:1.06473693391 a:1.35 power: 1041677.03128 v2factor: 0.0400130660875 gFactor:0.0 vSquare:29.0581453068
+E500:t:1543:coasting at 19.1056708667
+E500:t:1543 State update PK:11.8054865383 vK:19.1005582533 maxVk:20.0 aF:-0.284034082547 a:0.0 power: 1.50700264989 v2factor: 0.0387840825473 gFactor:0.0 vSquare:28.1656372892
+E500:t:1543:boosting from vK:18.1963461357 to maxVk:20.0 with aFull:-0.280449642388
+need to go faster...1.35
+E500:t:1544 State update PK:11.8106587538 vK:18.6198108285 maxVk:20.0 aF:1.06798942977 a:1.35 power: 998488.814284 v2factor: 0.0367605702282 gFactor:0.0 vSquare:26.6961294322
+E500:t:1545:coasting at 19.3215055209
+E500:t:1545 State update PK:11.8160828418 vK:19.3163770453 maxVk:20.0 aF:-0.284915311157 a:0.0 power: 1.52875877119 v2factor: 0.0396653111571 gFactor:0.0 vSquare:28.8055999688
+E500:t:1546:coasting at 18.3031849978
+E500:t:1546 State update PK:11.8213060325 vK:18.2981297977 maxVk:20.0 aF:-0.280844449238 a:0.0 power: 1.42748005142 v2factor: 0.0355944492379 gFactor:0.0 vSquare:25.8492732301
+E500:t:1546:boosting from vK:18.1970999446 to maxVk:20.0 with aFull:-0.280452558231
+E500:t:1547:coasting at 19.5385734818
+E500:t:1547 State update PK:11.8266671031 vK:19.5334288738 maxVk:20.0 aF:-0.285811559456 a:0.0 power: 1.55079993554 v2factor: 0.0405615594562 gFactor:0.0 vSquare:29.4564701933
+E500:t:1548:coasting at 18.5171334437
+E500:t:1548 State update PK:11.8319501458 vK:18.5120631776 maxVk:20.0 aF:-0.281681449541 a:0.0 power: 1.44847355274 v2factor: 0.0364314495407 gFactor:0.0 vSquare:26.4571165873
+E500:t:1548:boosting from vK:18.1984030427 to maxVk:20.0 with aFull:-0.280457599089
+E500:t:1549:coasting at 19.7551276985
+E500:t:1549 State update PK:11.8372391876 vK:19.7499668166 maxVk:20.0 aF:-0.286715663728 a:0.0 power: 1.57295134568 v2factor: 0.0414656637284 gFactor:0.0 vSquare:30.1130455544
+E500:t:1550:coasting at 18.7305403846
+E500:t:1550 State update PK:11.8425819357 vK:18.7254549162 maxVk:20.0 aF:-0.282526021454 a:0.0 power: 1.46956341039 v2factor: 0.0372760214544 gFactor:0.0 vSquare:27.0704585726
+E500:t:1550:boosting from vK:18.1985319664 to maxVk:20.0 with aFull:-0.280458097832
+E500:t:1551:coasting at 19.9727679193
+E500:t:1551 State update PK:11.8477987471 vK:19.9675905011 maxVk:20.0 aF:-0.287634342451 a:0.0 power: 1.59537910114 v2factor: 0.0423843424506 gFactor:0.0 vSquare:30.7802051202
+E500:t:1552:coasting at 18.9449821883
+E500:t:1552 State update PK:11.8532014949 vK:18.9398812685 maxVk:20.0 aF:-0.2833844372 a:0.0 power: 1.49090766497 v2factor: 0.0381344371999 gFactor:0.0 vSquare:27.6938541756
+E500:t:1552:boosting from vK:18.1990480607 to maxVk:20.0 with aFull:-0.280460094387
+need to go faster...1.35
+E500:t:1553 State update PK:11.8583709452 vK:19.237151878 maxVk:20.0 aF:1.06550863697 a:1.35 power: 1031593.78968 v2factor: 0.0392413630289 gFactor:0.0 vSquare:28.4977218801
+E500:t:1554:coasting at 19.1604474369
+E500:t:1554 State update PK:11.8638089499 vK:19.1553308146 maxVk:20.0 aF:-0.284256791761 a:0.0 power: 1.51250913402 v2factor: 0.0390067917606 gFactor:0.0 vSquare:28.3273723752
+E500:t:1554:boosting from vK:18.199927306 to maxVk:20.0 with aFull:-0.280463495953
+need to go faster...1.35
+E500:t:1555 State update PK:11.8689903659 vK:18.4311671251 maxVk:20.0 aF:1.06873133873 a:1.35 power: 988372.777113 v2factor: 0.0360186612694 gFactor:0.0 vSquare:26.1573429698
+E500:t:1556:coasting at 19.3764130848
+E500:t:1556 State update PK:11.874404265 vK:19.3712805455 maxVk:20.0 aF:-0.285141072053 a:0.0 power: 1.53431880605 v2factor: 0.0398910720533 gFactor:0.0 vSquare:28.969551237
+E500:t:1557:coasting at 18.3573068099
+E500:t:1557 State update PK:11.8796425959 vK:18.3522478151 maxVk:20.0 aF:-0.281055263289 a:0.0 power: 1.43277662267 v2factor: 0.0358052632893 gFactor:0.0 vSquare:26.0023698543
+E500:t:1557:boosting from vK:18.1955945378 to maxVk:20.0 with aFull:-0.280446735218
+E500:t:1558:coasting at 19.6165967865
+E500:t:1558 State update PK:11.8849866286 vK:19.6114463357 maxVk:20.0 aF:-0.286136154883 a:0.0 power: 1.55876217949 v2factor: 0.0408861548826 gFactor:0.0 vSquare:29.6921967194
+E500:t:1559:coasting at 18.5940268468
+E500:t:1559 State update PK:11.8902911834 vK:18.5889511232 maxVk:20.0 aF:-0.281984644903 a:0.0 power: 1.45605521711 v2factor: 0.0367346449027 gFactor:0.0 vSquare:26.6773020354
+E500:t:1559:boosting from vK:18.1991949231 to maxVk:20.0 with aFull:-0.280460662547
+E500:t:1560:coasting at 19.8340854955
+E500:t:1560 State update PK:11.8955547643 vK:19.8289186353 maxVk:20.0 aF:-0.287047788166 a:0.0 power: 1.58106867666 v2factor: 0.0417977881657 gFactor:0.0 vSquare:30.3542397717
+E500:t:1561:coasting at 18.808341923
+E500:t:1561 State update PK:11.9009192802 vK:18.803250869 maxVk:20.0 aF:-0.282836333376 a:0.0 power: 1.47728959204 v2factor: 0.0375863333762 gFactor:0.0 vSquare:27.2958121832
+E500:t:1561:boosting from vK:18.1999951963 to maxVk:20.0 with aFull:-0.280463758609
+need to go faster...1.35
+E500:t:1562 State update PK:11.9061128391 vK:19.7550341086 maxVk:20.0 aF:1.06336504129 a:1.35 power: 1059365.27699 v2factor: 0.0413849587098 gFactor:0.0 vSquare:30.0544362453
+E500:t:1563:coasting at 19.0230037513
+E500:t:1563 State update PK:11.9115351899 vK:19.017897166 maxVk:20.0 aF:-0.28369918387 a:0.0 power: 1.49871164026 v2factor: 0.0384491838705 gFactor:0.0 vSquare:27.9224283736
+E500:t:1563:boosting from vK:18.1954465776 to maxVk:20.0 with aFull:-0.280446162924
+need to go faster...1.35
+E500:t:1564 State update PK:11.916701059 vK:18.9261759838 maxVk:20.0 aF:1.06676842239 a:1.35 power: 1014917.67615 v2factor: 0.0379815776065 gFactor:0.0 vSquare:27.5828450301
+E500:t:1565:coasting at 19.2384817239
+E500:t:1565 State update PK:11.9221357447 vK:19.233359371 maxVk:20.0 aF:-0.284575162773 a:0.0 power: 1.52037121491 v2factor: 0.0393251627732 gFactor:0.0 vSquare:28.5585786297
+E500:t:1566:coasting at 18.2213450213
+E500:t:1566 State update PK:11.9273360421 vK:18.216295538 maxVk:20.0 aF:-0.280526850279 a:0.0 power: 1.41948889195 v2factor: 0.0352768502786 gFactor:0.0 vSquare:25.6186276533
+E500:t:1566:boosting from vK:18.1961011224 to maxVk:20.0 with aFull:-0.280448694667
+E500:t:1567:coasting at 19.4545984608
+E500:t:1567 State update PK:11.9327240731 vK:19.4494601151 maxVk:20.0 aF:-0.285463648885 a:0.0 power: 1.54225384814 v2factor: 0.0402136488848 gFactor:0.0 vSquare:29.2038118263
+E500:t:1568:coasting at 18.4343694231
+E500:t:1568 State update PK:11.9379839621 vK:18.4293050059 maxVk:20.0 aF:-0.281356509953 a:0.0 power: 1.44033470481 v2factor: 0.0361065099528 gFactor:0.0 vSquare:26.2211401255
+E500:t:1568:ADVANCE green SIG vK:18.3989259966
+E500:t:1568:boosting from vK:18.1967257936 to maxVk:20.0 with aFull:-0.280451110945
+E500:t:1569:coasting at 19.671065183
+E500:t:1569 State update PK:11.9433000583 vK:19.6659106396 maxVk:20.0 aF:-0.286363523077 a:0.0 power: 1.56433318202 v2factor: 0.0411135230774 gFactor:0.0 vSquare:29.8573152341
+E500:t:1570:coasting at 18.6477037536
+E500:t:1570 State update PK:11.9486196304 vK:18.6426242069 maxVk:20.0 aF:-0.282197040874 a:0.0 power: 1.4613592737 v2factor: 0.0369470408739 gFactor:0.0 vSquare:26.8315474756
+E500:t:1570:AT SIG WestboundMain:2175 vK:18.3688633855
+E500:1570:START UPDATE SIG BY OCCU sig:WestboundMain:Geo+10 from value green to value red
+E500:1570:START UPDATE SIG BY OCCU sig:WestboundMain:Geo-140 from value red to value yellow
+E500:1570:START UPDATE SIG BY OCCU sig:WestboundMain:2120 from value yellow to value green
+SIG 2120 was yellow now green
+SIG Geo-140 was red now yellow
+SIG Geo+10 was green now red
+E500:t:1570next SIG (CDE-140) at PK12.059
+E500:t:1570:boosting from vK:18.1970286436 to maxVk:20.0 with aFull:-0.280452282423
+E500:t:1571:coasting at 19.8880498066
+E500:t:1571 State update PK:11.9538635423 vK:19.8828788468 maxVk:20.0 aF:-0.287275543293 a:0.0 power: 1.58662911748 v2factor: 0.0420255432928 gFactor:0.0 vSquare:30.5196392831
+E500:t:1572:coasting at 18.8615132967
+E500:t:1572 State update PK:11.9592429353 vK:18.856418412 maxVk:20.0 aF:-0.283049147658 a:0.0 power: 1.48258143317 v2factor: 0.0377991476582 gFactor:0.0 vSquare:27.4503614075
+E500:t:1572:boosting from vK:18.1971671555 to maxVk:20.0 with aFull:-0.280452818218
+need to go faster...1.35
+E500:t:1573 State update PK:11.9644229986 vK:19.541403493 maxVk:20.0 aF:1.0642561994 a:1.35 power: 1047909.31338 v2factor: 0.0404938006006 gFactor:0.0 vSquare:29.4072626003
+E500:t:1574:coasting at 19.0762400401
+E500:t:1574 State update PK:11.9698539301 vK:19.0711295757 maxVk:20.0 aF:-0.283914686745 a:0.0 power: 1.50404827204 v2factor: 0.0386646867446 gFactor:0.0 vSquare:28.0789300978
+E500:t:1574:boosting from vK:18.1975701983 to maxVk:20.0 with aFull:-0.280454377302
+need to go faster...1.35
+E500:t:1575 State update PK:11.97502315 vK:18.7353005128 maxVk:20.0 aF:1.06753149246 a:1.35 power: 1004681.96003 v2factor: 0.0372185075433 gFactor:0.0 vSquare:27.0286910264
+E500:t:1576:coasting at 19.290913365
+E500:t:1576 State update PK:11.980452381 vK:19.2857871486 maxVk:20.0 aF:-0.284789804711 a:0.0 power: 1.52566543215 v2factor: 0.0395398047111 gFactor:0.0 vSquare:28.7144551279
+E500:t:1577:coasting at 18.2730296501
+E500:t:1577 State update PK:11.9856671362 vK:18.2679765594 maxVk:20.0 aF:-0.280727258838 a:0.0 power: 1.42453305113 v2factor: 0.0354772588381 gFactor:0.0 vSquare:25.7641676384
+E500:t:1577:boosting from vK:18.1972703136 to maxVk:20.0 with aFull:-0.28045321726
+E500:t:1578:coasting at 19.5066450425
+E500:t:1578 State update PK:11.9910382242 vK:19.5015028187 maxVk:20.0 aF:-0.285679102587 a:0.0 power: 1.54754772898 v2factor: 0.0404291025866 gFactor:0.0 vSquare:29.3602778406
+E500:t:1579:coasting at 18.4856660651
+E500:t:1579 State update PK:11.9963124636 vK:18.4805980259 maxVk:20.0 aF:-0.281557734049 a:0.0 power: 1.44537647334 v2factor: 0.0363077340486 gFactor:0.0 vSquare:26.3672723665
+E500:t:1579:boosting from vK:18.197356073 to maxVk:20.0 with aFull:-0.280453549
+E500:t:1580:coasting at 19.7232682363
+E500:t:1580 State update PK:12.0016115561 vK:19.7181097599 maxVk:20.0 aF:-0.286582026679 a:0.0 power: 1.56968218257 v2factor: 0.0413320266793 gFactor:0.0 vSquare:30.015996136
+E500:t:1581:coasting at 18.6991461516
+E500:t:1581 State update PK:12.0069455207 vK:18.6940629306 maxVk:20.0 aF:-0.282401169598 a:0.0 power: 1.46645145448 v2factor: 0.0371511695976 gFactor:0.0 vSquare:26.979789105
+E500:t:1581:boosting from vK:18.197651257 to maxVk:20.0 with aFull:-0.280454690864
+E500:t:1582:coasting at 19.9414590576
+E500:t:1582 State update PK:12.0121725247 vK:19.9362840295 maxVk:20.0 aF:-0.287501565118 a:0.0 power: 1.59214246142 v2factor: 0.0422515651182 gFactor:0.0 vSquare:30.6837800423
+E500:t:1583:coasting at 18.9141356208
+E500:t:1583 State update PK:12.0175666414 vK:18.9090369344 maxVk:20.0 aF:-0.283260355917 a:0.0 power: 1.48782792558 v2factor: 0.0380103559174 gFactor:0.0 vSquare:27.6037443119
+E500:t:1583:boosting from vK:18.198803927 to maxVk:20.0 with aFull:-0.280459149928
+need to go faster...1.35
+E500:t:1584 State update PK:12.0227391678 vK:19.3514599882 maxVk:20.0 aF:1.06504040039 a:1.35 power: 1037723.57364 v2factor: 0.0397095996074 gFactor:0.0 vSquare:28.8377629683
+E500:t:1585:coasting at 19.1290270717
+E500:t:1585 State update PK:12.0281755789 vK:19.1239127503 maxVk:20.0 aF:-0.28412896565 a:0.0 power: 1.50934931915 v2factor: 0.0388789656504 gFactor:0.0 vSquare:28.234542956
+E500:t:1585:boosting from vK:18.1992104804 to maxVk:20.0 with aFull:-0.280460722733
+need to go faster...1.35
+E500:t:1586 State update PK:12.0333514515 vK:18.5451002687 maxVk:20.0 aF:1.06828416041 a:1.35 power: 994482.453143 v2factor: 0.0364658395882 gFactor:0.0 vSquare:26.4820912042
+E500:t:1587:coasting at 19.3441837662
+E500:t:1587 State update PK:12.0387720713 vK:19.3390536136 maxVk:20.0 aF:-0.285008478593 a:0.0 power: 1.53105395773 v2factor: 0.0397584785928 gFactor:0.0 vSquare:28.8732596898
+E500:t:1588:coasting at 18.3255389808
+E500:t:1588 State update PK:12.0440015154 vK:18.3204822148 maxVk:20.0 aF:-0.280931446512 a:0.0 power: 1.42966654705 v2factor: 0.035681446512 gFactor:0.0 vSquare:25.9124520785
+E500:t:1588:boosting from vK:18.19922587 to maxVk:20.0 with aFull:-0.280460782271
+E500:t:1588:ADVANCE green SIG vK:19.2554363895
+E500:t:1589:coasting at 19.5598245172
+E500:t:1589 State update PK:12.0493559579 vK:19.55467832 maxVk:20.0 aF:-0.285899840609 a:0.0 power: 1.55296650413 v2factor: 0.0406498406089 gFactor:0.0 vSquare:29.5205814153
+E500:t:1590:coasting at 18.5380771817
+E500:t:1590 State update PK:12.0546448599 vK:18.5330054314 maxVk:20.0 aF:-0.28176390747 a:0.0 power: 1.45053667431 v2factor: 0.0365139074696 gFactor:0.0 vSquare:26.5169988886
+E500:t:1590:boosting from vK:18.1990590275 to maxVk:20.0 with aFull:-0.280460136814
+E500:t:1590:AT SIG WestboundMain:CDE-140 vK:19.9426447913
+E500:1590:START UPDATE SIG BY OCCU sig:WestboundMain:2175 from value green to value red
+E500:1590:START UPDATE SIG BY OCCU sig:WestboundMain:Geo+10 from value red to value yellow
+E500:1590:START UPDATE SIG BY OCCU sig:WestboundMain:Geo-140 from value yellow to value green
+SIG Geo-140 was yellow now green
+SIG Geo+10 was red now yellow
+SIG 2175 was green now red
+E500:t:1590next SIG (CDE+10) at PK12.209
+E500:t:1591:coasting at 19.7772361155
+E500:t:1591 State update PK:12.0599273572 vK:19.7720735621 maxVk:20.0 aF:-0.286808526014 a:0.0 power: 1.57522202072 v2factor: 0.0415585260142 gFactor:0.0 vSquare:30.1804836705
+E500:t:1592:coasting at 18.7523255161
+E500:t:1592 State update PK:12.0652762004 vK:18.747238486 maxVk:20.0 aF:-0.282612781928 a:0.0 power: 1.47172478389 v2factor: 0.0373627819277 gFactor:0.0 vSquare:27.1334654522
+E500:t:1592:boosting from vK:18.1999605306 to maxVk:20.0 with aFull:-0.280463624493
+need to go faster...1.35
+E500:t:1593 State update PK:12.0704864978 vK:19.9653450974 maxVk:20.0 aF:1.06247825562 a:1.35 power: 1070643.22542 v2factor: 0.0422717443773 gFactor:0.0 vSquare:30.6984345514
+E500:t:1594:coasting at 18.9667141856
+E500:t:1594 State update PK:12.0758953263 vK:18.9616116901 maxVk:20.0 aF:-0.283471976244 a:0.0 power: 1.49307931626 v2factor: 0.0382219762437 gFactor:0.0 vSquare:27.757426466
+E500:t:1594:boosting from vK:18.1953105157 to maxVk:20.0 with aFull:-0.280445636656
+need to go faster...1.35
+E500:t:1595 State update PK:12.0810619966 vK:19.1373562803 maxVk:20.0 aF:1.06591515572 a:1.35 power: 1026242.24071 v2factor: 0.0388348442838 gFactor:0.0 vSquare:28.2025012954
+E500:t:1596:coasting at 19.1822079134
+E500:t:1596 State update PK:12.0864991608 vK:19.1770896954 maxVk:20.0 aF:-0.284345441921 a:0.0 power: 1.51469945672 v2factor: 0.0390954419209 gFactor:0.0 vSquare:28.3917515765
+E500:t:1596:boosting from vK:18.1961517788 to maxVk:20.0 with aFull:-0.280448890607
+need to go faster...1.35
+E500:t:1597 State update PK:12.0916848877 vK:18.3311305416 maxVk:20.0 aF:1.06912169944 a:1.35 power: 983008.305522 v2factor: 0.0356283005592 gFactor:0.0 vSquare:25.8738566152
+E500:t:1598:coasting at 19.398300674
+E500:t:1598 State update PK:12.0970908617 vK:19.3931665116 maxVk:20.0 aF:-0.285231244835 a:0.0 power: 1.53653806261 v2factor: 0.0399812448355 gFactor:0.0 vSquare:29.0350361913
+E500:t:1599:coasting at 18.3788805488
+E500:t:1599 State update PK:12.1023352278 vK:18.3738200383 maxVk:20.0 aF:-0.281139470336 a:0.0 power: 1.4348905649 v2factor: 0.0358894703365 gFactor:0.0 vSquare:26.0635223939
+E500:t:1599:boosting from vK:18.1969253875 to maxVk:20.0 with aFull:-0.280451883008
+E500:t:1600:coasting at 19.6142174912
+E500:t:1600 State update PK:12.107670179 vK:19.6090672189 maxVk:20.0 aF:-0.286126237328 a:0.0 power: 1.55851906135 v2factor: 0.0408762373278 gFactor:0.0 vSquare:29.6849944283
+E500:t:1601:coasting at 18.5916820748
+E500:t:1601 State update PK:12.1129740779 vK:18.5866065179 maxVk:20.0 aF:-0.281975380752 a:0.0 power: 1.45582373605 v2factor: 0.0367253807518 gFactor:0.0 vSquare:26.670574257
+E500:t:1601:boosting from vK:18.1968629868 to maxVk:20.0 with aFull:-0.28045164163
+E500:t:1602:coasting at 19.8316670743
+E500:t:1602 State update PK:12.1182369936 vK:19.8265003976 maxVk:20.0 aF:-0.287037595763 a:0.0 power: 1.58081972404 v2factor: 0.0417875957631 gFactor:0.0 vSquare:30.3468378817
+E500:t:1603:coasting at 18.8059589865
+E500:t:1603 State update PK:12.1236008429 vK:18.800868104 maxVk:20.0 aF:-0.282826809924 a:0.0 power: 1.47705265268 v2factor: 0.0375768099241 gFactor:0.0 vSquare:27.2888960959
+E500:t:1603:boosting from vK:18.1976324151 to maxVk:20.0 with aFull:-0.280454617977
+need to go faster...1.35
+E500:t:1604 State update PK:12.1287937482 vK:19.7527178165 maxVk:20.0 aF:1.0633747557 a:1.35 power: 1059241.06559 v2factor: 0.0413752443015 gFactor:0.0 vSquare:30.0473814826
+E500:t:1605:coasting at 19.0207216314
+E500:t:1605 State update PK:12.1342154604 vK:19.0156152122 maxVk:20.0 aF:-0.283689959209 a:0.0 power: 1.49848308441 v2factor: 0.0384399592091 gFactor:0.0 vSquare:27.9157292731
+E500:t:1605:boosting from vK:18.1982386584 to maxVk:20.0 with aFull:-0.280456963171
+need to go faster...1.35
+E500:t:1606 State update PK:12.1393819679 vK:18.9472948437 maxVk:20.0 aF:1.06668351894 a:1.35 power: 1016050.17713 v2factor: 0.0380664810611 gFactor:0.0 vSquare:27.6445033124
+E500:t:1607:coasting at 19.2352494259
+E500:t:1607 State update PK:12.1448175754 vK:19.2301273108 maxVk:20.0 aF:-0.284561949676 a:0.0 power: 1.52004514447 v2factor: 0.0393119496757 gFactor:0.0 vSquare:28.5489830615
+E500:t:1608:coasting at 18.2181587077
+E500:t:1608 State update PK:12.1500169814 vK:18.2131094464 maxVk:20.0 aF:-0.280514513837 a:0.0 power: 1.41917820606 v2factor: 0.0352645138367 gFactor:0.0 vSquare:25.6096687267
+E500:t:1608:boosting from vK:18.197963773 to maxVk:20.0 with aFull:-0.280455899794
+E500:t:1609:coasting at 19.4504256288
+E500:t:1609 State update PK:12.1554069989 vK:19.4452875936 maxVk:20.0 aF:-0.285446399821 a:0.0 power: 1.54182981585 v2factor: 0.0401963998211 gFactor:0.0 vSquare:29.1912852731
+E500:t:1610:coasting at 18.4302566297
+E500:t:1610 State update PK:12.1606657374 vK:18.4251925025 maxVk:20.0 aF:-0.28134040069 a:0.0 power: 1.43993084484 v2factor: 0.03609040069 gFactor:0.0 vSquare:26.2094413145
+E500:t:1610:boosting from vK:18.1976743554 to maxVk:20.0 with aFull:-0.280454780217
+E500:t:1611:coasting at 19.6672546554
+E500:t:1611 State update PK:12.1659839013 vK:19.6621003986 maxVk:20.0 aF:-0.286347596228 a:0.0 power: 1.56394310721 v2factor: 0.0410975962284 gFactor:0.0 vSquare:29.845748895
+E500:t:1612:coasting at 18.6439486697
+E500:t:1612 State update PK:12.1713024228 vK:18.6388693908 maxVk:20.0 aF:-0.282182162337 a:0.0 power: 1.46098790783 v2factor: 0.0369321623372 gFactor:0.0 vSquare:26.8207424381
+E500:t:1612:boosting from vK:18.1983449184 to maxVk:20.0 with aFull:-0.280457374235
+E500:t:1613:coasting at 19.8840359137
+E500:t:1613 State update PK:12.176548399 vK:19.8788652592 maxVk:20.0 aF:-0.287258581448 a:0.0 power: 1.58621517643 v2factor: 0.042008581448 gFactor:0.0 vSquare:30.507321313
+E500:t:1614:coasting at 18.8575584579
+E500:t:1614 State update PK:12.1819266855 vK:18.8524638585 maxVk:20.0 aF:-0.283033298043 a:0.0 power: 1.48218750614 v2factor: 0.037783298043 gFactor:0.0 vSquare:27.4388511569
+E500:t:1614:boosting from vK:18.1982967452 to maxVk:20.0 with aFull:-0.280457187878
+E500:t:1614:ADVANCE STA x:12199.0 vK:19.024281146
+E500:t:1615 State update PK:12.187086016 vK:18.469881146 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0363235078187 gFactor:0.0 vSquare:26.3787275372
+E500:t:1616 State update PK:12.1916637885 vK:14.509881146 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0224306111343 gFactor:0.0 vSquare:16.289477948
+E500:t:1617 State update PK:12.1951415611 vK:10.549881146 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.01187005445 gFactor:0.0 vSquare:8.62022835872
+E500:t:1618 State update PK:12.1975193336 vK:6.58988114604 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00464183776556 gFactor:0.0 vSquare:3.37097876947
+E500:t:1619 State update PK:12.1987971062 vK:2.62988114604 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000745961081167 gFactor:0.0 vSquare:0.541729180223
+E500:t:1619:IN STA CDE vK:1.04588114604 a:-1.1
+E500:t:1619:next STA (Arg) at PK12.705
+E500:t:1630:OUT STA, a:1.37368354506 vK:0.0
+need to go faster...1.35
+E500:t:1631 State update PK:12.1995552121 vK:3.97509959103 maxVk:20.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1632 State update PK:12.2012130018 vK:7.93816552656 maxVk:20.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1633 State update PK:12.2039685729 vK:11.8772793223 maxVk:20.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1633:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1634 State update PK:12.2078136405 vK:15.7808101534 maxVk:20.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1634:AT SIG WestboundMain:CDE+10 vK:16.807851537
+E500:1634:START UPDATE SIG BY OCCU sig:WestboundMain:CDE-140 from value green to value red
+E500:1634:START UPDATE SIG BY OCCU sig:WestboundMain:2175 from value red to value yellow
+E500:1634:START UPDATE SIG BY OCCU sig:WestboundMain:Geo+10 from value yellow to value green
+SIG Geo+10 was yellow now green
+SIG 2175 was red now yellow
+SIG CDE-140 was green now red
+E500:t:1634next SIG (2228) at PK12.48
+need to go faster...1.35
+E500:t:1635 State update PK:12.2127367445 vK:19.6375498514 maxVk:20.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+E500:t:1636:coasting at 19.0510705574
+E500:t:1636 State update PK:12.2181640108 vK:19.0459619284 maxVk:20.0 aF:-0.283812724497 a:0.0 power: 1.50152398488 v2factor: 0.0385627244969 gFactor:0.0 vSquare:28.00488344
+E500:t:1636:boosting from vK:18.1979447995 to maxVk:20.0 with aFull:-0.280455826396
+need to go faster...1.35
+E500:t:1637 State update PK:12.2233315492 vK:18.8325891594 maxVk:20.0 aF:1.06714352558 a:1.35 power: 1009899.07337 v2factor: 0.037606474424 gFactor:0.0 vSquare:27.3104389426
+E500:t:1638:coasting at 19.2664993497
+E500:t:1638 State update PK:12.2287644355 vK:19.2613749335 maxVk:20.0 aF:-0.284689787202 a:0.0 power: 1.52319909196 v2factor: 0.0394397872017 gFactor:0.0 vSquare:28.641820771
+E500:t:1639:coasting at 18.2489637261
+E500:t:1639 State update PK:12.2339724587 vK:18.2439123164 maxVk:20.0 aF:-0.280633871939 a:0.0 power: 1.42218326463 v2factor: 0.0353838719392 gFactor:0.0 vSquare:25.6963485397
+E500:t:1639:boosting from vK:18.1984654793 to maxVk:20.0 with aFull:-0.280457840625
+E500:t:1640:coasting at 19.4822357666
+E500:t:1640 State update PK:12.2393524726 vK:19.4770953629 maxVk:20.0 aF:-0.285577985487 a:0.0 power: 1.54506379357 v2factor: 0.040327985487 gFactor:0.0 vSquare:29.2868449433
+E500:t:1641:coasting at 18.4616087552
+E500:t:1641 State update PK:12.2446199819 vK:18.4565424159 maxVk:20.0 aF:-0.281463293519 a:0.0 power: 1.44301089316 v2factor: 0.0362132935194 gFactor:0.0 vSquare:26.2986881042
+E500:t:1641:boosting from vK:18.1986307212 to maxVk:20.0 with aFull:-0.280458479869
+E500:t:1642:coasting at 19.698633941
+E500:t:1642 State update PK:12.249927997 vK:19.6934773218 maxVk:20.0 aF:-0.286478844034 a:0.0 power: 1.56715683838 v2factor: 0.0412288440337 gFactor:0.0 vSquare:29.9410632053
+E500:t:1643:coasting at 18.6748710589
+E500:t:1643 State update PK:12.2552551698 vK:18.669789573 maxVk:20.0 aF:-0.282304773463 a:0.0 power: 1.46404742111 v2factor: 0.0370547734634 gFactor:0.0 vSquare:26.9097846502
+E500:t:1643:boosting from vK:18.1987811199 to maxVk:20.0 with aFull:-0.280459061697
+E500:t:1644:coasting at 19.9150587024
+E500:t:1644 State update PK:12.260490866 vK:19.9098856866 maxVk:20.0 aF:-0.287389766082 a:0.0 power: 1.58941594172 v2factor: 0.0421397660817 gFactor:0.0 vSquare:30.602589747
+E500:t:1645:coasting at 18.8881245127
+E500:t:1645 State update PK:12.2658777048 vK:18.8830277068 maxVk:20.0 aF:-0.283155882558 a:0.0 power: 1.4852334377 v2factor: 0.0379058825584 gFactor:0.0 vSquare:27.5278740438
+E500:t:1645:boosting from vK:18.1982875698 to maxVk:20.0 with aFull:-0.280457152383
+need to go faster...1.35
+E500:t:1646 State update PK:12.2710536156 vK:19.446230157 maxVk:20.0 aF:1.0646500907 a:1.35 power: 1042805.63355 v2factor: 0.0400999093004 gFactor:0.0 vSquare:29.1212122733
+E500:t:1647:coasting at 19.1024127417
+E500:t:1647 State update PK:12.2764876479 vK:19.0973003663 maxVk:20.0 aF:-0.284020855834 a:0.0 power: 1.50667544282 v2factor: 0.0387708558339 gFactor:0.0 vSquare:28.1560318329
+E500:t:1647:boosting from vK:18.198177223 to maxVk:20.0 with aFull:-0.28045672551
+need to go faster...1.35
+E500:t:1648 State update PK:12.2816597401 vK:18.6408406896 maxVk:20.0 aF:1.06790625371 a:1.35 power: 999616.542667 v2factor: 0.0368437462918 gFactor:0.0 vSquare:26.7565332547
+E500:t:1649:coasting at 19.3181577961
+E500:t:1649 State update PK:12.2870852601 vK:19.3130295679 maxVk:20.0 aF:-0.284901567192 a:0.0 power: 1.52842010865 v2factor: 0.0396515671924 gFactor:0.0 vSquare:28.7956188761
+E500:t:1650:coasting at 18.2998851073
+E500:t:1650 State update PK:12.2923075278 vK:18.2948301383 maxVk:20.0 aF:-0.280831615713 a:0.0 power: 1.42715741859 v2factor: 0.0355816157126 gFactor:0.0 vSquare:25.8399533134
+E500:t:1650:boosting from vK:18.1988528052 to maxVk:20.0 with aFull:-0.280459339018
+E500:t:1651:coasting at 19.5343968577
+E500:t:1651 State update PK:12.2976706051 vK:19.5292525617 maxVk:20.0 aF:-0.285794220188 a:0.0 power: 1.55037430743 v2factor: 0.0405442201881 gFactor:0.0 vSquare:29.4438781322
+E500:t:1652:coasting at 18.5130171752
+E500:t:1652 State update PK:12.3029524963 vK:18.5079472006 maxVk:20.0 aF:-0.281665254274 a:0.0 power: 1.44806823732 v2factor: 0.0364152542737 gFactor:0.0 vSquare:26.4453553186
+E500:t:1652:boosting from vK:18.1993528958 to maxVk:20.0 with aFull:-0.280461273694
+E500:t:1653:coasting at 19.7514538231
+E500:t:1653 State update PK:12.3082436265 vK:19.7462932187 maxVk:20.0 aF:-0.286700242363 a:0.0 power: 1.572574181 v2factor: 0.0414502423634 gFactor:0.0 vSquare:30.101846306
+E500:t:1654:coasting at 18.7269201959
+E500:t:1654 State update PK:12.3135853617 vK:18.7218349868 maxVk:20.0 aF:-0.282511613627 a:0.0 power: 1.46920439228 v2factor: 0.0372616136274 gFactor:0.0 vSquare:27.0599953721
+E500:t:1654:boosting from vK:18.1999865221 to maxVk:20.0 with aFull:-0.28046372505
+E500:t:1655:coasting at 19.9693522748
+E500:t:1655 State update PK:12.3188043452 vK:19.9641751175 maxVk:20.0 aF:-0.287619846967 a:0.0 power: 1.59502583114 v2factor: 0.0423698469665 gFactor:0.0 vSquare:30.7696782618
+E500:t:1656:coasting at 18.9416170135
+E500:t:1656 State update PK:12.3242061514 vK:18.9365163374 maxVk:20.0 aF:-0.283370890853 a:0.0 power: 1.49057152894 v2factor: 0.0381208908528 gFactor:0.0 vSquare:27.6840165961
+E500:t:1656:boosting from vK:18.1957178457 to maxVk:20.0 with aFull:-0.280447212163
+need to go faster...1.35
+E500:t:1657 State update PK:12.3293746572 vK:19.2336154797 maxVk:20.0 aF:1.06552307872 a:1.35 power: 1031404.14997 v2factor: 0.0392269212849 gFactor:0.0 vSquare:28.4872340486
+E500:t:1658:coasting at 19.1569633491
+E500:t:1658 State update PK:12.3348116869 vK:19.1518469821 maxVk:20.0 aF:-0.284242607255 a:0.0 power: 1.51215858888 v2factor: 0.0389926072555 gFactor:0.0 vSquare:28.3170713547
+E500:t:1658:boosting from vK:18.1964899533 to maxVk:20.0 with aFull:-0.280450198686
+need to go faster...1.35
+E500:t:1659 State update PK:12.3399921456 vK:18.4279371186 maxVk:20.0 aF:1.06874397603 a:1.35 power: 988199.567696 v2factor: 0.0360060239741 gFactor:0.0 vSquare:26.1481655585
+E500:t:1660:coasting at 19.3732306306
+E500:t:1660 State update PK:12.3454051541 vK:19.3680983271 maxVk:20.0 aF:-0.285127969413 a:0.0 power: 1.53399626317 v2factor: 0.0398779694132 gFactor:0.0 vSquare:28.9600358847
+E500:t:1661:coasting at 18.3541699596
+E500:t:1661 State update PK:12.3506426075 vK:18.3491111851 maxVk:20.0 aF:-0.281043027709 a:0.0 power: 1.43246937868 v2factor: 0.0357930277089 gFactor:0.0 vSquare:25.9934841749
+E500:t:1661:boosting from vK:18.197512521 to maxVk:20.0 with aFull:-0.280454154187
+E500:t:1662:coasting at 19.5895310446
+E500:t:1662 State update PK:12.3559864116 vK:19.5843826232 maxVk:20.0 aF:-0.286023408446 a:0.0 power: 1.55599774172 v2factor: 0.0407734084456 gFactor:0.0 vSquare:29.6103184064
+E500:t:1663:coasting at 18.567353576
+E500:t:1663 State update PK:12.3612835041 vK:18.5622797481 maxVk:20.0 aF:-0.281879328249 a:0.0 power: 1.4534230406 v2factor: 0.0366293282493 gFactor:0.0 vSquare:26.6008193532
+E500:t:1663:boosting from vK:18.1979033103 to maxVk:20.0 with aFull:-0.280455665899
+E500:t:1664:coasting at 19.807742483
+E500:t:1664 State update PK:12.3665554729 vK:19.80257762 maxVk:20.0 aF:-0.286936832866 a:0.0 power: 1.57835802913 v2factor: 0.0416868328663 gFactor:0.0 vSquare:30.2736622123
+E500:t:1665:coasting at 18.7823851964
+E500:t:1665 State update PK:12.3719127264 vK:18.7772960085 maxVk:20.0 aF:-0.282732661827 a:0.0 power: 1.47470968955 v2factor: 0.0374826618269 gFactor:0.0 vSquare:27.2205242025
+E500:t:1665:boosting from vK:18.1994941713 to maxVk:20.0 with aFull:-0.28046182025
+need to go faster...1.35
+E500:t:1666 State update PK:12.3771132073 vK:19.8497745777 maxVk:20.0 aF:1.06296672749 a:1.35 power: 1064445.74438 v2factor: 0.0417832725066 gFactor:0.0 vSquare:30.3436982619
+E500:t:1667:coasting at 18.9965477285
+E500:t:1667 State update PK:12.3825296746 vK:18.9914430669 maxVk:20.0 aF:-0.28359231272 a:0.0 power: 1.49606312812 v2factor: 0.0383423127202 gFactor:0.0 vSquare:27.8448167903
+E500:t:1667:boosting from vK:18.1995780935 to maxVk:20.0 with aFull:-0.280462144923
+need to go faster...1.35
+E500:t:1668 State update PK:12.3876966274 vK:19.0452626777 maxVk:20.0 aF:1.06628842224 a:1.35 power: 1021303.71202 v2factor: 0.0384615777595 gFactor:0.0 vSquare:27.9314290193
+E500:t:1669:coasting at 19.2116004312
+E500:t:1669 State update PK:12.3931342402 vK:19.206480055 maxVk:20.0 aF:-0.284465344057 a:0.0 power: 1.51766054361 v2factor: 0.0392153440574 gFactor:0.0 vSquare:28.478826476
+E500:t:1669:boosting from vK:18.199893907 to maxVk:20.0 with aFull:-0.280463366738
+need to go faster...1.35
+E500:t:1670 State update PK:12.3983272267 vK:18.238552812 maxVk:20.0 aF:1.06948105934 a:1.35 power: 978043.815729 v2factor: 0.0352689406625 gFactor:0.0 vSquare:25.6128835603
+E500:t:1671:coasting at 19.4275802032
+E500:t:1671 State update PK:12.4037264951 vK:19.4224438666 maxVk:20.0 aF:-0.285352030208 a:0.0 power: 1.53950938582 v2factor: 0.0401020302085 gFactor:0.0 vSquare:29.1227525116
+E500:t:1672:coasting at 18.4077396723
+E500:t:1672 State update PK:12.4089789344 vK:18.4026771315 maxVk:20.0 aF:-0.281252268483 a:0.0 power: 1.43772074705 v2factor: 0.0360022684834 gFactor:0.0 vSquare:26.1454382595
+E500:t:1672:boosting from vK:18.1954184098 to maxVk:20.0 with aFull:-0.280446053975
+E500:t:1673:coasting at 19.6445534227
+E500:t:1673 State update PK:12.4143033767 vK:19.6394008727 maxVk:20.0 aF:-0.286252775912 a:0.0 power: 1.56162028252 v2factor: 0.0410027759125 gFactor:0.0 vSquare:29.7768888253
+E500:t:1674:coasting at 18.6215775176
+E500:t:1674 State update PK:12.4196156394 vK:18.6164998331 maxVk:20.0 aF:-0.282093584607 a:0.0 power: 1.45877643632 v2factor: 0.0368435846073 gFactor:0.0 vSquare:26.7564158368
+E500:t:1674:boosting from vK:18.1963008383 to maxVk:20.0 with aFull:-0.280449467175
+E500:t:1675:coasting at 19.8621572191
+E500:t:1675 State update PK:12.4248680713 vK:19.8569882277 maxVk:20.0 aF:-0.287166186998 a:0.0 power: 1.5839598874 v2factor: 0.0419161869984 gFactor:0.0 vSquare:30.4402229473
+E500:t:1676:coasting at 18.8360014401
+E500:t:1676 State update PK:12.4302403262 vK:18.8309083947 maxVk:20.0 aF:-0.282946963464 a:0.0 power: 1.48004120821 v2factor: 0.037696963464 gFactor:0.0 vSquare:27.3761535687
+E500:t:1676:boosting from vK:18.1971264135 to maxVk:20.0 with aFull:-0.280452660618
+need to go faster...1.35
+E500:t:1677 State update PK:12.4354256984 vK:19.6376826459 maxVk:20.0 aF:1.06385577255 a:1.35 power: 1053072.29278 v2factor: 0.0408942274479 gFactor:0.0 vSquare:29.6980591488
+E500:t:1678:coasting at 19.051201391
+E500:t:1678 State update PK:12.4408530013 vK:19.0460927524 maxVk:20.0 aF:-0.283813254159 a:0.0 power: 1.50153710086 v2factor: 0.0385632541593 gFactor:0.0 vSquare:28.0052680896
+E500:t:1678:boosting from vK:18.1980740764 to maxVk:20.0 with aFull:-0.280456326493
+need to go faster...1.35
+E500:t:1679 State update PK:12.4460205496 vK:18.8321462292 maxVk:20.0 aF:1.06714529645 a:1.35 power: 1009875.3212 v2factor: 0.0376047035518 gFactor:0.0 vSquare:27.3091529062
+E500:t:1680:coasting at 19.2660629647
+E500:t:1680 State update PK:12.4514533137 vK:19.2609385806 maxVk:20.0 aF:-0.284688000604 a:0.0 power: 1.52315502619 v2factor: 0.0394380006043 gFactor:0.0 vSquare:28.6405233147
+E500:t:1681:coasting at 18.2485335589
+E500:t:1681 State update PK:12.4566612166 vK:18.2434821792 maxVk:20.0 aF:-0.280632203811 a:0.0 power: 1.42214128032 v2factor: 0.0353822038115 gFactor:0.0 vSquare:25.695137118
+E500:t:1681:boosting from vK:18.1980356119 to maxVk:20.0 with aFull:-0.280456177696
+E500:t:1682:coasting at 19.4819556671
+E500:t:1682 State update PK:12.4620411503 vK:19.4768152842 maxVk:20.0 aF:-0.28557682589 a:0.0 power: 1.54503530203 v2factor: 0.0403268258901 gFactor:0.0 vSquare:29.2860028251
+E500:t:1683:coasting at 18.4613326919
+E500:t:1683 State update PK:12.4673085824 vK:18.4562663721 maxVk:20.0 aF:-0.281462210506 a:0.0 power: 1.44298375855 v2factor: 0.0362122105059 gFactor:0.0 vSquare:26.2979016019
+E500:t:1683:ADVANCE green SIG vK:18.2539055876
+E500:t:1683:boosting from vK:18.1983556627 to maxVk:20.0 with aFull:-0.2804574158
+E500:t:1684:coasting at 19.6988320132
+E500:t:1684 State update PK:12.4726166192 vK:19.6936753791 maxVk:20.0 aF:-0.28647967316 a:0.0 power: 1.56717713498 v2factor: 0.0412296731603 gFactor:0.0 vSquare:29.9416653307
+E500:t:1685:coasting at 18.6750662448
+E500:t:1685 State update PK:12.4779438466 vK:18.6699847449 maxVk:20.0 aF:-0.282305548045 a:0.0 power: 1.46406674317 v2factor: 0.0370555480451 gFactor:0.0 vSquare:26.9103471642
+E500:t:1685:AT SIG WestboundMain:2228 vK:18.2595775669
+E500:1685:START UPDATE SIG BY OCCU sig:WestboundMain:CDE+10 from value green to value red
+E500:1685:START UPDATE SIG BY OCCU sig:WestboundMain:CDE-140 from value red to value yellow
+E500:1685:START UPDATE SIG BY OCCU sig:WestboundMain:2175 from value yellow to value green
+SIG 2175 was yellow now green
+SIG CDE-140 was red now yellow
+SIG CDE+10 was green now red
+E500:t:1685next SIG (Arg-90) at PK12.615
+E500:t:1685:boosting from vK:18.198975016 to maxVk:20.0 with aFull:-0.280459811804
+E500:t:1686:coasting at 19.9169840528
+E500:t:1686 State update PK:12.4831798551 vK:19.9118108903 maxVk:20.0 aF:-0.287397914462 a:0.0 power: 1.58961470084 v2factor: 0.0421479144619 gFactor:0.0 vSquare:30.6085072345
+E500:t:1687:coasting at 18.8900214933
+E500:t:1687 State update PK:12.4885672247 vK:18.8849245504 maxVk:20.0 aF:-0.283163496902 a:0.0 power: 1.48542257623 v2factor: 0.0379134969019 gFactor:0.0 vSquare:27.5334037051
+E500:t:1687:boosting from vK:18.1951183282 to maxVk:20.0 with aFull:-0.280444893308
+need to go faster...1.35
+E500:t:1688 State update PK:12.4937415606 vK:19.4249195258 maxVk:20.0 aF:1.06473802462 a:1.35 power: 1041662.84879 v2factor: 0.0400119753781 gFactor:0.0 vSquare:29.0573532158
+E500:t:1689:coasting at 19.1054103017
+E500:t:1689 State update PK:12.4991754856 vK:19.1002977073 maxVk:20.0 aF:-0.284033024672 a:0.0 power: 1.50697648054 v2factor: 0.0387830246722 gFactor:0.0 vSquare:28.164869043
+E500:t:1689:TIV 10 reached at curr speed 18.9368912365, maxVk now 55.0
+E500:t:1689  next TIV at PK15.16 with limit <<50 (currspeed:18.9368912365)
+E500:t:1689  BDtiv: 27.6199494949
+E500:t:1689:vK:18.9368912365 maxVk:55.0 =>ready to acc
+need to go faster...1.35
+E500:t:1690 State update PK:12.5048162168 vK:22.1419136599 maxVk:55.0 aF:1.05274853591 a:1.35 power: 1187361.94827 v2factor: 0.0520014640913 gFactor:0.0 vSquare:37.7643166966
+need to go faster...1.35
+E500:t:1691 State update PK:12.511492625 vK:25.8979447264 maxVk:55.0 aF:1.03359009905 a:1.35 power: 1388779.56217 v2factor: 0.0711599009518 gFactor:0.0 vSquare:51.6774879824
+need to go faster...1.35
+E500:t:1692 State update PK:12.5192023097 vK:29.5803510364 maxVk:55.0 aF:1.01189600653 a:1.35 power: 1586249.10245 v2factor: 0.0928539934749 gFactor:0.0 vSquare:67.4320940268
+need to go faster...1.35
+E500:t:1693 State update PK:12.5279235842 vK:33.1804223121 maxVk:55.0 aF:0.987900425763 a:1.35 power: 1779303.48388 v2factor: 0.116849574237 gFactor:0.0 vSquare:84.8580786031
+need to go faster...1.35
+E500:t:1694 State update PK:12.5376324629 vK:36.690321483 maxVk:55.0 aF:0.961853362996 a:1.35 power: 1967522.44542 v2factor: 0.142896637004 gFactor:0.0 vSquare:103.773883082
+need to go faster...1.26030837344
+E500:t:1695 State update PK:12.5482920774 vK:39.9653892152 maxVk:55.0 aF:0.845481659993 a:1.26030837344 power: 2000761.8826 v2factor: 0.169576713451 gFactor:0.0 vSquare:123.149392484
+E500:t:1695:ADVANCE green SIG vK:41.5612633051
+need to go faster...1.1766146916
+E500:t:1696 State update PK:12.5597989897 vK:42.8051119512 maxVk:55.0 aF:0.736805813827 a:1.1766146916 power: 2000619.86125 v2factor: 0.194558877775 gFactor:0.0 vSquare:141.291850236
+need to go faster...1.11191973643
+E500:t:1697 State update PK:12.5720439262 vK:45.2932776923 maxVk:55.0 aF:0.64881226989 a:1.11191973643 power: 2000515.82193 v2factor: 0.217857466537 gFactor:0.0 vSquare:158.211667783
+need to go faster...1.06038253359
+E500:t:1698 State update PK:12.5849384955 vK:47.4927433083 maxVk:55.0 aF:0.575583761716 a:1.06038253359 power: 2000436.39376 v2factor: 0.23954877187 gFactor:0.0 vSquare:173.964249724
+need to go faster...1.01839015267
+E500:t:1699 State update PK:12.5984092294 vK:49.4495035271 maxVk:55.0 aF:0.513429082157 a:1.01839015267 power: 2000373.85415 v2factor: 0.259711070516 gFactor:0.0 vSquare:188.606441914
+need to go faster...0.983571734343
+E500:t:1700 State update PK:12.6123938197 vK:51.1987110792 maxVk:55.0 aF:0.459897814464 a:0.983571734343 power: 2000323.42609 v2factor: 0.278423919879 gFactor:0.0 vSquare:202.196020246
+E500:t:1700:ADVANCE STA x:12705.0 vK:51.256532836
+E500:t:1700:AT SIG WestboundMain:Arg-90 vK:50.662532836
+E500:1700:START UPDATE SIG BY OCCU sig:WestboundMain:2228 from value green to value red
+E500:1700:START UPDATE SIG BY OCCU sig:WestboundMain:CDE+10 from value red to value yellow
+E500:1700:START UPDATE SIG BY OCCU sig:WestboundMain:CDE-140 from value yellow to value green
+SIG CDE-140 was yellow now green
+SIG CDE+10 was red now yellow
+SIG 2228 was green now red
+E500:t:1700next SIG (Arg+10) at PK12.715
+E500:t:1701 State update PK:12.6261166773 vK:47.435132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.239271881612 gFactor:0.0 vSquare:173.763167474
+E500:t:1702 State update PK:12.6387403531 vK:43.475132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.201004725631 gFactor:0.0 vSquare:145.972930741
+E500:t:1703 State update PK:12.6502640289 vK:39.515132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.166069909649 gFactor:0.0 vSquare:120.602694008
+E500:t:1704 State update PK:12.6606877046 vK:35.555132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.134467433668 gFactor:0.0 vSquare:97.6524572751
+E500:t:1705 State update PK:12.6700113804 vK:31.595132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.106197297686 gFactor:0.0 vSquare:77.122220542
+E500:t:1706 State update PK:12.6782350562 vK:27.635132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0812595017049 gFactor:0.0 vSquare:59.0119838089
+E500:t:1707 State update PK:12.685358732 vK:23.675132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0596540457234 gFactor:0.0 vSquare:43.3217470758
+E500:t:1708 State update PK:12.6913824078 vK:19.715132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0413809297419 gFactor:0.0 vSquare:30.0515103427
+E500:t:1709 State update PK:12.6963060836 vK:15.755132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0264401537604 gFactor:0.0 vSquare:19.2012736096
+E500:t:1710 State update PK:12.7001297594 vK:11.795132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0148317177789 gFactor:0.0 vSquare:10.7710368765
+E500:t:1711 State update PK:12.7028534352 vK:7.835132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00655562179742 gFactor:0.0 vSquare:4.76080014337
+E500:t:1712 State update PK:12.7044771109 vK:3.875132836 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00161186581593 gFactor:0.0 vSquare:1.17056341026
+E500:t:1712:IN STA Arg vK:0.784964836002 a:-0.004
+E500:t:1712:next STA (PoM) at PK13.258
+E500:t:1723:OUT STA, a:1.33780166671 vK:0.0
+need to go faster...1.35
+E500:t:1724 State update PK:12.7055556864 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1725 State update PK:12.7072134761 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1726 State update PK:12.7099690473 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1726:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1727 State update PK:12.7138141148 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1727:AT SIG WestboundMain:Arg+10 vK:16.807851537
+E500:1727:START UPDATE SIG BY OCCU sig:WestboundMain:Arg-90 from value green to value red
+E500:1727:START UPDATE SIG BY OCCU sig:WestboundMain:2228 from value red to value yellow
+E500:1727:START UPDATE SIG BY OCCU sig:WestboundMain:CDE+10 from value yellow to value green
+SIG CDE+10 was yellow now green
+SIG 2228 was red now yellow
+SIG Arg-90 was green now red
+E500:t:1727next SIG (PoM-140) at PK13.118
+need to go faster...1.35
+E500:t:1728 State update PK:12.7187372188 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1729 State update PK:12.7247238597 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1730 State update PK:12.7317566657 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1731 State update PK:12.73981559 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1732 State update PK:12.7488781307 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1733 State update PK:12.7589194752 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1734 State update PK:12.7698833781 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1735 State update PK:12.7816543125 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1736 State update PK:12.7941309858 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1737 State update PK:12.8072306581 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:1738 State update PK:12.8208840301 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:1739 State update PK:12.8350320005 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:1740 State update PK:12.8496234819 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:1741 State update PK:12.8646138598 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:1742:coasting at 53.4558144052
+E500:t:1742 State update PK:12.8797085532 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:1743:coasting at 51.5190987296
+E500:t:1743 State update PK:12.8942825677 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:1743:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+need to go faster...0.998762461444
+E500:t:1744 State update PK:12.9083529463 vK:50.4205581989 maxVk:55.0 aF:0.483493476073 a:0.998762461444 power: 2000345.27127 v2factor: 0.270018985371 gFactor:0.0 vSquare:196.09221886
+need to go faster...0.967114366836
+E500:t:1745 State update PK:12.9225929303 vK:52.0693425966 maxVk:55.0 aF:0.433884028385 a:0.967114366836 power: 2000300.02622 v2factor: 0.28798033845 gFactor:0.0 vSquare:209.136048257
+need to go faster...0.940336366175
+E500:t:1746 State update PK:12.9372670813 vK:53.5511072481 maxVk:55.0 aF:0.390470976715 a:0.940336366175 power: 2000262.53053 v2factor: 0.30461538946 gFactor:0.0 vSquare:221.216695323
+need to go faster...0.917449041244
+E500:t:1747 State update PK:12.9523319266 vK:54.8861542697 maxVk:55.0 aF:0.352195921706 a:0.917449041244 power: 2000231.03309 v2factor: 0.320003119537 gFactor:0.0 vSquare:232.391517456
+E500:t:1748:coasting at 53.0607464794
+E500:t:1748 State update PK:12.9673418029 vK:53.050947445 maxVk:55.0 aF:-0.544390799301 a:0.0 power: 8.02234657869 v2factor: 0.299140799301 gFactor:0.0 vSquare:217.240958098
+E500:t:1749:coasting at 51.1395244951
+E500:t:1749 State update PK:12.9818082881 vK:51.1301083276 maxVk:55.0 aF:-0.523120415093 a:0.0 power: 7.4297787478 v2factor: 0.277870415093 gFactor:0.0 vSquare:201.794055986
+E500:t:1749:boosting from vK:50.0409459847 to maxVk:55.0 with aFull:-0.511408125126
+need to go faster...0.99200584757
+E500:t:1750 State update PK:12.995838429 vK:50.7637258786 maxVk:55.0 aF:0.473046131162 a:0.99200584757 power: 2000335.52537 v2factor: 0.273709716408 gFactor:0.0 vSquare:198.772488314
+need to go faster...0.961422429205
+E500:t:1751 State update PK:13.0101687252 vK:52.3773975157 maxVk:55.0 aF:0.424772147734 a:0.961422429205 power: 2000291.99675 v2factor: 0.291400281471 gFactor:0.0 vSquare:211.619667008
+E500:t:1751:ADVANCE green SIG vK:53.2374600564
+need to go faster...0.935488955769
+E500:t:1752 State update PK:13.0249240629 vK:53.8284092362 maxVk:55.0 aF:0.382458572186 a:0.935488955769 power: 2000255.81788 v2factor: 0.307780383584 gFactor:0.0 vSquare:223.515166001
+E500:t:1753:coasting at 54.6539696456
+E500:t:1753 State update PK:13.0400514541 vK:54.6438424002 maxVk:55.0 aF:-0.56262474229 a:0.0 power: 8.53999381894 v2factor: 0.31737474229 gFactor:0.0 vSquare:230.482746761
+E500:t:1754:coasting at 52.6695775228
+E500:t:1754 State update PK:13.054951483 vK:52.6598575864 maxVk:55.0 aF:-0.539996467121 a:0.0 power: 7.89892695992 v2factor: 0.294746467121 gFactor:0.0 vSquare:214.049721947
+E500:t:1755:coasting at 50.7635854829
+E500:t:1755 State update PK:13.0693114841 vK:50.7542425821 maxVk:55.0 aF:-0.519050046178 a:0.0 power: 7.31777554332 v2factor: 0.273800046178 gFactor:0.0 vSquare:198.838087275
+E500:t:1755:boosting from vK:50.0494399996 to maxVk:55.0 with aFull:-0.511498489525
+need to go faster...0.985140130276
+E500:t:1756 State update PK:13.083344491 vK:51.1172579642 maxVk:55.0 aF:0.462352029546 a:0.985140130276 power: 2000325.67051 v2factor: 0.27753810073 gFactor:0.0 vSquare:201.552723842
+need to go faster...0.955624662531
+E500:t:1757 State update PK:13.0977678566 vK:52.6949535392 maxVk:55.0 aF:0.415427838323 a:0.955624662531 power: 2000283.85118 v2factor: 0.294946824208 gFactor:0.0 vSquare:214.195224552
+need to go faster...0.930541664057
+E500:t:1758 State update PK:13.1126069061 vK:54.1144046075 maxVk:55.0 aF:0.374229936676 a:0.930541664057 power: 2000248.99017 v2factor: 0.311061727381 gFactor:0.0 vSquare:225.898131722
+E500:t:1758:AT SIG WestboundMain:PoM-140 vK:54.590394462
+E500:1758:START UPDATE SIG BY OCCU sig:WestboundMain:Arg+10 from value green to value red
+E500:1758:START UPDATE SIG BY OCCU sig:WestboundMain:Arg-90 from value red to value yellow
+E500:1758:START UPDATE SIG BY OCCU sig:WestboundMain:2228 from value yellow to value green
+SIG 2228 was yellow now green
+SIG Arg-90 was red now yellow
+SIG Arg+10 was green now red
+E500:t:1758next SIG (PoM+10) at PK13.268
+E500:t:1759:coasting at 54.2304883339
+E500:t:1759 State update PK:13.1277606473 vK:54.2204492749 maxVk:55.0 aF:-0.557725498149 a:0.0 power: 8.40003530048 v2factor: 0.312475498149 gFactor:0.0 vSquare:226.924835257
+E500:t:1760:coasting at 52.2630652762
+E500:t:1760 State update PK:13.1425454652 vK:52.2534269201 maxVk:55.0 aF:-0.535464224157 a:0.0 power: 7.7721779737 v2factor: 0.290214224157 gFactor:0.0 vSquare:210.758332721
+E500:t:1761:coasting at 50.3727836493
+E500:t:1761 State update PK:13.1567947888 vK:50.3635163386 maxVk:55.0 aF:-0.514850591586 a:0.0 power: 7.20269060592 v2factor: 0.269600591586 gFactor:0.0 vSquare:195.788374427
+E500:t:1761:boosting from vK:50.0494857192 to maxVk:55.0 with aFull:-0.51149897596
+E500:t:1761:ADVANCE STA x:13258.0 vK:50.9919921267
+E500:t:1762 State update PK:13.1708065072 vK:49.8633921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.26438536603 gFactor:0.0 vSquare:192.000992033
+E500:t:1763 State update PK:13.1841046995 vK:45.9033921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.224074829855 gFactor:0.0 vSquare:162.726819067
+E500:t:1764 State update PK:13.1963028918 vK:41.9433921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.187096633681 gFactor:0.0 vSquare:135.872646101
+E500:t:1765 State update PK:13.207401084 vK:37.9833921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.153450777506 gFactor:0.0 vSquare:111.438473134
+E500:t:1766 State update PK:13.2173992763 vK:34.0233921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.123137261331 gFactor:0.0 vSquare:89.4243001681
+E500:t:1767 State update PK:13.2262974685 vK:30.0633921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0961560851568 gFactor:0.0 vSquare:69.8301272017
+E500:t:1768 State update PK:13.2340956608 vK:26.1033921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0725072489821 gFactor:0.0 vSquare:52.6559542354
+E500:t:1769 State update PK:13.2407938531 vK:22.1433921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0521907528075 gFactor:0.0 vSquare:37.9017812691
+E500:t:1770 State update PK:13.2463920453 vK:18.1833921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0352065966328 gFactor:0.0 vSquare:25.5676083027
+E500:t:1771 State update PK:13.2508902376 vK:14.2233921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0215547804582 gFactor:0.0 vSquare:15.6534353364
+E500:t:1772 State update PK:13.2542884298 vK:10.2633921267 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0112353042835 gFactor:0.0 vSquare:8.15926237002
+E500:t:1773 State update PK:13.2565866221 vK:6.30339212674 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00424816810887 gFactor:0.0 vSquare:3.08508940368
+E500:t:1774 State update PK:13.2577848143 vK:2.34339212674 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000593371934214 gFactor:0.0 vSquare:0.430916437338
+E500:t:1774:IN STA PoM vK:0.795968126743 a:-0.004
+E500:t:1774:next STA (Sab) at PK14.105
+E500:t:1785:OUT STA, a:1.36873460092 vK:0.0
+need to go faster...1.35
+E500:t:1786 State update PK:13.2585554688 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1787 State update PK:13.2602132585 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1788 State update PK:13.2629688297 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1788:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1789 State update PK:13.2668138972 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1789:AT SIG WestboundMain:PoM+10 vK:16.807851537
+E500:1789:START UPDATE SIG BY OCCU sig:WestboundMain:PoM-140 from value green to value red
+E500:1789:START UPDATE SIG BY OCCU sig:WestboundMain:Arg+10 from value red to value yellow
+E500:1789:START UPDATE SIG BY OCCU sig:WestboundMain:Arg-90 from value yellow to value green
+SIG Arg-90 was yellow now green
+SIG Arg+10 was red now yellow
+SIG PoM-140 was green now red
+E500:t:1789next SIG (2340) at PK13.6
+need to go faster...1.35
+E500:t:1790 State update PK:13.2717370012 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1791 State update PK:13.2777236421 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1792 State update PK:13.2847564481 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1793 State update PK:13.2928153724 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1794 State update PK:13.3018779131 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1795 State update PK:13.3119192576 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1796 State update PK:13.3228831605 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1797 State update PK:13.3346540949 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1798 State update PK:13.3471307682 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1799 State update PK:13.3602304404 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:1800 State update PK:13.3738838125 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:1801 State update PK:13.3880317829 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:1802 State update PK:13.4026232643 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:1803 State update PK:13.4176136422 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:1804:coasting at 53.4558144052
+E500:t:1804 State update PK:13.4327083355 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:1805:coasting at 51.5190987296
+E500:t:1805 State update PK:13.4472823501 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:1805:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+need to go faster...0.998757331355
+E500:t:1806 State update PK:13.4613527443 vK:50.4208169937 maxVk:55.0 aF:0.483485572108 a:0.998757331355 power: 2000345.26385 v2factor: 0.270021759247 gFactor:0.0 vSquare:196.094233295
+need to go faster...0.967110050289
+E500:t:1807 State update PK:13.4755927965 vK:52.0695748394 maxVk:55.0 aF:0.433877141141 a:0.967110050289 power: 2000300.02012 v2factor: 0.287982909147 gFactor:0.0 vSquare:209.13791514
+need to go faster...0.940332693687
+E500:t:1808 State update PK:13.4902670086 vK:53.5513162548 maxVk:55.0 aF:0.390464924881 a:0.940332693687 power: 2000262.52543 v2factor: 0.304617768807 gFactor:0.0 vSquare:221.218423244
+E500:t:1808:ADVANCE green SIG vK:54.1758560801
+need to go faster...0.917445888042
+E500:t:1809 State update PK:13.5053319091 vK:54.8863427899 maxVk:55.0 aF:0.352190568862 a:0.917445888042 power: 2000231.02878 v2factor: 0.320005319181 gFactor:0.0 vSquare:232.393114873
+E500:t:1810:coasting at 53.0609268572
+E500:t:1810 State update PK:13.5203418365 vK:53.0511277862 maxVk:55.0 aF:-0.544392833138 a:0.0 power: 8.0224038213 v2factor: 0.299142833138 gFactor:0.0 vSquare:217.242435104
+E500:t:1811:coasting at 51.1396978245
+E500:t:1811 State update PK:13.5348083708 vK:51.1302816231 maxVk:55.0 aF:-0.523122298693 a:0.0 power: 7.42983068208 v2factor: 0.277872298693 gFactor:0.0 vSquare:201.795423887
+E500:t:1811:boosting from vK:50.0411154006 to maxVk:55.0 with aFull:-0.511409927324
+need to go faster...0.991984278602
+E500:t:1812 State update PK:13.5488386696 vK:50.7648288514 maxVk:55.0 aF:0.473012659472 a:0.991984278602 power: 2000335.49433 v2factor: 0.273721619129 gFactor:0.0 vSquare:198.781132265
+need to go faster...0.961404237195
+E500:t:1813 State update PK:13.5631692561 vK:52.3783879395 maxVk:55.0 aF:0.424742927765 a:0.961404237195 power: 2000291.97114 v2factor: 0.291411309431 gFactor:0.0 vSquare:211.627675694
+need to go faster...0.935473447727
+E500:t:1814 State update PK:13.5779248548 vK:53.8293010052 maxVk:55.0 aF:0.382432859537 a:0.935473447727 power: 2000255.79644 v2factor: 0.30779058819 gFactor:0.0 vSquare:223.522576754
+E500:t:1815:coasting at 54.6547817716
+E500:t:1815 State update PK:13.5930524815 vK:54.6446543564 maxVk:55.0 aF:-0.562634174365 a:0.0 power: 8.54026388536 v2factor: 0.317384174365 gFactor:0.0 vSquare:230.489596489
+E500:t:1815:AT SIG WestboundMain:2340 vK:53.7119474735
+E500:1815:START UPDATE SIG BY OCCU sig:WestboundMain:PoM+10 from value green to value red
+E500:1815:START UPDATE SIG BY OCCU sig:WestboundMain:PoM-140 from value red to value yellow
+E500:1815:START UPDATE SIG BY OCCU sig:WestboundMain:Arg+10 from value yellow to value green
+SIG Arg+10 was yellow now green
+SIG PoM-140 was red now yellow
+SIG PoM+10 was green now red
+E500:t:1815next SIG (Sab-140) at PK13.965
+E500:t:1816:coasting at 52.6703569826
+E500:t:1816 State update PK:13.6079527313 vK:52.6606368891 maxVk:55.0 aF:-0.540005191121 a:0.0 power: 7.89917146885 v2factor: 0.294755191121 gFactor:0.0 vSquare:214.056057459
+E500:t:1817:coasting at 50.7643347046
+E500:t:1817 State update PK:13.6223129447 vK:50.7549916583 maxVk:55.0 aF:-0.519058128287 a:0.0 power: 7.31799749205 v2factor: 0.273808128287 gFactor:0.0 vSquare:198.843956636
+E500:t:1817:boosting from vK:50.0409728271 to maxVk:55.0 with aFull:-0.511408410668
+need to go faster...0.985447948904
+E500:t:1818 State update PK:13.6363431867 vK:51.1013021473 maxVk:55.0 aF:0.462833205684 a:0.985447948904 power: 2000326.1113 v2factor: 0.27736474322 gFactor:0.0 vSquare:201.426828773
+need to go faster...0.955884900217
+E500:t:1819 State update PK:13.6507623512 vK:52.6806171761 maxVk:55.0 aF:0.415848650146 a:0.955884900217 power: 2000284.21609 v2factor: 0.294786250071 gFactor:0.0 vSquare:214.078612978
+need to go faster...0.930763938029
+E500:t:1820 State update PK:13.665597621 vK:54.1014900469 maxVk:55.0 aF:0.374600759717 a:0.930763938029 power: 2000249.29643 v2factor: 0.310913178312 gFactor:0.0 vSquare:225.79025295
+E500:t:1821:coasting at 54.2510901457
+E500:t:1821 State update PK:13.680751193 vK:54.2410468125 maxVk:55.0 aF:-0.557962958088 a:0.0 power: 8.40680414702 v2factor: 0.312712958088 gFactor:0.0 vSquare:227.097282562
+E500:t:1822:coasting at 52.282844552
+E500:t:1822 State update PK:13.6955416162 vK:52.2732022413 maxVk:55.0 aF:-0.535683932411 a:0.0 power: 7.77830959342 v2factor: 0.290433932411 gFactor:0.0 vSquare:210.917888461
+E500:t:1823:coasting at 50.3918012774
+E500:t:1823 State update PK:13.7097963253 vK:50.3825303018 maxVk:55.0 aF:-0.515054198823 a:0.0 power: 7.20825938313 v2factor: 0.269804198823 gFactor:0.0 vSquare:195.936237344
+E500:t:1823:boosting from vK:50.0499599837 to maxVk:55.0 with aFull:-0.511504021924
+need to go faster...0.978827144194
+E500:t:1824 State update PK:13.7238695975 vK:51.446706323 maxVk:55.0 aF:0.452447539831 a:0.978827144194 power: 2000316.65176 v2factor: 0.281129604363 gFactor:0.0 vSquare:204.160932725
+need to go faster...0.950281311822
+E500:t:1825 State update PK:13.7383797187 vK:52.9910521921 maxVk:55.0 aF:0.406758268454 a:0.950281311822 power: 2000276.37347 v2factor: 0.298273043368 gFactor:0.0 vSquare:216.610779497
+need to go faster...0.925973440148
+E500:t:1826 State update PK:13.7532968424 vK:54.3812009356 maxVk:55.0 aF:0.366584967797 a:0.925973440148 power: 2000242.70631 v2factor: 0.31413847235 gFactor:0.0 vSquare:228.132514416
+E500:t:1827:coasting at 53.8307112264
+E500:t:1827 State update PK:13.7684375064 vK:53.8207547882 maxVk:55.0 aF:-0.553135456309 a:0.0 power: 8.26949104408 v2factor: 0.307885456309 gFactor:0.0 vSquare:223.591471539
+E500:t:1828:coasting at 51.8791889421
+E500:t:1828 State update PK:13.7831135452 vK:51.8696270436 maxVk:55.0 aF:-0.531216588563 a:0.0 power: 7.65389064669 v2factor: 0.285966588563 gFactor:0.0 vSquare:207.673630038
+E500:t:1828:boosting from vK:50.0496421085 to maxVk:55.0 with aFull:-0.511500639867
+need to go faster...1.00510692726
+E500:t:1829 State update PK:13.7972588623 vK:50.1025246781 maxVk:55.0 aF:0.493236002165 a:1.00510692726 power: 2000354.46603 v2factor: 0.266620925095 gFactor:0.0 vSquare:193.624491718
+need to go faster...0.972446691097
+E500:t:1830 State update PK:13.8114151749 vK:51.7840227899 maxVk:55.0 aF:0.442365897511 a:0.972446691097 power: 2000307.57791 v2factor: 0.284830793586 gFactor:0.0 vSquare:206.848797085
+need to go faster...0.944868885547
+E500:t:1831 State update PK:13.8260141493 vK:53.2943935053 maxVk:55.0 aF:0.397918931011 a:0.944868885547 power: 2000268.82766 v2factor: 0.301699954536 gFactor:0.0 vSquare:219.099458632
+need to go faster...0.921337689922
+E500:t:1832 State update PK:13.8410112754 vK:54.654646123 maxVk:55.0 aF:0.358780090986 a:0.921337689922 power: 2000236.34971 v2factor: 0.317307598937 gFactor:0.0 vSquare:230.433986156
+E500:t:1833:coasting at 53.4136788887
+E500:t:1833 State update PK:13.8560984083 vK:53.4038079859 maxVk:55.0 aF:-0.54838349107 a:0.0 power: 8.13493518326 v2factor: 0.30313349107 gFactor:0.0 vSquare:220.140516391
+E500:t:1834:coasting at 51.4786210328
+E500:t:1834 State update PK:13.8706609552 vK:51.4691383152 maxVk:55.0 aF:-0.52681764499 a:0.0 power: 7.53190284358 v2factor: 0.28156764499 gFactor:0.0 vSquare:204.479045018
+E500:t:1834:ADVANCE green SIG vK:51.1007616135
+E500:t:1834:boosting from vK:50.0490660606 to maxVk:55.0 with aFull:-0.511494511016
+need to go faster...0.997761597272
+E500:t:1835 State update PK:13.8847260757 vK:50.471098666 maxVk:55.0 aF:0.481950626977 a:0.997761597272 power: 2000343.8246 v2factor: 0.270560970295 gFactor:0.0 vSquare:196.485817208
+need to go faster...0.966272073296
+E500:t:1836 State update PK:13.8989793588 vK:52.1146997539 maxVk:55.0 aF:0.432539458611 a:0.966272073296 power: 2000298.83598 v2factor: 0.288482614685 gFactor:0.0 vSquare:209.500809502
+need to go faster...0.939619645177
+E500:t:1837 State update PK:13.9136654622 vK:53.5919278609 maxVk:55.0 aF:0.38928937479 a:0.939619645177 power: 2000261.53659 v2factor: 0.305080270388 gFactor:0.0 vSquare:221.554299483
+need to go faster...0.91683358991
+E500:t:1838 State update PK:13.9287410768 vK:54.922974796 maxVk:55.0 aF:0.351150707241 a:0.91683358991 power: 2000230.19293 v2factor: 0.320432882669 gFactor:0.0 vSquare:232.703618496
+E500:t:1839:coasting at 53.0008809707
+E500:t:1839 State update PK:13.9437348773 vK:52.9910940796 maxVk:55.0 aF:-0.543716172015 a:0.0 power: 8.00336522884 v2factor: 0.298466172015 gFactor:0.0 vSquare:216.75103269
+E500:t:1840:coasting at 51.0819969654
+E500:t:1840 State update PK:13.958185067 vK:51.0725920445 maxVk:55.0 aF:-0.522495606485 a:0.0 power: 7.41255693196 v2factor: 0.277245606485 gFactor:0.0 vSquare:201.34030972
+E500:t:1840:AT SIG WestboundMain:Sab-140 vK:50.1689432449
+E500:1840:START UPDATE SIG BY OCCU sig:WestboundMain:2340 from value green to value red
+E500:1840:START UPDATE SIG BY OCCU sig:WestboundMain:PoM+10 from value red to value yellow
+E500:1840:START UPDATE SIG BY OCCU sig:WestboundMain:PoM-140 from value yellow to value green
+SIG PoM-140 was yellow now green
+SIG PoM+10 was red now yellow
+SIG 2340 was green now red
+E500:t:1840next SIG (Sab+10) at PK14.115
+E500:t:1840:boosting from vK:50.0491156729 to maxVk:55.0 with aFull:-0.511495038863
+need to go faster...0.990704715749
+E500:t:1841 State update PK:13.9722145194 vK:50.8303478395 maxVk:55.0 aF:0.471025584988 a:0.990704715749 power: 2000333.65402 v2factor: 0.274429130762 gFactor:0.0 vSquare:199.294938825
+need to go faster...0.960324762184
+E500:t:1842 State update PK:13.9865623519 vK:52.4372247605 maxVk:55.0 aF:0.423007954801 a:0.960324762184 power: 2000290.45202 v2factor: 0.292066807383 gFactor:0.0 vSquare:212.103709065
+need to go faster...0.934553060138
+E500:t:1843 State update PK:14.0013334592 vK:53.8822796615 maxVk:55.0 aF:0.380905928212 a:0.934553060138 power: 2000254.52447 v2factor: 0.308397131926 gFactor:0.0 vSquare:223.96305877
+E500:t:1843:ADVANCE STA x:14105.0 vK:54.0118768225
+E500:t:1844 State update PK:14.0158821886 vK:50.4280768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.270405004314 gFactor:0.0 vSquare:196.372552153
+E500:t:1845 State update PK:14.0293372377 vK:46.4680768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.229619285968 gFactor:0.0 vSquare:166.753294094
+E500:t:1846 State update PK:14.0416922868 vK:42.5080768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.192165907622 gFactor:0.0 vSquare:139.554036036
+E500:t:1847 State update PK:14.052947336 vK:38.5480768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.158044869276 gFactor:0.0 vSquare:114.774777978
+E500:t:1848 State update PK:14.0631023851 vK:34.5880768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.12725617093 gFactor:0.0 vSquare:92.4155199199
+E500:t:1849 State update PK:14.0721574342 vK:30.6280768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0997998125835 gFactor:0.0 vSquare:72.4762618617
+E500:t:1850 State update PK:14.0801124833 vK:26.6680768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0756757942374 gFactor:0.0 vSquare:54.9570038035
+E500:t:1851 State update PK:14.0869675324 vK:22.7080768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0548841158913 gFactor:0.0 vSquare:39.8577457453
+E500:t:1852 State update PK:14.0927225816 vK:18.7480768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0374247775451 gFactor:0.0 vSquare:27.1784876871
+E500:t:1853 State update PK:14.0973776307 vK:14.7880768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.023297779199 gFactor:0.0 vSquare:16.9192296289
+E500:t:1854 State update PK:14.1009326798 vK:10.8280768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0125031208528 gFactor:0.0 vSquare:9.07997157069
+E500:t:1855 State update PK:14.1033877289 vK:6.8680768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00504080250671 gFactor:0.0 vSquare:3.6607135125
+E500:t:1856 State update PK:14.104742778 vK:2.9080768225 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000910824160573 gFactor:0.0 vSquare:0.661455454302
+E500:t:1856:IN STA Sab vK:1.0270768225 a:-1.1
+E500:t:1856:next STA (PoN) at PK15.128
+E500:t:1867:OUT STA, a:1.31559529134 vK:0.0
+need to go faster...1.35
+E500:t:1868 State update PK:14.1055560795 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1869 State update PK:14.1072138692 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:1870 State update PK:14.1099694404 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1870:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1871 State update PK:14.1138145079 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1871:AT SIG WestboundMain:Sab+10 vK:16.807851537
+E500:1871:START UPDATE SIG BY OCCU sig:WestboundMain:Sab-140 from value green to value red
+E500:1871:START UPDATE SIG BY OCCU sig:WestboundMain:2340 from value red to value yellow
+E500:1871:START UPDATE SIG BY OCCU sig:WestboundMain:PoM+10 from value yellow to value green
+SIG PoM+10 was yellow now green
+SIG 2340 was red now yellow
+SIG Sab-140 was green now red
+E500:t:1871next SIG (2420) at PK14.4
+need to go faster...1.35
+E500:t:1872 State update PK:14.1187376119 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1873 State update PK:14.1247242528 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1874 State update PK:14.1317570588 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:1875 State update PK:14.1398159831 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1876 State update PK:14.1488785238 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1877 State update PK:14.1589198683 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1878 State update PK:14.1698837712 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1879 State update PK:14.1816547056 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1880 State update PK:14.1941313789 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1881 State update PK:14.2072310512 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:1882 State update PK:14.2208844232 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:1883 State update PK:14.2350323936 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:1884 State update PK:14.249623875 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:1885 State update PK:14.2646142529 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:1886:coasting at 53.4558144052
+E500:t:1886 State update PK:14.2797089463 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:1887:coasting at 51.5190987296
+E500:t:1887 State update PK:14.2942829608 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:1887:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+need to go faster...0.998747428587
+E500:t:1888 State update PK:14.3083533852 vK:50.421316561 maxVk:55.0 aF:0.483470314721 a:0.998747428587 power: 2000345.24953 v2factor: 0.270027113867 gFactor:0.0 vSquare:196.098121907
+E500:t:1888:ADVANCE green SIG vK:50.6373331595
+need to go faster...0.967101717903
+E500:t:1889 State update PK:14.3225935688 vK:52.0700231519 maxVk:55.0 aF:0.433863846349 a:0.967101717903 power: 2000300.00834 v2factor: 0.287987871554 gFactor:0.0 vSquare:209.141518921
+need to go faster...0.940325604538
+E500:t:1890 State update PK:14.3372678991 vK:53.5517197135 maxVk:55.0 aF:0.390453242704 a:0.940325604538 power: 2000262.5156 v2factor: 0.304622361834 gFactor:0.0 vSquare:221.221758775
+need to go faster...0.91743980128
+E500:t:1891 State update PK:14.352332906 vK:54.8867067024 maxVk:55.0 aF:0.352180235968 a:0.91743980128 power: 2000231.02047 v2factor: 0.320009565312 gFactor:0.0 vSquare:232.396198484
+E500:t:1892:coasting at 53.0612750517
+E500:t:1892 State update PK:14.3673429321 vK:53.0514759101 maxVk:55.0 aF:-0.5443967592 a:0.0 power: 8.02251432117 v2factor: 0.2991467592 gFactor:0.0 vSquare:217.245286274
+E500:t:1893:coasting at 51.1400324131
+E500:t:1893 State update PK:14.3818095612 vK:51.1306161463 maxVk:55.0 aF:-0.523125934741 a:0.0 power: 7.42993093484 v2factor: 0.277875934741 gFactor:0.0 vSquare:201.798064445
+E500:t:1893:boosting from vK:50.0414424346 to maxVk:55.0 with aFull:-0.511413406235
+need to go faster...0.991986656092
+E500:t:1894 State update PK:14.3958398994 vK:50.7647072712 maxVk:55.0 aF:0.473016349006 a:0.991986656092 power: 2000335.49775 v2factor: 0.273720307086 gFactor:0.0 vSquare:198.780179438
+E500:t:1894:AT SIG WestboundMain:2420 vK:51.2589338243
+E500:1894:START UPDATE SIG BY OCCU sig:WestboundMain:Sab+10 from value green to value red
+E500:1894:START UPDATE SIG BY OCCU sig:WestboundMain:Sab-140 from value red to value yellow
+E500:1894:START UPDATE SIG BY OCCU sig:WestboundMain:2340 from value yellow to value green
+SIG 2340 was yellow now green
+SIG Sab-140 was red now yellow
+SIG Sab+10 was green now red
+E500:t:1894next SIG (2450) at PK14.7
+need to go faster...0.961406242459
+E500:t:1895 State update PK:14.4101704539 vK:52.3782787655 maxVk:55.0 aF:0.424746148646 a:0.961406242459 power: 2000291.97396 v2factor: 0.291410093813 gFactor:0.0 vSquare:211.626792893
+need to go faster...0.935475157148
+E500:t:1896 State update PK:14.4249260239 vK:53.8292027058 maxVk:55.0 aF:0.382435693817 a:0.935475157148 power: 2000255.79881 v2factor: 0.307789463331 gFactor:0.0 vSquare:223.521759863
+E500:t:1897:coasting at 54.6546922512
+E500:t:1897 State update PK:14.4400536246 vK:54.6445648547 maxVk:55.0 aF:-0.562633134664 a:0.0 power: 8.54023411571 v2factor: 0.317383134664 gFactor:0.0 vSquare:230.488841441
+E500:t:1898:coasting at 52.670271063
+E500:t:1898 State update PK:14.45495385 vK:52.6605509868 maxVk:55.0 aF:-0.540004229471 a:0.0 power: 7.89914451644 v2factor: 0.294754229471 gFactor:0.0 vSquare:214.055359093
+E500:t:1899:coasting at 50.7642521181
+E500:t:1899 State update PK:14.46931404 vK:50.7549090879 maxVk:55.0 aF:-0.519057237393 a:0.0 power: 7.31797302648 v2factor: 0.273807237393 gFactor:0.0 vSquare:198.843309654
+E500:t:1899:boosting from vK:50.0408914735 to maxVk:55.0 with aFull:-0.511407545254
+need to go faster...0.985486587313
+E500:t:1900 State update PK:14.4833439196 vK:51.0993000249 maxVk:55.0 aF:0.462893593025 a:0.985486587313 power: 2000326.16664 v2factor: 0.277342994288 gFactor:0.0 vSquare:201.411034341
+need to go faster...0.955917564124
+E500:t:1901 State update PK:14.4977625569 vK:52.6788182894 maxVk:55.0 aF:0.41590145936 a:0.955917564124 power: 2000284.26189 v2factor: 0.294766104764 gFactor:0.0 vSquare:214.063983126
+need to go faster...0.930791835498
+E500:t:1902 State update PK:14.5125973525 vK:54.0998695841 maxVk:55.0 aF:0.374647293972 a:0.930791835498 power: 2000249.33487 v2factor: 0.310894541526 gFactor:0.0 vSquare:225.77671861
+E500:t:1903:coasting at 54.2495960249
+E500:t:1903 State update PK:14.5277504953 vK:54.2395530017 maxVk:55.0 aF:-0.557945733567 a:0.0 power: 8.40631310774 v2factor: 0.312695733567 gFactor:0.0 vSquare:227.084773832
+E500:t:1904:coasting at 52.2814100949
+E500:t:1904 State update PK:14.542540512 vK:52.2717680709 maxVk:55.0 aF:-0.53566799566 a:0.0 power: 7.77786478672 v2factor: 0.29041799566 gFactor:0.0 vSquare:210.906314931
+E500:t:1905:coasting at 50.3904220669
+E500:t:1905 State update PK:14.5567948305 vK:50.3811513571 maxVk:55.0 aF:-0.515039430083 a:0.0 power: 7.20785541164 v2factor: 0.269789430083 gFactor:0.0 vSquare:195.925512043
+E500:t:1905:boosting from vK:50.0485905428 to maxVk:55.0 with aFull:-0.511489451807
+need to go faster...0.978846297521
+E500:t:1906 State update PK:14.5708677944 vK:51.4457003626 maxVk:55.0 aF:0.45247769483 a:0.978846297521 power: 2000316.67906 v2factor: 0.281118602692 gFactor:0.0 vSquare:204.152943131
+need to go faster...0.950297541155
+E500:t:1907 State update PK:14.5853776506 vK:52.9901478106 maxVk:55.0 aF:0.406784685524 a:0.950297541155 power: 2000276.39614 v2factor: 0.298262855631 gFactor:0.0 vSquare:216.603380996
+E500:t:1907:ADVANCE green SIG vK:54.1204904163
+need to go faster...0.925987327785
+E500:t:1908 State update PK:14.6002945358 vK:54.380385871 maxVk:55.0 aF:0.36660827796 a:0.925987327785 power: 2000242.72538 v2factor: 0.314129049825 gFactor:0.0 vSquare:228.125671623
+E500:t:1909:coasting at 53.829949895
+E500:t:1909 State update PK:14.6154349827 vK:53.8199936136 maxVk:55.0 aF:-0.553126747481 a:0.0 power: 8.26924389359 v2factor: 0.307876747481 gFactor:0.0 vSquare:223.585147045
+E500:t:1910:coasting at 51.8784577822
+E500:t:1910 State update PK:14.6301108143 vK:51.8688960287 maxVk:55.0 aF:-0.531208528073 a:0.0 power: 7.65366664228 v2factor: 0.285958528073 gFactor:0.0 vSquare:207.667776378
+E500:t:1910:boosting from vK:50.0489382225 to maxVk:55.0 with aFull:-0.511493150894
+need to go faster...1.00511201676
+E500:t:1911 State update PK:14.644255936 vK:50.1022711653 maxVk:55.0 aF:0.493243791767 a:1.00511201676 power: 2000354.47342 v2factor: 0.266618224992 gFactor:0.0 vSquare:193.622530858
+need to go faster...0.972450963825
+E500:t:1912 State update PK:14.658412182 vK:51.7837954214 maxVk:55.0 aF:0.442372673178 a:0.972450963825 power: 2000307.58397 v2factor: 0.284828290647 gFactor:0.0 vSquare:206.84697941
+need to go faster...0.944872514045
+E500:t:1913 State update PK:14.6730110965 vK:53.2941889805 maxVk:55.0 aF:0.397924876661 a:0.944872514045 power: 2000268.83271 v2factor: 0.301697637384 gFactor:0.0 vSquare:219.097775878
+need to go faster...0.921340800586
+E500:t:1914 State update PK:14.6880081686 vK:54.6544617141 maxVk:55.0 aF:0.358785344236 a:0.921340800586 power: 2000236.35397 v2factor: 0.317305456349 gFactor:0.0 vSquare:230.432430174
+E500:t:1914:AT SIG WestboundMain:2450 vK:53.8100016608
+E500:1914:START UPDATE SIG BY OCCU sig:WestboundMain:2420 from value green to value red
+E500:1914:START UPDATE SIG BY OCCU sig:WestboundMain:Sab+10 from value red to value yellow
+E500:1914:START UPDATE SIG BY OCCU sig:WestboundMain:Sab-140 from value yellow to value green
+SIG Sab-140 was yellow now green
+SIG Sab+10 was red now yellow
+SIG 2420 was green now red
+E500:t:1914next SIG (PoN-140) at PK14.988
+E500:t:1915:coasting at 53.4135043908
+E500:t:1915 State update PK:14.7030952519 vK:53.4036335236 maxVk:55.0 aF:-0.548381510451 a:0.0 power: 8.13487922647 v2factor: 0.303131510451 gFactor:0.0 vSquare:220.139078033
+E500:t:1916:coasting at 51.4784533978
+E500:t:1916 State update PK:14.7176577514 vK:51.4689707132 maxVk:55.0 aF:-0.5268158112 a:0.0 power: 7.53185209942 v2factor: 0.2815658112 gFactor:0.0 vSquare:204.47771329
+E500:t:1916:boosting from vK:50.0489033331 to maxVk:55.0 with aFull:-0.511492779693
+need to go faster...0.99776734195
+E500:t:1917 State update PK:14.7317228174 vK:50.4708082886 maxVk:55.0 aF:0.48195948715 a:0.99776734195 power: 2000343.8329 v2factor: 0.2705578548 gFactor:0.0 vSquare:196.483554684
+need to go faster...0.966276908677
+E500:t:1918 State update PK:14.7459760241 vK:52.1144391449 maxVk:55.0 aF:0.432547181174 a:0.966276908677 power: 2000298.84281 v2factor: 0.288479727503 gFactor:0.0 vSquare:209.498712784
+need to go faster...0.939623760275
+E500:t:1919 State update PK:14.7606620588 vK:53.5916933091 maxVk:55.0 aF:0.389296162065 a:0.939623760275 power: 2000261.5423 v2factor: 0.305077598209 gFactor:0.0 vSquare:221.552358903
+need to go faster...0.916837123985
+E500:t:1920 State update PK:14.7757376116 vK:54.9227632222 maxVk:55.0 aF:0.351156711595 a:0.916837123985 power: 2000230.19775 v2factor: 0.32043041239 gFactor:0.0 vSquare:232.701824539
+E500:t:1921:coasting at 53.0006781605
+E500:t:1921 State update PK:14.7907313545 vK:52.9908913105 maxVk:55.0 aF:-0.543713887832 a:0.0 power: 8.0033009817 v2factor: 0.298463887832 gFactor:0.0 vSquare:216.749373879
+E500:t:1922:coasting at 51.0818020714
+E500:t:1922 State update PK:14.805181489 vK:51.0723971886 maxVk:55.0 aF:-0.522493490929 a:0.0 power: 7.41249863811 v2factor: 0.277243490929 gFactor:0.0 vSquare:201.338773369
+E500:t:1922:boosting from vK:50.048924919 to maxVk:55.0 with aFull:-0.511493009354
+need to go faster...0.99068595548
+E500:t:1923 State update PK:14.8192110352 vK:50.8313097032 maxVk:55.0 aF:0.470996431164 a:0.99068595548 power: 2000333.62705 v2factor: 0.274439524316 gFactor:0.0 vSquare:199.302486795
+need to go faster...0.960308931873
+E500:t:1924 State update PK:14.8335591209 vK:52.4380885765 maxVk:55.0 aF:0.422982495279 a:0.960308931873 power: 2000290.42975 v2factor: 0.292076436594 gFactor:0.0 vSquare:212.110701956
+need to go faster...0.934539560279
+E500:t:1925 State update PK:14.8483304558 vK:53.8830575069 maxVk:55.0 aF:0.380883518486 a:0.934539560279 power: 2000254.50582 v2factor: 0.308406041793 gFactor:0.0 vSquare:223.969529261
+E500:t:1926:coasting at 54.5727394011
+E500:t:1926 State update PK:14.8634659792 vK:54.5626291244 maxVk:55.0 aF:-0.561682037859 a:0.0 power: 8.51301353265 v2factor: 0.316432037859 gFactor:0.0 vSquare:229.798139331
+E500:t:1927:coasting at 52.5916122098
+E500:t:1927 State update PK:14.8783439103 vK:52.5819079687 maxVk:55.0 aF:-0.53912450295 a:0.0 power: 7.8744986105 v2factor: 0.29387450295 gFactor:0.0 vSquare:213.416487255
+E500:t:1928:coasting at 50.6886425199
+E500:t:1928 State update PK:14.8926826859 vK:50.6793141601 maxVk:55.0 aF:-0.518242213554 a:0.0 power: 7.29559998659 v2factor: 0.272992213554 gFactor:0.0 vSquare:198.251425965
+E500:t:1928:boosting from vK:50.0491927997 to maxVk:55.0 with aFull:-0.511495859449
+E500:t:1928:ADVANCE green SIG vK:50.2889135728
+need to go faster...0.98385312616
+E500:t:1929 State update PK:14.9067206617 vK:51.1840781481 maxVk:55.0 aF:0.460338446325 a:0.98385312616 power: 2000323.82858 v2factor: 0.278264679835 gFactor:0.0 vSquare:202.080377513
+need to go faster...0.954536292231
+E500:t:1930 State update PK:14.9211616214 vK:52.7549960397 maxVk:55.0 aF:0.413666488456 a:0.954536292231 power: 2000282.32579 v2factor: 0.295619803775 gFactor:0.0 vSquare:214.683953359
+need to go faster...0.929611852016
+E500:t:1931 State update PK:14.9360165012 vK:54.168495505 maxVk:55.0 aF:0.37267756154 a:0.929611852016 power: 2000247.70955 v2factor: 0.311684290477 gFactor:0.0 vSquare:226.35024726
+E500:t:1932:coasting at 54.150536427
+E500:t:1932 State update PK:14.9511706696 vK:54.1405139403 maxVk:55.0 aF:-0.556804813254 a:0.0 power: 8.37380520944 v2factor: 0.311554813254 gFactor:0.0 vSquare:226.256218775
+E500:t:1933:coasting at 52.1863025891
+E500:t:1933 State update PK:14.9659337339 vK:52.1766795671 maxVk:55.0 aF:-0.534612331404 a:0.0 power: 7.7484156412 v2factor: 0.289362331404 gFactor:0.0 vSquare:210.139674222
+E500:t:1934:coasting at 50.2989742175
+E500:t:1934 State update PK:14.9801621561 vK:50.2897211177 maxVk:55.0 aF:-0.514061098279 a:0.0 power: 7.18110813054 v2factor: 0.268811098279 gFactor:0.0 vSquare:195.21503143
+E500:t:1934:boosting from vK:50.0497633757 to maxVk:55.0 with aFull:-0.511501930096
+E500:t:1934:AT SIG WestboundMain:PoN-140 vK:50.8067896162
+E500:1934:START UPDATE SIG BY OCCU sig:WestboundMain:2450 from value green to value red
+E500:1934:START UPDATE SIG BY OCCU sig:WestboundMain:2420 from value red to value yellow
+E500:1934:START UPDATE SIG BY OCCU sig:WestboundMain:Sab+10 from value yellow to value green
+SIG Sab+10 was yellow now green
+SIG 2420 was red now yellow
+SIG 2450 was green now red
+E500:t:1934next SIG (PoN+10) at PK15.138
+need to go faster...0.977278914535
+E500:t:1935 State update PK:14.9942515922 vK:51.5281520281 maxVk:55.0 aF:0.450007866481 a:0.977278914535 power: 2000314.44617 v2factor: 0.282021048054 gFactor:0.0 vSquare:204.808313764
+need to go faster...0.948969080102
+E500:t:1936 State update PK:15.0087831647 vK:53.0642788479 maxVk:55.0 aF:0.404620571129 a:0.948969080102 power: 2000274.54138 v2factor: 0.299098508973 gFactor:0.0 vSquare:217.210246168
+need to go faster...0.924850293884
+E500:t:1937 State update PK:15.0237195994 vK:54.4471993749 maxVk:55.0 aF:0.364698380111 a:0.924850293884 power: 2000241.16438 v2factor: 0.314901913773 gFactor:0.0 vSquare:228.686938107
+E500:t:1937:ADVANCE STA x:15128.0 vK:54.4734239367
+E500:t:1938 State update PK:15.0383201364 vK:50.5926239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.27217185478 gFactor:0.0 vSquare:197.655667959
+E500:t:1939 State update PK:15.0518208931 vK:46.6326239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.231247670037 gFactor:0.0 vSquare:167.935853331
+E500:t:1940 State update PK:15.0642216497 vK:42.6726239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.193655825294 gFactor:0.0 vSquare:140.636038703
+E500:t:1941 State update PK:15.0755224064 vK:38.7126239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.159396320552 gFactor:0.0 vSquare:115.756224075
+E500:t:1942 State update PK:15.085723163 vK:34.7526239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.128469155809 gFactor:0.0 vSquare:93.2964094472
+E500:t:1943 State update PK:15.0948239197 vK:30.7926239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.100874331066 gFactor:0.0 vSquare:73.2565948192
+E500:t:1944 State update PK:15.1028246763 vK:26.8326239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0766118463232 gFactor:0.0 vSquare:55.6367801912
+E500:t:1945 State update PK:15.109725433 vK:22.8726239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0556817015805 gFactor:0.0 vSquare:40.4369655632
+E500:t:1946 State update PK:15.1155261896 vK:18.9126239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0380838968377 gFactor:0.0 vSquare:27.6571509352
+E500:t:1947 State update PK:15.1202269463 vK:14.9526239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.023818432095 gFactor:0.0 vSquare:17.2973363072
+E500:t:1948 State update PK:15.1238277029 vK:10.9926239367 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0128853073522 gFactor:0.0 vSquare:9.35752167918
+E500:t:1949 State update PK:15.1263284596 vK:7.03262393673 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00528452260948 gFactor:0.0 vSquare:3.83770705118
+E500:t:1950 State update PK:15.1277292162 vK:3.07262393673 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00101607786672 gFactor:0.0 vSquare:0.737892423182
+E500:t:1950:IN STA PoN vK:1.29062393673 a:-1.1
+E500:t:1950:next STA (Esp) at PK15.834
+E500:t:1961:OUT STA, a:1.3178548172 vK:0.0
+need to go faster...1.35
+E500:t:1962 State update PK:15.1285556786 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:1963 State update PK:15.1302134683 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+E500:t:1963:ADVANCE TIV 11 reached at curr speed 11.170532072, maxVk will be 50.0
+E500:t:1963  next TIV at PK17.0 with limit <<10 (currspeed:11.170532072)
+E500:t:1963  BDtiv: 126.262626263
+E500:t:1963:vK:11.170532072 maxVk:50.0 =>ready to acc
+need to go faster...1.35
+E500:t:1964 State update PK:15.1329690395 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:1964:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:1965 State update PK:15.136814107 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:1965:AT SIG WestboundMain:PoN+10 vK:16.807851537
+E500:1965:START UPDATE SIG BY OCCU sig:WestboundMain:PoN-140 from value green to value red
+E500:1965:START UPDATE SIG BY OCCU sig:WestboundMain:2450 from value red to value yellow
+E500:1965:START UPDATE SIG BY OCCU sig:WestboundMain:2420 from value yellow to value green
+SIG 2420 was yellow now green
+SIG 2450 was red now yellow
+SIG PoN-140 was green now red
+E500:t:1965next SIG (2525) at PK15.45
+need to go faster...1.35
+E500:t:1966 State update PK:15.141737211 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:1967 State update PK:15.1477238519 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:1968 State update PK:15.1547566579 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+E500:t:1968:TIV 11 reached at curr speed 29.6084120085, maxVk now 50.0
+need to go faster...1.35
+E500:t:1969 State update PK:15.1628155822 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:1970 State update PK:15.1718781229 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:1971 State update PK:15.1819194674 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:1972 State update PK:15.1928833703 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:1973 State update PK:15.2046543047 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:1974 State update PK:15.217130978 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:1975 State update PK:15.2302306502 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:1976:coasting at 49.8446509744
+E500:t:1976 State update PK:15.2438817327 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:1977:coasting at 48.045367244
+E500:t:1977 State update PK:15.2574722609 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:1978:coasting at 46.3110411619
+E500:t:1978 State update PK:15.2705722559 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:1978:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07939262032
+E500:t:1979 State update PK:15.2833481064 vK:46.6569892063 maxVk:50.0 aF:0.602957282668 a:1.07939262032 power: 2000465.3432 v2factor: 0.231185337651 gFactor:0.0 vSquare:167.890586529
+need to go faster...1.03397521694
+E500:t:1980 State update PK:15.2965997182 vK:48.7047180715 maxVk:50.0 aF:0.536784316543 a:1.03397521694 power: 2000396.84184 v2factor: 0.251940900399 gFactor:0.0 vSquare:182.963616847
+E500:t:1981:coasting at 49.3578988362
+E500:t:1981 State update PK:15.3103333216 vK:49.3488250995 maxVk:50.0 aF:-0.504096481362 a:0.0 power: 6.91015808111 v2factor: 0.258846481362 gFactor:0.0 vSquare:187.97856308
+E500:t:1982:coasting at 47.5764190789
+E500:t:1982 State update PK:15.3237911813 vK:47.5676756052 maxVk:50.0 aF:-0.485748538064 a:0.0 power: 6.41831357898 v2factor: 0.240498538064 gFactor:0.0 vSquare:174.653985522
+E500:t:1983:coasting at 45.8586376314
+E500:t:1983 State update PK:15.336763273 vK:45.8502011159 maxVk:50.0 aF:-0.468695306074 a:0.0 power: 5.96938167932 v2factor: 0.223445306074 gFactor:0.0 vSquare:162.269648565
+E500:t:1983:boosting from vK:45.4971971073 to maxVk:50.0 with aFull:-0.465267939398
+need to go faster...1.06611671167
+E500:t:1984 State update PK:15.3496065587 vK:47.2375073055 maxVk:50.0 aF:0.583887851069 a:1.06611671167 power: 2000445.08361 v2factor: 0.236978860602 gFactor:0.0 vSquare:172.097937983
+need to go faster...1.02310292729
+E500:t:1985 State update PK:15.36301035 vK:49.2218935494 maxVk:50.0 aF:0.52052897191 a:1.02310292729 power: 2000380.77793 v2factor: 0.257323955377 gFactor:0.0 vSquare:186.872879722
+E500:t:1985:ADVANCE green SIG vK:49.4174423358
+E500:t:1986:coasting at 48.8735948273
+E500:t:1986 State update PK:15.3767548167 vK:48.8646120757 maxVk:50.0 aF:-0.49904175383 a:0.0 power: 6.77374491959 v2factor: 0.25379175383 gFactor:0.0 vSquare:184.307736986
+E500:t:1987:coasting at 47.1096593075
+E500:t:1987 State update PK:15.3900806507 vK:47.101000358 maxVk:50.0 aF:-0.481052750008 a:0.0 power: 6.29390715287 v2factor: 0.235802750008 gFactor:0.0 vSquare:171.243827166
+E500:t:1987:boosting from vK:45.4918457684 to maxVk:50.0 with aFull:-0.46521618634
+need to go faster...1.10399668971
+E500:t:1988 State update PK:15.40292723 vK:45.6180489228 maxVk:50.0 aF:0.637751027596 a:1.10399668971 power: 2000503.41513 v2factor: 0.220995662113 gFactor:0.0 vSquare:160.490676916
+need to go faster...1.05398048743
+E500:t:1989 State update PK:15.4159067707 vK:47.7809892697 maxVk:50.0 aF:0.566262780969 a:1.05398048743 power: 2000426.73478 v2factor: 0.242467706465 gFactor:0.0 vSquare:176.084027934
+need to go faster...1.01311655575
+E500:t:1990 State update PK:15.4294531292 vK:49.7067104164 maxVk:50.0 aF:0.505444708563 a:1.01311655575 power: 2000366.13448 v2factor: 0.262421847188 gFactor:0.0 vSquare:190.575052424
+E500:t:1991:coasting at 48.3956842479
+E500:t:1991 State update PK:15.4431339042 vK:48.3867904008 maxVk:50.0 aF:-0.494102614468 a:0.0 power: 6.64112212299 v2factor: 0.248852614468 gFactor:0.0 vSquare:180.720852918
+E500:t:1991:AT SIG WestboundMain:2525 vK:47.470706168
+E500:1991:START UPDATE SIG BY OCCU sig:WestboundMain:PoN+10 from value green to value red
+E500:1991:START UPDATE SIG BY OCCU sig:WestboundMain:PoN-140 from value red to value yellow
+E500:1991:START UPDATE SIG BY OCCU sig:WestboundMain:2450 from value yellow to value green
+SIG 2450 was yellow now green
+SIG PoN-140 was red now yellow
+SIG PoN+10 was green now red
+E500:t:1991next SIG (Esp-140) at PK15.794
+E500:t:1992:coasting at 46.648894855
+E500:t:1992 State update PK:15.4563294315 vK:46.6403185266 maxVk:50.0 aF:-0.476462685314 a:0.0 power: 6.17288094697 v2factor: 0.231212685314 gFactor:0.0 vSquare:167.910446851
+E500:t:1992:boosting from vK:45.4963370636 to maxVk:50.0 with aFull:-0.465259621464
+need to go faster...1.0893137362
+E500:t:1993 State update PK:15.4691072838 vK:46.2324079204 maxVk:50.0 aF:0.617070318818 a:1.0893137362 power: 2000480.61243 v2factor: 0.226993417385 gFactor:0.0 vSquare:164.846345232
+need to go faster...1.04206455695
+E500:t:1994 State update PK:15.4822476642 vK:48.3269262986 maxVk:50.0 aF:0.548769982653 a:1.04206455695 power: 2000408.87678 v2factor: 0.248044574296 gFactor:0.0 vSquare:180.134040883
+E500:t:1995:coasting at 49.715954217
+E500:t:1995 State update PK:15.4959278298 vK:49.7068126364 maxVk:50.0 aF:-0.507865586018 a:0.0 power: 7.01232764686 v2factor: 0.262615586018 gFactor:0.0 vSquare:190.715748742
+E500:t:1996:coasting at 47.9213945092
+E500:t:1996 State update PK:15.509483283 vK:47.9125880293 maxVk:50.0 aF:-0.489248880494 a:0.0 power: 6.51143890414 v2factor: 0.243998880494 gFactor:0.0 vSquare:177.195991644
+E500:t:1997:coasting at 46.1914577263
+E500:t:1997 State update PK:15.5225494673 vK:46.1829626192 maxVk:50.0 aF:-0.471950393981 a:0.0 power: 6.0544631676 v2factor: 0.226700393981 gFactor:0.0 vSquare:164.633546827
+E500:t:1997:boosting from vK:45.4997955914 to maxVk:50.0 with aFull:-0.465293071661
+need to go faster...1.07549250074
+E500:t:1998 State update PK:15.5353380203 vK:46.8260432671 maxVk:50.0 aF:0.59737741214 a:1.07549250074 power: 2000459.371 v2factor: 0.232865088602 gFactor:0.0 vSquare:169.110449239
+need to go faster...1.03078685697
+E500:t:1999 State update PK:15.5486339374 vK:48.8552518015 maxVk:50.0 aF:0.532034983776 a:1.03078685697 power: 2000392.11781 v2factor: 0.253501873193 gFactor:0.0 vSquare:184.09722091
+E500:t:2000:coasting at 49.2277389953
+E500:t:2000 State update PK:15.5623794977 vK:49.2186897996 maxVk:50.0 aF:-0.50273309295 a:0.0 power: 6.8732955983 v2factor: 0.25748309295 gFactor:0.0 vSquare:186.988448039
+E500:t:2001:coasting at 47.4509910506
+E500:t:2001 State update PK:15.575801877 vK:47.4422703722 maxVk:50.0 aF:-0.484482133617 a:0.0 power: 6.38470343709 v2factor: 0.239232133617 gFactor:0.0 vSquare:173.734301828
+E500:t:2002:coasting at 45.7376077126
+E500:t:2002 State update PK:15.588739755 vK:45.7291923989 maxVk:50.0 aF:-0.467517430673 a:0.0 power: 5.93866514919 v2factor: 0.222267430673 gFactor:0.0 vSquare:161.414256117
+E500:t:2002:boosting from vK:45.4941593586 to maxVk:50.0 with aFull:-0.465238560437
+need to go faster...1.06288587642
+E500:t:2003 State update PK:15.6016118944 vK:47.3809773359 maxVk:50.0 aF:0.579214154482 a:1.06288587642 power: 2000440.18296 v2factor: 0.238421721935 gFactor:0.0 vSquare:173.145767563
+need to go faster...1.02044882837
+E500:t:2004 State update PK:15.6150533121 vK:49.3498182642 maxVk:50.0 aF:0.516534587042 a:1.02044882837 power: 2000376.87574 v2factor: 0.258664241326 gFactor:0.0 vSquare:187.846217375
+E500:t:2005:coasting at 48.7454537187
+E500:t:2005 State update PK:15.6287874404 vK:48.7364948906 maxVk:50.0 aF:-0.497712671188 a:0.0 power: 6.73799196009 v2factor: 0.252462671188 gFactor:0.0 vSquare:183.342535358
+E500:t:2006:coasting at 46.9861317842
+E500:t:2006 State update PK:15.6420783378 vK:46.9774950645 maxVk:50.0 aF:-0.47981776163 a:0.0 power: 6.26128792467 v2factor: 0.23456776163 gFactor:0.0 vSquare:170.346958337
+E500:t:2006:boosting from vK:45.4978501619 to maxVk:50.0 with aFull:-0.465274255539
+need to go faster...1.09971811089
+E500:t:2007 State update PK:15.6548990613 vK:45.7953774309 maxVk:50.0 aF:0.631749495897 a:1.09971811089 power: 2000496.74513 v2factor: 0.22271861499 gFactor:0.0 vSquare:161.741913573
+need to go faster...1.05051513554
+E500:t:2008 State update PK:15.6679250132 vK:47.9384793568 maxVk:50.0 aF:0.561195136495 a:1.05051513554 power: 2000421.52532 v2factor: 0.244069999047 gFactor:0.0 vSquare:177.247639104
+need to go faster...1.01025678555
+E500:t:2009 State update PK:15.6815127017 vK:49.8473119708 maxVk:50.0 aF:0.501097152318 a:1.01025678555 power: 2000361.96059 v2factor: 0.263909633233 gFactor:0.0 vSquare:191.655507069
+E500:t:2010:coasting at 48.2669927197
+E500:t:2010 State update PK:15.6951642719 vK:48.2581226635 maxVk:50.0 aF:-0.492780899784 a:0.0 power: 6.60574475223 v2factor: 0.247530899784 gFactor:0.0 vSquare:179.761002022
+E500:t:2011:coasting at 46.5247921502
+E500:t:2011 State update PK:15.7083247061 vK:46.5162379363 maxVk:50.0 aF:-0.475234105241 a:0.0 power: 6.14058408745 v2factor: 0.229984105241 gFactor:0.0 vSquare:167.018231838
+E500:t:2011:boosting from vK:45.4922525716 to maxVk:50.0 with aFull:-0.46522012034
+E500:t:2011:ADVANCE green SIG vK:46.1055522038
+need to go faster...1.08577481114
+E500:t:2012 State update PK:15.7210963206 vK:46.3829682475 maxVk:50.0 aF:0.612049287134 a:1.08577481114 power: 2000475.15305 v2factor: 0.228475524002 gFactor:0.0 vSquare:165.922675383
+need to go faster...1.03918253479
+E500:t:2013 State update PK:15.7342761377 vK:48.4608490607 maxVk:50.0 aF:0.544510230503 a:1.03918253479 power: 2000404.58089 v2factor: 0.249422304286 gFactor:0.0 vSquare:181.134571014
+E500:t:2013:ADVANCE STA x:15834.0 vK:49.6120646153
+E500:t:2014 State update PK:15.7479792254 vK:49.5328646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.260893323113 gFactor:0.0 vSquare:189.465013154
+E500:t:2015 State update PK:15.7611856045 vK:45.5728646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.220860925839 gFactor:0.0 vSquare:160.392829222
+E500:t:2016 State update PK:15.7732919835 vK:41.6128646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.184160868565 gFactor:0.0 vSquare:133.740645291
+E500:t:2017 State update PK:15.7842983626 vK:37.6528646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.150793151292 gFactor:0.0 vSquare:109.508461359
+E500:t:2017:AT SIG WestboundMain:Esp-140 vK:33.7720646153
+E500:2017:START UPDATE SIG BY OCCU sig:WestboundMain:2525 from value green to value red
+E500:2017:START UPDATE SIG BY OCCU sig:WestboundMain:PoN+10 from value red to value yellow
+E500:2017:START UPDATE SIG BY OCCU sig:WestboundMain:PoN-140 from value yellow to value green
+SIG PoN-140 was yellow now green
+SIG PoN+10 was red now yellow
+SIG 2525 was green now red
+E500:t:2017next SIG (Esp+10) at PK15.844
+E500:t:2018 State update PK:15.7942047416 vK:33.6928646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.120757774018 gFactor:0.0 vSquare:87.6962774277
+E500:t:2019 State update PK:15.8030111207 vK:29.7328646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0940547367442 gFactor:0.0 vSquare:68.3040934961
+E500:t:2020 State update PK:15.8107174998 vK:25.7728646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0706840394704 gFactor:0.0 vSquare:51.3319095646
+E500:t:2021 State update PK:15.8173238788 vK:21.8128646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0506456821966 gFactor:0.0 vSquare:36.779725633
+E500:t:2022 State update PK:15.8228302579 vK:17.8528646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0339396649229 gFactor:0.0 vSquare:24.6475417014
+E500:t:2023 State update PK:15.8272366369 vK:13.8928646153 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0205659876491 gFactor:0.0 vSquare:14.9353577699
+E500:t:2024 State update PK:15.830543016 vK:9.93286461529 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0105246503753 gFactor:0.0 vSquare:7.64317383831
+E500:t:2025 State update PK:15.8327493951 vK:5.97286461529 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00381565310158 gFactor:0.0 vSquare:2.77098990674
+E500:t:2026 State update PK:15.8338557741 vK:2.01286461529 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000438995827814 gFactor:0.0 vSquare:0.318805975174
+E500:t:2026:IN STA Esp vK:0.783608615289 a:-0.004
+E500:t:2026:next STA (LaD) at PK16.775
+E500:t:2037:OUT STA, a:1.33848136413 vK:0.0
+need to go faster...1.35
+E500:t:2038 State update PK:15.8345554507 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2039 State update PK:15.8362132404 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2040 State update PK:15.8389688116 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2040:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2041 State update PK:15.8428138792 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2041:AT SIG WestboundMain:Esp+10 vK:16.807851537
+E500:2041:START UPDATE SIG BY OCCU sig:WestboundMain:Esp-140 from value green to value red
+E500:2041:START UPDATE SIG BY OCCU sig:WestboundMain:2525 from value red to value yellow
+E500:2041:START UPDATE SIG BY OCCU sig:WestboundMain:PoN+10 from value yellow to value green
+SIG PoN+10 was yellow now green
+SIG 2525 was red now yellow
+SIG Esp-140 was green now red
+E500:t:2041next SIG (2590) at PK16.1
+need to go faster...1.35
+E500:t:2042 State update PK:15.8477369832 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2043 State update PK:15.853723624 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2044 State update PK:15.8607564301 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2045 State update PK:15.8688153543 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2046 State update PK:15.8778778951 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2047 State update PK:15.8879192396 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2048 State update PK:15.8988831425 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2049 State update PK:15.9106540768 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2050 State update PK:15.9231307502 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:2051 State update PK:15.9362304224 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:2052:coasting at 49.8446509744
+E500:t:2052 State update PK:15.9498815048 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:2053:coasting at 48.045367244
+E500:t:2053 State update PK:15.9634720331 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:2054:coasting at 46.3110411619
+E500:t:2054 State update PK:15.9765720281 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:2054:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07942977512
+E500:t:2055 State update PK:15.9893476395 vK:46.6553845753 maxVk:50.0 aF:0.603010352259 a:1.07942977512 power: 2000465.40018 v2factor: 0.231169422866 gFactor:0.0 vSquare:167.879028951
+need to go faster...1.03400556852
+E500:t:2056 State update PK:16.0025988307 vK:48.7032895284 maxVk:50.0 aF:0.536829458445 a:1.03400556852 power: 2000396.88686 v2factor: 0.251926110073 gFactor:0.0 vSquare:182.95287587
+E500:t:2056:ADVANCE green SIG vK:49.766680267
+E500:t:2057:coasting at 49.3565900641
+E500:t:2057 State update PK:16.0163320575 vK:49.3475165745 maxVk:50.0 aF:-0.504082754418 a:0.0 power: 6.90978668849 v2factor: 0.258832754418 gFactor:0.0 vSquare:187.968594348
+E500:t:2058:coasting at 47.5751579468
+E500:t:2058 State update PK:16.0297895604 vK:47.5664147026 maxVk:50.0 aF:-0.485735788201 a:0.0 power: 6.41797498263 v2factor: 0.240485788201 gFactor:0.0 vSquare:174.644726363
+E500:t:2059:coasting at 45.8574207774
+E500:t:2059 State update PK:16.0427613082 vK:45.8489844753 maxVk:50.0 aF:-0.468683448038 a:0.0 power: 5.96907225914 v2factor: 0.223433448038 gFactor:0.0 vSquare:162.261037064
+E500:t:2059:boosting from vK:45.4959893626 to maxVk:50.0 with aFull:-0.465256258709
+need to go faster...1.06612932202
+E500:t:2060 State update PK:16.0556043947 vK:47.2369490285 maxVk:50.0 aF:0.583906067392 a:1.06612932202 power: 2000445.10276 v2factor: 0.236973254624 gFactor:0.0 vSquare:172.09386683
+need to go faster...1.02311328027
+E500:t:2061 State update PK:16.0690080396 vK:49.2213958464 maxVk:50.0 aF:0.520544532608 a:1.02311328027 power: 2000380.79317 v2factor: 0.257318747665 gFactor:0.0 vSquare:186.869097796
+E500:t:2062:coasting at 48.8731294571
+E500:t:2062 State update PK:16.0827523739 vK:48.8641467926 maxVk:50.0 aF:-0.499036920687 a:0.0 power: 6.77361481871 v2factor: 0.253786920687 gFactor:0.0 vSquare:184.304227078
+E500:t:2063:coasting at 47.109210714
+E500:t:2063 State update PK:16.0960780809 vK:47.1005518454 maxVk:50.0 aF:-0.481048259248 a:0.0 power: 6.29378846523 v2factor: 0.235798259248 gFactor:0.0 vSquare:171.240565903
+E500:t:2063:AT SIG WestboundMain:2590 vK:46.5752897153
+E500:2063:START UPDATE SIG BY OCCU sig:WestboundMain:Esp+10 from value green to value red
+E500:2063:START UPDATE SIG BY OCCU sig:WestboundMain:Esp-140 from value red to value yellow
+E500:2063:START UPDATE SIG BY OCCU sig:WestboundMain:2525 from value yellow to value green
+SIG 2525 was yellow now green
+SIG Esp-140 was red now yellow
+SIG Esp+10 was green now red
+E500:t:2063next SIG (2620) at PK16.4
+E500:t:2063:boosting from vK:45.4997858355 to maxVk:50.0 with aFull:-0.4652929773
+need to go faster...1.1035001016
+E500:t:2064 State update PK:16.1089248874 vK:45.638559781 maxVk:50.0 aF:0.637055494555 a:1.1035001016 power: 2000502.63991 v2factor: 0.221194607048 gFactor:0.0 vSquare:160.635153993
+need to go faster...1.05357857807
+E500:t:2065 State update PK:16.1219097957 vK:47.7992017469 maxVk:50.0 aF:0.565675848855 a:1.05357857807 power: 2000426.12991 v2factor: 0.242652729211 gFactor:0.0 vSquare:176.218394489
+need to go faster...1.01278506968
+E500:t:2066 State update PK:16.1354609334 vK:49.722967344 maxVk:50.0 aF:0.504941413479 a:1.01278506968 power: 2000365.65023 v2factor: 0.262593656202 gFactor:0.0 vSquare:190.69982295
+E500:t:2067:coasting at 48.3936255385
+E500:t:2067 State update PK:16.1491417855 vK:48.3847320725 maxVk:50.0 aF:-0.494081442981 a:0.0 power: 6.64055506684 v2factor: 0.248831442981 gFactor:0.0 vSquare:180.705477836
+E500:t:2068:coasting at 46.6469096485
+E500:t:2068 State update PK:16.1623367513 vK:46.6383336744 maxVk:50.0 aF:-0.476443006599 a:0.0 power: 6.17236331073 v2factor: 0.231193006599 gFactor:0.0 vSquare:167.896155845
+E500:t:2068:boosting from vK:45.494398876 to maxVk:50.0 with aFull:-0.465240876809
+need to go faster...1.08935626885
+E500:t:2069 State update PK:16.1751140699 vK:46.2306043588 maxVk:50.0 aF:0.617130576407 a:1.08935626885 power: 2000480.67813 v2factor: 0.226975692448 gFactor:0.0 vSquare:164.833473092
+need to go faster...1.04209917099
+E500:t:2070 State update PK:16.188253978 vK:48.3253223451 maxVk:50.0 aF:0.548821074248 a:1.04209917099 power: 2000408.92843 v2factor: 0.248028096739 gFactor:0.0 vSquare:180.12207461
+E500:t:2071:coasting at 49.7145064266
+E500:t:2071 State update PK:16.2019337222 vK:49.7053651213 maxVk:50.0 aF:-0.507850290856 a:0.0 power: 7.01191225944 v2factor: 0.262600290856 gFactor:0.0 vSquare:190.704641145
+E500:t:2072:coasting at 47.9199997941
+E500:t:2072 State update PK:16.2154887808 vK:47.9111935699 maxVk:50.0 aF:-0.489234677903 a:0.0 power: 6.51106037615 v2factor: 0.243984677903 gFactor:0.0 vSquare:177.18567749
+E500:t:2073:coasting at 46.1901123283
+E500:t:2073 State update PK:16.2285545847 vK:46.1816174589 maxVk:50.0 aF:-0.47193718817 a:0.0 power: 6.05411741353 v2factor: 0.22668718817 gFactor:0.0 vSquare:164.623956551
+E500:t:2073:boosting from vK:45.4984694039 to maxVk:50.0 with aFull:-0.465280244737
+need to go faster...1.07552072158
+E500:t:2074 State update PK:16.2413427772 vK:46.8248156053 maxVk:50.0 aF:0.597417853144 a:1.07552072158 power: 2000459.41415 v2factor: 0.232852868435 gFactor:0.0 vSquare:169.101574753
+need to go faster...1.03080994446
+E500:t:2075 State update PK:16.2546383725 vK:48.8541584115 maxVk:50.0 aF:0.532069426642 a:1.03080994446 power: 2000392.15198 v2factor: 0.253490517818 gFactor:0.0 vSquare:184.08897445
+E500:t:2076:coasting at 49.2267315567
+E500:t:2076 State update PK:16.2683836439 vK:49.2176825507 maxVk:50.0 aF:-0.502722554349 a:0.0 power: 6.87301085861 v2factor: 0.257472554349 gFactor:0.0 vSquare:186.980794734
+E500:t:2077:coasting at 47.4500201885
+E500:t:2077 State update PK:16.2818057486 vK:47.4412996863 maxVk:50.0 aF:-0.484472344188 a:0.0 power: 6.38444379731 v2factor: 0.239222344188 gFactor:0.0 vSquare:173.727192584
+E500:t:2078:coasting at 45.7366708491
+E500:t:2078 State update PK:16.2947433618 vK:45.7282556992 maxVk:50.0 aF:-0.467508325163 a:0.0 power: 5.93842784294 v2factor: 0.222258325163 gFactor:0.0 vSquare:161.407643546
+E500:t:2078:boosting from vK:45.4932272244 to maxVk:50.0 with aFull:-0.465229545885
+need to go faster...1.0628948671
+E500:t:2079 State update PK:16.3076153641 vK:47.3805768807 maxVk:50.0 aF:0.579227178586 a:1.0628948671 power: 2000440.19658 v2factor: 0.238417688513 gFactor:0.0 vSquare:173.142838426
+E500:t:2079:ADVANCE green SIG vK:48.743712092
+need to go faster...1.02045621857
+E500:t:2080 State update PK:16.3210566767 vK:49.3494611401 maxVk:50.0 aF:0.516545723733 a:1.02045621857 power: 2000376.88659 v2factor: 0.258660494841 gFactor:0.0 vSquare:187.843496617
+E500:t:2081:coasting at 48.7451180369
+E500:t:2081 State update PK:16.3347907097 vK:48.7361592714 maxVk:50.0 aF:-0.497709194071 a:0.0 power: 6.73789848696 v2factor: 0.252459194071 gFactor:0.0 vSquare:183.340010218
+E500:t:2082:coasting at 46.9858081727
+E500:t:2082 State update PK:16.3480815156 vK:46.9771715111 maxVk:50.0 aF:-0.479814530524 a:0.0 power: 6.26120263721 v2factor: 0.234564530524 gFactor:0.0 vSquare:170.344611855
+E500:t:2082:boosting from vK:45.4975364147 to maxVk:50.0 with aFull:-0.465271221062
+need to go faster...1.0997107494
+E500:t:2083 State update PK:16.3609021733 vK:45.795683722 maxVk:50.0 aF:0.631739152653 a:1.0997107494 power: 2000496.73367 v2factor: 0.222721596749 gFactor:0.0 vSquare:161.744078975
+need to go faster...1.05050916834
+E500:t:2084 State update PK:16.3739282053 vK:47.9387514452 maxVk:50.0 aF:0.561186396519 a:1.05050916834 power: 2000421.51636 v2factor: 0.244072771817 gFactor:0.0 vSquare:177.249652736
+need to go faster...1.01025185797
+E500:t:2085 State update PK:16.3875159652 vK:49.8475549242 maxVk:50.0 aF:0.501089650267 a:1.01025185797 power: 2000361.9534 v2factor: 0.263912207701 gFactor:0.0 vSquare:191.657376689
+E500:t:2085:AT SIG WestboundMain:2620 vK:48.4093705051
+E500:2085:START UPDATE SIG BY OCCU sig:WestboundMain:2590 from value green to value red
+E500:2085:START UPDATE SIG BY OCCU sig:WestboundMain:Esp+10 from value red to value yellow
+E500:2085:START UPDATE SIG BY OCCU sig:WestboundMain:Esp-140 from value yellow to value green
+SIG Esp-140 was yellow now green
+SIG Esp+10 was red now yellow
+SIG 2590 was green now red
+E500:t:2085next SIG (LaD-100) at PK16.675
+E500:t:2086:coasting at 48.267225729
+E500:t:2086 State update PK:16.4011676014 vK:48.2583556298 maxVk:50.0 aF:-0.492783289705 a:0.0 power: 6.60580867861 v2factor: 0.247533289705 gFactor:0.0 vSquare:179.762737622
+E500:t:2087:coasting at 46.5250168618
+E500:t:2087 State update PK:16.4143280991 vK:46.5164626079 maxVk:50.0 aF:-0.475236326861 a:0.0 power: 6.14064245232 v2factor: 0.229986326861 gFactor:0.0 vSquare:167.019845215
+E500:t:2087:boosting from vK:45.4924725094 to maxVk:50.0 with aFull:-0.465222247268
+need to go faster...1.08575580858
+E500:t:2088 State update PK:16.4270998421 vK:46.383779344 maxVk:50.0 aF:0.612022287139 a:1.08575580858 power: 2000475.12378 v2factor: 0.228483521439 gFactor:0.0 vSquare:165.928483252
+need to go faster...1.03916704905
+E500:t:2089 State update PK:16.4402798717 vK:48.4615706641 maxVk:50.0 aF:0.544487310943 a:1.03916704905 power: 2000404.55784 v2factor: 0.249429738108 gFactor:0.0 vSquare:181.139969577
+E500:t:2090:coasting at 49.585359112
+E500:t:2090 State update PK:16.4539832975 vK:49.5762423332 maxVk:50.0 aF:-0.506487707815 a:0.0 power: 6.97493259485 v2factor: 0.261237707815 gFactor:0.0 vSquare:189.715110977
+E500:t:2091:coasting at 47.7955808593
+E500:t:2091 State update PK:16.4675031565 vK:47.7867974107 maxVk:50.0 aF:-0.487969364653 a:0.0 power: 6.47735921426 v2factor: 0.242719364653 gFactor:0.0 vSquare:176.266786241
+E500:t:2092:coasting at 46.0700871627
+E500:t:2092 State update PK:16.4805350264 vK:46.0616134715 maxVk:50.0 aF:-0.470760623938 a:0.0 power: 6.02333163817 v2factor: 0.225510623938 gFactor:0.0 vSquare:163.769516295
+E500:t:2092:boosting from vK:45.4972506445 to maxVk:50.0 with aFull:-0.465268457191
+need to go faster...1.07211418818
+E500:t:2093 State update PK:16.493338177 vK:46.9734735964 maxVk:50.0 aF:0.59252924561 a:1.07211418818 power: 2000454.21161 v2factor: 0.234334942569 gFactor:0.0 vSquare:170.177881313
+need to go faster...1.02802128161
+E500:t:2094 State update PK:16.5066727399 vK:48.9865808159 maxVk:50.0 aF:0.527903645384 a:1.02802128161 power: 2000388.02909 v2factor: 0.254867636228 gFactor:0.0 vSquare:185.089060441
+E500:t:2095:coasting at 49.0991895757
+E500:t:2095 State update PK:16.52042208 vK:49.0901645538 maxVk:50.0 aF:-0.501390106806 a:0.0 power: 6.83703412465 v2factor: 0.256140106806 gFactor:0.0 vSquare:186.01314946
+E500:t:2096:coasting at 47.3271028617
+E500:t:2096 State update PK:16.5338094162 vK:47.3184046397 maxVk:50.0 aF:-0.483234558186 a:0.0 power: 6.3516356556 v2factor: 0.237984558186 gFactor:0.0 vSquare:172.828292074
+E500:t:2097:coasting at 45.6180524375
+E500:t:2097 State update PK:16.5467134989 vK:45.6096580121 maxVk:50.0 aF:-0.466356962745 a:0.0 power: 5.90843932844 v2factor: 0.221106962745 gFactor:0.0 vSquare:160.571505261
+E500:t:2097:boosting from vK:45.492289602 to maxVk:50.0 with aFull:-0.465220478445
+need to go faster...1.05966282073
+E500:t:2098 State update PK:16.5596200993 vK:47.5249738695 maxVk:50.0 aF:0.57453854196 a:1.05966282073 power: 2000435.30564 v2factor: 0.239874278772 gFactor:0.0 vSquare:174.200638178
+need to go faster...1.01779792599
+E500:t:2099 State update PK:16.573099288 vK:49.4782550573 maxVk:50.0 aF:0.512534533198 a:1.01779792599 power: 2000372.98575 v2factor: 0.260013392789 gFactor:0.0 vSquare:188.825993311
+E500:t:2100:coasting at 48.619063077
+E500:t:2100 State update PK:16.5868185161 vK:48.6101277841 maxVk:50.0 aF:-0.496405162539 a:0.0 power: 6.70286621769 v2factor: 0.251155162539 gFactor:0.0 vSquare:182.393001118
+E500:t:2100:ADVANCE green SIG vK:47.3404911867
+E500:t:2101:coasting at 46.8642800541
+E500:t:2101 State update PK:16.6000749526 vK:46.8556652055 maxVk:50.0 aF:-0.478602704155 a:0.0 power: 6.22923557565 v2factor: 0.233352704155 gFactor:0.0 vSquare:169.464563657
+E500:t:2101:boosting from vK:45.4968017234 to maxVk:50.0 with aFull:-0.465264115413
+need to go faster...1.0959427767
+E500:t:2102 State update PK:16.6128753173 vK:45.952998904 maxVk:50.0 aF:0.626437073168 a:1.0959427767 power: 2000490.87699 v2factor: 0.224255703531 gFactor:0.0 vSquare:162.858172499
+need to go faster...1.04745264478
+E500:t:2103 State update PK:16.6259425319 vK:48.078528233 maxVk:50.0 aF:0.556703368883 a:1.04745264478 power: 2000416.93246 v2factor: 0.2454992759 gFactor:0.0 vSquare:178.285603413
+E500:t:2104:coasting at 49.9452911828
+E500:t:2104 State update PK:16.639566904 vK:49.9361058902 maxVk:50.0 aF:-0.51029403683 a:0.0 power: 7.07836029395 v2factor: 0.26504403683 gFactor:0.0 vSquare:192.479329578
+E500:t:2105:coasting at 48.1423049428
+E500:t:2105 State update PK:16.6531848595 vK:48.1334578769 maxVk:50.0 aF:-0.491503662053 a:0.0 power: 6.57160300383 v2factor: 0.246253662053 gFactor:0.0 vSquare:178.833451019
+E500:t:2106:coasting at 46.4045389856
+E500:t:2106 State update PK:16.6663112909 vK:46.396006144 maxVk:50.0 aF:-0.474046756587 a:0.0 power: 6.10941006421 v2factor: 0.228796756587 gFactor:0.0 vSquare:166.155959758
+E500:t:2106:boosting from vK:45.4916319804 to maxVk:50.0 with aFull:-0.465214118913
+E500:t:2106:AT SIG WestboundMain:LaD-100 vK:45.8346979438
+E500:2106:START UPDATE SIG BY OCCU sig:WestboundMain:2620 from value green to value red
+E500:2106:START UPDATE SIG BY OCCU sig:WestboundMain:2590 from value red to value yellow
+E500:2106:START UPDATE SIG BY OCCU sig:WestboundMain:Esp+10 from value yellow to value green
+SIG Esp+10 was yellow now green
+SIG 2590 was red now yellow
+SIG 2620 was green now red
+E500:t:2106next SIG (LaD+10) at PK16.785
+need to go faster...1.08220212576
+E500:t:2107 State update PK:16.6790829957 vK:46.5359640334 maxVk:50.0 aF:0.606965583464 a:1.08220212576 power: 2000469.65595 v2factor: 0.229986542301 gFactor:0.0 vSquare:167.020001671
+E500:t:2108:ADVANCE STA x:16775.0 vK:48.5872661578
+E500:t:2108 State update PK:16.6923028542 vK:48.5674661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.250826758474 gFactor:0.0 vSquare:182.154508695
+E500:t:2109 State update PK:16.7052410671 vK:44.6074661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.211606744002 gFactor:0.0 vSquare:153.672290488
+E500:t:2110 State update PK:16.7170792799 vK:40.6474661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.17571906953 gFactor:0.0 vSquare:127.61007228
+E500:t:2111 State update PK:16.7278174927 vK:36.6874661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.143163735058 gFactor:0.0 vSquare:103.967854073
+E500:t:2112 State update PK:16.7374557055 vK:32.7274661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.113940740586 gFactor:0.0 vSquare:82.7456358651
+E500:t:2113 State update PK:16.7459939183 vK:28.7674661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0880500861145 gFactor:0.0 vSquare:63.9434176576
+E500:t:2114 State update PK:16.7534321312 vK:24.8074661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0654917716427 gFactor:0.0 vSquare:47.56119945
+E500:t:2115 State update PK:16.759770344 vK:20.8474661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0462657971708 gFactor:0.0 vSquare:33.5989812424
+E500:t:2116 State update PK:16.7650085568 vK:16.8874661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.030372162699 gFactor:0.0 vSquare:22.0567630349
+E500:t:2117 State update PK:16.7691467696 vK:12.9274661578 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0178108682272 gFactor:0.0 vSquare:12.9345448273
+E500:t:2118 State update PK:16.7721849825 vK:8.96746615784 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00858191375538 gFactor:0.0 vSquare:6.23232661974
+E500:t:2119 State update PK:16.7741231953 vK:5.00746615784 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00268529928356 gFactor:0.0 vSquare:1.95010841217
+E500:t:2120 State update PK:16.7749614081 vK:1.04746615784 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00012102481174 gFactor:0.0 vSquare:0.0878902046041
+E500:t:2120:IN STA LaD vK:0.78855415784 a:-0.004
+E500:t:2120:next STA (W) at PK16.975
+E500:t:2131:OUT STA, a:1.38407221253 vK:0.0
+need to go faster...1.35
+E500:t:2132 State update PK:16.7755558356 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2133 State update PK:16.7772136253 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2134 State update PK:16.7799691964 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2134:ADVANCE red SIG vK:11.9361237574
+E500:t:2135 State update PK:16.7827483721 vK:8.03552375741 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0068943755889 gFactor:0.0 vSquare:5.00680870654
+E500:t:2136 State update PK:16.7844277121 vK:4.07552375741 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00178199064704 gFactor:0.0 vSquare:1.29411085479
+E500:t:2136 waiting at sig...sig:WestboundMain:LaD+10
+E500:t:2136:AT SIG WestboundMain:LaD+10 vK:0.0
+E500:2136:START UPDATE SIG BY OCCU sig:WestboundMain:LaD-100 from value green to value red
+E500:2136:START UPDATE SIG BY OCCU sig:WestboundMain:2620 from value red to value yellow
+E500:2136:START UPDATE SIG BY OCCU sig:WestboundMain:2590 from value yellow to value green
+SIG 2590 was yellow now green
+SIG 2620 was red now yellow
+SIG LaD-100 was green now red
+E500:t:2136next SIG (W) at PK16.975
+next SIG is a type 2:
+['16.975', 'W', '2', 'Reverse:EastboundMain', 'Forward:WestboundMain', 'Default:EastboundMain']
+switch is locked?False
+switch position:EastboundMain
+switch NEW position:WestboundMain
+switch NEW lock:True
+E500:t:2138:OUT SIG, a:1.3524850125
+need to go faster...1.35
+E500:t:2139 State update PK:16.7855558048 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2140 State update PK:16.7872135945 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2141 State update PK:16.7899691657 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+need to go faster...1.35
+E500:t:2142 State update PK:16.7938142333 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+need to go faster...1.35
+E500:t:2143 State update PK:16.7987373373 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2144 State update PK:16.8047239781 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2145 State update PK:16.8117567842 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2146 State update PK:16.8198157084 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2147 State update PK:16.8288782492 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2148 State update PK:16.8389195937 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2149 State update PK:16.8498834966 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2150 State update PK:16.8616544309 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+E500:t:2150:ADVANCE TIV 12 reached at curr speed 46.0096553014, maxVk will be 10.0
+E500:t:2150:vK:46.0096553014 maxVk:10.0 =>ready to dcc
+E500:t:2151 State update PK:16.8741301995 vK:45.8908553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.223952503709 gFactor:0.0 vSquare:162.637983812
+E500:t:2152 State update PK:16.8863249093 vK:41.9308553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.186984857273 gFactor:0.0 vSquare:135.791472239
+E500:t:2153 State update PK:16.8974196191 vK:37.9708553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.153349550837 gFactor:0.0 vSquare:111.364960666
+E500:t:2154 State update PK:16.9074143289 vK:34.0108553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.123046584401 gFactor:0.0 vSquare:89.3584490929
+E500:t:2155 State update PK:16.9163090387 vK:30.0508553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0960759579648 gFactor:0.0 vSquare:69.7719375198
+E500:t:2156 State update PK:16.9241037485 vK:26.0908553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0724376715287 gFactor:0.0 vSquare:52.6054259467
+E500:t:2157 State update PK:16.9307984583 vK:22.1308553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0521317250925 gFactor:0.0 vSquare:37.8589143737
+E500:t:2158 State update PK:16.9363931681 vK:18.1708553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0351581186564 gFactor:0.0 vSquare:25.5324028006
+E500:t:2159 State update PK:16.9408878779 vK:14.2108553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0215168522202 gFactor:0.0 vSquare:15.6258912275
+E500:t:2160 State update PK:16.9442825877 vK:10.2508553014 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0112079257841 gFactor:0.0 vSquare:8.13937965438
+E500:t:2161:coasting at 9.13976839952
+E500:t:2161 State update PK:16.9469485146 vK:9.13519413814 maxVk:10.0 aF:-0.25412563268 a:0.0 power: 0.644857497224 v2factor: 0.00887563267968 gFactor:0.0 vSquare:6.44563012322
+E500:t:2161:boosting from vK:9.09860579532 to maxVk:10.0 with aFull:-0.25405471054
+E500:t:2162:coasting at 9.33967234282
+E500:t:2162 State update PK:16.9496211356 vK:9.33509101644 maxVk:10.0 aF:-0.254518132194 a:0.0 power: 0.65998609149 v2factor: 0.00926813219381 gFactor:0.0 vSquare:6.73066971228
+E500:t:2162:boosting from vK:9.09708550491 to maxVk:10.0 with aFull:-0.254051769794
+E500:t:2163:coasting at 9.53896568614
+E500:t:2163 State update PK:16.9522809168 vK:9.53437716419 maxVk:10.0 aF:-0.254917885801 a:0.0 power: 0.675134241424 v2factor: 0.00966788580089 gFactor:0.0 vSquare:7.0209773427
+E500:t:2163:boosting from vK:9.09921848886 to maxVk:10.0 with aFull:-0.254055895831
+E500:t:2164:coasting at 9.73842796342
+E500:t:2164 State update PK:16.9549293607 vK:9.7338320877 maxVk:10.0 aF:-0.25532642904 a:0.0 power: 0.690362385507 v2factor: 0.0100764290399 gFactor:0.0 vSquare:7.31766814805
+E500:t:2164:boosting from vK:9.09663186047 to maxVk:10.0 with aFull:-0.254050892391
+E500:t:2165:coasting at 9.93853861155
+E500:t:2165 State update PK:16.9575649121 vK:9.93393520522 maxVk:10.0 aF:-0.255744795909 a:0.0 power: 0.705708953232 v2factor: 0.0104947959092 gFactor:0.0 vSquare:7.62149303497
+E500:t:2165:boosting from vK:9.09894126236 to maxVk:10.0 with aFull:-0.25405535951
+need to go faster...1.35
+E500:t:2166 State update PK:16.9602019233 vK:9.4541505266 maxVk:10.0 aF:1.09529283959 a:1.35 power: 506979.490889 v2factor: 0.00945716041269 gFactor:0.0 vSquare:6.86794510725
+E500:t:2167:coasting at 9.22075202375
+E500:t:2167 State update PK:16.9628760181 vK:9.21617491866 maxVk:10.0 aF:-0.254283615963 a:0.0 power: 0.650978412128 v2factor: 0.00903361596262 gFactor:0.0 vSquare:6.56036017619
+E500:t:2167:boosting from vK:9.09722658401 to maxVk:10.0 with aFull:-0.254052042667
+E500:t:2168:coasting at 9.42075694361
+E500:t:2168 State update PK:16.9655432492 vK:9.41617270797 maxVk:10.0 aF:-0.254679757773 a:0.0 power: 0.666141273448 v2factor: 0.00942975777274 gFactor:0.0 vSquare:6.84804486038
+E500:t:2168:boosting from vK:9.09568168811 to maxVk:10.0 with aFull:-0.254049054784
+E500:t:2169:coasting at 9.62067695933
+E500:t:2169 State update PK:16.9681977452 vK:9.61608544326 maxVk:10.0 aF:-0.255084226423 a:0.0 power: 0.681364365697 v2factor: 0.00983422642281 gFactor:0.0 vSquare:7.14177663239
+E500:t:2169:boosting from vK:9.09831135725 to maxVk:10.0 with aFull:-0.254054140961
+E500:t:2170:coasting at 9.82050505064
+E500:t:2170 State update PK:16.9708409764 vK:9.8159061047 maxVk:10.0 aF:-0.255496996442 a:0.0 power: 0.696648479751 v2factor: 0.0102469964415 gFactor:0.0 vSquare:7.44153699457
+E500:t:2170:ADVANCE STA x:16975.0 vK:9.4668851928
+E500:t:2170:ADVANCE red SIG vK:9.4668851928
+E500:t:2171 State update PK:16.9732757113 vK:7.0116851928 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00525318955177 gFactor:0.0 vSquare:3.81495247042
+E500:t:2172 State update PK:16.9746706516 vK:3.0516851928 maxVk:10.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00100236476202 gFactor:0.0 vSquare:0.727933741483
+E500:t:2172 waiting at sig...sig:WestboundMain:W
+E500:t:2172:AT SIG WestboundMain:W vK:0.0
+E500:2172:START UPDATE SIG BY OCCU sig:WestboundMain:LaD+10 from value yellow to value red
+E500:2172:START UPDATE SIG BY OCCU sig:WestboundMain:LaD-100 from value red to value yellow
+E500:2172:START UPDATE SIG BY OCCU sig:WestboundMain:2620 from value yellow to value green
+SIG 2620 was yellow now green
+SIG LaD-100 was red now yellow
+SIG LaD+10 was yellow now red
+E500:t:2172Buffer reached. Initiating reverse sequence
+current switch pos: WestboundMain
+new switch pos: EastboundMain
+sig:WestboundMain:LaD+10 SET to red
+E500:delta buffer: 2.54563346971e-05
+REinit...E500 at pos 90.0000254563 and t:2172
+E500:t:2172 My TIVcnt is: 1 based on pos:90.0000254563
+E500:t:2172 My STAcnt is: 1 based on pos:90.0000254563
+E500:t:2172 My SIGcnt is: 1 based on pos:90.0000254563
+E500:t:2172 next TIV at PK0.2 with limit 50
+E500:2172:START UPDATE SIG BY OCCU sig:EastboundMain:W from value red to value red
+ALREADY
+need to go faster...1.35
+E500:t:2173 State update PK:0.0900539634786 vK:1.23284116746 maxVk:10.0 aF:1.10459367775 a:1.35 power: 66111.1916459 v2factor: 0.000156322254459 gFactor:0.0 vSquare:0.113523786826
+need to go faster...1.35
+E500:t:2174 State update PK:0.0909511616587 vK:5.20549663052 maxVk:10.0 aF:1.10189282103 a:1.35 power: 279145.115568 v2factor: 0.0028571789695 gFactor:0.0 vSquare:2.07493026107
+need to go faster...1.35
+E500:t:2175 State update PK:0.0929499536872 vK:9.16240141229 maxVk:10.0 aF:1.09586871971 a:1.35 power: 491334.422526 v2factor: 0.00888128028537 gFactor:0.0 vSquare:6.44973150717
+E500:t:2176:coasting at 9.26929171932
+E500:t:2176 State update PK:0.0956212681559 vK:9.26471289776 maxVk:10.0 aF:-0.254378975454 a:0.0 power: 0.65465227078 v2factor: 0.00912897545389 gFactor:0.0 vSquare:6.62961180384
+E500:t:2176:boosting from vK:9.09998274793 to maxVk:10.0 with aFull:-0.254057374446
+E500:t:2177:coasting at 9.46833588372
+E500:t:2177 State update PK:0.0982862535644 vK:9.46374992927 maxVk:10.0 aF:-0.254775247093 a:0.0 power: 0.669758118516 v2factor: 0.00952524709324 gFactor:0.0 vSquare:6.91739077214
+E500:t:2177:boosting from vK:9.09740420756 to maxVk:10.0 with aFull:-0.25405238623
+E500:t:2178:coasting at 9.66854688631
+E500:t:2178 State update PK:0.100938489169 vK:9.66395360428 maxVk:10.0 aF:-0.255182334882 a:0.0 power: 0.685019512482 v2factor: 0.00993233488236 gFactor:0.0 vSquare:7.21302460592
+E500:t:2178:boosting from vK:9.09567528961 to maxVk:10.0 with aFull:-0.25404904241
+E500:t:2179:coasting at 9.86792723873
+E500:t:2179 State update PK:0.103577876152 vK:9.86332650715 maxVk:10.0 aF:-0.255596198724 a:0.0 power: 0.700285767222 v2factor: 0.0103461987238 gFactor:0.0 vSquare:7.51357932012
+E500:t:2179:boosting from vK:9.09737224674 to maxVk:10.0 with aFull:-0.25405232441
+need to go faster...1.35
+E500:t:2180 State update PK:0.106208455259 vK:9.74709343164 maxVk:10.0 aF:1.09469640243 a:1.35 power: 522688.576513 v2factor: 0.0100535975663 gFactor:0.0 vSquare:7.30108755723
+E500:t:2181:coasting at 9.14943212854
+E500:t:2181 State update PK:0.108872797199 vK:9.14485752913 maxVk:10.0 aF:-0.254144411504 a:0.0 power: 0.645587343064 v2factor: 0.00889441150419 gFactor:0.0 vSquare:6.45926761379
+E500:t:2181:boosting from vK:9.09912032398 to maxVk:10.0 with aFull:-0.25405570592
+E500:t:2182:coasting at 9.34831903968
+E500:t:2182 State update PK:0.111544733305 vK:9.34373740426 maxVk:10.0 aF:-0.254535301067 a:0.0 power: 0.660641948135 v2factor: 0.00928530106719 gFactor:0.0 vSquare:6.74313802991
+E500:t:2182:boosting from vK:9.09657005911 to maxVk:10.0 with aFull:-0.254050772863
+E500:t:2183:coasting at 9.54830582667
+E500:t:2183 State update PK:0.114203955284 vK:9.54371696377 maxVk:10.0 aF:-0.254936827817 a:0.0 power: 0.675845813424 v2factor: 0.00968682781696 gFactor:0.0 vSquare:7.03473334565
+E500:t:2183:boosting from vK:9.0993805156 to maxVk:10.0 with aFull:-0.254056209294
+E500:t:2184:coasting at 9.74776145132
+E500:t:2184 State update PK:0.11685188722 vK:9.74316522777 maxVk:10.0 aF:-0.255345753164 a:0.0 power: 0.691076628692 v2factor: 0.0100957531644 gFactor:0.0 vSquare:7.33170164444
+E500:t:2184:boosting from vK:9.09677236207 to maxVk:10.0 with aFull:-0.254051164133
+E500:t:2185:coasting at 9.94821272066
+E500:t:2185 State update PK:0.119486948624 vK:9.94360894639 maxVk:10.0 aF:-0.255765236986 a:0.0 power: 0.706452638518 v2factor: 0.0105152369856 gFactor:0.0 vSquare:7.6363376802
+E500:t:2185:boosting from vK:9.09940489788 to maxVk:10.0 with aFull:-0.254056256466
+need to go faster...1.35
+E500:t:2186 State update PK:0.122125455506 vK:9.41518366375 maxVk:10.0 aF:1.09537080251 a:1.35 power: 504889.889908 v2factor: 0.00937919749439 gFactor:0.0 vSquare:6.81132715642
+E500:t:2187:coasting at 9.23036771614
+E500:t:2187 State update PK:0.124800306157 vK:9.22579027174 maxVk:10.0 aF:-0.254302466869 a:0.0 power: 0.65170589581 v2factor: 0.00905246686862 gFactor:0.0 vSquare:6.57405001352
+E500:t:2187:boosting from vK:9.09768711323 to maxVk:10.0 with aFull:-0.254052933445
+E500:t:2188:coasting at 9.43100596278
+E500:t:2188 State update PK:0.127467258387 vK:9.42642135762 maxVk:10.0 aF:-0.254700286556 a:0.0 power: 0.666920061385 v2factor: 0.00945028655618 gFactor:0.0 vSquare:6.86295319984
+E500:t:2188:boosting from vK:9.09675894948 to maxVk:10.0 with aFull:-0.254051138192
+E500:t:2189:coasting at 9.63109067505
+E500:t:2189 State update PK:0.130121526149 vK:9.62649877555 maxVk:10.0 aF:-0.255105527682 a:0.0 power: 0.682159180517 v2factor: 0.00985552768155 gFactor:0.0 vSquare:7.1572459561
+E500:t:2189:boosting from vK:9.09953643154 to maxVk:10.0 with aFull:-0.254056510941
+E500:t:2190:coasting at 9.83203580182
+E500:t:2190 State update PK:0.132764674149 vK:9.8274364225 maxVk:10.0 aF:-0.255521073601 a:0.0 power: 0.697532529283 v2factor: 0.0102710736009 gFactor:0.0 vSquare:7.45902222286
+E500:t:2190:boosting from vK:9.09827655171 to maxVk:10.0 with aFull:-0.254054073632
+need to go faster...1.35
+E500:t:2191 State update PK:0.135395443831 vK:9.90587321425 maxVk:10.0 aF:1.0943655023 a:1.35 power: 531203.154526 v2factor: 0.0103844976975 gFactor:0.0 vSquare:7.54139266342
+E500:t:2192:coasting at 9.114001361
+E500:t:2192 State update PK:0.138052204254 vK:9.10942799915 maxVk:10.0 aF:-0.254075658461 a:0.0 power: 0.64291219919 v2factor: 0.00882565846088 gFactor:0.0 vSquare:6.40933802533
+E500:t:2192:boosting from vK:9.0957088696 to maxVk:10.0 with aFull:-0.254049107349
+E500:t:2193:coasting at 9.31277809345
+E500:t:2193 State update PK:0.140725105802 vK:9.30819772646 maxVk:10.0 aF:-0.254464832556 a:0.0 power: 0.657946937739 v2factor: 0.00921483255564 gFactor:0.0 vSquare:6.69196264026
+E500:t:2193:boosting from vK:9.09767578331 to maxVk:10.0 with aFull:-0.25405291153
+E500:t:2194:coasting at 9.51334484279
+E500:t:2194 State update PK:0.14338699445 vK:9.5087572544 maxVk:10.0 aF:-0.254866021323 a:0.0 power: 0.673183091432 v2factor: 0.00961602132289 gFactor:0.0 vSquare:6.98331250755
+E500:t:2194:boosting from vK:9.09654725142 to maxVk:10.0 with aFull:-0.254050728751
+E500:t:2195:coasting at 9.7136351952
+E500:t:2195 State update PK:0.146036210987 vK:9.70904024182 maxVk:10.0 aF:-0.2552751878 a:0.0 power: 0.68846585308 v2factor: 0.0100251878 gFactor:0.0 vSquare:7.28045591864
+E500:t:2195:boosting from vK:9.09939840926 to maxVk:10.0 with aFull:-0.254056243912
+E500:t:2196:coasting at 9.9144888528
+E500:t:2196 State update PK:0.148674274349 vK:9.90988635962 maxVk:10.0 aF:-0.255694065729 a:0.0 power: 0.703860870612 v2factor: 0.0104440657288 gFactor:0.0 vSquare:7.5846519454
+E500:t:2196:boosting from vK:9.09791346214 to maxVk:10.0 with aFull:-0.254053371277
+need to go faster...1.35
+E500:t:2197 State update PK:0.151308162927 vK:9.55134284297 maxVk:10.0 aF:1.09509697592 a:1.35 power: 512191.43625 v2factor: 0.0096530240838 gFactor:0.0 vSquare:7.01018451983
+E500:t:2198:coasting at 9.19650480637
+E500:t:2198 State update PK:0.153979719047 vK:9.19192855534 maxVk:10.0 aF:-0.254236168194 a:0.0 power: 0.649144637285 v2factor: 0.00898616819445 gFactor:0.0 vSquare:6.52590282821
+E500:t:2198:boosting from vK:9.09586432824 to maxVk:10.0 with aFull:-0.25404940799
+E500:t:2199:coasting at 9.39571078095
+E500:t:2199 State update PK:0.156647768651 vK:9.39112744664 maxVk:10.0 aF:-0.25462968424 a:0.0 power: 0.664238837887 v2factor: 0.00937968423968 gFactor:0.0 vSquare:6.81168063884
+E500:t:2199:boosting from vK:9.09813282138 to maxVk:10.0 with aFull:-0.254053795599
+E500:t:2200:coasting at 9.59540483181
+E500:t:2200 State update PK:0.159304579197 vK:9.5908142445 maxVk:10.0 aF:-0.2550326281 a:0.0 power: 0.679436267333 v2factor: 0.00978262810042 gFactor:0.0 vSquare:7.10430508382
+E500:t:2200:boosting from vK:9.09600413261 to maxVk:10.0 with aFull:-0.254049678361
+E500:t:2201:coasting at 9.79517179283
+E500:t:2201 State update PK:0.16194855164 vK:9.79057379727 maxVk:10.0 aF:-0.255444197735 a:0.0 power: 0.694707019171 v2factor: 0.0101941977354 gFactor:0.0 vSquare:7.40319370765
+E500:t:2201:boosting from vK:9.09820314453 to maxVk:10.0 with aFull:-0.254053931632
+E500:t:2202:coasting at 9.99571066285
+E500:t:2202 State update PK:0.164581228304 vK:9.99110507688 maxVk:10.0 aF:-0.255865887113 a:0.0 power: 0.710106378816 v2factor: 0.0106158871134 gFactor:0.0 vSquare:7.70943145489
+E500:t:2202:boosting from vK:9.09627224661 to maxVk:10.0 with aFull:-0.254050196885
+need to go faster...1.35
+E500:t:2203 State update PK:0.167228790224 vK:9.19469807762 maxVk:10.0 aF:1.09580586012 a:1.35 power: 493066.333645 v2factor: 0.00894413988025 gFactor:0.0 vSquare:6.49538117665
+E500:t:2204:coasting at 9.27719284952
+E500:t:2204 State update PK:0.169903692211 vK:9.27261374771 maxVk:10.0 aF:-0.254394545137 a:0.0 power: 0.655250654604 v2factor: 0.00914454513652 gFactor:0.0 vSquare:6.6409187629
+E500:t:2204:boosting from vK:9.09872747002 to maxVk:10.0 with aFull:-0.25405494592
+E500:t:2205:coasting at 9.47775720411
+E500:t:2205 State update PK:0.172568114606 vK:9.47317090829 maxVk:10.0 aF:-0.254794212422 a:0.0 power: 0.670474755755 v2factor: 0.00954421242214 gFactor:0.0 vSquare:6.93116370526
+E500:t:2205:boosting from vK:9.09765238753 to maxVk:10.0 with aFull:-0.254052866276
+E500:t:2206:coasting at 9.67732537798
+E500:t:2206 State update PK:0.175219755279 vK:9.67273177116 maxVk:10.0 aF:-0.255200379063 a:0.0 power: 0.68569022627 v2factor: 0.00995037906258 gFactor:0.0 vSquare:7.22612858575
+E500:t:2206:boosting from vK:9.09984143522 to maxVk:10.0 with aFull:-0.254057101038
+E500:t:2207:coasting at 9.87819775594
+E500:t:2207 State update PK:0.177860181626 vK:9.8735966365 maxVk:10.0 aF:-0.255617746534 a:0.0 power: 0.701074034001 v2factor: 0.0103677465337 gFactor:0.0 vSquare:7.52922769332
+E500:t:2207:boosting from vK:9.09843420624 to maxVk:10.0 with aFull:-0.254054378605
+need to go faster...1.35
+E500:t:2208 State update PK:0.18049145517 vK:9.70972162245 maxVk:10.0 aF:1.09477350705 a:1.35 power: 520684.510387 v2factor: 0.00997649295189 gFactor:0.0 vSquare:7.24509292076
+E500:t:2209:coasting at 9.16060495797
+E500:t:2209 State update PK:0.183158000262 vK:9.15602996731 maxVk:10.0 aF:-0.25416614759 a:0.0 power: 0.646431351113 v2factor: 0.00891614758957 gFactor:0.0 vSquare:6.47505271574
+E500:t:2209:boosting from vK:9.09656964167 to maxVk:10.0 with aFull:-0.254050772056
+E500:t:2210:coasting at 9.36075112236
+E500:t:2210 State update PK:0.185828719226 vK:9.35616904211 maxVk:10.0 aF:-0.254560014042 a:0.0 power: 0.661585145206 v2factor: 0.00931001404232 gFactor:0.0 vSquare:6.76108499805
+E500:t:2210:boosting from vK:9.09983180803 to maxVk:10.0 with aFull:-0.254057082412
+E500:t:2210:ADVANCE green SIG vK:9.53393187671
+E500:t:2211:coasting at 9.56083492435
+E500:t:2211 State update PK:0.18848831157 vK:9.55624560356 maxVk:10.0 aF:-0.254962266223 a:0.0 power: 0.676800565463 v2factor: 0.00971226622288 gFactor:0.0 vSquare:7.05320713354
+E500:t:2211:boosting from vK:9.09814647556 to maxVk:10.0 with aFull:-0.254053822011
+E500:t:2211:AT SIG EastboundMain:LaD-100 vK:9.43375150257
+E500:2211:START UPDATE SIG BY OCCU sig:EastboundMain:W from value red to value red
+ALREADY
+E500:t:2211next SIG (LaD+10) at PK0.39
+E500:t:2212:coasting at 9.7613261057
+E500:t:2212 State update PK:0.191135209433 vK:9.75672937603 maxVk:10.0 aF:-0.25537387053 a:0.0 power: 0.69211492902 v2factor: 0.0101238705301 gFactor:0.0 vSquare:7.35212093687
+E500:t:2212:boosting from vK:9.09654849101 to maxVk:10.0 with aFull:-0.254050731149
+E500:t:2213:coasting at 9.96148938084
+E500:t:2213 State update PK:0.193769349026 vK:9.95688510103 maxVk:10.0 aF:-0.25579332251 a:0.0 power: 0.707473533846 v2factor: 0.0105433225102 gFactor:0.0 vSquare:7.65673384911
+E500:t:2213:boosting from vK:9.09887284318 to maxVk:10.0 with aFull:-0.254055227149
+need to go faster...1.35
+E500:t:2214 State update PK:0.196410002357 vK:9.35503419943 maxVk:10.0 aF:1.09549051299 a:1.35 power: 501664.370318 v2factor: 0.00925948701274 gFactor:0.0 vSquare:6.7243914399
+E500:t:2215:coasting at 9.24311098762
+E500:t:2215 State update PK:0.19908526492 vK:9.23853309299 maxVk:10.0 aF:-0.254327479453 a:0.0 power: 0.65267023205 v2factor: 0.00907747945251 gFactor:0.0 vSquare:6.59221456246
+E500:t:2215:boosting from vK:9.09669819214 to maxVk:10.0 with aFull:-0.254051020682
+E500:t:2215:TIV 1 reached at curr speed 9.88561495748, maxVk now 50.0
+E500:t:2215  next TIV at PK2 with limit >>55 (currspeed:9.88561495748)
+E500:t:2215:vK:9.88561495748 maxVk:50.0 =>ready to acc
+need to go faster...1.35
+E500:t:2216 State update PK:0.202007918465 vK:12.4200724799 maxVk:50.0 aF:1.08841173236 a:1.35 power: 666027.28922 v2factor: 0.0163382676407 gFactor:0.0 vSquare:11.8651181123
+need to go faster...1.35
+E500:t:2217 State update PK:0.206002985288 vK:16.3177827618 maxVk:50.0 aF:1.07652596089 a:1.35 power: 875042.34018 v2factor: 0.0282240391089 gFactor:0.0 vSquare:20.4967604277
+need to go faster...1.35
+E500:t:2218 State update PK:0.211074259034 vK:20.1671906774 maxVk:50.0 aF:1.06161832356 a:1.35 power: 1081467.21559 v2factor: 0.0431316764427 gFactor:0.0 vSquare:31.3229313309
+need to go faster...1.35
+E500:t:2219 State update PK:0.217206831748 vK:23.9577199815 maxVk:50.0 aF:1.04386105828 a:1.35 power: 1284734.77134 v2factor: 0.0608889417186 gFactor:0.0 vSquare:44.2185488152
+need to go faster...1.35
+E500:t:2220 State update PK:0.224382949128 vK:27.6794667829 maxVk:50.0 aF:1.02345457748 a:1.35 power: 1484313.91695 v2factor: 0.0812954225164 gFactor:0.0 vSquare:59.0380700918
+need to go faster...1.35
+E500:t:2221 State update PK:0.232582210683 vK:31.3232926691 maxVk:50.0 aF:1.00062280623 a:1.35 power: 1679714.60928 v2factor: 0.104127193765 gFactor:0.0 vSquare:75.6188770991
+need to go faster...1.35
+E500:t:2222 State update PK:0.24178179334 vK:34.8809003761 maxVk:50.0 aF:0.975608178661 a:1.35 power: 1870491.9102 v2factor: 0.129141821339 gFactor:0.0 vSquare:93.7849101955
+E500:t:2222:ADVANCE STA x:290.0 vK:35.9302397573
+E500:t:2223 State update PK:0.251448055914 vK:33.1582397573 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.116958121727 gFactor:0.0 vSquare:84.9369075725
+E500:t:2224 State update PK:0.260105928069 vK:29.1982397573 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0907049712716 gFactor:0.0 vSquare:65.8714388319
+E500:t:2225 State update PK:0.267663800224 vK:25.2382397573 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0677841608158 gFactor:0.0 vSquare:49.2259700913
+E500:t:2226 State update PK:0.274121672379 vK:21.2782397573 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.04819569036 gFactor:0.0 vSquare:35.0005013507
+E500:t:2227 State update PK:0.279479544533 vK:17.3182397573 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0319395599041 gFactor:0.0 vSquare:23.1950326101
+E500:t:2228 State update PK:0.283737416688 vK:13.3582397573 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0190157694483 gFactor:0.0 vSquare:13.8095638695
+E500:t:2229 State update PK:0.286895288843 vK:9.39823975734 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00942431899254 gFactor:0.0 vSquare:6.84409512893
+E500:t:2230 State update PK:0.288953160998 vK:5.43823975734 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00316520853673 gFactor:0.0 vSquare:2.29862638833
+E500:t:2231 State update PK:0.289911033153 vK:1.47823975734 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000238438080925 gFactor:0.0 vSquare:0.17315764773
+E500:t:2231:IN STA LaD vK:0.782935757345 a:-0.004
+E500:t:2231:next STA (Esp) at PK1.231
+E500:t:2242:OUT STA, a:1.32849813531 vK:0.0
+need to go faster...1.35
+E500:t:2243 State update PK:0.29055541066 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2244 State update PK:0.29221320036 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2245 State update PK:0.294968771535 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+need to go faster...1.35
+E500:t:2246 State update PK:0.298813839085 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+need to go faster...1.35
+E500:t:2247 State update PK:0.303736943104 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2248 State update PK:0.309723583936 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2249 State update PK:0.316756389985 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2250 State update PK:0.324815314249 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2251 State update PK:0.333877854968 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+E500:t:2251:ADVANCE green SIG vK:37.1316936368
+need to go faster...1.33029556025
+E500:t:2252 State update PK:0.343919199518 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2253 State update PK:0.354883102387 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2254 State update PK:0.366654036754 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2255 State update PK:0.379130710115 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+E500:t:2255:AT SIG EastboundMain:LaD+10 vK:47.8570745395
+E500:2255:START UPDATE SIG BY OCCU sig:EastboundMain:LaD-100 from value green to value red
+need to update WestboundMain:LaD+10 the previous signal 3 on the other segment since the witch is not aligned with said segment...
+prev sig before: red 
+prev sig after: red
+SIG LaD-100 was green now red
+E500:t:2255next SIG (1057) at PK0.77
+need to go faster...1.04505575962
+E500:t:2256 State update PK:0.392230382325 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:2257:coasting at 49.8446509744
+E500:t:2257 State update PK:0.405881464755 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:2258:coasting at 48.045367244
+E500:t:2258 State update PK:0.419471993006 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:2259:coasting at 46.3110411619
+E500:t:2259 State update PK:0.432571987979 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:2259:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07939001614
+E500:t:2260 State update PK:0.445347855232 vK:46.6571016788 maxVk:50.0 aF:0.602953562964 a:1.07939001614 power: 2000465.33921 v2factor: 0.231186453178 gFactor:0.0 vSquare:167.891396643
+need to go faster...1.03397308959
+E500:t:2261 State update PK:0.458599496468 vK:48.7048182018 maxVk:50.0 aF:0.536781152479 a:1.03397308959 power: 2000396.83868 v2factor: 0.251941937108 gFactor:0.0 vSquare:182.964369722
+E500:t:2262:coasting at 49.3579905715
+E500:t:2262 State update PK:0.472333126313 vK:49.3489168175 maxVk:50.0 aF:-0.504097443534 a:0.0 power: 6.91018411357 v2factor: 0.258847443534 gFactor:0.0 vSquare:187.979261825
+E500:t:2263:coasting at 47.576507475
+E500:t:2263 State update PK:0.485791011006 vK:47.5677639852 maxVk:50.0 aF:-0.485749431749 a:0.0 power: 6.4183373126 v2factor: 0.240499431749 gFactor:0.0 vSquare:174.654634531
+E500:t:2264:coasting at 45.8587229238
+E500:t:2264 State update PK:0.498763126873 vK:45.8502863934 maxVk:50.0 aF:-0.468696137247 a:0.0 power: 5.96940336784 v2factor: 0.223446137247 gFactor:0.0 vSquare:162.270252176
+E500:t:2264:boosting from vK:45.4972817612 to maxVk:50.0 with aFull:-0.46526875814
+need to go faster...1.06610650977
+E500:t:2265 State update PK:0.51160652139 vK:47.2379589669 maxVk:50.0 aF:0.583873113732 a:1.06610650977 power: 2000445.06812 v2factor: 0.236983396041 gFactor:0.0 vSquare:172.101231693
+need to go faster...1.02309455158
+E500:t:2266 State update PK:0.525010431089 vK:49.2222962052 maxVk:50.0 aF:0.520516382977 a:1.02309455158 power: 2000380.7656 v2factor: 0.257328168602 gFactor:0.0 vSquare:186.875939435
+E500:t:2267:coasting at 48.8739713251
+E500:t:2267 State update PK:0.538755005054 vK:48.8649885031 maxVk:50.0 aF:-0.499045664015 a:0.0 power: 6.77385017629 v2factor: 0.253795664015 gFactor:0.0 vSquare:184.310576627
+E500:t:2268:coasting at 47.1100222324
+E500:t:2268 State update PK:0.55208094165 vK:47.1013632175 maxVk:50.0 aF:-0.481056383191 a:0.0 power: 6.29400317576 v2factor: 0.235806383191 gFactor:0.0 vSquare:171.246465643
+E500:t:2268:boosting from vK:45.4921966833 to maxVk:50.0 with aFull:-0.465219579869
+need to go faster...1.10398077225
+E500:t:2269 State update PK:0.564927624682 vK:45.6187060842 maxVk:50.0 aF:0.637728737392 a:1.10398077225 power: 2000503.39028 v2factor: 0.221002034859 gFactor:0.0 vSquare:160.495304908
+need to go faster...1.05396760597
+E500:t:2270 State update PK:0.577907337311 vK:47.7815727764 maxVk:50.0 aF:0.56624397268 a:1.05396760597 power: 2000426.71539 v2factor: 0.242473633287 gFactor:0.0 vSquare:176.088332089
+need to go faster...1.01310593216
+E500:t:2271 State update PK:0.591453848958 vK:49.7072312593 maxVk:50.0 aF:0.505428581394 a:1.01310593216 power: 2000366.11896 v2factor: 0.26242735077 gFactor:0.0 vSquare:190.579049216
+E500:t:2272:coasting at 48.396180998
+E500:t:2272 State update PK:0.605134764659 vK:48.387287059 maxVk:50.0 aF:-0.494107723114 a:0.0 power: 6.64125895456 v2factor: 0.248857723114 gFactor:0.0 vSquare:180.724562901
+E500:t:2273:coasting at 46.649373869
+E500:t:2273 State update PK:0.618330427336 vK:46.6407974552 maxVk:50.0 aF:-0.476467433751 a:0.0 power: 6.17300585322 v2factor: 0.231217433751 gFactor:0.0 vSquare:167.913895244
+E500:t:2273:boosting from vK:45.4968047321 to maxVk:50.0 with aFull:-0.465264144512
+need to go faster...1.08927786022
+E500:t:2274 State update PK:0.631108508428 vK:46.2339293213 maxVk:50.0 aF:0.61701949036 a:1.08927786022 power: 2000480.55701 v2factor: 0.227008369857 gFactor:0.0 vSquare:164.857203963
+need to go faster...1.04203535982
+E500:t:2275 State update PK:0.644249287291 vK:48.328279325 maxVk:50.0 aF:0.548726885339 a:1.04203535982 power: 2000408.83322 v2factor: 0.248058474482 gFactor:0.0 vSquare:180.144135426
+E500:t:2276:coasting at 49.7171755141
+E500:t:2276 State update PK:0.657929808419 vK:49.7080337013 maxVk:50.0 aF:-0.507878488742 a:0.0 power: 7.01267806514 v2factor: 0.262628488742 gFactor:0.0 vSquare:190.725118912
+E500:t:2277:coasting at 47.9225710329
+E500:t:2277 State update PK:0.671485594495 vK:47.9137643374 maxVk:50.0 aF:-0.489260861531 a:0.0 power: 6.51175822747 v2factor: 0.244010861531 gFactor:0.0 vSquare:177.20469247
+E500:t:2278:coasting at 46.1925926472
+E500:t:2278 State update PK:0.684552099639 vK:46.1840973396 maxVk:50.0 aF:-0.471961534143 a:0.0 power: 6.05475484261 v2factor: 0.226711534143 gFactor:0.0 vSquare:164.641636996
+E500:t:2278:boosting from vK:45.4925402945 to maxVk:50.0 with aFull:-0.465222902792
+E500:t:2278:ADVANCE green SIG vK:46.3612162489
+need to go faster...1.07591159392
+E500:t:2279 State update PK:0.697337658831 vK:46.8078185173 maxVk:50.0 aF:0.597977881864 a:1.07591159392 power: 2000460.01193 v2factor: 0.232683712056 gFactor:0.0 vSquare:168.978730614
+need to go faster...1.03112969218
+E500:t:2280 State update PK:0.71062879913 vK:48.8390206603 maxVk:50.0 aF:0.532546360977 a:1.03112969218 power: 2000392.62525 v2factor: 0.2533333312 gFactor:0.0 vSquare:183.974822948
+E500:t:2281:coasting at 49.2306608331
+E500:t:2281 State update PK:0.724372096504 vK:49.2216110872 maxVk:50.0 aF:-0.502763658894 a:0.0 power: 6.87412146858 v2factor: 0.257513658894 gFactor:0.0 vSquare:187.01064553
+E500:t:2282:coasting at 47.4538068029
+E500:t:2282 State update PK:0.7377952723 vK:47.4450856134 maxVk:50.0 aF:-0.484510526634 a:0.0 power: 6.38545650466 v2factor: 0.239260526634 gFactor:0.0 vSquare:173.754921303
+E500:t:2283:coasting at 45.7403248563
+E500:t:2283 State update PK:0.75073391841 vK:45.7319090672 maxVk:50.0 aF:-0.467543840033 a:0.0 power: 5.93935343815 v2factor: 0.222293840033 gFactor:0.0 vSquare:161.433435028
+E500:t:2283:boosting from vK:45.4968627856 to maxVk:50.0 with aFull:-0.46526470598
+need to go faster...1.0628269357
+E500:t:2284 State update PK:0.76360682325 vK:47.3836027897 maxVk:50.0 aF:0.579128769107 a:1.0628269357 power: 2000440.09366 v2factor: 0.238448166593 gFactor:0.0 vSquare:173.164972109
+E500:t:2284:AT SIG EastboundMain:1057 vK:48.3665157975
+E500:2284:START UPDATE SIG BY OCCU sig:EastboundMain:LaD+10 from value green to value red
+E500:2284:START UPDATE SIG BY OCCU sig:EastboundMain:LaD-100 from value red to value yellow
+SIG LaD-100 was red now yellow
+SIG LaD+10 was green now red
+E500:t:2284next SIG (Esp-140) at PK1.091
+need to go faster...1.02040037937
+E500:t:2285 State update PK:0.777048929555 vK:49.3521596402 maxVk:50.0 aF:0.516461574679 a:1.02040037937 power: 2000376.80458 v2factor: 0.25868880469 gFactor:0.0 vSquare:187.864055694
+E500:t:2286:coasting at 48.7476545153
+E500:t:2286 State update PK:0.790783683207 vK:48.7386952769 maxVk:50.0 aF:-0.497735468454 a:0.0 power: 6.73860481263 v2factor: 0.252485468454 gFactor:0.0 vSquare:183.359091107
+E500:t:2287:coasting at 46.9882534439
+E500:t:2287 State update PK:0.804075180673 vK:46.9796163428 maxVk:50.0 aF:-0.479838945931 a:0.0 power: 6.26184710728 v2factor: 0.234588945931 gFactor:0.0 vSquare:170.362342724
+E500:t:2287:boosting from vK:45.4999071477 to maxVk:50.0 with aFull:-0.465294150654
+need to go faster...1.09965076936
+E500:t:2288 State update PK:0.816896510908 vK:45.7981794787 maxVk:50.0 aF:0.631654875559 a:1.09965076936 power: 2000496.64031 v2factor: 0.222745893803 gFactor:0.0 vSquare:161.761723894
+need to go faster...1.05046054801
+E500:t:2289 State update PK:0.829923196205 vK:47.9409685153 maxVk:50.0 aF:0.561115182118 a:1.05046054801 power: 2000421.44337 v2factor: 0.244095365896 gFactor:0.0 vSquare:177.266060927
+need to go faster...1.010211708
+E500:t:2290 State update PK:0.843511538033 vK:49.8495345981 maxVk:50.0 aF:0.501028522118 a:1.010211708 power: 2000361.89486 v2factor: 0.263933185881 gFactor:0.0 vSquare:191.672611388
+E500:t:2291:coasting at 48.2691243734
+E500:t:2291 State update PK:0.857163711463 vK:48.2602539236 maxVk:50.0 aF:-0.492802764076 a:0.0 power: 6.60632959127 v2factor: 0.247552764076 gFactor:0.0 vSquare:179.776880229
+E500:t:2292:coasting at 46.5268478921
+E500:t:2292 State update PK:0.870324726989 vK:46.5182933123 maxVk:50.0 aF:-0.47525442982 a:0.0 power: 6.14111804565 v2factor: 0.23000442982 gFactor:0.0 vSquare:167.032991881
+E500:t:2292:boosting from vK:45.4942646404 to maxVk:50.0 with aFull:-0.465239578615
+need to go faster...1.08568937058
+E500:t:2293 State update PK:0.883097092941 vK:46.3866153764 maxVk:50.0 aF:0.611927884675 a:1.08568937058 power: 2000475.02142 v2factor: 0.228511485904 gFactor:0.0 vSquare:165.948791506
+need to go faster...1.03911290591
+E500:t:2294 State update PK:0.896277865441 vK:48.4640937917 maxVk:50.0 aF:0.544407174153 a:1.03911290591 power: 2000404.47722 v2factor: 0.249455731761 gFactor:0.0 vSquare:181.158846594
+E500:t:2295:coasting at 49.5876488043
+E500:t:2295 State update PK:0.909981954806 vK:49.5785315913 maxVk:50.0 aF:-0.506511834606 a:0.0 power: 6.97558694261 v2factor: 0.261261834606 gFactor:0.0 vSquare:189.732632249
+E500:t:2296:coasting at 47.7977868259
+E500:t:2296 State update PK:0.92350243793 vK:47.789002974 maxVk:50.0 aF:-0.487991770204 a:0.0 power: 6.47795559932 v2factor: 0.242741770204 gFactor:0.0 vSquare:176.283057519
+E500:t:2297:coasting at 46.0722153248
+E500:t:2297 State update PK:0.936534909458 vK:46.0637412585 maxVk:50.0 aF:-0.470781458899 a:0.0 power: 6.02387647557 v2factor: 0.225531458899 gFactor:0.0 vSquare:163.784646986
+E500:t:2297:boosting from vK:45.4993536093 to maxVk:50.0 with aFull:-0.465288796755
+need to go faster...1.0720565553
+E500:t:2298 State update PK:0.949338741919 vK:46.9759967718 maxVk:50.0 aF:0.592446416902 a:1.0720565553 power: 2000454.12371 v2factor: 0.234360138398 gFactor:0.0 vSquare:170.196178938
+need to go faster...1.02797407129
+E500:t:2299 State update PK:0.962673966224 vK:48.9888288305 maxVk:50.0 aF:0.527833024797 a:1.02797407129 power: 2000387.95936 v2factor: 0.254891046498 gFactor:0.0 vSquare:185.106061364
+E500:t:2300:coasting at 49.1012718614
+E500:t:2300 State update PK:0.976423901756 vK:49.0922464484 maxVk:50.0 aF:-0.501411832956 a:0.0 power: 6.83762035433 v2factor: 0.256161832956 gFactor:0.0 vSquare:186.028927346
+E500:t:2301:coasting at 47.3291097385
+E500:t:2301 State update PK:0.9898118056 vK:47.3204111532 maxVk:50.0 aF:-0.483254741793 a:0.0 power: 6.35217029817 v2factor: 0.238004741793 gFactor:0.0 vSquare:172.842949741
+E500:t:2302:coasting at 45.6199892137
+E500:t:2302 State update PK:1.00271643578 vK:45.6115944504 maxVk:50.0 aF:-0.466375737935 a:0.0 power: 5.90892806117 v2factor: 0.221125737935 gFactor:0.0 vSquare:160.585140113
+E500:t:2302:boosting from vK:45.4942213217 to maxVk:50.0 with aFull:-0.46523915968
+E500:t:2302:ADVANCE green SIG vK:47.1289275845
+need to go faster...1.05963613299
+E500:t:2303 State update PK:1.0156234003 vK:47.5261698563 maxVk:50.0 aF:0.574499771305 a:1.05963613299 power: 2000435.26531 v2factor: 0.239886361681 gFactor:0.0 vSquare:174.209412985
+need to go faster...1.01777596251
+E500:t:2304 State update PK:1.02910290272 vK:49.4793219877 maxVk:50.0 aF:0.512501347572 a:1.01777596251 power: 2000372.95355 v2factor: 0.260024614942 gFactor:0.0 vSquare:188.834143022
+E500:t:2305:coasting at 48.6200712138
+E500:t:2305 State update PK:1.04282241685 vK:48.6111357334 maxVk:50.0 aF:-0.496415578264 a:0.0 power: 6.70314584866 v2factor: 0.251165578264 gFactor:0.0 vSquare:182.400565188
+E500:t:2306:coasting at 46.8652520327
+E500:t:2306 State update PK:1.0560791282 vK:46.8566370098 maxVk:50.0 aF:-0.47861238386 a:0.0 power: 6.22949076081 v2factor: 0.23336238386 gFactor:0.0 vSquare:169.471593217
+E500:t:2306:boosting from vK:45.4977464459 to maxVk:50.0 with aFull:-0.465273252423
+need to go faster...1.09592747237
+E500:t:2307 State update PK:1.06887974191 vK:45.9536400758 maxVk:50.0 aF:0.62641550549 a:1.09592747237 power: 2000490.85323 v2factor: 0.224261966878 gFactor:0.0 vSquare:162.862721044
+need to go faster...1.04744022113
+E500:t:2308 State update PK:1.08194712431 vK:48.0790980396 maxVk:50.0 aF:0.556685121523 a:1.04744022113 power: 2000416.91385 v2factor: 0.245505099612 gFactor:0.0 vSquare:178.289832688
+E500:t:2308:AT SIG EastboundMain:Esp-140 vK:49.3713768479
+E500:2308:START UPDATE SIG BY OCCU sig:EastboundMain:1057 from value green to value red
+E500:2308:START UPDATE SIG BY OCCU sig:EastboundMain:LaD+10 from value red to value yellow
+E500:2308:START UPDATE SIG BY OCCU sig:EastboundMain:LaD-100 from value yellow to value green
+SIG LaD-100 was yellow now green
+SIG LaD+10 was red now yellow
+SIG 1057 was green now red
+E500:t:2308next SIG (Esp+10) at PK1.241
+E500:t:2309:coasting at 49.9458005993
+E500:t:2309 State update PK:1.095571646 vK:49.9366152094 maxVk:50.0 aF:-0.510299443485 a:0.0 power: 7.07850748636 v2factor: 0.265049443485 gFactor:0.0 vSquare:192.483255981
+E500:t:2310:coasting at 48.1427955995
+E500:t:2310 State update PK:1.10918974038 vK:48.1339484433 maxVk:50.0 aF:-0.491508681615 a:0.0 power: 6.57173709451 v2factor: 0.246258681615 gFactor:0.0 vSquare:178.837096307
+E500:t:2311:coasting at 46.4050122138
+E500:t:2311 State update PK:1.12231630557 vK:46.3964792882 maxVk:50.0 aF:-0.474051423097 a:0.0 power: 6.10953250924 v2factor: 0.228801423097 gFactor:0.0 vSquare:166.159348655
+E500:t:2311:boosting from vK:45.4920963096 to maxVk:50.0 with aFull:-0.4652186092
+need to go faster...1.0821888682
+E500:t:2312 State update PK:1.13508815562 vK:46.5365336537 maxVk:50.0 aF:0.606946690915 a:1.0821888682 power: 2000469.63557 v2factor: 0.229992177289 gFactor:0.0 vSquare:167.024093892
+E500:t:2313:ADVANCE STA x:1231.0 vK:48.5877734095
+E500:t:2313 State update PK:1.14830816343 vK:48.5679734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.25083199577 gFactor:0.0 vSquare:182.158312106
+E500:t:2314 State update PK:1.16124651715 vK:44.6079734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.211611554446 gFactor:0.0 vSquare:153.675783911
+E500:t:2315 State update PK:1.17308487088 vK:40.6479734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.175723453122 gFactor:0.0 vSquare:127.613255716
+E500:t:2316 State update PK:1.1838232246 vK:36.6879734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.143167691797 gFactor:0.0 vSquare:103.970727522
+E500:t:2317 State update PK:1.19346157833 vK:32.7279734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.113944270473 gFactor:0.0 vSquare:82.7481993271
+E500:t:2318 State update PK:1.20199993205 vK:28.7679734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0880531891493 gFactor:0.0 vSquare:63.9456711324
+E500:t:2319 State update PK:1.20943828578 vK:24.8079734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0654944478252 gFactor:0.0 vSquare:47.5631429377
+E500:t:2320 State update PK:1.2157766395 vK:20.8479734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0462680465011 gFactor:0.0 vSquare:33.600614743
+E500:t:2321 State update PK:1.22101499323 vK:16.8879734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0303739851771 gFactor:0.0 vSquare:22.0580865483
+E500:t:2322 State update PK:1.22515334695 vK:12.9279734095 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.017812263853 gFactor:0.0 vSquare:12.9355583537
+E500:t:2323 State update PK:1.22819170068 vK:8.96797340948 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0085828825289 gFactor:0.0 vSquare:6.23303015897
+E500:t:2324 State update PK:1.2301300544 vK:5.00797340948 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00268584120482 gFactor:0.0 vSquare:1.95050196428
+E500:t:2325 State update PK:1.23096840812 vK:1.04797340948 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000121139880737 gFactor:0.0 vSquare:0.0879737695987
+E500:t:2325:IN STA Esp vK:0.789565409483 a:-0.004
+E500:t:2325:next STA (PoN) at PK1.937
+E500:t:2336:OUT STA, a:1.33819469853 vK:0.0
+need to go faster...1.35
+E500:t:2337 State update PK:1.23155518601 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2338 State update PK:1.23321297571 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2339 State update PK:1.23596854689 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2339:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2340 State update PK:1.23981361444 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2340:AT SIG EastboundMain:Esp+10 vK:16.807851537
+E500:2340:START UPDATE SIG BY OCCU sig:EastboundMain:Esp-140 from value green to value red
+E500:2340:START UPDATE SIG BY OCCU sig:EastboundMain:1057 from value red to value yellow
+E500:2340:START UPDATE SIG BY OCCU sig:EastboundMain:LaD+10 from value yellow to value green
+SIG LaD+10 was yellow now green
+SIG 1057 was red now yellow
+SIG Esp-140 was green now red
+E500:t:2340next SIG (1130) at PK1.5
+need to go faster...1.35
+E500:t:2341 State update PK:1.24473671846 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2342 State update PK:1.25072335929 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2343 State update PK:1.25775616534 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2344 State update PK:1.2658150896 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2345 State update PK:1.27487763032 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2346 State update PK:1.28491897487 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2347 State update PK:1.29588287774 vK:40.9830614698 maxVk:50.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2348 State update PK:1.30765381211 vK:43.693797704 maxVk:50.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2349 State update PK:1.32013048547 vK:46.0769623942 maxVk:50.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:2350 State update PK:1.33323015768 vK:48.188711482 maxVk:50.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:2351:coasting at 49.8446509744
+E500:t:2351 State update PK:1.34688124011 vK:49.8354848887 maxVk:50.0 aF:-0.509226980768 a:0.0 power: 7.0493259736 v2factor: 0.263976980768 gFactor:0.0 vSquare:191.704415953
+E500:t:2352:coasting at 48.045367244
+E500:t:2352 State update PK:1.36047176836 vK:48.0365380107 maxVk:50.0 aF:-0.490512964571 a:0.0 power: 6.54515129648 v2factor: 0.245262964571 gFactor:0.0 vSquare:178.113990248
+E500:t:2353:coasting at 46.3110411619
+E500:t:2353 State update PK:1.37357176333 vK:46.3025248992 maxVk:50.0 aF:-0.473125706685 a:0.0 power: 6.08525411507 v2factor: 0.227875706685 gFactor:0.0 vSquare:165.487078202
+E500:t:2353:boosting from vK:45.491907479 to maxVk:50.0 with aFull:-0.465216783112
+need to go faster...1.07940982487
+E500:t:2354 State update PK:1.38634750311 vK:46.6562461674 maxVk:50.0 aF:0.602981856771 a:1.07940982487 power: 2000465.36958 v2factor: 0.231177968098 gFactor:0.0 vSquare:167.885234639
+need to go faster...1.03398927131
+E500:t:2355 State update PK:1.39959892016 vK:48.704056571 maxVk:50.0 aF:0.536805219762 a:1.03398927131 power: 2000396.86268 v2factor: 0.251934051544 gFactor:0.0 vSquare:182.958643096
+E500:t:2356:coasting at 49.3572927965
+E500:t:2356 State update PK:1.41333234917 vK:49.3482191743 maxVk:50.0 aF:-0.504090124922 a:0.0 power: 6.90998610228 v2factor: 0.258840124922 gFactor:0.0 vSquare:187.973946929
+E500:t:2356:ADVANCE green SIG vK:49.0407310122
+E500:t:2357:coasting at 47.5758350995
+E500:t:2357 State update PK:1.42679004366 vK:47.5670917321 maxVk:50.0 aF:-0.485742634076 a:0.0 power: 6.41815678702 v2factor: 0.240492634076 gFactor:0.0 vSquare:174.649697949
+E500:t:2358:coasting at 45.8580741556
+E500:t:2358 State update PK:1.43976197612 vK:45.8496377389 maxVk:50.0 aF:-0.468689815059 a:0.0 power: 5.96923839788 v2factor: 0.223439815059 gFactor:0.0 vSquare:162.2656609
+E500:t:2358:boosting from vK:45.4966378496 to maxVk:50.0 with aFull:-0.465262530506
+need to go faster...1.06610839219
+E500:t:2359 State update PK:1.45260531377 vK:47.2378756274 maxVk:50.0 aF:0.58387583302 a:1.06610839219 power: 2000445.07098 v2factor: 0.236982559169 gFactor:0.0 vSquare:172.100623943
+need to go faster...1.02309609704
+E500:t:2360 State update PK:1.46600920162 vK:49.222221908 maxVk:50.0 aF:0.520518705851 a:1.02309609704 power: 2000380.76788 v2factor: 0.257327391185 gFactor:0.0 vSquare:186.875374862
+E500:t:2361:coasting at 48.8739018545
+E500:t:2361 State update PK:1.47975375581 vK:48.8649190456 maxVk:50.0 aF:-0.499044942514 a:0.0 power: 6.77383075446 v2factor: 0.253794942514 gFactor:0.0 vSquare:184.310052661
+E500:t:2362:coasting at 47.1099552663
+E500:t:2362 State update PK:1.49307967346 vK:47.1012962635 maxVk:50.0 aF:-0.481055712802 a:0.0 power: 6.29398545775 v2factor: 0.235805712802 gFactor:0.0 vSquare:171.245978796
+E500:t:2362:AT SIG EastboundMain:1130 vK:46.1836830639
+E500:2362:START UPDATE SIG BY OCCU sig:EastboundMain:Esp+10 from value green to value red
+E500:2362:START UPDATE SIG BY OCCU sig:EastboundMain:Esp-140 from value red to value yellow
+E500:2362:START UPDATE SIG BY OCCU sig:EastboundMain:1057 from value yellow to value green
+SIG 1057 was yellow now green
+SIG Esp-140 was red now yellow
+SIG Esp+10 was green now red
+E500:t:2362next SIG (PoN-140) at PK1.797
+E500:t:2362:boosting from vK:45.4921319332 to maxVk:50.0 with aFull:-0.4652189537
+need to go faster...1.10397844448
+E500:t:2363 State update PK:1.50592634068 vK:45.618802189 maxVk:50.0 aF:0.63772547765 a:1.10397844448 power: 2000503.38664 v2factor: 0.221002966832 gFactor:0.0 vSquare:160.495981722
+need to go faster...1.05396572218
+E500:t:2364 State update PK:1.51890607846 vK:47.7816581099 maxVk:50.0 aF:0.566241222129 a:1.05396572218 power: 2000426.71255 v2factor: 0.242474500046 gFactor:0.0 vSquare:176.088961544
+need to go faster...1.01310437856
+E500:t:2365 State update PK:1.5324526125 vK:49.7073074287 maxVk:50.0 aF:0.505426222929 a:1.01310437856 power: 2000366.11669 v2factor: 0.262428155633 gFactor:0.0 vSquare:190.579633721
+E500:t:2366:coasting at 48.396253644
+E500:t:2366 State update PK:1.54613354877 vK:48.3873596916 maxVk:50.0 aF:-0.49410847022 a:0.0 power: 6.64127896533 v2factor: 0.24885847022 gFactor:0.0 vSquare:180.725105461
+E500:t:2367:coasting at 46.6494439212
+E500:t:2367 State update PK:1.55932923126 vK:46.6408674949 maxVk:50.0 aF:-0.476468128179 a:0.0 power: 6.17302411998 v2factor: 0.231218128179 gFactor:0.0 vSquare:167.914399549
+E500:t:2367:boosting from vK:45.4968731251 to maxVk:50.0 with aFull:-0.465264805978
+need to go faster...1.08929980754
+E500:t:2368 State update PK:1.57210723966 vK:46.2329985846 maxVk:50.0 aF:0.617050585107 a:1.08929980754 power: 2000480.59091 v2factor: 0.22699922243 gFactor:0.0 vSquare:164.850560951
+need to go faster...1.04205322136
+E500:t:2369 State update PK:1.58524777475 vK:48.3274515929 maxVk:50.0 aF:0.548753250552 a:1.04205322136 power: 2000408.85987 v2factor: 0.24804997081 gFactor:0.0 vSquare:180.13795992
+E500:t:2370:coasting at 49.7164283688
+E500:t:2370 State update PK:1.5989280784 vK:49.7072866981 maxVk:50.0 aF:-0.507870595286 a:0.0 power: 7.01246369039 v2factor: 0.262620595286 gFactor:0.0 vSquare:190.719386555
+E500:t:2371:coasting at 47.9218512785
+E500:t:2371 State update PK:1.61248366085 vK:47.9130447149 maxVk:50.0 aF:-0.489253531933 a:0.0 power: 6.51156287568 v2factor: 0.244003531933 gFactor:0.0 vSquare:177.199369596
+E500:t:2372:coasting at 46.191898344
+E500:t:2372 State update PK:1.62554996969 vK:46.1834031591 maxVk:50.0 aF:-0.471954718966 a:0.0 power: 6.05457640523 v2factor: 0.226704718966 gFactor:0.0 vSquare:164.636687702
+E500:t:2372:boosting from vK:45.4918560244 to maxVk:50.0 with aFull:-0.465216285521
+need to go faster...1.07592275959
+E500:t:2373 State update PK:1.638335368 vK:46.8073331594 maxVk:50.0 aF:0.597993876956 a:1.07592275959 power: 2000460.02901 v2factor: 0.232678882637 gFactor:0.0 vSquare:168.975223411
+need to go faster...1.03113882541
+E500:t:2374 State update PK:1.65162638108 vK:48.8385884055 maxVk:50.0 aF:0.532559981919 a:1.03113882541 power: 2000392.63877 v2factor: 0.25332884349 gFactor:0.0 vSquare:183.9715639
+E500:t:2375:coasting at 49.2302627112
+E500:t:2375 State update PK:1.66536956425 vK:49.2212130403 maxVk:50.0 aF:-0.502759493952 a:0.0 power: 6.87400893329 v2factor: 0.257509493952 gFactor:0.0 vSquare:187.00762088
+E500:t:2376:coasting at 47.4534231363
+E500:t:2376 State update PK:1.67879263152 vK:47.4447020164 maxVk:50.0 aF:-0.484506657781 a:0.0 power: 6.38535388984 v2factor: 0.239256657781 gFactor:0.0 vSquare:173.752111678
+E500:t:2377:coasting at 45.7399546262
+E500:t:2377 State update PK:1.69173117297 vK:45.7315389018 maxVk:50.0 aF:-0.467540241478 a:0.0 power: 5.93925965037 v2factor: 0.222290241478 gFactor:0.0 vSquare:161.430821698
+E500:t:2377:boosting from vK:45.4964944245 to maxVk:50.0 with aFull:-0.465261143373
+need to go faster...1.06283522436
+E500:t:2378 State update PK:1.70460397062 vK:47.3832335622 maxVk:50.0 aF:0.579140776869 a:1.06283522436 power: 2000440.10622 v2factor: 0.238444447492 gFactor:0.0 vSquare:173.162271236
+E500:t:2378:ADVANCE green SIG vK:48.7461684823
+need to go faster...1.02040719268
+E500:t:2379 State update PK:1.71804598008 vK:49.3518303628 maxVk:50.0 aF:0.516471842504 a:1.02040719268 power: 2000376.81458 v2factor: 0.258685350172 gFactor:0.0 vSquare:187.861546966
+E500:t:2380:coasting at 48.7473450081
+E500:t:2380 State update PK:1.73178064579 vK:48.7383858273 maxVk:50.0 aF:-0.497732262317 a:0.0 power: 6.73851862209 v2factor: 0.252482262317 gFactor:0.0 vSquare:183.356762757
+E500:t:2381:coasting at 46.9879550662
+E500:t:2381 State update PK:1.74507205887 vK:46.9793180188 maxVk:50.0 aF:-0.479835966639 a:0.0 power: 6.26176846488 v2factor: 0.234585966639 gFactor:0.0 vSquare:170.360179113
+E500:t:2381:boosting from vK:45.4996178656 to maxVk:50.0 with aFull:-0.46529135267
+need to go faster...1.09967060027
+E500:t:2382 State update PK:1.75789328809 vK:45.7973542888 maxVk:50.0 aF:0.631682740119 a:1.09967060027 power: 2000496.67118 v2factor: 0.222737860148 gFactor:0.0 vSquare:161.755889722
+need to go faster...1.05047662324
+E500:t:2383 State update PK:1.77091975739 vK:47.940235468 maxVk:50.0 aF:0.561138727913 a:1.05047662324 power: 2000421.4675 v2factor: 0.244087895323 gFactor:0.0 vSquare:177.260635674
+need to go faster...1.01022498277
+E500:t:2384 State update PK:1.78450790683 vK:49.8488800418 maxVk:50.0 aF:0.501048733171 a:1.01022498277 power: 2000361.91422 v2factor: 0.263926249597 gFactor:0.0 vSquare:191.667574144
+E500:t:2384:AT SIG EastboundMain:PoN-140 vK:48.4106451509
+E500:2384:START UPDATE SIG BY OCCU sig:EastboundMain:1130 from value green to value red
+E500:2384:START UPDATE SIG BY OCCU sig:EastboundMain:Esp+10 from value red to value yellow
+E500:2384:START UPDATE SIG BY OCCU sig:EastboundMain:Esp-140 from value yellow to value green
+SIG Esp-140 was yellow now green
+SIG Esp+10 was red now yellow
+SIG 1130 was green now red
+E500:t:2384next SIG (PoN+10) at PK1.947
+E500:t:2385:coasting at 48.2684966089
+E500:t:2385 State update PK:1.79815990261 vK:48.259626275 maxVk:50.0 aF:-0.492796325019 a:0.0 power: 6.6061573542 v2factor: 0.247546325019 gFactor:0.0 vSquare:179.77220408
+E500:t:2386:coasting at 46.5262424837
+E500:t:2386 State update PK:1.81132074694 vK:46.5176880117 maxVk:50.0 aF:-0.475248444213 a:0.0 power: 6.14096079331 v2factor: 0.229998444213 gFactor:0.0 vSquare:167.028645035
+E500:t:2386:boosting from vK:45.4936720937 to maxVk:50.0 with aFull:-0.465233848137
+need to go faster...1.0857288446
+E500:t:2387 State update PK:1.82409282295 vK:46.3849303109 maxVk:50.0 aF:0.611983974351 a:1.0857288446 power: 2000475.08224 v2factor: 0.228494870247 gFactor:0.0 vSquare:165.936724944
+need to go faster...1.03914507513
+E500:t:2388 State update PK:1.83727315403 vK:48.4625946405 maxVk:50.0 aF:0.544454788018 a:1.03914507513 power: 2000404.52512 v2factor: 0.249440287109 gFactor:0.0 vSquare:181.147630435
+E500:t:2388:ADVANCE STA x:1937.0 vK:49.6136495964
+E500:t:2389 State update PK:1.85097670079 vK:49.5344495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.260910013138 gFactor:0.0 vSquare:189.477133724
+E500:t:2390 State update PK:1.86418352013 vK:45.5744495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.220876282103 gFactor:0.0 vSquare:160.403981193
+E500:t:2391 State update PK:1.87629033946 vK:41.6144495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.184174891067 gFactor:0.0 vSquare:133.750828662
+E500:t:2392 State update PK:1.88729715879 vK:37.6544495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.150805840032 gFactor:0.0 vSquare:109.517676131
+E500:t:2393 State update PK:1.89720397812 vK:33.6944495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.120769128997 gFactor:0.0 vSquare:87.7045235996
+E500:t:2394 State update PK:1.90601079746 vK:29.7344495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0940647579612 gFactor:0.0 vSquare:68.3113710684
+E500:t:2395 State update PK:1.91371761679 vK:25.7744495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0706927269258 gFactor:0.0 vSquare:51.3382185373
+E500:t:2396 State update PK:1.92032443612 vK:21.8144495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0506530358904 gFactor:0.0 vSquare:36.7850660061
+E500:t:2397 State update PK:1.92583125545 vK:17.8544495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.033945684855 gFactor:0.0 vSquare:24.651913475
+E500:t:2398 State update PK:1.93023807479 vK:13.8944495964 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0205706738196 gFactor:0.0 vSquare:14.9387609438
+E500:t:2399 State update PK:1.93354489412 vK:9.93444959643 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0105280027842 gFactor:0.0 vSquare:7.64560841266
+E500:t:2400 State update PK:1.93575171345 vK:5.97444959643 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00381767174883 gFactor:0.0 vSquare:2.7724558815
+E500:t:2401 State update PK:1.93685853278 vK:2.01444959643 maxVk:50.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000439680713436 gFactor:0.0 vSquare:0.319303350353
+E500:t:2401:IN STA PoN vK:0.785409596429 a:-0.004
+E500:t:2401:next STA (Sab) at PK2.96
+E500:t:2412:OUT STA, a:1.33511037553 vK:0.0
+need to go faster...1.35
+E500:t:2413 State update PK:1.93755512459 vK:3.97509959103 maxVk:50.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2414 State update PK:1.93921291429 vK:7.93816552656 maxVk:50.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2415 State update PK:1.94196848547 vK:11.8772793223 maxVk:50.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2415:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2416 State update PK:1.94581355302 vK:15.7808101534 maxVk:50.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2416:AT SIG EastboundMain:PoN+10 vK:16.807851537
+E500:2416:START UPDATE SIG BY OCCU sig:EastboundMain:PoN-140 from value green to value red
+E500:2416:START UPDATE SIG BY OCCU sig:EastboundMain:1130 from value red to value yellow
+E500:2416:START UPDATE SIG BY OCCU sig:EastboundMain:Esp+10 from value yellow to value green
+SIG Esp+10 was yellow now green
+SIG 1130 was red now yellow
+SIG PoN-140 was green now red
+E500:t:2416next SIG (1200) at PK2.2
+need to go faster...1.35
+E500:t:2417 State update PK:1.95073665704 vK:19.6375498514 maxVk:50.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2418 State update PK:1.95672329787 vK:23.4368373444 maxVk:50.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2419 State update PK:1.96375610392 vK:27.1686697263 maxVk:50.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2420 State update PK:1.97181502818 vK:30.8237976902 maxVk:50.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2421 State update PK:1.9808775689 vK:34.3938036825 maxVk:50.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2422 State update PK:1.99091891345 vK:37.8651811435 maxVk:50.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+E500:t:2422:TIV 2 reached at curr speed 40.4992525154, maxVk now 55.0
+E500:t:2422  next TIV at PK4.66 with limit <<20 (currspeed:40.4992525154)
+E500:t:2422  BDtiv: 138.099747475
+E500:t:2422:vK:40.4992525154 maxVk:55.0 =>ready to acc
+need to go faster...1.22897958055
+E500:t:2423 State update PK:2.00188281632 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2424 State update PK:2.01365375069 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2425 State update PK:2.02613042405 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:2426 State update PK:2.03923009626 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:2427 State update PK:2.05288346827 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:2428 State update PK:2.06703143869 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:2429 State update PK:2.08162292007 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+E500:t:2429:ADVANCE green SIG vK:54.5537207685
+need to go faster...0.921726960895
+E500:t:2430 State update PK:2.09661329798 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:2431:coasting at 53.4558144052
+E500:t:2431 State update PK:2.11170799136 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:2432:coasting at 51.5190987296
+E500:t:2432 State update PK:2.12628200594 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:2432:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+need to go faster...0.998765668152
+E500:t:2433 State update PK:2.1403523747 vK:50.4203964331 maxVk:55.0 aF:0.483498416649 a:0.998765668152 power: 2000345.2759 v2factor: 0.270017251502 gFactor:0.0 vSquare:196.090959697
+need to go faster...0.967117065012
+E500:t:2434 State update PK:2.1545923162 vK:52.0691974279 maxVk:55.0 aF:0.433888333429 a:0.967117065012 power: 2000300.03004 v2factor: 0.287978731583 gFactor:0.0 vSquare:209.134881324
+need to go faster...0.940338661761
+E500:t:2435 State update PK:2.16926642892 vK:53.5509766037 maxVk:55.0 aF:0.390474759562 a:0.940338661761 power: 2000262.53371 v2factor: 0.3046139022 gFactor:0.0 vSquare:221.21561525
+need to go faster...0.917451012235
+E500:t:2436 State update PK:2.18433123975 vK:54.8860364308 maxVk:55.0 aF:0.35219926763 a:0.917451012235 power: 2000231.03578 v2factor: 0.320001744604 gFactor:0.0 vSquare:232.390518957
+E500:t:2437:coasting at 53.0606337302
+E500:t:2437 State update PK:2.19934108408 vK:53.0508347187 maxVk:55.0 aF:-0.544389528009 a:0.0 power: 8.02231079805 v2factor: 0.299139528009 gFactor:0.0 vSquare:217.240034865
+E500:t:2437:AT SIG EastboundMain:1200 vK:52.9627330095
+E500:2437:START UPDATE SIG BY OCCU sig:EastboundMain:PoN+10 from value green to value red
+E500:2437:START UPDATE SIG BY OCCU sig:EastboundMain:PoN-140 from value red to value yellow
+E500:2437:START UPDATE SIG BY OCCU sig:EastboundMain:1130 from value yellow to value green
+SIG 1130 was yellow now green
+SIG PoN-140 was red now yellow
+SIG PoN+10 was green now red
+E500:t:2437next SIG (1232) at PK2.52
+E500:t:2438:coasting at 51.1394161516
+E500:t:2438 State update PK:2.21380753862 vK:51.1300000053 maxVk:55.0 aF:-0.523119237709 a:0.0 power: 7.42974628523 v2factor: 0.277869237709 gFactor:0.0 vSquare:201.793200951
+E500:t:2438:boosting from vK:50.0408400874 to maxVk:55.0 with aFull:-0.511406998625
+need to go faster...0.992004309603
+E500:t:2439 State update PK:2.2278376714 vK:50.763804524 maxVk:55.0 aF:0.473043744502 a:0.992004309603 power: 2000335.52315 v2factor: 0.273710565101 gFactor:0.0 vSquare:198.773104649
+need to go faster...0.961421132036
+E500:t:2440 State update PK:2.24216798825 vK:52.377468136 maxVk:55.0 aF:0.424770064244 a:0.961421132036 power: 2000291.99492 v2factor: 0.291401067791 gFactor:0.0 vSquare:211.620238047
+need to go faster...0.935487849982
+E500:t:2441 State update PK:2.25692334455 vK:53.828472822 maxVk:55.0 aF:0.382456738785 a:0.935487849982 power: 2000255.81635 v2factor: 0.307781111197 gFactor:0.0 vSquare:223.515694406
+E500:t:2442:coasting at 54.6540275526
+E500:t:2442 State update PK:2.27205075255 vK:54.6439002952 maxVk:55.0 aF:-0.562625414821 a:0.0 power: 8.54001307527 v2factor: 0.317375414821 gFactor:0.0 vSquare:230.483235164
+E500:t:2443:coasting at 52.6696331006
+E500:t:2443 State update PK:2.28695079717 vK:52.659913153 maxVk:55.0 aF:-0.539997089164 a:0.0 power: 7.89894439396 v2factor: 0.294747089164 gFactor:0.0 vSquare:214.050173685
+E500:t:2444:coasting at 50.7636389047
+E500:t:2444 State update PK:2.30131081348 vK:50.7542959935 maxVk:55.0 aF:-0.519050622453 a:0.0 power: 7.31779136877 v2factor: 0.273800622453 gFactor:0.0 vSquare:198.838505775
+E500:t:2444:boosting from vK:50.049492634 to maxVk:55.0 with aFull:-0.511499049529
+need to go faster...0.985136239764
+E500:t:2445 State update PK:2.31534386191 vK:51.1174596932 maxVk:55.0 aF:0.462345946932 a:0.985136239764 power: 2000325.66494 v2factor: 0.277540292832 gFactor:0.0 vSquare:201.554315782
+need to go faster...0.955621373213
+E500:t:2446 State update PK:2.32976728057 vK:52.6951347961 maxVk:55.0 aF:0.415422518562 a:0.955621373213 power: 2000283.84657 v2factor: 0.294948854651 gFactor:0.0 vSquare:214.196699093
+need to go faster...0.930538854461
+E500:t:2447 State update PK:2.34460637785 vK:54.1145678901 maxVk:55.0 aF:0.374225248704 a:0.930538854461 power: 2000248.9863 v2factor: 0.311063605757 gFactor:0.0 vSquare:225.89949583
+E500:t:2448:coasting at 54.2306389791
+E500:t:2448 State update PK:2.35976016237 vK:54.2205998888 maxVk:55.0 aF:-0.557727234183 a:0.0 power: 8.40008478105 v2factor: 0.312477234183 gFactor:0.0 vSquare:226.926095994
+E500:t:2449:coasting at 52.2632099079
+E500:t:2449 State update PK:2.37454502127 vK:52.2535715229 maxVk:55.0 aF:-0.535465830424 a:0.0 power: 7.77222279671 v2factor: 0.290215830424 gFactor:0.0 vSquare:210.759499219
+E500:t:2450:coasting at 50.3729227126
+E500:t:2450 State update PK:2.38879438422 vK:50.3636553752 maxVk:55.0 aF:-0.514852080152 a:0.0 power: 7.202731315 v2factor: 0.269602080152 gFactor:0.0 vSquare:195.789455448
+E500:t:2450:boosting from vK:50.0496238508 to maxVk:55.0 with aFull:-0.511500445613
+need to go faster...0.978529712819
+E500:t:2451 State update PK:2.40287051264 vK:51.462332904 maxVk:55.0 aF:0.451979180949 a:0.978529712819 power: 2000316.22786 v2factor: 0.28130053187 gFactor:0.0 vSquare:204.285063086
+need to go faster...0.950029273131
+E500:t:2452 State update PK:2.41738474947 vK:53.0051010448 maxVk:55.0 aF:0.406347948982 a:0.950029273131 power: 2000276.02145 v2factor: 0.298431324149 gFactor:0.0 vSquare:216.725725599
+E500:t:2452:ADVANCE green SIG vK:53.3017054202
+need to go faster...0.925757757734
+E500:t:2453 State update PK:2.43230557799 vK:54.3938624625 maxVk:55.0 aF:0.36622289411 a:0.925757757734 power: 2000242.41011 v2factor: 0.314284863624 gFactor:0.0 vSquare:228.238826161
+E500:t:2454:coasting at 53.8103093812
+E500:t:2454 State update PK:2.44744447624 vK:53.800357143 maxVk:55.0 aF:-0.552902123293 a:0.0 power: 8.2628699162 v2factor: 0.307652123293 gFactor:0.0 vSquare:223.422021273
+E500:t:2455:coasting at 51.8595954756
+E500:t:2455 State update PK:2.46211496328 vK:51.8500374644 maxVk:55.0 aF:-0.531000624557 a:0.0 power: 7.64788952136 v2factor: 0.285750624557 gFactor:0.0 vSquare:207.516793433
+E500:t:2455:boosting from vK:50.0491879522 to maxVk:55.0 with aFull:-0.511495807874
+need to go faster...1.00474848874
+E500:t:2456 State update PK:2.4762553265 vK:50.1203853054 maxVk:55.0 aF:0.492687299988 a:1.00474848874 power: 2000353.94544 v2factor: 0.266811188752 gFactor:0.0 vSquare:193.762664308
+need to go faster...0.972145755783
+E500:t:2457 State update PK:2.49041633738 vK:51.8000417555 maxVk:55.0 aF:0.441888593104 a:0.972145755783 power: 2000307.15096 v2factor: 0.285007162679 gFactor:0.0 vSquare:206.976879215
+need to go faster...0.944613310888
+E500:t:2458 State update PK:2.50501953204 vK:53.308803241 maxVk:55.0 aF:0.397500079726 a:0.944613310888 power: 2000268.47205 v2factor: 0.301863231162 gFactor:0.0 vSquare:219.218032797
+need to go faster...0.921118579544
+E500:t:2459 State update PK:2.52002045899 vK:54.6676387393 maxVk:55.0 aF:0.35841000542 a:0.921118579544 power: 2000236.04976 v2factor: 0.317458574124 gFactor:0.0 vSquare:230.543626815
+E500:t:2459:AT SIG EastboundMain:1232 vK:54.6676387393
+E500:2459:START UPDATE SIG BY OCCU sig:EastboundMain:1200 from value green to value red
+E500:2459:START UPDATE SIG BY OCCU sig:EastboundMain:PoN+10 from value red to value yellow
+E500:2459:START UPDATE SIG BY OCCU sig:EastboundMain:PoN-140 from value yellow to value green
+SIG PoN-140 was yellow now green
+SIG PoN+10 was red now yellow
+SIG 1200 was green now red
+E500:t:2459next SIG (Sab-140) at PK2.82
+E500:t:2460:coasting at 53.3940209631
+E500:t:2460 State update PK:2.5351040725 vK:53.3841540757 maxVk:55.0 aF:-0.548160406677 a:0.0 power: 8.12863322452 v2factor: 0.302910406677 gFactor:0.0 vSquare:219.978508843
+E500:t:2461:coasting at 51.4597361096
+E500:t:2461 State update PK:2.54966126925 vK:51.4502571099 maxVk:55.0 aF:-0.5266110968 a:0.0 power: 7.52618786869 v2factor: 0.2813610968 gFactor:0.0 vSquare:204.329046333
+E500:t:2461:boosting from vK:50.0491424334 to maxVk:55.0 with aFull:-0.511495323579
+need to go faster...0.997396999122
+E500:t:2462 State update PK:2.56372378661 vK:50.4895349279 maxVk:55.0 aF:0.48138818719 a:0.997396999122 power: 2000343.29786 v2factor: 0.270758811933 gFactor:0.0 vSquare:196.629493052
+need to go faster...0.965965165482
+E500:t:2463 State update PK:2.5779819211 vK:52.1312462784 maxVk:55.0 aF:0.432049208945 a:0.965965165482 power: 2000298.40246 v2factor: 0.288665956537 gFactor:0.0 vSquare:209.633955365
+need to go faster...0.939358440637
+E500:t:2464 State update PK:2.59267238491 vK:53.6068201718 maxVk:55.0 aF:0.388858482644 a:0.939358440637 power: 2000261.17448 v2factor: 0.305249957994 gFactor:0.0 vSquare:221.677529407
+need to go faster...0.916609255529
+E500:t:2465 State update PK:2.60775192857 vK:54.9364083182 maxVk:55.0 aF:0.350769507225 a:0.916609255529 power: 2000229.88677 v2factor: 0.320589748304 gFactor:0.0 vSquare:232.817536895
+E500:t:2466:coasting at 52.9820782108
+E500:t:2466 State update PK:2.6227405136 vK:52.9722951309 maxVk:55.0 aF:-0.543504439976 a:0.0 power: 7.99741044426 v2factor: 0.298254439976 gFactor:0.0 vSquare:216.597269409
+E500:t:2467:coasting at 51.0639279928
+E500:t:2467 State update PK:2.63718558503 vK:51.0545266017 maxVk:55.0 aF:-0.522299503843 a:0.0 power: 7.40715386473 v2factor: 0.277049503843 gFactor:0.0 vSquare:201.197896763
+E500:t:2467:boosting from vK:50.0498392878 to maxVk:55.0 with aFull:-0.511502737769
+need to go faster...0.990359756664
+E500:t:2468 State update PK:2.65121464687 vK:50.8480401731 maxVk:55.0 aF:0.470489417417 a:0.990359756664 power: 2000333.15818 v2factor: 0.274620339246 gFactor:0.0 vSquare:199.433797565
+SCHEDULER:2018-02-02 11:55:00.826186
+need to go faster...0.960033661699
+E500:t:2469 State update PK:2.66556713655 vK:52.4531138584 maxVk:55.0 aF:0.422539708477 a:0.960033661699 power: 2000290.04256 v2factor: 0.292243953222 gFactor:0.0 vSquare:212.232355281
+need to go faster...0.934304802135
+E500:t:2470 State update PK:2.6803424321 vK:53.8965875791 maxVk:55.0 aF:0.38049375891 a:0.934304802135 power: 2000254.18151 v2factor: 0.308561043225 gFactor:0.0 vSquare:224.082093845
+E500:t:2471:coasting at 54.5523646768
+E500:t:2471 State update PK:2.69547972733 vK:54.5422586523 maxVk:55.0 aF:-0.561445802257 a:0.0 power: 8.50625615721 v2factor: 0.316195802257 gFactor:0.0 vSquare:229.62658116
+E500:t:2472:coasting at 52.5720556731
+E500:t:2472 State update PK:2.71035211557 vK:52.5623553654 maxVk:55.0 aF:-0.538905985256 a:0.0 power: 7.86837997376 v2factor: 0.293655985256 gFactor:0.0 vSquare:213.257796119
+E500:t:2473:coasting at 50.6698434109
+E500:t:2473 State update PK:2.72468556688 vK:50.6605186952 maxVk:55.0 aF:-0.518039759574 a:0.0 power: 7.29004525689 v2factor: 0.272789759574 gFactor:0.0 vSquare:198.104400562
+E500:t:2473:boosting from vK:50.0490504513 to maxVk:55.0 with aFull:-0.511494344943
+E500:t:2473:ADVANCE green SIG vK:50.3049840767
+need to go faster...0.983561318837
+E500:t:2474 State update PK:2.73872473791 vK:51.1992528669 maxVk:55.0 aF:0.459881502184 a:0.983561318837 power: 2000323.41119 v2factor: 0.278429816652 gFactor:0.0 vSquare:202.20030258
+need to go faster...0.954289453618
+E500:t:2475 State update PK:2.75316969331 vK:52.7686325278 maxVk:55.0 aF:0.413266699994 a:0.954289453618 power: 2000281.98 v2factor: 0.295772753624 gFactor:0.0 vSquare:214.79502805
+need to go faster...0.929400925784
+E500:t:2476 State update PK:2.76802816854 vK:54.1807809938 maxVk:55.0 aF:0.372325147888 a:0.929400925784 power: 2000247.41916 v2factor: 0.311825777896 gFactor:0.0 vSquare:226.452997746
+E500:t:2477:coasting at 54.1294565336
+E500:t:2477 State update PK:2.78318189229 vK:54.1194384123 maxVk:55.0 aF:-0.556562294366 a:0.0 power: 8.36689967014 v2factor: 0.311312294366 gFactor:0.0 vSquare:226.080097579
+E500:t:2478:coasting at 52.1660627898
+E500:t:2478 State update PK:2.79793922108 vK:52.1564438072 maxVk:55.0 aF:-0.534387923867 a:0.0 power: 7.74215936734 v2factor: 0.289137923867 gFactor:0.0 vSquare:209.976705786
+E500:t:2479:coasting at 50.2795123864
+E500:t:2479 State update PK:2.81216213208 vK:50.2702630302 maxVk:55.0 aF:-0.513853120118 a:0.0 power: 7.17542541867 v2factor: 0.268603120118 gFactor:0.0 vSquare:195.063994276
+E500:t:2479:boosting from vK:50.0488105466 to maxVk:55.0 with aFull:-0.511491792503
+E500:t:2479:AT SIG EastboundMain:Sab-140 vK:50.822898815
+E500:2479:START UPDATE SIG BY OCCU sig:EastboundMain:1232 from value green to value red
+E500:2479:START UPDATE SIG BY OCCU sig:EastboundMain:1200 from value red to value yellow
+E500:2479:START UPDATE SIG BY OCCU sig:EastboundMain:PoN+10 from value yellow to value green
+SIG PoN+10 was yellow now green
+SIG 1200 was red now yellow
+SIG 1232 was green now red
+E500:t:2479next SIG (Sab+10) at PK2.97
+need to go faster...0.976987342485
+E500:t:2480 State update PK:2.82625483842 vK:51.5435192707 maxVk:55.0 aF:0.449547937936 a:0.976987342485 power: 2000314.03108 v2factor: 0.282189404549 gFactor:0.0 vSquare:204.930577015
+need to go faster...0.948721873379
+E500:t:2481 State update PK:2.84079045866 vK:53.07809644 maxVk:55.0 aF:0.404217474309 a:0.948721873379 power: 2000274.19642 v2factor: 0.29925439907 gFactor:0.0 vSquare:217.323456115
+need to go faster...0.924638652239
+E500:t:2482 State update PK:2.8557305373 vK:54.45965384 maxVk:55.0 aF:0.364342566716 a:0.924638652239 power: 2000240.87395 v2factor: 0.315046085523 gFactor:0.0 vSquare:228.791637998
+E500:t:2482:ADVANCE STA x:2960.0 vK:54.4793081249
+E500:t:2483 State update PK:2.87032731866 vK:50.5787081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.27202220885 gFactor:0.0 vSquare:197.546992629
+E500:t:2484 State update PK:2.88382420981 vK:46.6187081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.231109734263 gFactor:0.0 vSquare:167.835682108
+E500:t:2485 State update PK:2.89622110095 vK:42.6587081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.193529599675 gFactor:0.0 vSquare:140.544371587
+E500:t:2486 State update PK:2.9075179921 vK:38.6987081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.159281805088 gFactor:0.0 vSquare:115.673061066
+E500:t:2487 State update PK:2.91771488324 vK:34.7387081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.128366350501 gFactor:0.0 vSquare:93.2217505455
+E500:t:2488 State update PK:2.92681177439 vK:30.7787081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.100783235914 gFactor:0.0 vSquare:73.1904400247
+E500:t:2489 State update PK:2.93480866553 vK:26.8187081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.076532461327 gFactor:0.0 vSquare:55.579129504
+E500:t:2490 State update PK:2.94170555668 vK:22.8587081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0556140267398 gFactor:0.0 vSquare:40.3878189832
+E500:t:2491 State update PK:2.94750244783 vK:18.8987081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0380279321527 gFactor:0.0 vSquare:27.6165084624
+E500:t:2492 State update PK:2.95219933897 vK:14.9387081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0237741775656 gFactor:0.0 vSquare:17.2651979416
+E500:t:2493 State update PK:2.95579623012 vK:10.9787081249 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0128527629785 gFactor:0.0 vSquare:9.33388742083
+E500:t:2494 State update PK:2.95829312126 vK:7.01870812492 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00526368839136 gFactor:0.0 vSquare:3.82257690004
+E500:t:2495 State update PK:2.95969001241 vK:3.05870812492 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00100695380424 gFactor:0.0 vSquare:0.731266379259
+E500:t:2495:IN STA Sab vK:0.781348124919 a:-0.004
+E500:t:2495:next STA (PoM) at PK3.827
+E500:t:2506:OUT STA, a:1.3863190505 vK:0.0
+need to go faster...1.35
+E500:t:2507 State update PK:2.96055555498 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2508 State update PK:2.96221334468 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2509 State update PK:2.96496891586 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2509:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2510 State update PK:2.96881398341 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2510:AT SIG EastboundMain:Sab+10 vK:16.807851537
+E500:2510:START UPDATE SIG BY OCCU sig:EastboundMain:Sab-140 from value green to value red
+E500:2510:START UPDATE SIG BY OCCU sig:EastboundMain:1232 from value red to value yellow
+E500:2510:START UPDATE SIG BY OCCU sig:EastboundMain:1200 from value yellow to value green
+SIG 1200 was yellow now green
+SIG 1232 was red now yellow
+SIG Sab-140 was green now red
+E500:t:2510next SIG (1305) at PK3.25
+need to go faster...1.35
+E500:t:2511 State update PK:2.97373708743 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2512 State update PK:2.97972372826 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2513 State update PK:2.98675653431 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2514 State update PK:2.99481545857 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2515 State update PK:3.00387799929 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2516 State update PK:3.01391934384 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2517 State update PK:3.02488324671 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2518 State update PK:3.03665418108 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2519 State update PK:3.04913085444 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:2520 State update PK:3.06223052665 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:2521 State update PK:3.07588389866 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:2522 State update PK:3.09003186907 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:2523 State update PK:3.10462335046 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:2524 State update PK:3.11961372837 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:2525:coasting at 53.4558144052
+E500:t:2525 State update PK:3.13470842175 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:2526:coasting at 51.5190987296
+E500:t:2526 State update PK:3.14928243633 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:2526:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+E500:t:2526:ADVANCE green SIG vK:50.2103733252
+need to go faster...0.998762229469
+E500:t:2527 State update PK:3.16335281557 vK:50.4205699011 maxVk:55.0 aF:0.483493118668 a:0.998762229469 power: 2000345.27093 v2factor: 0.2700191108 gFactor:0.0 vSquare:196.092309949
+need to go faster...0.967114171648
+E500:t:2528 State update PK:3.17759280272 vK:52.0693530982 maxVk:55.0 aF:0.433883716955 a:0.967114171648 power: 2000300.02595 v2factor: 0.287980454693 gFactor:0.0 vSquare:209.136132674
+need to go faster...0.940336200111
+E500:t:2529 State update PK:3.19226695645 vK:53.5511166991 maxVk:55.0 aF:0.390470703061 a:0.940336200111 power: 2000262.5303 v2factor: 0.30461549705 gFactor:0.0 vSquare:221.216773457
+need to go faster...0.917448898661
+E500:t:2530 State update PK:3.20733180425 vK:54.8861627942 maxVk:55.0 aF:0.35219567966 a:0.917448898661 power: 2000231.0329 v2factor: 0.320003219001 gFactor:0.0 vSquare:232.391589689
+E500:t:2531:coasting at 53.0607546358
+E500:t:2531 State update PK:3.22234168285 vK:53.0509555997 maxVk:55.0 aF:-0.544390891268 a:0.0 power: 8.0223491671 v2factor: 0.299140891268 gFactor:0.0 vSquare:217.241024886
+E500:t:2532:coasting at 51.1395323327
+E500:t:2532 State update PK:3.2368081703 vK:51.1301161637 maxVk:55.0 aF:-0.523120500266 a:0.0 power: 7.42978109617 v2factor: 0.277870500266 gFactor:0.0 vSquare:201.79411784
+E500:t:2532:boosting from vK:50.0409536454 to maxVk:55.0 with aFull:-0.511408206619
+E500:t:2532:AT SIG EastboundMain:1305 vK:50.6695788664
+E500:2532:START UPDATE SIG BY OCCU sig:EastboundMain:Sab+10 from value green to value red
+E500:2532:START UPDATE SIG BY OCCU sig:EastboundMain:Sab-140 from value red to value yellow
+E500:2532:START UPDATE SIG BY OCCU sig:EastboundMain:1232 from value yellow to value green
+SIG 1232 was yellow now green
+SIG Sab-140 was red now yellow
+SIG Sab+10 was green now red
+E500:t:2532next SIG (PoM-140) at PK3.687
+need to go faster...0.992010269869
+E500:t:2533 State update PK:3.2508382858 vK:50.7634997413 maxVk:55.0 aF:0.473052993786 a:0.992010269869 power: 2000335.53173 v2factor: 0.273707276082 gFactor:0.0 vSquare:198.770716109
+need to go faster...0.961426159106
+E500:t:2534 State update PK:3.26516852244 vK:52.3771944541 maxVk:55.0 aF:0.424778138617 a:0.961426159106 power: 2000292.002 v2factor: 0.291398020489 gFactor:0.0 vSquare:211.618025046
+need to go faster...0.935492135366
+E500:t:2535 State update PK:3.2799238066 vK:53.8282264014 maxVk:55.0 aF:0.382463843959 a:0.935492135366 power: 2000255.82228 v2factor: 0.307778291407 gFactor:0.0 vSquare:223.513646628
+E500:t:2536:coasting at 54.6538031397
+E500:t:2536 State update PK:3.29505114953 vK:54.6436759292 maxVk:55.0 aF:-0.562622808499 a:0.0 power: 8.53993844944 v2factor: 0.317372808499 gFactor:0.0 vSquare:230.48134241
+E500:t:2537:coasting at 52.6694177142
+E500:t:2537 State update PK:3.3099511331 vK:52.65969781 maxVk:55.0 aF:-0.539994678501 a:0.0 power: 7.89887683024 v2factor: 0.294744678501 gFactor:0.0 vSquare:214.048423021
+E500:t:2538:coasting at 50.7634318739
+E500:t:2538 State update PK:3.32431109078 vK:50.7540890029 maxVk:55.0 aF:-0.519048389159 a:0.0 power: 7.31773003895 v2factor: 0.273798389159 gFactor:0.0 vSquare:198.836883921
+E500:t:2538:boosting from vK:50.0492886546 to maxVk:55.0 with aFull:-0.511496879293
+need to go faster...0.985154635459
+E500:t:2539 State update PK:3.3383439476 vK:51.1165058623 maxVk:55.0 aF:0.462374707416 a:0.985154635459 power: 2000325.69128 v2factor: 0.277529928043 gFactor:0.0 vSquare:201.546788702
+need to go faster...0.955636926212
+E500:t:2540 State update PK:3.35276711512 vK:52.6942777639 maxVk:55.0 aF:0.415447671993 a:0.955636926212 power: 2000283.86837 v2factor: 0.294939254219 gFactor:0.0 vSquare:214.189727102
+need to go faster...0.930552139144
+E500:t:2541 State update PK:3.36760598645 vK:54.1137958455 maxVk:55.0 aF:0.374247414814 a:0.930552139144 power: 2000249.0046 v2factor: 0.31105472433 gFactor:0.0 vSquare:225.893045992
+E500:t:2542:coasting at 54.2299266878
+E500:t:2542 State update PK:3.38275956643 vK:54.2198877453 maxVk:55.0 aF:-0.557719025785 a:0.0 power: 8.39985082542 v2factor: 0.312469025785 gFactor:0.0 vSquare:226.92013492
+E500:t:2543:coasting at 52.2625260498
+E500:t:2543 State update PK:3.39754423153 vK:52.2528878015 maxVk:55.0 aF:-0.535458235592 a:0.0 power: 7.772010863 v2factor: 0.290208235592 gFactor:0.0 vSquare:210.753983727
+E500:t:2544:coasting at 50.3722651831
+E500:t:2544 State update PK:3.41179340828 vK:50.3629979723 maxVk:55.0 aF:-0.51484504184 a:0.0 power: 7.20253883285 v2factor: 0.26959504184 gFactor:0.0 vSquare:195.784344111
+E500:t:2544:boosting from vK:50.0489707271 to maxVk:55.0 with aFull:-0.511493496724
+need to go faster...0.978548489308
+E500:t:2545 State update PK:3.42586926774 vK:51.4613461355 maxVk:55.0 aF:0.452008752498 a:0.978548489308 power: 2000316.25461 v2factor: 0.28128973681 gFactor:0.0 vSquare:204.277223537
+need to go faster...0.950045184808
+E500:t:2546 State update PK:3.44038324467 vK:53.0042138938 maxVk:55.0 aF:0.406373856947 a:0.950045184808 power: 2000276.04368 v2factor: 0.298421327861 gFactor:0.0 vSquare:216.71846613
+need to go faster...0.925771374717
+E500:t:2547 State update PK:3.45530383924 vK:54.3930629099 maxVk:55.0 aF:0.366245756447 a:0.925771374717 power: 2000242.42881 v2factor: 0.31427561827 gFactor:0.0 vSquare:228.232112034
+E500:t:2548:coasting at 53.8095620781
+E500:t:2548 State update PK:3.4704425244 vK:53.7996099936 maxVk:55.0 aF:-0.552893578172 a:0.0 power: 8.2626274649 v2factor: 0.307643578172 gFactor:0.0 vSquare:223.415815666
+E500:t:2549:coasting at 51.858877777
+E500:t:2549 State update PK:3.48511280807 vK:51.8493199081 maxVk:55.0 aF:-0.530992715456 a:0.0 power: 7.64766977015 v2factor: 0.285742715456 gFactor:0.0 vSquare:207.511049714
+E500:t:2549:boosting from vK:50.0484967508 to maxVk:55.0 with aFull:-0.511488453925
+need to go faster...1.00475615073
+E500:t:2550 State update PK:3.49925297927 vK:50.1200033831 maxVk:55.0 aF:0.492699031183 a:1.00475615073 power: 2000353.95656 v2factor: 0.266807119544 gFactor:0.0 vSquare:193.759709182
+need to go faster...0.972152188982
+E500:t:2551 State update PK:3.51341388968 vK:51.7996992087 maxVk:55.0 aF:0.441898798321 a:0.972152188982 power: 2000307.16008 v2factor: 0.285003390662 gFactor:0.0 vSquare:206.974139914
+need to go faster...0.944618774676
+E500:t:2552 State update PK:3.5280169941 vK:53.3084951017 maxVk:55.0 aF:0.397509035501 a:0.944618774676 power: 2000268.47965 v2factor: 0.301859739175 gFactor:0.0 vSquare:219.215496859
+need to go faster...0.921123263981
+E500:t:2553 State update PK:3.54301783977 vK:54.667360901 maxVk:55.0 aF:0.358417918735 a:0.921123263981 power: 2000236.05617 v2factor: 0.317455345246 gFactor:0.0 vSquare:230.541281951
+E500:t:2554:coasting at 53.393757895
+E500:t:2554 State update PK:3.55810137859 vK:53.3838910614 maxVk:55.0 aF:-0.548157421853 a:0.0 power: 8.12854891463 v2factor: 0.302907421853 gFactor:0.0 vSquare:219.976341215
+E500:t:2555:coasting at 51.4594833842
+E500:t:2555 State update PK:3.57265850374 vK:51.4500044342 maxVk:55.0 aF:-0.526608333205 a:0.0 power: 7.52611141068 v2factor: 0.281358333205 gFactor:0.0 vSquare:204.327039365
+E500:t:2555:boosting from vK:50.0488970097 to maxVk:55.0 with aFull:-0.511492712416
+need to go faster...0.997427814351
+E500:t:2556 State update PK:3.58672085951 vK:50.4879762042 maxVk:55.0 aF:0.481435732057 a:0.997427814351 power: 2000343.34238 v2factor: 0.270742082293 gFactor:0.0 vSquare:196.617343713
+E500:t:2556:ADVANCE green SIG vK:51.3965889785
+need to go faster...0.965991106354
+E500:t:2557 State update PK:3.60097858383 vK:52.1298473041 maxVk:55.0 aF:0.432090653243 a:0.965991106354 power: 2000298.4391 v2factor: 0.288650453111 gFactor:0.0 vSquare:209.622696522
+need to go faster...0.939380519586
+E500:t:2558 State update PK:3.61566867897 vK:53.6055610425 maxVk:55.0 aF:0.388894910327 a:0.939380519586 power: 2000261.20509 v2factor: 0.305235609259 gFactor:0.0 vSquare:221.667109121
+need to go faster...0.916628218702
+E500:t:2559 State update PK:3.63074789043 vK:54.9352725169 maxVk:55.0 aF:0.350801734837 a:0.916628218702 power: 2000229.91265 v2factor: 0.320576483865 gFactor:0.0 vSquare:232.807904041
+E500:t:2560:coasting at 52.9809887854
+E500:t:2560 State update PK:3.64573616665 vK:52.9712059263 maxVk:55.0 aF:-0.543492174597 a:0.0 power: 7.99706552775 v2factor: 0.298242174597 gFactor:0.0 vSquare:216.588362089
+E500:t:2561:coasting at 51.0628810749
+E500:t:2561 State update PK:3.66018094152 vK:51.0534798884 maxVk:55.0 aF:-0.522288143765 a:0.0 power: 7.40684090102 v2factor: 0.277038143765 gFactor:0.0 vSquare:201.189646888
+E500:t:2561:boosting from vK:50.0488142095 to maxVk:55.0 with aFull:-0.511491831473
+need to go faster...0.990370739013
+E500:t:2562 State update PK:3.67420977419 vK:50.8474767182 maxVk:55.0 aF:0.470506490287 a:0.990370739013 power: 2000333.17396 v2factor: 0.274614248726 gFactor:0.0 vSquare:199.429374528
+E500:t:2562:AT SIG EastboundMain:PoM-140 vK:52.2920314221
+E500:2562:START UPDATE SIG BY OCCU sig:EastboundMain:1305 from value green to value red
+E500:2562:START UPDATE SIG BY OCCU sig:EastboundMain:Sab+10 from value red to value yellow
+E500:2562:START UPDATE SIG BY OCCU sig:EastboundMain:Sab-140 from value yellow to value green
+SIG Sab-140 was yellow now green
+SIG Sab+10 was red now yellow
+SIG 1305 was green now red
+E500:t:2562next SIG (PoM+10) at PK3.837
+need to go faster...0.960042929914
+E500:t:2563 State update PK:3.68856211555 vK:52.4526078241 maxVk:55.0 aF:0.422554619241 a:0.960042929914 power: 2000290.0556 v2factor: 0.292238310673 gFactor:0.0 vSquare:212.228257569
+need to go faster...0.93431270669
+E500:t:2564 State update PK:3.70333727771 vK:53.8961318966 maxVk:55.0 aF:0.380506884429 a:0.93431270669 power: 2000254.19243 v2factor: 0.308555822261 gFactor:0.0 vSquare:224.078302296
+E500:t:2565:coasting at 54.5519484043
+E500:t:2565 State update PK:3.71847445255 vK:54.5418424667 maxVk:55.0 aF:-0.561440976687 a:0.0 power: 8.50611814022 v2factor: 0.316190976687 gFactor:0.0 vSquare:229.623076752
+E500:t:2565:ADVANCE STA x:3827.0 vK:53.4132555636
+E500:t:2566 State update PK:3.73329363257 vK:51.6906555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.284109441551 gFactor:0.0 vSquare:206.324939398
+E500:t:2567 State update PK:3.74709939801 vK:47.7306555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.242261263194 gFactor:0.0 vSquare:175.934105442
+E500:t:2568 State update PK:3.75980516344 vK:43.7706555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.203745424837 gFactor:0.0 vSquare:147.963271487
+E500:t:2569 State update PK:3.77141092888 vK:39.8106555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.168561926481 gFactor:0.0 vSquare:122.412437531
+E500:t:2570 State update PK:3.78191669431 vK:35.8506555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.136710768124 gFactor:0.0 vSquare:99.2816035757
+E500:t:2571 State update PK:3.79132245974 vK:31.8906555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.108191949767 gFactor:0.0 vSquare:78.5707696202
+E500:t:2572 State update PK:3.79962822518 vK:27.9306555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0830054714102 gFactor:0.0 vSquare:60.2799356646
+E500:t:2573 State update PK:3.80683399061 vK:23.9706555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0611513330534 gFactor:0.0 vSquare:44.4091017091
+E500:t:2574 State update PK:3.81293975605 vK:20.0106555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0426295346966 gFactor:0.0 vSquare:30.9582677535
+E500:t:2575 State update PK:3.81794552148 vK:16.0506555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0274400763399 gFactor:0.0 vSquare:19.927433798
+E500:t:2576 State update PK:3.82185128692 vK:12.0906555636 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0155829579831 gFactor:0.0 vSquare:11.3165998425
+E500:t:2577 State update PK:3.82465705235 vK:8.13065556362 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00705817962629 gFactor:0.0 vSquare:5.12576588692
+E500:t:2578 State update PK:3.82636281778 vK:4.17065556362 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0018657412695 gFactor:0.0 vSquare:1.35493193138
+E500:t:2579 State update PK:3.82698050222 vK:0.782767563615 maxVk:55.0 aF:-0.004 a:-0.004 power: 0.0 v2factor: 6.51140143759e-05 gFactor:0.0 vSquare:0.047286865923
+E500:t:2579:IN STA PoM vK:0.781471563615 a:-0.004
+E500:t:2579:next STA (Arg) at PK4.36
+E500:t:2590:OUT STA, a:1.29044462551 vK:0.0
+need to go faster...1.35
+E500:t:2591 State update PK:3.82755505119 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2592 State update PK:3.82921284089 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2593 State update PK:3.83196841207 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2593:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2594 State update PK:3.83581347962 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2594:AT SIG EastboundMain:PoM+10 vK:16.807851537
+E500:2594:START UPDATE SIG BY OCCU sig:EastboundMain:PoM-140 from value green to value red
+E500:2594:START UPDATE SIG BY OCCU sig:EastboundMain:1305 from value red to value yellow
+E500:2594:START UPDATE SIG BY OCCU sig:EastboundMain:Sab+10 from value yellow to value green
+SIG Sab+10 was yellow now green
+SIG 1305 was red now yellow
+SIG PoM-140 was green now red
+E500:t:2594next SIG (Arg-140) at PK4.22
+need to go faster...1.35
+E500:t:2595 State update PK:3.84073658364 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2596 State update PK:3.84672322447 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2597 State update PK:3.85375603052 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2598 State update PK:3.86181495478 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2599 State update PK:3.8708774955 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2600 State update PK:3.88091884005 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2601 State update PK:3.89188274292 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2602 State update PK:3.90365367729 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2603 State update PK:3.91613035065 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:2604 State update PK:3.92923002286 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:2605 State update PK:3.94288339487 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:2606 State update PK:3.95703136529 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:2607 State update PK:3.97162284667 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:2608 State update PK:3.98661322458 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:2609:coasting at 53.4558144052
+E500:t:2609 State update PK:4.00170791796 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:2610:coasting at 51.5190987296
+E500:t:2610 State update PK:4.01628193254 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:2610:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+need to go faster...0.998754139483
+E500:t:2611 State update PK:4.03035233644 vK:50.4209780137 maxVk:55.0 aF:0.483480654347 a:0.998754139483 power: 2000345.25923 v2factor: 0.270023485137 gFactor:0.0 vSquare:196.095486664
+need to go faster...0.967107364588
+E500:t:2612 State update PK:4.04459243097 vK:52.069719339 maxVk:55.0 aF:0.433872855967 a:0.967107364588 power: 2000300.01633 v2factor: 0.28798450862 gFactor:0.0 vSquare:209.139076703
+need to go faster...0.940330408709
+E500:t:2613 State update PK:4.05926668122 vK:53.5514462971 maxVk:55.0 aF:0.390461159487 a:0.940330408709 power: 2000262.52226 v2factor: 0.304619249222 gFactor:0.0 vSquare:221.219498346
+need to go faster...0.917443926156
+E500:t:2614 State update PK:4.07433161597 vK:54.8864600858 maxVk:55.0 aF:0.35218723837 a:0.917443926156 power: 2000231.02611 v2factor: 0.320006687785 gFactor:0.0 vSquare:232.394108777
+E500:t:2615:coasting at 53.0610390868
+E500:t:2615 State update PK:4.08934157521 vK:53.0512399931 maxVk:55.0 aF:-0.544394098579 a:0.0 power: 8.02243943736 v2factor: 0.299144098579 gFactor:0.0 vSquare:217.243354088
+E500:t:2616:coasting at 51.1398056687
+E500:t:2616 State update PK:4.10380814009 vK:51.1303894462 maxVk:55.0 aF:-0.523123470657 a:0.0 power: 7.42986299532 v2factor: 0.277873470657 gFactor:0.0 vSquare:201.796274987
+E500:t:2616:boosting from vK:50.0412208098 to maxVk:55.0 with aFull:-0.51141104864
+need to go faster...0.991992140936
+E500:t:2617 State update PK:4.1178384088 vK:50.7644267894 maxVk:55.0 aF:0.473024860684 a:0.991992140936 power: 2000335.50564 v2factor: 0.273717280252 gFactor:0.0 vSquare:198.777981301
+E500:t:2617:ADVANCE green SIG vK:51.7293772295
+need to go faster...0.961410868574
+E500:t:2618 State update PK:4.13216888945 vK:52.3780269043 maxVk:55.0 aF:0.424753579145 a:0.961410868574 power: 2000291.98048 v2factor: 0.291407289429 gFactor:0.0 vSquare:211.624756303
+need to go faster...0.935479100754
+E500:t:2619 State update PK:4.14692439302 vK:53.8289759321 maxVk:55.0 aF:0.382442232429 a:0.935479100754 power: 2000255.80426 v2factor: 0.307786868325 gFactor:0.0 vSquare:223.519875327
+E500:t:2620:coasting at 54.6544857304
+E500:t:2620 State update PK:4.16205193387 vK:54.6443583771 maxVk:55.0 aF:-0.56263073611 a:0.0 power: 8.54016543833 v2factor: 0.31738073611 gFactor:0.0 vSquare:230.487099572
+E500:t:2621:coasting at 52.6700728491
+E500:t:2621 State update PK:4.17695210313 vK:52.6603528129 maxVk:55.0 aF:-0.54000201098 a:0.0 power: 7.8990823383 v2factor: 0.29475201098 gFactor:0.0 vSquare:214.053747988
+E500:t:2622:coasting at 50.7640615938
+E500:t:2622 State update PK:4.19131223916 vK:50.7547186005 maxVk:55.0 aF:-0.519055182134 a:0.0 power: 7.31791658537 v2factor: 0.273805182134 gFactor:0.0 vSquare:198.841817091
+E500:t:2622:boosting from vK:50.0499090931 to maxVk:55.0 with aFull:-0.511503480469
+need to go faster...0.985151651213
+E500:t:2623 State update PK:4.20534518951 vK:51.1166605953 maxVk:55.0 aF:0.462370041779 a:0.985151651213 power: 2000325.687 v2factor: 0.277531609434 gFactor:0.0 vSquare:201.548009756
+need to go faster...0.95563440313
+E500:t:2624 State update PK:4.21976839777 vK:52.6944167939 maxVk:55.0 aF:0.415443591515 a:0.95563440313 power: 2000283.86484 v2factor: 0.294940811615 gFactor:0.0 vSquare:214.190858108
+E500:t:2624:AT SIG EastboundMain:Arg-140 vK:52.7242892757
+E500:2624:START UPDATE SIG BY OCCU sig:EastboundMain:PoM+10 from value green to value red
+E500:2624:START UPDATE SIG BY OCCU sig:EastboundMain:PoM-140 from value red to value yellow
+E500:2624:START UPDATE SIG BY OCCU sig:EastboundMain:1305 from value yellow to value green
+SIG 1305 was yellow now green
+SIG PoM-140 was red now yellow
+SIG PoM+10 was green now red
+E500:t:2624next SIG (Arg+10) at PK4.37
+need to go faster...0.930549984044
+E500:t:2625 State update PK:4.23460730576 vK:54.1139210885 maxVk:55.0 aF:0.374243818955 a:0.930549984044 power: 2000249.00164 v2factor: 0.311056165089 gFactor:0.0 vSquare:225.894092294
+E500:t:2626:coasting at 54.2300422374
+E500:t:2626 State update PK:4.24976091892 vK:54.220003271 maxVk:55.0 aF:-0.557720357364 a:0.0 power: 8.39988877794 v2factor: 0.312470357364 gFactor:0.0 vSquare:226.921101935
+E500:t:2626:ADVANCE STA x:4360.0 vK:52.3301588857
+E500:t:2627 State update PK:4.26454510782 vK:52.1717588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.28942062451 gFactor:0.0 vSquare:210.182007633
+E500:t:2628 State update PK:4.27848451306 vK:48.2117588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.247167597708 gFactor:0.0 vSquare:179.497166091
+E500:t:2629 State update PK:4.29132391831 vK:44.2517588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.208246910906 gFactor:0.0 vSquare:151.23232455
+E500:t:2630 State update PK:4.30306332356 vK:40.2917588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.172658564103 gFactor:0.0 vSquare:125.387483009
+E500:t:2631 State update PK:4.3137027288 vK:36.3317588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.140402557301 gFactor:0.0 vSquare:101.962641468
+E500:t:2632 State update PK:4.32324213405 vK:32.3717588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.111478890499 gFactor:0.0 vSquare:80.9577999264
+E500:t:2633 State update PK:4.33168153929 vK:28.4117588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0858875636963 gFactor:0.0 vSquare:62.3729583851
+E500:t:2634 State update PK:4.33902094454 vK:24.4517588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.063628576894 gFactor:0.0 vSquare:46.2081168439
+E500:t:2635 State update PK:4.34526034979 vK:20.4917588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0447019300917 gFactor:0.0 vSquare:32.4632753026
+E500:t:2636 State update PK:4.35039975503 vK:16.5317588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0291076232894 gFactor:0.0 vSquare:21.1384337613
+E500:t:2637 State update PK:4.35443916028 vK:12.5717588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.016845656487 gFactor:0.0 vSquare:12.2335922201
+E500:t:2638 State update PK:4.35737856552 vK:8.6117588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00791602968472 gFactor:0.0 vSquare:5.74875067881
+E500:t:2639 State update PK:4.35921797077 vK:4.6517588857 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0023187428824 gFactor:0.0 vSquare:1.68390913755
+E500:t:2640 State update PK:4.35995778702 vK:0.790398885705 maxVk:55.0 aF:-0.004 a:-0.004 power: 0.0 v2factor: 6.63896984969e-05 gFactor:0.0 vSquare:0.0482132886687
+E500:t:2640:IN STA Arg vK:0.787590885705 a:-0.004
+E500:t:2640:next STA (CDE) at PK4.966
+E500:t:2651:OUT STA, a:1.35437496014 vK:0.0
+need to go faster...1.35
+E500:t:2652 State update PK:4.36055551918 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2653 State update PK:4.36221330888 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2654 State update PK:4.36496888005 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2654:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2655 State update PK:4.3688139476 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2655:AT SIG EastboundMain:Arg+10 vK:16.807851537
+E500:2655:START UPDATE SIG BY OCCU sig:EastboundMain:Arg-140 from value green to value red
+E500:2655:START UPDATE SIG BY OCCU sig:EastboundMain:PoM+10 from value red to value yellow
+E500:2655:START UPDATE SIG BY OCCU sig:EastboundMain:PoM-140 from value yellow to value green
+SIG PoM-140 was yellow now green
+SIG PoM+10 was red now yellow
+SIG Arg-140 was green now red
+E500:t:2655next SIG (1444) at PK4.64
+need to go faster...1.35
+E500:t:2656 State update PK:4.37373705162 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2657 State update PK:4.37972369245 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2658 State update PK:4.3867564985 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2659 State update PK:4.39481542276 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2660 State update PK:4.40387796348 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2661 State update PK:4.41391930803 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2662 State update PK:4.4248832109 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2663 State update PK:4.43665414527 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2664 State update PK:4.44913081863 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:2665 State update PK:4.46223049084 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:2666 State update PK:4.47588386285 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:2667 State update PK:4.49003183327 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:2668 State update PK:4.50462331466 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:2669 State update PK:4.51961369256 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:2669:ADVANCE TIV 3 reached at curr speed 54.8305095095, maxVk will be 20.0
+E500:t:2669  next TIV at PK5.4 with limit >>55 (currspeed:54.8305095095)
+E500:t:2669:vK:54.8305095095 maxVk:20.0 =>ready to dcc
+E500:t:2670 State update PK:4.53444521907 vK:51.4843095095 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.281846537739 gFactor:0.0 vSquare:204.68158151
+E500:t:2671 State update PK:4.54819366616 vK:47.5243095095 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.240171999587 gFactor:0.0 vSquare:174.416847921
+E500:t:2672 State update PK:4.56084211325 vK:43.5643095095 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.201829801435 gFactor:0.0 vSquare:146.572114332
+E500:t:2673 State update PK:4.57239056033 vK:39.6043095095 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.166819943283 gFactor:0.0 vSquare:121.147380743
+E500:t:2674 State update PK:4.58283900742 vK:35.6443095095 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.13514242513 gFactor:0.0 vSquare:98.1426471534
+E500:t:2675 State update PK:4.5921874545 vK:31.6843095095 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.106797246978 gFactor:0.0 vSquare:77.5579135643
+E500:t:2676 State update PK:4.60043590159 vK:27.7243095095 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0817844088257 gFactor:0.0 vSquare:59.3931799751
+E500:t:2677 State update PK:4.60758434868 vK:23.7643095095 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0601039106735 gFactor:0.0 vSquare:43.648446386
+E500:t:2678:coasting at 19.9410952821
+E500:t:2678 State update PK:4.61363370969 vK:19.9359202817 maxVk:20.0 aF:-0.287500023612 a:0.0 power: 1.59210487547 v2factor: 0.0422500236115 gFactor:0.0 vSquare:30.6826605748
+E500:t:2679:coasting at 18.9137772123
+E500:t:2679 State update PK:4.61902772616 vK:18.9086785518 maxVk:20.0 aF:-0.283258915396 a:0.0 power: 1.4877921606 v2factor: 0.0380089153964 gFactor:0.0 vSquare:27.6026981818
+E500:t:2679:boosting from vK:18.1984490881 to maxVk:20.0 with aFull:-0.280457777216
+need to go faster...1.35
+E500:t:2680 State update PK:4.62420012863 vK:19.3508068717 maxVk:20.0 aF:1.06504308362 a:1.35 power: 1037688.5502 v2factor: 0.0397069163791 gFactor:0.0 vSquare:28.8358143639
+E500:t:2680:ADVANCE green SIG vK:19.7551720796
+E500:t:2681:coasting at 19.1283836145
+E500:t:2681 State update PK:4.62963635968 vK:19.1232693402 maxVk:20.0 aF:-0.284126350093 a:0.0 power: 1.5092846443 v2factor: 0.0388763500933 gFactor:0.0 vSquare:28.2326434955
+E500:t:2681:boosting from vK:18.1985753757 to maxVk:20.0 with aFull:-0.280458265763
+need to go faster...1.35
+E500:t:2682 State update PK:4.6348120382 vK:18.5437997469 maxVk:20.0 aF:1.06828928042 a:1.35 power: 994412.712533 v2factor: 0.036460719579 gFactor:0.0 vSquare:26.4783729695
+E500:t:2682:AT SIG EastboundMain:1444 vK:19.3788234579
+E500:2682:START UPDATE SIG BY OCCU sig:EastboundMain:Arg+10 from value green to value red
+E500:2682:START UPDATE SIG BY OCCU sig:EastboundMain:Arg-140 from value red to value yellow
+E500:2682:START UPDATE SIG BY OCCU sig:EastboundMain:PoM+10 from value yellow to value green
+SIG PoM+10 was yellow now green
+SIG Arg-140 was red now yellow
+SIG Arg+10 was green now red
+E500:t:2682next SIG (CDE-140) at PK4.826
+E500:t:2683:coasting at 19.3429024163
+E500:t:2683 State update PK:4.64023229946 vK:19.3377723584 maxVk:20.0 aF:-0.2850032116 a:0.0 power: 1.53092422982 v2factor: 0.0397532116003 gFactor:0.0 vSquare:28.8694347133
+E500:t:2684:coasting at 18.3242759624
+E500:t:2684 State update PK:4.64546139022 vK:18.3192192849 maxVk:20.0 aF:-0.280926528264 a:0.0 power: 1.42954296506 v2factor: 0.0356765282642 gFactor:0.0 vSquare:25.9088803661
+E500:t:2684:boosting from vK:18.1979650556 to maxVk:20.0 with aFull:-0.280455904755
+E500:t:2685:coasting at 19.5587604881
+E500:t:2685 State update PK:4.65081552882 vK:19.5536143706 maxVk:20.0 aF:-0.285895418132 a:0.0 power: 1.55285798791 v2factor: 0.0406454181322 gFactor:0.0 vSquare:29.5173697401
+E500:t:2686:coasting at 18.5370285469
+E500:t:2686 State update PK:4.65610413745 vK:18.531956871 maxVk:20.0 aF:-0.281759776656 a:0.0 power: 1.45043334138 v2factor: 0.036509776656 gFactor:0.0 vSquare:26.5139990239
+E500:t:2686:boosting from vK:18.1980153181 to maxVk:20.0 with aFull:-0.280456099191
+E500:t:2686:TIV 3 reached at curr speed 19.8100670952, maxVk now 20.0
+E500:t:2687:coasting at 19.7754111223
+E500:t:2687 State update PK:4.66138619758 vK:19.7702487069 maxVk:20.0 aF:-0.286800856537 a:0.0 power: 1.57503451753 v2factor: 0.0415508565373 gFactor:0.0 vSquare:30.1749139704
+E500:t:2688:coasting at 18.7505272231
+E500:t:2688 State update PK:4.66673453765 vK:18.745440322 maxVk:20.0 aF:-0.282605616309 a:0.0 power: 1.47154630977 v2factor: 0.0373556163091 gFactor:0.0 vSquare:27.1282616624
+E500:t:2688:boosting from vK:18.1981760384 to maxVk:20.0 with aFull:-0.280456720928
+need to go faster...1.35
+E500:t:2689 State update PK:4.67194437601 vK:19.9638605395 maxVk:20.0 aF:1.06248454827 a:1.35 power: 1070563.61585 v2factor: 0.0422654517261 gFactor:0.0 vSquare:30.6938647248
+E500:t:2690:coasting at 18.9652514772
+E500:t:2690 State update PK:4.67735279527 vK:18.9601490877 maxVk:20.0 aF:-0.283466081132 a:0.0 power: 1.49293309988 v2factor: 0.0382160811317 gFactor:0.0 vSquare:27.7531453389
+E500:t:2690:boosting from vK:18.198911446 to maxVk:20.0 with aFull:-0.280459565876
+need to go faster...1.35
+E500:t:2691 State update PK:4.682520708 vK:19.1595667461 maxVk:20.0 aF:1.06582486421 a:1.35 power: 1027433.27917 v2factor: 0.0389251357925 gFactor:0.0 vSquare:28.268072471
+E500:t:2692:coasting at 19.1800703411
+E500:t:2692 State update PK:4.68795872764 vK:19.17495228 maxVk:20.0 aF:-0.284336729193 a:0.0 power: 1.51448422603 v2factor: 0.0390867291933 gFactor:0.0 vSquare:28.3854242507
+E500:t:2692:boosting from vK:18.1990915813 to maxVk:20.0 with aFull:-0.280460262753
+need to go faster...1.35
+E500:t:2693 State update PK:4.69314413743 vK:18.3534928955 maxVk:20.0 aF:1.06903462211 a:1.35 power: 984207.488937 v2factor: 0.0357153778863 gFactor:0.0 vSquare:25.9370935993
+E500:t:2694:coasting at 19.3962401467
+E500:t:2694 State update PK:4.69855241278 vK:19.3911061372 maxVk:20.0 aF:-0.285222751507 a:0.0 power: 1.53632906867 v2factor: 0.039972751507 gFactor:0.0 vSquare:29.0288681968
+E500:t:2695:coasting at 18.3768495831
+E500:t:2695 State update PK:4.70379621065 vK:18.3717892154 maxVk:20.0 aF:-0.281131538814 a:0.0 power: 1.43469149247 v2factor: 0.0358815388137 gFactor:0.0 vSquare:26.0577623919
+E500:t:2695:boosting from vK:18.1999475233 to maxVk:20.0 with aFull:-0.28046357417
+E500:t:2696:coasting at 19.6115478461
+E500:t:2696 State update PK:4.70913359572 vK:19.6063977741 maxVk:20.0 aF:-0.286115110948 a:0.0 power: 1.55824629845 v2factor: 0.0408651109478 gFactor:0.0 vSquare:29.6769142686
+E500:t:2697:coasting at 18.589051161
+E500:t:2697 State update PK:4.7144367585 vK:18.5839757912 maxVk:20.0 aF:-0.281964987451 a:0.0 power: 1.45556402799 v2factor: 0.0367149874508 gFactor:0.0 vSquare:26.6630264711
+E500:t:2697:boosting from vK:18.1992944204 to maxVk:20.0 with aFull:-0.28046104747
+E500:t:2698:coasting at 19.8287883694
+E500:t:2698 State update PK:4.7197020494 vK:19.823621911 maxVk:20.0 aF:-0.287025465121 a:0.0 power: 1.5805234165 v2factor: 0.041775465121 gFactor:0.0 vSquare:30.3380284103
+E500:t:2699:coasting at 18.8031225141
+E500:t:2699 State update PK:4.72506510501 vK:18.7980318355 maxVk:20.0 aF:-0.28281547548 a:0.0 power: 1.47677064212 v2factor: 0.0375654754797 gFactor:0.0 vSquare:27.2806648364
+E500:t:2699:boosting from vK:18.199867918 to maxVk:20.0 with aFull:-0.280463266191
+need to go faster...1.35
+E500:t:2700 State update PK:4.73025993711 vK:19.7736358627 maxVk:20.0 aF:1.06328698515 a:1.35 power: 1060362.79796 v2factor: 0.0414630148483 gFactor:0.0 vSquare:30.1111218942
+E500:t:2701:coasting at 19.0173677216
+E500:t:2701 State update PK:4.73568108226 vK:19.0122615463 maxVk:20.0 aF:-0.283676404225 a:0.0 power: 1.4981472199 v2factor: 0.0384264042249 gFactor:0.0 vSquare:27.9058854212
+E500:t:2701:boosting from vK:18.1999711976 to maxVk:20.0 with aFull:-0.280463665762
+need to go faster...1.35
+E500:t:2702 State update PK:4.74084806658 vK:18.969204878 maxVk:20.0 aF:1.06659533456 a:1.35 power: 1017225.1049 v2factor: 0.0381546654385 gFactor:0.0 vSquare:27.7085442545
+E500:t:2703:coasting at 19.2327983425
+E500:t:2703 State update PK:4.74628478053 vK:19.2276764077 maxVk:20.0 aF:-0.284551931534 a:0.0 power: 1.51979790576 v2factor: 0.0393019315339 gFactor:0.0 vSquare:28.5417077225
+E500:t:2704:coasting at 18.2157424894
+E500:t:2704 State update PK:4.75148351073 vK:18.2106933966 maxVk:20.0 aF:-0.280505160409 a:0.0 power: 1.41894263121 v2factor: 0.0352551604094 gFactor:0.0 vSquare:25.6028761143
+E500:t:2704:boosting from vK:18.1955482279 to maxVk:20.0 with aFull:-0.280446556096
+E500:t:2705:coasting at 19.4497024048
+E500:t:2705 State update PK:4.75687331884 vK:19.4445644234 maxVk:20.0 aF:-0.285443410636 a:0.0 power: 1.54175632982 v2factor: 0.0401934106361 gFactor:0.0 vSquare:29.1891144779
+E500:t:2706:coasting at 18.4295438101
+E500:t:2706 State update PK:4.76213185785 vK:18.4244797331 maxVk:20.0 aF:-0.281337609036 a:0.0 power: 1.4398608544 v2factor: 0.0360876090363 gFactor:0.0 vSquare:26.2074139697
+E500:t:2706:boosting from vK:18.1969638294 to maxVk:20.0 with aFull:-0.280452031709
+E500:t:2707:coasting at 19.666424161
+E500:t:2707 State update PK:4.76744979749 vK:19.6612699668 maxVk:20.0 aF:-0.286344125424 a:0.0 power: 1.56385809816 v2factor: 0.0410941254237 gFactor:0.0 vSquare:29.8432283397
+E500:t:2708:coasting at 18.6431302577
+E500:t:2708 State update PK:4.77276809005 vK:18.6380510371 maxVk:20.0 aF:-0.282178919992 a:0.0 power: 1.46090697567 v2factor: 0.0369289199919 gFactor:0.0 vSquare:26.8183877936
+E500:t:2708:boosting from vK:18.197531566 to maxVk:20.0 with aFull:-0.28045422786
+E500:t:2709:coasting at 19.8846631222
+E500:t:2709 State update PK:4.77801406651 vK:19.87949242 maxVk:20.0 aF:-0.28726123167 a:0.0 power: 1.58627985488 v2factor: 0.0420112316702 gFactor:0.0 vSquare:30.5092459478
+E500:t:2710:coasting at 18.8581764395
+E500:t:2710 State update PK:4.78339252589 vK:18.8530817955 maxVk:20.0 aF:-0.283035774479 a:0.0 power: 1.48224905758 v2factor: 0.0377857744786 gFactor:0.0 vSquare:27.440649585
+E500:t:2710:boosting from vK:18.1989090585 to maxVk:20.0 with aFull:-0.28045955664
+need to go faster...1.35
+E500:t:2711 State update PK:4.78857407259 vK:19.5624282358 maxVk:20.0 aF:1.06416892524 a:1.35 power: 1049036.76735 v2factor: 0.0405810747628 gFactor:0.0 vSquare:29.4706425293
+E500:t:2712:coasting at 19.0729715155
+E500:t:2712 State update PK:4.79400483263 vK:19.0678612896 maxVk:20.0 aF:-0.283901438258 a:0.0 power: 1.50372034573 v2factor: 0.0386514382584 gFactor:0.0 vSquare:28.0693088296
+E500:t:2712:boosting from vK:18.1993896907 to maxVk:20.0 with aFull:-0.280461416043
+need to go faster...1.35
+E500:t:2713 State update PK:4.79917417482 vK:18.7574956132 maxVk:20.0 aF:1.06744316014 a:1.35 power: 1005872.1745 v2factor: 0.03730683986 gFactor:0.0 vSquare:27.0928394045
+E500:t:2714:coasting at 19.2887240309
+E500:t:2714 State update PK:4.8046049584 vK:19.2835979759 maxVk:20.0 aF:-0.284780830441 a:0.0 power: 1.5254441793 v2factor: 0.039530830441 gFactor:0.0 vSquare:28.7079378657
+E500:t:2715:coasting at 18.2708715493
+E500:t:2715 State update PK:4.80981910995 vK:18.2658186095 maxVk:20.0 aF:-0.280718879387 a:0.0 power: 1.42432225865 v2factor: 0.0354688793871 gFactor:0.0 vSquare:25.7580823436
+E500:t:2715:boosting from vK:18.1951144698 to maxVk:20.0 with aFull:-0.280444878385
+E500:t:2715:ADVANCE green SIG vK:19.7684707157
+E500:t:2716:coasting at 19.5283174847
+E500:t:2716 State update PK:4.81519264362 vK:19.5231736429 maxVk:20.0 aF:-0.285768988277 a:0.0 power: 1.5497548833 v2factor: 0.0405189882769 gFactor:0.0 vSquare:29.4255543042
+E500:t:2717:coasting at 18.5070256308
+E500:t:2717 State update PK:4.8204728586 vK:18.5019560804 maxVk:20.0 aF:-0.281641687256 a:0.0 power: 1.4474783689 v2factor: 0.0363916872556 gFactor:0.0 vSquare:26.4282405633
+E500:t:2717:boosting from vK:18.1984352647 to maxVk:20.0 with aFull:-0.28045772374
+E500:t:2718:coasting at 19.7438095603
+E500:t:2718 State update PK:4.82576514655 vK:19.7386495333 maxVk:20.0 aF:-0.286668164195 a:0.0 power: 1.57178956261 v2factor: 0.041418164195 gFactor:0.0 vSquare:30.0785506137
+E500:t:2718:AT SIG EastboundMain:CDE-140 vK:19.6922268086
+E500:2718:START UPDATE SIG BY OCCU sig:EastboundMain:1444 from value green to value red
+E500:2718:START UPDATE SIG BY OCCU sig:EastboundMain:Arg+10 from value red to value yellow
+E500:2718:START UPDATE SIG BY OCCU sig:EastboundMain:Arg-140 from value yellow to value green
+SIG Arg-140 was yellow now green
+SIG Arg+10 was red now yellow
+SIG 1444 was green now red
+E500:t:2718next SIG (CDE+10) at PK4.986
+E500:t:2719:coasting at 18.719387607
+E500:t:2719 State update PK:4.83110477425 vK:18.7143029374 maxVk:20.0 aF:-0.28248164394 a:0.0 power: 1.46845751638 v2factor: 0.0372316439405 gFactor:0.0 vSquare:27.0382308936
+E500:t:2719:boosting from vK:18.1975568794 to maxVk:20.0 with aFull:-0.28045432578
+E500:t:2720:coasting at 19.9621832921
+E500:t:2720 State update PK:4.83632486561 vK:19.9570066823 maxVk:20.0 aF:-0.28758943094 a:0.0 power: 1.59428449862 v2factor: 0.0423394309398 gFactor:0.0 vSquare:30.747589644
+E500:t:2721:coasting at 18.9345539315
+E500:t:2721 State update PK:4.8417246955 vK:18.9294537671 maxVk:20.0 aF:-0.283342466587 a:0.0 power: 1.48986614487 v2factor: 0.0380924665873 gFactor:0.0 vSquare:27.663374428
+E500:t:2721:boosting from vK:18.1988235978 to maxVk:20.0 with aFull:-0.280459226026
+need to go faster...1.35
+E500:t:2722 State update PK:4.84689498105 vK:19.2749085006 maxVk:20.0 aF:1.06535428292 a:1.35 power: 1033618.49238 v2factor: 0.0393957170838 gFactor:0.0 vSquare:28.6098163281
+E500:t:2723:coasting at 19.1496259497
+E500:t:2723 State update PK:4.8523324925 vK:19.1445101203 maxVk:20.0 aF:-0.284212743489 a:0.0 power: 1.51142048446 v2factor: 0.0389627434889 gFactor:0.0 vSquare:28.2953837973
+E500:t:2723:boosting from vK:18.1993464995 to maxVk:20.0 with aFull:-0.280461248949
+need to go faster...1.35
+E500:t:2724 State update PK:4.85751183114 vK:18.468800188 maxVk:20.0 aF:1.06858393717 a:1.35 power: 990390.853808 v2factor: 0.0361660628279 gFactor:0.0 vSquare:26.2643884008
+E500:t:2725:coasting at 19.3653235209
+E500:t:2725 State update PK:4.86292800931 vK:19.3601918033 maxVk:20.0 aF:-0.285095423976 a:0.0 power: 1.53319502512 v2factor: 0.0398454239762 gFactor:0.0 vSquare:28.9364008542
+E500:t:2726:coasting at 18.3463761245
+E500:t:2726 State update PK:4.8681632824 vK:18.3413178971 maxVk:20.0 aF:-0.281012636171 a:0.0 power: 1.43170613697 v2factor: 0.0357626361709 gFactor:0.0 vSquare:25.9714133413
+E500:t:2726:boosting from vK:18.1998311747 to maxVk:20.0 with aFull:-0.280463124038
+E500:t:2727:coasting at 19.5817373478
+E500:t:2727 State update PK:4.87351120938 vK:19.5765895103 maxVk:20.0 aF:-0.28599097149 a:0.0 power: 1.55520218125 v2factor: 0.0407409714904 gFactor:0.0 vSquare:29.5867621572
+E500:t:2728:coasting at 18.5596727913
+E500:t:2728 State update PK:4.87880615306 vK:18.5545995087 maxVk:20.0 aF:-0.2818490295 a:0.0 power: 1.45266551786 v2factor: 0.0365990295002 gFactor:0.0 vSquare:26.5788159043
+E500:t:2728:boosting from vK:18.1953095174 to maxVk:20.0 with aFull:-0.280445632795
+E500:t:2729:coasting at 19.7994555752
+E500:t:2729 State update PK:4.88407902595 vK:19.7942913399 maxVk:20.0 aF:-0.286901959364 a:0.0 power: 1.5775058249 v2factor: 0.041651959364 gFactor:0.0 vSquare:30.2483365025
+E500:t:2730:coasting at 18.7742196979
+E500:t:2730 State update PK:4.88943399485 vK:18.7691310965 maxVk:20.0 aF:-0.282700078309 a:0.0 power: 1.4738985641 v2factor: 0.0374500783093 gFactor:0.0 vSquare:27.1968615173
+E500:t:2730:boosting from vK:18.1964425635 to maxVk:20.0 with aFull:-0.280450015378
+need to go faster...1.35
+E500:t:2731 State update PK:4.89463514014 vK:19.8657887836 maxVk:20.0 aF:1.06289921108 a:1.35 power: 1065304.50782 v2factor: 0.0418507889244 gFactor:0.0 vSquare:30.3927297926
+E500:t:2732:coasting at 18.9883712608
+E500:t:2732 State update PK:4.9000495222 vK:18.9832671931 maxVk:20.0 aF:-0.283559313333 a:0.0 power: 1.49524505836 v2factor: 0.0383093133333 gFactor:0.0 vSquare:27.8208520939
+E500:t:2732:boosting from vK:18.1965401853 to maxVk:20.0 with aFull:-0.280450392989
+need to go faster...1.35
+E500:t:2733 State update PK:4.90521573685 vK:19.0614351351 maxVk:20.0 aF:1.0662230038 a:1.35 power: 1022170.96168 v2factor: 0.0385269962025 gFactor:0.0 vSquare:27.9789369662
+E500:t:2734:coasting at 19.2035053763
+E500:t:2734 State update PK:4.9106527074 vK:19.1983855949 maxVk:20.0 aF:-0.284432303241 a:0.0 power: 1.51684473146 v2factor: 0.0391823032411 gFactor:0.0 vSquare:28.4548316929
+E500:t:2734:boosting from vK:18.1969610684 to maxVk:20.0 with aFull:-0.280452021028
+need to go faster...1.35
+E500:t:2735 State update PK:4.91584356245 vK:18.2547000967 maxVk:20.0 aF:1.06941851142 a:1.35 power: 978909.715444 v2factor: 0.0353314885832 gFactor:0.0 vSquare:25.6583068868
+E500:t:2736:coasting at 19.4193873902
+E500:t:2736 State update PK:4.92124358597 vK:19.4142516623 maxVk:20.0 aF:-0.285318214452 a:0.0 power: 1.53867767201 v2factor: 0.0400682144524 gFactor:0.0 vSquare:29.0981949545
+E500:t:2737:coasting at 18.3996645592
+E500:t:2737 State update PK:4.92649376626 vK:18.3946025869 maxVk:20.0 aF:-0.281220688439 a:0.0 power: 1.4369285564 v2factor: 0.0359706884386 gFactor:0.0 vSquare:26.1225043127
+E500:t:2737:boosting from vK:18.1974622911 to maxVk:20.0 with aFull:-0.280453959883
+E500:t:2738:coasting at 19.6357465333
+E500:t:2738 State update PK:4.93182209127 vK:19.630594645 maxVk:20.0 aF:-0.286216020079 a:0.0 power: 1.56071963085 v2factor: 0.0409660200792 gFactor:0.0 vSquare:29.7501961359
+E500:t:2739:coasting at 18.6128985785
+E500:t:2739 State update PK:4.93713192584 vK:18.607821512 maxVk:20.0 aF:-0.282059249309 a:0.0 power: 1.45791893526 v2factor: 0.0368092493085 gFactor:0.0 vSquare:26.7314809793
+E500:t:2739:boosting from vK:18.1977684089 to maxVk:20.0 with aFull:-0.280455144049
+E500:t:2740:coasting at 19.8530893086
+E500:t:2740 State update PK:4.94238817949 vK:19.847921006 maxVk:20.0 aF:-0.287127922729 a:0.0 power: 1.58302564693 v2factor: 0.0418779227288 gFactor:0.0 vSquare:30.4124348067
+E500:t:2741:coasting at 18.8270667477
+E500:t:2741 State update PK:4.94775793452 vK:18.8219743459 maxVk:20.0 aF:-0.282911209497 a:0.0 power: 1.47915209092 v2factor: 0.0376612094966 gFactor:0.0 vSquare:27.3501884507
+E500:t:2741:boosting from vK:18.1983665069 to maxVk:20.0 with aFull:-0.28045745775
+E500:t:2741:ADVANCE STA x:4966.0 vK:19.5049273675
+E500:t:2742 State update PK:4.95294356849 vK:19.3267273675 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0397681128755 gFactor:0.0 vSquare:28.880256264
+E500:t:2743 State update PK:4.95775935387 vK:15.3667273675 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0251541800958 gFactor:0.0 vSquare:18.2673784283
+E500:t:2744 State update PK:4.96147513925 vK:11.4067273675 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.013872587316 gFactor:0.0 vSquare:10.0745005926
+E500:t:2745 State update PK:4.96409092463 vK:7.4467273675 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00592333453628 gFactor:0.0 vSquare:4.30162275692
+E500:t:2746 State update PK:4.96560671001 vK:3.4867273675 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00130642175652 gFactor:0.0 vSquare:0.948744921224
+E500:t:2746:IN STA CDE vK:0.932527367504 a:-1.1
+E500:t:2746:next STA (Geo) at PK5.337
+E500:t:2757:OUT STA, a:1.32614578111 vK:0.0
+need to go faster...1.35
+E500:t:2758 State update PK:4.96655582472 vK:3.97509959103 maxVk:20.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2759 State update PK:4.96821361442 vK:7.93816552656 maxVk:20.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2760 State update PK:4.97096918559 vK:11.8772793223 maxVk:20.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+need to go faster...1.35
+E500:t:2761 State update PK:4.97481425314 vK:15.7808101534 maxVk:20.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2761:ADVANCE green SIG vK:16.8465407153
+need to go faster...1.35
+E500:t:2762 State update PK:4.97973735716 vK:19.6375498514 maxVk:20.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+E500:t:2763:coasting at 19.0510705574
+E500:t:2763 State update PK:4.98516462347 vK:19.0459619284 maxVk:20.0 aF:-0.283812724497 a:0.0 power: 1.50152398488 v2factor: 0.0385627244969 gFactor:0.0 vSquare:28.00488344
+E500:t:2763:AT SIG EastboundMain:CDE+10 vK:18.8826816387
+E500:2763:START UPDATE SIG BY OCCU sig:EastboundMain:CDE-140 from value green to value red
+E500:2763:START UPDATE SIG BY OCCU sig:EastboundMain:1444 from value red to value yellow
+E500:2763:START UPDATE SIG BY OCCU sig:EastboundMain:Arg+10 from value yellow to value green
+SIG Arg+10 was yellow now green
+SIG 1444 was red now yellow
+SIG CDE-140 was green now red
+E500:t:2763next SIG (Geo-140) at PK5.197
+E500:t:2763:boosting from vK:18.1979447995 to maxVk:20.0 with aFull:-0.280455826396
+need to go faster...1.35
+E500:t:2764 State update PK:4.9903321768 vK:18.8329151932 maxVk:20.0 aF:1.06714222204 a:1.35 power: 1009916.55697 v2factor: 0.0376077779611 gFactor:0.0 vSquare:27.3113855927
+E500:t:2765:coasting at 19.2668205656
+E500:t:2765 State update PK:4.99576515298 vK:19.2616961258 maxVk:20.0 aF:-0.284691102313 a:0.0 power: 1.52323152846 v2factor: 0.0394411023127 gFactor:0.0 vSquare:28.6427758262
+E500:t:2766:coasting at 18.249280365
+E500:t:2766 State update PK:5.00097326474 vK:18.2442289332 maxVk:20.0 aF:-0.280635099846 a:0.0 power: 1.42221416897 v2factor: 0.0353850998456 gFactor:0.0 vSquare:25.6972402655
+E500:t:2766:boosting from vK:18.1987818975 to maxVk:20.0 with aFull:-0.280459064705
+E500:t:2767:coasting at 19.4832808049
+E500:t:2767 State update PK:5.00635356185 vK:19.4781403233 maxVk:20.0 aF:-0.285582312035 a:0.0 power: 1.54517009657 v2factor: 0.0403323120354 gFactor:0.0 vSquare:29.2899869538
+E500:t:2768:coasting at 18.4626387338
+E500:t:2768 State update PK:5.01162135928 vK:18.4575723218 maxVk:20.0 aF:-0.281467334333 a:0.0 power: 1.44311213324 v2factor: 0.0362173343329 gFactor:0.0 vSquare:26.3016226092
+E500:t:2768:boosting from vK:18.1996569507 to maxVk:20.0 with aFull:-0.280462450003
+E500:t:2769:coasting at 19.7002557236
+E500:t:2769 State update PK:5.01692978463 vK:19.6950989822 maxVk:20.0 aF:-0.28648563303 a:0.0 power: 1.56732302764 v2factor: 0.0412356330299 gFactor:0.0 vSquare:29.9459934858
+E500:t:2770:coasting at 18.6764692076
+E500:t:2770 State update PK:5.02225740462 vK:18.6713876075 maxVk:20.0 aF:-0.282311115844 a:0.0 power: 1.46420563051 v2factor: 0.0370611158443 gFactor:0.0 vSquare:26.9143905913
+E500:t:2770:boosting from vK:18.1953206853 to maxVk:20.0 with aFull:-0.280445675991
+E500:t:2771:coasting at 19.9181464509
+E500:t:2771 State update PK:5.02749061689 vK:19.9129731999 maxVk:20.0 aF:-0.287402834292 a:0.0 power: 1.58973470467 v2factor: 0.0421528342917 gFactor:0.0 vSquare:30.6120800956
+E500:t:2772:coasting at 18.8911667623
+E500:t:2772 State update PK:5.03287830692 vK:18.8860697366 maxVk:20.0 aF:-0.283168094299 a:0.0 power: 1.48553677115 v2factor: 0.0379180942994 gFactor:0.0 vSquare:27.5367424106
+E500:t:2772:boosting from vK:18.1962525208 to maxVk:20.0 with aFull:-0.280449280281
+need to go faster...1.35
+E500:t:2773 State update PK:5.03805288706 vK:19.4252451754 maxVk:20.0 aF:1.06473668162 a:1.35 power: 1041680.31178 v2factor: 0.0400133183775 gFactor:0.0 vSquare:29.058328524
+E500:t:2774:coasting at 19.105731137
+E500:t:2774 State update PK:5.04348690183 vK:19.1006185192 maxVk:20.0 aF:-0.284034327242 a:0.0 power: 1.50700870306 v2factor: 0.0387843272424 gFactor:0.0 vSquare:28.1658149908
+E500:t:2774:boosting from vK:18.1964056412 to maxVk:20.0 with aFull:-0.28044987256
+need to go faster...1.35
+E500:t:2775 State update PK:5.04865911601 vK:18.6192857746 maxVk:20.0 aF:1.06799150523 a:1.35 power: 998460.658217 v2factor: 0.0367584947688 gFactor:0.0 vSquare:26.6946221996
+E500:t:2776:coasting at 19.3209882126
+E500:t:2776 State update PK:5.05408305923 vK:19.3158597752 maxVk:20.0 aF:-0.28491318721 a:0.0 power: 1.52870643674 v2factor: 0.0396631872104 gFactor:0.0 vSquare:28.8040575239
+E500:t:2777:coasting at 18.3026750816
+E500:t:2777 State update PK:5.05930610738 vK:18.2976199172 maxVk:20.0 aF:-0.280842465984 a:0.0 power: 1.42743019421 v2factor: 0.0355924659838 gFactor:0.0 vSquare:25.8478329584
+E500:t:2777:boosting from vK:18.1965907755 to maxVk:20.0 with aFull:-0.280450588677
+E500:t:2778:coasting at 19.537502503
+E500:t:2778 State update PK:5.0646668942 vK:19.532357975 maxVk:20.0 aF:-0.285807112931 a:0.0 power: 1.55069078932 v2factor: 0.0405571129308 gFactor:0.0 vSquare:29.4532410536
+E500:t:2779:coasting at 18.5160779426
+E500:t:2779 State update PK:5.06994964166 vK:18.5110077513 maxVk:20.0 aF:-0.281677296377 a:0.0 power: 1.44836961572 v2factor: 0.0364272963775 gFactor:0.0 vSquare:26.454100492
+E500:t:2779:boosting from vK:18.1973522012 to maxVk:20.0 with aFull:-0.280453534023
+E500:t:2780:coasting at 19.7542465701
+E500:t:2780 State update PK:5.07523842306 vK:19.7490857547 maxVk:20.0 aF:-0.286711964865 a:0.0 power: 1.57286088362 v2factor: 0.0414619648648 gFactor:0.0 vSquare:30.110359379
+E500:t:2781:coasting at 18.7296721331
+E500:t:2781 State update PK:5.0805809282 vK:18.7245867269 maxVk:20.0 aF:-0.282522565685 a:0.0 power: 1.46947730097 v2factor: 0.0372725656852 gFactor:0.0 vSquare:27.0679489362
+E500:t:2781:boosting from vK:18.1976701307 to maxVk:20.0 with aFull:-0.280454763874
+E500:t:2782:coasting at 19.9721803577
+E500:t:2782 State update PK:5.08579753609 vK:19.9670029844 maxVk:20.0 aF:-0.28763184875 a:0.0 power: 1.59531832845 v2factor: 0.0423818487504 gFactor:0.0 vSquare:30.7783941543
+E500:t:2783:coasting at 18.9444033092
+E500:t:2783 State update PK:5.09120012188 vK:18.9393024312 maxVk:20.0 aF:-0.283382106779 a:0.0 power: 1.49084983997 v2factor: 0.0381321067786 gFactor:0.0 vSquare:27.6921617855
+E500:t:2783:boosting from vK:18.1984751958 to maxVk:20.0 with aFull:-0.280457878214
+need to go faster...1.35
+E500:t:2784 State update PK:5.0963693733 vK:19.2360587948 maxVk:20.0 aF:1.06551310113 a:1.35 power: 1031535.17298 v2factor: 0.0392368988733 gFactor:0.0 vSquare:28.4944799371
+E500:t:2785:coasting at 19.1593705236
+E500:t:2785 State update PK:5.10180707662 vK:19.1542539802 maxVk:20.0 aF:-0.284252407129 a:0.0 power: 1.51240077795 v2factor: 0.0390024071287 gFactor:0.0 vSquare:28.3241881835
+E500:t:2785:boosting from vK:18.1988648391 to maxVk:20.0 with aFull:-0.280459385572
+need to go faster...1.35
+E500:t:2786 State update PK:5.10698818392 vK:18.4293986754 maxVk:20.0 aF:1.06873825801 a:1.35 power: 988277.943825 v2factor: 0.0360117419929 gFactor:0.0 vSquare:26.1523180777
+E500:t:2787:coasting at 19.3746706713
+E500:t:2787 State update PK:5.11240159543 vK:19.3695382611 maxVk:20.0 aF:-0.28513389801 a:0.0 power: 1.53414220751 v2factor: 0.0398838980096 gFactor:0.0 vSquare:28.9643413287
+E500:t:2788:coasting at 18.3555893657
+E500:t:2788 State update PK:5.11763944587 vK:18.3505304916 maxVk:20.0 aF:-0.281048563977 a:0.0 power: 1.4326084008 v2factor: 0.0357985639774 gFactor:0.0 vSquare:25.997504704
+E500:t:2788:boosting from vK:18.1989288538 to maxVk:20.0 with aFull:-0.28045963322
+E500:t:2789:coasting at 19.5899978281
+E500:t:2789 State update PK:5.12298341993 vK:19.5848493718 maxVk:20.0 aF:-0.286025351584 a:0.0 power: 1.55604539646 v2factor: 0.0407753515836 gFactor:0.0 vSquare:29.6117295451
+E500:t:2790:coasting at 18.5678135955
+E500:t:2790 State update PK:5.12828064114 vK:18.5627397349 maxVk:20.0 aF:-0.281881143307 a:0.0 power: 1.4534684165 v2factor: 0.0366311433075 gFactor:0.0 vSquare:26.6021374782
+E500:t:2790:boosting from vK:18.1983609742 to maxVk:20.0 with aFull:-0.280457436347
+E500:t:2791:coasting at 19.8076008908
+E500:t:2791 State update PK:5.13355263053 vK:19.8024360385 maxVk:20.0 aF:-0.286936236886 a:0.0 power: 1.57834346613 v2factor: 0.0416862368863 gFactor:0.0 vSquare:30.2732294018
+E500:t:2792:coasting at 18.782245679
+E500:t:2792 State update PK:5.13890984501 vK:18.7771565011 maxVk:20.0 aF:-0.282732104979 a:0.0 power: 1.47469582864 v2factor: 0.0374821049794 gFactor:0.0 vSquare:27.2201198108
+E500:t:2792:boosting from vK:18.1993557843 to maxVk:20.0 with aFull:-0.280461284869
+need to go faster...1.35
+E500:t:2793 State update PK:5.14411030855 vK:19.8498137315 maxVk:20.0 aF:1.06296656249 a:1.35 power: 1064447.84401 v2factor: 0.0417834375138 gFactor:0.0 vSquare:30.3438180928
+E500:t:2794:coasting at 18.9965863053
+E500:t:2794 State update PK:5.14952678671 vK:18.9914816408 maxVk:20.0 aF:-0.283592468446 a:0.0 power: 1.49606698832 v2factor: 0.0383424684456 gFactor:0.0 vSquare:27.8449298806
+E500:t:2794:boosting from vK:18.1996162418 to maxVk:20.0 with aFull:-0.280462292509
+need to go faster...1.35
+E500:t:2795 State update PK:5.15469380722 vK:19.0462341582 maxVk:20.0 aF:1.06628449412 a:1.35 power: 1021355.80776 v2factor: 0.0384655058799 gFactor:0.0 vSquare:27.9342816847
+E500:t:2796:coasting at 19.212557542
+E500:t:2796 State update PK:5.16013168785 vK:19.2074370955 maxVk:20.0 aF:-0.284469251526 a:0.0 power: 1.51775701508 v2factor: 0.0392192515262 gFactor:0.0 vSquare:28.4816641439
+E500:t:2797:boosting from vK:18.19578943 to maxVk:20.0 with aFull:-0.280447489047
+E500:t:2797 State update PK:5.16532487033 vK:18.215006245 maxVk:20.0 aF:1.0676008305 a:1.34802879801 power: 975354.884248 v2factor: 0.0351779675044 gFactor:0.0 vSquare:25.5468173598
+E500:t:2798:coasting at 19.4284840614
+E500:t:2798 State update PK:5.17072130993 vK:19.4233476577 maxVk:20.0 aF:-0.285355761748 a:0.0 power: 1.53960115738 v2factor: 0.0401057617481 gFactor:0.0 vSquare:29.1254624169
+E500:t:2799:coasting at 18.4086305424
+E500:t:2799 State update PK:5.17597399845 vK:18.4035679389 maxVk:20.0 aF:-0.281255753335 a:0.0 power: 1.43780815686 v2factor: 0.036005753335 gFactor:0.0 vSquare:26.147969016
+E500:t:2799:boosting from vK:18.196306664 to maxVk:20.0 with aFull:-0.280449489709
+E500:t:2800:coasting at 19.6450077503
+E500:t:2800 State update PK:5.18129859228 vK:19.6398551662 maxVk:20.0 aF:-0.28625467251 a:0.0 power: 1.56166675243 v2factor: 0.0410046725102 gFactor:0.0 vSquare:29.7782661657
+E500:t:2800:ADVANCE green SIG vK:19.0754055352
+E500:t:2801:coasting at 18.622025243
+E500:t:2801 State update PK:5.18661098022 vK:18.6169475266 maxVk:20.0 aF:-0.282095356316 a:0.0 power: 1.45882067945 v2factor: 0.0368453563159 gFactor:0.0 vSquare:26.7577024807
+E500:t:2801:boosting from vK:18.1967459228 to maxVk:20.0 with aFull:-0.280451188808
+E500:t:2802:coasting at 19.862808088
+E500:t:2802 State update PK:5.1918635698 vK:19.8576390472 maxVk:20.0 aF:-0.287168934171 a:0.0 power: 1.58402695565 v2factor: 0.0419189341714 gFactor:0.0 vSquare:30.4422179894
+E500:t:2802:AT SIG EastboundMain:Geo-140 vK:18.8774007008
+E500:2802:START UPDATE SIG BY OCCU sig:EastboundMain:CDE+10 from value green to value red
+E500:2802:START UPDATE SIG BY OCCU sig:EastboundMain:CDE-140 from value red to value yellow
+E500:2802:START UPDATE SIG BY OCCU sig:EastboundMain:1444 from value yellow to value green
+SIG 1444 was yellow now green
+SIG CDE-140 was red now yellow
+SIG CDE+10 was green now red
+E500:t:2802next SIG (Geo+10) at PK5.347
+E500:t:2803:coasting at 18.8366427446
+E500:t:2803 State update PK:5.19723600414 vK:18.8315496531 maxVk:20.0 aF:-0.282949530426 a:0.0 power: 1.48010503653 v2factor: 0.0376995304256 gFactor:0.0 vSquare:27.3780177383
+E500:t:2803:boosting from vK:18.1977620195 to maxVk:20.0 with aFull:-0.280455119333
+need to go faster...1.35
+E500:t:2804 State update PK:5.20242157183 vK:19.6384925826 maxVk:20.0 aF:1.06385239565 a:1.35 power: 1053115.72572 v2factor: 0.040897604347 gFactor:0.0 vSquare:29.7005115083
+E500:t:2805:coasting at 19.0519993674
+E500:t:2805 State update PK:5.20784909803 vK:19.0468906707 maxVk:20.0 aF:-0.283816484739 a:0.0 power: 1.50161709871 v2factor: 0.0385664847389 gFactor:0.0 vSquare:28.0076141894
+E500:t:2805:boosting from vK:18.198862558 to maxVk:20.0 with aFull:-0.280459376748
+need to go faster...1.35
+E500:t:2806 State update PK:5.21301687094 vK:18.8330337482 maxVk:20.0 aF:1.06714174803 a:1.35 power: 1009922.91449 v2factor: 0.0376082519693 gFactor:0.0 vSquare:27.3117298252
+E500:t:2807:coasting at 19.2669373687
+E500:t:2807 State update PK:5.21844987979 vK:19.2618129203 maxVk:20.0 aF:-0.284691580529 a:0.0 power: 1.52324332337 v2factor: 0.0394415805293 gFactor:0.0 vSquare:28.6431231149
+E500:t:2808:coasting at 18.2493955038
+E500:t:2808 State update PK:5.22365802377 vK:18.2443440639 maxVk:20.0 aF:-0.280635546352 a:0.0 power: 1.42222540673 v2factor: 0.0353855463519 gFactor:0.0 vSquare:25.6975645257
+E500:t:2808:boosting from vK:18.1988969561 to maxVk:20.0 with aFull:-0.28045950982
+E500:t:2809:coasting at 19.4826449722
+E500:t:2809 State update PK:5.22903815245 vK:19.477504538 maxVk:20.0 aF:-0.285579679606 a:0.0 power: 1.54510541819 v2factor: 0.0403296796058 gFactor:0.0 vSquare:29.2880752402
+E500:t:2810:coasting at 18.462012064
+E500:t:2810 State update PK:5.23430577456 vK:18.4569456962 maxVk:20.0 aF:-0.281464875754 a:0.0 power: 1.44305053533 v2factor: 0.0362148757542 gFactor:0.0 vSquare:26.299837149
+E500:t:2810:boosting from vK:18.199032562 to maxVk:20.0 with aFull:-0.280460034428
+E500:t:2811:coasting at 19.6996775931
+E500:t:2811 State update PK:5.23961403531 vK:19.6945208953 maxVk:20.0 aF:-0.286483212835 a:0.0 power: 1.5672637837 v2factor: 0.0412332128352 gFactor:0.0 vSquare:29.9442359007
+E500:t:2812:coasting at 18.6758995023
+E500:t:2812 State update PK:5.24494149591 vK:18.670817943 maxVk:20.0 aF:-0.282308854861 a:0.0 power: 1.46414923133 v2factor: 0.037058854861 gFactor:0.0 vSquare:26.9127486282
+E500:t:2812:boosting from vK:18.1998027671 to maxVk:20.0 with aFull:-0.280463014135
+E500:t:2813:coasting at 19.9163864906
+E500:t:2813 State update PK:5.25017752251 vK:19.9112133737 maxVk:20.0 aF:-0.287395385402 a:0.0 power: 1.58955301149 v2factor: 0.0421453854023 gFactor:0.0 vSquare:30.6066705899
+E500:t:2814:coasting at 18.8894327365
+E500:t:2814 State update PK:5.25556472735 vK:18.8843358361 maxVk:20.0 aF:-0.283161133592 a:0.0 power: 1.48536387291 v2factor: 0.0379111335925 gFactor:0.0 vSquare:27.531687431
+E500:t:2814:boosting from vK:18.1995832326 to maxVk:20.0 with aFull:-0.280462164805
+need to go faster...1.35
+E500:t:2815 State update PK:5.26074109816 vK:19.4486155566 maxVk:20.0 aF:1.06464024183 a:1.35 power: 1042933.55085 v2factor: 0.0401097581666 gFactor:0.0 vSquare:29.1283646816
+E500:t:2816:coasting at 19.1047628739
+E500:t:2816 State update PK:5.26617578802 vK:19.0996503268 maxVk:20.0 aF:-0.284030396225 a:0.0 power: 1.50691145835 v2factor: 0.0387803962248 gFactor:0.0 vSquare:28.1629602214
+E500:t:2816:boosting from vK:18.1954496652 to maxVk:20.0 with aFull:-0.280446174867
+need to go faster...1.35
+E500:t:2817 State update PK:5.27134773485 vK:18.6183198886 maxVk:20.0 aF:1.06799532308 a:1.35 power: 998408.862485 v2factor: 0.0367546769193 gFactor:0.0 vSquare:26.6918496146
+E500:t:2818:coasting at 19.3441055811
+E500:t:2818 State update PK:5.27677574451 vK:19.3389754343 maxVk:20.0 aF:-0.285008157203 a:0.0 power: 1.53104604187 v2factor: 0.0397581572029 gFactor:0.0 vSquare:28.8730262912
+E500:t:2819:coasting at 18.3254619143
+E500:t:2819 State update PK:5.28200516703 vK:18.3204051537 maxVk:20.0 aF:-0.280931146402 a:0.0 power: 1.42965900622 v2factor: 0.0356811464022 gFactor:0.0 vSquare:25.9122341338
+E500:t:2819:boosting from vK:18.199148938 to maxVk:20.0 with aFull:-0.280460484646
+E500:t:2820:coasting at 19.5602007607
+E500:t:2820 State update PK:5.28735969948 vK:19.5550545354 maxVk:20.0 aF:-0.285901404466 a:0.0 power: 1.55300487669 v2factor: 0.040651404466 gFactor:0.0 vSquare:29.521717114
+E500:t:2821:coasting at 18.5384479816
+E500:t:2821 State update PK:5.29264870522 vK:18.5333762049 maxVk:20.0 aF:-0.281765368191 a:0.0 power: 1.45057321395 v2factor: 0.0365153681913 gFactor:0.0 vSquare:26.5180596887
+E500:t:2821:boosting from vK:18.1994280856 to maxVk:20.0 with aFull:-0.280461564582
+E500:t:2822:coasting at 19.7774581262
+E500:t:2822 State update PK:5.297931278 vK:19.772295556 maxVk:20.0 aF:-0.286809459056 a:0.0 power: 1.57524483131 v2factor: 0.0415594590557 gFactor:0.0 vSquare:30.1811612605
+E500:t:2823:coasting at 18.7525442785
+E500:t:2823 State update PK:5.30328018241 vK:18.7474572328 maxVk:20.0 aF:-0.282613653673 a:0.0 power: 1.47174649601 v2factor: 0.0373636536726 gFactor:0.0 vSquare:27.1340985276
+E500:t:2823:boosting from vK:18.1951296053 to maxVk:20.0 with aFull:-0.280444936926
+need to go faster...1.35
+E500:t:2824 State update PK:5.3084874877 vK:19.941756024 maxVk:20.0 aF:1.0625781881 a:1.35 power: 1069378.25892 v2factor: 0.0421718119018 gFactor:0.0 vSquare:30.6258619476
+E500:t:2825:coasting at 18.9674183053
+E500:t:2825 State update PK:5.31389647951 vK:18.9623157586 maxVk:20.0 aF:-0.283474814199 a:0.0 power: 1.49314970457 v2factor: 0.0382248141991 gFactor:0.0 vSquare:27.7594874358
+E500:t:2825:boosting from vK:18.1960070685 to maxVk:20.0 with aFull:-0.280448330866
+need to go faster...1.35
+E500:t:2826 State update PK:5.31906328878 vK:19.1372409117 maxVk:20.0 aF:1.06591562445 a:1.35 power: 1026236.05405 v2factor: 0.0388343755531 gFactor:0.0 vSquare:28.2021608955
+E500:t:2826:ADVANCE STA x:5337.0 vK:19.2794117452
+E500:t:2827 State update PK:5.32449614031 vK:18.8834117452 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0379664627678 gFactor:0.0 vSquare:27.5718683862
+E500:t:2828 State update PK:5.32918878247 vK:14.9234117452 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0237255800842 gFactor:0.0 vSquare:17.229905653
+E500:t:2829 State update PK:5.33278142462 vK:10.9634117452 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0128170374006 gFactor:0.0 vSquare:9.3079429198
+E500:t:2830 State update PK:5.33527406677 vK:7.00341174523 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00524083471695 gFactor:0.0 vSquare:3.8059801866
+E500:t:2831 State update PK:5.33666670892 vK:3.04341174523 maxVk:20.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000996972033337 gFactor:0.0 vSquare:0.724017453404
+E500:t:2831:IN STA Geo vK:0.784051745229 a:-0.004
+E500:t:2831:next STA (Fra) at PK5.984
+E500:t:2842:OUT STA, a:1.31104384111 vK:0.0
+need to go faster...1.35
+E500:t:2843 State update PK:5.33755602915 vK:3.97509959103 maxVk:20.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2844 State update PK:5.33921381885 vK:7.93816552656 maxVk:20.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2845 State update PK:5.34196939003 vK:11.8772793223 maxVk:20.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2845:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2846 State update PK:5.34581445758 vK:15.7808101534 maxVk:20.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2846:AT SIG EastboundMain:Geo+10 vK:16.807851537
+E500:2846:START UPDATE SIG BY OCCU sig:EastboundMain:Geo-140 from value green to value red
+E500:2846:START UPDATE SIG BY OCCU sig:EastboundMain:CDE+10 from value red to value yellow
+E500:2846:START UPDATE SIG BY OCCU sig:EastboundMain:CDE-140 from value yellow to value green
+SIG CDE-140 was yellow now green
+SIG CDE+10 was red now yellow
+SIG Geo-140 was green now red
+E500:t:2846next SIG (1538) at PK5.58
+need to go faster...1.35
+E500:t:2847 State update PK:5.3507375616 vK:19.6375498514 maxVk:20.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+E500:t:2848:coasting at 19.0510705574
+E500:t:2848 State update PK:5.35616482791 vK:19.0459619284 maxVk:20.0 aF:-0.283812724497 a:0.0 power: 1.50152398488 v2factor: 0.0385627244969 gFactor:0.0 vSquare:28.00488344
+E500:t:2848:boosting from vK:18.1979447995 to maxVk:20.0 with aFull:-0.280455826396
+need to go faster...1.35
+E500:t:2849 State update PK:5.36133236345 vK:18.8325274661 maxVk:20.0 aF:1.06714377223 a:1.35 power: 1009895.76506 v2factor: 0.0376062277664 gFactor:0.0 vSquare:27.3102598158
+E500:t:2850:coasting at 19.266438568
+E500:t:2850 State update PK:5.36676523273 vK:19.2613141563 maxVk:20.0 aF:-0.284689538354 a:0.0 power: 1.52319295424 v2factor: 0.0394395383539 gFactor:0.0 vSquare:28.6416400536
+E500:t:2851:coasting at 18.2489038104
+E500:t:2851 State update PK:5.37197323916 vK:18.2438524049 maxVk:20.0 aF:-0.280633639593 a:0.0 power: 1.42217741683 v2factor: 0.0353836395925 gFactor:0.0 vSquare:25.6961798057
+E500:t:2851:boosting from vK:18.1984056054 to maxVk:20.0 with aFull:-0.280457609003
+E500:t:2852:coasting at 19.4817728424
+E500:t:2852 State update PK:5.3773531287 vK:19.4766324732 maxVk:20.0 aF:-0.285576069015 a:0.0 power: 1.54501670537 v2factor: 0.0403260690152 gFactor:0.0 vSquare:29.2854531701
+E500:t:2853:coasting at 18.4611525018
+E500:t:2853 State update PK:5.38262051034 vK:18.4560861947 maxVk:20.0 aF:-0.281461503617 a:0.0 power: 1.44296604757 v2factor: 0.0362115036175 gFactor:0.0 vSquare:26.297388248
+E500:t:2853:boosting from vK:18.1981761284 to maxVk:20.0 with aFull:-0.280456721276
+E500:t:2854:coasting at 19.6987738541
+E500:t:2854 State update PK:5.38792852227 vK:19.6936172244 maxVk:20.0 aF:-0.286479429706 a:0.0 power: 1.56717117536 v2factor: 0.0412294297064 gFactor:0.0 vSquare:29.9414885305
+E500:t:2855:coasting at 18.6750089332
+E500:t:2855 State update PK:5.39325573371 vK:18.6699274374 maxVk:20.0 aF:-0.282305320607 a:0.0 power: 1.4640610697 v2factor: 0.037055320607 gFactor:0.0 vSquare:26.9101819949
+E500:t:2855:boosting from vK:18.1989180831 to maxVk:20.0 with aFull:-0.280459591552
+E500:t:2856:coasting at 19.9162294898
+E500:t:2856 State update PK:5.39849162224 vK:19.9110563848 maxVk:20.0 aF:-0.287394720941 a:0.0 power: 1.58953680371 v2factor: 0.0421447209408 gFactor:0.0 vSquare:30.6061880471
+E500:t:2856:TIV 4 reached at curr speed 19.6271387662, maxVk now 55.0
+E500:t:2856  next TIV at PK6.65 with limit <<30 (currspeed:19.6271387662)
+E500:t:2856  BDtiv: 111.79503367
+E500:t:2856:vK:19.6271387662 maxVk:55.0 =>ready to acc
+need to go faster...1.35
+E500:t:2857 State update PK:5.40423471067 vK:22.3880564679 maxVk:55.0 aF:1.05158484974 a:1.35 power: 1200561.38391 v2factor: 0.0531651502626 gFactor:0.0 vSquare:38.6094046933
+need to go faster...1.35
+E500:t:2858 State update PK:5.41097887758 vK:26.139583819 maxVk:55.0 aF:1.03225490146 a:1.35 power: 1401737.48944 v2factor: 0.0724950985391 gFactor:0.0 vSquare:52.6471303843
+need to go faster...1.35
+E500:t:2859 State update PK:5.41875498614 vK:29.8168950421 maxVk:55.0 aF:1.01040393286 a:1.35 power: 1598933.80933 v2factor: 0.094346067139 gFactor:0.0 vSquare:68.5156624103
+need to go faster...1.35
+E500:t:2860 State update PK:5.427541193 vK:33.4113347924 maxVk:55.0 aF:0.986267297513 a:1.35 power: 1791686.20402 v2factor: 0.118482702487 gFactor:0.0 vSquare:86.0440831423
+need to go faster...1.35
+E500:t:2861 State update PK:5.43731337165 vK:36.9151245956 maxVk:55.0 aF:0.960095851599 a:1.35 power: 1979577.5546 v2factor: 0.144654148401 gFactor:0.0 vSquare:105.050216704
+need to go faster...1.25412569553
+E500:t:2862 State update PK:5.44803183635 vK:40.1621961141 maxVk:55.0 aF:0.837622885192 a:1.25412569553 power: 2000751.09808 v2factor: 0.171252810341 gFactor:0.0 vSquare:124.366601555
+need to go faster...1.17191252813
+E500:t:2863 State update PK:5.45958976445 vK:42.9766956475 maxVk:55.0 aF:0.730539235899 a:1.17191252813 power: 2000612.13319 v2factor: 0.196123292234 gFactor:0.0 vSquare:142.427953692
+need to go faster...1.10821850914
+E500:t:2864 State update PK:5.47187941713 vK:45.4444154214 maxVk:55.0 aF:0.643653420484 a:1.10821850914 power: 2000510.01717 v2factor: 0.219315088658 gFactor:0.0 vSquare:159.27021689
+need to go faster...1.05739427549
+E500:t:2865 State update PK:5.48481352456 vK:47.6268522491 maxVk:55.0 aF:0.571239641423 a:1.05739427549 power: 2000431.87964 v2factor: 0.24090463407 gFactor:0.0 vSquare:174.948899107
+E500:t:2865:ADVANCE green SIG vK:49.1605582142
+need to go faster...1.0159301795
+E500:t:2866 State update PK:5.49831944031 vK:49.5691503776 maxVk:55.0 aF:0.509709866468 a:1.0159301795 power: 2000370.24948 v2factor: 0.260970313031 gFactor:0.0 vSquare:189.520924496
+need to go faster...0.981515446231
+E500:t:2867 State update PK:5.51233548532 vK:51.3058968665 maxVk:55.0 aF:0.456673709599 a:0.981515446231 power: 2000320.48729 v2factor: 0.279591736632 gFactor:0.0 vSquare:203.044107939
+need to go faster...0.952558149961
+E500:t:2868 State update PK:5.52680852321 vK:52.8644762838 maxVk:55.0 aF:0.410459276138 a:0.952558149961 power: 2000279.55634 v2factor: 0.296848873822 gFactor:0.0 vSquare:215.576524199
+need to go faster...0.927921008944
+E500:t:2869 State update PK:5.54169226965 vK:54.2671364833 maxVk:55.0 aF:0.369849801275 a:0.927921008944 power: 2000245.38288 v2factor: 0.312821207669 gFactor:0.0 vSquare:227.175895185
+E500:t:2870:coasting at 53.9989600201
+E500:t:2870 State update PK:5.55684265529 vK:53.9889688849 maxVk:55.0 aF:-0.555063066345 a:0.0 power: 8.32424517169 v2factor: 0.309813066345 gFactor:0.0 vSquare:224.991333584
+E500:t:2871:coasting at 52.0407598156
+E500:t:2871 State update PK:5.57156447651 vK:52.0311658053 maxVk:55.0 aF:-0.533000572482 a:0.0 power: 7.70351143365 v2factor: 0.287750572482 gFactor:0.0 vSquare:208.96918844
+E500:t:2871:AT SIG EastboundMain:1538 vK:50.9029101919
+E500:2871:START UPDATE SIG BY OCCU sig:EastboundMain:Geo+10 from value green to value red
+E500:2871:START UPDATE SIG BY OCCU sig:EastboundMain:Geo-140 from value red to value yellow
+E500:2871:START UPDATE SIG BY OCCU sig:EastboundMain:CDE+10 from value yellow to value green
+SIG CDE+10 was yellow now green
+SIG Geo-140 was red now yellow
+SIG Geo+10 was green now red
+E500:t:2871next SIG (Fra-140) at PK5.844
+E500:t:2872:coasting at 50.1590191717
+E500:t:2872 State update PK:5.58575326763 vK:50.1497929609 maxVk:55.0 aF:-0.512567265454 a:0.0 power: 7.14031728918 v2factor: 0.267317265454 gFactor:0.0 vSquare:194.130185515
+E500:t:2872:boosting from vK:50.0484213137 to maxVk:55.0 with aFull:-0.511487651327
+need to go faster...0.975022179883
+E500:t:2873 State update PK:5.59987087285 vK:51.6473325268 maxVk:55.0 aF:0.446444129331 a:0.975022179883 power: 2000311.23562 v2factor: 0.283328050552 gFactor:0.0 vSquare:205.75748043
+need to go faster...0.947055073356
+E500:t:2874 State update PK:5.61443383831 vK:53.1714503678 maxVk:55.0 aF:0.401496391453 a:0.947055073356 power: 2000271.87212 v2factor: 0.300308681903 gFactor:0.0 vSquare:218.089093612
+need to go faster...0.923211187311
+E500:t:2875 State update PK:5.62939853752 vK:54.5438049639 maxVk:55.0 aF:0.361940111768 a:0.923211187311 power: 2000238.91624 v2factor: 0.316021075543 gFactor:0.0 vSquare:229.499691752
+E500:t:2876:coasting at 53.5812261925
+E500:t:2876 State update PK:5.64451195329 vK:53.5713210049 maxVk:55.0 aF:-0.550288203781 a:0.0 power: 8.18879611388 v2factor: 0.305038203781 gFactor:0.0 vSquare:221.523750023
+E500:t:2877:coasting at 51.6395686276
+E500:t:2877 State update PK:5.65912009899 vK:51.6300541689 maxVk:55.0 aF:-0.528581036355 a:0.0 power: 7.58074098324 v2factor: 0.283331036355 gFactor:0.0 vSquare:205.759648769
+E500:t:2877:boosting from vK:50.0485388336 to maxVk:55.0 with aFull:-0.511488901656
+need to go faster...1.00073072957
+E500:t:2878 State update PK:5.67321202906 vK:50.3214618626 maxVk:55.0 aF:0.486522855222 a:1.00073072957 power: 2000348.11929 v2factor: 0.268957874352 gFactor:0.0 vSquare:195.321622623
+need to go faster...0.96876992221
+E500:t:2879 State update PK:5.68742593915 vK:51.9804215423 maxVk:55.0 aF:0.436523008617 a:0.96876992221 power: 2000302.36777 v2factor: 0.286996913593 gFactor:0.0 vSquare:208.421868985
+need to go faster...0.941744497096
+E500:t:2880 State update PK:5.70207665914 vK:53.4710885964 maxVk:55.0 aF:0.392789362989 a:0.941744497096 power: 2000264.48474 v2factor: 0.303705134107 gFactor:0.0 vSquare:220.555652946
+need to go faster...0.918657776246
+E500:t:2881 State update PK:5.71712039472 vK:54.8139830609 maxVk:55.0 aF:0.354246190898 a:0.918657776246 power: 2000232.68418 v2factor: 0.319161585348 gFactor:0.0 vSquare:231.780381516
+E500:t:2882:coasting at 53.1665142705
+E500:t:2882 State update PK:5.73215646432 vK:53.1566937483 maxVk:55.0 aF:-0.545584562965 a:0.0 power: 8.05596431316 v2factor: 0.300334562965 gFactor:0.0 vSquare:218.107888864
+E500:t:2883:coasting at 51.2411553323
+E500:t:2883 State update PK:5.74665173895 vK:51.2317192652 maxVk:55.0 aF:-0.524225949978 a:0.0 power: 7.46027686134 v2factor: 0.278975949978 gFactor:0.0 vSquare:202.596913564
+E500:t:2883:boosting from vK:50.048133246 to maxVk:55.0 with aFull:-0.511484586502
+E500:t:2883:ADVANCE green SIG vK:50.1004455282
+need to go faster...0.993560352962
+E500:t:2884 State update PK:5.76068999319 vK:50.6843592338 maxVk:55.0 aF:0.475456442027 a:0.993560352962 power: 2000337.76342 v2factor: 0.272853910935 gFactor:0.0 vSquare:198.150988333
+need to go faster...0.962733187824
+E500:t:2885 State update PK:5.77499939972 vK:52.3061346868 maxVk:55.0 aF:0.426875841139 a:0.962733187824 power: 2000293.84293 v2factor: 0.290607346685 gFactor:0.0 vSquare:211.043824753
+need to go faster...0.936606075809
+E500:t:2886 State update PK:5.78973595454 vK:53.7642484563 maxVk:55.0 aF:0.384309447008 a:0.936606075809 power: 2000257.36285 v2factor: 0.307046628801 gFactor:0.0 vSquare:222.982301235
+E500:t:2887:coasting at 54.7433270412
+E500:t:2887 State update PK:5.80485175426 vK:54.7331811003 maxVk:55.0 aF:-0.563663384651 a:0.0 power: 8.56974725325 v2factor: 0.318413384651 gFactor:0.0 vSquare:231.237025891
+E500:t:2888:coasting at 52.7553378441
+E500:t:2888 State update PK:5.81977609104 vK:52.7456006163 maxVk:55.0 aF:-0.540957102549 a:0.0 power: 7.92586313378 v2factor: 0.295707102549 gFactor:0.0 vSquare:214.747351161
+E500:t:2889:coasting at 50.8460162159
+E500:t:2889 State update PK:5.83415943926 vK:50.8366572964 maxVk:55.0 aF:-0.519939970034 a:0.0 power: 7.34222501981 v2factor: 0.274689970034 gFactor:0.0 vSquare:199.484364585
+E500:t:2889:boosting from vK:50.0477314779 to maxVk:55.0 with aFull:-0.511480312019
+E500:t:2889:AT SIG EastboundMain:Fra-140 vK:50.5384933238
+E500:2889:START UPDATE SIG BY OCCU sig:EastboundMain:1538 from value green to value red
+E500:2889:START UPDATE SIG BY OCCU sig:EastboundMain:Geo+10 from value red to value yellow
+E500:2889:START UPDATE SIG BY OCCU sig:EastboundMain:Geo-140 from value yellow to value green
+SIG Geo-140 was yellow now green
+SIG Geo+10 was red now yellow
+SIG 1538 was green now red
+E500:t:2889next SIG (Fra+10) at PK5.994
+need to go faster...0.986634814661
+E500:t:2890 State update PK:5.84818820678 vK:51.0398740358 maxVk:55.0 aF:0.464686973119 a:0.986634814661 power: 2000327.8118 v2factor: 0.276697841543 gFactor:0.0 vSquare:200.942513829
+need to go faster...0.956888043517
+E500:t:2891 State update PK:5.86259119802 vK:52.6254274956 maxVk:55.0 aF:0.417469536374 a:0.956888043517 power: 2000285.62333 v2factor: 0.294168507142 gFactor:0.0 vSquare:213.629997925
+need to go faster...0.931620556822
+E500:t:2892 State update PK:5.87741191776 vK:54.0517764387 maxVk:55.0 aF:0.37602887572 a:0.931620556822 power: 2000250.47715 v2factor: 0.310341681102 gFactor:0.0 vSquare:225.375222296
+E500:t:2892:ADVANCE STA x:5984.0 vK:54.3262975273
+E500:t:2893 State update PK:5.89214515792 vK:51.1780975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.278505125567 gFactor:0.0 vSquare:202.254993149
+E500:t:2894 State update PK:5.90580854612 vK:47.2180975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.237088264797 gFactor:0.0 vSquare:172.177389105
+E500:t:2895 State update PK:5.91837193433 vK:43.2580975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.199003744028 gFactor:0.0 vSquare:144.51978506
+E500:t:2896 State update PK:5.92983532253 vK:39.2980975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.164251563259 gFactor:0.0 vSquare:119.282181016
+E500:t:2897 State update PK:5.94019871073 vK:35.3380975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.13283172249 gFactor:0.0 vSquare:96.4645769715
+E500:t:2898 State update PK:5.94946209893 vK:31.3780975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.104744221721 gFactor:0.0 vSquare:76.0669729271
+E500:t:2899 State update PK:5.95762548713 vK:27.4180975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0799890609514 gFactor:0.0 vSquare:58.0893688826
+E500:t:2900 State update PK:5.96468887534 vK:23.4580975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0585662401821 gFactor:0.0 vSquare:42.5317648382
+E500:t:2901 State update PK:5.97065226354 vK:19.4980975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0404757594129 gFactor:0.0 vSquare:29.3941607937
+E500:t:2902 State update PK:5.97551565174 vK:15.5380975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0257176186437 gFactor:0.0 vSquare:18.6765567492
+E500:t:2903 State update PK:5.97927903994 vK:11.5780975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0142918178745 gFactor:0.0 vSquare:10.3789527048
+E500:t:2904 State update PK:5.98194242814 vK:7.6180975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00619835710524 gFactor:0.0 vSquare:4.50134866031
+E500:t:2905 State update PK:5.98350581635 vK:3.6580975273 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00143723633602 gFactor:0.0 vSquare:1.04374461584
+E500:t:2905:IN STA Fra vK:0.783857527301 a:-0.004
+E500:t:2905:next STA (ChE) at PK6.431
+E500:t:2916:OUT STA, a:1.31119894148 vK:0.0
+need to go faster...1.35
+E500:t:2917 State update PK:5.98455551602 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2918 State update PK:5.98621330572 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2919 State update PK:5.9889688769 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2919:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2920 State update PK:5.99281394445 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2920:AT SIG EastboundMain:Fra+10 vK:16.807851537
+E500:2920:START UPDATE SIG BY OCCU sig:EastboundMain:Fra-140 from value green to value red
+E500:2920:START UPDATE SIG BY OCCU sig:EastboundMain:1538 from value red to value yellow
+E500:2920:START UPDATE SIG BY OCCU sig:EastboundMain:Geo+10 from value yellow to value green
+SIG Geo+10 was yellow now green
+SIG 1538 was red now yellow
+SIG Fra-140 was green now red
+E500:t:2920next SIG (ChE-140) at PK6.291
+need to go faster...1.35
+E500:t:2921 State update PK:5.99773704847 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2922 State update PK:6.0037236893 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2923 State update PK:6.01075649535 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2924 State update PK:6.01881541961 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2925 State update PK:6.02787796033 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2926 State update PK:6.03791930488 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2927 State update PK:6.04888320775 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2928 State update PK:6.06065414212 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2929 State update PK:6.07313081548 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:2930 State update PK:6.08623048769 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+need to go faster...1.00574401024
+E500:t:2931 State update PK:6.0998838597 vK:50.0708109109 maxVk:55.0 aF:0.49421075481 a:1.00574401024 power: 2000355.39166 v2factor: 0.266283255429 gFactor:0.0 vSquare:193.379270464
+need to go faster...0.972981473791
+E500:t:2932 State update PK:6.11403183012 vK:51.7555804455 maxVk:55.0 aF:0.443213696475 a:0.972981473791 power: 2000308.33686 v2factor: 0.284517777316 gFactor:0.0 vSquare:206.621479532
+need to go faster...0.945322993404
+E500:t:2933 State update PK:6.1286233115 vK:53.268809354 maxVk:55.0 aF:0.398662823946 a:0.945322993404 power: 2000269.45966 v2factor: 0.301410169458 gFactor:0.0 vSquare:218.889011952
+need to go faster...0.921726960895
+E500:t:2934 State update PK:6.14361368941 vK:54.6315787105 maxVk:55.0 aF:0.359437318607 a:0.921726960895 power: 2000236.8827 v2factor: 0.317039642288 gFactor:0.0 vSquare:230.239391639
+E500:t:2935:coasting at 53.4558144052
+E500:t:2935 State update PK:6.15870838279 vK:53.4459348904 maxVk:55.0 aF:-0.548861934958 a:0.0 power: 8.14845534433 v2factor: 0.303611934958 gFactor:0.0 vSquare:220.487970195
+E500:t:2936:coasting at 51.5190987296
+E500:t:2936 State update PK:6.17328239737 vK:51.5096080385 maxVk:55.0 aF:-0.527260612978 a:0.0 power: 7.54416319684 v2factor: 0.282010612978 gFactor:0.0 vSquare:204.800735641
+E500:t:2936:boosting from vK:50.0423126486 to maxVk:55.0 with aFull:-0.511422663477
+need to go faster...0.998755899158
+E500:t:2937 State update PK:6.1873527959 vK:50.4208892435 maxVk:55.0 aF:0.483483365504 a:0.998755899158 power: 2000345.26178 v2factor: 0.270022533654 gFactor:0.0 vSquare:196.094795682
+E500:t:2937:ADVANCE green SIG vK:51.6257950649
+need to go faster...0.967108845212
+E500:t:2938 State update PK:6.20159286708 vK:52.0696396764 maxVk:55.0 aF:0.433875218381 a:0.967108845212 power: 2000300.01842 v2factor: 0.287983626831 gFactor:0.0 vSquare:209.138436333
+need to go faster...0.940331668416
+E500:t:2939 State update PK:6.21626709633 vK:53.5513746049 maxVk:55.0 aF:0.390463235346 a:0.940331668416 power: 2000262.52401 v2factor: 0.304618433069 gFactor:0.0 vSquare:221.218905642
+need to go faster...0.917445007742
+E500:t:2940 State update PK:6.23133201217 vK:54.8863954206 maxVk:55.0 aF:0.352189074468 a:0.917445007742 power: 2000231.02758 v2factor: 0.320005933274 gFactor:0.0 vSquare:232.393560838
+E500:t:2941:coasting at 53.0609772147
+E500:t:2941 State update PK:6.24634195387 vK:53.0511781335 maxVk:55.0 aF:-0.544393400941 a:0.0 power: 8.02241980223 v2factor: 0.299143400941 gFactor:0.0 vSquare:217.242847452
+E500:t:2942:coasting at 51.1397462142
+E500:t:2942 State update PK:6.26080850191 vK:51.1303300034 maxVk:55.0 aF:-0.523122824553 a:0.0 power: 7.42984518103 v2factor: 0.277872824553 gFactor:0.0 vSquare:201.795805776
+E500:t:2942:boosting from vK:50.0411626978 to maxVk:55.0 with aFull:-0.511410430459
+need to go faster...0.992005597354
+E500:t:2943 State update PK:6.27483867994 vK:50.7637386736 maxVk:55.0 aF:0.47304574287 a:0.992005597354 power: 2000335.52501 v2factor: 0.273709854484 gFactor:0.0 vSquare:198.772588587
+need to go faster...0.961422218165
+E500:t:2944 State update PK:6.28916897946 vK:52.3774090051 maxVk:55.0 aF:0.424771808766 a:0.961422218165 power: 2000291.99645 v2factor: 0.291400409399 gFactor:0.0 vSquare:211.619759912
+E500:t:2944:AT SIG EastboundMain:ChE-140 vK:52.574785634
+E500:2944:START UPDATE SIG BY OCCU sig:EastboundMain:Fra+10 from value green to value red
+E500:2944:START UPDATE SIG BY OCCU sig:EastboundMain:Fra-140 from value red to value yellow
+E500:2944:START UPDATE SIG BY OCCU sig:EastboundMain:1538 from value yellow to value green
+SIG 1538 was yellow now green
+SIG Fra-140 was red now yellow
+SIG Fra+10 was green now red
+E500:t:2944next SIG (ChE+10) at PK6.441
+need to go faster...0.935488775866
+E500:t:2945 State update PK:6.30392432017 vK:53.8284195811 maxVk:55.0 aF:0.382458273906 a:0.935488775866 power: 2000255.81763 v2factor: 0.307780501961 gFactor:0.0 vSquare:223.515251969
+E500:t:2946:coasting at 54.6539790666
+E500:t:2946 State update PK:6.31905171411 vK:54.6438518193 maxVk:55.0 aF:-0.562624851705 a:0.0 power: 8.53999695179 v2factor: 0.317374851705 gFactor:0.0 vSquare:230.48282622
+E500:t:2946:ADVANCE STA x:6431.0 vK:52.708485913
+E500:t:2947 State update PK:6.33395153565 vK:52.609485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.29429568442 gFactor:0.0 vSquare:213.722356151
+E500:t:2948 State update PK:6.34801253174 vK:48.649485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.251674310324 gFactor:0.0 vSquare:182.770014759
+E500:t:2949 State update PK:6.36097352783 vK:44.689485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.212385276228 gFactor:0.0 vSquare:154.237673368
+E500:t:2950 State update PK:6.37283452391 vK:40.729485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.176428582132 gFactor:0.0 vSquare:128.125331977
+E500:t:2951 State update PK:6.38359552 vK:36.769485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.143804228036 gFactor:0.0 vSquare:104.432990586
+E500:t:2952 State update PK:6.39325651609 vK:32.809485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.114512213941 gFactor:0.0 vSquare:83.1606491943
+E500:t:2953 State update PK:6.40181751217 vK:28.849485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0885525398448 gFactor:0.0 vSquare:64.308307803
+E500:t:2954 State update PK:6.40927850826 vK:24.889485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.065925205749 gFactor:0.0 vSquare:47.8759664117
+E500:t:2955 State update PK:6.41563950435 vK:20.929485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0466302116532 gFactor:0.0 vSquare:33.8636250205
+E500:t:2956 State update PK:6.42090050043 vK:16.969485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0306675575574 gFactor:0.0 vSquare:22.2712836292
+E500:t:2957 State update PK:6.42506149652 vK:13.009485913 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0180372434616 gFactor:0.0 vSquare:13.0989422379
+E500:t:2958 State update PK:6.42812249261 vK:9.04948591301 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00873926936577 gFactor:0.0 vSquare:6.3466008466
+E500:t:2959 State update PK:6.4300834887 vK:5.08948591301 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.00277363526997 gFactor:0.0 vSquare:2.01425945532
+E500:t:2960 State update PK:6.43094448478 vK:1.12948591301 maxVk:55.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.000140341174171 gFactor:0.0 vSquare:0.101918064032
+E500:t:2960:IN STA ChE vK:0.790653913013 a:-0.004
+E500:t:2960:next STA (Con) at PK7.231
+E500:t:2971:OUT STA, a:1.37309648231 vK:0.0
+need to go faster...1.35
+E500:t:2972 State update PK:6.43155603113 vK:3.97509959103 maxVk:55.0 aF:1.10308782976 a:1.35 power: 213164.988208 v2factor: 0.00166217023781 gFactor:0.0 vSquare:1.20709530705
+need to go faster...1.35
+E500:t:2973 State update PK:6.43321382083 vK:7.93816552656 maxVk:55.0 aF:1.09808801263 a:1.35 power: 425684.681839 v2factor: 0.00666198737496 gFactor:0.0 vSquare:4.8380445715
+need to go faster...1.35
+E500:t:2974 State update PK:6.435969392 vK:11.8772793223 maxVk:55.0 aF:1.08981080743 a:1.35 power: 636919.962085 v2factor: 0.01493919257 gFactor:0.0 vSquare:10.8490868337
+E500:t:2974:ADVANCE green SIG vK:11.9361237574
+need to go faster...1.35
+E500:t:2975 State update PK:6.43981445955 vK:15.7808101534 maxVk:55.0 aF:1.078355192 a:1.35 power: 846247.135247 v2factor: 0.0263948080042 gFactor:0.0 vSquare:19.1683427772
+E500:t:2975:AT SIG EastboundMain:ChE+10 vK:16.807851537
+E500:2975:START UPDATE SIG BY OCCU sig:EastboundMain:ChE-140 from value green to value red
+E500:2975:START UPDATE SIG BY OCCU sig:EastboundMain:Fra+10 from value red to value yellow
+E500:2975:START UPDATE SIG BY OCCU sig:EastboundMain:Fra-140 from value yellow to value green
+SIG Fra-140 was yellow now green
+SIG Fra+10 was red now yellow
+SIG ChE-140 was green now red
+E500:t:2975next SIG (1655) at PK6.75
+need to go faster...1.35
+E500:t:2976 State update PK:6.44473756357 vK:19.6375498514 maxVk:55.0 aF:1.0638563262 a:1.35 power: 1053065.17166 v2factor: 0.040893673796 gFactor:0.0 vSquare:29.6976570777
+need to go faster...1.35
+E500:t:2977 State update PK:6.4507242044 vK:23.4368373444 maxVk:55.0 aF:1.04648220727 a:1.35 power: 1256802.37857 v2factor: 0.0582677927327 gFactor:0.0 vSquare:42.3150274021
+need to go faster...1.35
+E500:t:2978 State update PK:6.45775701045 vK:27.1686697263 maxVk:55.0 aF:1.02642961515 a:1.35 power: 1456922.35601 v2factor: 0.0783203848487 gFactor:0.0 vSquare:56.8775489097
+need to go faster...1.35
+E500:t:2979 State update PK:6.46581593472 vK:30.8237976902 maxVk:55.0 aF:1.00391951239 a:1.35 power: 1652929.11433 v2factor: 0.100830487609 gFactor:0.0 vSquare:73.2247549813
+need to go faster...1.35
+E500:t:2980 State update PK:6.47487847544 vK:34.3938036825 maxVk:55.0 aF:0.97919207688 a:1.35 power: 1844371.26511 v2factor: 0.12555792312 gFactor:0.0 vSquare:91.1822244883
+need to go faster...1.33029556025
+E500:t:2981 State update PK:6.48491981999 vK:37.8651811435 maxVk:55.0 aF:0.932842368934 a:1.33029556025 power: 2000887.28544 v2factor: 0.152203191315 gFactor:0.0 vSquare:110.532455567
+need to go faster...1.22897958055
+E500:t:2982 State update PK:6.49588372286 vK:40.9830614698 maxVk:55.0 aF:0.8053971089 a:1.22897958055 power: 2000707.72058 v2factor: 0.178332471651 gFactor:0.0 vSquare:129.507967793
+need to go faster...1.15266094547
+E500:t:2983 State update PK:6.50765465722 vK:43.693797704 maxVk:55.0 aF:0.704681730457 a:1.15266094547 power: 2000580.76684 v2factor: 0.202729215016 gFactor:0.0 vSquare:147.225283236
+need to go faster...1.09299178187
+E500:t:2984 State update PK:6.52013133058 vK:46.0769623942 maxVk:55.0 aF:0.622273504001 a:1.09299178187 power: 2000486.30144 v2factor: 0.225468277866 gFactor:0.0 vSquare:163.738763882
+need to go faster...1.04505575962
+E500:t:2985 State update PK:6.53323100279 vK:48.188711482 maxVk:55.0 aF:0.553179071165 a:1.04505575962 power: 2000413.34499 v2factor: 0.246626688454 gFactor:0.0 vSquare:179.104348914
+E500:t:2985:ADVANCE TIV 5 reached at curr speed 48.9099652865, maxVk will be 30.0
+E500:t:2985  next TIV at PK7.3 with limit >>50 (currspeed:48.9099652865)
+E500:t:2985:vK:48.9099652865 maxVk:30.0 =>ready to dcc
+E500:t:2986 State update PK:6.5465607739 vK:46.4151652865 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.229096887624 gFactor:0.0 vSquare:166.373919843
+E500:t:2987 State update PK:6.55890112537 vK:42.4551652865 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.191688034335 gFactor:0.0 vSquare:139.206996612
+E500:t:2988 State update PK:6.57014147684 vK:38.4951652865 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.157611521046 gFactor:0.0 vSquare:114.460073381
+E500:t:2989 State update PK:6.58028182831 vK:34.5351652865 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.126867347758 gFactor:0.0 vSquare:92.1331501508
+E500:t:2990 State update PK:6.58932217977 vK:30.5751652865 maxVk:30.0 aF:-1.1 a:-1.1 power: 0.0 v2factor: 0.0994555144691 gFactor:0.0 vSquare:72.2262269202
+E500:t:2991:coasting at 28.9543979487
+E500:t:2991 State update PK:6.59753921113 vK:28.9483800907 maxVk:30.0 aF:-0.334325448311 a:0.0 power: 2.68838337547 v2factor: 0.089075448311 gFactor:0.0 vSquare:64.6880525134
+E500:t:2992:coasting at 27.7638135194
+E500:t:2992 State update PK:6.60541366236 vK:27.7579248083 maxVk:30.0 aF:-0.327150617496 a:0.0 power: 2.52250617818 v2factor: 0.0819006174962 gFactor:0.0 vSquare:59.4775726189
+E500:t:2992:boosting from vK:27.2946763099 to maxVk:30.0 with aFull:-0.324440057313
+need to go faster...1.35
+E500:t:2993 State update PK:6.61320895414 vK:29.5137314587 maxVk:30.0 aF:1.01231408327 a:1.35 power: 1582676.61791 v2factor: 0.0924359167334 gFactor:0.0 vSquare:67.1284798354
+E500:t:2994:coasting at 28.9358266515
+E500:t:2994 State update PK:6.62140153689 vK:28.9298108496 maxVk:30.0 aF:-0.334211219301 a:0.0 power: 2.68574093282 v2factor: 0.0889612193007 gFactor:0.0 vSquare:64.6050975313
+E500:t:2995:coasting at 27.7456406874
+E500:t:2995 State update PK:6.62927088618 vK:27.7397539055 maxVk:30.0 aF:-0.327043436322 a:0.0 power: 2.52002901111 v2factor: 0.0817934363225 gFactor:0.0 vSquare:59.3997358914
+E500:t:2995:boosting from vK:27.2941718417 to maxVk:30.0 with aFull:-0.324437130433
+need to go faster...1.35
+E500:t:2996 State update PK:6.63707369574 vK:29.5686983819 maxVk:30.0 aF:1.01196920181 a:1.35 power: 1585624.22716 v2factor: 0.0927807981878 gFactor:0.0 vSquare:67.378938408
+E500:t:2997:coasting at 28.918088571
+E500:t:2997 State update PK:6.64526372987 vK:28.9120747317 maxVk:30.0 aF:-0.334102183701 a:0.0 power: 2.68321869533 v2factor: 0.0888521837014 gFactor:0.0 vSquare:64.5259140896
+E500:t:2997:TIV 5 reached at curr speed 28.1951824377, maxVk now 30.0
+E500:t:2998:coasting at 27.7282829561
+E500:t:2998 State update PK:6.6531282061 vK:27.7223980158 maxVk:30.0 aF:-0.326941128042 a:0.0 power: 2.51766446648 v2factor: 0.0816911280425 gFactor:0.0 vSquare:59.3254379394
+E500:t:2998:boosting from vK:27.294470249 to maxVk:30.0 with aFull:-0.324438861759
+need to go faster...1.35
+E500:t:2999 State update PK:6.66093880791 vK:29.6229971558 maxVk:30.0 aF:1.01162788196 a:1.35 power: 1588536.00681 v2factor: 0.0931221180371 gFactor:0.0 vSquare:67.6268104845
+E500:t:3000:coasting at 28.8997212851
+E500:t:3000 State update PK:6.66912581217 vK:28.8937094767 maxVk:30.0 aF:-0.33398935085 a:0.0 power: 2.68060868661 v2factor: 0.0887393508501 gFactor:0.0 vSquare:64.4439730211
+E500:t:3001:coasting at 27.7103092656
+E500:t:3001 State update PK:6.67698524244 vK:27.7044262309 maxVk:30.0 aF:-0.326835256707 a:0.0 power: 2.51521757197 v2factor: 0.0815852567067 gFactor:0.0 vSquare:59.2485524377

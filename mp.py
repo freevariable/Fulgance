@@ -13,10 +13,8 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-import redis
-import random
-import math
-import sys
+import redis,random,math,sys
+import time
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
@@ -43,7 +41,8 @@ CYCLE=200 # number of time per sec calc must be made
              # increasing cycle beyond 200 does not improve precision by more that 1 sec for the end-to-end journey
 T0=0.0
 VTHRESH=0.999
-REALTIME="SIG"    # two mutually exclusive values: SIG or TVM
+CONTROL="SIG"    # two mutually exclusive values: SIG or TVM
+REALTIME=False
 WAITTIME=10.0   # average wait in station (in sec)
 SIGPOLL=1.0   # check for sig clearance (in sec)
 
@@ -518,19 +517,10 @@ class Tr:
           print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
           print self.name+":delta buffer: "+str(-self.nSIGx+self.x)
           self.reinit(kCur,0.0+TLENGTH-self.nSIGx+self.x,t)
-#          cc1=0
-#          for aT in trs:
-#            print aT.name
-#            cc1=cc1+1
-#          print "end reinit "+str(cc1)
-#          if (cc1<8):
-#            print "FATAL cc1"
-#            sys.exit()
         else:
           print self.name+":t:"+str(t)+"FATAL: no more SIG..." 
           sys.exit()
     if (self.x>=(self.nSTAx)):
-#      print "AT STA stop data:"+" vK:"+str(self.vK)+" aFull:"+str(self.aFull)
       if (self.vK>3.0):
         print "FATAL at STA"
         sys.exit()
@@ -639,14 +629,25 @@ class Tr:
         self.coasting=True
         if (ncyc%CYCLE==0):
           print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
+#
+# STAGE 3
+#
     if (self.a>=0.0):
       self.aFull=self.a-v2factor-gFactor-WHEELFACTOR
-#      if (self.aFull<0.0):
-#        self.aFull=0.0 
+      if (self.aFull<0.0):
+        if ((self.v+(self.aFull/CYCLE))<0.0):
+          if (self.v>0.0):
+            print "FATAL neg speed. aF: "+str(self.aFull)+" vK:"+str(self.vK)+" v:"+str(self.v)
+            sys.exit()
+          elif (self.v==0.0):   # train is stopped at sig or sta
+             self.aFull=0.0
+          else:
+            print "FATAL neg speed. aF: "+str(self.aFull)+" vK:"+str(self.vK)+" v:"+str(self.v)
+            sys.exit()
     else:
-     self.aFull=self.a
-     if (self.aFull>0.0):
-       self.aFull=0.0 
+      self.aFull=self.a
+      if (self.aFull>0.0):
+        self.aFull=0.0 
     self.v=self.v+(self.aFull/CYCLE)
     self.vK=self.v*3.6
     self.x=self.x+(self.v/CYCLE)
@@ -800,8 +801,42 @@ def getAccFromFactorsAndSpeed(f,v):
     return ACC
 
 initAll()
+
+def scheduler(period,f,*args):
+  def g_tick():
+    t1 = time.time()
+    count = 0
+    while True:
+      count += 1
+      yield max(t1 + count*period - time.time(),0)
+  g = g_tick()
+  while True:
+    time.sleep(next(g))
+    f(*args)
+
+def hello(s):
+  global ncyc
+  global trs
+  global exitCondition
+  global t
+#  print('hello {} ({:.4f})'.format(s,time.time()))
+  ccc=0
+  while (ccc<CYCLE):
+    t=ncyc/CYCLE
+    for aT in trs:
+      aT.step()
+    if (t>3000):
+      exitCondition=True
+      sys.exit()
+    ncyc=ncyc+1
+    ccc=ccc+1
+  time.sleep(.3)
+
 for aT in trs:
   print aT.name+" has been initialized"
+
+if (REALTIME==True):
+  scheduler(0.5,hello,'foo')
 
 while (exitCondition==False):
   t=ncyc/CYCLE

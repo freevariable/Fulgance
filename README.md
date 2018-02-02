@@ -4,8 +4,8 @@
 - define realistic or fancy routes
 - define schedules
 - define rolling stock (only EMUs for now)
-- distribute train services over mutiple simulation engines if you have many trains (only single engine for now)
-- run schedules in real-time or accelerated time (only accelerated-time for now)
+- distribute train services over mutiple simulation engines if you have many trains (only single sim engine for now)
+- run schedules in real-time or accelerated time
 - jump into a train to check its real-time progress (not implemented yet)
 - calibrate trains frequency at peak and off peak hours (not yet implemented)
 - calculate power consumption
@@ -45,4 +45,8 @@ Note: in multi-core environments, redis is also used for inter-process synchroni
 Note: jumpseat and control room rely on redis for getting the real-time state of a train.
 
 ### Let's get started
-To run the simulation in single engine mode, simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route located in default/schedules/default.txt
+To run the simulation in single simulation engine mode, simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route located in default/schedules/default.txt
+
+To run the sim in realtime, set REALTIME constant to True. Otherwise it will run as fast as possible on your CPU.
+
+To adjust simulation precision, you may set the CYCLE variable to your wishing. I recommend to keep the default value to get the best trade off between precision and speed of execution though.
