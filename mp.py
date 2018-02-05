@@ -14,7 +14,7 @@
 #  limitations under the License.
 
 import redis,random,math,sys
-import time
+import time,getopt
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
@@ -22,6 +22,7 @@ G=9.81  # N/kg
 WHEELFACTOR=G*0.025
 DUMPDATA=True
 TPROGRESS=True
+STAPROGRESS=False
 GSENSITIVITY=6.03   # sensitivity to grade
 ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
@@ -277,6 +278,7 @@ def initAll():
     cnt=cnt+1 
 
 class Tr:
+  trip=0
   BDtiv=0.0  #breaking distance for next TIV
   BDsta=0.0  #fornext station
   DBrt=0.0  #for next realtime event (sig or tvm)
@@ -337,6 +339,7 @@ class Tr:
     v2factor=0.0
     factors=gFactor+v2factor+WHEELFACTOR
     self.x=initPos
+    self.trip=self.trip+1
     self.coasting=False
     self.segment=initSegment
     self.BDtiv=0.0  #breaking distance for next TIV
@@ -400,6 +403,7 @@ class Tr:
     v2factor=0.0
     factors=gFactor+v2factor+WHEELFACTOR
     self.trs=[]
+    self.trip=0
     self.coasting=False
     self.x=initPos
     self.name=name
@@ -580,6 +584,8 @@ class Tr:
         print "FATAL at STA"
         sys.exit()
       self.inSta=True
+      if STAPROGRESS==True:
+        print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.nextSTA[1])
       self.waitSta=t+WAITTIME
       self.staBrake=False 
       if not __debug__:
@@ -729,7 +735,7 @@ class Tr:
         if not __debug__:
           print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
         if TPROGRESS==True:
-          print str(self.name)+','+str(t)+","+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
+          print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
     if (self.inSta==True):
       if (t>self.waitSta):
         self.inSta=False
@@ -884,6 +890,32 @@ def getAccFromFactorsAndSpeed(f,v):
   else:
     return ACC
 
+try:
+  opts, args = getopt.getopt(sys.argv[1:], "h:m:s", ["help", "duration=", "route=", "schedule="])
+except getopt.GetoptError as err:
+  print(err) # will print something like "option -a not recognized"
+  usage()
+  sys.exit(2)
+duration = 3600
+multi = False
+for o, a in opts:
+  if o == "-m":
+    multi = True
+  elif o == "-s":
+    multi = False
+  elif o in ("-h", "--help"):
+    usage()
+    sys.exit()
+  elif o in ("--duration"):
+    duration = a
+  elif o in ("--route"):
+    projectDir = a+'/'
+  elif o in ("--schedule"):
+    scheduleDir = a+'/'
+  else:
+    assert False, "option unknown"
+    sys.exit(2)
+
 initAll()
 
 def scheduler(period,f,*args):
@@ -923,7 +955,9 @@ for aT in trs:
 
 if (DUMPDATA==True):
   if (TPROGRESS==True):
-    print "service,t,x,v,a,P"
+    print "service,trip,t,x,v,a,P"
+  if (STAPROGRESS==True):
+    print "service,trip,station"
 
 if (REALTIME==True):
   scheduler(0.5,hello,'foo')
