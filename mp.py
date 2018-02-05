@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ r.flushall()
 G=9.81  # N/kg
 WHEELFACTOR=G*0.025
 DUMPDATA=True
-TPROGRESS=True
+TPROGRESS=False
 STAPROGRESS=False
 GSENSITIVITY=6.03   # sensitivity to grade
 ACCSIGMA=0.027
@@ -316,7 +316,9 @@ class Tr:
   sigToPoll=''
   inSta=False
   atSig=False
+  react=False
   waitSta=0.0
+  waitReact=0.0
   BDzero=0.0
   segment=''
   grade=0.0 # percentage
@@ -384,7 +386,9 @@ class Tr:
     self.sigBrake=False
     self.inSta=False
     self.atSig=False
+    self.react=False
     self.waitSta=0.0
+    self.waitReact=0.0
     self.BDzero=0.0
     self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
     self.advSIGcol=r.get(self.redisSIG)
@@ -740,9 +744,11 @@ class Tr:
       if (t>self.waitSta):
         self.inSta=False
         self.waitSta=0.0
-        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
+        self.react=True
+        self.waitReact=t+longTail(1.0003,0.87,7200.0)
+#        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
         if not __debug__:
-          print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)
+          print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
     if (self.atSig==True):
       if (t>self.sigPoll):
         k=r.get(self.sigToPoll)
@@ -767,11 +773,20 @@ class Tr:
               print "switch NEW lock:"+str(k=="True")
             r.set(self.sigToPoll,"yellow")           
             self.atSig=False
+            self.react=True
+            self.waitReact=t+longTail(1.0003,0.87,7200.0)
           else:
             self.sigPoll=t+SIGPOLL
-          self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
+#          self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
           if not __debug__:
-            print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)
+            print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
+    if (self.react==True):
+      if (t>self.waitReact):
+        self.react=False
+        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
+        if not __debug__:
+          print self.name+":t:"+str(t)+":REACTION, a:"+str(self.a)
+        self.waitReact=0.0
   
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
@@ -948,6 +963,21 @@ def hello(s):
     ncyc=ncyc+1
     ccc=ccc+1
   time.sleep(.3)
+
+def longTail(startpoint,incr,maxval):
+    if (startpoint<1.0):
+      return -2 # not fat enough!
+    returnval=1
+    point=startpoint
+    h=random.uniform(0.0,1.0)
+    while True:
+      if (returnval>maxval):
+        return maxval #retry with another thincounter
+      if (h<(1/point)):
+        point=point+incr
+        returnval=returnval+1
+      else:
+        return float(returnval)*random.uniform(0.9,1.1)
 
 for aT in trs:
   if not __debug__:
