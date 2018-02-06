@@ -741,7 +741,8 @@ class Tr:
         self.power=0.0
 #      if ((self.inSta==False) and (self.atSig==False)):
       if not __debug__:
-        print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
+        if (realTime==False):
+          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
         if TPROGRESS==True:
           print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
     if (self.inSta==True):
@@ -914,7 +915,7 @@ def getAccFromFactorsAndSpeed(f,v):
     return ACC
 
 try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "master", "core=","duration=", "route=", "schedule=", "services=","cores="])
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "realtime", "master", "core=","duration=", "route=", "schedule=", "services=","cores="])
 except getopt.GetoptError as err:
   print(err) # will print something like "option -a not recognized"
   usage()
@@ -922,6 +923,7 @@ except getopt.GetoptError as err:
 duration = sys.maxsize 
 multi = MULTICORE
 numCores= CORES
+realTime=REALTIME
 core=1
 scheduleName="default.txt"
 serviceList=[]
@@ -933,6 +935,8 @@ for o, a in opts:
     sys.exit()
   elif o in ("--duration"):
     duration = abs(int(a))
+  elif o in ("--realtime"):
+    realTime=True
   elif o in ("--cores"):
     numCores = int(a)
   elif o in ("--core"):
@@ -943,6 +947,8 @@ for o, a in opts:
     scheduleName = a
   elif o in ("--services"):
     serviceList = a.split(',')
+    print serviceList
+    sys.exit()
   else:
     assert False, "option unknown"
     sys.exit(2)
