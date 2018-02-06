@@ -45,10 +45,14 @@ Note: in multi-core environments, redis is also used for inter-process synchroni
 Note: jumpseat and control room rely on redis for getting the real-time state of a train.
 
 ### Let's get started
-To run the simulation in single simulation engine mode, simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route located in default/schedules/default.txt
+To run the simulation in single simulation engine mode, simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route, the Paris Metro line 1, located in ParisLine1/schedules/default.txt
 
 To run the sim in realtime, set REALTIME constant to True. Otherwise it will run as fast as possible on your CPU.
 
 To adjust simulation precision, you may set the CYCLE variable to your wishing. I recommend to keep the default value to get the best trade off between precision and speed of execution though.
 
-To run engine in debug mode, modify the first line to add the -O option to python
+To run the sim in debug mode, modify the first line to add the -O option to python
+
+To run for a given duration (in seconds), use *mp.py --duration=seconds*, otherwise it will go on forever.
+
+To pick a non-default route (the TestTrack route for instance), use *mp.py --route=TestTrack*

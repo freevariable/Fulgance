@@ -60,7 +60,7 @@ t=0.0
 maxLine=160.0    # max speed allowed on a line, km/h
 jumpseat=''
 exitCondition=False
-projectDir='default/'
+projectDir='ParisLine1/'
 schedulesDir='schedules/'
 segmentsDir='segments/'
 
@@ -745,10 +745,12 @@ class Tr:
         self.inSta=False
         self.waitSta=0.0
         self.react=True
-        self.waitReact=t+longTail(1.0003,0.87,7200.0)
+        self.waitReact=t+longTail(9.3,71.0,7200.0)
 #        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
         if not __debug__:
           print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
+          if ((self.waitReact-t)>10.0):
+            print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
     if (self.atSig==True):
       if (t>self.sigPoll):
         k=r.get(self.sigToPoll)
@@ -774,12 +776,14 @@ class Tr:
             r.set(self.sigToPoll,"yellow")           
             self.atSig=False
             self.react=True
-            self.waitReact=t+longTail(1.0003,0.87,7200.0)
+            self.waitReact=t+longTail(9.3,71.0,7200.0)
           else:
             self.sigPoll=t+SIGPOLL
 #          self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
           if not __debug__:
             print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
+          if ((self.waitReact-t)>10.0):
+            print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
     if (self.react==True):
       if (t>self.waitReact):
         self.react=False
@@ -911,7 +915,7 @@ except getopt.GetoptError as err:
   print(err) # will print something like "option -a not recognized"
   usage()
   sys.exit(2)
-duration = 3600
+duration = sys.maxsize 
 multi = False
 for o, a in opts:
   if o == "-m":
@@ -922,7 +926,7 @@ for o, a in opts:
     usage()
     sys.exit()
   elif o in ("--duration"):
-    duration = a
+    duration = abs(int(a))
   elif o in ("--route"):
     projectDir = a+'/'
   elif o in ("--schedule"):
@@ -945,7 +949,7 @@ def scheduler(period,f,*args):
     time.sleep(next(g))
     f(*args)
 
-def hello(s):
+def stepRT(s):
   global ncyc
   global trs
   global exitCondition
@@ -953,11 +957,13 @@ def hello(s):
   ccc=0
   while (ccc<CYCLE):
     t=ncyc/CYCLE
+    if not __debug__:
+      print "RT:"+str(t)
     for aT in trs:
       aT.step()
       if (aT.name==jumpseat):
         aT.dumpstate()
-    if (t>3000):
+    if (t>duration):
       exitCondition=True
       sys.exit()
     ncyc=ncyc+1
@@ -977,7 +983,7 @@ def longTail(startpoint,incr,maxval):
         point=point+incr
         returnval=returnval+1
       else:
-        return float(returnval)*random.uniform(0.9,1.1)
+        return float(returnval)*random.uniform(0.71,1.63)
 
 for aT in trs:
   if not __debug__:
@@ -990,13 +996,13 @@ if (DUMPDATA==True):
     print "service,trip,station"
 
 if (REALTIME==True):
-  scheduler(0.5,hello,'foo')
+  scheduler(0.5,stepRT,'none')
 
 while (exitCondition==False):
   t=ncyc/CYCLE
   for aT in trs:
     aT.step()
-  if (t>3000):
+  if (t>duration):
     exitCondition=True
   ncyc=ncyc+1
 #for k in r.scan_iter("switch:*"):
