@@ -1,27 +1,27 @@
 0.0 W
-0.29 LaD
-1.231 Esp
-1.937 PoN
-2.96 Sab
-3.827 PoM
-4.36 Arg
-4.966 CDE
-5.337 Geo
-5.984 Fra
-6.431 ChE
-7.231 Con
-7.643 Tui
-8.113 PaR
-8.486 LoR
-8.996 Cha
-9.349 HoV
-10.055 StP
-10.76 Bas
-11.713 GdL
-12.796 ReD
-13.513 Nat
-14.69 PoV
-15.184 StM
-15.807 Ber
-16.865 ChV
+0.29 LaD La-Defense X
+1.231 Esp Esplanade-De-La-Defense
+1.937 PoN Pont-De-Neuilly
+2.96 Sab Sablons
+3.827 PoM Porte-Maillot X
+4.36 Arg Argentine
+4.966 CDE Charles-De-Gaulle-Etoile X
+5.337 Geo Georges-V
+5.984 Fra Franklin-Roosevelt X
+6.431 ChE Champs-Elysees-Clemenceau X
+7.231 Con Concorde
+7.643 Tui Tuileries
+8.113 PaR Palais-Royal
+8.486 LoR Louvre-Rivoli
+8.996 Cha Chatelet X
+9.349 HoV Hotel-De-Ville
+10.055 StP Saint-Paul
+10.76 Bas Bastille
+11.713 GdL Gare-De-Lyon X
+12.796 ReD Reuilly-Diderot
+13.513 Nat Nation X
+14.69 PoV Porte-De-Vincennes
+15.184 StM Saint-Mande
+15.807 Ber Berault
+16.865 ChV Chateau-De-Vincennes
 16.975 E

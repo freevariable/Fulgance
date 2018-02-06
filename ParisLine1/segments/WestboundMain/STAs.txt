@@ -1,27 +1,28 @@
+#PK Shortname Name Type
 0.0 E
-0.2 ChV
-1.152 Ber
-1.881 StM
-2.375 PoV
-3.552 Nat
-4.269 ReD
-5.352 GdL
-6.305 Bas
-7.01 StP
-7.716 HoV
-8.069 Cha
-8.599 LoR
-8.952 PaR
-9.422 Tui
-9.834 Con
-10.634 ChE
-11.081 Fra
-11.728 Geo
-12.199 CDE
-12.705 Arg
-13.258 PoM
-14.105 Sab
-15.128 PoN
-15.834 Esp
-16.775 LaD
+0.2 ChV Chateau-De-Vincennes
+1.152 Ber Berault
+1.881 StM Saint-Mande
+2.375 PoV Porte-De-Vincennes
+3.552 Nat Nation X
+4.269 ReD Reuilly-Diderot
+5.352 GdL Gare-De-Lyon X
+6.305 Bas Bastille
+7.01 StP Saint-Paul
+7.716 HoV Hotel-De-Ville
+8.069 Cha Chatelet X
+8.599 LoR Louvre-Rivolli
+8.952 PaR Palais-Royal
+9.422 Tui Tuileries
+9.834 Con Concorde
+10.634 ChE Champs-Elysees-Clemenceau X
+11.081 Fra Franklin-Roosevelt X
+11.728 Geo Georges-V
+12.199 CDE Charles-De-Gaulle-Etoile X
+12.705 Arg Argentine
+13.258 PoM Porte-Maillot X
+14.105 Sab Sablons
+15.128 PoN Pont-De-Neuilly
+15.834 Esp Esplanade-De-La-Defense
+16.775 LaD La-Defense X
 16.975 W
