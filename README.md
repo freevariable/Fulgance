@@ -56,3 +56,5 @@ To run the sim in debug mode, modify the first line to add the -O option to pyth
 To run for a given duration (in seconds), use *mp.py --duration=seconds*, otherwise it will go on forever.
 
 To pick a non-default route (the TestTrack route for instance), use *mp.py --route=TestTrack*
+
+To choose a non-default schedule, use *mp.py --schedule=myschedule.txt*

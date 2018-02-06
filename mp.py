@@ -19,6 +19,8 @@ r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
 G=9.81  # N/kg
+MULTICORE=False
+CORES=1
 WHEELFACTOR=G*0.025
 DUMPDATA=True
 TPROGRESS=False
@@ -95,7 +97,7 @@ def initTIVs():
   return gts
 
 def initSchedule():
-    f=open(projectDir+schedulesDir+"default.txt","r")
+    f=open(projectDir+schedulesDir+scheduleName,"r")
     tsf=f.readlines()
     ts=[]
     f.close()
@@ -251,6 +253,8 @@ def initAll():
   global jumpseat
   global r
   r.set('realtime:',REALTIME)
+  if multi:
+    r.set('multi:',numCores)
   segs=initSEGs()
   tivs=initTIVs()
   stas=initSTAs()
@@ -910,27 +914,35 @@ def getAccFromFactorsAndSpeed(f,v):
     return ACC
 
 try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m:s", ["help", "duration=", "route=", "schedule="])
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "master", "core=","duration=", "route=", "schedule=", "services=","cores="])
 except getopt.GetoptError as err:
   print(err) # will print something like "option -a not recognized"
   usage()
   sys.exit(2)
 duration = sys.maxsize 
-multi = False
+multi = MULTICORE
+numCores= CORES
+core=1
+scheduleName="default.txt"
+serviceList=[]
 for o, a in opts:
   if o == "-m":
     multi = True
-  elif o == "-s":
-    multi = False
   elif o in ("-h", "--help"):
     usage()
     sys.exit()
   elif o in ("--duration"):
     duration = abs(int(a))
+  elif o in ("--cores"):
+    numCores = int(a)
+  elif o in ("--core"):
+    core = int(a)
   elif o in ("--route"):
     projectDir = a+'/'
   elif o in ("--schedule"):
-    scheduleDir = a+'/'
+    scheduleName = a
+  elif o in ("--services"):
+    serviceList = a.split(',')
   else:
     assert False, "option unknown"
     sys.exit(2)
