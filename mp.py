@@ -466,7 +466,6 @@ class Tr:
     self.waitSta=0.0
     self.BDzero=0.0
     self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
-#    self.advSIGcol=r.get(self.redisSIG)
     self.advSIGcol="red"   # safeguard before we run step()
     self.sigSpotted=False
     sigAlreadyOccupied=r.get(self.redisSIG+":isOccupied")
@@ -545,7 +544,7 @@ class Tr:
       if (self.sigBrake==True):
         self.sigBrake=False
         if (self.vK>6.0):
-          print self.name+":t:"+str(t)+" **** FATAL AT SIG "+self.nextSIG[1]+" **** State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
+          print self.name+":t:"+str(t)+" **** FATAL AT SIG "+self.nextSIG[1]+" **** PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
           sys.exit()
         self.a=0.0
         self.v=0.0
@@ -673,7 +672,8 @@ class Tr:
       auxMaxVk=0.65*self.maxVk
       if ((self.vK>20.0) and (auxMaxVk<self.vK)):
         if not __debug__:
-          print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc to "+str(auxMaxVk)+" due to yellow"
+          if (ncyc%CYCLE==0):
+            print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc to "+str(auxMaxVk)+" due to yellow"
         a=-10.0
     else:
       auxMaxVk=self.maxVk
@@ -694,7 +694,7 @@ class Tr:
               sys.exit()
             if not __debug__:
               if (ncyc%CYCLE==0):
-                print "need to go faster..."+str(self.a)
+                print self.name+":t:"+str(t)+":need to go faster..."+str(self.a)
           else:
             self.a=0.0
             print "FATAL: ALAW unknown"
@@ -752,7 +752,7 @@ class Tr:
       if not __debug__:
         if (realTime==False):
 #      if ((self.inSta==False) and (self.atSig==False)):
-          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
+          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)
         if TPROGRESS==True:
           print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
     if (self.inSta==True):
@@ -792,13 +792,13 @@ class Tr:
             self.atSig=False
             self.react=True
             self.waitReact=t+longTail(9.3,71.0,7200.0)
+            if not __debug__:
+              print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
+            if ((self.waitReact-t)>10.0):
+              print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
           else:
             self.sigPoll=t+SIGPOLL
 #          self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
-          if not __debug__:
-            print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
-          if ((self.waitReact-t)>10.0):
-            print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
     if (self.react==True):
       if (t>self.waitReact):
         self.react=False
@@ -858,25 +858,58 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
   k=r.get(redisSIG)
   if not __debug__:
     print name+":"+str(t)+":START UPDATE SIG BY OCCU "+redisSIG+" from value "+k+" to value "+state
-  if (k==state):
-    if not __debug__:
-      print "ALREADY"
-    return True
+#  if (k==state):
+#    if not __debug__:
+#      print "ALREADY"
+#    return True
+  sigAlreadyOccupied=r.get(redisSIG+":isOccupied")
   if (SIGtype=='1'):
     if (state=="red"):
+      if sigAlreadyOccupied is not None:
+        if sigAlreadyOccupied!=name:
+          print name+":"+str(t)+":WARN Sig 1 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
+          return True
       if (SIGcnt>=1):
-        updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"yellow","red")
+        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
+        km1=r.get(redisSIGm1+":isOccupied")
+        if km1 is not None:
+          if km1==name:
+            r.delete(redisSIGm1+":isOccupied")
+            updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"yellow","red")
       if (SIGcnt>=2):
-        updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
+        redisSIGm2="sig:"+seg+":"+sigs[seg][SIGcnt-2][1]
+        km2=r.get(redisSIGm2+":isOccupied")
+        if km2 is None:
+          if km1 is not None:
+            if km1==name:
+              updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
+          else:
+            updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
+      r.set(redisSIG+":isOccupied",name)
     if (state=="yellow"):
       if (SIGcnt>=1):
-        updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
+        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
+        km1=r.get(redisSIGm1+":isOccupied")
+        if km1 is None:
+          updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
     if not __debug__:
       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
     r.set(redisSIG,state)
   if (SIGtype=='5'):
     if (state=="red"):
+      if sigAlreadyOccupied is not None:
+        if sigAlreadyOccupied!=name:
+          print name+":"+str(t)+":WARN Sig 5 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
+          return True
       if (SIGcnt>=1):
+        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
+        km1=r.get(redisSIGm1+":isOccupied")
+        if km1 is not None:
+          if km1==name:
+            r.delete(redisSIGm1+":isOccupied")
+          else:
+            print name+":"+str(t)+":FATAL Sig type 2 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
+            sys.exit()
         prevRedisSIG="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
         r.set("switch:"+sigs[seg][SIGcnt-1][1]+":isLocked",False)
         fw=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPosition")
@@ -890,19 +923,35 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
         prevSigState=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
         if not __debug__:
           print "prev sig after: "+str(prevSigState)
+      r.set(redisSIG+":isOccupied",name)
     r.set(redisSIG,state)
     if not __debug__:
       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
 #        k=r.get(redisSIG)
   if (SIGtype=='3'):
     if (state=="red"):
+      if sigAlreadyOccupied is not None:
+        if sigAlreadyOccupied!=name:
+          print name+":"+str(t)+":WARN Sig 3 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
+          return True
       if (SIGcnt>=1):
-        updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"yellow","red")
+        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
+        km1=r.get(redisSIGm1+":isOccupied")
+        if km1 is not None:
+          if km1==name:
+            r.delete(redisSIGm1+":isOccupied")
+            updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"yellow","red")
       if (SIGcnt>=2):
-        updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
+        redisSIGm2="sig:"+seg+":"+sigs[seg][SIGcnt-2][1]
+        km2=r.get(redisSIGm2+":isOccupied")
+        if km2 is None:
+          updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
     if (state=="yellow"):
       if (SIGcnt>=1):
-        updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
+        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
+        km1=r.get(redisSIGm1+":isOccupied")
+        if km1 is None:
+          updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
     r.set(redisSIG,state)
     if not __debug__:
       print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
