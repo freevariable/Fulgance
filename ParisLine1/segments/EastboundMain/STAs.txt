@@ -1,4 +1,4 @@
-0.0 W
+#0.0 W
 0.29 LaD La-Defense X
 1.231 Esp Esplanade-De-La-Defense
 1.937 PoN Pont-De-Neuilly
@@ -24,4 +24,4 @@
 15.184 StM Saint-Mande
 15.807 Ber Berault
 16.865 ChV Chateau-De-Vincennes
-16.975 E
+#16.975 E

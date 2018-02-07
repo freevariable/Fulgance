@@ -23,6 +23,10 @@
 - Blocks are unidirectional, except the ones protected by a **reversing signal** 
 - In each segment, you need to describe the location of signals (SIGs), stations (STAs) and speed limits (TIVs). 
 - All route and schedule data are kept in simple text files. Lines beginning with a hash are ignored, as one would expect.
+- Route gradients are not supported yet
+- Markers are not supported yet. In the pipe: tunnels (provide weather protection), country boundaries (with imperial/metric unit changes), points of interest (landmarks), areas of interest, platform names, substations (for line sectioning).
+- Weather is not supported yet
+- Only passenger stations are available at the moment. Water points and fuel stations (coal or diesel) will be added later.
 #### Signalling guide
 The following on-track signals are or will be implemented:
 - [x]  *Type 1*: this is the usual 3-aspect signal. The possible states are: VL (green, all clear), A (yellow, prepare to stop at next signal) and C (red, impassable stop).

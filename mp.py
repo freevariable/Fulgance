@@ -42,7 +42,9 @@ DCC=-1.10  #m/s2
 EMR=-1.80   #m/s2 emergency dcc
 DLAW=1    # law governing dcc between t=0 and t=tpoint
           # 1 is linear
-CYCLE=200 # number of time per sec calc must be made
+SYNCPERIOD=0.5 # how often (in s) do we sync multicores
+CYCLEPP=100    # how many ticks we calculate between two multicore syncs
+CYCLE=CYCLEPP/SYNCPERIOD # how many ticks we calculate per second 
              # increasing cycle beyond 200 does not improve precision by more that 1 sec for the end-to-end journey
 T0=0.0
 VTHRESH=0.999
@@ -514,6 +516,9 @@ class Tr:
     self.BDzero=-(self.v*self.v)/(2*(dcc))
     if (ncyc%CYCLE==0):
       self.aGaussFactor=aGauss()
+#
+# STAGE 1 : main acc updates
+#
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
       if not __debug__:
         print self.name+":t:"+str(t)+":ADVANCE STA x:"+str(self.nSTAx)+" vK:"+str(self.vK)
@@ -539,7 +544,7 @@ class Tr:
         self.sigSpotted=False
       if (self.sigBrake==True):
         self.sigBrake=False
-        if (self.vK>2.0):
+        if (self.vK>6.0):
           print self.name+":t:"+str(t)+" **** FATAL AT SIG "+self.nextSIG[1]+" **** State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
           sys.exit()
         self.a=0.0
@@ -588,7 +593,7 @@ class Tr:
           print self.name+":t:"+str(t)+"FATAL: no more SIG..." 
           sys.exit()
     if (self.x>=(self.nSTAx)):
-      if (self.vK>3.0):
+      if (self.vK>6.0):
         print "FATAL at STA"
         sys.exit()
       self.inSta=True
@@ -604,16 +609,16 @@ class Tr:
       if ((self.nextSTA[1]=='W') or (self.nextSTA[1]=='E')):
         exitCondition=True
       else:
-        if (self.STAcnt<len(stas[self.segment])):
+        if (self.STAcnt<len(stas[self.segment])-1):
           self.STAcnt=self.STAcnt+1 
           self.nextSTA=stas[self.segment][self.STAcnt] 
           if not __debug__:
             print self.name+":t:"+str(t)+":next STA ("+self.nextSTA[1]+") at PK"+self.nextSTA[0]
           self.nSTAx=1000.0*float(self.nextSTA[0])
         else:
-#           print self.name+":t:"+str(t)+":no more STAS..."
-#           print stas
-           exitCondition=True
+          print self.name+":t:"+str(t)+":no more STAS on segment "+self.segment
+          self.nSTAx=sys.maxsize
+#           exitCondition=True
     if (self.nTIVtype=='<<'):
       self.deltaBDtiv=self.BDtiv
     else:
@@ -652,7 +657,7 @@ class Tr:
           if not __debug__:
             print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
       else:
-        self.nTIVx=999999999.9
+        self.nTIVx=sys.maxsize
       if ((self.staBrake==False) and (self.sigBrake==False) and (self.maxVk>self.vK)):
         if not __debug__:
           print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
@@ -662,7 +667,7 @@ class Tr:
           print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
         self.a=-10.0  #any arbitrary value as long as it is neg
 #
-# STAGE 2
+# STAGE 2 : other acc updates
 #
     if (self.advSIGcol=="yellow"):
       auxMaxVk=0.65*self.maxVk
@@ -675,8 +680,8 @@ class Tr:
     self.coasting=False
     if (self.a>0.0):
       if ((self.gradient<0.0025) and (self.vK>auxMaxVk*VTHRESH)):
-        if (ncyc%CYCLE==0):
-          if not __debug__:
+        if not __debug__:
+          if (ncyc%CYCLE==0):
             print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
         self.coasting=True
         self.a=0.0
@@ -687,8 +692,8 @@ class Tr:
             if (self.a>ACC):
               print "FATAL ACC "+str(self.a)
               sys.exit()
-            if (ncyc%CYCLE==0):
-              if not __debug__:
+            if not __debug__:
+              if (ncyc%CYCLE==0):
                 print "need to go faster..."+str(self.a)
           else:
             self.a=0.0
@@ -709,11 +714,11 @@ class Tr:
         self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
       elif (self.vK>4.0):
         self.coasting=True
-        if (ncyc%CYCLE==0):
-          if not __debug__:
+        if not __debug__:
+          if (ncyc%CYCLE==0):
             print self.name+":t:"+str(t)+":coasting at "+str(self.vK)
 #
-# STAGE 3
+# STAGE 3 : calculate aFull
 #
     if (self.a>=0.0):
       self.aFull=self.a-v2factor-gFactor-WHEELFACTOR
@@ -735,13 +740,18 @@ class Tr:
     self.vK=self.v*3.6
     self.x=self.x+(self.v/CYCLE)
     self.PK=self.x/1000.0
+# 
+# STAGE 4 : perform coarse grain calculations
+#
     if (ncyc%CYCLE==0):
+# here make coarse-grain markers calculation
+# power calculation:
       self.power=WEIGHT*self.a*self.v+factors*self.v
       if (self.power<0.0):
         self.power=0.0
-#      if ((self.inSta==False) and (self.atSig==False)):
       if not __debug__:
         if (realTime==False):
+#      if ((self.inSta==False) and (self.atSig==False)):
           print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
         if TPROGRESS==True:
           print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
@@ -915,7 +925,7 @@ def getAccFromFactorsAndSpeed(f,v):
     return ACC
 
 try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "realtime", "master", "core=","duration=", "route=", "schedule=", "services=","cores="])
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])
 except getopt.GetoptError as err:
   print(err) # will print something like "option -a not recognized"
   usage()
@@ -973,7 +983,7 @@ def stepRT(s):
   global exitCondition
   global t
   ccc=0
-  while (ccc<CYCLE):
+  while (ccc<cycles):
     t=ncyc/CYCLE
     if not __debug__:
       print "RT:"+str(t)
@@ -1013,8 +1023,11 @@ if (DUMPDATA==True):
   if (STAPROGRESS==True):
     print "service,trip,station"
 
-if (REALTIME==True):
-  scheduler(0.5,stepRT,'none')
+if (realTime==True):
+  cycles=CYCLEPP
+  scheduler(SYNCPERIOD,stepRT,'none')
+else:
+  cycles=CYCLE
 
 while (exitCondition==False):
   t=ncyc/CYCLE
