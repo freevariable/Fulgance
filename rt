@@ -11581,4 +11581,936 @@ E524:t:114.75:vK:35.7608717369 maxVk:55.0 =>ready to dcc to 35.75 due to yellow
 RT:114.8
 E507:t:114.8:vK:24.6770077833 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
 RT:114.85
-E507:t:114.85:vK:24.6212165244 maxVk:30.0 =>ready to dcc to 19.5 d
+E507:t:114.85:vK:24.6212165244 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E557:t:114.85:boosting from vK:11.8152349848 to maxVk:13.0 with aFull:-0.260200302492
+RT:114.9
+E507:t:114.9:vK:24.5654778671 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:114.95
+E507:t:114.95:vK:24.509791643 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.0
+need to go faster...1.0304953458
+E503:t:115.0:coasting at 25.4183477254
+E507:t:115.0:vK:24.4541576839 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E507:t:115.0:coasting at 24.4541576839
+E511:t:115.0:coasting at 31.0709233188
+E514:t:115.0:coasting at 30.8944758268
+need to go faster...1.35
+E520:t:115.0:coasting at 19.199279085
+E524:t:115.0:coasting at 35.4187920809
+E525:t:115.0:coasting at 47.0647233241
+E526:t:115.0:coasting at 45.531877649
+need to go faster...1.35
+E556:t:115.0:coasting at 12.6605668209
+need to go faster...1.35
+need to go faster...1.35
+E563:t:115.0:coasting at 48.0648613578
+E568:t:115.0:coasting at 18.7248852851
+E569:t:115.0:coasting at 18.5919898035
+E570:t:115.0:coasting at 19.6227499813
+E571:t:115.0:coasting at 18.4479458846
+E572:t:115.0:coasting at 24.1042936758
+RT:115.05
+E507:t:115.05:vK:24.3985758224 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:115.05:boosting from vK:45.4480836193 to maxVk:50.0 with aFull:-0.465522387488
+RT:115.1
+E507:t:115.1:vK:24.3430458916 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.15
+E507:t:115.15:vK:24.2875677248 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.2
+E507:t:115.2:vK:24.2321411561 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.25
+E507:t:115.25:vK:24.1767660199 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E527:t:115.25:ADVANCE STA x:290.0 vK:35.9442757821
+RT:115.3
+E507:t:115.3:vK:24.1214421511 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.35
+E507:t:115.35:vK:24.0661693851 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.4
+E507:t:115.4:vK:24.0109475579 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.45
+E507:t:115.45:vK:23.9557765057 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E572:t:115.45:boosting from vK:23.6087994201 to maxVk:26.0 with aFull:-0.304746654401
+RT:115.5
+E505:t:115.5:REACTION, a:1.35843547674
+E507:t:115.5:vK:23.9006560655 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.55
+E507:t:115.55:vK:23.8455860745 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.6
+E507:t:115.6:vK:23.7905663705 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.65
+E507:t:115.65:vK:23.7355967917 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.7
+E507:t:115.7:vK:23.6806771768 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E571:t:115.7:boosting from vK:17.7419970065 to maxVk:19.5 with aFull:-0.278884738822
+RT:115.75
+E507:t:115.75:vK:23.625807365 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.8
+E507:t:115.8:vK:23.570987196 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:115.85
+E507:t:115.85:vK:23.5162165097 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E569:t:115.85:boosting from vK:17.7339599487 to maxVk:19.5 with aFull:-0.278854338162
+RT:115.9
+E507:t:115.9:vK:23.4614951468 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E556:t:115.9:boosting from vK:11.8141904398 to maxVk:13.0 with aFull:-0.260197668439
+RT:115.95
+E507:t:115.95:vK:23.4068229483 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E525:t:115.95:boosting from vK:45.4471287858 to maxVk:50.0 with aFull:-0.465513132954
+RT:116.0
+E500:t:116.0:coasting at 49.2425208361
+E503:t:116.0:coasting at 24.2985459364
+need to go faster...1.35
+E507:t:116.0:vK:23.3521997555 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E507:t:116.0:coasting at 23.3521997555
+E511:t:116.0:coasting at 29.83261282
+E514:t:116.0:coasting at 29.6602228622
+need to go faster...1.35
+E520:t:116.0:boosting from vK:18.1823745346 to maxVk:20.0 with aFull:-0.280571518223
+E524:t:116.0:coasting at 34.0732324282
+need to go faster...1.10490557407
+need to go faster...1.05936971012
+need to go faster...1.35
+E557:t:116.0:coasting at 12.1912061261
+E560:t:116.0:coasting at 18.8100971721
+E563:t:116.0:coasting at 46.3284577221
+E568:t:116.0:boosting from vK:17.7146422903 to maxVk:19.5 with aFull:-0.278781324204
+need to go faster...1.35
+E570:t:116.0:coasting at 18.5997564567
+need to go faster...1.35
+need to go faster...1.35
+RT:116.05
+E507:t:116.05:vK:23.2976254104 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.1
+E507:t:116.1:AT SIG WestboundMain:1540 vK:23.2430997554
+E507:116.1:START UPDATE SIG BY OCCU sig:WestboundMain:GdL+10 from value green to value red
+E507:116.1:START UPDATE SIG BY OCCU sig:WestboundMain:GdL-140 from value red to value yellow
+E507:116.1:START UPDATE SIG BY OCCU sig:WestboundMain:1465 from value yellow to value green
+SIG 1465 was yellow now green
+SIG GdL-140 was red now yellow
+SIG GdL+10 was green now red
+E507:t:116.1next SIG (1565) at PK5.85
+E507:t:116.1:vK:23.2430997554 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E514:t:116.1:boosting from vK:29.5383523342 to maxVk:32.5 with aFull:-0.338337301735
+E572:t:116.1:vK:26.0475200886 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+RT:116.15
+E507:t:116.15:vK:23.1886226331 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.2
+E507:t:116.2:vK:23.1341938869 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.25
+E507:t:116.25:vK:23.0798133604 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E511:t:116.25:boosting from vK:29.5274780526 to maxVk:32.5 with aFull:-0.338268839311
+RT:116.3
+E507:t:116.3:vK:23.0254808978 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.35
+E507:t:116.35:vK:22.9711963436 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.4
+E507:t:116.4:vK:22.9169595427 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E557:t:116.4:boosting from vK:11.8159134618 to maxVk:13.0 with aFull:-0.260202013548
+RT:116.45
+E507:t:116.45:vK:22.8627703407 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.5
+E507:t:116.5:vK:22.8086285833 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E563:t:116.5:boosting from vK:45.4832454385 to maxVk:50.0 with aFull:-0.465863322106
+RT:116.55
+E507:t:116.55:vK:22.7545341169 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.6
+E503:t:116.6:boosting from vK:23.6366653037 to maxVk:26.0 with aFull:-0.304886988408
+E507:t:116.6:vK:22.7004867882 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.65
+E507:t:116.65:vK:22.6464864442 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.7
+E507:t:116.7:vK:22.5925329327 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E575:t:116.7 waiting at sig...sig:EastboundMain:2590
+E575:t:116.7:AT SIG EastboundMain:2590 vK:0.0
+E575:116.7:START UPDATE SIG BY OCCU sig:EastboundMain:Ber+10 from value yellow to value red
+E575:116.7:START UPDATE SIG BY OCCU sig:EastboundMain:Ber-140 from value red to value yellow
+E575:116.7:START UPDATE SIG BY OCCU sig:EastboundMain:StM+10 from value yellow to value green
+SIG StM+10 was yellow now green
+SIG Ber-140 was red now yellow
+SIG Ber+10 was yellow now red
+E575:t:116.7next SIG (2632) at PK16.52
+RT:116.75
+E507:t:116.75:vK:22.5386261015 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.8
+E507:t:116.8:vK:22.4847657992 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.85
+E507:t:116.85:vK:22.4309518744 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E509:t:116.85 waiting at sig...sig:WestboundMain:1630
+E509:t:116.85:AT SIG WestboundMain:1630 vK:0.0
+E509:116.85:START UPDATE SIG BY OCCU sig:WestboundMain:Bas+10 from value yellow to value red
+E509:116.85:START UPDATE SIG BY OCCU sig:WestboundMain:Bas-95 from value red to value yellow
+SIG Bas-95 was red now yellow
+SIG Bas+10 was yellow now red
+E509:t:116.85next SIG (1645) at PK6.65
+E570:t:116.85:boosting from vK:17.741635241 to maxVk:19.5 with aFull:-0.278883370126
+RT:116.9
+E507:t:116.9:vK:22.3771841765 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:116.95
+E507:t:116.95:vK:22.3234625552 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E514:t:116.95:vK:32.6106367053 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.0
+E500:t:117.0:coasting at 47.463781821
+need to go faster...1.35
+need to go faster...1.35
+E507:t:117.0:vK:22.2697868604 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E507:t:117.0:coasting at 22.2697868604
+need to go faster...1.35
+E514:t:117.0:vK:32.5461531547 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E514:t:117.0:coasting at 32.5461531547
+need to go faster...1.35
+E520:t:117.0:coasting at 19.589198829
+E524:t:117.0:coasting at 32.7623544414
+need to go faster...1.05459456514
+need to go faster...1.01745889705
+E556:t:117.0:coasting at 12.4726181431
+E557:t:117.0:coasting at 12.7124620288
+E560:t:117.0:coasting at 17.7986700426
+need to go faster...1.08034346125
+E568:t:117.0:coasting at 19.1286614279
+E569:t:117.0:coasting at 18.992118307
+need to go faster...1.35
+E571:t:117.0:coasting at 18.8469813728
+E572:t:117.0:coasting at 25.0278972217
+RT:117.05
+E507:t:117.05:vK:22.2161569428 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:117.1
+E507:t:117.1:vK:22.1625726531 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E511:t:117.1:vK:32.6069314339 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E560:t:117.1:boosting from vK:17.6982968539 to maxVk:19.5 with aFull:-0.278719606263
+RT:117.15
+E507:t:117.15:vK:22.1090338427 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E511:t:117.15:vK:32.5424525048 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.2
+E507:t:117.2:vK:22.0555403634 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E524:t:117.2:boosting from vK:32.5041462458 to maxVk:35.75 with aFull:-0.35795067462
+RT:117.25
+E503:t:117.25:vK:26.0686132791 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+E507:t:117.25:vK:22.0020920672 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+RT:117.3
+E503:t:117.3:vK:26.0114714531 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+E507:t:117.3:vK:21.9486888066 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.3:ADVANCE yellow SIG vK:50.0308463714
+E526:t:117.3:vK:50.0308463714 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.35
+E507:t:117.35:vK:21.8953304347 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.35:vK:49.9388298595 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.4
+E507:t:117.4:vK:21.8420168046 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.4:vK:49.8469892759 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.45
+E507:t:117.45:vK:21.7887477701 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.45:vK:49.7553239611 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.5
+E507:t:117.5:vK:21.7355231853 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.5:vK:49.6638332591 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.55
+E507:t:117.55:vK:21.6823429048 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.55:vK:49.5725165167 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E563:t:117.55:ADVANCE green SIG vK:47.7669230224
+RT:117.6
+E507:t:117.6:vK:21.6292067834 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E511:t:117.6:ADVANCE STA x:7716.0 vK:31.9657265558
+E526:t:117.6:vK:49.4813730839 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.65
+E507:t:117.65:vK:21.5761146765 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.65:vK:49.3904023138 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.7
+E507:t:117.7:vK:21.5230664396 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.7:vK:49.2996035623 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E556:t:117.7:boosting from vK:11.814942492 to maxVk:13.0 with aFull:-0.260199564883
+RT:117.75
+E507:t:117.75:vK:21.4700619289 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.75:vK:49.2089761886 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.8
+E507:t:117.8:vK:21.4171010009 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.8:vK:49.1185195548 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.85
+E507:t:117.85:vK:21.3641835122 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.85:vK:49.0282330259 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.9
+E507:t:117.9:vK:21.3113093203 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.9:vK:48.9381159699 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:117.95
+E507:t:117.95:vK:21.2584782826 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:117.95:vK:48.8481677578 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E557:t:117.95:boosting from vK:11.8188107371 to maxVk:13.0 with aFull:-0.260209321308
+RT:118.0
+E500:t:118.0:coasting at 45.7485979295
+E503:t:118.0:coasting at 25.2173801833
+need to go faster...1.35
+E507:t:118.0:vK:21.2056902572 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E507:t:118.0:coasting at 21.2056902572
+E514:t:118.0:coasting at 31.2730176549
+need to go faster...1.35
+E520:t:118.0:coasting at 18.5666926285
+need to go faster...1.35
+need to go faster...1.01352743975
+E526:t:118.0:vK:48.7583877635 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:118.0:coasting at 48.7583877635
+need to go faster...1.35
+need to go faster...1.35
+E560:t:118.0:coasting at 19.2133161979
+need to go faster...1.03464356654
+E568:t:118.0:coasting at 18.1127591958
+E569:t:118.0:coasting at 17.9781435111
+E570:t:118.0:coasting at 18.9962100902
+E571:t:118.0:coasting at 17.8350399988
+E572:t:118.0:coasting at 23.9154047646
+RT:118.05
+E507:t:118.05:vK:21.1529451023 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.05:vK:48.6687753638 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.1
+E507:t:118.1:vK:21.1002426768 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.1:vK:48.5793299384 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E571:t:118.1:boosting from vK:17.734617325 to maxVk:19.5 with aFull:-0.278856824211
+RT:118.15
+E500:t:118.15:boosting from vK:45.4965217706 to maxVk:50.0 with aFull:-0.465992120229
+E507:t:118.15:vK:21.0475828397 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E524:t:118.15:vK:35.8565612231 maxVk:55.0 =>ready to dcc to 35.75 due to yellow
+E526:t:118.15:vK:48.4900508698 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.2
+E507:t:118.2:vK:20.9949654505 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E524:t:118.2:vK:35.7878273448 maxVk:55.0 =>ready to dcc to 35.75 due to yellow
+E526:t:118.2:vK:48.4009375435 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.25
+E507:t:118.25:vK:20.942390369 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.25:vK:48.3119893478 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E569:t:118.25:boosting from vK:17.7268555953 to maxVk:19.5 with aFull:-0.278827476966
+E572:t:118.25:boosting from vK:23.6404890595 to maxVk:26.0 with aFull:-0.304906257947
+RT:118.3
+E507:t:118.3:vK:20.8898574554 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.3:vK:48.2232056738 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.35
+E507:t:118.35:vK:20.8373665704 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.35:vK:48.1345859154 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.4
+E507:t:118.4:vK:20.7849175749 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E520:t:118.4:boosting from vK:18.1617907734 to maxVk:20.0 with aFull:-0.280491756173
+E526:t:118.4:vK:48.0461294692 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E568:t:118.4:boosting from vK:17.7103741141 to maxVk:19.5 with aFull:-0.278765202716
+RT:118.45
+E507:t:118.45:vK:20.7325103301 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.45:vK:47.9578357348 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.5
+E507:t:118.5:vK:20.6801446978 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.5:vK:47.8697041144 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.55
+E505:t:118.55:ADVANCE red SIG vK:11.8784781137
+E507:t:118.55:vK:20.6278205399 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.55:vK:47.781734013 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.6
+E507:t:118.6:vK:20.5755377189 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.6:vK:47.6939248382 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.65
+E507:t:118.65:vK:20.5232960975 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.65:vK:47.6062760005 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.7
+E507:t:118.7:vK:20.4710955389 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.7:vK:47.5187869131 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.75
+E507:t:118.75:vK:20.4189359063 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.75:vK:47.4314569916 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.8
+E507:t:118.8:vK:20.3668170638 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.8:vK:47.3442856546 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.85
+E507:t:118.85:vK:20.3147388754 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.85:vK:47.2572723231 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:118.9
+E507:t:118.9:vK:20.2627012056 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.9:vK:47.1704164209 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E572:t:118.9:vK:26.0696736211 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+RT:118.95
+E507:t:118.95:vK:20.2107039193 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:118.95:vK:47.0837173744 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E572:t:118.95:vK:26.0125307379 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+RT:119.0
+need to go faster...1.0630119465
+E503:t:119.0:coasting at 24.1013547352
+E507:t:119.0:vK:20.1587468818 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E507:t:119.0:coasting at 20.1587468818
+E514:t:119.0:coasting at 30.0300315516
+need to go faster...1.35
+E520:t:119.0:coasting at 19.9797710858
+E524:t:119.0:coasting at 34.7006860039
+E525:t:119.0:coasting at 48.5870527097
+E526:t:119.0:vK:46.9971746124 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:119.0:coasting at 46.9971746124
+E556:t:119.0:coasting at 12.2846116746
+E557:t:119.0:coasting at 12.28371085
+E560:t:119.0:coasting at 18.1962119651
+E563:t:119.0:coasting at 49.4214474424
+E568:t:119.0:coasting at 19.52140083
+E569:t:119.0:coasting at 19.3914662688
+E570:t:119.0:coasting at 17.9821777381
+E571:t:119.0:coasting at 19.2499599335
+E572:t:119.0:coasting at 25.955444773
+RT:119.05
+E507:t:119.05:vK:20.1068299584 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:119.05:vK:46.9107875666 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.1
+E507:t:119.1:vK:20.0549530152 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:119.1:vK:46.824555671 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.15
+E507:t:119.15:vK:20.0031159184 maxVk:30.0 =>ready to dcc to 19.5 due to yellow
+E526:t:119.15:vK:46.7384783624 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.2
+E526:t:119.2:vK:46.6525550799 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.25
+E526:t:119.25:vK:46.5667852653 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E570:t:119.25:boosting from vK:17.7308760462 to maxVk:19.5 with aFull:-0.278842676764
+RT:119.3
+E526:t:119.3:vK:46.4811683628 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.35
+E526:t:119.35:vK:46.3957038192 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.4
+E514:t:119.4:boosting from vK:29.540855671 to maxVk:32.5 with aFull:-0.338353065841
+E526:t:119.4:vK:46.3103910837 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.45
+E503:t:119.45:boosting from vK:23.6058845538 to maxVk:26.0 with aFull:-0.304731984545
+E526:t:119.45:vK:46.225229608 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E560:t:119.45:boosting from vK:17.7431688355 to maxVk:19.5 with aFull:-0.278889172486
+RT:119.5
+E526:t:119.5:vK:46.1402188463 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E556:t:119.5:boosting from vK:11.8152810276 to maxVk:13.0 with aFull:-0.260200418605
+E557:t:119.5:boosting from vK:11.8143843542 to maxVk:13.0 with aFull:-0.26019815742
+RT:119.55
+E526:t:119.55:vK:46.0553582553 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.6
+E526:t:119.6:vK:45.9706472938 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.65
+E526:t:119.65:vK:45.8860854234 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.7
+E526:t:119.7:vK:45.8016721079 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.75
+E526:t:119.75:vK:45.7174068136 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.8
+E526:t:119.8:vK:45.633289009 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.85
+E526:t:119.85:vK:45.5493181651 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.9
+E526:t:119.9:vK:45.4654937553 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:119.95
+E526:t:119.95:vK:45.381815255 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.0
+need to go faster...1.02045288936
+need to go faster...1.35
+E507:t:120.0:coasting at 19.1278537739
+need to go faster...1.35
+need to go faster...1.34743865702
+E520:t:120.0:coasting at 18.9515396708
+E524:t:120.0:coasting at 33.373801508
+E525:t:120.0:coasting at 46.8320012134
+E526:t:120.0:vK:45.2982821424 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:120.0:coasting at 45.2982821424
+E556:t:120.0:coasting at 12.8040219673
+E557:t:120.0:coasting at 13.0398168537
+E560:t:120.0:coasting at 19.612477402
+E563:t:120.0:coasting at 47.6361881451
+E568:t:120.0:coasting at 18.4998768087
+E569:t:120.0:coasting at 18.3718149644
+E570:t:120.0:coasting at 19.4102088782
+E571:t:120.0:coasting at 18.2323337358
+E572:t:120.0:coasting at 24.8254029592
+RT:120.05
+E526:t:120.05:vK:45.2148938977 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.1
+E503:t:120.1:vK:26.0320865382 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+E526:t:120.1:vK:45.1316500034 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.15
+E526:t:120.15:vK:45.0485499444 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.2
+E526:t:120.2:vK:44.9655932077 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.25
+E514:t:120.25:vK:32.6057400916 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:120.25:vK:44.8827792827 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.3
+E514:t:120.3:vK:32.5412626484 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:120.3:vK:44.8001076611 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.35
+E526:t:120.35:vK:44.7175778366 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.4
+E526:t:120.4:vK:44.6351893053 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.45
+E526:t:120.45:vK:44.5529415654 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.5
+E526:t:120.5:vK:44.4708341174 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E571:t:120.5:boosting from vK:17.7288769156 to maxVk:19.5 with aFull:-0.27883511838
+RT:120.55
+E526:t:120.55:vK:44.3888664639 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.6
+E526:t:120.6:vK:44.3070381096 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.65
+E524:t:120.65:boosting from vK:32.5294289975 to maxVk:35.75 with aFull:-0.358125938484
+E526:t:120.65:vK:44.2253485615 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E569:t:120.65:boosting from vK:17.7167479545 to maxVk:19.5 with aFull:-0.278789279016
+RT:120.7
+E526:t:120.7:vK:44.1437973287 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.75
+E520:t:120.75:boosting from vK:18.1901510641 to maxVk:20.0 with aFull:-0.280601675748
+E526:t:120.75:vK:44.0623839223 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E568:t:120.75:boosting from vK:17.7432255037 to maxVk:19.5 with aFull:-0.278889386899
+RT:120.8
+E525:t:120.8:boosting from vK:45.4727316 to maxVk:50.0 with aFull:-0.465761350569
+E526:t:120.8:vK:43.9811078557 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.85
+E526:t:120.85:vK:43.8999686444 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.9
+E526:t:120.9:vK:43.8189658058 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:120.95
+E526:t:120.95:vK:43.7380988595 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.0
+E500:t:121.0:coasting at 48.7989053402
+E503:t:121.0:coasting at 25.012732994
+E507:t:121.0:coasting at 18.1119629838
+E514:t:121.0:coasting at 31.6468970717
+need to go faster...1.24125784746
+need to go faster...1.35
+need to go faster...1.35
+need to go faster...1.09636598614
+E526:t:121.0:vK:43.6573673273 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:121.0:coasting at 43.6573673273
+E556:t:121.0:coasting at 11.8626957857
+E557:t:121.0:coasting at 12.0962508308
+E560:t:121.0:coasting at 18.5896331743
+E563:t:121.0:coasting at 45.9149446984
+need to go faster...1.35
+need to go faster...1.35
+E570:t:121.0:coasting at 18.3902882218
+E571:t:121.0:coasting at 19.6492604968
+E572:t:121.0:coasting at 23.7166565361
+RT:121.05
+E526:t:121.05:vK:43.5767707329 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E556:t:121.05:boosting from vK:11.8158594478 to maxVk:13.0 with aFull:-0.260201877326
+RT:121.1
+E526:t:121.1:vK:43.496308602 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E572:t:121.1:boosting from vK:23.6069014316 to maxVk:26.0 with aFull:-0.304737102053
+RT:121.15
+E526:t:121.15:vK:43.4159804625 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.2
+E526:t:121.2:vK:43.3357858443 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.25
+E526:t:121.25:vK:43.2557242791 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E563:t:121.25:boosting from vK:45.4941015018 to maxVk:50.0 with aFull:-0.465968637588
+RT:121.3
+E526:t:121.3:vK:43.175795301 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E557:t:121.3:boosting from vK:11.8149139757 to maxVk:13.0 with aFull:-0.260199492972
+RT:121.35
+E526:t:121.35:vK:43.0959984456 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.4
+E507:t:121.4:boosting from vK:17.7095822615 to maxVk:19.5 with aFull:-0.278762212207
+E526:t:121.4:vK:43.0163332509 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.45
+E526:t:121.45:vK:42.9367992567 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.5
+E526:t:121.5:vK:42.8573960047 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.55
+E526:t:121.55:vK:42.7781230387 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.6
+E524:t:121.6:vK:35.8838638385 maxVk:55.0 =>ready to dcc to 35.75 due to yellow
+E526:t:121.6:vK:42.6989799043 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.65
+E524:t:121.65:vK:35.8150925001 maxVk:55.0 =>ready to dcc to 35.75 due to yellow
+E526:t:121.65:vK:42.6199661492 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E570:t:121.65:boosting from vK:17.735055836 to maxVk:19.5 with aFull:-0.278858482612
+RT:121.7
+E526:t:121.7:vK:42.5410813227 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.75
+E526:t:121.75:vK:42.4623249763 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E572:t:121.75:vK:26.034547001 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+RT:121.8
+E526:t:121.8:vK:42.3836966634 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.85
+E526:t:121.85:vK:42.3051959391 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E560:t:121.85:boosting from vK:17.7316310334 to maxVk:19.5 with aFull:-0.278845531468
+RT:121.9
+E526:t:121.9:vK:42.2268223604 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:121.95
+E526:t:121.95:vK:42.1485754863 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.0
+E500:t:122.0:coasting at 47.0362319555
+E503:t:122.0:coasting at 23.9005221249
+E505:t:122.0 waiting at sig...sig:WestboundMain:ReD+10
+E505:t:122.0:AT SIG WestboundMain:ReD+10 vK:0.0
+E505:122.0:START UPDATE SIG BY OCCU sig:WestboundMain:ReD-140 from value yellow to value red
+E505:122.0:START UPDATE SIG BY OCCU sig:WestboundMain:1370 from value red to value yellow
+E505:122.0:START UPDATE SIG BY OCCU sig:WestboundMain:Nat+10 from value yellow to value green
+SIG Nat+10 was yellow now green
+SIG 1370 was red now yellow
+SIG ReD-140 was yellow now red
+E505:t:122.0next SIG (1430) at PK4.5
+E507:t:122.0:coasting at 19.5230660784
+E514:t:122.0:coasting at 30.3951813378
+need to go faster...1.16187483725
+E520:t:122.0:coasting at 19.3304068245
+E524:t:122.0:coasting at 35.3363163222
+need to go faster...1.04767949061
+E526:t:122.0:vK:42.0704548776 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:122.0:coasting at 42.0704548776
+E556:t:122.0:coasting at 12.3731965683
+E557:t:122.0:coasting at 12.8449847188
+need to go faster...1.35
+need to go faster...1.06753640221
+E568:t:122.0:coasting at 18.8899483096
+E569:t:122.0:coasting at 18.7752267584
+need to go faster...1.35
+E571:t:122.0:coasting at 18.6258813156
+E572:t:122.0:coasting at 25.7495738628
+RT:122.05
+E526:t:122.05:vK:41.9924600969 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.1
+E526:t:122.1:vK:41.9145907087 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.15
+E526:t:122.15:vK:41.8368462792 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.2
+E526:t:122.2:vK:41.7592263766 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.25
+E503:t:122.25:boosting from vK:23.6256740327 to maxVk:26.0 with aFull:-0.304831616049
+E526:t:122.25:vK:41.6817305707 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.3
+E526:t:122.3:vK:41.6043584333 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.35
+E526:t:122.35:vK:41.5271095378 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.4
+E526:t:122.4:vK:41.4499834595 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.45
+E526:t:122.45:vK:41.3729797754 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.5
+E526:t:122.5:vK:41.2960980643 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.55
+E526:t:122.55:vK:41.2193379067 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.6
+E526:t:122.6:vK:41.142698885 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E556:t:122.6:boosting from vK:11.809767755 to maxVk:13.0 with aFull:-0.260186518225
+RT:122.65
+E526:t:122.65:vK:41.066180583 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.7
+E514:t:122.7:boosting from vK:29.5362363896 to maxVk:32.5 with aFull:-0.338323978171
+E526:t:122.7:vK:40.9897825865 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.75
+E526:t:122.75:vK:40.913504483 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.8
+E526:t:122.8:vK:40.8373458615 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.85
+E526:t:122.85:vK:40.7613063129 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:122.9
+E503:t:122.9:vK:26.052516221 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+E526:t:122.9:vK:40.6853854296 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E571:t:122.9:boosting from vK:17.7172700787 to maxVk:19.5 with aFull:-0.278791251651
+RT:122.95
+E500:t:122.95:boosting from vK:45.4195805795 to maxVk:50.0 with aFull:-0.465246211278
+E526:t:122.95:vK:40.6095828059 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.0
+need to go faster...1.10582293122
+E503:t:123.0:coasting at 25.9383215247
+E507:t:123.0:coasting at 18.5015179743
+need to go faster...1.35
+need to go faster...1.10013878152
+E520:t:123.0:coasting at 18.3116311865
+E524:t:123.0:coasting at 33.9929208546
+E525:t:123.0:coasting at 49.9587091571
+E526:t:123.0:vK:40.5338980375 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:123.0:coasting at 40.5338980375
+E556:t:123.0:coasting at 12.8933001463
+E557:t:123.0:coasting at 11.9032724389
+E560:t:123.0:coasting at 18.9876889476
+need to go faster...1.02416638275
+E568:t:123.0:coasting at 17.8774065987
+E569:t:123.0:coasting at 17.7642848587
+E570:t:123.0:coasting at 18.7912567691
+need to go faster...1.35
+E572:t:123.0:coasting at 24.6234824561
+RT:123.05
+E526:t:123.05:vK:40.458330722 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E569:t:123.05:boosting from vK:17.714104586 to maxVk:19.5 with aFull:-0.278779293008
+RT:123.1
+E526:t:123.1:vK:40.3828804584 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E557:t:123.1:boosting from vK:11.8095841679 to maxVk:13.0 with aFull:-0.260186055466
+RT:123.15
+E520:t:123.15:boosting from vK:18.1600634066 to maxVk:20.0 with aFull:-0.280485066732
+E526:t:123.15:vK:40.3075468477 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E568:t:123.15:boosting from vK:17.7267372878 to maxVk:19.5 with aFull:-0.278827029742
+RT:123.2
+E526:t:123.2:vK:40.232329492 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.25
+E526:t:123.25:vK:40.1572279956 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.3
+E526:t:123.3:vK:40.082241964 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.35
+E526:t:123.35:vK:40.0073710044 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.4
+E526:t:123.4:vK:39.9326147258 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.45
+E526:t:123.45:vK:39.8579727384 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.5
+E526:t:123.5:vK:39.7834446543 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E563:t:123.5:AT SIG EastboundMain:Cha-140 vK:49.8966293574
+E563:123.5:START UPDATE SIG BY OCCU sig:EastboundMain:LoR+10 from value green to value red
+E563:123.5:START UPDATE SIG BY OCCU sig:EastboundMain:LoR-140 from value red to value yellow
+E563:123.5:START UPDATE SIG BY OCCU sig:EastboundMain:PaR+10 from value yellow to value green
+SIG PaR+10 was yellow now green
+SIG LoR-140 was red now yellow
+SIG LoR+10 was green now red
+E563:t:123.5next SIG (Cha+10) at PK9.006
+RT:123.55
+E514:t:123.55:vK:32.6056822314 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:123.55:vK:39.7090300871 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.6
+E514:t:123.6:vK:32.5412048603 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:123.6:vK:39.6347286519 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.65
+E526:t:123.65:vK:39.5605399653 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.7
+E526:t:123.7:vK:39.4864636457 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.75
+E507:t:123.75:boosting from vK:17.7448496645 to maxVk:19.5 with aFull:-0.278895532482
+E526:t:123.75:vK:39.4124993126 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.8
+E526:t:123.8:vK:39.3386465876 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.85
+E526:t:123.85:vK:39.2649050932 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:123.9
+E526:t:123.9:vK:39.191274454 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E572:t:123.9:boosting from vK:23.6280359133 to maxVk:26.0 with aFull:-0.304843512674
+RT:123.95
+E526:t:123.95:vK:39.1177542956 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.0
+need to go faster...1.05533605263
+E503:t:124.0:coasting at 24.8086094872
+need to go faster...1.35
+E514:t:124.0:coasting at 32.0282563104
+need to go faster...1.05073738793
+E520:t:124.0:coasting at 19.723582854
+E524:t:124.0:coasting at 32.68407068
+E525:t:124.0:coasting at 48.1537318964
+E526:t:124.0:vK:39.0443442454 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:124.0:coasting at 39.0443442454
+E556:t:124.0:coasting at 11.9511308372
+E557:t:124.0:coasting at 12.6568061844
+E560:t:124.0:coasting at 17.9737764424
+E563:t:124.0:coasting at 48.9868248706
+E568:t:124.0:coasting at 19.2957537461
+E569:t:124.0:coasting at 19.1786339209
+E570:t:124.0:coasting at 17.7800919214
+E571:t:124.0:coasting at 19.0225532711
+need to go faster...1.35
+RT:124.05
+E526:t:124.05:vK:38.9710439323 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E527:t:124.05:IN STA LaD vK:1.0962757821 a:-1.1
+E527:t:124.05:next STA (Esp) at PK1.231
+E570:t:124.05:boosting from vK:17.7299009032 to maxVk:19.5 with aFull:-0.278838989803
+RT:124.1
+E526:t:124.1:vK:38.8978529865 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.15
+E524:t:124.15:boosting from vK:32.4905866138 to maxVk:35.75 with aFull:-0.357856733369
+E526:t:124.15:vK:38.8247710397 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E556:t:124.15:boosting from vK:11.8105650594 to maxVk:13.0 with aFull:-0.260188528035
+RT:124.2
+E526:t:124.2:vK:38.7517977253 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.25
+E526:t:124.25:vK:38.6789326779 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E560:t:124.25:boosting from vK:17.7225034357 to maxVk:19.5 with aFull:-0.278811026982
+RT:124.3
+E526:t:124.3:vK:38.6061755336 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.35
+E526:t:124.35:vK:38.53352593 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.4
+E526:t:124.4:vK:38.4609835061 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.45
+E526:t:124.45:vK:38.3885479024 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.5
+E526:t:124.5:AT SIG WestboundMain:LaD-100 vK:38.3162187607
+E526:124.5:START UPDATE SIG BY OCCU sig:WestboundMain:2620 from value green to value red
+E526:124.5:START UPDATE SIG BY OCCU sig:WestboundMain:2590 from value red to value yellow
+E526:124.5:START UPDATE SIG BY OCCU sig:WestboundMain:Esp+10 from value yellow to value green
+SIG Esp+10 was yellow now green
+SIG 2590 was red now yellow
+SIG 2620 was green now red
+E526:t:124.5next SIG (LaD+10) at PK16.785
+E526:t:124.5:vK:38.3162187607 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.55
+E526:t:124.55:vK:38.2439957244 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E572:t:124.55:vK:26.0606548002 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+RT:124.6
+E526:t:124.6:vK:38.171878438 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E572:t:124.6:vK:26.0035209086 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+RT:124.65
+E526:t:124.65:vK:38.0998665477 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.7
+E526:t:124.7:vK:38.0279597009 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.75
+E526:t:124.75:vK:37.9561575465 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.8
+E526:t:124.8:vK:37.8844597348 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.85
+E526:t:124.85:vK:37.8128659173 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:124.9
+E526:t:124.9:vK:37.7413757469 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E557:t:124.9:boosting from vK:11.8104614167 to maxVk:13.0 with aFull:-0.260188266769
+RT:124.95
+E526:t:124.95:vK:37.6699888781 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.0
+need to go faster...1.01413837911
+E503:t:125.0:coasting at 23.7001723626
+E507:t:125.0:coasting at 18.8963042651
+E514:t:125.0:coasting at 30.7675298095
+need to go faster...1.01034664063
+E520:t:125.0:coasting at 18.6991196755
+need to go faster...1.35
+E525:t:125.0:coasting at 46.4141686105
+E526:t:125.0:vK:37.5987049664 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:125.0:coasting at 37.5987049664
+E556:t:125.0:coasting at 12.4705194753
+need to go faster...1.35
+E560:t:125.0:coasting at 19.3902754539
+E563:t:125.0:coasting at 47.2173633771
+E568:t:125.0:coasting at 18.2774738325
+E569:t:125.0:coasting at 18.1620227862
+E570:t:125.0:coasting at 19.189020532
+E571:t:125.0:coasting at 18.0081500672
+E572:t:125.0:coasting at 25.5484826467
+RT:125.05
+E503:t:125.05:boosting from vK:23.6452848851 to maxVk:26.0 with aFull:-0.304930430565
+E526:t:125.05:vK:37.5275236688 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.1
+E524:t:125.1:vK:35.8513787721 maxVk:55.0 =>ready to dcc to 35.75 due to yellow
+E526:t:125.1:vK:37.4564446438 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.15
+E524:t:125.15:vK:35.7826520011 maxVk:55.0 =>ready to dcc to 35.75 due to yellow
+E526:t:125.15:vK:37.385467551 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.2
+E526:t:125.2:vK:37.3145920514 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.25
+E525:t:125.25:ADVANCE green SIG vK:45.9889493892
+E526:t:125.25:vK:37.2438178072 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.3
+E526:t:125.3:vK:37.1731444821 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E571:t:125.3:boosting from vK:17.7065844503 to maxVk:19.5 with aFull:-0.278750891887
+RT:125.35
+E526:t:125.35:vK:37.1025717411 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.4
+E526:t:125.4:vK:37.0320992502 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.45
+E526:t:125.45:vK:36.961726677 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E569:t:125.45:boosting from vK:17.709190665 to maxVk:19.5 with aFull:-0.278760733353
+RT:125.5
+E520:t:125.5:boosting from vK:18.1924167168 to maxVk:20.0 with aFull:-0.280610464413
+E526:t:125.5:vK:36.8914536903 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.55
+E525:t:125.55:boosting from vK:45.4836044457 to maxVk:50.0 with aFull:-0.465866804459
+E526:t:125.55:vK:36.8212799602 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E568:t:125.55:boosting from vK:17.7235200271 to maxVk:19.5 with aFull:-0.278814869061
+RT:125.6
+E526:t:125.6:vK:36.7512051578 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.65
+E526:t:125.65:vK:36.6812289559 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.7
+E503:t:125.7:vK:26.0823025764 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+E526:t:125.7:vK:36.6113510282 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E556:t:125.7:boosting from vK:11.8128574554 to maxVk:13.0 with aFull:-0.260194307359
+RT:125.75
+E503:t:125.75:vK:26.025147097 maxVk:40.0 =>ready to dcc to 26.0 due to yellow
+E526:t:125.75:vK:36.5415710499 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.8
+E526:t:125.8:vK:36.4718886972 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E569:t:125.8:ADVANCE yellow SIG vK:19.0609896506
+RT:125.85
+E526:t:125.85:vK:36.4023036478 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.9
+E526:t:125.9:vK:36.3328155803 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:125.95
+E526:t:125.95:vK:36.2634241748 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.0
+E500:t:126.0:coasting at 48.5586574282
+E503:t:126.0:coasting at 25.740220456
+E507:t:126.0:coasting at 17.8836736308
+E514:t:126.0:boosting from vK:29.5361818062 to maxVk:32.5 with aFull:-0.338323634486
+need to go faster...0.976765710947
+E520:t:126.0:coasting at 20.1141277872
+E524:t:126.0:coasting at 34.6284538497
+need to go faster...1.08270273805
+E526:t:126.0:vK:36.1941291126 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:126.0:coasting at 36.1941291126
+need to go faster...1.35
+E557:t:126.0:ADVANCE STA x:5337.0 vK:12.4709955438
+E560:t:126.0:coasting at 18.370641254
+E563:t:126.0:coasting at 45.5108028243
+need to go faster...1.35
+E569:t:126.0:coasting at 19.5847666365
+E570:t:126.0:coasting at 18.1722618194
+E571:t:126.0:coasting at 19.4207638481
+E572:t:126.0:coasting at 24.426219479
+RT:126.05
+E526:t:126.05:vK:36.1249300761 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E563:t:126.05:boosting from vK:45.4270454898 to maxVk:50.0 with aFull:-0.465318524707
+RT:126.1
+E511:t:126.1:IN STA HoV vK:0.673086555757 a:-0.004
+E511:t:126.1:next STA (Cha) at PK8.069
+E526:t:126.1:vK:36.0558267489 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.15
+E507:t:126.15:boosting from vK:17.7329915062 to maxVk:19.5 with aFull:-0.278850675898
+E526:t:126.15:vK:35.9868188158 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.2
+E526:t:126.2:vK:35.917905963 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.25
+E503:t:126.25:ADVANCE red SIG vK:25.4566952533
+E526:t:126.25:vK:35.8490878776 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.3
+E526:t:126.3:vK:35.780364248 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.35
+E526:t:126.35:vK:35.7117347639 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.4
+E526:t:126.4:vK:35.6431991159 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.45
+E526:t:126.45:vK:35.5747569959 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E570:t:126.45:boosting from vK:17.7193665469 to maxVk:19.5 with aFull:-0.278799172893
+RT:126.5
+E526:t:126.5:vK:35.5064080972 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.55
+E526:t:126.55:vK:35.4381521137 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.6
+E526:t:126.6:vK:35.369988741 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.65
+E526:t:126.65:vK:35.3019176755 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E560:t:126.65:boosting from vK:17.7155847457 to maxVk:19.5 with aFull:-0.278784884511
+RT:126.7
+E514:t:126.7:ADVANCE yellow SIG vK:32.067609631
+E526:t:126.7:vK:35.2339386149 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E572:t:126.7:boosting from vK:23.6530970865 to maxVk:26.0 with aFull:-0.304969817252
+RT:126.75
+E526:t:126.75:vK:35.1660512579 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.8
+E526:t:126.8:vK:35.0982553045 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.85
+E514:t:126.85:vK:32.60451194 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:126.85:vK:35.0305504556 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.9
+E514:t:126.9:vK:32.5400360285 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:126.9:vK:34.9629364133 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:126.95
+E526:t:126.95:vK:34.8954128809 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:127.0
+E500:t:127.0:coasting at 46.8046250412
+E507:t:127.0:coasting at 19.2883665838
+E514:t:127.0:coasting at 32.4113249362
+need to go faster...0.948471592023
+E520:t:127.0:coasting at 19.0839004902
+E524:t:127.0:coasting at 33.3034267989
+need to go faster...1.03656809122
+E526:t:127.0:vK:34.8279795627 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+E526:t:127.0:coasting at 34.8279795627
+E556:t:127.0:coasting at 12.2813669472
+need to go faster...1.35
+need to go faster...1.05964399926
+E568:t:127.0:coasting at 18.6627505257
+E569:t:127.0:coasting at 18.5623247498
+E570:t:127.0:coasting at 19.5909064673
+E571:t:127.0:coasting at 18.4006913892
+need to go faster...1.35
+RT:127.05
+E526:t:127.05:vK:34.7606361641 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:127.1
+E526:t:127.1:vK:34.6933823917 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:127.15
+E526:t:127.15:vK:34.626217953 maxVk:50.0 =>ready to dcc to 32.5 due to yellow
+RT:127.2
+E526:t:127.2:vK:34.5591425567 maxVk:50
