@@ -399,7 +399,12 @@ class Tr:
     self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
     self.advSIGcol=r.get(self.redisSIG)
     self.sigSpotted=False
-    updateSIGbyTrOccupation(initSegment,self.SIGcnt-1,self.name,"red")
+    p={}
+    p['seg']=self.segment
+    p['cnt']=self.SIGcnt
+    p['type']=sigs[self.segment][self.SIGcnt][2]
+    previousSig=findPrevSIGforOccupation(p)
+    updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def dumpstate(self):
     r.hmset(self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'PK':self.PK,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA,'nextSIG':self.nextSIG,'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'vK':self.vK})
@@ -431,6 +436,7 @@ class Tr:
        sys.exit()
     self.nextSTA=stas[initSegment][self.STAcnt]
     self.nextSIG=sigs[initSegment][self.SIGcnt]
+
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
     self.nextTIV=tivs[initSegment][self.TIVcnt]
@@ -466,39 +472,25 @@ class Tr:
     self.waitSta=0.0
     self.BDzero=0.0
     self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
+    facingSig={}
+    facingSig['seg']=self.segment
+    facingSig['cnt']=self.SIGcnt
+    facingSig['type']=sigs[self.segment][self.SIGcnt][2]
+    facingSig['name']=sigs[self.segment][self.SIGcnt][1]
+    previousSig=findPrevSIGforOccupation(facingSig)
+    print self.name+": facing Sig:"+str(facingSig)+" previous Sig:"+str(previousSig)
     self.advSIGcol="red"   # safeguard before we run step()
     self.sigSpotted=False
-    sigAlreadyOccupied=r.get(self.redisSIG+":isOccupied")
+    sigAlreadyOccupied=r.get("sig:"+previousSig['seg']+":"+previousSig['name']+":isOccupied")
     if sigAlreadyOccupied is not None:
       print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share the same signal block"
       sys.exit()
     else:
       if (sigs[self.segment][self.SIGcnt][2]=='2'):
-        kCur=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
-        if (kCur!=self.segment):
-           print "FATAL: "+str(self.name)+" is derailed according to switch position..."
-           sys.exit()
-        kRev=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":reversePosition")
-        kFor=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPosition")
-        if (self.segment==kRev):
-          kOther=kFor
-        else:
-          kOther=kRev
-        sigAlreadyOccupied=r.get("sig:"+kOther+":"+sigs[self.segment][self.SIGcnt][1]+":isOccupied")
-        if sigAlreadyOccupied is not None:
-          print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share the same signal block, but in two different segments"
-          sys.exit()
-        sigAlreadyOccupied=r.get("sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt+1][1]+":isOccupied")
-        if sigAlreadyOccupied is not None:
-          print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share a signal 2 and signal 5 block"
-          sys.exit()
-      elif (sigs[self.segment][self.SIGcnt][2]=='5'):
-        sigAlreadyOccupied=r.get("sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt-1][1]+":isOccupied")
-        if sigAlreadyOccupied is not None:
-          print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share a signal 2 and signal 5 block"
-          sys.exit()
-      r.set(self.redisSIG+":isOccupied",self.name)
-    updateSIGbyTrOccupation(initSegment,self.SIGcnt-1,self.name,"red")
+        print "FATAL: "+str(self.name)+" is facing a Type 2 signal. It should rather face the next signal (a type 5)"
+        sys.exit()    
+    r.set("sig:"+previousSig['seg']+":"+previousSig['name']+":isOccupied",self.name)
+    updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def step(self):
     global t
@@ -538,7 +530,7 @@ class Tr:
         self.sigBrake=True
     if ((self.sigBrake==True) and (self.vK<=0.7)):
       self.a=-0.004
-    if (self.x>=(self.nSIGx)):
+    if (self.x>(self.nSIGx)):
       if (self.sigSpotted==True):
         self.sigSpotted=False
       if (self.sigBrake==True):
@@ -556,7 +548,12 @@ class Tr:
           print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll
       if not __debug__:
         print self.name+":t:"+str(t)+":AT SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
-      updateSIGbyTrOccupation(self.segment,self.SIGcnt-1,self.name,"red")
+      p={}
+      p['seg']=self.segment
+      p['cnt']=self.SIGcnt
+      p['type']=sigs[self.segment][self.SIGcnt][2]
+      previousSig=findPrevSIGforOccupation(p)
+#      updateSIGbyTrOccupation(previousSig,self.name,"red")
       if (self.SIGcnt<len(sigs[self.segment])-1):
         self.SIGcnt=self.SIGcnt+1 
         self.nextSIG=sigs[self.segment][self.SIGcnt] 
@@ -591,6 +588,7 @@ class Tr:
         else:
           print self.name+":t:"+str(t)+"FATAL: no more SIG..." 
           sys.exit()
+      updateSIGbyTrOccupation(previousSig,self.name,"red")
     if (self.x>=(self.nSTAx)):
       if (self.vK>6.0):
         print "FATAL at STA"
@@ -832,6 +830,35 @@ def findMySIGcnt(x,seg):
     cnt=cnt+1
   return cnt
 
+#def findPrevSIGforOccupation(atSigCnt,atSigType,atSigSeg):
+def findPrevSIGforOccupation(atSig):
+  global sigs
+  prevSig={}
+  if ((atSig['type']=='1') or (atSig['type']=='2') or (atSig['type']=='3')):
+    if ((atSig['type']=='2') and (atSig['cnt']==0)):
+      print "FATAL ERROR. Service must be reversed before invoking prevSIG"
+      sys.exit()
+    prevSig['seg']=atSig['seg']
+    prevSig['cnt']=atSig['cnt']-1
+    prevSig['type']=sigs[atSig['seg']][prevSig['cnt']][2]
+    prevSig['name']=sigs[atSig['seg']][prevSig['cnt']][1]
+  elif (atSig['type']=='5'):
+    if (sigs[atSig['seg']][atSig['cnt']-1][2]=='2'):
+      kRev=r.get("switch:"+sigs[atSig['seg']][atSig['cnt']-1][1]+":reversePosition")
+      kFor=r.get("switch:"+sigs[atSig['seg']][atSig['cnt']-1][1]+":forwardPosition")
+      kPrevCnt=int(r.get("switch:"+sigs[atSig['seg']][atSig['cnt']-1][1]+":forwardPrevSig"))
+      if (atSig['seg']==kRev):
+        kOther=kFor
+      else:
+        kOther=kRev
+    print "type 2 "+str(kOther)
+    prevSig['seg']=kOther
+    prevSig['cnt']=kPrevCnt
+    prevSig['type']=sigs[kOther][kPrevCnt][2]
+    prevSig['name']=sigs[kOther][kPrevCnt][1]
+    print prevSig
+  return prevSig
+
 def findMyTIVcnt(x,seg):
   global tivs
   xK=x/1000.0
@@ -843,18 +870,16 @@ def findMyTIVcnt(x,seg):
     cnt=cnt+1
   return cnt
 
-def updateSIGbyTrOccupationIf(seg,SIGcnt,name,state,ifState):
+def updateSIGbyTrOccupationIf(aSig,name,state,ifState):
   global sigs
-  redisSIG="sig:"+seg+":"+sigs[seg][SIGcnt][1]
-  SIGtype=sigs[seg][SIGcnt][2]
+  redisSIG="sig:"+aSig['seg']+":"+sigs[aSig['seg']][aSig['cnt']][1]
   k=r.get(redisSIG)
   if (k==ifState):
-    updateSIGbyTrOccupation(seg,SIGcnt,name,state)
+    updateSIGbyTrOccupation(aSig,name,state)
 
-def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
+def updateSIGbyTrOccupation(aSig,name,state):
   global sigs
-  redisSIG="sig:"+seg+":"+sigs[seg][SIGcnt][1]
-  SIGtype=sigs[seg][SIGcnt][2]
+  redisSIG="sig:"+aSig['seg']+":"+sigs[aSig['seg']][aSig['cnt']][1]
   k=r.get(redisSIG)
   if not __debug__:
     print name+":"+str(t)+":START UPDATE SIG BY OCCU "+redisSIG+" from value "+k+" to value "+state
@@ -863,100 +888,40 @@ def updateSIGbyTrOccupation(seg,SIGcnt,name,state):
 #      print "ALREADY"
 #    return True
   sigAlreadyOccupied=r.get(redisSIG+":isOccupied")
-  if (SIGtype=='1'):
+  if (aSig['type']!='0'):
     if (state=="red"):
       if sigAlreadyOccupied is not None:
         if sigAlreadyOccupied!=name:
           print name+":"+str(t)+":WARN Sig 1 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
           return True
-      if (SIGcnt>=1):
-        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
-        km1=r.get(redisSIGm1+":isOccupied")
+      previousSig=findPrevSIGforOccupation(aSig)
+      redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
+      km1=r.get(redisSIGm1+":isOccupied")
+      if km1 is not None:
+        if km1==name:
+          r.delete(redisSIGm1+":isOccupied")
+          updateSIGbyTrOccupationIf(previousSig,name,"yellow","red")
+      previousPreviousSig=findPrevSIGforOccupation(previousSig)
+      redisSIGm2="sig:"+previousPreviousSig['seg']+":"+sigs[previousPreviousSig['seg']][previousPreviousSig['cnt']][1]
+      km2=r.get(redisSIGm2+":isOccupied")
+      if km2 is None:
         if km1 is not None:
           if km1==name:
-            r.delete(redisSIGm1+":isOccupied")
-            updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"yellow","red")
-      if (SIGcnt>=2):
-        redisSIGm2="sig:"+seg+":"+sigs[seg][SIGcnt-2][1]
-        km2=r.get(redisSIGm2+":isOccupied")
-        if km2 is None:
-          if km1 is not None:
-            if km1==name:
-              updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
-          else:
-            updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
+            updateSIGbyTrOccupationIf(previousPreviousSig,name,"green","yellow")
+        else:
+          updateSIGbyTrOccupationIf(previousPreviousSig,name,"green","yellow")
       r.set(redisSIG+":isOccupied",name)
     if (state=="yellow"):
-      if (SIGcnt>=1):
-        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
-        km1=r.get(redisSIGm1+":isOccupied")
-        if km1 is None:
-          updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
+      previousSig=findPrevSIGforOccupation(aSig)
+      redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
+      km1=r.get(redisSIGm1+":isOccupied")
+      if km1 is None:
+        updateSIGbyTrOccupationIf(previousSig,name,"green","yellow")
     if not __debug__:
-      print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
+      print "SIG "+aSig['name']+" was "+k+" now "+state
     r.set(redisSIG,state)
-  if (SIGtype=='5'):
-    if (state=="red"):
-      if sigAlreadyOccupied is not None:
-        if sigAlreadyOccupied!=name:
-          print name+":"+str(t)+":WARN Sig 5 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
-          return True
-      if (SIGcnt>=1):
-        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
-        km1=r.get(redisSIGm1+":isOccupied")
-        if km1 is not None:
-          if km1==name:
-            r.delete(redisSIGm1+":isOccupied")
-          else:
-            print name+":"+str(t)+":FATAL Sig type 2 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
-            sys.exit()
-        prevRedisSIG="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
-        r.set("switch:"+sigs[seg][SIGcnt-1][1]+":isLocked",False)
-        fw=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPosition")
-        prevNum=r.get("switch:"+sigs[seg][SIGcnt-1][1]+":forwardPrevSig")
-        prevNum=int(prevNum)
-        prevSigState=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
-        if not __debug__:
-          print "need to update "+fw+":"+sigs[fw][prevNum][1]+" the previous signal 3 on the other segment since the witch is not aligned with said segment..."
-          print "prev sig before: "+prevSigState+" "
-        r.set("sig:"+fw+":"+sigs[fw][prevNum][1],"red")
-        prevSigState=r.get("sig:"+fw+":"+sigs[fw][prevNum][1])
-        if not __debug__:
-          print "prev sig after: "+str(prevSigState)
-      r.set(redisSIG+":isOccupied",name)
-    r.set(redisSIG,state)
-    if not __debug__:
-      print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-#        k=r.get(redisSIG)
-  if (SIGtype=='3'):
-    if (state=="red"):
-      if sigAlreadyOccupied is not None:
-        if sigAlreadyOccupied!=name:
-          print name+":"+str(t)+":WARN Sig 3 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
-          return True
-      if (SIGcnt>=1):
-        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
-        km1=r.get(redisSIGm1+":isOccupied")
-        if km1 is not None:
-          if km1==name:
-            r.delete(redisSIGm1+":isOccupied")
-            updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"yellow","red")
-      if (SIGcnt>=2):
-        redisSIGm2="sig:"+seg+":"+sigs[seg][SIGcnt-2][1]
-        km2=r.get(redisSIGm2+":isOccupied")
-        if km2 is None:
-          updateSIGbyTrOccupationIf(seg,SIGcnt-2,name,"green","yellow")
-    if (state=="yellow"):
-      if (SIGcnt>=1):
-        redisSIGm1="sig:"+seg+":"+sigs[seg][SIGcnt-1][1]
-        km1=r.get(redisSIGm1+":isOccupied")
-        if km1 is None:
-          updateSIGbyTrOccupationIf(seg,SIGcnt-1,name,"green","yellow")
-    r.set(redisSIG,state)
-    if not __debug__:
-      print "SIG "+sigs[seg][SIGcnt][1]+" was "+k+" now "+state
-  if (SIGtype=='2'):
-    return True
+  if (aSig['type']=='5'):
+    prevType2SIG="sig:"+aSig['seg']+":"+sigs[aSig['seg']][aSig['cnt']-1][1]
   k=r.get(redisSIG)
   if (k!=state):
     print "FATAL : "+name+":"+str(t)+":END UPDATE SIG BY OCCU"+redisSIG+" new value "+str(k)
