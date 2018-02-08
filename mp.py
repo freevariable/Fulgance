@@ -578,11 +578,12 @@ class Tr:
             print "new switch pos: "+str(kCur)
           r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",kCur)
           r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
-          prevNum=int(r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPrevSig"))
-          prevSig=r.get("sig:"+kOld+":"+sigs[self.segment][prevNum][1])
-          r.set("sig:"+kOld+":"+sigs[self.segment][prevNum][1],"red")
+#          prevNum=int(r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPrevSig"))
+#          prevSig=r.get("sig:"+kOld+":"+sigs[self.segment][prevNum][1])
+#          r.set("sig:"+kOld+":"+sigs[self.segment][prevNum][1],"red")
           if not __debug__:
-            print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
+#            print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
+            print "switch locked in position "+kCur
             print self.name+":delta buffer: "+str(-self.nSIGx+self.x)
           self.reinit(kCur,0.0+TLENGTH-self.nSIGx+self.x,t)
         else:
@@ -773,19 +774,19 @@ class Tr:
           k=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked")
           kpos=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
           if not __debug__:
-            print "next SIG is a type 2:"
+            print self.name+":t:"+str(t)+":next SIG is a type 2:"
             print sigs[self.segment][self.SIGcnt]
-            print "switch is locked?"+k
-            print "switch position:"+str(kpos)
+            print "  switch is locked?"+k
+            print "  switch position:"+str(kpos)
           if (k=="False"):
             r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
             r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",self.segment)
             kpos=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
             if not __debug__:
-              print "switch NEW position:"+str(kpos)
+              print "  switch NEW position:"+str(kpos)
             k=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked")
             if not __debug__:
-              print "switch NEW lock:"+str(k=="True")
+              print "  switch now locked "+str(k=="True")
             r.set(self.sigToPoll,"yellow")           
             self.atSig=False
             self.react=True
@@ -830,7 +831,6 @@ def findMySIGcnt(x,seg):
     cnt=cnt+1
   return cnt
 
-#def findPrevSIGforOccupation(atSigCnt,atSigType,atSigSeg):
 def findPrevSIGforOccupation(atSig):
   global sigs
   prevSig={}
@@ -851,12 +851,12 @@ def findPrevSIGforOccupation(atSig):
         kOther=kFor
       else:
         kOther=kRev
-    print "type 2 "+str(kOther)
+    print "this type 5 has a type 2 in "+str(kOther)
     prevSig['seg']=kOther
     prevSig['cnt']=kPrevCnt
     prevSig['type']=sigs[kOther][kPrevCnt][2]
     prevSig['name']=sigs[kOther][kPrevCnt][1]
-    print prevSig
+    print "here is the corresponding type 3: "+str(prevSig)
   return prevSig
 
 def findMyTIVcnt(x,seg):
@@ -883,45 +883,58 @@ def updateSIGbyTrOccupation(aSig,name,state):
   k=r.get(redisSIG)
   if not __debug__:
     print name+":"+str(t)+":START UPDATE SIG BY OCCU "+redisSIG+" from value "+k+" to value "+state
-#  if (k==state):
-#    if not __debug__:
-#      print "ALREADY"
-#    return True
   sigAlreadyOccupied=r.get(redisSIG+":isOccupied")
   if (aSig['type']!='0'):
     if (state=="red"):
       if sigAlreadyOccupied is not None:
         if sigAlreadyOccupied!=name:
-          print name+":"+str(t)+":WARN Sig 1 is already occupied "+redisSIG+" by "+sigAlreadyOccupied
-          return True
+          print name+":"+str(t)+":FATAL is already occupied "+redisSIG+" by "+sigAlreadyOccupied
+          sys.exit()
       previousSig=findPrevSIGforOccupation(aSig)
       redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
       km1=r.get(redisSIGm1+":isOccupied")
+      if not __debug__:
+        print name+":"+str(t)+":investigating redisSIGm1..."+redisSIGm1+"isOccupied?"+str(km1)
       if km1 is not None:
         if km1==name:
           r.delete(redisSIGm1+":isOccupied")
-          updateSIGbyTrOccupationIf(previousSig,name,"yellow","red")
+          updateSIGbyTrOccupation(previousSig,name,"yellow")
+      else:
+          updateSIGbyTrOccupation(previousSig,name,"yellow")
       previousPreviousSig=findPrevSIGforOccupation(previousSig)
       redisSIGm2="sig:"+previousPreviousSig['seg']+":"+sigs[previousPreviousSig['seg']][previousPreviousSig['cnt']][1]
       km2=r.get(redisSIGm2+":isOccupied")
+      if not __debug__:
+        print name+":"+str(t)+":investigating redisSIGm2..."+redisSIGm2+" isOccupied?"+str(km2)
       if km2 is None:
         if km1 is not None:
           if km1==name:
-            updateSIGbyTrOccupationIf(previousPreviousSig,name,"green","yellow")
+            updateSIGbyTrOccupation(previousPreviousSig,name,"green")
         else:
-          updateSIGbyTrOccupationIf(previousPreviousSig,name,"green","yellow")
+          updateSIGbyTrOccupation(previousPreviousSig,name,"green")
       r.set(redisSIG+":isOccupied",name)
     if (state=="yellow"):
       previousSig=findPrevSIGforOccupation(aSig)
       redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
       km1=r.get(redisSIGm1+":isOccupied")
       if km1 is None:
-        updateSIGbyTrOccupationIf(previousSig,name,"green","yellow")
+        updateSIGbyTrOccupation(previousSig,name,"green")
+      else:
+        if km1==name:
+          r.delete(redisSIGm1+":isOccupied")
+          updateSIGbyTrOccupation(previousSig,name,"green")
+    if (state=="green"):
+      if sigAlreadyOccupied is not None:
+        if sigAlreadyOccupied==name:
+          r.delete(redisSIGm1+":isOccupied")
     if not __debug__:
       print "SIG "+aSig['name']+" was "+k+" now "+state
-    r.set(redisSIG,state)
-  if (aSig['type']=='5'):
-    prevType2SIG="sig:"+aSig['seg']+":"+sigs[aSig['seg']][aSig['cnt']-1][1]
+      r.set(redisSIG,state)
+  if (aSig['type']=='3'):
+    if sigAlreadyOccupied is None:
+      r.set("switch:"+sigs[aSig['seg']][aSig['cnt']+1][1]+":isLocked",False)
+      if not __debug__:
+        print "Sig 3 is not occupied => releasing switch "+sigs[aSig['seg']][aSig['cnt']+1][1]
   k=r.get(redisSIG)
   if (k!=state):
     print "FATAL : "+name+":"+str(t)+":END UPDATE SIG BY OCCU"+redisSIG+" new value "+str(k)
