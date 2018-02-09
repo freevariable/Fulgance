@@ -39,7 +39,7 @@ AIRFACTOR=0.68/VMX2
 VMXROOT=math.pow(VMX,0.3)
 TLENGTH=90.0  #length in m
 DCC=-1.10  #m/s2
-EMR=-1.80   #m/s2 emergency dcc
+EMR=-1.50   #m/s2 emergency dcc
 DLAW=1    # law governing dcc between t=0 and t=tpoint
           # 1 is linear
 SYNCPERIOD=0.5 # how often (in s) do we sync multicores
@@ -178,7 +178,6 @@ def initSIGs():
             else:
               print "FATAL: unkwnown Verb "+ verbnoun[0]
               sys.exit()
-            r.set("switch:"+s[1]+":isLocked",False)
         if (len(redisSIG)>2):
           r.set("sig:"+se+":"+s[1],redisSIG)
 #          k=r.get("sig:"+se+":"+s[1])
@@ -230,7 +229,8 @@ def initSIGs():
               if (aligned==True):
                 r.set("sig:"+se+":"+prevs[1],"yellow")
               else:
-                r.set("sig:"+se+":"+prevs[1],"red")
+#                r.set("sig:"+se+":"+prevs[1],"red")
+                r.set("sig:"+se+":"+prevs[1],"yellow")
             k1=r.get("sig:"+se+":"+prevs[1])       
             if not __debug__:
               print "  prev color set to: "+k1
@@ -319,7 +319,7 @@ class Tr:
   staBrake=False
   sigBrake=False
   sigPoll=0.0
-  sigToPoll=''
+  sigToPoll={}
   inSta=False
   atSig=False
   react=False
@@ -397,13 +397,15 @@ class Tr:
     self.waitReact=0.0
     self.BDzero=0.0
     self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
+    facingSig={}
+    facingSig['seg']=self.segment
+    facingSig['cnt']=self.SIGcnt
+    facingSig['type']=sigs[self.segment][self.SIGcnt][2]
+    facingSig['name']=sigs[self.segment][self.SIGcnt][1]
+    previousSig=findPrevSIGforOccupation(facingSig)
+    print self.name+": facing Sig:"+str(facingSig)+" previous Sig:"+str(previousSig)
     self.advSIGcol=r.get(self.redisSIG)
     self.sigSpotted=False
-    p={}
-    p['seg']=self.segment
-    p['cnt']=self.SIGcnt
-    p['type']=sigs[self.segment][self.SIGcnt][2]
-    previousSig=findPrevSIGforOccupation(p)
     updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def dumpstate(self):
@@ -530,37 +532,17 @@ class Tr:
         self.sigBrake=True
     if ((self.sigBrake==True) and (self.vK<=0.7)):
       self.a=-0.004
-    if (self.x>(self.nSIGx)):
+    if ((self.atSig==False) and (self.x>=(self.nSIGx))):
       if (self.sigSpotted==True):
         self.sigSpotted=False
       if (self.sigBrake==True):
         self.sigBrake=False
-        if (self.vK>6.0):
+        if ((self.vK<0.0) or (self.vK>6.0)):
           print self.name+":t:"+str(t)+" **** FATAL AT SIG "+self.nextSIG[1]+" **** PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
           sys.exit()
         self.a=0.0
         self.v=0.0
         self.vK=0.0
-        self.atSig=True
-        self.sigPoll=t+SIGPOLL
-        self.sigToPoll="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
-        if not __debug__:
-          print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll
-      if not __debug__:
-        print self.name+":t:"+str(t)+":AT SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
-      p={}
-      p['seg']=self.segment
-      p['cnt']=self.SIGcnt
-      p['type']=sigs[self.segment][self.SIGcnt][2]
-      previousSig=findPrevSIGforOccupation(p)
-#      updateSIGbyTrOccupation(previousSig,self.name,"red")
-      if (self.SIGcnt<len(sigs[self.segment])-1):
-        self.SIGcnt=self.SIGcnt+1 
-        self.nextSIG=sigs[self.segment][self.SIGcnt] 
-        if not __debug__:
-          print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
-        self.nSIGx=1000.0*float(self.nextSIG[0])
-      else:
         if (sigs[self.segment][self.SIGcnt][2]=='2'):
           if not __debug__:
             print self.name+":t:"+str(t)+"Buffer reached. Initiating reverse sequence" 
@@ -570,28 +552,63 @@ class Tr:
           if not __debug__:
             print "current switch pos: "+str(kCur)
           kOld=kCur
-          if (kCur==kFor):
-            kCur=kRev
+          if (kOld!=self.segment):
+            kCur=kOld
           else:
-            kCur=kFor
+            if (kOld==kRev):
+              kCur=kFor
+            else:
+              kCur=kRev
           if not __debug__:
             print "new switch pos: "+str(kCur)
-          r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",kCur)
-          r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
-#          prevNum=int(r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":forwardPrevSig"))
-#          prevSig=r.get("sig:"+kOld+":"+sigs[self.segment][prevNum][1])
-#          r.set("sig:"+kOld+":"+sigs[self.segment][prevNum][1],"red")
+            r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",kCur)
           if not __debug__:
-#            print "sig:"+kOld+":"+sigs[self.segment][prevNum][1]+" SET to red"
             print "switch locked in position "+kCur
             print self.name+":delta buffer: "+str(-self.nSIGx+self.x)
+          p={}
+          p['seg']=self.segment
+          p['cnt']=self.SIGcnt
+          p['type']=sigs[self.segment][self.SIGcnt][2]
+          previousSig=findPrevSIGforOccupation(p)
+          previousPreviousSig=findPrevSIGforOccupation(previousSig)
+          updateSIGbyTrOccupation(p,self.name,"green")
+          updateSIGbyTrOccupation(previousSig,self.name,"green")
+          updateSIGbyTrOccupation(previousPreviousSig,self.name,"green")
           self.reinit(kCur,0.0+TLENGTH-self.nSIGx+self.x,t)
+        else: 
+          self.atSig=True
+          self.sigPoll=t+SIGPOLL
+          self.sigToPoll['longName']="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
+          self.sigToPoll['seg']=self.segment
+          self.sigToPoll['cnt']=self.SIGcnt
+          self.sigToPoll['name']=sigs[self.segment][self.SIGcnt][1]
+          self.sigToPoll['type']=sigs[self.segment][self.SIGcnt][2]
+          if not __debug__:
+            print self.name+":t:"+str(t)+" waiting at sig..."+str(self.sigToPoll)
+      else:   #sigBrake is False
+        if not __debug__:
+          print self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
+        if (self.SIGcnt<len(sigs[self.segment])-1):
+          self.SIGcnt=self.SIGcnt+1 
+          self.nextSIG=sigs[self.segment][self.SIGcnt] 
+          if not __debug__:
+            print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
+          self.nSIGx=1000.0*float(self.nextSIG[0])
+          p={}
+          p['seg']=self.segment
+          p['cnt']=self.SIGcnt
+          p['type']=sigs[self.segment][self.SIGcnt][2]
+          previousSig=findPrevSIGforOccupation(p)
+          updateSIGbyTrOccupation(previousSig,self.name,"red")
         else:
-          print self.name+":t:"+str(t)+"FATAL: no more SIG..." 
+          print "FATAL: no more SIGS..." 
           sys.exit()
-      updateSIGbyTrOccupation(previousSig,self.name,"red")
+    elif (self.atSig==True):
+      self.a=0.0
+      self.v=0.0
+      self.vK=0.0
     if (self.x>=(self.nSTAx)):
-      if (self.vK>6.0):
+      if ((self.vK<0.0) or (self.vK>6.0)):
         print "FATAL at STA"
         sys.exit()
       self.inSta=True
@@ -767,36 +784,36 @@ class Tr:
             print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
     if (self.atSig==True):
       if (t>self.sigPoll):
-        k=r.get(self.sigToPoll)
+        k=r.get(self.sigToPoll['longName']+":isOccupied")
+        if (k==self.name):
+#          r.delete(self.sigToPoll['longName']+":isOccupied")
+          k=None
 #        if (ncyc%CYCLE==0):
 #          print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
-        if (sigs[self.segment][self.SIGcnt][2]=='2'):  #type 2
-          k=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked")
-          kpos=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
+        if (self.sigToPoll['type']=='2'):  #type 2
+          kpos=r.get("switch:"+self.sigToPoll['name']+":position")
           if not __debug__:
-            print self.name+":t:"+str(t)+":next SIG is a type 2:"
-            print sigs[self.segment][self.SIGcnt]
-            print "  switch is locked?"+k
+            print self.name+":t:"+str(t)+":next SIG to poll is a type 2:"
+            print str(self.sigToPoll)
             print "  switch position:"+str(kpos)
-          if (k=="False"):
-            r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked",True)
-            r.set("switch:"+sigs[self.segment][self.SIGcnt][1]+":position",self.segment)
-            kpos=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":position")
+          if (k is None):
+            r.set("switch:"+self.sigToPoll['name'],self.segment)
+            kpos=r.get("switch:"+self.sigToPoll['name']+":position")
             if not __debug__:
               print "  switch NEW position:"+str(kpos)
-            k=r.get("switch:"+sigs[self.segment][self.SIGcnt][1]+":isLocked")
-            if not __debug__:
-              print "  switch now locked "+str(k=="True")
-            r.set(self.sigToPoll,"yellow")           
-            self.atSig=False
-            self.react=True
-            self.waitReact=t+longTail(9.3,71.0,7200.0)
-            if not __debug__:
-              print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
-            if ((self.waitReact-t)>10.0):
-              print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
-          else:
-            self.sigPoll=t+SIGPOLL
+#            r.set(self.sigToPoll['longName'],"yellow")           
+        if k is None:
+          self.atSig=False
+          self.react=True
+          self.waitReact=t+longTail(9.3,71.0,7200.0)
+          if not __debug__:
+            print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
+          if ((self.waitReact-t)>10.0):
+            print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
+        else:
+          if not __debug__:
+            print self.name+":t:"+str(t)+":UPSIG "+str(self.sigToPoll)+" is OCCUPIED BY:"+str(k)
+          self.sigPoll=t+SIGPOLL
 #          self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
     if (self.react==True):
       if (t>self.waitReact):
@@ -851,7 +868,8 @@ def findPrevSIGforOccupation(atSig):
         kOther=kFor
       else:
         kOther=kRev
-    print "this type 5 has a type 2 in "+str(kOther)
+    print "this type 5 has a type 2 pred "+str(sigs[atSig['seg']][atSig['cnt']-1][1])
+    print "this type 2 pred has a type 3 pred "+str(kOther)
     prevSig['seg']=kOther
     prevSig['cnt']=kPrevCnt
     prevSig['type']=sigs[kOther][kPrevCnt][2]
@@ -890,6 +908,8 @@ def updateSIGbyTrOccupation(aSig,name,state):
         if sigAlreadyOccupied!=name:
           print name+":"+str(t)+":FATAL is already occupied "+redisSIG+" by "+sigAlreadyOccupied
           sys.exit()
+      r.set(redisSIG+":isOccupied",name)
+      sigAlreadyOccupied=name
       previousSig=findPrevSIGforOccupation(aSig)
       redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
       km1=r.get(redisSIGm1+":isOccupied")
@@ -912,7 +932,9 @@ def updateSIGbyTrOccupation(aSig,name,state):
             updateSIGbyTrOccupation(previousPreviousSig,name,"green")
         else:
           updateSIGbyTrOccupation(previousPreviousSig,name,"green")
-      r.set(redisSIG+":isOccupied",name)
+      elif (km2==name):
+        r.delete(redisSIGm2+":isOccupied")
+        updateSIGbyTrOccupation(previousPreviousSig,name,"green")
     if (state=="yellow"):
       previousSig=findPrevSIGforOccupation(aSig)
       redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
@@ -926,19 +948,11 @@ def updateSIGbyTrOccupation(aSig,name,state):
     if (state=="green"):
       if sigAlreadyOccupied is not None:
         if sigAlreadyOccupied==name:
-          r.delete(redisSIGm1+":isOccupied")
+          r.delete(redisSIG+":isOccupied")
     if not __debug__:
-      print "SIG "+aSig['name']+" was "+k+" now "+state
-      r.set(redisSIG,state)
-  if (aSig['type']=='3'):
-    if sigAlreadyOccupied is None:
-      r.set("switch:"+sigs[aSig['seg']][aSig['cnt']+1][1]+":isLocked",False)
-      if not __debug__:
-        print "Sig 3 is not occupied => releasing switch "+sigs[aSig['seg']][aSig['cnt']+1][1]
-  k=r.get(redisSIG)
-  if (k!=state):
-    print "FATAL : "+name+":"+str(t)+":END UPDATE SIG BY OCCU"+redisSIG+" new value "+str(k)
-    sys.exit()
+      print "SIGCHG "+str(aSig)+" was "+k+" now "+state
+  if (aSig['type']!='2'):   # a type 2 always remains red
+    r.set(redisSIG,state)
 
 def getAccFromFactorsAndSpeed(f,v):
   powerFromFactors=v*f
@@ -1020,6 +1034,7 @@ def stepRT(s):
         aT.dumpstate()
     if (t>duration):
       exitCondition=True
+      print "EXIT condition True"
       sys.exit()
     ncyc=ncyc+1
     ccc=ccc+1
