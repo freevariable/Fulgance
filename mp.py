@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ CORES=1
 WHEELFACTOR=G*0.025
 DUMPDATA=True
 TPROGRESS=False
-STAPROGRESS=False
+STAPROGRESS=True
 GSENSITIVITY=6.03   # sensitivity to grade
 ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
@@ -403,7 +403,8 @@ class Tr:
     facingSig['type']=sigs[self.segment][self.SIGcnt][2]
     facingSig['name']=sigs[self.segment][self.SIGcnt][1]
     previousSig=findPrevSIGforOccupation(facingSig)
-    print self.name+": facing Sig:"+str(facingSig)+" previous Sig:"+str(previousSig)
+    if not __debug__:
+      print self.name+": facing Sig:"+str(facingSig)+" previous Sig:"+str(previousSig)
     self.advSIGcol=r.get(self.redisSIG)
     self.sigSpotted=False
     updateSIGbyTrOccupation(previousSig,self.name,"red")
@@ -480,7 +481,8 @@ class Tr:
     facingSig['type']=sigs[self.segment][self.SIGcnt][2]
     facingSig['name']=sigs[self.segment][self.SIGcnt][1]
     previousSig=findPrevSIGforOccupation(facingSig)
-    print self.name+": facing Sig:"+str(facingSig)+" previous Sig:"+str(previousSig)
+    if not __debug__:
+      print self.name+": facing Sig:"+str(facingSig)+" previous Sig:"+str(previousSig)
     self.advSIGcol="red"   # safeguard before we run step()
     self.sigSpotted=False
     sigAlreadyOccupied=r.get("sig:"+previousSig['seg']+":"+previousSig['name']+":isOccupied")
@@ -635,9 +637,9 @@ class Tr:
             print self.name+":t:"+str(t)+":next STA ("+self.nextSTA[1]+") at PK"+self.nextSTA[0]
           self.nSTAx=1000.0*float(self.nextSTA[0])
         else:
-          print self.name+":t:"+str(t)+":no more STAS on segment "+self.segment
+          if not __debug__:
+            print self.name+":t:"+str(t)+":no more STAS on segment "+self.segment
           self.nSTAx=sys.maxsize
-#           exitCondition=True
     if (self.nTIVtype=='<<'):
       self.deltaBDtiv=self.BDtiv
     else:
@@ -872,13 +874,15 @@ def findPrevSIGforOccupation(atSig):
         kOther=kFor
       else:
         kOther=kRev
-    print "this type 5 has a type 2 pred "+str(sigs[atSig['seg']][atSig['cnt']-1][1])
-    print "this type 2 pred has a type 3 pred "+str(kOther)
+    if not __debug__:
+      print "this type 5 has a type 2 pred "+str(sigs[atSig['seg']][atSig['cnt']-1][1])
+      print "this type 2 pred has a type 3 pred "+str(kOther)
     prevSig['seg']=kOther
     prevSig['cnt']=kPrevCnt
     prevSig['type']=sigs[kOther][kPrevCnt][2]
     prevSig['name']=sigs[kOther][kPrevCnt][1]
-    print "here is the corresponding type 3: "+str(prevSig)
+    if not __debug__:
+      print "here is the corresponding type 3: "+str(prevSig)
   return prevSig
 
 def findMyTIVcnt(x,seg):
@@ -1029,6 +1033,7 @@ def stepRT(s):
   global exitCondition
   global t
   ccc=0
+  sys.stdout.flush()
   while (ccc<cycles):
     t=ncyc/CYCLE
     if not __debug__:
@@ -1068,7 +1073,7 @@ if (DUMPDATA==True):
   if (TPROGRESS==True):
     print "service,trip,t,x,v,a,P"
   if (STAPROGRESS==True):
-    print "service,trip,station"
+    print "service,trip,time,station"
 
 if (realTime==True):
   cycles=CYCLEPP
