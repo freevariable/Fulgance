@@ -64,6 +64,6 @@ Fulgance will run without any such options.
 - Set a given duration (in seconds) using *mp.py --duration=seconds*, otherwise the sim will go on forever.
 - Pick a non-default route (the TestTrack route for instance) with *mp.py --route=TestTrack*
 - Choose a non-default schedule: *mp.py --schedule=myschedule.txt*
-- Enable realtim: *mp.py --realtime**
+- Enable real time: *mp.py --realtime*
 #### Examples
-- Run in real time for 1 hour: ./mp.py --realtime --duration=3600
+- Run in real time for 1 hour: *mp.py --realtime --duration=3600*

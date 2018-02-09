@@ -492,6 +492,7 @@ class Tr:
         print "FATAL: "+str(self.name)+" is facing a Type 2 signal. It should rather face the next signal (a type 5)"
         sys.exit()    
     r.set("sig:"+previousSig['seg']+":"+previousSig['name']+":isOccupied",self.name)
+    r.set("sig:"+previousSig['seg']+":"+previousSig['name'],"red")
     updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def step(self):
@@ -524,8 +525,11 @@ class Tr:
     if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
       self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       self.advSIGcol=r.get(self.redisSIG)
+      isOc=r.get(self.redisSIG+":isOccupied")
+      if isOc is not None:
+        self.advSIGcol="red"
       if not __debug__:
-        print self.name+":t:"+str(t)+":ADVANCE "+self.advSIGcol+" SIG vK:"+str(self.vK)
+        print self.name+":t:"+str(t)+":ADVANCE "+self.advSIGcol+" SIG vK:"+str(self.vK)+" "+self.redisSIG+" isOccupied? "+str(isOc)
       self.sigSpotted=True
       if (self.advSIGcol=="red"):
         self.a=dcc#+aGauss()
@@ -909,6 +913,7 @@ def updateSIGbyTrOccupation(aSig,name,state):
           print name+":"+str(t)+":FATAL is already occupied "+redisSIG+" by "+sigAlreadyOccupied
           sys.exit()
       r.set(redisSIG+":isOccupied",name)
+      r.set(redisSIG,state)
       sigAlreadyOccupied=name
       previousSig=findPrevSIGforOccupation(aSig)
       redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
