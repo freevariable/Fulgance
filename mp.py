@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -110,6 +110,23 @@ def initSchedule():
         ts.append(t)
         cnt=cnt+1  
     return ts
+
+def initGRDs():
+  global segs
+  gts={}
+  for se in segs:
+    f=open(projectDir+segmentsDir+se+"/GRDs.txt","r")
+    ssf=f.readlines()
+    ss=[]
+    f.close()
+    cnt=0
+    for s in ssf:
+      if (s[0]!='#'):
+        s=s.rstrip().split(" ")
+        ss.append(s)
+        cnt=cnt+1  
+    gts[se]=ss
+  return gts
 
 def initSTAs():
   global segs
@@ -250,6 +267,7 @@ def initAll():
   global stas
   global sigs
   global trss
+  global grds
   global trs
   global segs
   global jumpseat
@@ -262,7 +280,7 @@ def initAll():
   stas=initSTAs()
   sigs=initSIGs()
   trss=initSchedule()
-#  print trss
+  grds=initGRDs()
   cnt=0
   for aa in trss:
     if ((aa[0]!="#") and (cnt==0)):
@@ -354,7 +372,9 @@ class Tr:
     self.BDsta=0.0  #fornext station
     self.DBrt=0.0  #for next realtime event (sig or tvm)
 #    self.gradient=math.atan(self.grade/100.0)
-    self.gradient=self.grade/100.0    #good approx even for gred 2.5%
+    self.GRDcnt=findMyGRDcnt(initPos,initSegment)
+    self.nextGRD=grds[initSegment][self.GRDcnt]
+    self.nGRDx=1000.0*float(self.nextGRD[0])
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
@@ -368,14 +388,21 @@ class Tr:
       print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
       print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
       print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
+      print self.name+":t:"+str(t)+" next GRD at PK"+self.nextGRD[0]+" with grade "+self.nextGRD[1]
     self.nTIVx=1000.0*float(self.nextTIV[0])
     self.nTIVvl=float(self.nextTIV[1])
     self.cTIVvl=0.0
     self.nTIVtype='>>'    # tiv increases speed
+    if (self.GRDcnt>0):
+      self.grade=float(grds[initSegment][self.GRDcnt-1][1])
+    else:
+      self.grade=float(grds[initSegment][self.GRDcnt][1])
+    self.gradient=self.grade/100.0    #good approx even for grad less than 3.0%
     if (self.TIVcnt>0):
       self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
-      self.maxVk=min(maxLine,VMX)
+#      self.maxVk=min(maxLine,VMX)
+      self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt][1]))
     self.PK=self.x
     self.aGaussFactor=aGauss()
     self.aFull=0.0
@@ -430,7 +457,7 @@ class Tr:
     self.BDsta=0.0  #fornext station
     self.DBrt=0.0  #for next realtime event (sig or tvm)
 #    self.gradient=math.atan(self.grade/100.0)
-    self.gradient=self.grade/100.0    #good approx even for gred 2.5%
+    self.GRDcnt=findMyGRDcnt(initPos,initSegment)
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
@@ -439,15 +466,18 @@ class Tr:
        sys.exit()
     self.nextSTA=stas[initSegment][self.STAcnt]
     self.nextSIG=sigs[initSegment][self.SIGcnt]
-
+    print "MyGRDcnt is:"+str(self.GRDcnt)
+    self.nextGRD=grds[initSegment][self.GRDcnt]
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
+    self.nGRDx=1000.0*float(self.nextGRD[0])
     self.nextTIV=tivs[initSegment][self.TIVcnt]
     if not __debug__:
       print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
       print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
       print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
       print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
+      print self.name+":t:"+str(t)+" next GRD at PK"+self.nextGRD[0]+" with limit "+self.nextGRD[1]
     self.nTIVx=1000.0*float(self.nextTIV[0])
     self.nTIVvl=float(self.nextTIV[1])
     self.cTIVvl=0.0
@@ -455,7 +485,13 @@ class Tr:
     if (self.TIVcnt>0):
       self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
-      self.maxVk=min(maxLine,VMX)
+      self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt][1]))
+#      self.maxVk=min(maxLine,VMX)
+    if (self.GRDcnt>0):
+      self.grade=float(grds[initSegment][self.GRDcnt-1][1])
+    else:
+      self.grade=float(grds[initSegment][self.GRDcnt][1])
+    self.gradient=math.atan(self.grade/100.0)
     self.PK=self.x
     self.aGaussFactor=aGauss()
     self.aFull=0.0
@@ -832,6 +868,19 @@ class Tr:
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
 
+def findMyGRDcnt(x,seg):
+  global grds
+  xK=x/1000.0
+  cnt=0
+  for ast in grds[seg]:
+    if float(ast[0])>=xK:
+      if cnt>0:
+        return (cnt-1)
+      else:
+        return cnt
+    cnt=cnt+1
+  return cnt-1
+
 def findMySTAcnt(x,seg):
   global stas
   xK=x/1000.0
@@ -889,12 +938,14 @@ def findMyTIVcnt(x,seg):
   global tivs
   xK=x/1000.0
   cnt=0
-  found=False
   for ati in tivs[seg]:
     if float(ati[0])>=xK:
-      break
+      if (cnt>0):
+        return cnt-1
+      else:
+        return cnt
     cnt=cnt+1
-  return cnt
+  return cnt-1
 
 def updateSIGbyTrOccupationIf(aSig,name,state,ifState):
   global sigs
