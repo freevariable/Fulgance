@@ -25,7 +25,7 @@ WHEELFACTOR=G*0.025
 DUMPDATA=True
 TPROGRESS=False
 STAPROGRESS=True
-GSENSITIVITY=6.03   # sensitivity to grade
+GSENSITIVITY=1.00   # sensitivity to grade
 ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
 ALAW=1   # law governing acc between vpoint and vmx
@@ -1083,6 +1083,9 @@ else:
 
 while (exitCondition==False):
   t=ncyc/CYCLE
+  intT=int(t)
+  if (intT%5==0):
+    sys.stdout.flush()
   for aT in trs:
     aT.step()
   if (t>duration):

@@ -6,7 +6,6 @@
 - [ ] define rolling stock (only EMUs for now)
 - [ ] distribute train services over mutiple simulation engines if you have a busy train schedule (only single sim engine for now)
 - [x] run schedules in real-time or accelerated time
-- [ ] jump into a train to check its real-time progress (not implemented yet)
 - [ ] trainspot at a platform instantly, check out its real-time information board
 - [ ] calibrate/optimize trains frequency at peak and off peak hours
 - [x] calculate power consumption
@@ -45,12 +44,13 @@ Junction signals can manage only two legs, no less, no more. One leg is the main
 #### Multi engines environment
 - taskset (part of utils-linux in Ubuntu).
 Note: in multi-core environments, redis is also used for inter-process synchronisation.
-#### Jumpseat and control room
-- Python curses (the jumpseat a dn the control room will not work on Windows, sorry...)
-Note: jumpseat and control room rely on redis for getting the real-time state of a train.
+#### Control room
+Note: control room relies on redis for getting the real-time state of a train.
 
 ### Let's get started
 To run the simulation in single simulation engine mode, simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route, the Paris Metro line 1, located in ParisLine1/schedules/default.txt
+
+By default, 50 train services are run in parallel. The sim will not stop until you hit CTRL+C
 
 ### Parameters
 To run the sim in realtime, set REALTIME constant to True. Otherwise it will run as fast as possible on your CPU.
