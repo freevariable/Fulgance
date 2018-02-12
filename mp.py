@@ -347,6 +347,7 @@ class Tr:
   segment=''
   grade=0.0 # percentage
   gradient=0.0 # angle of inclination, in radian
+  oldGradient=0.0
   power=0.0
   m=WEIGHT
 
@@ -371,10 +372,10 @@ class Tr:
     self.BDtiv=0.0  #breaking distance for next TIV
     self.BDsta=0.0  #fornext station
     self.DBrt=0.0  #for next realtime event (sig or tvm)
-#    self.gradient=math.atan(self.grade/100.0)
     self.GRDcnt=findMyGRDcnt(initPos,initSegment)
     self.nextGRD=grds[initSegment][self.GRDcnt]
     self.nGRDx=1000.0*float(self.nextGRD[0])
+    self.transitionGRDx=self.nGRDx+TLENGTH
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
@@ -398,6 +399,7 @@ class Tr:
     else:
       self.grade=float(grds[initSegment][self.GRDcnt][1])
     self.gradient=self.grade/100.0    #good approx even for grad less than 3.0%
+    self.oldGradient=self.gradient
     if (self.TIVcnt>0):
       self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
@@ -471,6 +473,7 @@ class Tr:
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
     self.nGRDx=1000.0*float(self.nextGRD[0])
+    self.transitionGRDx=self.nGRDx+TLENGTH
     self.nextTIV=tivs[initSegment][self.TIVcnt]
     if not __debug__:
       print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
@@ -491,7 +494,9 @@ class Tr:
       self.grade=float(grds[initSegment][self.GRDcnt-1][1])
     else:
       self.grade=float(grds[initSegment][self.GRDcnt][1])
-    self.gradient=math.atan(self.grade/100.0)
+    #self.gradient=math.atan(self.grade/100.0)
+    self.gradient=self.grade/100.0
+    self.oldGradient=self.gradient
     self.PK=self.x
     self.aGaussFactor=aGauss()
     self.aFull=0.0
@@ -537,20 +542,44 @@ class Tr:
     global t
     global exitCondition
     gFactor=G*self.gradient
-    dcc=DCC-gFactor
-    gFactor=gFactor*GSENSITIVITY
     vSquare=self.v*self.v
     v2factor=(AIRFACTOR*vSquare)
-    factors=v2factor+gFactor+WHEELFACTOR
     mv=self.m*self.v
-    if (dcc<DCC):  #since DCC is always negative...
-      dcc=DCC
-    self.BDzero=-(self.v*self.v)/(2*(dcc))
     if (ncyc%CYCLE==0):
       self.aGaussFactor=aGauss()
 #
 # STAGE 1 : main acc updates
 #
+    if (self.x>=(self.nGRDx)):
+      if not __debug__:
+        print self.name+":t:"+str(t)+":PASSING BY GRD "+self.segment+":"+" vK:"+str(self.vK)+" at x:"+str(self.nGRDx)+" with GRD:"+self.nextGRD[1]
+      self.transitionGRDx=self.nGRDx+TLENGTH
+      self.oldGradient=self.gradient
+#      self.gradient=float(self.nextGRD[1])
+      if (self.GRDcnt<len(grds[self.segment])-1):
+        self.GRDcnt=self.GRDcnt+1 
+        self.nextGRD=grds[self.segment][self.GRDcnt] 
+        self.nGRDx=1000.0*float(self.nextGRD[0])
+        if not __debug__:
+          print self.name+":t:"+str(t)+"next GRD (value "+self.nextGRD[1]+") at x:"+str(self.nGRDx)+" with transition at x:"+str(self.transitionGRDx)
+      else:
+        if not __debug__:
+          print self.name+":t:"+str(t)+":no more GRDS on segment "+self.segment
+        self.nGRDx=sys.maxsize
+        self.transitionGRDx=sys.maxsize
+      if not __debug__:
+        print self.name+":t:"+str(t)+":next GRD change is at x:"+str(self.nGRDx)
+    if (self.x>=(self.transitionGRDx-TLENGTH)):
+      if (self.x<=self.transitionGRDx):
+        ratio=(self.transitionGRDx-self.x)/(self.transitionGRDx)
+        gFactor=G*self.oldGradient*ratio+G*self.gradient*(1.0-ratio)
+        if not __debug__:
+          print self.name+":t:"+str(t)+":GRD progress:"+str(ratio)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)
+    factors=v2factor+gFactor+WHEELFACTOR
+    dcc=DCC-gFactor
+    if (dcc<DCC):  #since DCC is always negative...
+      dcc=DCC
+    self.BDzero=-(self.v*self.v)/(2*(dcc))
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
       if not __debug__:
         print self.name+":t:"+str(t)+":ADVANCE STA x:"+str(self.nSTAx)+" vK:"+str(self.vK)
@@ -579,7 +608,7 @@ class Tr:
         self.sigSpotted=False
       if (self.sigBrake==True):
         self.sigBrake=False
-        if ((self.vK<0.0) or (self.vK>6.0)):
+        if ((self.vK<0.0) or (self.vK>3.0)):
           print self.name+":t:"+str(t)+" **** FATAL AT SIG "+self.nextSIG[1]+" **** PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
           sys.exit()
         self.a=0.0
@@ -650,7 +679,7 @@ class Tr:
       self.v=0.0
       self.vK=0.0
     if (self.x>=(self.nSTAx)):
-      if ((self.vK<0.0) or (self.vK>6.0)):
+      if ((self.vK<0.0) or (self.vK>3.0)):
         print "FATAL at STA"
         sys.exit()
       self.inSta=True
