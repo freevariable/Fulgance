@@ -1,6 +1,6 @@
 ## FAQ 
 ### What's this?
-**Fulgance** is a text-based railroad simulator that will let you perform various tasks:
+**Fulgence** is a text-based railroad simulator that will let you perform various tasks:
 - [x] define realistic or fancy routes
 - [x] define realistic or fancy schedules
 - [ ] define rolling stock (only EMUs for now)
@@ -15,10 +15,10 @@
 ### Notes for route designers
 #### Layout
 - routes will support both on-track signals and electronic signals (only on-track for now) for trains separation
-- Routes are located in (Fulgance folder)/(routeName)/ 
+- Routes are located in (Fulgence folder)/(routeName)/ 
 - Routes are made of segments located in (routeName)/segments/(segmentName)/. For example: ParisLine1/segments/WestboundMain/ for the default route
 - A segment is a set of contiguous blocks where each block is under control of a signal
-- Blocks are not explicitely delimited or managed in Fulgance. In fact, signals define blocks.
+- Blocks are not explicitely delimited or managed in Fulgence. In fact, signals define blocks.
 - Blocks are unidirectional, except the ones protected by a **reversing signal** 
 - In each segment, you need to describe the location of signals (SIGs), stations (STAs), speed limits (TIVs) and grades (GRDs). 
 - All route and schedule data are kept in simple text files. Lines beginning with a hash are ignored, as one would expect.
@@ -59,7 +59,7 @@ To adjust simulation precision, you may set the CYCLE variable to your wishing. 
 To run the sim in debug mode, modify the first line to add the -O option to python
 
 ### Command line options
-Fulgance will run without any such options.
+Fulgence will run fine without options, but there are several things you may wish to change:
 - Set a given duration (in seconds) using *mp.py --duration=seconds*, otherwise the sim will go on forever.
 - Pick a non-default route (the TestTrack route for instance) with *mp.py --route=TestTrack*
 - Choose a non-default schedule: *mp.py --schedule=myschedule.txt*
