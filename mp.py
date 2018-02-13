@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -399,7 +399,7 @@ class Tr:
   gradient=0.0 # angle of inclination, in radian
   oldGradient=0.0
   power=0.0
-  m=WEIGHT
+  m=0.0
 
   def append(self,aTr):
     self.trs.append(aTr)
@@ -410,6 +410,8 @@ class Tr:
         yield i
 
   def reinit(self,initSegment,initPos,initTime):
+    global stock
+    global t
     if not __debug__:
       print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient
@@ -425,7 +427,7 @@ class Tr:
     self.GRDcnt=findMyGRDcnt(initPos,initSegment)
     self.nextGRD=grds[initSegment][self.GRDcnt]
     self.nGRDx=1000.0*float(self.nextGRD[0])
-    self.transitionGRDx=self.nGRDx+TLENGTH
+    self.transitionGRDx=self.nGRDx+stock['length']
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
@@ -452,9 +454,9 @@ class Tr:
     self.oldGradient=self.gradient
     self.ratioGRD=1.0
     if (self.TIVcnt>0):
-      self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
+      self.maxVk=min(stock['maxSpeed'],float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
-      self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt][1]))
+      self.maxVk=min(stock['maxSpeed'],float(tivs[initSegment][self.TIVcnt][1]))
     self.PK=self.x
     self.aGaussFactor=aGauss()
     self.aFull=0.0
@@ -494,8 +496,10 @@ class Tr:
 
   def __init__(self,name,initSegment,initPos,initTime):
     global r
+    global stock
     if not __debug__:
       print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
+    self.m=stock['weight']
     gFactor=G*self.gradient
     v2factor=0.0
     factors=gFactor+v2factor+WHEELFACTOR
@@ -513,9 +517,9 @@ class Tr:
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
-    if (self.STAcnt==0):
-       print "FATAL: "+str(self.name)+" must be located at least at PK"+str(float(TLENGTH/1000))+". Currently it is located at PK"+str(initPos)
-       sys.exit()
+    if stock['length']>initPos:
+      print "FATAL: "+str(self.name)+" must be located at least at x:"+str(stock['length'])+". Currently it is located at x:"+str(initPos)
+      sys.exit()
     self.nextSTA=stas[initSegment][self.STAcnt]
     self.nextSIG=sigs[initSegment][self.SIGcnt]
     print "MyGRDcnt is:"+str(self.GRDcnt)
@@ -523,7 +527,7 @@ class Tr:
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
     self.nGRDx=1000.0*float(self.nextGRD[0])
-    self.transitionGRDx=self.nGRDx+TLENGTH
+    self.transitionGRDx=self.nGRDx+stock['length']
     self.nextTIV=tivs[initSegment][self.TIVcnt]
     if not __debug__:
       print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
@@ -536,9 +540,9 @@ class Tr:
     self.cTIVvl=0.0
     self.nTIVtype='>>'    # tiv increases speed
     if (self.TIVcnt>0):
-      self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
+      self.maxVk=min(stock['maxSpeed'],float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
-      self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt][1]))
+      self.maxVk=min(stock['maxSpeed'],float(tivs[initSegment][self.TIVcnt][1]))
     if (self.GRDcnt>0):
       self.grade=float(grds[initSegment][self.GRDcnt-1][1])
     else:
@@ -591,9 +595,10 @@ class Tr:
   def step(self):
     global t
     global exitCondition
+    global stock
     gFactor=G*self.gradient
     vSquare=self.v*self.v
-    v2factor=(AIRFACTOR*vSquare)
+    v2factor=(stock['airFactor']*vSquare)
     mv=self.m*self.v
     if (ncyc%CYCLE==0):
       self.aGaussFactor=aGauss()
@@ -603,7 +608,7 @@ class Tr:
     if (self.x>=(self.nGRDx)):
       if not __debug__:
         print self.name+":t:"+str(t)+":PASSING BY GRD "+self.segment+":"+" vK:"+str(self.vK)+" at x:"+str(self.nGRDx)+" with GRD:"+self.nextGRD[1]
-      self.transitionGRDx=self.nGRDx+TLENGTH
+      self.transitionGRDx=self.nGRDx+stock['length']
       self.oldGradient=self.gradient
       self.gradient=float(self.nextGRD[1])/100.0
       if (self.GRDcnt<len(grds[self.segment])-1):
@@ -620,16 +625,16 @@ class Tr:
       if not __debug__:
         print self.name+":t:"+str(t)+":next GRD change is at x:"+str(self.nGRDx)
     if (ncyc%5==0):  # perform grade calculations every 5 cycles
-      if (self.x>=(self.transitionGRDx-TLENGTH)):
+      if (self.x>=(self.transitionGRDx-stock['length'])):
         if (self.x<=self.transitionGRDx):
-          self.ratioGRD=(self.transitionGRDx-self.x)/(TLENGTH)
+          self.ratioGRD=(self.transitionGRDx-self.x)/(stock['length'])
           gFactor=G*self.oldGradient*self.ratioGRD+G*self.gradient*(1.0-self.ratioGRD)
           if not __debug__:
             print self.name+":t:"+str(t)+":GRD progress:"+str(self.ratioGRD)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)+" ratio:"+str(self.ratioGRD)
     factors=v2factor+gFactor+WHEELFACTOR
-    dcc=DCC-gFactor
-    if (dcc<DCC):  #since DCC is always negative...
-      dcc=DCC
+    dcc=stock['deceleration']-gFactor
+    if (dcc<stock['deceleration']):  #since DCC is always negative...
+      dcc=stock['deceleration']
     self.BDzero=-(self.v*self.v)/(2*(dcc))
     if ((self.staBrake==False) and (self.x>=(self.nSTAx-self.BDzero))):
       if not __debug__:
@@ -696,7 +701,7 @@ class Tr:
           updateSIGbyTrOccupation(p,self.name,"green")
           updateSIGbyTrOccupation(previousSig,self.name,"green")
           updateSIGbyTrOccupation(previousPreviousSig,self.name,"green")
-          self.reinit(kCur,0.0+TLENGTH-self.nSIGx+self.x,t)
+          self.reinit(kCur,0.0+stock['length']-self.nSIGx+self.x,t)
         else: 
           self.atSig=True
           self.sigPoll=t+SIGPOLL
@@ -766,7 +771,7 @@ class Tr:
         print self.name+":t:"+str(t)+":TIV "+str(self.TIVcnt-1)+" reached at curr speed "+str(self.vK)+", maxVk now "+str(self.maxVk)
     if (self.x>=self.nTIVx-self.deltaBDtiv):
       self.maxTIV=self.nTIVvl
-      self.maxVk=min(self.maxTIV,maxLine,VMX)
+      self.maxVk=min(self.maxTIV,maxLine,stock['maxSpeed'])
       if (self.nTIVtype=='<<'):
         if not __debug__:
           print self.name+":t:"+str(t)+":ADVANCE TIV "+str(self.TIVcnt)+" reached at curr speed "+str(self.vK)+", maxVk will be "+str(self.maxVk)
@@ -786,7 +791,7 @@ class Tr:
           self.nTIVtype='<<'  # next TIV decreases speed
           self.nv=self.nTIVvl/3.6
           self.cv=self.cTIVvl/3.6
-          self.BDtiv=((self.nv*self.nv)-(self.cv*self.cv))/(2*DCC)
+          self.BDtiv=((self.nv*self.nv)-(self.cv*self.cv))/(2*stock['deceleration'])
           self.BDtiv=1.5*self.BDtiv   # safety margin
         if not __debug__:
           print self.name+":t:"+str(t)+"  next TIV at PK"+self.nextTIV[0]+" with limit "+self.nTIVtype+self.nextTIV[1]+" (currspeed:"+str(self.vK)+")"
@@ -825,9 +830,9 @@ class Tr:
         self.a=0.0
       else:
         if (self.vK<=(auxMaxVk*VTHRESH)):
-          if (ALAW=='EMU1'):
+          if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccFromFactorsAndSpeed(factors,self.v)
-            if (self.a>ACC):
+            if (self.a>stock['acceleration']):
               print "FATAL ACC "+str(self.a)
               sys.exit()
             if not __debug__:
@@ -884,7 +889,7 @@ class Tr:
     if (ncyc%CYCLE==0):
 # here make coarse-grain markers calculation
 # power calculation:
-      self.power=WEIGHT*self.a*self.v+factors*self.v
+      self.power=stock['weight']*self.a*self.v+factors*self.v
       if (self.power<0.0):
         self.power=0.0
       if not __debug__:
@@ -1095,15 +1100,16 @@ def updateSIGbyTrOccupation(aSig,name,state):
     r.set(redisSIG,state)
 
 def getAccFromFactorsAndSpeed(f,v):
+  global stock
   powerFromFactors=v*f
-  availablePower=POWER-powerFromFactors
+  availablePower=stock['power']-powerFromFactors
   if (availablePower<0.0):
     return 0.0
   if (v>0.0):
-    acc=availablePower/(WEIGHT*v)
-    return min(acc,ACC)
+    acc=availablePower/(stock['weight']*v)
+    return min(acc,stock['acceleration'])
   else:
-    return ACC
+    return stock['acceleration']
 
 try:
   opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])
