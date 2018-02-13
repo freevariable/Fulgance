@@ -400,6 +400,7 @@ class Tr:
       self.grade=float(grds[initSegment][self.GRDcnt][1])
     self.gradient=self.grade/100.0    #good approx even for grad less than 3.0%
     self.oldGradient=self.gradient
+    self.ratioGRD=1.0
     if (self.TIVcnt>0):
       self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
@@ -497,6 +498,7 @@ class Tr:
     #self.gradient=math.atan(self.grade/100.0)
     self.gradient=self.grade/100.0
     self.oldGradient=self.gradient
+    self.ratioGRD=1.0
     self.PK=self.x
     self.aGaussFactor=aGauss()
     self.aFull=0.0
@@ -555,7 +557,7 @@ class Tr:
         print self.name+":t:"+str(t)+":PASSING BY GRD "+self.segment+":"+" vK:"+str(self.vK)+" at x:"+str(self.nGRDx)+" with GRD:"+self.nextGRD[1]
       self.transitionGRDx=self.nGRDx+TLENGTH
       self.oldGradient=self.gradient
-#      self.gradient=float(self.nextGRD[1])
+      self.gradient=float(self.nextGRD[1])/100.0
       if (self.GRDcnt<len(grds[self.segment])-1):
         self.GRDcnt=self.GRDcnt+1 
         self.nextGRD=grds[self.segment][self.GRDcnt] 
@@ -569,12 +571,13 @@ class Tr:
         self.transitionGRDx=sys.maxsize
       if not __debug__:
         print self.name+":t:"+str(t)+":next GRD change is at x:"+str(self.nGRDx)
-    if (self.x>=(self.transitionGRDx-TLENGTH)):
-      if (self.x<=self.transitionGRDx):
-        ratio=(self.transitionGRDx-self.x)/(self.transitionGRDx)
-        gFactor=G*self.oldGradient*ratio+G*self.gradient*(1.0-ratio)
-        if not __debug__:
-          print self.name+":t:"+str(t)+":GRD progress:"+str(ratio)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)
+    if (ncyc%5==0):  # perform grade calculations every 5 cycles
+      if (self.x>=(self.transitionGRDx-TLENGTH)):
+        if (self.x<=self.transitionGRDx):
+          self.ratioGRD=(self.transitionGRDx-self.x)/(TLENGTH)
+          gFactor=G*self.oldGradient*self.ratioGRD+G*self.gradient*(1.0-self.ratioGRD)
+#          if not __debug__:
+#            print self.name+":t:"+str(t)+":GRD progress:"+str(self.ratioGRD)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)+" ratio:"+str(self.ratioGRD)
     factors=v2factor+gFactor+WHEELFACTOR
     dcc=DCC-gFactor
     if (dcc<DCC):  #since DCC is always negative...
