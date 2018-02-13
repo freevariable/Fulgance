@@ -20,9 +20,8 @@
 - A segment is a set of contiguous blocks where each block is under control of a signal
 - Blocks are not explicitely delimited or managed in Fulgance. In fact, signals define blocks.
 - Blocks are unidirectional, except the ones protected by a **reversing signal** 
-- In each segment, you need to describe the location of signals (SIGs), stations (STAs) and speed limits (TIVs). 
+- In each segment, you need to describe the location of signals (SIGs), stations (STAs), speed limits (TIVs) and grades (GRDs). 
 - All route and schedule data are kept in simple text files. Lines beginning with a hash are ignored, as one would expect.
-- Route gradients are not supported yet
 - Markers are not supported yet. In the pipe: tunnels (provide weather protection), country boundaries (with imperial/metric unit changes), points of interest (landmarks), areas of interest, platform names, substations (for line sectioning).
 - Weather is not supported yet
 - Only passenger stations are available at the moment. Water points and fuel stations (coal or diesel) will be added later.
@@ -38,12 +37,12 @@ The following on-track signals are or will be implemented:
 Junction signals can manage only two legs, no less, no more. One leg is the main segment (left or right), the other one to the diverging/converging segment (left or right).Junction signals must have a unique name in both segments so that the engine may perform the segments stitching properly.
 
 ### Requirements
-#### Single and multi engines environnement
+#### Single and multi simulation engines
 - Python 2.7
 - A redis server running on the localhost (apt-get install redis-server in Ubuntu). Redis is used for signal aspects real-time management.
-#### Multi engines environment
+#### Multi simulation engines
 - taskset (part of utils-linux in Ubuntu).
-Note: in multi-core environments, redis is also used for inter-process synchronisation.
+Note: when using multi simulation engines, redis is also used for inter-process synchronisation.
 #### Control room
 Note: control room relies on redis for getting the real-time state of a train.
 

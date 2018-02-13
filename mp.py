@@ -25,23 +25,20 @@ WHEELFACTOR=G*0.025
 DUMPDATA=True
 TPROGRESS=False
 STAPROGRESS=True
-GSENSITIVITY=1.00   # sensitivity to grade
 ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
-ALAW=1   # law governing acc between vpoint and vmx
-         # 1 is linear
+ALAW='EMU1'   # law governing acc
+              # EMU1 is for MP05 EMUs
 WEIGHT=143000.0   #in kg
 POWER=2000000.0 #in W
-POWERWEIGHT=POWER/WEIGHT
 VMX=80.0   #km/h  max speed
 VMX2=(VMX*VMX)/12.96  # VMX squared, in m/s
 AIRFACTOR=0.68/VMX2
-VMXROOT=math.pow(VMX,0.3)
 TLENGTH=90.0  #length in m
 DCC=-1.10  #m/s2
 EMR=-1.50   #m/s2 emergency dcc
-DLAW=1    # law governing dcc between t=0 and t=tpoint
-          # 1 is linear
+DLAW='EMU1'    # law governing dcc between t=0 and t=tpoint
+          # EMU1 is  for MP05 EMUs
 SYNCPERIOD=0.5 # how often (in s) do we sync multicores
 CYCLEPP=100    # how many ticks we calculate between two multicore syncs
 CYCLE=CYCLEPP/SYNCPERIOD # how many ticks we calculate per second 
@@ -97,6 +94,19 @@ def initTIVs():
         cnt=cnt+1  
     gts[se]=ts
   return gts
+
+def initStock():
+    f=open(projectDir+stockName,"r")
+    tsf=f.readlines()
+    ts=[]
+    f.close()
+    cnt=0
+    for t in tsf:
+      if (t[0]!='#'):
+        t=t.rstrip().split(" ")
+        ts.append(t)
+        cnt=cnt+1  
+    return ts
 
 def initSchedule():
     f=open(projectDir+schedulesDir+scheduleName,"r")
@@ -272,6 +282,8 @@ def initAll():
   global segs
   global jumpseat
   global r
+  global stock
+  stock={}
   r.set('realtime:',REALTIME)
   if multi:
     r.set('multi:',numCores)
@@ -281,7 +293,45 @@ def initAll():
   sigs=initSIGs()
   trss=initSchedule()
   grds=initGRDs()
+  stockraw=initStock()
   cnt=0
+  stock['acceleration']=ACC
+  stock['accelerationLaw']=ALAW
+  stock['weight']=WEIGHT
+  stock['power']=POWER
+  stock['maxSpeed']=VMX
+  stock['airFactor']=AIRFACTOR
+  stock['length']=TLENGTH
+  stock['deceleration']=DCC
+  stock['decelerationLaw']=DLAW
+  stock['emergency']=EMR
+  for aa in stockraw:
+    if (aa[0]!="#"):
+      if (aa[0]=='acceleration'):
+        stock['acceleration']=float(aa[1])
+      if (aa[0]=='accelerationLaw'):
+        stock['accelerationLaw']=aa[1]
+      if (aa[0]=='weight'):
+        stock['weight']=float(aa[1])
+      if (aa[0]=='power'):
+        stock['power']=float(aa[1])
+      if (aa[0]=='maxSpeed'):
+        stock['maxSpeed']=float(aa[1])
+      if (aa[0]=='airFactor'):
+        stock['airFactor']=float(aa[1])
+      if (aa[0]=='length'):
+        stock['length']=float(aa[1])
+      if (aa[0]=='deceleration'):
+        stock['deceleration']=float(aa[1])
+      if (aa[0]=='decelerationLaw'):
+        stock['decelerationLaw']=aa[1]
+      if (aa[0]=='templateName'):
+        stock['templateName']=aa[1]
+      if (aa[0]=='emergency'):
+        stock['emergency']=float(aa[1])
+  if not __debug__:
+    print "rollingStock details:"
+    print stock
   for aa in trss:
     if ((aa[0]!="#") and (cnt==0)):
       found=False
@@ -362,7 +412,7 @@ class Tr:
   def reinit(self,initSegment,initPos,initTime):
     if not __debug__:
       print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
-    gFactor=G*self.gradient*GSENSITIVITY
+    gFactor=G*self.gradient
     v2factor=0.0
     factors=gFactor+v2factor+WHEELFACTOR
     self.x=initPos
@@ -404,7 +454,6 @@ class Tr:
     if (self.TIVcnt>0):
       self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
-#      self.maxVk=min(maxLine,VMX)
       self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt][1]))
     self.PK=self.x
     self.aGaussFactor=aGauss()
@@ -447,7 +496,7 @@ class Tr:
     global r
     if not __debug__:
       print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
-    gFactor=G*self.gradient*GSENSITIVITY
+    gFactor=G*self.gradient
     v2factor=0.0
     factors=gFactor+v2factor+WHEELFACTOR
     self.trs=[]
@@ -490,7 +539,6 @@ class Tr:
       self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
       self.maxVk=min(VMX,float(tivs[initSegment][self.TIVcnt][1]))
-#      self.maxVk=min(maxLine,VMX)
     if (self.GRDcnt>0):
       self.grade=float(grds[initSegment][self.GRDcnt-1][1])
     else:
@@ -777,7 +825,7 @@ class Tr:
         self.a=0.0
       else:
         if (self.vK<=(auxMaxVk*VTHRESH)):
-          if (ALAW==1):
+          if (ALAW=='EMU1'):
             self.a=getAccFromFactorsAndSpeed(factors,self.v)
             if (self.a>ACC):
               print "FATAL ACC "+str(self.a)
@@ -1069,6 +1117,8 @@ numCores= CORES
 realTime=REALTIME
 core=1
 scheduleName="default.txt"
+stockName="rollingStock.txt"
+
 serviceList=[]
 for o, a in opts:
   if o == "-m":
