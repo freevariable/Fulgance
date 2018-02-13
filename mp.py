@@ -576,8 +576,8 @@ class Tr:
         if (self.x<=self.transitionGRDx):
           self.ratioGRD=(self.transitionGRDx-self.x)/(TLENGTH)
           gFactor=G*self.oldGradient*self.ratioGRD+G*self.gradient*(1.0-self.ratioGRD)
-#          if not __debug__:
-#            print self.name+":t:"+str(t)+":GRD progress:"+str(self.ratioGRD)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)+" ratio:"+str(self.ratioGRD)
+          if not __debug__:
+            print self.name+":t:"+str(t)+":GRD progress:"+str(self.ratioGRD)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)+" ratio:"+str(self.ratioGRD)
     factors=v2factor+gFactor+WHEELFACTOR
     dcc=DCC-gFactor
     if (dcc<DCC):  #since DCC is always negative...
@@ -589,9 +589,9 @@ class Tr:
       self.staBrake=True
       self.a=dcc-gFactor#+aGauss()
     if ((self.staBrake==True) and (self.vK<=0.8)):
-      self.a=-0.004
+      self.a=-0.00004-gFactor
     elif (self.staBrake==True):
-      self.a=dcc
+      self.a=dcc#-gFactor
     if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
       self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       self.advSIGcol=r.get(self.redisSIG)
@@ -605,7 +605,7 @@ class Tr:
         self.a=dcc#+aGauss()
         self.sigBrake=True
     if ((self.sigBrake==True) and (self.vK<=0.7)):
-      self.a=-0.004
+      self.a=-0.00004-gFactor
     if ((self.atSig==False) and (self.x>=(self.nSIGx))):
       if (self.sigSpotted==True):
         self.sigSpotted=False
@@ -822,7 +822,7 @@ class Tr:
           else:
             print "FATAL neg speed. aF: "+str(self.aFull)+" vK:"+str(self.vK)+" v:"+str(self.v)
             sys.exit()
-    else:
+    else:   #negative a
       self.aFull=self.a
       if (self.aFull>0.0):
         self.aFull=0.0 
@@ -842,7 +842,7 @@ class Tr:
       if not __debug__:
         if (realTime==False):
 #      if ((self.inSta==False) and (self.atSig==False)):
-          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)
+          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)+" sigBrake?"+str(self.sigBrake)+" staBrake?"+str(self.staBrake)
         if TPROGRESS==True:
           print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
     if (self.inSta==True):
