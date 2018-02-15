@@ -1,0 +1,6 @@
+#0.0 E
+0.350 Gare-du-Nord
+41.7 Chantilly
+129.3 Amiens
+296.1 Hastings
+500.0 End

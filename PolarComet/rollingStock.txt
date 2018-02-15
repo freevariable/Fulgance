@@ -6,7 +6,7 @@ weight 143000.0
 power 2000000.0
 maxspeed 80.0
 airFactor 0.001377
-railFactor 0.24525
+wheelFactor 0.24525
 length 90.0
 deceleration -1.1
 decelerationLaw EMU1

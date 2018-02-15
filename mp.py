@@ -301,6 +301,7 @@ def initAll():
   stock['power']=POWER
   stock['maxSpeed']=VMX
   stock['airFactor']=AIRFACTOR
+  stock['railFactor']=WHEELFACTOR
   stock['length']=TLENGTH
   stock['deceleration']=DCC
   stock['decelerationLaw']=DLAW
@@ -416,7 +417,7 @@ class Tr:
       print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
     gFactor=G*self.gradient
     v2factor=0.0
-    factors=gFactor+v2factor+WHEELFACTOR
+    factors=gFactor+v2factor+stock['railFactor']
     self.x=initPos
     self.trip=self.trip+1
     self.coasting=False
@@ -502,7 +503,7 @@ class Tr:
     self.m=stock['weight']
     gFactor=G*self.gradient
     v2factor=0.0
-    factors=gFactor+v2factor+WHEELFACTOR
+    factors=gFactor+v2factor+stock['railFactor']
     self.trs=[]
     self.trip=0
     self.coasting=False
@@ -522,7 +523,6 @@ class Tr:
       sys.exit()
     self.nextSTA=stas[initSegment][self.STAcnt]
     self.nextSIG=sigs[initSegment][self.SIGcnt]
-    print "MyGRDcnt is:"+str(self.GRDcnt)
     self.nextGRD=grds[initSegment][self.GRDcnt]
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
@@ -530,6 +530,7 @@ class Tr:
     self.transitionGRDx=self.nGRDx+stock['length']
     self.nextTIV=tivs[initSegment][self.TIVcnt]
     if not __debug__:
+      print self.name+":t:"+str(t)+" MyGRDcnt is:"+str(self.GRDcnt)
       print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
       print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
       print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
@@ -631,7 +632,7 @@ class Tr:
           gFactor=G*self.oldGradient*self.ratioGRD+G*self.gradient*(1.0-self.ratioGRD)
           if not __debug__:
             print self.name+":t:"+str(t)+":GRD progress:"+str(self.ratioGRD)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)+" ratio:"+str(self.ratioGRD)
-    factors=v2factor+gFactor+WHEELFACTOR
+    factors=v2factor+gFactor+stock['railFactor']
     dcc=stock['deceleration']-gFactor
     if (dcc<stock['deceleration']):  #since DCC is always negative...
       dcc=stock['deceleration']
@@ -864,7 +865,7 @@ class Tr:
 # STAGE 3 : calculate aFull
 #
     if (self.a>=0.0):
-      self.aFull=self.a-v2factor-gFactor-WHEELFACTOR
+      self.aFull=self.a-v2factor-gFactor-stock['railFactor']
       if (self.aFull<0.0):
         if ((self.v+(self.aFull/CYCLE))<0.0):
           if (self.v>0.0):
@@ -895,7 +896,7 @@ class Tr:
       if not __debug__:
         if (realTime==False):
 #      if ((self.inSta==False) and (self.atSig==False)):
-          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)+" sigBrake?"+str(self.sigBrake)+" staBrake?"+str(self.staBrake)
+          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" factors:"+str(factors)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)+" sigBrake?"+str(self.sigBrake)+" staBrake?"+str(self.staBrake)
         if TPROGRESS==True:
           print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
     if (self.inSta==True):
@@ -1017,6 +1018,8 @@ def findPrevSIGforOccupation(atSig):
     prevSig['name']=sigs[kOther][kPrevCnt][1]
     if not __debug__:
       print "here is the corresponding type 3: "+str(prevSig)
+  if not __debug__:
+    print "the prec SIG of "+str(atSig)+" is: "+str(prevSig)
   return prevSig
 
 def findMyTIVcnt(x,seg):
