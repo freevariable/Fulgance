@@ -59,7 +59,6 @@ segs={}
 ncyc=0
 t=0.0
 maxLine=160.0    # max speed allowed on a line, km/h
-jumpseat=''
 exitCondition=False
 projectDir='ParisLine1/'
 schedulesDir='schedules/'
@@ -340,8 +339,6 @@ def initAll():
          if asi[1]==aa[2]:
            aPos=1000.0*float(asi[0])
       trs=Tr(aa[0],aa[1],aPos,float(aa[3]))
-      jumpseat=aa[0]
-      r.set("jumpseat:",jumpseat)
     else:
       if (aa[0]!="#"):
         found=False
@@ -492,7 +489,7 @@ class Tr:
     updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def dumpstate(self):
-    r.hmset(self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'PK':self.PK,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA,'nextSIG':self.nextSIG,'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'vK':self.vK})
+    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'PK':self.PK,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA,'nextSIG':self.nextSIG,'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'vK':self.vK})
 #    print r.hgetall(self.name)
 
   def __init__(self,name,initSegment,initPos,initTime):
@@ -1182,14 +1179,14 @@ def stepRT(s):
       print "RT:"+str(t)
     for aT in trs:
       aT.step()
-      if (aT.name==jumpseat):
-        aT.dumpstate()
     if (t>duration):
       exitCondition=True
       print "EXIT condition True"
       sys.exit()
     ncyc=ncyc+1
     ccc=ccc+1
+  for aT in trs:
+    aT.dumpstate()
   time.sleep(.3)
 
 def longTail(startpoint,incr,maxval):

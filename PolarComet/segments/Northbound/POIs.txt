@@ -1,13 +1,15 @@
 #PK type name
-# Type L: landmark (no semantics)
-8.2 L Saint-Denis
-26.0 L Puiseux(bend)
-31.3 L Survilliers(bend)
-41.7 L Chantilly
-50.4 L Creil
-78.6 L St-Just
-110.2 L Ailly
-129.3 L Amiens
-172.8 L Abbeville
-193.3 L Le-Crotoy
-296.1 L Hastings
+# Type Lk: landmark (no semantics)
+# Type Pt: portal+action.  Action : exit sim or remove service.
+# Type Bd: border+old country code+new country code. Triggers units change.
+8.2 Lk Saint-Denis
+26.0 Lk Puiseux(bend)
+31.3 Lk Survilliers(bend)
+41.7 Lk Chantilly
+50.4 Lk Creil
+78.6 Lk St-Just
+110.2 Lk Ailly
+129.3 Lk Amiens
+172.8 Lk Abbeville
+193.3 Lk Le-Crotoy
+296.1 Lk Hastings
