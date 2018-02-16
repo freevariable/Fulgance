@@ -8,11 +8,15 @@
 
 function showSrv(svc) {
 
-  alert(svc);
+//  alert(svc);
 
   var popup=document.getElementById(svc);
 
-  popup.innerHTML+='YOOO';
+//  alert(popup);
+
+  popup.innerHTML='YOOO';
+
+  alert(popup.innerHTML);
 
   popup.classList.toggle("Show");
 
@@ -23,24 +27,14 @@ function showSrv(svc) {
 <style type="text/css">
 
 .popUp {
-
     position: relative;
-
     display: inline-block;
-
     cursor: pointer;
-
     -webkit-user-select: none;
-
     -moz-user-select: none;
-
     -ms-user-select: none;
-
     user-select: none;
-
 }
-
-
 
 .popUp .srvPopUp {
 
@@ -66,9 +60,13 @@ function showSrv(svc) {
 
 
 
-.srvPopUp .Show {
+.popUp .show {
 
     visibility: visible;
+
+    -webkit-animation: fadeIn 1s;
+
+    animation: fadeIn 1s;
 
 }
 
@@ -164,7 +162,7 @@ function showSrv(svc) {
 <div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div>
 <div class="divTableCell"></div>
 </div>
-<div class="divTableRow"><div class="divTableCell"><div class="popUp" onclick="showSrv('E5OO')">XXXXXX<span class="srvPopUp" id="E500"></span></div></div>
+<div class="divTableRow"><div class="divTableCell"><div class="popUp" onclick="showSrv('E500')">E500<span class="srvPopUp" id="E500"></span></div></div>
 <div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div>
 <div class="divTableCell">Chateau-De-Vincennes</div>
 </div>

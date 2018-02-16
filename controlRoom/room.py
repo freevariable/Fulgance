@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import re,sys,redis
+import re,sys,redis,copy
 
 ICONSTABEGIN="https://en.wikipedia.org/wiki/File:BSicon_KBHFa.svg"
 ICONSTAEND="https://en.wikipedia.org/wiki/File:BSicon_KBHFe.svg"
@@ -18,6 +18,7 @@ ICONTRACKRIGHTCONVBEND="https://en.wikipedia.org/wiki/File:BSicon_KRWr.svg"
 
 dash={}
 html={}
+svcs={}
 projectDir="../ParisLine1/"
 segmentsDir="segments/"
 smallSTAsvg="BSicon_HST.svg"
@@ -40,7 +41,7 @@ def initHEAD():
     ss.append(s)
   return ss
 
-def initSchedules(seg):
+def initSchedule(seg):
   global segs
   f=open(projectDir+"/schedules/default.txt","r")
   ssf=f.readlines()
@@ -84,32 +85,36 @@ def initSIGs(seg):
 
 stas=initSTAs('WestboundMain')
 sigs=initSIGs('WestboundMain')
-svcs=initSchedules('WestboundMain')
+sched=initSchedule('WestboundMain')
+svcs={}
 cells={}
 
 def getState(seg):
-  global svcs
-  for v in svcs:
-    state=r.hgetall('state:'+v[0])
-    print state
+  global sched
+  lsvcs=[]
+  for v in sched:
+    state=r.hgetall('state:'+v)
+    s=dict(state)
+    if state['segment']==seg:
+      s['name']=v
+      lsvcs.append(s)
+  return lsvcs
 
 def buildDashboard():
   global sigs
   global stas
+  global svcs
   cells=[]
   html=initHEAD()
-#  print html
   for s in sigs:
     cell={}
     rx=re.match(r'(.*)\+10',s[1])
     if rx:
-#      print rx.group(1)
       for a in stas:
         if (a[1]==rx.group(1)):
-#          print a
           if len(s)>2:
             if ((s[2]=='1') or (s[2]=='3') or (s[2]=='5')):
-              cell['pK']=float(a[0])
+              cell['PK']=float(a[0])
               cell['name']=a[2]
               cell['type']='STA'
               if len(a)>3:
@@ -117,7 +122,7 @@ def buildDashboard():
                   cell['size']='X'
               cells.append(cell)
           else:
-            cell['pK']=float(a[0])
+            cell['PK']=float(a[0])
             cell['name']=a[2]
             cell['type']='STA'
             if len(a)>3:
@@ -125,15 +130,28 @@ def buildDashboard():
                 cell['size']='X'
             cells.append(cell)
     else:
-      cell['pK']=float(s[0])
+      cell['PK']=float(s[0])
       cell['type']='SIG'
       cells.append(cell)
 #    print cell
+  for v in svcs:
+    found=False
+    oldc={}
+    for c in cells:
+      if float(v['PK'])<c['PK']:
+        if (found==False):
+#          print v['name']+'__'+str(v['PK'])+"__"+str(c['PK'])
+          oldc['service']=v['name']
+          found=True
+      oldc=c
   for c in cells:
-    line='<div class="divTableRow"><div class="divTableCell"></div>'
+    if 'service' in c:
+      line='<div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('+"\'"+c['service']+"\'"+')">'+c['service']+'</div><div class="popUp"><span class="srvPopUp" id="'+c['service']+'"></span></div></div>'
+    else:
+      line='<div class="divTableRow"><div class="divTableCell"></div>'
     html.append(line)
     if c['type']=='SIG':
-      line='<div class="divTableCell"><img width="10px" src="'+trackSvg+'"></div>'
+      line='<div class="divTableCell"><img width="11px" src="'+trackSvg+'"></div>'
       html.append(line)
       line='<div class="divTableCell"></div>'
       html.append(line)
@@ -142,7 +160,7 @@ def buildDashboard():
       if 'size' in c:
         if c['size']=='X':
           svg=largeSTAsvg
-      line='<div class="divTableCell"><img width="10px" src="'+svg+'"></div>'
+      line='<div class="divTableCell"><img width="11px" src="'+svg+'"></div>'
       html.append(line)
       line='<div class="divTableCell">'+c['name']+'</div>'
       html.append(line)
@@ -152,8 +170,7 @@ def buildDashboard():
   html.append(line)
   return html
 
-getState('WetboundMain')
-sys.exit()
+svcs=getState('WestboundMain')
 html=buildDashboard()
 
 for h in html:

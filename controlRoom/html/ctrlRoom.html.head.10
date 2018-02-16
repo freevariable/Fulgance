@@ -1,41 +1,26 @@
 <html>
 <head>
 <meta http-equiv="refresh" content="20" />
-<script>
-function showSrv(svc) {
-  alert(svc);
-  var popup=document.getElementById(svc);
-  popup.innerHTML+='YOOO';
-  popup.classList.toggle("Show");
-}
-</script>
 <style type="text/css">
-.popUp {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.popUp .srvPopUp {
+.divTableCell .srvPopUp {
     visibility: hidden;
     width: 160px;
-    background-color: #000;
+    background-color: #555;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 8px 0;
     position: absolute;
     z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
 }
 
 .srvPopUp .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+    animation: fadeIn 1s
 }
 
 .divTable{

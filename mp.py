@@ -662,7 +662,7 @@ class Tr:
         self.sigSpotted=False
       if (self.sigBrake==True):
         self.sigBrake=False
-        if ((self.vK<0.0) or (self.vK>3.0)):
+        if ((self.vK<0.0) or (self.vK>4.0)):
           print self.name+":t:"+str(t)+" **** FATAL AT SIG "+self.nextSIG[1]+" **** PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" vSquare:"+str(vSquare)
           sys.exit()
         self.a=0.0
@@ -733,7 +733,7 @@ class Tr:
       self.v=0.0
       self.vK=0.0
     if (self.x>=(self.nSTAx)):
-      if ((self.vK<0.0) or (self.vK>3.0)):
+      if ((self.vK<0.0) or (self.vK>4.0)):
         print "FATAL at STA"
         sys.exit()
       self.inSta=True

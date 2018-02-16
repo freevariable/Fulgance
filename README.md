@@ -3,11 +3,11 @@
 **Fulgence** is a text-based railroad simulator that will let you perform various tasks:
 - [x] define realistic or fancy routes
 - [x] define realistic or fancy schedules
-- [ ] define rolling stock (only EMUs for now)
+- [x] define rolling stock (only EMUs for now)
 - [ ] distribute train services over mutiple simulation engines if you have a busy train schedule (only single sim engine for now)
 - [x] run schedules in real-time or accelerated time
 - [ ] trainspot at a platform instantly, check out its real-time information board
-- [ ] calibrate/optimize trains frequency at peak and off peak hours
+- [x] calibrate/optimize trains frequency at peak and off peak hours
 - [x] calculate power consumption
 - [x] get detailed statistics for data crunching and rendering
 - [ ] access the route control room
@@ -20,6 +20,7 @@
 - A segment is a set of contiguous blocks where each block is under control of a signal
 - Blocks are not explicitely delimited or managed in Fulgence. In fact, signals define blocks.
 - Blocks are unidirectional, except the ones protected by a **reversing signal** 
+- Consequently, segments are unidirectional. It means that single track routes are not supported. (We hope to support them on the long term though)
 - In each segment, you need to describe the location of signals (SIGs), stations (STAs), speed limits (TIVs) and grades (GRDs). 
 - All route and schedule data are kept in simple text files. Lines beginning with a hash are ignored, as one would expect.
 - Markers are not supported yet. In the pipe: tunnels (provide weather protection), country boundaries (with imperial/metric unit changes), points of interest (landmarks), areas of interest, platform names, substations (for line sectioning).

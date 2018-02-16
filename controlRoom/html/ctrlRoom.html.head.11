@@ -10,17 +10,7 @@ function showSrv(svc) {
 }
 </script>
 <style type="text/css">
-.popUp {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.popUp .srvPopUp {
+.divTableCell .srvPopUp {
     visibility: hidden;
     width: 160px;
     background-color: #000;
@@ -35,7 +25,7 @@ function showSrv(svc) {
 .srvPopUp .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+    animation: fadeIn 1s
 }
 
 .divTable{
