@@ -5,12 +5,22 @@
 function showSrv(svc) {
   alert(svc);
   var popup=document.getElementById(svc);
-  popup.innerHTML+='YOOO';
+  popup.innerHTML='YOOO';
   popup.classList.toggle("Show");
 }
 </script>
 <style type="text/css">
-.divTableCell .srvPopUp {
+.popUp {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.popUp .srvPopUp {
     visibility: hidden;
     width: 160px;
     background-color: #000;
@@ -22,10 +32,10 @@ function showSrv(svc) {
     z-index: 1;
 }
 
-.srvPopUp .show {
+.popUp .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s
+    animation: fadeIn 1s;
 }
 
 .divTable{

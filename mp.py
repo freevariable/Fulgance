@@ -448,7 +448,7 @@ class Tr:
     self.nTIVx=1000.0*float(self.nextTIV[0])
     self.nTIVvl=float(self.nextTIV[1])
     self.cTIVvl=0.0
-    self.nTIVtype='>>'    # tiv increases speed
+    self.nTIVtype='INC'    # tiv increases speed
     if (self.GRDcnt>0):
       self.grade=float(grds[initSegment][self.GRDcnt-1][1])
     else:
@@ -542,7 +542,7 @@ class Tr:
     self.nTIVx=1000.0*float(self.nextTIV[0])
     self.nTIVvl=float(self.nextTIV[1])
     self.cTIVvl=0.0
-    self.nTIVtype='>>'    # tiv increases speed
+    self.nTIVtype='INC'    # tiv increases speed
     if (self.TIVcnt>0):
       self.maxVk=min(stock['maxSpeed'],float(tivs[initSegment][self.TIVcnt-1][1]))
     else:
@@ -765,7 +765,7 @@ class Tr:
           if not __debug__:
             print self.name+":t:"+str(t)+":no more STAS on segment "+self.segment
           self.nSTAx=sys.maxsize
-    if (self.nTIVtype=='<<'):
+    if (self.nTIVtype=='DEC'):
       self.deltaBDtiv=self.BDtiv
     else:
       self.deltaBDtiv=0.0
@@ -776,7 +776,7 @@ class Tr:
     if (self.x>=self.nTIVx-self.deltaBDtiv):
       self.maxTIV=self.nTIVvl
       self.maxVk=min(self.maxTIV,maxLine,stock['maxSpeed'])
-      if (self.nTIVtype=='<<'):
+      if (self.nTIVtype=='DEC'):
         if not __debug__:
           print self.name+":t:"+str(t)+":ADVANCE TIV "+str(self.TIVcnt)+" reached at curr speed "+str(self.vK)+", maxVk will be "+str(self.maxVk)
         self.advTIV=self.nTIVx
@@ -790,9 +790,9 @@ class Tr:
         self.nTIVx=1000.0*float(self.nextTIV[0])
         self.nTIVvl=float(self.nextTIV[1])
         if (self.nTIVvl>self.cTIVvl):
-          self.nTIVtype='>>'
+          self.nTIVtype='INC'
         else:
-          self.nTIVtype='<<'  # next TIV decreases speed
+          self.nTIVtype='DEC'  # next TIV decreases speed
           self.nv=self.nTIVvl/3.6
           self.cv=self.cTIVvl/3.6
           self.BDtiv=((self.nv*self.nv)-(self.cv*self.cv))/(2*stock['deceleration'])

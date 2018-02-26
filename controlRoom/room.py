@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import re,sys,redis,copy
+import re,sys,redis,copy,json
 
 ICONSTABEGIN="https://en.wikipedia.org/wiki/File:BSicon_KBHFa.svg"
 ICONSTAEND="https://en.wikipedia.org/wiki/File:BSicon_KBHFe.svg"
@@ -95,17 +95,20 @@ def getState(seg):
   for v in sched:
     state=r.hgetall('state:'+v)
     s=dict(state)
-    if state['segment']==seg:
-      s['name']=v
-      lsvcs.append(s)
+    if 'segment' in state:
+      if state['segment']==seg:
+        s['name']=v
+        lsvcs.append(s)
   return lsvcs
 
-def buildDashboard():
+def buildDashboard(zdump):
   global sigs
   global stas
   global svcs
   cells=[]
   html=initHEAD()
+  line="<body onload=\"populate()\">"
+  html.append(line)
   for s in sigs:
     cell={}
     rx=re.match(r'(.*)\+10',s[1])
@@ -166,12 +169,14 @@ def buildDashboard():
       html.append(line)
     line='</div>'
     html.append(line)
+  line='<div id="SrvWrapper" style="display: none;">'+json.dumps(zdump)+'</div>'
+  html.append(line)
   line='</div></body></html>'
   html.append(line)
   return html
 
 svcs=getState('WestboundMain')
-html=buildDashboard()
+html=buildDashboard(svcs)
 
 for h in html:
   print h

@@ -4,17 +4,11 @@
 <script>
 function populate() {
   dl=document.getElementById("SrvWrapper").innerHTML;
-  sss=JSON.parse(dl);
-  alert(pickSrv('E500'));
-}
-function pickSrv(svc) {
-  for (var i=0; i < sss.length; i++) {
-    if (sss[i]['name'] === svc) {
-      return sss[i]['vK'];
-    }
-  }  
+  sss=JSON.parse(dl)
+  alert(sss);
 }
 function showSrv(svc) {
+  alert(svc);
   var popup=document.getElementById(svc);
   popup.innerHTML='YOOO';
   popup.classList.toggle("Show");
