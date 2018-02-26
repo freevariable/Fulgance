@@ -5,18 +5,22 @@
 function populate() {
   dl=document.getElementById("SrvWrapper").innerHTML;
   sss=JSON.parse(dl);
-  alert(pickSrv('E500'));
+//  alert(pickSrv('E500'));
 }
 function pickSrv(svc) {
+  line="";
   for (var i=0; i < sss.length; i++) {
     if (sss[i]['name'] === svc) {
-      return sss[i]['vK'];
+//      return sss[i]['vK'];
+      line=line+'<b>'+svc+'</b><br>'
+      line=line+'Speed (km/h): '+Number(sss[i]['vK']).toFixed(1);
     }
   }  
+  return line;
 }
 function showSrv(svc) {
   var popup=document.getElementById(svc);
-  popup.innerHTML='YOOO';
+  popup.innerHTML=pickSrv(svc);
   popup.classList.toggle("Show");
 }
 </script>

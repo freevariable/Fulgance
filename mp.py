@@ -494,7 +494,7 @@ class Tr:
     updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def dumpstate(self):
-    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'PK':self.PK,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA,'nextSIG':self.nextSIG,'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'vK':self.vK})
+    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'PK':self.PK,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'vK':self.vK})
 #    print r.hgetall(self.name)
 
   def __init__(self,name,initSegment,initPos,initTime):
@@ -1209,6 +1209,24 @@ def longTail(startpoint,incr,maxval):
         returnval=returnval+1
       else:
         return float(returnval)*random.uniform(0.71,1.63)
+
+def strahl(Vk,VVk,m,k):   # resistznce en Newton des trains remorques hors engins de traction
+  # VVK windspeed in kmh (0 to 20)
+  # k=0.25 express pax/heavy goods
+  # k=0.33 usual pax
+  # k=1.0 empty goods
+  # k=0.5 misc goods
+  V=(Vk+VVk)
+  F=(2.5+k*V*V*0.001)*0.001*m*G
+  if (Vk<1.0):
+    F=F+0.0075*m*G   # Force d arrachement
+  return F
+
+def engineN(Vk,n,m):  # resistance loco n essieux
+  F=(0.00065+(13*n/m)+0.000036*Vk+0.00039*Vk*Vk/m)*m*G
+  if (Vk<1.0):
+    F=F+0.0075*m*G   # Force d arrachement
+  return F
 
 for aT in trs:
   if not __debug__:

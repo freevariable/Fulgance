@@ -95,10 +95,21 @@ def getState(seg):
   for v in sched:
     state=r.hgetall('state:'+v)
     s=dict(state)
+    s1={}
     if 'segment' in state:
       if state['segment']==seg:
-        s['name']=v
-        lsvcs.append(s)
+        s1['name']=v
+        s1['inSta']=state['inSta']
+        s1['atSig']=state['atSig']
+        s1['coasting']=state['coasting']
+        s1['sigBrake']=state['sigBrake']
+        s1['staBrake']=state['staBrake']
+        s1['segment']=state['segment']
+        s1['nextSTA']=state['nextSTA']
+        s1['nextSIG']=state['nextSIG']
+        s1['PK']=state['PK']
+        s1['vK']=state['vK']
+        lsvcs.append(s1)
   return lsvcs
 
 def buildDashboard(zdump):
