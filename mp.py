@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,10 +30,12 @@ ACC=1.35 # m/s2  au demarrage
 ALAW='EMU1'   # law governing acc
               # EMU1 is for MP05 EMUs
 WEIGHT=143000.0   #in kg
+PAXWEIGHT=75.0   #in kg
+MAXPAX=698
 POWER=2000000.0 #in W
 VMX=80.0   #km/h  max speed
 VMX2=(VMX*VMX)/12.96  # VMX squared, in m/s
-AIRFACTOR=0.68/VMX2
+AIRFACTOR=0.368888/VMX2
 TLENGTH=90.0  #length in m
 DCC=-1.10  #m/s2
 EMR=-1.50   #m/s2 emergency dcc
@@ -305,6 +307,7 @@ def initAll():
   stock['deceleration']=DCC
   stock['decelerationLaw']=DLAW
   stock['emergency']=EMR
+  stock['maxPax']=MAXPAX
   for aa in stockraw:
     if (aa[0]!="#"):
       if (aa[0]=='acceleration'):
@@ -323,6 +326,8 @@ def initAll():
         stock['length']=float(aa[1])
       if (aa[0]=='deceleration'):
         stock['deceleration']=float(aa[1])
+      if (aa[0]=='maxPax'):
+        stock['maxPax']=int(aa[1])
       if (aa[0]=='decelerationLaw'):
         stock['decelerationLaw']=aa[1]
       if (aa[0]=='templateName'):
@@ -462,7 +467,7 @@ class Tr:
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
-    self.a=getAccFromFactorsAndSpeed(factors,self.v)+self.aGaussFactor
+    self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -497,7 +502,8 @@ class Tr:
     global stock
     if not __debug__:
       print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
-    self.m=stock['weight']
+    self.pax=stock['maxPax']
+    self.m=stock['weight']+self.pax*PAXWEIGHT
     gFactor=G*self.gradient
     v2factor=0.0
     factors=gFactor+v2factor+stock['railFactor']
@@ -556,7 +562,7 @@ class Tr:
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
-    self.a=getAccFromFactorsAndSpeed(factors,self.v)+self.aGaussFactor
+    self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -829,7 +835,7 @@ class Tr:
       else:
         if (self.vK<=(auxMaxVk*VTHRESH)):
           if (stock['accelerationLaw']=='EMU1'):
-            self.a=getAccFromFactorsAndSpeed(factors,self.v)
+            self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)
             if (self.a>stock['acceleration']):
               print "FATAL ACC "+str(self.a)
               sys.exit()
@@ -852,7 +858,7 @@ class Tr:
       if ((self.vK>4.0) and (self.vK<0.910*auxMaxVk)):
         if not __debug__:
           print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(auxMaxVk)+" with aFull:"+str(self.aFull)
-        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
+        self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
       elif (self.vK>4.0):
         self.coasting=True
         if not __debug__:
@@ -887,7 +893,7 @@ class Tr:
     if (ncyc%CYCLE==0):
 # here make coarse-grain markers calculation
 # power calculation:
-      self.power=stock['weight']*self.a*self.v+factors*self.v
+      self.power=self.m*self.a*self.v+factors*self.v
       if (self.power<0.0):
         self.power=0.0
       if not __debug__:
@@ -943,7 +949,7 @@ class Tr:
     if (self.react==True):
       if (t>self.waitReact):
         self.react=False
-        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
+        self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
         if not __debug__:
           print self.name+":t:"+str(t)+":REACTION, a:"+str(self.a)
         self.waitReact=0.0
@@ -1099,14 +1105,14 @@ def updateSIGbyTrOccupation(aSig,name,state):
   if (aSig['type']!='2'):   # a type 2 always remains red
     r.set(redisSIG,state)
 
-def getAccFromFactorsAndSpeed(f,v):
+def getAccFromFactorsAndSpeed(f,v,m):
   global stock
   powerFromFactors=v*f
   availablePower=stock['power']-powerFromFactors
   if (availablePower<0.0):
     return 0.0
   if (v>0.0):
-    acc=availablePower/(stock['weight']*v)
+    acc=availablePower/(m*v)
     return min(acc,stock['acceleration'])
   else:
     return stock['acceleration']

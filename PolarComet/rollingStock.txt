@@ -4,8 +4,11 @@ acceleration 1.35
 accelerationLaw EMU1
 weight 143000.0
 power 2000000.0
-maxspeed 80.0
-airFactor 0.001377
+maxSpeed 80.0
+maxPax 698
+#airFactor 0.001377
+#wheelFactor 0.24525
+airFactor 0.000747
 wheelFactor 0.24525
 length 90.0
 deceleration -1.1
