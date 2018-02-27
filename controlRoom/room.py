@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import re,sys,redis,copy,json
+import re,sys,redis,copy,json,getopt
 
 ICONSTABEGIN="https://en.wikipedia.org/wiki/File:BSicon_KBHFa.svg"
 ICONSTAEND="https://en.wikipedia.org/wiki/File:BSicon_KBHFe.svg"
@@ -83,12 +83,6 @@ def initSIGs(seg):
       cnt=cnt+1
   return ss
 
-stas=initSTAs('WestboundMain')
-sigs=initSIGs('WestboundMain')
-sched=initSchedule('WestboundMain')
-svcs={}
-cells={}
-
 def getState(seg):
   global sched
   lsvcs=[]
@@ -118,7 +112,7 @@ def buildDashboard(zdump):
   global stas
   global svcs
   cells=[]
-  html=initHEAD()
+  html=[]
   line="<body onload=\"populate()\">"
   html.append(line)
   for s in sigs:
@@ -187,8 +181,60 @@ def buildDashboard(zdump):
   html.append(line)
   return html
 
-svcs=getState('WestboundMain')
-html=buildDashboard(svcs)
+try:
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "route=", "segments="])
+except getopt.GetoptError as err:
+  print(err) # will print something like "option -a not recognized"
+  usage()
+  sys.exit(2)
 
-for h in html:
-  print h
+segmentsList=[]
+found=False
+
+for o, a in opts:
+  if o in ("--segments"):
+    segmentsList = a.split(',')
+#    print segmentsList
+    found=True
+  elif o in ("--route"):
+    projectDir = "../"+a+'/'
+  else:
+    assert False, "option unknown"
+    sys.exit(2)
+
+if found==False:
+  print "ERROR. Segment list needed."
+  sys.exit(2)
+
+head=initHEAD()
+iframes=[]
+for seg in segmentsList:
+  stas=initSTAs(seg)
+  sigs=initSIGs(seg)
+  sched=initSchedule(seg)
+  svcs={}
+  cells={}
+  svcs=getState(seg)
+  if (len(svcs)<1):
+    print "ERROR. No services found in segment. Have you run sim with --realtime?"
+    sys.exit(2)
+  f=open(seg+".html","w")
+  for h in head:
+    f.write(h)
+  iframe=buildDashboard(svcs) 
+  for i in iframe:
+    f.write(i)
+  f.close()
+
+print "<html><head><script>"
+print "  function resizeIframe(obj) {"
+print "    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';"
+print "  }"
+print "</script></head>"
+print "<body><input type=\"button\" value=\"Refresh Page\" onClick=\"window.location.reload()\">"
+for seg in segmentsList:
+  print "<iframe src=\""+seg+".html\" scrolling=\"no\" frameborder=\"0\" onload=\"resizeIframe(this)\"></iframe>"
+print "</body></html>"
+
+#for h in html:
+#  print h

@@ -1,0 +1,111 @@
+<html>
+<head>
+<script>
+function populate() {
+  dl=document.getElementById("SrvWrapper").innerHTML;
+  sss=JSON.parse(dl);
+}
+function pickSrv(svc) {
+  line="";
+  for (var i=0; i < sss.length; i++) {
+    if (sss[i]['name'] === svc) {
+      line=line+'<b><font face=+1>'+svc+'</font></b><br>'
+      state="";
+      if (sss[i]['coasting'] === "True") {
+        state="coasting"; 
+      }
+      if (sss[i]['atSig'] === "True") {
+        state="waiting at signal "+sss[i]['nextSIG']; 
+      }
+      if (sss[i]['inSta'] === "True") {
+        state="boarding passengers"; 
+      }
+      if (sss[i]['units'] === "metric") {
+        speedU="km/h";
+      } else {
+        speedU="mph";
+      }
+      line=line+'<i>('+state+')</i><br>'
+      line=line+'Speed: '+Number(sss[i]['v']).toFixed(1)+" "+speedU;
+    }
+  }  
+  return line;
+}
+function showSrv(svc) {
+  var popup=document.getElementById(svc);
+  popup.innerHTML=pickSrv(svc);
+  popup.classList.toggle("Show");
+}
+</script>
+<style type="text/css">
+
+.popUp {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.popUp .srvPopUp {
+    visibility: hidden;
+    width: 160px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.popUp .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+        margin-top:0px;
+        margin-bottom:0px;
+        margin:0px;
+	padding: 0px 0px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 0px solid #000;
+	display: table-cell;
+	padding: 0px 0px;
+        margin-top:0px;
+        margin-bottom:0px;
+        margin:0px;
+        font-size:8px;
+        font-family: Tahoma;
+        vertical-align: middle;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+</style>
+</head>
+<body onload="populate()"><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E561')">E561</div><div class="popUp"><span class="srvPopUp" id="E561"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Chateau-De-Vincennes</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Berault</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Saint-Mande</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Porte-De-Vincennes</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Nation</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Reuilly-Diderot</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Gare-De-Lyon</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Bastille</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Saint-Paul</div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E563')">E563</div><div class="popUp"><span class="srvPopUp" id="E563"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Hotel-De-Ville</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Chatelet</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Louvre-Rivolli</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Palais-Royal</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Tuileries</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Concorde</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Champs-Elysees-Clemenceau</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Franklin-Roosevelt</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E565')">E565</div><div class="popUp"><span class="srvPopUp" id="E565"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Georges-V</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Charles-De-Gaulle-Etoile</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E567')">E567</div><div class="popUp"><span class="srvPopUp" id="E567"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Argentine</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Porte-Maillot</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Sablons</div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E569')">E569</div><div class="popUp"><span class="srvPopUp" id="E569"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E570')">E570</div><div class="popUp"><span class="srvPopUp" id="E570"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E571')">E571</div><div class="popUp"><span class="srvPopUp" id="E571"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E572')">E572</div><div class="popUp"><span class="srvPopUp" id="E572"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Pont-De-Neuilly</div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E574')">E574</div><div class="popUp"><span class="srvPopUp" id="E574"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E576')">E576</div><div class="popUp"><span class="srvPopUp" id="E576"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Esplanade-De-La-Defense</div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E577')">E577</div><div class="popUp"><span class="srvPopUp" id="E577"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E500')">E500</div><div class="popUp"><span class="srvPopUp" id="E500"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E502')">E502</div><div class="popUp"><span class="srvPopUp" id="E502"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('E503')">E503</div><div class="popUp"><span class="srvPopUp" id="E503"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">La-Defense</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div id="SrvWrapper" style="display: none;">[{"nextSTA": "La-Defense", "atSig": "True", "name": "E500", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 16400.000699766613, "segment": "WestboundMain", "nextSIG": "2620"}, {"nextSTA": "La-Defense", "atSig": "True", "name": "E502", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 16675.000061042236, "segment": "WestboundMain", "nextSIG": "LaD-100"}, {"nextSTA": "La-Defense", "atSig": "True", "name": "E503", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 16785.000248225213, "segment": "WestboundMain", "nextSIG": "LaD+10"}, {"nextSTA": "Chateau-De-Vincennes", "atSig": "True", "name": "E561", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 100.00078864889205, "segment": "WestboundMain", "nextSIG": "990"}, {"nextSTA": "Hotel-De-Ville", "atSig": "False", "name": "E563", "sigBrake": "False", "v": 13.546255510198302, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 7400.087174564986, "segment": "WestboundMain", "nextSIG": "HoV-140"}, {"nextSTA": "Charles-De-Gaulle-Etoile", "atSig": "False", "name": "E565", "sigBrake": "False", "v": 5.2200315592305655, "coasting": "True", "inSta": "False", "staBrake": "False", "units": "metric", "x": 11842.501897823178, "segment": "WestboundMain", "nextSIG": "2175"}, {"nextSTA": "Argentine", "atSig": "False", "name": "E567", "sigBrake": "False", "v": 0.22060520441887665, "coasting": "False", "inSta": "False", "staBrake": "True", "units": "metric", "x": 12698.773883858525, "segment": "WestboundMain", "nextSIG": "Arg+10"}, {"nextSTA": "Pont-De-Neuilly", "atSig": "True", "name": "E569", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 14400.000060023942, "segment": "WestboundMain", "nextSIG": "2420"}, {"nextSTA": "Pont-De-Neuilly", "atSig": "True", "name": "E570", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 14700.000041898778, "segment": "WestboundMain", "nextSIG": "2450"}, {"nextSTA": "Pont-De-Neuilly", "atSig": "True", "name": "E571", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 14988.00017416816, "segment": "WestboundMain", "nextSIG": "PoN-140"}, {"nextSTA": "Esplanade-De-La-Defense", "atSig": "True", "name": "E572", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 15138.00058576078, "segment": "WestboundMain", "nextSIG": "PoN+10"}, {"nextSTA": "Esplanade-De-La-Defense", "atSig": "True", "name": "E574", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 15450.000820571888, "segment": "WestboundMain", "nextSIG": "2525"}, {"nextSTA": "Esplanade-De-La-Defense", "atSig": "True", "name": "E576", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 15794.000073800815, "segment": "WestboundMain", "nextSIG": "Esp-140"}, {"nextSTA": "La-Defense", "atSig": "True", "name": "E577", "sigBrake": "True", "v": 0.0, "coasting": "False", "inSta": "False", "staBrake": "False", "units": "metric", "x": 16100.000566067903, "segment": "WestboundMain", "nextSIG": "2590"}]</div></div></body></html>

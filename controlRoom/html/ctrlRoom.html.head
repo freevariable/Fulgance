@@ -9,8 +9,24 @@ function pickSrv(svc) {
   line="";
   for (var i=0; i < sss.length; i++) {
     if (sss[i]['name'] === svc) {
-      line=line+'<b>'+svc+'</b><br>'
-      line=line+'Speed (km/h): '+Number(sss[i]['v']).toFixed(1);
+      line=line+'<b><font face=+1>'+svc+'</font></b><br>'
+      state="";
+      if (sss[i]['coasting'] === "True") {
+        state="coasting"; 
+      }
+      if (sss[i]['atSig'] === "True") {
+        state="waiting at signal "+sss[i]['nextSIG']; 
+      }
+      if (sss[i]['inSta'] === "True") {
+        state="boarding passengers"; 
+      }
+      if (sss[i]['units'] === "metric") {
+        speedU="km/h";
+      } else {
+        speedU="mph";
+      }
+      line=line+'<i>('+state+')</i><br>'
+      line=line+'Speed: '+Number(sss[i]['v']).toFixed(1)+" "+speedU;
     }
   }  
   return line;
@@ -22,6 +38,7 @@ function showSrv(svc) {
 }
 </script>
 <style type="text/css">
+
 .popUp {
     position: relative;
     display: inline-block;
