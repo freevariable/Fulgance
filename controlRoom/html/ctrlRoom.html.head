@@ -1,19 +1,16 @@
 <html>
 <head>
-<meta http-equiv="refresh" content="20" />
 <script>
 function populate() {
   dl=document.getElementById("SrvWrapper").innerHTML;
   sss=JSON.parse(dl);
-//  alert(pickSrv('E500'));
 }
 function pickSrv(svc) {
   line="";
   for (var i=0; i < sss.length; i++) {
     if (sss[i]['name'] === svc) {
-//      return sss[i]['vK'];
       line=line+'<b>'+svc+'</b><br>'
-      line=line+'Speed (km/h): '+Number(sss[i]['vK']).toFixed(1);
+      line=line+'Speed (km/h): '+Number(sss[i]['v']).toFixed(1);
     }
   }  
   return line;

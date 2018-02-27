@@ -32,6 +32,7 @@ ALAW='EMU1'   # law governing acc
 WEIGHT=143000.0   #in kg
 PAXWEIGHT=75.0   #in kg
 MAXPAX=698
+UNITS='metric'
 POWER=2000000.0 #in W
 VMX=80.0   #km/h  max speed
 VMX2=(VMX*VMX)/12.96  # VMX squared, in m/s
@@ -308,6 +309,8 @@ def initAll():
   stock['decelerationLaw']=DLAW
   stock['emergency']=EMR
   stock['maxPax']=MAXPAX
+  stock['units']=UNITS
+  stock['paxWeight']=PAXWEIGHT
   for aa in stockraw:
     if (aa[0]!="#"):
       if (aa[0]=='acceleration'):
@@ -328,8 +331,12 @@ def initAll():
         stock['deceleration']=float(aa[1])
       if (aa[0]=='maxPax'):
         stock['maxPax']=int(aa[1])
+      if (aa[0]=='paxWeight'):
+        stock['paxWeight']=float(aa[1])
       if (aa[0]=='decelerationLaw'):
         stock['decelerationLaw']=aa[1]
+      if (aa[0]=='units'):
+        stock['units']=aa[1]
       if (aa[0]=='templateName'):
         stock['templateName']=aa[1]
       if (aa[0]=='emergency'):
@@ -494,7 +501,7 @@ class Tr:
     updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def dumpstate(self):
-    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'PK':self.PK,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'vK':self.vK})
+    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':stock['units']})
 #    print r.hgetall(self.name)
 
   def __init__(self,name,initSegment,initPos,initTime):
@@ -1177,6 +1184,7 @@ def stepRT(s):
   global trs
   global exitCondition
   global t
+  global cycles
   ccc=0
   sys.stdout.flush()
   while (ccc<cycles):
@@ -1228,31 +1236,37 @@ def engineN(Vk,n,m):  # resistance loco n essieux
     F=F+0.0075*m*G   # Force d arrachement
   return F
 
-for aT in trs:
-  if not __debug__:
-    print aT.name+" has been initialized"
-
-if (DUMPDATA==True):
-  if (TPROGRESS==True):
-    print "service,trip,t,x,v,a,P"
-  if (STAPROGRESS==True):
-    print "service,trip,time,station"
-
-if (realTime==True):
-  cycles=CYCLEPP
-  scheduler(SYNCPERIOD,stepRT,'none')
-else:
-  cycles=CYCLE
-
-while (exitCondition==False):
-  t=ncyc/CYCLE
-  intT=int(t)
-  if (intT%5==0):
-    sys.stdout.flush()
+def sim():
+  global cycles
+  global trs
+  global t
+  global exitCondition
+  global ncyc
   for aT in trs:
-    aT.step()
-  if (t>duration):
-    exitCondition=True
-  ncyc=ncyc+1
-#for k in r.scan_iter("switch:*"):
-#  print k+":"+r.get(k)
+    if not __debug__:
+      print aT.name+" has been initialized"
+
+  if (DUMPDATA==True):
+    if (TPROGRESS==True):
+      print "service,trip,t,x,v,a,P"
+    if (STAPROGRESS==True):
+      print "service,trip,time,station"
+
+  if (realTime==True):
+    cycles=CYCLEPP
+    scheduler(SYNCPERIOD,stepRT,'none')
+  else:
+    cycles=CYCLE
+  
+  while (exitCondition==False):
+    t=ncyc/CYCLE
+    intT=int(t)
+    if (intT%5==0):
+      sys.stdout.flush()
+    for aT in trs:
+      aT.step()
+    if (t>duration):
+      exitCondition=True
+    ncyc=ncyc+1
+
+sim()

@@ -107,8 +107,9 @@ def getState(seg):
         s1['segment']=state['segment']
         s1['nextSTA']=state['nextSTA']
         s1['nextSIG']=state['nextSIG']
-        s1['PK']=state['PK']
-        s1['vK']=state['vK']
+        s1['x']=float(state['x'])
+        s1['v']=float(state['v'])
+        s1['units']=state['units']
         lsvcs.append(s1)
   return lsvcs
 
@@ -152,7 +153,7 @@ def buildDashboard(zdump):
     found=False
     oldc={}
     for c in cells:
-      if float(v['PK'])<c['PK']:
+      if float(v['x']/1000.0)<c['PK']:
         if (found==False):
 #          print v['name']+'__'+str(v['PK'])+"__"+str(c['PK'])
           oldc['service']=v['name']

@@ -12,3 +12,4 @@ deceleration -1.1
 decelerationLaw EMU1
 emergency -1.5
 maxPax 698
+paxWeight 75.0
