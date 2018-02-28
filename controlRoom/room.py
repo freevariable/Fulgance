@@ -101,8 +101,12 @@ def getState(seg):
         s1['segment']=state['segment']
         s1['nextSTA']=state['nextSTA']
         s1['nextSIG']=state['nextSIG']
+        s1['nextTIV']=int(state['nextTIV'])
         s1['x']=float(state['x'])
         s1['v']=float(state['v'])
+        s1['pax']=float(state['pax'])
+        s1['maxPax']=float(state['maxPax'])
+        s1['maxVk']=float(state['maxVk'])
         s1['units']=state['units']
         lsvcs.append(s1)
   return lsvcs

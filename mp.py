@@ -397,7 +397,6 @@ class Tr:
   nv=0.0
   cv=0.0
   vK=0.0
-  tBreak=0.0
   deltaBDtiv=0.0
   deltaBDsta=0.0
   advTIV=-1.0
@@ -485,7 +484,6 @@ class Tr:
       self.a=getAccForEMU(factors,self.v,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
       self.a=getAccForSTM(self.labrijn,self.vK,self.grade)+self.aGaussFactor
-    self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
     self.advTIV=-1.0
@@ -511,7 +509,7 @@ class Tr:
     updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def dumpstate(self):
-    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV,'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':stock['units']})
+    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':stock['units']})
 #    print r.hgetall(self.name)
 
   def __init__(self,name,initSegment,initPos,initTime):
@@ -586,7 +584,6 @@ class Tr:
       iP=indicatedPowerInHorsePower(r1,self.maxVk)
       self.labrijn=labrijn(iP,stock['weight']/1000.0,stock['engineWeight']/1000.0,stock['tenderWeight']/1000.0)
       self.a=getAccForSTM(self.labrijn,0.0,0.0)+self.aGaussFactor
-    self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
     self.advTIV=-1.0
@@ -913,6 +910,10 @@ class Tr:
       self.aFull=self.a
       if (self.aFull>0.0):
         self.aFull=0.0 
+      if (self.v<0.0):
+        self.v=0.0
+        self.a=0.0
+        self.aFull=0.0
     self.v=self.v+(self.aFull/CYCLE)
     self.vK=self.v*3.6
     self.x=self.x+(self.v/CYCLE)
