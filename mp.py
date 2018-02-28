@@ -300,11 +300,13 @@ def initAll():
   cnt=0
   stock['acceleration']=ACC
   stock['accelerationLaw']=ALAW
-  stock['weight']=WEIGHT
-  stock['power']=POWER
+  stock['weight']=WEIGHT   # whole train for EMUs, carriages only for pushed/pulled trains.
+  stock['engineWeight']=0.0  # always 0 for EMUs, never 0 for push/pull
+  stock['tenderWeight']=0.0  # always 0 for EMUs
+  stock['power']=POWER   # only makes sense for EMUs
   stock['maxSpeed']=VMX
-  stock['airFactor']=AIRFACTOR
-  stock['railFactor']=WHEELFACTOR
+  stock['airFactor']=AIRFACTOR   # only makes sense for EMUs
+  stock['railFactor']=WHEELFACTOR   # only makes sense for EMUs
   stock['length']=TLENGTH
   stock['deceleration']=DCC
   stock['decelerationLaw']=DLAW
@@ -320,6 +322,10 @@ def initAll():
         stock['accelerationLaw']=aa[1]
       if (aa[0]=='weight'):
         stock['weight']=float(aa[1])
+      if (aa[0]=='engineWeight'):
+        stock['engineWeight']=float(aa[1])
+      if (aa[0]=='tenderWeight'):
+        stock['tenderWeight']=float(aa[1])
       if (aa[0]=='power'):
         stock['power']=float(aa[1])
       if (aa[0]=='maxSpeed'):
@@ -476,9 +482,9 @@ class Tr:
     self.nv=0.0
     self.cv=0.0
     if (stock['accelerationLaw']=='EMU1'):
-      self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
+      self.a=getAccForEMU(factors,self.v,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
+      self.a=getAccForSTM(self.labrijn,self.vK,self.grade)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -574,9 +580,12 @@ class Tr:
     self.nv=0.0
     self.cv=0.0
     if (stock['accelerationLaw']=='EMU1'):
-      self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
+      self.a=getAccForEMU(factors,self.v,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
+      r1=rollingResistance(stock['engineWeight']/1000.0,stock['tenderWeight']/1000.0,stock['weight']/1000.0,0.0,9999999.0,self.maxVk,0.0,1.90,10.0,2,0.25)
+      iP=indicatedPowerInHorsePower(r1,self.maxVk)
+      self.labrijn=labrijn(iP,stock['weight']/1000.0,stock['engineWeight']/1000.0,stock['tenderWeight']/1000.0)
+      self.a=getAccForSTM(self.labrijn,0.0,0.0)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -849,9 +858,9 @@ class Tr:
       else:
         if (self.vK<=(auxMaxVk*VTHRESH)):
           if (stock['accelerationLaw']=='EMU1'):
-            self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)
+            self.a=getAccForEMU(factors,self.v,self.m)
           elif (stock['accelerationLaw']=='STM1'):
-            self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)
+            self.a=getAccForSTM(self.labrijn,self.vK,self.grade)
           else:
             print "FATAL: ALAW unknown"
             sys.exit()
@@ -874,9 +883,9 @@ class Tr:
         if not __debug__:
           print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(auxMaxVk)+" with aFull:"+str(self.aFull)
         if (stock['accelerationLaw']=='EMU1'):
-          self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
+          self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
+          self.a=getAccForSTM(self.labrijn,self.vK,self.grade)+aGauss()
       elif (self.vK>4.0):
         self.coasting=True
         if not __debug__:
@@ -886,7 +895,10 @@ class Tr:
 # STAGE 3 : calculate aFull
 #
     if (self.a>=0.0):
-      self.aFull=self.a-v2factor-gFactor-stock['railFactor']
+      if stock['accelerationLaw']=='STM1':
+        self.aFull=self.a-gFactor
+      else:
+        self.aFull=self.a-v2factor-gFactor-stock['railFactor']
       if (self.aFull<0.0):
         if ((self.v+(self.aFull/CYCLE))<0.0):
           if (self.v>0.0):
@@ -966,9 +978,9 @@ class Tr:
       if (t>self.waitReact):
         self.react=False
         if (stock['accelerationLaw']=='EMU1'):
-          self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
+          self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
+          self.a=getAccForSTM(self.labrijn,self.vK,self.grade)+aGauss()
         if not __debug__:
           print self.name+":t:"+str(t)+":REACTION, a:"+str(self.a)
         self.waitReact=0.0
@@ -1124,7 +1136,7 @@ def updateSIGbyTrOccupation(aSig,name,state):
   if (aSig['type']!='2'):   # a type 2 always remains red
     r.set(redisSIG,state)
 
-def getAccFromFactorsAndSpeed(f,v,m):
+def getAccForEMU(f,v,m):
   global stock
   powerFromFactors=v*f
   availablePower=stock['power']-powerFromFactors
@@ -1135,49 +1147,6 @@ def getAccFromFactorsAndSpeed(f,v,m):
     return min(acc,stock['acceleration'])
   else:
     return stock['acceleration']
-
-try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])
-except getopt.GetoptError as err:
-  print(err) # will print something like "option -a not recognized"
-  usage()
-  sys.exit(2)
-duration = sys.maxsize 
-multi = MULTICORE
-numCores= CORES
-realTime=REALTIME
-core=1
-scheduleName="default.txt"
-stockName="rollingStock.txt"
-
-serviceList=[]
-for o, a in opts:
-  if o == "-m":
-    multi = True
-  elif o in ("-h", "--help"):
-    usage()
-    sys.exit()
-  elif o in ("--duration"):
-    duration = abs(int(a))
-  elif o in ("--realtime"):
-    realTime=True
-  elif o in ("--cores"):
-    numCores = int(a)
-  elif o in ("--core"):
-    core = int(a)
-  elif o in ("--route"):
-    projectDir = a+'/'
-  elif o in ("--schedule"):
-    scheduleName = a
-  elif o in ("--services"):
-    serviceList = a.split(',')
-    print serviceList
-    sys.exit()
-  else:
-    assert False, "option unknown"
-    sys.exit(2)
-
-initAll()
 
 def scheduler(period,f,*args):
   def g_tick():
@@ -1352,7 +1321,22 @@ def labrijn(iP,m,mL,mT):
   a=0.07*(-0.0534091*N2+1.29053*N-0.0816667)
   vKPoint=-0.0874126*N3+2.08625*N2-17.19*N+55.6667
   maxVk=0.150117*N3-4.15879*N2+37.5113*N+28.9238
-  return [a,vKPoint,maxVk]
+  return [a,vKPoint,maxVk,N]
+
+def getAccForSTM(l,vK,grd):
+  maxVk=110.0
+  #r=rollingResistance(99.0,48.0,250.0,grd,9999999.0,vK,0.0,1.90,10.0,2,0.25)
+  acc=0.0
+  if (vK>=l[2]):
+    acc=0.0
+  elif (vK>l[1]):
+    acc=l[0]*(1.0-(vK-l[1])/(l[2]-l[1]))
+#    print "STM acc: "+str(acc)+" "+str(l)
+  elif (vK<0.0):
+    acc=0.0
+  else: 
+    acc=l[0]
+  return acc
 
 def sim():
   global cycles
@@ -1386,6 +1370,49 @@ def sim():
     if (t>duration):
       exitCondition=True
     ncyc=ncyc+1
+
+try:
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])
+except getopt.GetoptError as err:
+  print(err) # will print something like "option -a not recognized"
+  usage()
+  sys.exit(2)
+duration = sys.maxsize 
+multi = MULTICORE
+numCores= CORES
+realTime=REALTIME
+core=1
+scheduleName="default.txt"
+stockName="rollingStock.txt"
+
+serviceList=[]
+for o, a in opts:
+  if o == "-m":
+    multi = True
+  elif o in ("-h", "--help"):
+    usage()
+    sys.exit()
+  elif o in ("--duration"):
+    duration = abs(int(a))
+  elif o in ("--realtime"):
+    realTime=True
+  elif o in ("--cores"):
+    numCores = int(a)
+  elif o in ("--core"):
+    core = int(a)
+  elif o in ("--route"):
+    projectDir = a+'/'
+  elif o in ("--schedule"):
+    scheduleName = a
+  elif o in ("--services"):
+    serviceList = a.split(',')
+    print serviceList
+    sys.exit()
+  else:
+    assert False, "option unknown"
+    sys.exit(2)
+
+initAll()
 
 sim()
 #print strahl(110.0,0.0,250.0,0.25)

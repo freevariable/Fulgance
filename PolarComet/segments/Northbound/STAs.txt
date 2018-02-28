@@ -1,6 +1,6 @@
 #0.0 E
-0.350 Gare-du-Nord
-41.7 Chantilly
-129.3 Amiens
-296.1 Hastings
-500.0 End
+0.350 GdN Gare-du-Nord
+41.7 Cha Chantilly
+129.3 Amn Amiens
+296.1 Hst Hastings
+500.0 End End
