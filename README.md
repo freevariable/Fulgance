@@ -69,7 +69,8 @@ Fulgence will run fine without options, but there are several things you may wis
 - Run in real time for 1 hour: *mp.py --realtime --duration=3600*
 
 ### Control room
-The control room is displayed as an HTML dashboard by calling *tools/room.py* **after** or **while** you run mp in realtime. It will not work otherwise.
+The control room is displayed as an HTML dashboard by calling *tools/room.py* **after** or **while** you run mp.py in realtime. It will not work otherwise, because it polls redis for live information and redis will be empty.
+
 *room.py* also generates one HTML file per segment you wish to monitor.
 #### Options
 - You must provide the route name using *--route*
