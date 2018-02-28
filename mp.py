@@ -666,9 +666,9 @@ class Tr:
       self.staBrake=True
       self.a=dcc-gFactor#+aGauss()
     if ((self.staBrake==True) and (self.vK<=0.8)):
-      self.a=-0.00004-gFactor
+      self.a=-0.00004#-gFactor
     elif (self.staBrake==True):
-      self.a=dcc#-gFactor
+      self.a=dcc
     if ((self.sigSpotted==False) and (self.x>=(self.nSIGx-self.BDzero))):
       self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
       self.advSIGcol=r.get(self.redisSIG)
@@ -679,10 +679,10 @@ class Tr:
         print self.name+":t:"+str(t)+":ADVANCE "+self.advSIGcol+" SIG vK:"+str(self.vK)+" "+self.redisSIG+" isOccupied? "+str(isOc)
       self.sigSpotted=True
       if (self.advSIGcol=="red"):
-        self.a=dcc#+aGauss()
+        self.a=dcc
         self.sigBrake=True
     if ((self.sigBrake==True) and (self.vK<=0.7)):
-      self.a=-0.00004-gFactor
+      self.a=-0.00004#-gFactor
     if ((self.atSig==False) and (self.x>=(self.nSIGx))):
       if (self.sigSpotted==True):
         self.sigSpotted=False
@@ -910,11 +910,15 @@ class Tr:
       self.aFull=self.a
       if (self.aFull>0.0):
         self.aFull=0.0 
-      if (self.v<0.0):
-        self.v=0.0
-        self.a=0.0
-        self.aFull=0.0
+#      if (self.v<0.0):
+#        self.v=0.0
+#        self.a=0.0
+#        self.aFull=0.0
     self.v=self.v+(self.aFull/CYCLE)
+    if (self.v<0.0):
+      self.v=0.0
+      self.a=0.0
+      self.aFull=0.0
     self.vK=self.v*3.6
     self.x=self.x+(self.v/CYCLE)
     self.PK=self.x/1000.0

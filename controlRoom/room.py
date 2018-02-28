@@ -102,6 +102,7 @@ def getState(seg):
         s1['nextSTA']=state['nextSTA']
         s1['nextSIG']=state['nextSIG']
         s1['nextTIV']=int(state['nextTIV'])
+        s1['advSIGcol']=state['advSIGcol']
         s1['x']=float(state['x'])
         s1['v']=float(state['v'])
         s1['pax']=float(state['pax'])

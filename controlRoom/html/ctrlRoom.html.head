@@ -34,7 +34,7 @@ function pickSrv(svc) {
       }
       line=line+'<i>('+state+')</i><br>'
       line=line+'Speed: '+Number(sss[i]['v']).toFixed(1)+" "+speedU;
-      line=line+'<img src=\"green.svg\"><br>';
+      line=line+'<img src=\"'+sss[i]['advSIGcol']+'.svg\"><br>';
       if (sss[i]['maxVk']>sss[i]['nextTIV']) {
         line=line+'Max speed: '+Number(sss[i]['maxVk']).toFixed(0)+" "+speedU+" >>> <span class=\"yellowCol\">"+sss[i]['nextTIV']+"</span><br>";
       } 
