@@ -1,16 +1,16 @@
 ## FAQ 
 ### What's this?
 **Fulgence** is a text-based railroad simulator that will let you perform various tasks:
-- [x] define realistic or fancy routes
+- [x] define realistic (eg: Paris Metro Line 1) or fancy routes (eg: The Polar Comet)
 - [x] define realistic or fancy schedules
-- [x] define rolling stock (only EMUs for now)
+- [x] define rolling stock (only EMUs for now, steam engines are in alpha!)
 - [ ] distribute train services over mutiple simulation engines if you have a busy train schedule (only single sim engine for now)
 - [x] run schedules in real-time or accelerated time
 - [ ] trainspot at a platform instantly, check out its real-time information board
-- [x] calibrate/optimize trains frequency at peak and off peak hours
-- [x] calculate power consumption
+- [ ] takes peak hours passengers flow into account
+- [x] calculate power consumption (only EMUs for now, coal and water are in alpha!)
 - [x] get detailed statistics for data crunching and rendering
-- [x] access the route control room
+- [x] access the control room
 
 ### Notes for route designers
 #### Layout
