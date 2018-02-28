@@ -29,6 +29,7 @@ ACCSIGMA=0.027
 ACC=1.35 # m/s2  au demarrage
 ALAW='EMU1'   # law governing acc
               # EMU1 is for MP05 EMUs
+              # STM1 is for steam engines
 WEIGHT=143000.0   #in kg
 PAXWEIGHT=75.0   #in kg
 MAXPAX=698
@@ -474,7 +475,10 @@ class Tr:
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
-    self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
+    if (stock['accelerationLaw']=='EMU1'):
+      self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
+    elif (stock['accelerationLaw']=='STM1'):
+      self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -569,7 +573,10 @@ class Tr:
     self.vK=0.0
     self.nv=0.0
     self.cv=0.0
-    self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
+    if (stock['accelerationLaw']=='EMU1'):
+      self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
+    elif (stock['accelerationLaw']=='STM1'):
+      self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+self.aGaussFactor
     self.tBreak=0.0
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
@@ -843,16 +850,17 @@ class Tr:
         if (self.vK<=(auxMaxVk*VTHRESH)):
           if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)
-            if (self.a>stock['acceleration']):
-              print "FATAL ACC "+str(self.a)
-              sys.exit()
-            if not __debug__:
-              if (ncyc%CYCLE==0):
-                print self.name+":t:"+str(t)+":need to go faster..."+str(self.a)
+          elif (stock['accelerationLaw']=='STM1'):
+            self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)
           else:
-            self.a=0.0
             print "FATAL: ALAW unknown"
             sys.exit()
+          if (self.a>stock['acceleration']):
+            print "FATAL ACC "+str(self.a)
+            sys.exit()
+          if not __debug__:
+            if (ncyc%CYCLE==0):
+              print self.name+":t:"+str(t)+":need to go faster..."+str(self.a)
         else:
           self.a=0.0 
     elif (self.a<0.0):
@@ -865,7 +873,10 @@ class Tr:
       if ((self.vK>4.0) and (self.vK<0.910*auxMaxVk)):
         if not __debug__:
           print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(auxMaxVk)+" with aFull:"+str(self.aFull)
-        self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
+        if (stock['accelerationLaw']=='EMU1'):
+          self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
+        elif (stock['accelerationLaw']=='STM1'):
+          self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
       elif (self.vK>4.0):
         self.coasting=True
         if not __debug__:
@@ -915,7 +926,6 @@ class Tr:
         self.waitSta=0.0
         self.react=True
         self.waitReact=t+longTail(9.3,71.0,7200.0)
-#        self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
         if not __debug__:
           print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
           if ((self.waitReact-t)>10.0):
@@ -952,11 +962,13 @@ class Tr:
           if not __debug__:
             print self.name+":t:"+str(t)+":UPSIG "+str(self.sigToPoll)+" is OCCUPIED BY:"+str(k)
           self.sigPoll=t+SIGPOLL
-#          self.a=getAccFromFactorsAndSpeed(factors,self.v)+aGauss()
     if (self.react==True):
       if (t>self.waitReact):
         self.react=False
-        self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
+        if (stock['accelerationLaw']=='EMU1'):
+          self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
+        elif (stock['accelerationLaw']=='STM1'):
+          self.a=getAccFromFactorsAndSpeed(factors,self.v,self.m)+aGauss()
         if not __debug__:
           print self.name+":t:"+str(t)+":REACTION, a:"+str(self.a)
         self.waitReact=0.0
@@ -1218,23 +1230,129 @@ def longTail(startpoint,incr,maxval):
       else:
         return float(returnval)*random.uniform(0.71,1.63)
 
-def strahl(Vk,VVk,m,k):   # resistznce en Newton des trains remorques hors engins de traction
+def strahl(Vk,VVk,m,k):   # rolling resistance (in Newton) of train carriages (excluding the locomotive and tender if any)
   # VVK windspeed in kmh (0 to 20)
   # k=0.25 express pax/heavy goods
   # k=0.33 usual pax
   # k=1.0 empty goods
   # k=0.5 misc goods
+  # m : poids (t) de la remorque
   V=(Vk+VVk)
-  F=(2.5+k*V*V*0.001)*0.001*m*G
+  F=(2.5+k*V*V*0.001)*m*G
   if (Vk<1.0):
     F=F+0.0075*m*G   # Force d arrachement
   return F
 
-def engineN(Vk,n,m):  # resistance loco n essieux
+# tractive effort = tractive force
+def locoNrollingResistance(Vk,n,m): # n essieux
+  # m : poids (kg) du train
   F=(0.00065+(13*n/m)+0.000036*Vk+0.00039*Vk*Vk/m)*m*G
   if (Vk<1.0):
     F=F+0.0075*m*G   # Force d arrachement
   return F
+
+def sanzin(p,P,Vk,Dm,S,ea):  # ea = nb essieux accouples
+  # m : poids (t) du train
+  # p : poids essieux porteurs (t) y compris tender
+  # P : poids essieux moteurs (t)
+  a=0.0
+  b=0.0
+  if (ea==2):
+    a=5.5
+    b=0.08
+  elif (ea==3):
+    a=7.0
+    b=0.10
+  elif (ea==4):
+    a=8.0
+    b=0.28
+  elif (ea==5):
+    a=8.8
+    b=0.36 
+  F=p*(1.8+0.015*Vk)+P*(a+(b/Dm)*Vk)+0.006*S*Vk*Vk
+#  F=(F*m)/(p+P)
+  return F*G
+
+def gradeResistance(p,P,m,i,c):
+  #p : poids (t) essieux porteurs y compris tender
+  #P : poids (t) essieux moteurs
+  #m : poids (t) de la remorque
+  #i : grade (in mm/m)
+  #c : curve (in m)
+  F=(m+p+P)*(i+(750.0/c))
+  return F*G
+
+def rollingResistance(p,P,m,i,c,Vk,VVk,Dm,S,ea,k):
+  # resistance de tout le train (remorque+loco+tender)
+  return gradeResistance(p,P,m,i,c)+sanzin(p,P,Vk,Dm,S,ea)+strahl(Vk,VVk,m,k)
+
+def indicatedPowerInHorsePower(r,Vk):
+  # r: rollingresistance
+  return r*Vk/(G*270.0)
+
+def hourlyVaporConsumptionInKg(iP,Pr,tp):
+  # Pr: pressure (timbre) in kg/cm2 between 12.0 and 25.0
+  # iP: indicatedPowerInHorsePower
+  if tp=='simpleExpansion':
+    return iP*(7.0-(Pr-12.0)*0.092)
+  elif tp=='compound':
+    return iP*(6.8-(Pr-12.0)*0.092)
+
+def gridSurfaceInM2(hC,a,b):
+  # a: between 57.0 to 70.0, the latest is hard on the chaudiere. reco : 65.0
+  # b: between 50.0 and 70.0 Reco : 50.0
+  S=hC/a   # surface de chauffe vaporisante
+  Gr=S/b  
+  return Gr
+
+def locoWeightInTons(hC,a):
+  # a : same as grdSurfaceInM2. Reco 65.0
+  # result without coal and water. Add 9t for that!
+  return 0.5*hC/a
+
+def cylinderPressureInKgCm2(Pr,tp):
+  # Pr: pressure (timbre) in kg/cm2 between 12.0 and 25.0
+  if tp=='simpleExpansion':
+#    return 3.6+(Pr-12.0)*0.11
+    return 4.14+(Pr-12.0)*0.11
+  elif tp=='compound':
+#    return 3.4+(Pr-12.0)*0.11
+    return 3.94+(Pr-12.0)*0.11
+
+def cylinderDiameterInCm(r,Dm,cP,l):
+  # r:rolling resistance
+  # cP : cylinderPressurInKgCm2
+  # piston course in m
+  return math.pow(((r/G)*Dm)/(cP*l),0.5)
+
+def tractiveEffortAtStart(Pr,d,l,Dm,n,tp):
+  # Pr : timbre in kg/cm2
+  # d : cylinder diam in Cm
+  # l : piston course
+  # n : number of cylinders
+  if tp=='simpleExpansion':
+    return n*G*0.75*Pr*d*d*l/(2.0*Dm)
+
+def checkAdherence(tra,P):
+  # P: poids (t) essieux accouples
+  # tra : tractiveeffortatstart
+  # f : coeff adherence
+  f=0.25
+  # if False, need to increase ea (number of essieux accouples) or poids par essieux (depends on railroad specs) or reduce cylinders volume or number of cylinders
+  return (P*1000.0*f)>(tra/G)
+
+def labrijn(iP,m,mL,mT):
+  # iP : indicatedPowerInHorsepower
+  # m : masse remorque (t)
+  # mL : masse loco (t)
+  # mt : masse tender (t)
+  N=iP/(m+mL+mT)
+  N2=N*N
+  N3=N*N*N
+  a=0.07*(-0.0534091*N2+1.29053*N-0.0816667)
+  vKPoint=-0.0874126*N3+2.08625*N2-17.19*N+55.6667
+  maxVk=0.150117*N3-4.15879*N2+37.5113*N+28.9238
+  return [a,vKPoint,maxVk]
 
 def sim():
   global cycles
@@ -1270,3 +1388,29 @@ def sim():
     ncyc=ncyc+1
 
 sim()
+#print strahl(110.0,0.0,250.0,0.25)
+#print sanzin(99.0,48.0,110.0,1.90,10.0,2)
+#print gradeR(99.0,48.0,250.0,2.0,1000.0)
+#print rollingResistance(p,P,m,i,c,Vk,VVk,Dm,S,ea,k)
+
+#r=rollingResistance(99.0,48.0,250.0,8.0,999999999.9,80.0,0.0,1.90,10.0,2,0.25)
+#iP=indicatedPowerInHorsePower(r,80.0)
+#print iP
+#r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25)
+#iP=indicatedPowerInHorsePower(r,110.0)
+#print iP
+#print "***"
+#print labrijn(iP,250.0,99.0,48.0)
+
+#hC=hourlyVaporConsumptionInKg(iP,18.0,'simpleExpansion')
+#print gridSurfaceInM2(hC,65.0,50.0)
+#cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
+#print cP
+#cylinderDiameter(r,Dm,cP,l)
+#d=cylinderDiameterInCm(r,1.90,cP,0.72)
+#tractiveEffortAtStart(Pr,d,l,Dm,n,tp)
+#tra=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
+#print tra
+#checkAdherence(tra,P)
+#print checkAdherence(tra,48.0)
+#print locoWeightInTons(hC,65.0)
