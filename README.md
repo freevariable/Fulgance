@@ -74,6 +74,8 @@ The control room is displayed as an HTML dashboard by calling *tools/room.py* **
 #### Options
 - You must provide the route name using *--route*
 - You must provide a segments list using *--segments*
+
 Here is an example:
 *tools/room.py --route=ParisLine1 --segments=WestboundMain,EastboundMain > dashboard.html* 
+
 This will produce three files: dashboard.html, WestboundMain.html and EastboundMain.html
