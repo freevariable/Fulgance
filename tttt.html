@@ -1,10 +1,21 @@
-<html><head><script>
-  function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+<html><head><title>Fulgence control room</title>
+<style type="text/css">
+* {
+  font-size:12px;
+  font-family: Tahoma;
+}
+a:visited, a:link {
+  color:#AA0000;
+}
+</style>
+<script>  function resizeIframe(obj) {
+auxH=obj.contentWindow.document.body.scrollHeight+60;
+    obj.style.height = auxH + 'px';
   }
 </script></head>
-<body>Service has been running for 0:06:21.<br>
-<input type="button" value="Refresh Page" onClick="window.location.reload()"><p>
+<body>Service has been running for <a href="#this" onClick="window.location.reload()">1:55:22</a>.<br>
+Live traffic congestion: 
+<b>75.0%</b><br>
 <iframe src="EastboundMain.html" scrolling="no" frameborder="0" onload="resizeIframe(this)"></iframe>
 <iframe src="WestboundMain.html" scrolling="no" frameborder="0" onload="resizeIframe(this)"></iframe>
 </p></body></html>

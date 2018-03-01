@@ -232,16 +232,33 @@ for seg in segmentsList:
   f.close()
 
 elapsed=r.get("elapsedHuman")
-print "<html><head><script>"
-print "  function resizeIframe(obj) {"
-print "    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';"
+headwaycnt=float(len(r.keys("headway:*")))
+print "<html><head><title>Fulgence control room</title>"
+print "<style type=\"text/css\">"
+print "* {"
+print "  font-size:12px;"
+print "  font-family: Tahoma;"
+print "}"
+print "a:visited, a:link {"
+print "  color:#AA0000;"
+print "}"
+print "</style>"
+print "<script>  function resizeIframe(obj) {"
+print "auxH=obj.contentWindow.document.body.scrollHeight+60;"
+print "    obj.style.height = auxH + 'px';"
 print "  }"
 print "</script></head>"
-print "<body>Service has been running for "+elapsed+".<br>"
-print "<input type=\"button\" value=\"Refresh Page\" onClick=\"window.location.reload()\"><p>"
+print "<body>Service has been running for <a href=\"#this\" onClick=\"window.location.reload()\">"+elapsed+"</a>.(click time to refresh)<br>"
+print "Live traffic congestion: "
+if headwaycnt>0.8*float(len(stas)):
+  headwaycnt=0.8*float(len(stas))
+congestion=125.0*float(headwaycnt)/float(len(stas))
+print "<b>"+str(congestion)+"%</b><br>"
+print "<p>click on a train service to show live status</p>"
 for seg in segmentsList:
   print "<iframe src=\""+seg+".html\" scrolling=\"no\" frameborder=\"0\" onload=\"resizeIframe(this)\"></iframe>"
-print "</p></body></html>"
+print "</p>powered by <a href=\"https://github.com/freevariable/Fulgence\">Fulgence</a>"
+print "</body></html>"
 
 #for h in html:
 #  print h
