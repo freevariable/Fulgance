@@ -231,15 +231,17 @@ for seg in segmentsList:
     f.write(i)
   f.close()
 
+elapsed=r.get("elapsedHuman")
 print "<html><head><script>"
 print "  function resizeIframe(obj) {"
 print "    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';"
 print "  }"
 print "</script></head>"
-print "<body><input type=\"button\" value=\"Refresh Page\" onClick=\"window.location.reload()\">"
+print "<body>Service has been running for "+elapsed+".<br>"
+print "<input type=\"button\" value=\"Refresh Page\" onClick=\"window.location.reload()\"><p>"
 for seg in segmentsList:
   print "<iframe src=\""+seg+".html\" scrolling=\"no\" frameborder=\"0\" onload=\"resizeIframe(this)\"></iframe>"
-print "</body></html>"
+print "</p></body></html>"
 
 #for h in html:
 #  print h

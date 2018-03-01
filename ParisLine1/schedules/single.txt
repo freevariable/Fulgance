@@ -1,2 +1,2 @@
-#name segment xPos(SigName) t0
-E500 WestboundMain ChV+10 0.0
+#name segment xPos(SigName)
+E500 WestboundMain ChV+10

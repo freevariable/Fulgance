@@ -14,10 +14,13 @@
 #  limitations under the License.
 
 import redis,random,math,sys
-import time,getopt
+import time,datetime,getopt
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
+hasTime=False
+startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
+CLOCKHEADWAY=25  # in secs
 G=9.81  # N/kg
 MULTICORE=False
 CORES=1
@@ -112,16 +115,20 @@ def initStock():
     return ts
 
 def initSchedule():
+    global hasTime
+    global startTime
     f=open(projectDir+schedulesDir+scheduleName,"r")
     tsf=f.readlines()
     ts=[]
     f.close()
-    cnt=0
     for t in tsf:
       if (t[0]!='#'):
         t=t.rstrip().split(" ")
-        ts.append(t)
-        cnt=cnt+1  
+        if t[0]=='Time':
+          hasTime=True
+          startTime=datetime.datetime.strptime(t[1],"%jd%Hh%Mm%Ss")
+        else:
+          ts.append(t)
     return ts
 
 def initGRDs():
@@ -357,14 +364,14 @@ def initAll():
       for asi in sigs[aa[1]]:
          if asi[1]==aa[2]:
            aPos=1000.0*float(asi[0])
-      trs=Tr(aa[0],aa[1],aPos,float(aa[3]))
+      trs=Tr(aa[0],aa[1],aPos)
     else:
       if (aa[0]!="#"):
         found=False
         for asi in sigs[aa[1]]:
            if asi[1]==aa[2]:
              aPos=1000.0*float(asi[0])
-        aT=Tr(aa[0],aa[1],aPos,float(aa[3]))
+        aT=Tr(aa[0],aa[1],aPos)
         trs.append(aT)
     cnt=cnt+1 
 
@@ -425,11 +432,11 @@ class Tr:
       for i in t:
         yield i
 
-  def reinit(self,initSegment,initPos,initTime):
+  def reinit(self,initSegment,initPos):
     global stock
     global t
     if not __debug__:
-      print "REinit..."+self.name+" at pos "+str(initPos)+" and t:"+str(initTime)
+      print "REinit..."+self.name+" at pos "+str(initPos)
     gFactor=G*self.gradient
     v2factor=0.0
     factors=gFactor+v2factor+stock['railFactor']
@@ -509,14 +516,14 @@ class Tr:
     updateSIGbyTrOccupation(previousSig,self.name,"red")
 
   def dumpstate(self):
-    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':stock['units']})
+    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':stock['units'],'react':self.react})
 #    print r.hgetall(self.name)
 
-  def __init__(self,name,initSegment,initPos,initTime):
+  def __init__(self,name,initSegment,initPos):
     global r
     global stock
     if not __debug__:
-      print "init..."+name+" at pos "+str(initPos)+" and t:"+str(initTime)
+      print "init..."+name+" at pos "+str(initPos)
     self.pax=stock['maxPax']
     self.m=stock['weight']+self.pax*PAXWEIGHT
     gFactor=G*self.gradient
@@ -675,6 +682,7 @@ class Tr:
       isOc=r.get(self.redisSIG+":isOccupied")
       if isOc is not None:
         self.advSIGcol="red"
+        r.set(self.redisSIG,"red")
       if not __debug__:
         print self.name+":t:"+str(t)+":ADVANCE "+self.advSIGcol+" SIG vK:"+str(self.vK)+" "+self.redisSIG+" isOccupied? "+str(isOc)
       self.sigSpotted=True
@@ -725,7 +733,7 @@ class Tr:
           updateSIGbyTrOccupation(p,self.name,"green")
           updateSIGbyTrOccupation(previousSig,self.name,"green")
           updateSIGbyTrOccupation(previousPreviousSig,self.name,"green")
-          self.reinit(kCur,0.0+stock['length']-self.nSIGx+self.x,t)
+          self.reinit(kCur,0.0+stock['length']-self.nSIGx+self.x)
         else: 
           self.atSig=True
           self.sigPoll=t+SIGPOLL
@@ -933,16 +941,20 @@ class Tr:
         self.power=0.0
       if not __debug__:
         if (realTime==False):
-#      if ((self.inSta==False) and (self.atSig==False)):
           print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" factors:"+str(factors)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)+" sigBrake?"+str(self.sigBrake)+" staBrake?"+str(self.staBrake)
         if TPROGRESS==True:
           print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
     if (self.inSta==True):
       if (t>self.waitSta):
-        self.inSta=False
-        self.waitSta=0.0
-        self.react=True
-        self.waitReact=t+longTail(9.3,71.0,7200.0)
+        headway=r.get("headway:"+self.segment+":"+self.nextSTA[1])
+        if headway is None:
+          self.inSta=False
+          self.waitSta=0.0
+          self.react=True
+          self.waitReact=t+longTail(9.3,71.0,20.0)
+        else:
+          self.waitSta=self.waitSta+2.0
+          print self.name+":t:"+str(t)+":waiting for headway "+"headway:"+self.segment+":"+self.nextSTA[1]
         if not __debug__:
           print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
           if ((self.waitReact-t)>10.0):
@@ -970,7 +982,7 @@ class Tr:
         if k is None:
           self.atSig=False
           self.react=True
-          self.waitReact=t+longTail(9.3,71.0,7200.0)
+          self.waitReact=t+longTail(9.3,71.0,20.0)
           if not __debug__:
             print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
           if ((self.waitReact-t)>10.0):
@@ -982,6 +994,8 @@ class Tr:
     if (self.react==True):
       if (t>self.waitReact):
         self.react=False
+        r.set("headway:"+self.segment+":"+self.nextSTA[1],True)
+        r.expire("headway:"+self.segment+":"+self.nextSTA[1],CLOCKHEADWAY)
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
@@ -1073,13 +1087,6 @@ def findMyTIVcnt(x,seg):
         return cnt
     cnt=cnt+1
   return cnt-1
-
-def updateSIGbyTrOccupationIf(aSig,name,state,ifState):
-  global sigs
-  redisSIG="sig:"+aSig['seg']+":"+sigs[aSig['seg']][aSig['cnt']][1]
-  k=r.get(redisSIG)
-  if (k==ifState):
-    updateSIGbyTrOccupation(aSig,name,state)
 
 def updateSIGbyTrOccupation(aSig,name,state):
   global sigs
@@ -1175,6 +1182,8 @@ def stepRT(s):
   sys.stdout.flush()
   while (ccc<cycles):
     t=ncyc/CYCLE
+    r.set("elapsed",int(t))
+    r.set("elapsedHuman",str(datetime.timedelta(seconds=int(t))))
     if not __debug__:
       print "RT:"+str(t)
     for aT in trs:
@@ -1368,6 +1377,8 @@ def sim():
   while (exitCondition==False):
     t=ncyc/CYCLE
     intT=int(t)
+    r.set("elapsed",intT)
+    r.set("elapsedHuman",str(datetime.timedelta(seconds=intT)))
     if (intT%5==0):
       sys.stdout.flush()
     for aT in trs:

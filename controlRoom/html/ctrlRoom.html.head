@@ -10,8 +10,16 @@ function pickSrv(svc) {
   line="";
   for (var i=0; i < sss.length; i++) {
     if (sss[i]['name'] === svc) {
+      if (sss[i]['sigSpotted'] === "True") {
+        aspectSource=sss[i]['advSIGcol']+'.svg'; 
+      } else {
+        aspectSource=sss[i]['advSIGcol']+'.svg';
+      }
       line=line+'<b>'+svc+'</font></b><br>'
-     state="braking before speed signal";
+      state="braking before speed signal";
+      if (sss[i]['react'] === "True") {
+        state="about to move"; 
+      }
       if (sss[i]['sigBrake'] === "True") {
         state="braking before aspect signal"; 
       }
@@ -23,6 +31,7 @@ function pickSrv(svc) {
       }
       if (sss[i]['atSig'] === "True") {
         state="waiting at signal "+sss[i]['nextSIG']; 
+        aspectSource='red.svg';
       }
       if (sss[i]['inSta'] === "True") {
         state="boarding passengers"; 
@@ -34,10 +43,12 @@ function pickSrv(svc) {
       }
       line=line+'<i>('+state+')</i><br>'
       line=line+'Speed: '+Number(sss[i]['v']).toFixed(1)+" "+speedU;
-      line=line+'<img src=\"'+sss[i]['advSIGcol']+'.svg\"><br>';
+      line=line+'<img src=\"'+aspectSource+'\"><br>';
       if (sss[i]['maxVk']>sss[i]['nextTIV']) {
         line=line+'Max speed: '+Number(sss[i]['maxVk']).toFixed(0)+" "+speedU+" >>> <span class=\"yellowCol\">"+sss[i]['nextTIV']+"</span><br>";
-      } 
+      } else {
+        line=line+'Max speed: '+Number(sss[i]['maxVk']).toFixed(0)+" "+speedU+"<br>";
+      }
       paxRatio=100*sss[i]['pax']/sss[i]['maxPax'];
       line=line+'Pax: '+sss[i]['pax']+' ('+Number(paxRatio).toFixed(0)+'%)<br>';
     }

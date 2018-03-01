@@ -1,11 +1,13 @@
-**Realtime**
+**Realism**
 - handle time of day
+- handle weather
+- implement headway timer
 
 **Engine performance**
-- dump power and force curves depending on engine law
+- generate engine power curve and tractive force curves depending on the engine law
 
 **Track**
-- Implement junctions
+- Implement converging and diverging junctions
 
 **Pax**
 - Implement dynamic variations
