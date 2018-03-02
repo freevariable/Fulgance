@@ -24,8 +24,10 @@ segmentsDir="segments/"
 smallSTAsvg="BSicon_HST.svg"
 trackSvg="BSicon_STR.svg"
 largeSTAsvg="BSicon_BHF.svg"
-beginTrackSvg="BSicon_KBHFa.svg"
-endTrackSvg="BSicon_KBHFe.svg"
+#beginTrackSvg="BSicon_KBHFa.svg"
+beginTrackSvg="TopEnd.svg"
+#endTrackSvg="BSicon_KBHFe.svg"
+endTrackSvg="BottomEnd.svg"
 
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 
@@ -120,6 +122,7 @@ def buildDashboard(zdump):
   html=[]
   line="<body onload=\"populate()\">"
   html.append(line)
+  firstSIG=True
   for s in sigs:
     cell={}
     rx=re.match(r'(.*)\+10',s[1])
@@ -146,6 +149,13 @@ def buildDashboard(zdump):
     else:
       cell['PK']=float(s[0])
       cell['type']='SIG'
+      if len(s)>2:
+        if (s[2]=='2'):
+          if firstSIG==True:
+            firstSIG=False
+            cell['type']='SIG2A'
+          else:
+            cell['type']='SIG2E'
       cells.append(cell)
 #    print cell
   for v in svcs:
@@ -166,6 +176,16 @@ def buildDashboard(zdump):
     html.append(line)
     if c['type']=='SIG':
       line='<div class="divTableCell"><img width="11px" src="'+trackSvg+'"></div>'
+      html.append(line)
+      line='<div class="divTableCell"></div>'
+      html.append(line)
+    if c['type']=='SIG2A':
+      line='<div class="divTableCell"><img width="11px" src="'+beginTrackSvg+'"></div>'
+      html.append(line)
+      line='<div class="divTableCell"></div>'
+      html.append(line)
+    if c['type']=='SIG2E':
+      line='<div class="divTableCell"><img width="11px" src="'+endTrackSvg+'"></div>'
       html.append(line)
       line='<div class="divTableCell"></div>'
       html.append(line)
@@ -213,6 +233,7 @@ if found==False:
 
 head=initHEAD()
 iframes=[]
+svcCnt=0
 for seg in segmentsList:
   stas=initSTAs(seg)
   sigs=initSIGs(seg)
@@ -220,6 +241,7 @@ for seg in segmentsList:
   svcs={}
   cells={}
   svcs=getState(seg)
+  svcCnt=svcCnt+len(svcs)
   if (len(svcs)<1):
     print "ERROR. No services found in segment. Have you run sim with --realtime?"
     sys.exit(2)
@@ -248,17 +270,18 @@ print "auxH=obj.contentWindow.document.body.scrollHeight+60;"
 print "    obj.style.height = auxH + 'px';"
 print "  }"
 print "</script></head>"
-print "<body>Service has been running for <a href=\"#this\" onClick=\"window.location.reload()\">"+elapsed+"</a>.(click time to refresh)<br>"
+print "<body>This sim has been running for <a href=\"#this\" onClick=\"window.location.reload()\">"+elapsed+"</a>. (Click on the timestamp to refresh this page)<br>"
+print "<p><b>"+str(svcCnt)+"</b> services are currently operating on the line."
 print "Live traffic congestion: "
 if headwaycnt>0.8*float(len(stas)):
   headwaycnt=0.8*float(len(stas))
 congestion=125.0*float(headwaycnt)/float(len(stas))
-print "<b>"+str(congestion)+"%</b><br>"
-print "<p>click on a train service to show live status</p>"
+print "<b>"+str(congestion)+"%</b></p>"
+print "<p>Click on a train service name below to show its live status</p>"
+print "</p><p><b>Powered by <a href=\"https://github.com/freevariable/Fulgence\">Fulgence</a>, your precision simulator!</b></p><p>"
 for seg in segmentsList:
   print "<iframe src=\""+seg+".html\" scrolling=\"no\" frameborder=\"0\" onload=\"resizeIframe(this)\"></iframe>"
-print "</p>powered by <a href=\"https://github.com/freevariable/Fulgence\">Fulgence</a>"
-print "</body></html>"
+print "</p></body></html>"
 
 #for h in html:
 #  print h

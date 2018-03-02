@@ -1,4 +1,6 @@
 ## FAQ 
+Full demo now available here: 
+![alt text](https://github.com/freevariable/Fulgence/blob/master/capture.png "Paris metro demo")
 ### What's this?
 **Fulgence** is a text-based railroad simulator that will let you perform various tasks:
 - [x] define realistic (eg: Paris Metro Line 1) or fancy routes (eg: The Polar Comet)
@@ -8,6 +10,9 @@
 - [x] run schedules in real-time or accelerated time
 - [ ] trainspot at a platform instantly, check out its real-time information board
 - [ ] takes peak hours passengers flow into account
+- [x] use aspect signals for train separation
+- [x] use headway timers for trains separation
+- [] use electronic signals for trains separation
 - [x] calculate power consumption (only EMUs for now, coal and water are in alpha!)
 - [x] get detailed statistics for data crunching and rendering
 - [x] access the control room

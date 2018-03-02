@@ -1,7 +1,6 @@
 **Realism**
 - handle time of day
 - handle weather
-- implement headway timer
 
 **Engine performance**
 - generate engine power curve and tractive force curves depending on the engine law
