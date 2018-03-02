@@ -1221,9 +1221,9 @@ def strahl(Vk,VVk,m,k):   # rolling resistance (in Newton) of train carriages (e
   # k=0.5 misc goods
   # m : poids (t) de la remorque
   V=(Vk+VVk)
-  F=(2.5+k*V*V*0.001)*m*G
+  F=(2.5+k*V*V*0.001)*m*G  # 2.5kg/t resistance au roulement en marche
   if (Vk<1.0):
-    F=F+0.0075*m*G   # Force d arrachement
+    F=F+15.0*m*G   # Force d arrachement, entre 15kg/t et 20kg/t
   return F
 
 # tractive effort = tractive force
@@ -1231,7 +1231,7 @@ def locoNrollingResistance(Vk,n,m): # n essieux
   # m : poids (kg) du train
   F=(0.00065+(13*n/m)+0.000036*Vk+0.00039*Vk*Vk/m)*m*G
   if (Vk<1.0):
-    F=F+0.0075*m*G   # Force d arrachement
+    F=F+0.0075*m*G   # Force d arrachement, environ 7.5kg/t
   return F
 
 def sanzin(p,P,Vk,Dm,S,ea):  # ea = nb essieux accouples
@@ -1352,6 +1352,28 @@ def getAccForSTM(l,vK,grd):
     acc=l[0]
   return acc
 
+def plot():
+  print "v,r,F,a"
+  r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25)
+  cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
+  d=cylinderDiameterInCm(r,1.90,cP,0.72)
+  v=-1
+  vMaxReached=False
+  while vMaxReached==False:
+    v=v+1
+    mRemorque=250.0
+    rLTremorque=strahl(float(v),0.0,mRemorque,0.25)+sanzin(99.0,48.0,float(v),1.90,10.0,2)
+    if (v<=50):
+      tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
+    else:
+      tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')*50.0/float(v)
+    acc=(tEff-rLTremorque)/(1000.0*G*(mRemorque+99.0+48.0))
+    print str(v)+","+str(rLTremorque)+","+str(tEff)+","+str(acc)
+    if tEff<=rLTremorque:
+      vMaxReached=True
+   
+#tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
+
 def sim():
   global cycles
   global trs
@@ -1388,7 +1410,7 @@ def sim():
     ncyc=ncyc+1
 
 try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])
 except getopt.GetoptError as err:
   print(err) # will print something like "option -a not recognized"
   usage()
@@ -1400,6 +1422,7 @@ realTime=REALTIME
 core=1
 scheduleName="default.txt"
 stockName="rollingStock.txt"
+plotCurves=False
 
 serviceList=[]
 for o, a in opts:
@@ -1412,6 +1435,8 @@ for o, a in opts:
     duration = abs(int(a))
   elif o in ("--realtime"):
     realTime=True
+  elif o in ("--plot"):
+    plotCurves=True
   elif o in ("--cores"):
     numCores = int(a)
   elif o in ("--core"):
@@ -1430,7 +1455,12 @@ for o, a in opts:
 
 initAll()
 
-sim()
+if plotCurves==False:
+  sim()
+else:
+  plot()
+  sys.exit()
+
 #print strahl(110.0,0.0,250.0,0.25)
 #print sanzin(99.0,48.0,110.0,1.90,10.0,2)
 #print gradeR(99.0,48.0,250.0,2.0,1000.0)

@@ -5,6 +5,12 @@ Here is a sample of what you can get:
 
 ![alt text](https://github.com/freevariable/Fulgence/blob/master/capture.png "Paris metro demo")
 
+The steam engine simulator in alpha version is giving promising results!! Here are the characteristic curves of a 147tons Atlantic (including tender) with two cylinders (not compounded) and a 250t payload:
+
+![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.png "Atlantic")
+
+![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.acc.png "Atlantic")
+
 ### What's this?
 Fulgence will let you perform various tasks:
 - [x] define realistic (eg: Paris Metro Line 1) or fancy routes (eg: The Polar Comet)
@@ -16,7 +22,7 @@ Fulgence will let you perform various tasks:
 - [ ] takes peak hours passengers flow into account
 - [x] use aspect signals for train separation
 - [x] use headway timers for trains separation
-- [] use electronic signals for trains separation
+- [ ] use electronic signals for trains separation
 - [x] calculate power consumption (only EMUs for now, coal and water are in alpha!)
 - [x] get detailed statistics for data crunching and rendering
 - [x] access the control room
