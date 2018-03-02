@@ -1,8 +1,12 @@
 ## FAQ 
+**Fulgence** is a precision text-based railroad simulator.
+
 Full demo now available here: 
+
 ![alt text](https://github.com/freevariable/Fulgence/blob/master/capture.png "Paris metro demo")
+
 ### What's this?
-**Fulgence** is a text-based railroad simulator that will let you perform various tasks:
+Fulgence will let you perform various tasks:
 - [x] define realistic (eg: Paris Metro Line 1) or fancy routes (eg: The Polar Comet)
 - [x] define realistic or fancy schedules
 - [x] define rolling stock (only EMUs for now, steam engines are in alpha!)
