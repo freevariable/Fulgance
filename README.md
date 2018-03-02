@@ -1,5 +1,5 @@
 ## FAQ 
-**Fulgence** is a precision, highly customizable (text-based) railroad simulator. **A full demo is [available here](https://fulgence.lovethosetrains.com/controlRoom.html)**
+**Fulgence** is a precision, highly customizable (text-based) railroad simulator. **A full demo is [available here](http://fulgence.lovethosetrains.com/controlRoom.html)**
 
 Here is a sample of what you can get:
 
