@@ -1,9 +1,9 @@
 ## FAQ 
-**Fulgence** is a precision text-based railroad simulator.
-
-Full demo now available here: 
+**Fulgence** is a precision text-based railroad simulator. Here is a sample of what you can get:
 
 ![alt text](https://github.com/freevariable/Fulgence/blob/master/capture.png "Paris metro demo")
+
+**A full demo is [available here](https://fulgence.lovethosetrains.com/controlRoom.html)**
 
 ### What's this?
 Fulgence will let you perform various tasks:
