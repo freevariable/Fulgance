@@ -9,7 +9,7 @@ The steam engine simulator in alpha version is giving promising results!! Here a
 
 ![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.png "Atlantic")
 
-![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.acc.png "Atlantic")
+![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.a.png "Atlantic")
 
 ### What's this?
 Fulgence will let you perform various tasks:
