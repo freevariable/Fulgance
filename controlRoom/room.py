@@ -282,7 +282,7 @@ print "<b>"+str(congestion)+"%</b></p>"
 print "<p>Click on a train service name below to show its live status</p>"
 print "</p><p><b>Powered by <a href=\"https://github.com/freevariable/Fulgence\">Fulgence</a>, your precision simulator!</b></p><p>"
 for seg in segmentsList:
-  print "<iframe src=\""+seg+".html?q=\""+str(randId)+"\" scrolling=\"no\" frameborder=\"0\" onload=\"resizeIframe(this)\"></iframe>"
+  print "<iframe src=\""+seg+".html?q="+str(randId)+"\" scrolling=\"no\" frameborder=\"0\" onload=\"resizeIframe(this)\"></iframe>"
 print "</p></body></html>"
 
 #for h in html:

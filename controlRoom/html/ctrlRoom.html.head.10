@@ -13,7 +13,7 @@ function pickSrv(svc) {
       if (sss[i]['sigSpotted'] === "True") {
         aspectSource=sss[i]['advSIGcol']+'.svg'; 
       } else {
-        aspectSource="";
+        aspectSource=sss[i]['advSIGcol']+'.svg';
       }
       line=line+'<b>'+svc+'</font></b><br>'
       state="braking before speed signal";
@@ -30,8 +30,10 @@ function pickSrv(svc) {
         state="coasting"; 
       }
       if (sss[i]['atSig'] === "True") {
+//        alert(sss[i]['name']);
+//        alert(sss[i]['atSig']);
         state="waiting at signal "+sss[i]['nextSIG']; 
-        aspectSource=sss[i]['nextSIG']+'.svg';
+        aspectSource='red.svg';
       }
       if (sss[i]['inSta'] === "True") {
         state="boarding passengers"; 
@@ -57,6 +59,7 @@ function pickSrv(svc) {
 }
 function showSrv(svc) {
   var popup=document.getElementById(svc);
+//  alert(svc);
   popup.innerHTML=pickSrv(svc);
   popup.classList.toggle("Show");
 }

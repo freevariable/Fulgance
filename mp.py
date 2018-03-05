@@ -491,7 +491,7 @@ class Tr:
     self.nv=0.0
     self.cv=0.0
     if (stock['accelerationLaw']=='EMU1'):
-      self.a=getAccForEMU(factors,self.v,self.m)+self.aGaussFactor
+      self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
       self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+self.aGaussFactor
     self.deltaBDtiv=0.0
@@ -591,7 +591,7 @@ class Tr:
     self.nv=0.0
     self.cv=0.0
     if (stock['accelerationLaw']=='EMU1'):
-      self.a=getAccForEMU(factors,self.v,self.m)+self.aGaussFactor
+      self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
       self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+self.aGaussFactor
     self.deltaBDtiv=0.0
@@ -616,8 +616,9 @@ class Tr:
     self.sigSpotted=False
     sigAlreadyOccupied=r.get("sig:"+previousSig['seg']+":"+previousSig['name']+":isOccupied")
     if sigAlreadyOccupied is not None:
-      print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share the same signal block"
-      sys.exit()
+      if sigAlreadyOccupied!=self.name:
+        print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share the same signal block"
+        sys.exit()
     else:
       if (sigs[self.segment][self.SIGcnt][2]=='2'):
         print "FATAL: "+str(self.name)+" is facing a Type 2 signal. It should rather face the next signal (a type 5)"
@@ -866,7 +867,7 @@ class Tr:
       else:
         if (self.vK<=(auxMaxVk*VTHRESH)):
           if (stock['accelerationLaw']=='EMU1'):
-            self.a=getAccForEMU(factors,self.v,self.m)
+            self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)
           elif (stock['accelerationLaw']=='STM1'):
             self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)
           else:
@@ -891,7 +892,7 @@ class Tr:
         if not __debug__:
           print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(auxMaxVk)+" with aFull:"+str(self.aFull)
         if (stock['accelerationLaw']=='EMU1'):
-          self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
+          self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
           self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+aGauss()
       elif (self.vK>4.0):
@@ -906,7 +907,7 @@ class Tr:
       if stock['accelerationLaw']=='STM1':
         self.aFull=self.a-gFactor
       else:
-        self.aFull=self.a-v2factor-gFactor-stock['railFactor']
+        self.aFull=self.a-gFactor
       if (self.aFull<0.0):
         if ((self.v+(self.aFull/CYCLE))<0.0):
           if (self.v>0.0):
@@ -1003,7 +1004,7 @@ class Tr:
         r.set("headway:"+self.segment+":"+self.nextSTA[1],True)
         r.expire("headway:"+self.segment+":"+self.nextSTA[1],CLOCKHEADWAY)
         if (stock['accelerationLaw']=='EMU1'):
-          self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
+          self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
           self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+aGauss()
         if not __debug__:
@@ -1162,17 +1163,18 @@ def updateSIGbyTrOccupation(aSig,name,state):
   if (aSig['type']!='2'):   # a type 2 always remains red
     r.set(redisSIG,state)
 
-def getAccForEMU(f,v,m):
+def getAccForEMU(po,refAcc,railF,airF,vK,m):
   global stock
-  powerFromFactors=v*f
-  availablePower=stock['power']-powerFromFactors
+  f=0.07*m*G*(railF+airF*vK*vK/12.96)
+  powerFromFactors=vK*f/3.6
+  availablePower=po-powerFromFactors
   if (availablePower<0.0):
     return 0.0
-  if (v>0.0):
-    acc=availablePower/(m*v)
-    return min(acc,stock['acceleration'])
+  if (vK>0.0):
+    acc=3.6*availablePower/(m*vK)
+    return min(acc,refAcc)
   else:
-    return stock['acceleration']
+    return refAcc
 
 def scheduler(period,f,*args):
   def g_tick():
@@ -1367,33 +1369,48 @@ def getAccForSTM(vK,vvK,grd,curv,critVk,maxVk,starting):
   acc=(tEff-rLTremorque)/(1000.0*(mRemorque+99.0+48.0))
   return acc
 
-def plot():
+def plot(law):
+  global stock
   print "v,r,F,a"
-  r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
-#  r=rollingResistance(99.0,48.0,250.0,0.0,999999.0,80.0,0.0,1.90,10.0,2,0.25)
-  cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
-  d=cylinderDiameterInCm(r,1.90,cP,0.72)
   v=0.0
-  criticalSpeed=50.0
   vMaxReached=False
-  mRemorque=250.0
-  while vMaxReached==False:
-    rLTremorque=strahl(v,0.0,mRemorque,0.25,True)+sanzin(99.0,48.0,v,1.90,10.0,2)
-    if (v<=criticalSpeed):
-      tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
-    else:
-      tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')*criticalSpeed/v
-    acc=(tEff-rLTremorque)/(1000.0*(mRemorque+99.0+48.0))
-    if (acc<=0.0):
-      acc=0.0
-    else: 
-      print str(v)+","+str(rLTremorque)+","+str(tEff)+","+str(acc)
-    if tEff<=rLTremorque:
-      vMaxReached=True
-    v=v+0.25
-
-#tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
-
+  if law=='STM1':
+    r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
+#    r=rollingResistance(99.0,48.0,250.0,0.0,999999.0,80.0,0.0,1.90,10.0,2,0.25)
+    cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
+    d=cylinderDiameterInCm(r,1.90,cP,0.72)
+    criticalSpeed=50.0
+    mRemorque=250.0
+    while vMaxReached==False:
+      rLTremorque=strahl(v,0.0,mRemorque,0.25,True)+sanzin(99.0,48.0,v,1.90,10.0,2)
+      if (v<=criticalSpeed):
+        tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
+      else:
+        tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')*criticalSpeed/v
+      acc=(tEff-rLTremorque)/(1000.0*(mRemorque+99.0+48.0))
+      if (acc<=0.0):
+        acc=0.0
+      else: 
+        print str(v)+","+str(rLTremorque)+","+str(tEff)+","+str(acc)
+      if tEff<=rLTremorque:
+        vMaxReached=True
+      v=v+0.25
+  elif law=='EMU1':
+    m=stock['weight']+MAXPAX*PAXWEIGHT
+    while vMaxReached==False:
+      f=0.07*m*G*(stock['railFactor']+stock['airFactor']*v*v/12.96)
+      powerFromFactors=v*f/3.6
+      availablePower=stock['power']-powerFromFactors
+      if (availablePower<0.0):
+        print str(v)+",0.0"
+        vMaxReached=True
+      if (v>0.0):
+        acc=3.6*availablePower/(m*v)
+        print str(v)+","+str(min(acc,stock['acceleration']))+","+str(powerFromFactors)
+      else:
+        print str(v)+","+str(stock['acceleration'])+","+str(powerFromFactors)
+      v=v+0.25
+  
 def sim():
   global cycles
   global trs
@@ -1473,12 +1490,12 @@ for o, a in opts:
     assert False, "option unknown"
     sys.exit(2)
 
-initAll()
-
 if plotCurves==False:
+  initAll()
   sim()
 else:
-  plot()
+  initAll()
+  plot(stock['accelerationLaw'])
   sys.exit()
 
 #print strahl(110.0,0.0,250.0,0.25)
