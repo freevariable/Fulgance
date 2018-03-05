@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -404,6 +404,8 @@ class Tr:
   nv=0.0
   cv=0.0
   vK=0.0
+  critVk=0.0
+  tgtVk=110.0
   deltaBDtiv=0.0
   deltaBDsta=0.0
   advTIV=-1.0
@@ -490,7 +492,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(factors,self.v,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      self.a=getAccForSTM(self.labrijn,self.vK,self.grade)+self.aGaussFactor
+      self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)+self.aGaussFactor
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
     self.advTIV=-1.0
@@ -525,6 +527,8 @@ class Tr:
     if not __debug__:
       print "init..."+name+" at pos "+str(initPos)
     self.pax=stock['maxPax']
+    self.critVk=50.0
+    self.tgtVk=110.0
     self.m=stock['weight']+self.pax*PAXWEIGHT
     gFactor=G*self.gradient
     v2factor=0.0
@@ -590,7 +594,7 @@ class Tr:
       r1=rollingResistance(stock['engineWeight']/1000.0,stock['tenderWeight']/1000.0,stock['weight']/1000.0,0.0,9999999.0,self.maxVk,0.0,1.90,10.0,2,0.25)
       iP=indicatedPowerInHorsePower(r1,self.maxVk)
       self.labrijn=labrijn(iP,stock['weight']/1000.0,stock['engineWeight']/1000.0,stock['tenderWeight']/1000.0)
-      self.a=getAccForSTM(self.labrijn,0.0,0.0)+self.aGaussFactor
+      self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)+self.aGaussFactor
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
     self.advTIV=-1.0
@@ -865,7 +869,7 @@ class Tr:
           if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccForEMU(factors,self.v,self.m)
           elif (stock['accelerationLaw']=='STM1'):
-            self.a=getAccForSTM(self.labrijn,self.vK,self.grade)
+            self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)
           else:
             print "FATAL: ALAW unknown"
             sys.exit()
@@ -874,7 +878,7 @@ class Tr:
             sys.exit()
           if not __debug__:
             if (ncyc%CYCLE==0):
-              print self.name+":t:"+str(t)+":need to go faster..."+str(self.a)
+              print self.name+":t:"+str(t)+":need to go faster..."+str(self.a)+" "+str(self.x)+" "+str(self.vK)
         else:
           self.a=0.0 
     elif (self.a<0.0):
@@ -890,7 +894,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          self.a=getAccForSTM(self.labrijn,self.vK,self.grade)+aGauss()
+          self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)+aGauss()
       elif (self.vK>4.0):
         self.coasting=True
         if not __debug__:
@@ -999,7 +1003,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          self.a=getAccForSTM(self.labrijn,self.vK,self.grade)+aGauss()
+          self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)+aGauss()
         if not __debug__:
           print self.name+":t:"+str(t)+":REACTION, a:"+str(self.a)
         self.waitReact=0.0
@@ -1222,7 +1226,7 @@ def strahl(Vk,VVk,m,k):   # rolling resistance (in Newton) of train carriages (e
   # m : poids (t) de la remorque
   V=(Vk+VVk)
   F=(2.5+k*V*V*0.001)*m*G  # 2.5kg/t resistance au roulement en marche
-  if (Vk<1.0):
+  if (Vk<2.5):
     F=F+15.0*m*G   # Force d arrachement, entre 15kg/t et 20kg/t
   return F
 
@@ -1337,41 +1341,47 @@ def labrijn(iP,m,mL,mT):
   maxVk=0.150117*N3-4.15879*N2+37.5113*N+28.9238
   return [a,vKPoint,maxVk,N]
 
-def getAccForSTM(l,vK,grd):
-  maxVk=110.0
-  #r=rollingResistance(99.0,48.0,250.0,grd,9999999.0,vK,0.0,1.90,10.0,2,0.25)
+def getAccForSTM(vK,vvK,grd,curv,critVk,maxVk):
+  r=rollingResistance(99.0,48.0,250.0,grd,curv,maxVk,0.0,1.90,10.0,2,0.25)
+  cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
+  d=cylinderDiameterInCm(r,1.90,cP,0.72)
+  vMaxReached=False
+  mRemorque=250.0
   acc=0.0
-  if (vK>=l[2]):
-    acc=0.0
-  elif (vK>l[1]):
-    acc=l[0]*(1.0-(vK-l[1])/(l[2]-l[1]))
-#    print "STM acc: "+str(acc)+" "+str(l)
-  elif (vK<0.0):
-    acc=0.0
-  else: 
-    acc=l[0]
+  tEff=0.0
+  rLTremorque=strahl(vK,vvK,mRemorque,0.25)+sanzin(99.0,48.0,vK,1.90,10.0,2)
+  if (vK<=critVk):
+    tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
+  else:
+    tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')*critVk/vK
+  acc=(tEff-rLTremorque)/(1000.0*(mRemorque+99.0+48.0))
   return acc
 
 def plot():
   print "v,r,F,a"
   r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25)
+#  r=rollingResistance(99.0,48.0,250.0,0.0,999999.0,80.0,0.0,1.90,10.0,2,0.25)
   cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
   d=cylinderDiameterInCm(r,1.90,cP,0.72)
-  v=-1
+  v=0.0
+  criticalSpeed=50.0
   vMaxReached=False
+  mRemorque=250.0
   while vMaxReached==False:
-    v=v+1
-    mRemorque=250.0
-    rLTremorque=strahl(float(v),0.0,mRemorque,0.25)+sanzin(99.0,48.0,float(v),1.90,10.0,2)
-    if (v<=50):
+    rLTremorque=strahl(v,0.0,mRemorque,0.25)+sanzin(99.0,48.0,v,1.90,10.0,2)
+    if (v<=criticalSpeed):
       tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
     else:
-      tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')*50.0/float(v)
-    acc=(tEff-rLTremorque)/(1000.0*G*(mRemorque+99.0+48.0))
-    print str(v)+","+str(rLTremorque)+","+str(tEff)+","+str(acc)
+      tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')*criticalSpeed/v
+    acc=(tEff-rLTremorque)/(1000.0*(mRemorque+99.0+48.0))
+    if (acc<=0.0):
+      acc=0.0
+    else: 
+      print str(v)+","+str(rLTremorque)+","+str(tEff)+","+str(acc)
     if tEff<=rLTremorque:
       vMaxReached=True
-   
+    v=v+0.25
+
 #tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
 
 def sim():
