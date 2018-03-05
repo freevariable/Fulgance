@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -266,7 +266,6 @@ def initSIGs():
               if (aligned==True):
                 r.set("sig:"+se+":"+prevs[1],"yellow")
               else:
-#                r.set("sig:"+se+":"+prevs[1],"red")
                 r.set("sig:"+se+":"+prevs[1],"yellow")
             k1=r.get("sig:"+se+":"+prevs[1])       
             if not __debug__:
@@ -405,6 +404,7 @@ class Tr:
   cv=0.0
   vK=0.0
   critVk=0.0
+  startingPhase=True
   tgtVk=110.0
   deltaBDtiv=0.0
   deltaBDsta=0.0
@@ -442,6 +442,7 @@ class Tr:
     gFactor=G*self.gradient
     v2factor=0.0
     factors=gFactor+v2factor+stock['railFactor']
+    self.startingPhase=True
     self.x=initPos
     self.trip=self.trip+1
     self.coasting=False
@@ -492,7 +493,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(factors,self.v,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)+self.aGaussFactor
+      self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+self.aGaussFactor
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
     self.advTIV=-1.0
@@ -527,6 +528,7 @@ class Tr:
     if not __debug__:
       print "init..."+name+" at pos "+str(initPos)
     self.pax=stock['maxPax']
+    self.startingPhase=True
     self.critVk=50.0
     self.tgtVk=110.0
     self.m=stock['weight']+self.pax*PAXWEIGHT
@@ -591,10 +593,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(factors,self.v,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      r1=rollingResistance(stock['engineWeight']/1000.0,stock['tenderWeight']/1000.0,stock['weight']/1000.0,0.0,9999999.0,self.maxVk,0.0,1.90,10.0,2,0.25)
-      iP=indicatedPowerInHorsePower(r1,self.maxVk)
-      self.labrijn=labrijn(iP,stock['weight']/1000.0,stock['engineWeight']/1000.0,stock['tenderWeight']/1000.0)
-      self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)+self.aGaussFactor
+      self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+self.aGaussFactor
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
     self.advTIV=-1.0
@@ -764,7 +763,7 @@ class Tr:
           previousSig=findPrevSIGforOccupation(p)
           updateSIGbyTrOccupation(previousSig,self.name,"red")
         else:
-          print "FATAL: no more SIGS..." 
+          print "FATAL: no more SIGS..."+self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
           sys.exit()
     elif (self.atSig==True):
       self.a=0.0
@@ -847,7 +846,7 @@ class Tr:
 #
 # STAGE 2 : other acc updates
 #
-    if (self.advSIGcol=="yellow"):
+    if ((self.maxVk>20.0) and (self.advSIGcol=="yellow")):
       auxMaxVk=0.65*self.maxVk
       if ((self.vK>20.0) and (auxMaxVk<self.vK)):
         if not __debug__:
@@ -869,7 +868,7 @@ class Tr:
           if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccForEMU(factors,self.v,self.m)
           elif (stock['accelerationLaw']=='STM1'):
-            self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)
+            self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)
           else:
             print "FATAL: ALAW unknown"
             sys.exit()
@@ -894,7 +893,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)+aGauss()
+          self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+aGauss()
       elif (self.vK>4.0):
         self.coasting=True
         if not __debug__:
@@ -948,6 +947,9 @@ class Tr:
           print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" factors:"+str(factors)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)+" sigBrake?"+str(self.sigBrake)+" staBrake?"+str(self.staBrake)
         if TPROGRESS==True:
           print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
+#
+# STAGE 5 : manage phases when train is stopped
+#
     if (self.inSta==True):
       if (t>self.waitSta):
         headway=r.get("headway:"+self.segment+":"+self.nextSTA[1])
@@ -1003,10 +1005,14 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(factors,self.v,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk)+aGauss()
+          self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+aGauss()
         if not __debug__:
           print self.name+":t:"+str(t)+":REACTION, a:"+str(self.a)
         self.waitReact=0.0
+    if (self.v<=0.0):
+      self.startingPhase=True
+    elif (self.v>2.5):
+      self.startingPhase=False
   
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
@@ -1117,8 +1123,8 @@ def updateSIGbyTrOccupation(aSig,name,state):
         if km1==name:
           r.delete(redisSIGm1+":isOccupied")
           updateSIGbyTrOccupation(previousSig,name,"yellow")
-      else:
-          updateSIGbyTrOccupation(previousSig,name,"yellow")
+#      else:
+#          updateSIGbyTrOccupation(previousSig,name,"yellow")
       previousPreviousSig=findPrevSIGforOccupation(previousSig)
       redisSIGm2="sig:"+previousPreviousSig['seg']+":"+sigs[previousPreviousSig['seg']][previousPreviousSig['cnt']][1]
       km2=r.get(redisSIGm2+":isOccupied")
@@ -1132,7 +1138,11 @@ def updateSIGbyTrOccupation(aSig,name,state):
           updateSIGbyTrOccupation(previousPreviousSig,name,"green")
       elif (km2==name):
         r.delete(redisSIGm2+":isOccupied")
-        updateSIGbyTrOccupation(previousPreviousSig,name,"green")
+        if km1 is not None:
+          if km1==name:
+            updateSIGbyTrOccupation(previousPreviousSig,name,"green")
+        else:
+          updateSIGbyTrOccupation(previousPreviousSig,name,"green")
     if (state=="yellow"):
       previousSig=findPrevSIGforOccupation(aSig)
       redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
@@ -1217,7 +1227,7 @@ def longTail(startpoint,incr,maxval):
       else:
         return float(returnval)*random.uniform(0.71,1.63)
 
-def strahl(Vk,VVk,m,k):   # rolling resistance (in Newton) of train carriages (excluding the locomotive and tender if any)
+def strahl(Vk,VVk,m,k,starting):   # rolling resistance (in Newton) of train carriages (excluding the locomotive and tender if any)
   # VVK windspeed in kmh (0 to 20)
   # k=0.25 express pax/heavy goods
   # k=0.33 usual pax
@@ -1226,7 +1236,7 @@ def strahl(Vk,VVk,m,k):   # rolling resistance (in Newton) of train carriages (e
   # m : poids (t) de la remorque
   V=(Vk+VVk)
   F=(2.5+k*V*V*0.001)*m*G  # 2.5kg/t resistance au roulement en marche
-  if (Vk<2.5):
+  if ((Vk<2.5) and (starting==True)):
     F=F+15.0*m*G   # Force d arrachement, entre 15kg/t et 20kg/t
   return F
 
@@ -1269,9 +1279,9 @@ def gradeResistance(p,P,m,i,c):
   F=(m+p+P)*(i+(750.0/c))
   return F*G
 
-def rollingResistance(p,P,m,i,c,Vk,VVk,Dm,S,ea,k):
+def rollingResistance(p,P,m,i,c,Vk,VVk,Dm,S,ea,k,starting):
   # resistance de tout le train (remorque+loco+tender)
-  return gradeResistance(p,P,m,i,c)+sanzin(p,P,Vk,Dm,S,ea)+strahl(Vk,VVk,m,k)
+  return gradeResistance(p,P,m,i,c)+sanzin(p,P,Vk,Dm,S,ea)+strahl(Vk,VVk,m,k,starting)
 
 def indicatedPowerInHorsePower(r,Vk):
   # r: rollingresistance
@@ -1341,15 +1351,15 @@ def labrijn(iP,m,mL,mT):
   maxVk=0.150117*N3-4.15879*N2+37.5113*N+28.9238
   return [a,vKPoint,maxVk,N]
 
-def getAccForSTM(vK,vvK,grd,curv,critVk,maxVk):
-  r=rollingResistance(99.0,48.0,250.0,grd,curv,maxVk,0.0,1.90,10.0,2,0.25)
+def getAccForSTM(vK,vvK,grd,curv,critVk,maxVk,starting):
+  r=rollingResistance(99.0,48.0,250.0,grd,curv,maxVk,0.0,1.90,10.0,2,0.25,True)
   cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
   d=cylinderDiameterInCm(r,1.90,cP,0.72)
   vMaxReached=False
   mRemorque=250.0
   acc=0.0
   tEff=0.0
-  rLTremorque=strahl(vK,vvK,mRemorque,0.25)+sanzin(99.0,48.0,vK,1.90,10.0,2)
+  rLTremorque=strahl(vK,vvK,mRemorque,0.25,starting)+sanzin(99.0,48.0,vK,1.90,10.0,2)
   if (vK<=critVk):
     tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
   else:
@@ -1359,7 +1369,7 @@ def getAccForSTM(vK,vvK,grd,curv,critVk,maxVk):
 
 def plot():
   print "v,r,F,a"
-  r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25)
+  r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
 #  r=rollingResistance(99.0,48.0,250.0,0.0,999999.0,80.0,0.0,1.90,10.0,2,0.25)
   cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
   d=cylinderDiameterInCm(r,1.90,cP,0.72)
@@ -1368,7 +1378,7 @@ def plot():
   vMaxReached=False
   mRemorque=250.0
   while vMaxReached==False:
-    rLTremorque=strahl(v,0.0,mRemorque,0.25)+sanzin(99.0,48.0,v,1.90,10.0,2)
+    rLTremorque=strahl(v,0.0,mRemorque,0.25,True)+sanzin(99.0,48.0,v,1.90,10.0,2)
     if (v<=criticalSpeed):
       tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
     else:

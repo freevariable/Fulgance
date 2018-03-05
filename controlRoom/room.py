@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import re,sys,redis,copy,json,getopt
+import re,sys,redis,copy,json,getopt,random
 
 ICONSTABEGIN="https://en.wikipedia.org/wiki/File:BSicon_KBHFa.svg"
 ICONSTAEND="https://en.wikipedia.org/wiki/File:BSicon_KBHFe.svg"
@@ -16,6 +16,7 @@ ICONTRACKRIGHTCONV="https://en.wikipedia.org/wiki/File:BSicon_KRWg%2Bl.svg"
 ICONTRACKLEFTCONVBEND="https://en.wikipedia.org/wiki/File:BSicon_KRWl.svg"
 ICONTRACKRIGHTCONVBEND="https://en.wikipedia.org/wiki/File:BSicon_KRWr.svg"
 
+randId=random.randint(10000000,100000000)
 dash={}
 html={}
 svcs={}
@@ -256,6 +257,7 @@ for seg in segmentsList:
 elapsed=r.get("elapsedHuman")
 headwaycnt=float(len(r.keys("headway:*")))
 print "<html><head><title>Fulgence control room</title>"
+print "<META HTTP-EQUIV=\"Pragma\" CONTENT=\"no-cache\">"
 print "<style type=\"text/css\">"
 print "* {"
 print "  font-size:12px;"
@@ -270,7 +272,7 @@ print "auxH=obj.contentWindow.document.body.scrollHeight+60;"
 print "    obj.style.height = auxH + 'px';"
 print "  }"
 print "</script></head>"
-print "<body>This sim has been running for <a href=\"#this\" onClick=\"window.location.reload()\">"+elapsed+"</a>. (Click on the timestamp to refresh this page)<br>"
+print "<body>This sim has been running for <a href=\"\" onClick=\"window.location.reload()\">"+elapsed+"</a>. (Click on the timestamp to refresh this page)<br>"
 print "<p><b>"+str(svcCnt)+"</b> services are currently operating on the line."
 print "Live traffic congestion: "
 if headwaycnt>0.8*float(len(stas)):
@@ -280,7 +282,7 @@ print "<b>"+str(congestion)+"%</b></p>"
 print "<p>Click on a train service name below to show its live status</p>"
 print "</p><p><b>Powered by <a href=\"https://github.com/freevariable/Fulgence\">Fulgence</a>, your precision simulator!</b></p><p>"
 for seg in segmentsList:
-  print "<iframe src=\""+seg+".html\" scrolling=\"no\" frameborder=\"0\" onload=\"resizeIframe(this)\"></iframe>"
+  print "<iframe src=\""+seg+".html?q=\""+str(randId)+"\" scrolling=\"no\" frameborder=\"0\" onload=\"resizeIframe(this)\"></iframe>"
 print "</p></body></html>"
 
 #for h in html:
