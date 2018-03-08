@@ -18,9 +18,11 @@ import time,datetime,getopt
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 r.flushall()
 
+live=[]
 hasTime=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
-CLOCKHEADWAY=25  # in secs
+CLOCKHEADWAY=35  # in secs
+ADHESIVEFACTOR=0.25
 G=9.81  # N/kg
 MULTICORE=False
 CORES=1
@@ -28,7 +30,7 @@ WHEELFACTOR=G*0.025
 DUMPDATA=True
 TPROGRESS=False
 STAPROGRESS=True
-ACCSIGMA=0.027
+ACCSIGMA=0.0027
 ACC=1.35 # m/s2  au demarrage
 ALAW='EMU1'   # law governing acc
               # EMU1 is for MP05 EMUs
@@ -305,10 +307,13 @@ def initAll():
   stockraw=initStock()
   cnt=0
   stock['acceleration']=ACC
+  stock['k']=0.25
+  stock['timbre']=18.0
   stock['accelerationLaw']=ALAW
   stock['weight']=WEIGHT   # whole train for EMUs, carriages only for pushed/pulled trains.
   stock['engineWeight']=0.0  # always 0 for EMUs, never 0 for push/pull
   stock['tenderWeight']=0.0  # always 0 for EMUs
+  stock['carriagesWeight']=0.0  # always 0 for EMUs
   stock['power']=POWER   # only makes sense for EMUs
   stock['maxSpeed']=VMX
   stock['airFactor']=AIRFACTOR   # only makes sense for EMUs
@@ -324,6 +329,10 @@ def initAll():
     if (aa[0]!="#"):
       if (aa[0]=='acceleration'):
         stock['acceleration']=float(aa[1])
+      if (aa[0]=='k'):
+        stock['k']=float(aa[1])
+      if (aa[0]=='timbre'):
+        stock['timbre']=float(aa[1])
       if (aa[0]=='accelerationLaw'):
         stock['accelerationLaw']=aa[1]
       if (aa[0]=='weight'):
@@ -332,6 +341,8 @@ def initAll():
         stock['engineWeight']=float(aa[1])
       if (aa[0]=='tenderWeight'):
         stock['tenderWeight']=float(aa[1])
+      if (aa[0]=='carriagesWeight'):
+        stock['carriagesWeight']=float(aa[1])
       if (aa[0]=='power'):
         stock['power']=float(aa[1])
       if (aa[0]=='maxSpeed'):
@@ -379,6 +390,8 @@ class Tr:
   BDtiv=0.0  #breaking distance for next TIV
   BDsta=0.0  #fornext station
   DBrt=0.0  #for next realtime event (sig or tvm)
+  vapor=0.0  #hourly consumption in kg
+  coal=0.0  #hourly consumption in kg
   TIVcnt=0
   STAcnt=0
   SIGcnt=0
@@ -405,6 +418,10 @@ class Tr:
   vK=0.0
   critVk=0.0
   startingPhase=True
+  engineWeight=0.0
+  tenderWeight=0.0
+  carriagesWeight=0.0
+  timbre=18.0
   tgtVk=110.0
   deltaBDtiv=0.0
   deltaBDsta=0.0
@@ -493,7 +510,10 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],stock['tenderWeight'],stock['carriagesWeight'],stock['k'],self.startingPhase)+self.aGaussFactor
+      self.a=live[0]
+      self.vapor=live[1]
+      self.coal=live[2]
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
     self.advTIV=-1.0
@@ -529,9 +549,13 @@ class Tr:
       print "init..."+name+" at pos "+str(initPos)
     self.pax=stock['maxPax']
     self.startingPhase=True
+    self.timbre=18.0
     self.critVk=50.0
     self.tgtVk=110.0
     self.m=stock['weight']+self.pax*PAXWEIGHT
+    self.engineWeight=stock['engineWeight']
+    self.tenderWeight=stock['tenderWeight']
+    self.carriagesWeight=stock['carriagesWeight']
     gFactor=G*self.gradient
     v2factor=0.0
     factors=gFactor+v2factor+stock['railFactor']
@@ -593,7 +617,10 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],stock['tenderWeight'],stock['carriagesWeight'],stock['k'],self.startingPhase)+self.aGaussFactor
+      self.a=live[0]
+      self.vapor=live[1]
+      self.coal=live[2]
     self.deltaBDtiv=0.0
     self.deltaBDsta=0.0
     self.advTIV=-1.0
@@ -631,6 +658,8 @@ class Tr:
     global t
     global exitCondition
     global stock
+    global live
+#    print str(self.name)+" "+str(live)
     gFactor=G*self.gradient
     vSquare=self.v*self.v
     v2factor=(stock['airFactor']*vSquare)
@@ -665,7 +694,8 @@ class Tr:
           self.ratioGRD=(self.transitionGRDx-self.x)/(stock['length'])
           gFactor=G*self.oldGradient*self.ratioGRD+G*self.gradient*(1.0-self.ratioGRD)
           if not __debug__:
-            print self.name+":t:"+str(t)+":GRD progress:"+str(self.ratioGRD)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)+" ratio:"+str(self.ratioGRD)
+            if (self.v>0.0): 
+              print self.name+":t:"+str(t)+":GRD progress:"+str(self.ratioGRD)+" x:"+str(self.x)+" gFactor:"+str(gFactor)+" oldGRD:"+str(self.oldGradient)+" newGRD:"+str(self.gradient)+" ratio:"+str(self.ratioGRD)
     factors=v2factor+gFactor+stock['railFactor']
     dcc=stock['deceleration']-gFactor
     if (dcc<stock['deceleration']):  #since DCC is always negative...
@@ -869,7 +899,10 @@ class Tr:
           if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)
           elif (stock['accelerationLaw']=='STM1'):
-            self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)
+            getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],stock['tenderWeight'],stock['carriagesWeight'],stock['k'],self.startingPhase)
+            self.a=live[0]
+            self.vapor=live[1]
+            self.coal=live[2]
           else:
             print "FATAL: ALAW unknown"
             sys.exit()
@@ -888,13 +921,16 @@ class Tr:
         if (auxMaxVk<self.vK):
           self.a=dcc
     else:  # a=0.0
-      if ((self.vK>4.0) and (self.vK<0.910*auxMaxVk)):
+      if ((self.staBrake==False) and (self.sigBrake==False) and (self.atSig==False) and (self.inSta==False) and (self.react==False) and (self.vK<0.910*auxMaxVk)):
         if not __debug__:
           print self.name+":t:"+str(t)+":boosting from vK:"+str(self.vK)+" to maxVk:"+str(auxMaxVk)+" with aFull:"+str(self.aFull)
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],stock['tenderWeight'],stock['carriagesWeight'],stock['k'],self.startingPhase)+aGauss()
+          self.a=live[0]
+          self.vapor=live[1]
+          self.coal=live[2]
       elif (self.vK>4.0):
         self.coasting=True
         if not __debug__:
@@ -913,7 +949,7 @@ class Tr:
           if (self.v>0.0):
             print "FATAL neg speed. aF: "+str(self.aFull)+" vK:"+str(self.vK)+" v:"+str(self.v)
             sys.exit()
-          elif (self.v==0.0):   # train is stopped at sig or sta
+          elif ((self.v==0.0) or (self.inSta==True) or (self.atSig==True) or (self.react==True)):   # train is stopped at sig or sta
              self.aFull=0.0
           else:
             print "FATAL neg speed. aF: "+str(self.aFull)+" vK:"+str(self.vK)+" v:"+str(self.v)
@@ -958,7 +994,7 @@ class Tr:
           self.inSta=False
           self.waitSta=0.0
           self.react=True
-          self.waitReact=t+longTail(9.3,71.0,20.0)
+          self.waitReact=t+longTail(9.3,71.0,00.0)
         else:
           self.waitSta=self.waitSta+2.0
           print self.name+":t:"+str(t)+":waiting for headway "+"headway:"+self.segment+":"+self.nextSTA[1]
@@ -989,7 +1025,7 @@ class Tr:
         if k is None:
           self.atSig=False
           self.react=True
-          self.waitReact=t+longTail(9.3,71.0,20.0)
+          self.waitReact=t+longTail(9.3,71.0,00.0)
           if not __debug__:
             print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
           if ((self.waitReact-t)>10.0):
@@ -1006,7 +1042,10 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          self.a=getAccForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],stock['tenderWeight'],stock['carriagesWeight'],stock['k'],self.startingPhase)+aGauss()
+          self.a=live[0]
+          self.vapor=live[1]
+          self.coal=live[2]
         if not __debug__:
           print self.name+":t:"+str(t)+":REACTION, a:"+str(self.a)
         self.waitReact=0.0
@@ -1194,6 +1233,7 @@ def stepRT(s):
   global exitCondition
   global t
   global cycles
+  global live
   ccc=0
   sys.stdout.flush()
   while (ccc<cycles):
@@ -1227,7 +1267,7 @@ def longTail(startpoint,incr,maxval):
         point=point+incr
         returnval=returnval+1
       else:
-        return float(returnval)*random.uniform(0.71,1.63)
+        return min(maxval,float(returnval)*random.uniform(0.71,1.63))
 
 def strahl(Vk,VVk,m,k,starting):   # rolling resistance (in Newton) of train carriages (excluding the locomotive and tender if any)
   # VVK windspeed in kmh (0 to 20)
@@ -1297,6 +1337,11 @@ def hourlyVaporConsumptionInKg(iP,Pr,tp):
   elif tp=='compound':
     return iP*(6.8-(Pr-12.0)*0.092)
 
+def hourlyCoalConsumptionInKg(vC):
+  # vC: hourlyVaporConsumptionInKg
+  # 1kg of coal produces 8kg of vapor
+  return vC/8.0
+
 def gridSurfaceInM2(hC,a,b):
   # a: between 57.0 to 70.0, the latest is hard on the chaudiere. reco : 65.0
   # b: between 50.0 and 70.0 Reco : 50.0
@@ -1336,9 +1381,8 @@ def checkAdherence(tra,P):
   # P: poids (t) essieux accouples
   # tra : tractiveeffortatstart
   # f : coeff adherence
-  f=0.25
   # if False, need to increase ea (number of essieux accouples) or poids par essieux (depends on railroad specs) or reduce cylinders volume or number of cylinders
-  return (P*1000.0*f)>(tra/G)
+  return (P*1000.0*ADHESIVEFACTOR)>(tra/G)
 
 def labrijn(iP,m,mL,mT):
   # iP : indicatedPowerInHorsepower
@@ -1353,21 +1397,30 @@ def labrijn(iP,m,mL,mT):
   maxVk=0.150117*N3-4.15879*N2+37.5113*N+28.9238
   return [a,vKPoint,maxVk,N]
 
-def getAccForSTM(vK,vvK,grd,curv,critVk,maxVk,starting):
-  r=rollingResistance(99.0,48.0,250.0,grd,curv,maxVk,0.0,1.90,10.0,2,0.25,True)
-  cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
+def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW,k,starting):
+  global live
+  r=rollingResistance(locoW/1000.0,tenderW/1000.0,payloadW/1000.0,grd,curv,vK,0.0,1.90,10.0,2,k,True)
+  rForIndicated=rollingResistance(locoW/1000.0,tenderW/1000.0,payloadW/1000.0,2.0,1000.0,maxVk,0.0,1.90,10.0,2,k,True)
+  cP=cylinderPressureInKgCm2(timbre,'simpleExpansion')
   d=cylinderDiameterInCm(r,1.90,cP,0.72)
+  iP=indicatedPowerInHorsePower(rForIndicated,maxVk)
+  hV=hourlyVaporConsumptionInKg(iP,timbre,'simpleExpansion')
+  hC=hourlyCoalConsumptionInKg(hV)
   vMaxReached=False
-  mRemorque=250.0
+  mRemorque=payloadW/1000.0
   acc=0.0
   tEff=0.0
-  rLTremorque=strahl(vK,vvK,mRemorque,0.25,starting)+sanzin(99.0,48.0,vK,1.90,10.0,2)
+  rLTremorque=strahl(vK,vvK,mRemorque,k,starting)+sanzin(locoW/1000.0,tenderW/1000.0,vK,1.90,10.0,2)
   if (vK<=critVk):
-    tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
+    tEff=tractiveEffortAtStart(timbre,d,0.72,1.90,2,'simpleExpansion')
   else:
-    tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')*critVk/vK
-  acc=(tEff-rLTremorque)/(1000.0*(mRemorque+99.0+48.0))
-  return acc
+    tEff=tractiveEffortAtStart(timbre,d,0.72,1.90,2,'simpleExpansion')*critVk/vK
+  acc=(tEff-rLTremorque)/(1000.0*(mRemorque+(locoW/1000.0)+(tenderW/1000.0)))
+  live=[]
+  live.append(acc)
+  live.append(hV)
+  live.append(hC)
+  return True
 
 def plot(law):
   global stock
@@ -1496,9 +1549,8 @@ if plotCurves==False:
 else:
   initAll()
   plot(stock['accelerationLaw'])
-  sys.exit()
 
-#print strahl(110.0,0.0,250.0,0.25)
+#print strahl(110.0,0.0,250.0,0.25,True)
 #print sanzin(99.0,48.0,110.0,1.90,10.0,2)
 #print gradeR(99.0,48.0,250.0,2.0,1000.0)
 #print rollingResistance(p,P,m,i,c,Vk,VVk,Dm,S,ea,k)
@@ -1506,13 +1558,14 @@ else:
 #r=rollingResistance(99.0,48.0,250.0,8.0,999999999.9,80.0,0.0,1.90,10.0,2,0.25)
 #iP=indicatedPowerInHorsePower(r,80.0)
 #print iP
-#r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25)
-#iP=indicatedPowerInHorsePower(r,110.0)
-#print iP
-#print "***"
+r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
+iP=indicatedPowerInHorsePower(r,110.0)
+print iP
+print "***"
 #print labrijn(iP,250.0,99.0,48.0)
 
-#hC=hourlyVaporConsumptionInKg(iP,18.0,'simpleExpansion')
+hC=hourlyVaporConsumptionInKg(iP,18.0,'simpleExpansion')
+print hC
 #print gridSurfaceInM2(hC,65.0,50.0)
 #cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
 #print cP
