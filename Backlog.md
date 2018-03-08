@@ -3,10 +3,13 @@
 - handle time of day
 - handle weather
 - handle engines wear and tear
-- handle gauge
+- handle gauge & electrification
 
 **UX**
 - Implement real time notifications
+
+**Control Room**
+- Implement info board in stations
 
 **Engine performance**
 - implement coal and water consumption

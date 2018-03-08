@@ -4,9 +4,11 @@ templateName A1
 acceleration 0.30
 accelerationLaw STM1
 weight 250000.0
-engineWeight 99000.0
-tenderWeight 48000.0
+engineWeight 91000.0
+tenderWeight 24000.0
 carriagesWeight 250000.0
+waterCapacity 24000.0
+coalCapacity 8000.0
 maxSpeed 120.0
 maxPax 500
 paxWeight 90.0 
