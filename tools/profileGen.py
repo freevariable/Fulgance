@@ -2,8 +2,8 @@
 
 INITHEIGHT=30.0    # in m
 FLATENESS=0.64      #chance of flat terrain
-LENGTH=500.0   #in km
-MAXGRADE=0.006  #in radian (or meter per meter)
+LENGTH=159.4   #in km
+MAXGRADE=0.002  #in radian (or meter per meter)
 MINSECTION=130.0   #in m
 MAXSECTION=MINSECTION*8.3    #in m
 
@@ -11,10 +11,10 @@ import random
 import sys
 
 x=0.0
-z=30.0
-curOrderAvg=0.50
+z=30.93
+curOrderAvg=0.70
 secondOrder={}
-secondOrder[0]={'x':0.0,'avg':0.5,'flat':0.64,'max':0.003}
+secondOrder[0]={'x':0.0,'avg':0.7,'flat':0.64,'max':0.003}
 secondOrder[1]={'x':430000.0,'avg':0.03,'flat':0.36,'max':0.006}
 secondOrder[2]={'x':490000.0,'avg':0.50,'flat':0.64,'max':0.004}
 secondOrder[3]={'x':9999990000.0,'avg':0.50,'flat':0.64,'max':0.004}
@@ -88,7 +88,7 @@ def section(initTrend):
 #    print "pK:"+str(x/1000.0)+" gradient:"+str(gradient)+"("+str(s)+")"+" "+" length:"+str(len0)+" "+str(z)
     if ((gradient!=oldGradient) or (initTrend=='0')):
 #      print str(x/1000.0)+" "+str(gradient)+" "+str(z)
-      print str(cleanX)+" "+str(gradient)+" "+str(cleanZ)
+      print str(33.9+cleanX)+" "+str(gradient)+" "+str(cleanZ)
     z=z+s*len0
     if ((x+len0)<lenM):
       x=x+len0
@@ -128,4 +128,4 @@ while (x<(lenM-MINSECTION)):
     curOrderAvg=float(secondOrder[orderCnt-1]['avg'])
     curOrderFlat=float(secondOrder[orderCnt-1]['flat'])
     curOrderMax=float(secondOrder[orderCnt-1]['max'])
-print str(LENGTH)+" "+str(0.0)+" "+str(float(int(z*100.0))/100.0)
+print str(33.9+LENGTH)+" "+str(0.0)+" "+str(float(int(z*100.0))/100.0)

@@ -15,8 +15,8 @@
 
 import redis,random,math,sys
 import time,datetime,getopt
-r=redis.StrictRedis(host='localhost', port=6379, db=0)
-r.flushall()
+#r=redis.StrictRedis(host='localhost', port=6379, db=0)
+#r.flushdb()
 
 live=[]
 hasTime=False
@@ -318,6 +318,7 @@ def initAll():
   stock['coalCapacity']=0.0  # max kg of coal in tender
   stock['power']=POWER   # only makes sense for EMUs
   stock['maxSpeed']=VMX
+  stock['criticalSpeed']=0.0  # for STM only, in km/h
   stock['airFactor']=AIRFACTOR   # only makes sense for EMUs
   stock['railFactor']=WHEELFACTOR   # only makes sense for EMUs
   stock['length']=TLENGTH
@@ -353,6 +354,8 @@ def initAll():
         stock['power']=float(aa[1])
       if (aa[0]=='maxSpeed'):
         stock['maxSpeed']=float(aa[1])
+      if (aa[0]=='criticalSpeed'):
+        stock['criticalSpeed']=float(aa[1])
       if (aa[0]=='airFactor'):
         stock['airFactor']=float(aa[1])
       if (aa[0]=='length'):
@@ -684,7 +687,7 @@ class Tr:
     if (ncyc%CYCLE==0):
       self.aGaussFactor=aGauss()
       if (stock['accelerationLaw']=='STM1'):
-#        print str(t)+":updating coal and water weight before: "+str(self.waterQty)+" "+str(self.coalQty)
+        print str(t)+":updating coal and water weight before: "+str(self.waterQty)+" "+str(self.coalQty)
         self.waterQty=self.waterQty-self.vapor
         self.coalQty=self.coalQty-self.coal
 #        print str(t)+":updating coal and water weight after: "+str(self.waterQty)+" "+str(self.coalQty)
@@ -1010,25 +1013,30 @@ class Tr:
 # STAGE 5 : manage phases when train is stopped
 #
     if (self.inSta==True):
-      if (t>self.waitSta):
+      self.a=0.0
+      self.v=0.0
+      self.vK=0.0
+      if (t>=self.waitSta):
         headway=r.get("headway:"+self.segment+":"+self.nextSTA[1])
         if headway is None:
           self.inSta=False
           self.waitSta=0.0
           self.react=True
           self.waitReact=t+longTail(9.3,71.0,00.0)
+          if not __debug__:
+            print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
+          if ((self.waitReact-t)>10.0):
+            print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
         else:
           self.waitSta=self.waitSta+2.0
           print self.name+":t:"+str(t)+":waiting for headway "+"headway:"+self.segment+":"+self.nextSTA[1]
-        if not __debug__:
-          print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
-          if ((self.waitReact-t)>10.0):
-            print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
     if (self.atSig==True):
+      self.a=0.0
+      self.v=0.0
+      self.vK=0.0
       if (t>self.sigPoll):
         k=r.get(self.sigToPoll['longName']+":isOccupied")
         if (k==self.name):
-#          r.delete(self.sigToPoll['longName']+":isOccupied")
           k=None
 #        if (ncyc%CYCLE==0):
 #          print self.name+":t:"+str(t)+" waiting at sig..."+self.sigToPoll+" currently:"+k
@@ -1057,7 +1065,10 @@ class Tr:
             print self.name+":t:"+str(t)+":UPSIG "+str(self.sigToPoll)+" is OCCUPIED BY:"+str(k)
           self.sigPoll=t+SIGPOLL
     if (self.react==True):
-      if (t>self.waitReact):
+      self.a=0.0
+      self.v=0.0
+      self.vK=0.0
+      if (t>=self.waitReact):
         self.react=False
         r.set("headway:"+self.segment+":"+self.nextSTA[1],True)
         r.expire("headway:"+self.segment+":"+self.nextSTA[1],CLOCKHEADWAY)
@@ -1562,9 +1573,13 @@ for o, a in opts:
     sys.exit(2)
 
 if plotCurves==False:
+  r=redis.StrictRedis(host='localhost', port=6379, db=0)
+  r.flushdb()
   initAll()
   sim()
 else:
+  r=redis.StrictRedis(host='localhost', port=6379, db=1)
+  r.flushdb()
   initAll()
   plot(stock['accelerationLaw'])
 
@@ -1576,14 +1591,14 @@ else:
 #r=rollingResistance(99.0,48.0,250.0,8.0,999999999.9,80.0,0.0,1.90,10.0,2,0.25)
 #iP=indicatedPowerInHorsePower(r,80.0)
 #print iP
-r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
-iP=indicatedPowerInHorsePower(r,110.0)
-print iP
-print "***"
+#r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
+#iP=indicatedPowerInHorsePower(r,110.0)
+#print iP
+#print "***"
 #print labrijn(iP,250.0,99.0,48.0)
 
-hC=hourlyVaporConsumptionInKg(iP,18.0,'simpleExpansion')
-print hC
+#hC=hourlyVaporConsumptionInKg(iP,18.0,'simpleExpansion')
+#print hC
 #print gridSurfaceInM2(hC,65.0,50.0)
 #cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
 #print cP
