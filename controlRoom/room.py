@@ -272,7 +272,7 @@ print "auxH=obj.contentWindow.document.body.scrollHeight+60;"
 print "    obj.style.height = auxH + 'px';"
 print "  }"
 print "</script></head>"
-print "<body>This sim has been running for <a href=\"\" onClick=\"window.location.reload()\">"+elapsed+"</a>. (Click on the timestamp to refresh this page)<br>"
+print "<body>This sim has been running for <a href=\"\" onClick=\"window.location.reload()\">"+elapsed+"</a>. (Click on the timestamp to refresh this page. It is updated every 20 to 30 seconds.)<br>"
 print "<p><b>"+str(svcCnt)+"</b> services are currently operating on the line."
 print "Live traffic congestion: "
 if headwaycnt>0.8*float(len(stas)):

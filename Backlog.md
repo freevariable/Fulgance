@@ -1,18 +1,14 @@
 **Realism**
-- handle dynamic timbre f(Vk+admission)
 - handle time of day
-- handle weather
+- handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle engines wear and tear
 - handle gauge & electrification
 
 **UX**
-- Implement real time notifications
+- Implement real time notifications (slack?)
 
 **Control Room**
 - Implement info board in stations
-
-**Engine performance**
-- implement coal and water consumption
 
 **Track**
 - Implement converging and diverging junctions

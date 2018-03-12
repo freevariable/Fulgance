@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -687,16 +687,19 @@ class Tr:
     if (ncyc%CYCLE==0):
       self.aGaussFactor=aGauss()
       if (stock['accelerationLaw']=='STM1'):
-        print str(t)+":updating coal and water weight before: "+str(self.waterQty)+" "+str(self.coalQty)
+        if not __debug__:
+          print self.name+":"+str(t)+":updating coal and water weight before: "+str(self.waterQty)+" "+str(self.coalQty)
         self.waterQty=self.waterQty-self.vapor
         self.coalQty=self.coalQty-self.coal
-#        print str(t)+":updating coal and water weight after: "+str(self.waterQty)+" "+str(self.coalQty)
+        if ((self.coalQty<=0.0) or (self.waterQty<=0.0)):
+          print self.name+":"+str(t)+":FATAL run out of resources! coal="+str(self.coalQty)+"kg, water: "+str(self.waterQty)+"kg"
+          sys.exit()
 #
 # STAGE 1 : main acc updates
 #
     if (self.x>=(self.nGRDx)):
       if not __debug__:
-        print self.name+":t:"+str(t)+":PASSING BY GRD "+self.segment+":"+" vK:"+str(self.vK)+" at x:"+str(self.nGRDx)+" with GRD:"+self.nextGRD[1]
+        print self.name+":"+str(t)+":PASSING BY GRD "+self.segment+":"+" vK:"+str(self.vK)+" at x:"+str(self.nGRDx)+" with GRD:"+self.nextGRD[1]
       self.transitionGRDx=self.nGRDx+stock['length']
       self.oldGradient=self.gradient
       self.gradient=float(self.nextGRD[1])/100.0
@@ -1610,3 +1613,4 @@ else:
 #checkAdherence(tra,P)
 #print checkAdherence(tra,48.0)
 #print locoWeightInTons(hC,65.0)
+print "No more tasks to perform. Bye bye!"
