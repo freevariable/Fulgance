@@ -184,7 +184,7 @@ def initSIGs():
           s.append('1')   # this is a type 1 sig by default
           redisSIG="green"
         else:
-          if (s[2]=='1'):    # type 1
+          if ((s[2]=='1')or (s[2]=='6')):    # type 1 or 6
             redisSIG="green"
           elif (s[2]=='4C'):   #type 4C
             redisSIG="green"
@@ -1218,7 +1218,7 @@ def findMySIGcnt(x,seg):
 def findPrevSIGforOccupation(atSig):
   global sigs
   prevSig={}
-  if ((atSig['type']=='1') or (atSig['type']=='2') or (atSig['type']=='3') or (atSig['type']=='4D') or (atSig['type']=='4C')):
+  if ((atSig['type']=='1') or (atSig['type']=='6') or (atSig['type']=='2') or (atSig['type']=='3') or (atSig['type']=='4D') or (atSig['type']=='4C')):
     if ((atSig['type']=='2') and (atSig['cnt']==0)):
       print "FATAL ERROR. Service must be reversed before invoking prevSIG"
       sys.exit()
@@ -1273,6 +1273,48 @@ def findMyTIVcnt(x,seg):
 
 def updateSIGbyTrOccupationWrapper(aSig,name,state):
   global sigs
+  if aSig['type']=='4C':
+    # determine 4C name in the other leg
+    kMain=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPosition")
+    kBranch=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":branchPosition")
+    kMainPrevCnt=int(r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPrevSig"))
+    kBranchPrevCnt=int(r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":branchPrevSig"))
+    peerSeg=''
+    if kMain==aSig['seg']:
+      peerSeg=kBranch
+    else:
+      peerSeg=kMain
+    sig={}
+    sig['name']=aSig['name']
+    sig['seg']=peerSeg
+    sig['cnt']=kBranchPrevCnt+1
+    sig['type']=aSig['type']
+    peerStr="sig:"+peerSeg+":"+sigs[peerSeg][kBranchPrevCnt+1][1]
+    print "4C is the following : "+peerStr+" in branch"+peerSeg
+    updateSIGbyTrOccupation(aSig,name,state)
+    updateSIGbyTrOccupation(sig,name,state)
+  if aSig['type']=='6':
+    # fetch the other 6 via common 4C:
+    kMain=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']+1][1]+":mainPosition")
+    kBranch=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']+1][1]+":branchPosition")
+    kMainPrevCnt=int(r.get("switch:"+sigs[aSig['seg']][aSig['cnt']+1][1]+":mainPrevSig"))
+    kBranchPrevCnt=int(r.get("switch:"+sigs[aSig['seg']][aSig['cnt']+1][1]+":branchPrevSig"))
+    peerSeg=''
+    if kMain==aSig['seg']:
+      peerSeg=kBranch
+    else:
+      peerSeg=kMain
+    peerStr="sig:"+peerSeg+":"+sigs[peerSeg][kBranchPrevCnt][1]
+    kPeer=r.get(peerStr)
+    print "6 has the following 4C: "+kMain+" "+kBranch
+    print "6 has the following peer in other branch mainCnt="+str(kMainPrevCnt)+" branchCnt="+str(kBranchPrevCnt)+" string: "+peerStr+" color="+kPeer
+    sig={}
+    sig['name']=sigs[peerSeg][kBranchPrevCnt][1]
+    sig['seg']=peerSeg
+    sig['cnt']=kBranchPrevCnt
+    sig['type']=aSig['type']
+    updateSIGbyTrOccupation(aSig,name,state)
+    updateSIGbyTrOccupation(sig,name,state)
   if aSig['type']=='4D':
     kMain=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPosition")
     kBranch=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":branchPosition")
