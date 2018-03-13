@@ -44,11 +44,12 @@ Fulgence will let you perform various tasks:
 #### Signalling guide
 The following on-track signals are or will be implemented:
 - [x]  *Type 1*: this is the usual 3-aspect signal. The possible states are: VL (green, all clear), A (yellow, prepare to stop at next signal) and C (red, impassable stop).
-- [x] *Type 2*: this is a buffer signal that allows reversing to a segment which is different from the origin segment. As far as the origin segment is concerned, its only possible state is C (red, impassable). As for the first signal in the reversed direction, it is controlled by a type 5 signal.
-- [x] *Type 3*: this is a 2-aspect signal (A and C). It  must always **precede** a type 2 or 4D, as its state depends on the switch position in the upcoming junction.
-- [ ] *Type 4D*: this is a diverging junction signal, used to stitch segments together. Both legs of the junction see trains **moving in the same direction**. (As opposed to the second type of diverging junction described below).
-- [ ] *Type 4C*: this is a converging junction signal, used to stitch segments together. Both legs of the junction see trains **moving in the same direction**.
+- [x] *Type 2*: this is a buffer signal that allows reversing to a segment which is different from the origin segment. As far as the origin segment is concerned, its only possible state is C (red, impassable) and it is preceded by a type 3 signal. As for the first signal in the reversed direction, it is controlled by a type 5 signal.
+- [x] *Type 3*: this is a 2-aspect signal (A and C). It  must always **precede** a type 2, as its state depends on the switch position in the upcoming junction.
+- [ ] *Type 4D*: this is a diverging junction signal, used to stitch segments together. Both legs of the junction see trains **moving in the same direction**. (As opposed to the second type of diverging junction described below). Type 4D must **always be preceded** by a type 1.
+- [ ] *Type 4C*: this is a converging junction signal, used to stitch segments together. Both legs of the junction see trains **moving in the same direction**. It must **always be preceded** by a type 6.
 - [x] *Type 5*: this is a diverging junction signal for trains coming from a reversing block. It must always **be preceded** by a type 2 signal. One leg of the junction is for trains **coming from** the forward direction, the other leg is for trains **going to** the reverse direction.
+- [ ] *Type 6*: this is a 3-aspect signal **always preceding** a type 4C signal. So there are two such type 6 signals for any given type 4C: one in each leg. Both type 6 sort of compete to control the switch position in the 4C block. 
 
 Junction signals can manage only two legs, no less, no more. One leg is the main segment (left or right), the other one to the diverging/converging segment (left or right).Junction signals must have a unique name in both segments so that the engine may perform the segments stitching properly.
 

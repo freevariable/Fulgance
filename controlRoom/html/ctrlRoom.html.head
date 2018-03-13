@@ -54,6 +54,8 @@ function pickSrv(svc) {
       }
       paxRatio=100*sss[i]['pax']/sss[i]['maxPax'];
       line=line+'Pax: '+sss[i]['pax']+' ('+Number(paxRatio).toFixed(0)+'%)<br>';
+      line=line+'Wear & tear: <b>low</b><br>';
+      line=line+'Quality: <font color=pink>legendary</font><br>';
     }
   }  
   return line;

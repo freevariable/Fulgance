@@ -186,6 +186,52 @@ def initSIGs():
         else:
           if (s[2]=='1'):    # type 1
             redisSIG="green"
+          elif (s[2]=='4C'):   #type 4C
+            redisSIG="green"
+            if (len(s)!=6):
+              print "FATAL: type 4C sig requires 6 x verb:noun"
+              print s
+              print len(s)
+              sys.exit()
+            verbnoun=s[3].split(":") 
+            if verbnoun[0]=="Main":
+              if not __debug__:
+                print "switch:"+s[1]+" main branch and default set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":mainPosition",verbnoun[1])
+              r.set("switch:"+s[1]+":position",verbnoun[1])
+            verbnoun=s[4].split(":") 
+            if verbnoun[0]=="Branch":
+              if not __debug__:
+                print "switch:"+s[1]+" branch set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":branchPosition",verbnoun[1])
+            verbnoun=s[5].split(":") 
+            if verbnoun[0]=="BranchOrientation":
+              if not __debug__:
+                print "switch:"+s[1]+" branch orientation set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":branchOrientation",verbnoun[1])
+          elif (s[2]=='4D'):   #type 4D
+            redisSIG="green"
+            if (len(s)!=6):
+              print "FATAL: type 4D sig requires 6 x verb:noun"
+              print s
+              print len(s)
+              sys.exit()
+            verbnoun=s[3].split(":") 
+            if verbnoun[0]=="Main":
+              if not __debug__:
+                print "switch:"+s[1]+" main branch and default set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":mainPosition",verbnoun[1])
+              r.set("switch:"+s[1]+":position",verbnoun[1])
+            verbnoun=s[4].split(":") 
+            if verbnoun[0]=="Branch":
+              if not __debug__:
+                print "switch:"+s[1]+" branch set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":branchPosition",verbnoun[1])
+            verbnoun=s[5].split(":") 
+            if verbnoun[0]=="BranchOrientation":
+              if not __debug__:
+                print "switch:"+s[1]+" branch orientation set to: "+verbnoun[1]
+              r.set("switch:"+s[1]+":branchOrientation",verbnoun[1])
           elif (s[2]=='2'):   #type 2
             redisSIG="red"
             if (len(s)!=6):
@@ -229,7 +275,39 @@ def initSIGs():
     cnt=0
     for s in ss:    # SECOND PASS
       aligned=False
-      if (s[2]=='2'):
+      if (s[2]=='4D'):  # type 4D SIG
+        k=r.get("switch:"+s[1]+":position")       
+        kMain=r.get("switch:"+s[1]+":mainPosition")       
+        if not __debug__:
+          print "switch of sig "+s[1]+" is in position "+k
+        if (k==se):
+          if not __debug__:
+            print "  switch of sig "+s[1]+" is aligned to segment"
+          aligned=True
+        if (cnt<len(ss)-1):
+          if not __debug__:
+            print "  switch of sig "+s[1]+" has a next sig in main seg: "+ss[cnt+1][1]+" of type: "+ss[cnt+1][2]
+        if prevs is not None:
+          if not __debug__:
+            print "  switch of sig "+s[1]+" has a prev sig: "+prevs[1]+" of type: "+prevs[2]
+          r.set("switch:"+s[1]+":mainPrevSig",cnt-1)
+          if (prevs[2]!='1'):
+            print "FATAL: a sig type 4D must be preceded by a type 1 or no sig!"
+            sys.exit()
+          else:
+            k1=r.get("sig:"+se+":"+prevs[1])       
+            if k1 is None:
+              if (aligned==True):
+                r.set("sig:"+se+":"+prevs[1],"yellow")
+              else:
+                r.set("sig:"+se+":"+prevs[1],"yellow")
+            k1=r.get("sig:"+se+":"+prevs[1])       
+            if not __debug__:
+              print "  prev color set to: "+k1
+        else:
+          if not __debug__:
+            print "  (switch has no prev)"
+      if (s[2]=='2'):  # type 2 SIG
         k=r.get("switch:"+s[1]+":position")       
         if not __debug__:
           print "switch of sig "+s[1]+" is in position "+k
@@ -548,7 +626,7 @@ class Tr:
       print self.name+": facing Sig:"+str(facingSig)+" previous Sig:"+str(previousSig)
     self.advSIGcol=r.get(self.redisSIG)
     self.sigSpotted=False
-    updateSIGbyTrOccupation(previousSig,self.name,"red")
+    updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
 
   def dumpstate(self):
     r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':stock['units'],'react':self.react})
@@ -672,7 +750,7 @@ class Tr:
         sys.exit()    
     r.set("sig:"+previousSig['seg']+":"+previousSig['name']+":isOccupied",self.name)
     r.set("sig:"+previousSig['seg']+":"+previousSig['name'],"red")
-    updateSIGbyTrOccupation(previousSig,self.name,"red")
+    updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
 
   def step(self):
     global t
@@ -792,9 +870,9 @@ class Tr:
           p['type']=sigs[self.segment][self.SIGcnt][2]
           previousSig=findPrevSIGforOccupation(p)
           previousPreviousSig=findPrevSIGforOccupation(previousSig)
-          updateSIGbyTrOccupation(p,self.name,"green")
-          updateSIGbyTrOccupation(previousSig,self.name,"green")
-          updateSIGbyTrOccupation(previousPreviousSig,self.name,"green")
+          updateSIGbyTrOccupationWrapper(p,self.name,"green")
+          updateSIGbyTrOccupationWrapper(previousSig,self.name,"green")
+          updateSIGbyTrOccupationWrapper(previousPreviousSig,self.name,"green")
           self.reinit(kCur,0.0+stock['length']-self.nSIGx+self.x)
         else: 
           self.atSig=True
@@ -820,7 +898,7 @@ class Tr:
           p['cnt']=self.SIGcnt
           p['type']=sigs[self.segment][self.SIGcnt][2]
           previousSig=findPrevSIGforOccupation(p)
-          updateSIGbyTrOccupation(previousSig,self.name,"red")
+          updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
         else:
           print "FATAL: no more SIGS..."+self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
           sys.exit()
@@ -1131,14 +1209,24 @@ def findMySIGcnt(x,seg):
 def findPrevSIGforOccupation(atSig):
   global sigs
   prevSig={}
-  if ((atSig['type']=='1') or (atSig['type']=='2') or (atSig['type']=='3')):
+  if ((atSig['type']=='1') or (atSig['type']=='2') or (atSig['type']=='3') or (atSig['type']=='4D')):
     if ((atSig['type']=='2') and (atSig['cnt']==0)):
       print "FATAL ERROR. Service must be reversed before invoking prevSIG"
       sys.exit()
-    prevSig['seg']=atSig['seg']
-    prevSig['cnt']=atSig['cnt']-1
-    prevSig['type']=sigs[atSig['seg']][prevSig['cnt']][2]
-    prevSig['name']=sigs[atSig['seg']][prevSig['cnt']][1]
+    if (atSig['type']=='4D'):
+      kMain=r.get("switch:"+sigs[atSig['seg']][atSig['cnt']][1]+":mainPosition")
+      kPrevCnt=int(r.get("switch:"+sigs[atSig['seg']][atSig['cnt']][1]+":mainPrevSig"))
+      prevSig['seg']=kMain
+      prevSig['cnt']=kPrevCnt
+      prevSig['type']=sigs[kMain][kPrevCnt][2]
+      prevSig['name']=sigs[kMain][kPrevCnt][1]
+      if not __debug__:
+        print "this type 4D has a pred "+str(sigs[prevSig['seg']][prevSig['cnt']][1])+" in segment "+str(kMain)
+    else:
+      prevSig['seg']=atSig['seg']
+      prevSig['cnt']=atSig['cnt']-1
+      prevSig['type']=sigs[atSig['seg']][prevSig['cnt']][2]
+      prevSig['name']=sigs[atSig['seg']][prevSig['cnt']][1]
   elif (atSig['type']=='5'):
     if (sigs[atSig['seg']][atSig['cnt']-1][2]=='2'):
       kRev=r.get("switch:"+sigs[atSig['seg']][atSig['cnt']-1][1]+":reversePosition")
@@ -1174,6 +1262,27 @@ def findMyTIVcnt(x,seg):
     cnt=cnt+1
   return cnt-1
 
+def updateSIGbyTrOccupationWrapper(aSig,name,state):
+  global sigs
+  if aSig['type']=='4D':
+    kMain=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPosition")
+    kBranch=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":branchPosition")
+    sig1={}
+    sig2={}
+    sig1['type']=aSig['type']
+    sig2['type']=aSig['type']
+    sig1['name']=aSig['name']
+    sig2['name']=aSig['name']
+    sig1['seg']=kMain
+    sig2['seg']=kBranch
+    kCnt=int(r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPrevSig"))
+    sig1['cnt']=kCnt+1
+    sig2['cnt']=0  #the diverging branch of a 4D always starts a segment
+    updateSIGbyTrOccupation(sig1,name,state)
+    updateSIGbyTrOccupation(sig2,name,state)
+  else:
+    updateSIGbyTrOccupation(aSig,name,state)
+
 def updateSIGbyTrOccupation(aSig,name,state):
   global sigs
   redisSIG="sig:"+aSig['seg']+":"+sigs[aSig['seg']][aSig['cnt']][1]
@@ -1198,9 +1307,8 @@ def updateSIGbyTrOccupation(aSig,name,state):
       if km1 is not None:
         if km1==name:
           r.delete(redisSIGm1+":isOccupied")
-          updateSIGbyTrOccupation(previousSig,name,"yellow")
+          updateSIGbyTrOccupationWrapper(previousSig,name,"yellow")
 #      else:
-#          updateSIGbyTrOccupation(previousSig,name,"yellow")
       previousPreviousSig=findPrevSIGforOccupation(previousSig)
       redisSIGm2="sig:"+previousPreviousSig['seg']+":"+sigs[previousPreviousSig['seg']][previousPreviousSig['cnt']][1]
       km2=r.get(redisSIGm2+":isOccupied")
@@ -1209,26 +1317,26 @@ def updateSIGbyTrOccupation(aSig,name,state):
       if km2 is None:
         if km1 is not None:
           if km1==name:
-            updateSIGbyTrOccupation(previousPreviousSig,name,"green")
+            updateSIGbyTrOccupationWrapper(previousPreviousSig,name,"green")
         else:
-          updateSIGbyTrOccupation(previousPreviousSig,name,"green")
+          updateSIGbyTrOccupationWrapper(previousPreviousSig,name,"green")
       elif (km2==name):
         r.delete(redisSIGm2+":isOccupied")
         if km1 is not None:
           if km1==name:
-            updateSIGbyTrOccupation(previousPreviousSig,name,"green")
+            updateSIGbyTrOccupationWrapper(previousPreviousSig,name,"green")
         else:
-          updateSIGbyTrOccupation(previousPreviousSig,name,"green")
+          updateSIGbyTrOccupationWrapper(previousPreviousSig,name,"green")
     if (state=="yellow"):
       previousSig=findPrevSIGforOccupation(aSig)
       redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
       km1=r.get(redisSIGm1+":isOccupied")
       if km1 is None:
-        updateSIGbyTrOccupation(previousSig,name,"green")
+        updateSIGbyTrOccupationWrapper(previousSig,name,"green")
       else:
         if km1==name:
           r.delete(redisSIGm1+":isOccupied")
-          updateSIGbyTrOccupation(previousSig,name,"green")
+          updateSIGbyTrOccupationWrapper(previousSig,name,"green")
     if (state=="green"):
       if sigAlreadyOccupied is not None:
         if sigAlreadyOccupied==name:
