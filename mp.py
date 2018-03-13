@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -275,7 +275,7 @@ def initSIGs():
     cnt=0
     for s in ss:    # SECOND PASS
       aligned=False
-      if (s[2]=='4D'):  # type 4D SIG
+      if ((s[2]=='4D') or (s[2]=='4C')):  # type 4D SIG
         k=r.get("switch:"+s[1]+":position")       
         kMain=r.get("switch:"+s[1]+":mainPosition")       
         if not __debug__:
@@ -290,9 +290,18 @@ def initSIGs():
         if prevs is not None:
           if not __debug__:
             print "  switch of sig "+s[1]+" has a prev sig: "+prevs[1]+" of type: "+prevs[2]
-          r.set("switch:"+s[1]+":mainPrevSig",cnt-1)
-          if (prevs[2]!='1'):
+          if (s[2]=='4D'):
+            r.set("switch:"+s[1]+":mainPrevSig",cnt-1)
+          if (s[2]=='4C'):
+            if se==kMain:
+              r.set("switch:"+s[1]+":mainPrevSig",cnt-1)
+            else:
+              r.set("switch:"+s[1]+":branchPrevSig",cnt-1)
+          if ((s[2]=='4D') and (prevs[2]!='1')):
             print "FATAL: a sig type 4D must be preceded by a type 1 or no sig!"
+            sys.exit()
+          if ((s[2]=='4C') and (prevs[2]!='6')):
+            print "FATAL: a sig type 4C must be preceded by a type 6!"
             sys.exit()
           else:
             k1=r.get("sig:"+se+":"+prevs[1])       
@@ -1209,11 +1218,11 @@ def findMySIGcnt(x,seg):
 def findPrevSIGforOccupation(atSig):
   global sigs
   prevSig={}
-  if ((atSig['type']=='1') or (atSig['type']=='2') or (atSig['type']=='3') or (atSig['type']=='4D')):
+  if ((atSig['type']=='1') or (atSig['type']=='2') or (atSig['type']=='3') or (atSig['type']=='4D') or (atSig['type']=='4C')):
     if ((atSig['type']=='2') and (atSig['cnt']==0)):
       print "FATAL ERROR. Service must be reversed before invoking prevSIG"
       sys.exit()
-    if (atSig['type']=='4D'):
+    if ((atSig['type']=='4D') or (atSig['type']=='4C')):
       kMain=r.get("switch:"+sigs[atSig['seg']][atSig['cnt']][1]+":mainPosition")
       kPrevCnt=int(r.get("switch:"+sigs[atSig['seg']][atSig['cnt']][1]+":mainPrevSig"))
       prevSig['seg']=kMain
@@ -1221,7 +1230,7 @@ def findPrevSIGforOccupation(atSig):
       prevSig['type']=sigs[kMain][kPrevCnt][2]
       prevSig['name']=sigs[kMain][kPrevCnt][1]
       if not __debug__:
-        print "this type 4D has a pred "+str(sigs[prevSig['seg']][prevSig['cnt']][1])+" in segment "+str(kMain)
+        print "this type 4 has a pred "+str(sigs[prevSig['seg']][prevSig['cnt']][1])+" in segment "+str(kMain)
     else:
       prevSig['seg']=atSig['seg']
       prevSig['cnt']=atSig['cnt']-1
