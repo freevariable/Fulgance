@@ -15,11 +15,10 @@
 
 import redis,random,math,sys
 import time,datetime,getopt
-#r=redis.StrictRedis(host='localhost', port=6379, db=0)
-#r.flushdb()
 
 live=[]
 hasTime=False
+hasServices=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
 CLOCKHEADWAY=35  # in secs
 ADHESIVEFACTOR=0.25
@@ -61,6 +60,7 @@ SIGPOLL=1.0   # check for sig clearance (in sec)
 
 tivs={}
 stas={}
+srvs={}
 sigs={}
 trss={}
 trs={}
@@ -72,6 +72,19 @@ exitCondition=False
 projectDir='ParisLine1/'
 schedulesDir='schedules/'
 segmentsDir='segments/'
+
+def initSRVs():
+  f=open(projectDir+"services.txt","r")
+  ssf=f.readlines()
+  ss=[]
+  f.close()
+  cnt=0
+  for s in ssf:
+    if (s[0]!='#'):
+      s=s.rstrip().split(" ")
+      ss.append(s)
+      cnt=cnt+1  
+  return ss
 
 def initSEGs():
   f=open(projectDir+"segments.txt","r")
@@ -176,7 +189,7 @@ def initSIGs():
     ss=[]
     f.close()
     cnt=0
-    for s in ssf:    # FIRST pass for type 1 and type 2 sigs
+    for s in ssf:    # FIRST pass
       redisSIG=""
       if (s[0]!='#'):
         s=s.rstrip().split(" ")
@@ -187,7 +200,7 @@ def initSIGs():
           if ((s[2]=='1')or (s[2]=='6')):    # type 1 or 6
             redisSIG="green"
           elif (s[2]=='4C'):   #type 4C
-            redisSIG="green"
+            redisSIG="red"
             if (len(s)!=6):
               print "FATAL: type 4C sig requires 6 x verb:noun"
               print s
@@ -199,11 +212,15 @@ def initSIGs():
                 print "switch:"+s[1]+" main branch and default set to: "+verbnoun[1]
               r.set("switch:"+s[1]+":mainPosition",verbnoun[1])
               r.set("switch:"+s[1]+":position",verbnoun[1])
+              if se==verbnoun[1]:
+                redisSIG="green" 
             verbnoun=s[4].split(":") 
             if verbnoun[0]=="Branch":
               if not __debug__:
                 print "switch:"+s[1]+" branch set to: "+verbnoun[1]
               r.set("switch:"+s[1]+":branchPosition",verbnoun[1])
+              if se==verbnoun[1]:
+                redisSIG="red" 
             verbnoun=s[5].split(":") 
             if verbnoun[0]=="BranchOrientation":
               if not __debug__:
@@ -275,7 +292,7 @@ def initSIGs():
     cnt=0
     for s in ss:    # SECOND PASS
       aligned=False
-      if ((s[2]=='4D') or (s[2]=='4C')):  # type 4D SIG
+      if ((s[2]=='4D') or (s[2]=='4C')):  # type 4 SIG
         k=r.get("switch:"+s[1]+":position")       
         kMain=r.get("switch:"+s[1]+":mainPosition")       
         if not __debug__:
@@ -286,7 +303,7 @@ def initSIGs():
           aligned=True
         if (cnt<len(ss)-1):
           if not __debug__:
-            print "  switch of sig "+s[1]+" has a next sig in main seg: "+ss[cnt+1][1]+" of type: "+ss[cnt+1][2]
+            print "  switch of sig "+s[1]+" has a next sig in current seg: "+ss[cnt+1][1]+" of type: "+ss[cnt+1][2]
         if prevs is not None:
           if not __debug__:
             print "  switch of sig "+s[1]+" has a prev sig: "+prevs[1]+" of type: "+prevs[2]
@@ -303,16 +320,19 @@ def initSIGs():
           if ((s[2]=='4C') and (prevs[2]!='6')):
             print "FATAL: a sig type 4C must be preceded by a type 6!"
             sys.exit()
+          k1=r.get("sig:"+se+":"+prevs[1])       
+          if k1 is None:
+            if (aligned==True):
+              r.set("sig:"+se+":"+prevs[1],"green")
+            else:
+              r.set("sig:"+se+":"+prevs[1],"yellow")
           else:
-            k1=r.get("sig:"+se+":"+prevs[1])       
-            if k1 is None:
-              if (aligned==True):
+            if k1=='green':
+              if (aligned==False):
                 r.set("sig:"+se+":"+prevs[1],"yellow")
-              else:
-                r.set("sig:"+se+":"+prevs[1],"yellow")
-            k1=r.get("sig:"+se+":"+prevs[1])       
-            if not __debug__:
-              print "  prev color set to: "+k1
+          k1=r.get("sig:"+se+":"+prevs[1])       
+          if not __debug__:
+            print "  prev color set to: "+k1
         else:
           if not __debug__:
             print "  (switch has no prev)"
@@ -330,15 +350,17 @@ def initSIGs():
           if (ss[cnt+1][2]!='5'):
             print "FATAL: a sig type 2 must be followed by a type 5!"
             sys.exit()
+          k1=r.get("sig:"+se+":"+ss[cnt+1][1])
+          if k1 is None:
+            if (aligned==True):
+              r.set("sig:"+se+":"+ss[cnt+1][1],"green")
+            else:
+              r.set("sig:"+se+":"+ss[cnt+1][1],"red")
           else:
-            k1=r.get("sig:"+se+":"+ss[cnt+1][1])
-            if k1 is None:
-              if (aligned==True):
-                r.set("sig:"+se+":"+ss[cnt+1][1],"green")
-              else:
+            if ((k1=="green") or k1==("yellow")):
+              if (aligned==False):
                 r.set("sig:"+se+":"+ss[cnt+1][1],"red")
-            k1=r.get("sig:"+se+":"+ss[cnt+1][1])       
- #           print "  follower color set to: "+k1
+          k1=r.get("sig:"+se+":"+ss[cnt+1][1])       
         else:
           if not __debug__:
             print "  (switch has no succ)"
@@ -381,6 +403,8 @@ def initAll():
   global jumpseat
   global r
   global stock
+  global hasServices
+  global srvs
   stock={}
   r.set('realtime:',REALTIME)
   if multi:
@@ -464,7 +488,10 @@ def initAll():
   if not __debug__:
     print "rollingStock details:"
     print stock
+  hasServices=False
   for aa in trss:
+    if len(aa)>2:
+      hasServices=True
     if ((aa[0]!="#") and (cnt==0)):
       found=False
       for asi in sigs[aa[1]]:
@@ -480,6 +507,8 @@ def initAll():
         aT=Tr(aa[0],aa[1],aPos)
         trs.append(aT)
     cnt=cnt+1 
+  if hasServices==True:
+    srvs=initSRVs()
 
 class Tr:
   trip=0
@@ -494,6 +523,7 @@ class Tr:
   TIVcnt=0
   STAcnt=0
   SIGcnt=0
+  pathCnt=0
   name=''
   nextSTA=''
   nextSIG=''
@@ -557,6 +587,7 @@ class Tr:
       print "REinit..."+self.name+" at pos "+str(initPos)
     gFactor=G*self.gradient
     v2factor=0.0
+    self.pathCnt=0
     factors=gFactor+v2factor+stock['railFactor']
     self.startingPhase=True
     self.x=initPos
@@ -665,6 +696,7 @@ class Tr:
       self.coal=hourlyCoalConsumptionInKg(self.vapor)
     gFactor=G*self.gradient
     v2factor=0.0
+    self.pathCnt=0
     factors=gFactor+v2factor+stock['railFactor']
     self.trs=[]
     self.trip=0
@@ -766,7 +798,6 @@ class Tr:
     global exitCondition
     global stock
     global live
-#    print str(self.name)+" "+str(live)
     gFactor=G*self.gradient
     vSquare=self.v*self.v
     v2factor=(stock['airFactor']*vSquare)
@@ -1291,7 +1322,7 @@ def updateSIGbyTrOccupationWrapper(aSig,name,state):
     sig['type']=aSig['type']
     peerStr="sig:"+peerSeg+":"+sigs[peerSeg][kBranchPrevCnt+1][1]
     print "4C is the following : "+peerStr+" in branch"+peerSeg
-    updateSIGbyTrOccupation(aSig,name,state)
+    updateSIGbyTrOccupation(aSig,name,state) #The order is important! First update aSig, then peer sig
     updateSIGbyTrOccupation(sig,name,state)
   if aSig['type']=='6':
     # fetch the other 6 via common 4C:
@@ -1313,8 +1344,11 @@ def updateSIGbyTrOccupationWrapper(aSig,name,state):
     sig['seg']=peerSeg
     sig['cnt']=kBranchPrevCnt
     sig['type']=aSig['type']
-    updateSIGbyTrOccupation(aSig,name,state)
-    updateSIGbyTrOccupation(sig,name,state)
+    peerState=state
+    if ((kPeer=="green") and (state=="red")):
+      peerState="yellow"
+    updateSIGbyTrOccupation(aSig,name,state) #The order is important! First update aSig, then peer sig
+    updateSIGbyTrOccupation(sig,name,peerState)
   if aSig['type']=='4D':
     kMain=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPosition")
     kBranch=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":branchPosition")
@@ -1336,11 +1370,26 @@ def updateSIGbyTrOccupationWrapper(aSig,name,state):
 
 def updateSIGbyTrOccupation(aSig,name,state):
   global sigs
+  convSig={}
   redisSIG="sig:"+aSig['seg']+":"+sigs[aSig['seg']][aSig['cnt']][1]
   k=r.get(redisSIG)
   if not __debug__:
     print name+":"+str(t)+":START UPDATE SIG BY OCCU "+redisSIG+" from value "+k+" to value "+state
   sigAlreadyOccupied=r.get(redisSIG+":isOccupied")
+  sigAlreadyLocked=None
+  if (aSig['type']=='4C'):
+    sigAlreadyLocked=r.get(redisSIG+":isLocked")  # only useful for types 6 and 4C
+  if (aSig['type']=='6'):
+    convSig['name']=sigs[aSig['seg']][aSig['cnt']+1][1]
+    convSig['type']=sigs[aSig['seg']][aSig['cnt']+1][2]
+    convSig['cnt']=aSig['cnt']+1
+    convSig['seg']=aSig['seg']
+    redisConvSIG="sig:"+convSig['seg']+":"+sigs[convSig['seg']][convSig['cnt']][1]
+    kConv=r.get(redisConvSIG)
+    sigAlreadyLocked=r.get(redisConvSIG+":isLocked")  # only useful for types 6 and 4C
+  else:
+    redisConvSIG=""
+    kConv=None
   if (aSig['type']!='0'):
     if (state=="red"):
       if sigAlreadyOccupied is not None:
@@ -1348,6 +1397,9 @@ def updateSIGbyTrOccupation(aSig,name,state):
           print name+":"+str(t)+":FATAL is already occupied "+redisSIG+" by "+sigAlreadyOccupied
           sys.exit()
       r.set(redisSIG+":isOccupied",name)
+      if (aSig['type']=='6'):
+        if sigAlreadyLocked is None:
+          r.set(redisConvSIG+":isLocked",name)
       r.set(redisSIG,state)
       sigAlreadyOccupied=name
       previousSig=findPrevSIGforOccupation(aSig)
@@ -1392,6 +1444,10 @@ def updateSIGbyTrOccupation(aSig,name,state):
       if sigAlreadyOccupied is not None:
         if sigAlreadyOccupied==name:
           r.delete(redisSIG+":isOccupied")
+      if (aSig['type']=='6'):
+        if sigAlreadyLocked is not None:
+          if sigAlreadyLocked==name:
+            r.delete(redisConvSIG+":isLocked")
     if not __debug__:
       print "SIGCHG "+str(aSig)+" was "+k+" now "+state
   if (aSig['type']!='2'):   # a type 2 always remains red

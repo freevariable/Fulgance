@@ -38,6 +38,8 @@ Fulgence will let you perform various tasks:
 - Consequently, segments are unidirectional. It means that single track routes are not supported. (We hope to support them on the long term though)
 - In each segment, you need to describe the location of signals (SIGs), stations (STAs), speed limits (TIVs) and grades (GRDs). 
 - All route and schedule data are kept in simple text files. Lines beginning with a hash are ignored, as one would expect.
+- Schedules are kept in the (routeName)/schedules directory. You may name them whatever.txt The default shedule is default.txt
+- Services are kept in (routeName)/services.txt This file is **optional**. Use it only if you have branches on your line to provide pathfinding information.
 - Markers are not supported yet. In the pipe: tunnels (provide weather protection), country boundaries (with imperial/metric unit changes), points of interest (landmarks), areas of interest, platform names, substations (for line sectioning).
 - Weather is not supported yet
 - Only passenger stations are available at the moment. Water points and fuel stations (coal or diesel) will be added later.
