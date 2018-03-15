@@ -588,6 +588,59 @@ class Tr:
       for i in t:
         yield i
 
+  def switch(self,newSegment,initPos):
+    if not __debug__:
+      print "SWITCHING..."+self.name+"from pos "+str(self.x)+" in segment "+self.segment+" to pos "+str(initPos)+" in segment "+newSegment
+    self.x=initPos
+    self.segment=newSegment
+    self.GRDcnt=findMyGRDcnt(initPos,newSegment)
+    self.nextGRD=grds[newSegment][self.GRDcnt]
+    self.nGRDx=1000.0*float(self.nextGRD[0])
+    self.transitionGRDx=self.nGRDx+stock['length']
+    self.TIVcnt=findMyTIVcnt(initPos,newSegment)
+    self.STAcnt=findMySTAcnt(initPos,newSegment)
+    self.SIGcnt=findMySIGcnt(initPos,newSegment)
+    self.nextSTA=stas[newSegment][self.STAcnt]
+    self.nextSIG=sigs[newSegment][self.SIGcnt]
+    self.nSTAx=1000.0*float(self.nextSTA[0])
+    self.nSIGx=1000.0*float(self.nextSIG[0])
+    self.nextTIV=tivs[newSegment][self.TIVcnt]
+    if not __debug__:
+      print self.name+":t:"+str(t)+" My TIVcnt is: "+str(self.TIVcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" My STAcnt is: "+str(self.STAcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" My SIGcnt is: "+str(self.SIGcnt)+" based on pos:"+str(initPos)
+      print self.name+":t:"+str(t)+" next TIV at PK"+self.nextTIV[0]+" with limit "+self.nextTIV[1]
+      print self.name+":t:"+str(t)+" next GRD at PK"+self.nextGRD[0]+" with grade "+self.nextGRD[1]
+    self.nTIVx=1000.0*float(self.nextTIV[0])
+    self.nTIVvl=float(self.nextTIV[1])
+    self.cTIVvl=0.0
+    self.nTIVtype='INC'    # tiv increases speed
+    if (self.GRDcnt>0):
+      self.grade=float(grds[newSegment][self.GRDcnt-1][1])
+    else:
+      self.grade=float(grds[newSegment][self.GRDcnt][1])
+    self.gradient=self.grade/100.0    #good approx even for grad less than 3.0%
+    self.oldGradient=self.gradient
+    self.ratioGRD=1.0
+    if (self.TIVcnt>0):
+      self.maxVk=min(stock['maxSpeed'],float(tivs[newSegment][self.TIVcnt-1][1]))
+    else:
+      self.maxVk=min(stock['maxSpeed'],float(tivs[newSegment][self.TIVcnt][1]))
+    self.redisSIG="sig:"+self.segment+":"+sigs[self.segment][self.SIGcnt][1]
+    self.facingSig['seg']=self.segment
+    self.facingSig['cnt']=self.SIGcnt
+    self.facingSig['type']=sigs[self.segment][self.SIGcnt][2]
+    self.facingSig['name']=sigs[self.segment][self.SIGcnt][1]
+    previousSig=findPrevSig(self.facingSig)
+    if previousSig is None:
+      print "FATAL: no previousSig"
+      sys.exit()
+    if not __debug__:
+      print self.name+": facing Sig:"+str(self.facingSig)+" previous Sig:"+str(previousSig)
+    self.advSIGcol=r.get(self.redisSIG)
+    self.sigSpotted=False
+    updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
+
   def reinit(self,initSegment,initPos):
     global stock
     global t
@@ -821,6 +874,7 @@ class Tr:
     global exitCondition
     global stock
     global live
+    initSwitchSeg=False
     gFactor=G*self.gradient
     vSquare=self.v*self.v
     v2factor=(stock['airFactor']*vSquare)
@@ -897,21 +951,12 @@ class Tr:
     if ((self.atSig==False) and (self.x>=(self.nSIGx))): # abeam signal
       if (self.sigSpotted==True):
         self.sigSpotted=False
-        if self.nextSIG[2]=='4D':  #sig type 4D 
-          print "ABEAM sig 4D"
-          self.pathCnt=self.pathCnt+1
-#          print "4D sig name:"+self.facingSig['name']
-          for asv in self.service:
-            asp=asv.split(":")
-#            print asp[0]
-            if asp[0]==self.facingSig['name']:
-              print "YO "+asp[1]
-              self.pathBranch=asp[1]
-#          sys.exit()
         if self.nextSIG[2]=='4C':  #sig type 4C
           print "ABEAM sig 4C"
         if self.nextSIG[2]=='6':  #sig type 6
           print "ABEAM sig 6"
+          print "things to do: check col & lock in 4C. Try to get the lock!"
+          sys.exit()
       if (self.sigBrake==True):
         self.sigBrake=False
         if ((self.vK<0.0) or (self.vK>4.0)):
@@ -955,7 +1000,7 @@ class Tr:
           updateSIGbyTrOccupationWrapper(previousSig,self.name,"green")
           if previousPreviousSig is not None:
             updateSIGbyTrOccupationWrapper(previousPreviousSig,self.name,"green")
-          self.reinit(kCur,0.0+stock['length']-self.nSIGx+self.x)
+          self.reinit(kCur,stock['length']-self.nSIGx+self.x)
         else: 
           self.atSig=True
           self.sigPoll=t+SIGPOLL
@@ -970,6 +1015,33 @@ class Tr:
       else:   #sigBrake is False
         if not __debug__:
           print self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
+        if self.nextSIG[2]=='4D':  #sig type 4D 
+          print "ABEAM sig 4D"
+          self.pathCnt=self.pathCnt+1
+          kMain=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":mainPosition")
+          kBranch=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":branchPosition")
+          if self.segment==kMain:
+            tgtSeg='Branch'
+          elif self.segment==kBranch:
+            tgtSeg='Main'
+          else:
+            print "FATAL: unknown branch..."+kMain+"..."+kBranch
+            sys.exit()
+          deltaX=-self.nSIGx+self.x
+          for asv in self.service:
+            asp=asv.split(":")
+            if asp[0]==self.facingSig['name']:
+              if asp[1]=='Main':
+                self.pathBranch=kMain
+              elif asp[1]=='Right':
+                self.pathBranch=kBranch
+                initSwitchSeg=True
+              elif asp[1]=='Left':
+                self.pathBranch=kBranch
+                initSwitchSeg=True
+              else:
+                print "FATAL... unknown branch..."+asp[1]
+                sys.exit()
         if (self.SIGcnt<len(sigs[self.segment])-1):
           self.SIGcnt=self.SIGcnt+1 
           self.nextSIG=sigs[self.segment][self.SIGcnt] 
@@ -1254,7 +1326,13 @@ class Tr:
       self.startingPhase=True
     elif (self.v>2.5):
       self.startingPhase=False
-  
+#
+# STAGE 6 : switches segment after passing a 4D sig
+#
+    if (initSwitchSeg==True):
+      initSwitchSeg=False
+      self.switch(self.pathBranch,deltaX)
+
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
 
