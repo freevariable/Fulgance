@@ -3,6 +3,6 @@
 #Type 2: feu de heurtoir (always red). Verb:Noun=Reverse:(a segment)
 #Type 3: avertissement (A or C, always before type 2).Verb:Noun=n/a
 0.0 Div1 4D Main:Main Branch:LeftBranch1 BranchOrientation:Left
-2.0 PreConv1 6
+2.0 PreConv 6
 2.6 Conv1 4C Main:Main Branch:LeftBranch1 BranchOrientation:Left
 501.0 Begin+500K
