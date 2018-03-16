@@ -1006,12 +1006,12 @@ class Tr:
           self.sigToPoll['type']=sigs[self.segment][self.SIGcnt][2]
           if not __debug__:
             print self.name+":t:"+str(t)+" waiting at sig..."+str(self.sigToPoll)
-          sys.exit()
       else:   #sigBrake is False
         if not __debug__:
           print self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
-        if self.nextSIG[2]=='4C':  #sig type 4C
-          print "ABEAM sig 4C"
+        checkSig=findSuccSig(self.facingSig)
+        if checkSig['type']=='6':
+          attemptLock4C(checkSig,self.name)
         if self.nextSIG[2]=='6':  #sig type 6
           print "ABEAM sig 6"
           print attemptLock4C(self.facingSig,self.name)
@@ -1280,6 +1280,12 @@ class Tr:
       self.v=0.0
       self.vK=0.0
       if (t>self.sigPoll):
+        if (self.sigToPoll['type']=='4C'):  #type 4C
+          print "attempting to unlock 4C"
+          print "sigToPoll: "+str(self.sigToPoll)
+          checkSig=findPrevSig(self.facingSig)  #to get the type 6
+          print "checkSig: "+str(checkSig)
+          print attemptLock4C(checkSig,self.name)
         k=r.get(self.sigToPoll['longName']+":isOccupied")
         if (k==self.name):
           k=None
@@ -1375,7 +1381,7 @@ def findMySIGcnt(x,seg):
     cnt=cnt+1
   return cnt
 
-def attemptLock4C(aSig,name):
+def attemptLock4C(aSig,name):  # aSig is a type 6
   convSig=findSuccSig(aSig)
   convPeerSig=getSigPeer(convSig)
   redisConvSIG="sig:"+convSig['seg']+":"+sigs[convSig['seg']][convSig['cnt']][1]
@@ -1476,6 +1482,7 @@ def findMyTIVcnt(x,seg):
 
 def getSigPeer(aSig):
   global sigs
+  sig={}
   if aSig['type']=='4C':
     # determine 4C name in the other leg
     kMain=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPosition")
@@ -1489,7 +1496,6 @@ def getSigPeer(aSig):
     else:
       peerSeg=kMain
       peerCnt=kMainPrevCnt
-    sig={}
     sig['name']=aSig['name']
     sig['seg']=peerSeg
     sig['cnt']=peerCnt+1
@@ -1513,11 +1519,13 @@ def getSigPeer(aSig):
     kPeer=r.get(peerStr)
     print "6 has the following 4C: "+kMain+" "+kBranch
     print "6 has the following peer in other branch mainCnt="+str(kMainPrevCnt)+" branchCnt="+str(kBranchPrevCnt)+" string: "+peerStr+" color="+kPeer
-    sig={}
     sig['name']=sigs[peerSeg][kBranchPrevCnt][1]
     sig['seg']=peerSeg
     sig['cnt']=kBranchPrevCnt
     sig['type']=aSig['type']
+  else:
+    print "FATAL..."+str(aSig)+" is neither atype 6 nor a type 4C..."
+    sys.exit()
   return sig
 
 def updateSIGbyTrOccupationWrapper(aSig,name,state):
