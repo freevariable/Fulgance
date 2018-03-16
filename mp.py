@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -747,14 +747,15 @@ class Tr:
     self.critVk=50.0
     self.tgtVk=110.0
     self.m=stock['weight']+self.pax*PAXWEIGHT
-    found=False
-    for ses in srvs:
-      if ses[0]==service:
-        self.service=ses    
-        found=True
-    if found==False:
-      print str(self.name)+":FATAL: service "+str(service)+" not found in services.txt"
-      sys.exit()
+    if service is not None:
+      found=False
+      for ses in srvs:
+        if ses[0]==service:
+          self.service=ses    
+          found=True
+      if found==False:
+        print str(self.name)+":FATAL: service "+str(service)+" not found in services.txt"
+        sys.exit()
     if (stock['accelerationLaw']=='STM1'):
       self.m=stock['engineWeight']+stock['tenderWeight']+stock['carriagesWeight']+stock['waterCapacity']+stock['coalCapacity']
       self.timbre=18.0
@@ -951,12 +952,6 @@ class Tr:
     if ((self.atSig==False) and (self.x>=(self.nSIGx))): # abeam signal
       if (self.sigSpotted==True):
         self.sigSpotted=False
-        if self.nextSIG[2]=='4C':  #sig type 4C
-          print "ABEAM sig 4C"
-        if self.nextSIG[2]=='6':  #sig type 6
-          print "ABEAM sig 6"
-          print "things to do: check col & lock in 4C. Try to get the lock!"
-          sys.exit()
       if (self.sigBrake==True):
         self.sigBrake=False
         if ((self.vK<0.0) or (self.vK>4.0)):
@@ -1015,6 +1010,11 @@ class Tr:
       else:   #sigBrake is False
         if not __debug__:
           print self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
+        if self.nextSIG[2]=='4C':  #sig type 4C
+          print "ABEAM sig 4C"
+        if self.nextSIG[2]=='6':  #sig type 6
+          print "ABEAM sig 6"
+          print attemptLock4C(self.facingSig,self.name)
         if self.nextSIG[2]=='4D':  #sig type 4D 
           print "ABEAM sig 4D"
           self.pathCnt=self.pathCnt+1
@@ -1028,9 +1028,11 @@ class Tr:
             print "FATAL: unknown branch..."+kMain+"..."+kBranch
             sys.exit()
           deltaX=-self.nSIGx+self.x
+          found=False
           for asv in self.service:
             asp=asv.split(":")
             if asp[0]==self.facingSig['name']:
+              found=True
               if asp[1]=='Main':
                 self.pathBranch=kMain
               elif asp[1]=='Right':
@@ -1042,6 +1044,8 @@ class Tr:
               else:
                 print "FATAL... unknown branch..."+asp[1]
                 sys.exit()
+          if found==False:  #By default, assume we take the Main branch
+            self.pathBranch=kMain
         if (self.SIGcnt<len(sigs[self.segment])-1):
           self.SIGcnt=self.SIGcnt+1 
           self.nextSIG=sigs[self.segment][self.SIGcnt] 
@@ -1371,6 +1375,37 @@ def findMySIGcnt(x,seg):
     cnt=cnt+1
   return cnt
 
+def attemptLock4C(aSig,name):
+  convSig=findSuccSig(aSig)
+  convPeerSig=getSigPeer(convSig)
+  redisConvSIG="sig:"+convSig['seg']+":"+sigs[convSig['seg']][convSig['cnt']][1]
+  redisConvPeerSIG="sig:"+convPeerSig['seg']+":"+sigs[convPeerSig['seg']][convPeerSig['cnt']][1]
+  convAlreadyOccupied=r.get(redisConvSIG+":isOccupied") 
+  if convAlreadyOccupied is not None:
+    if convAlreadyOccupied!=name:
+      return False
+#  kConv=r.get(redisConvSIG)
+#  kConvPeer=r.get(redisConvPeerSIG)
+  convAlreadyLocked=r.get(redisConvSIG+":isLocked") 
+  convPeerAlreadyLocked=r.get(redisConvPeerSIG+":isLocked")
+  if (convAlreadyLocked!=convPeerAlreadyLocked):
+    print "FATAL isLocked inconsistency..."+str(convAlreadyLocked)+" "+str(convPeerAlreadyLocked)+" "+redisConvSIG+" "+redisConvPeerSIG
+    sys.exit()
+  if convAlreadyLocked is None:
+    r.set(redisConvSIG+":isLocked",name) 
+    r.set(redisConvPeerSIG+":isLocked",name) 
+    peerSig=getSigPeer(aSig)
+    redisPeerSIG="sig:"+peerSig['seg']+":"+sigs[peerSig['seg']][peerSig['cnt']][1]
+    if (r.get(redisPeerSIG)=="green"):
+      r.set(redisPeerSIG,"yellow")
+    if (r.get(redisConvSIG)=="red"):
+      r.set(redisConvSIG,"yellow")   
+    if (r.get(redisConvPeerSIG)!="red"):
+      r.set(redisConvPeerSIG,"red")   
+    return True
+  else:
+    return (convAlreadyLocked==name)
+
 def findSuccSig(aSig):
   global sigs
   succSig={}
@@ -1532,12 +1567,15 @@ def updateSIGbyTrOccupation(aSig,name,state):
   if (aSig['type']=='4C'):
     sigAlreadyLocked=r.get(redisSIG+":isLocked")  # only useful for types 6 and 4C
   if (aSig['type']=='6'):
+    peerSig=getSigPeer(aSig)
     convSig=findSuccSig(aSig)
     convPeerSig=getSigPeer(convSig)
     redisConvSIG="sig:"+convSig['seg']+":"+sigs[convSig['seg']][convSig['cnt']][1]
     redisConvPeerSIG="sig:"+convPeerSig['seg']+":"+sigs[convPeerSig['seg']][convPeerSig['cnt']][1]
+    redisPeerSIG="sig:"+peerSig['seg']+":"+sigs[peerSig['seg']][peerSig['cnt']][1]
     kConv=r.get(redisConvSIG)
     kConvPeer=r.get(redisConvPeerSIG)
+    kPeer=r.get(redisPeerSIG)
     convAlreadyLocked=r.get(redisConvSIG+":isLocked")  # only useful for types 6 and 4C
     convPeerAlreadyLocked=r.get(redisConvPeerSIG+":isLocked")
     if (convAlreadyLocked!=convPeerAlreadyLocked):
@@ -1546,10 +1584,13 @@ def updateSIGbyTrOccupation(aSig,name,state):
   else:
     convSig={}
     convPeerSig={}
+    peerSig={}
     redisConvSIG=""
     redisConvPeerSIG=""  
+    redisPeerSIG=""  
     kConv=None
     kConvPeer=None
+    kPeer=None
   if (aSig['type']!='0'):
     if (state=="red"):
       if sigAlreadyOccupied is not None:
@@ -1561,8 +1602,8 @@ def updateSIGbyTrOccupation(aSig,name,state):
         if convAlreadyLocked is None:
           r.set(redisConvSIG+":isLocked",name)
           r.set(redisConvPeerSIG+":isLocked",name)
-        if(r.get(redisConvPeerSIG)=="green"):
-          r.set(redisConvPeerSIG,"yellow")
+        if (kPeer=="green"):
+          r.set(redisPeerSIG,"yellow")
       r.set(redisSIG,state)
 #      r.set(redisConvSIG,state)
       sigAlreadyOccupied=name
