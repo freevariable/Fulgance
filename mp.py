@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");

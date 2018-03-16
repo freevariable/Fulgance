@@ -90,11 +90,17 @@ Fulgence will run fine without options, but there are several things you may wis
 The control room is displayed as an HTML dashboard by calling *tools/room.py* **after** or **while** you run mp.py in realtime. It will not work otherwise, because it polls redis for live information and redis will be empty.
 
 *room.py* also generates one HTML file per segment you wish to monitor.
+
+For stations to appear on the dashboard, they must be succeded by a signal named (station trigram)+(whatever) in (routeName)/segments/(routeSegment)/SIGs.txt
+
 #### Options
 - You must provide the route name using *--route*
 - You must provide a segments list using *--segments*
 
-Here is an example:
+Here are two  examples:
+
 *tools/room.py --route=ParisLine1 --segments=WestboundMain,EastboundMain > dashboard.html* 
 
-This will produce three files: dashboard.html, WestboundMain.html and EastboundMain.html
+*tools/room.py --route=LondonCentral --segments=WestRuislip,Epping > dashboard.html* 
+
+In the first example, this will produce three files: dashboard.html, WestboundMain.html and EastboundMain.html
