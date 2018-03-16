@@ -1,0 +1,45 @@
+#Name Type Verb:Noun Verb:Noun  
+#1: 3 colors carre (VL,A,S) 
+#2: feu de heurtoir (always red)
+#3: avertissement (always yellow, always before
+0.0 W 2 Reverse:Epping Forward:WestRuislip Default:Epping 
+0.2 WRL-100 5    
+0.4 WRL+100
+1.1 RLG+100
+2.1 SRL+100
+3.1 NHO+100
+4.1 GRF+100
+5.1 PVL+100
+6.1 HLA+100
+7.1 NAC+100
+8.1 EAC+100
+9.1 WCI+100
+10.1 SBU+100
+11.1 HPA+100
+12.1 NOT+100
+13.1 QUW+100
+14.1 LAN+100
+15.1 MBL+100
+16.1 BST+100
+17.1 OXF+100
+18.1 TTT+100
+19.1 HLB+100
+20.1 CHL+100
+21.1 SPA+100
+22.1 BNK+100
+23.1 LIV+100
+24.1 BTH+100
+25.1 MIL+100
+26.1 STR+100
+27.1 LEY+100
+28.1 LYS+100
+29.1 SNR+100
+30.1 SWO+100
+31.1 WOO+100
+32.1 BHH+100
+33.1 LOU+100
+34.1 DBD+100
+35.1 THB+100
+35.6 EPP-200     
+35.8 EPP+100 3    
+36.0 E 2 Reverse:WestRuislip Forward:Epping Default:WestRuislip 

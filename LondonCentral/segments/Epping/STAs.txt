@@ -1,0 +1,37 @@
+0.3 WRL West-Ruislip
+1.0 RLG Ruislip-Gardens
+2.0 SRL South-Ruislip
+3.0 NHO Northolt
+4.0 GRF Greenford
+5.0 PVL Perivale
+6.0 HLA Hanger-Lane
+7.0 NAC North-Acton
+8.0 EAC East-Acton
+9.0 WCI White-City
+10.0 SBU Shepherds-Bush
+11.0 HPA Holland-Park
+12.0 NOT Notting-Hill-Gate X
+13.0 QUW Queensway
+14.0 LAN Lancaster-Gate
+15.0 MBL Marble-Arch
+16.0 BST Bond-Street X
+17.0 OXF Oxford-Circus X
+18.0 TTT Tottenham-Court-Road X
+19.0 HLB Holborn
+20.0 CHL Chancery-Lane
+21.0 SPA Saint-Pauls
+22.0 BNK Bank X
+23.0 LIV Liverpool-Street X
+24.0 BTH Bethnal-Green
+25.0 MIL Mile-End
+26.0 STR Stratford X
+27.0 LEY Leyton
+28.0 LYS Leytonstone
+29.0 SNR Snaresbrook
+30.0 SWO South-Woodford
+31.0 WOO Woodford
+32.0 BHH Buckhurst-Hill
+33.0 LOU Loughton
+34.0 DBD Debden
+35.0 THB Theydon-Bois
+35.7 EPP Epping

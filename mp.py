@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -365,6 +365,7 @@ def initSIGs():
         if prevs is not None:
           if not __debug__:
             print "  switch of sig "+s[1]+" has a prev sig: "+prevs[1]+" of type: "+prevs[2]
+            print "   so we set forwardPrevSig to "+str(cnt-1)+" for "+s[1]
           r.set("switch:"+s[1]+":forwardPrevSig",cnt-1)
           if (prevs[2]!='3'):
             print "FATAL: a sig type 2 must be preceded by a type 3 or no sig!"

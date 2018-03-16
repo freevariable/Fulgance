@@ -3,15 +3,16 @@
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle engines wear and tear
 - handle gauge & electrification
+- handle imperial units
 
 **UX**
 - Implement real time notifications (slack?)
 
+**API**
+- Implement REST API to get info and push actions (hold a train for regulation?)
+
 **Control Room**
 - Implement info board in stations
-
-**Track**
-- Implement converging and diverging junctions
 
 **Signalling**
 - Implement TVM (electronic signals)

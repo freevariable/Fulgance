@@ -126,7 +126,7 @@ def buildDashboard(zdump):
   firstSIG=True
   for s in sigs:
     cell={}
-    rx=re.match(r'(.*)\+10',s[1])
+    rx=re.match(r'(.*)\+',s[1])
     if rx:
       for a in stas:
         if (a[1]==rx.group(1)):
@@ -158,7 +158,6 @@ def buildDashboard(zdump):
           else:
             cell['type']='SIG2E'
       cells.append(cell)
-#    print cell
   for v in svcs:
     found=False
     oldc={}
@@ -201,7 +200,8 @@ def buildDashboard(zdump):
       html.append(line)
     line='</div>'
     html.append(line)
-  line='<div id="SrvWrapper" style="display: none;">'+json.dumps(zdump)+'</div>'
+  if zdump is not None:
+    line='<div id="SrvWrapper" style="display: none;">'+json.dumps(zdump)+'</div>'
   html.append(line)
   line='</div></body></html>'
   html.append(line)
@@ -235,6 +235,7 @@ if found==False:
 head=initHEAD()
 iframes=[]
 svcCnt=0
+sCnt=0
 for seg in segmentsList:
   stas=initSTAs(seg)
   sigs=initSIGs(seg)
@@ -242,10 +243,8 @@ for seg in segmentsList:
   svcs={}
   cells={}
   svcs=getState(seg)
+  sCnt=sCnt+len(svcs)
   svcCnt=svcCnt+len(svcs)
-  if (len(svcs)<1):
-    print "ERROR. No services found in segment. Have you run sim with --realtime?"
-    sys.exit(2)
   f=open(seg+".html","w")
   for h in head:
     f.write(h)
@@ -253,6 +252,9 @@ for seg in segmentsList:
   for i in iframe:
     f.write(i)
   f.close()
+if (sCnt<1):
+  print "ERROR. No services found in segments. Have you run sim with --realtime?"
+  sys.exit(2)
 
 elapsed=r.get("elapsedHuman")
 headwaycnt=float(len(r.keys("headway:*")))

@@ -1,0 +1,148 @@
+<html>
+<head>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<script>
+function populate() {
+  dl=document.getElementById("SrvWrapper").innerHTML;
+  sss=JSON.parse(dl);
+}
+function pickSrv(svc) {
+  line="";
+  for (var i=0; i < sss.length; i++) {
+    if (sss[i]['name'] === svc) {
+      if (sss[i]['sigSpotted'] === "True") {
+        aspectSource=sss[i]['advSIGcol']+'.svg'; 
+      } else {
+        aspectSource=sss[i]['advSIGcol']+'.svg';
+      }
+      line=line+'<b>'+svc+'</font></b><br>'
+      state="braking before speed signal";
+      if (sss[i]['react'] === "True") {
+        state="about to move"; 
+      }
+      if (sss[i]['sigBrake'] === "True") {
+        state="braking before aspect signal"; 
+      }
+      if (sss[i]['staBrake'] === "True") {
+        state="braking before station"; 
+      }
+      if (sss[i]['coasting'] === "True") {
+        state="coasting"; 
+      }
+      if (sss[i]['atSig'] === "True") {
+//        alert(sss[i]['name']);
+//        alert(sss[i]['atSig']);
+        state="waiting at signal "+sss[i]['nextSIG']; 
+        aspectSource='red.svg';
+      }
+      if (sss[i]['inSta'] === "True") {
+        state="boarding passengers"; 
+      }
+      if (sss[i]['units'] === "metric") {
+        speedU="km/h";
+      } else {
+        speedU="mph";
+      }
+      line=line+'<i>('+state+')</i><br>'
+      kspeed=Number(sss[i]['v'])*3.6
+      line=line+'Speed: '+Number(kspeed).toFixed(1)+" "+speedU;
+      line=line+'<img src=\"'+aspectSource+'\"><br>';
+      if (sss[i]['maxVk']>sss[i]['nextTIV']) {
+        line=line+'Max speed: '+Number(sss[i]['maxVk']).toFixed(0)+" "+speedU+" >>> <span class=\"yellowCol\">"+sss[i]['nextTIV']+"</span><br>";
+      } else {
+        line=line+'Max speed: '+Number(sss[i]['maxVk']).toFixed(0)+" "+speedU+"<br>";
+      }
+      paxRatio=100*sss[i]['pax']/sss[i]['maxPax'];
+      line=line+'Pax: '+sss[i]['pax']+' ('+Number(paxRatio).toFixed(0)+'%)<br>';
+      line=line+'Wear & tear: <b>low</b><br>';
+      line=line+'Quality: <font color=pink>legendary</font><br>';
+    }
+  }  
+  return line;
+}
+function showSrv(svc) {
+  var popup=document.getElementById(svc);
+//  alert(svc);
+  popup.innerHTML=pickSrv(svc);
+  popup.classList.toggle("Show");
+}
+</script>
+<style type="text/css">
+
+.popUp .yellowCol {
+    color: yellow;
+    font-weight: bold;
+    background-color: #444;
+}
+
+.popUp {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.popUp .srvPopUp {
+    visibility: hidden;
+    width: 160px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    font-size:11px;
+    z-index: 1;
+}
+
+.popUp .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+        margin-top:0px;
+        margin-bottom:0px;
+        margin:0px;
+	padding: 0px 0px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 0px solid #000;
+	display: table-cell;
+	padding: 0px 0px;
+        margin-top:0px;
+        margin-bottom:0px;
+        margin:0px;
+        font-size:8px;
+        font-family: Tahoma;
+        vertical-align: middle;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+</style>
+</head>
+<body onload="populate()"><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="TopEnd.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">West-Ruislip</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Ruislip-Gardens</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">South-Ruislip</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Northolt</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Greenford</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Perivale</div></div><div class="divTableRow"><div class="divTableCell"><div onclick="showSrv('MAIN1')">MAIN1</div><div class="popUp"><span class="srvPopUp" id="MAIN1"></span></div></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Hanger-Lane</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">North-Acton</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">East-Acton</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">White-City</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Shepherds-Bush</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Holland-Park</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Notting-Hill-Gate</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Queensway</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Lancaster-Gate</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Marble-Arch</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Bond-Street</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Oxford-Circus</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Tottenham-Court-Road</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Holborn</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Chancery-Lane</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Saint-Pauls</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Bank</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Liverpool-Street</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Bethnal-Green</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Mile-End</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Stratford</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Leyton</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Leytonstone</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Snaresbrook</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">South-Woodford</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Woodford</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Buckhurst-Hill</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Loughton</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Debden</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Theydon-Bois</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">Epping</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BottomEnd.svg"></div><div class="divTableCell"></div></div><div id="SrvWrapper" style="display: none;">[{"nextSTA": "North-Acton", "atSig": "False", "name": "MAIN1", "sigBrake": "False", "v": 2.775499999999983, "coasting": "True", "pax": 698.0, "nextTIV": 10, "inSta": "False", "advSIGcol": "green", "maxVk": 10.0, "staBrake": "False", "units": "metric", "x": 6593.291841000133, "segment": "Epping", "nextSIG": "EPP-200", "maxPax": 698.0}]</div></div></body></html>
