@@ -1010,8 +1010,9 @@ class Tr:
         if not __debug__:
           print self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
         checkSig=findSuccSig(self.facingSig)
-        if checkSig['type']=='6':
-          attemptLock4C(checkSig,self.name)
+        if 'type' in checkSig:
+          if checkSig['type']=='6':
+            attemptLock4C(checkSig,self.name)
         if self.nextSIG[2]=='6':  #sig type 6
           print "ABEAM sig 6"
           print attemptLock4C(self.facingSig,self.name)
