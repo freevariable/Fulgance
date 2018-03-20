@@ -16,9 +16,11 @@
 
 **Signalling**
 - Implement TVM (electronic signals)
+- Implement wait at 4C for peer to pass
 
 **Pax**
 - Implement dynamic variations
 
 **POIs/ZOIs**
 - Implement boundaries, tunnels, water and coal points, substations (1500V and 300V)
+- Implement entry and exit portals

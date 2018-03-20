@@ -1,5 +1,6 @@
 #Atlantic A1
 timbre 18.0
+waitTime 300.0
 templateName A1
 #acceleration 0.30
 accelerationLaw STM1

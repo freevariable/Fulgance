@@ -55,7 +55,6 @@ T0=0.0
 VTHRESH=0.999
 CONTROL="SIG"    # two mutually exclusive values: SIG or TVM
 REALTIME=False
-WAITTIME=10.0   # average wait in station (in sec)
 SIGPOLL=1.0   # check for sig clearance (in sec)
 
 tivs={}
@@ -415,6 +414,7 @@ def initAll():
   stockraw=initStock()
   cnt=0
   stock['acceleration']=ACC
+  stock['waitTime']=10.0 # at stations, in secs
   stock['k']=0.25
   stock['timbre']=18.0
   stock['accelerationLaw']=ALAW
@@ -440,6 +440,8 @@ def initAll():
     if (aa[0]!="#"):
       if (aa[0]=='acceleration'):
         stock['acceleration']=float(aa[1])
+      if (aa[0]=='waitTime'):
+        stock['waitTime']=float(aa[1])
       if (aa[0]=='k'):
         stock['k']=float(aa[1])
       if (aa[0]=='timbre'):
@@ -876,6 +878,7 @@ class Tr:
     global exitCondition
     global stock
     global live
+    removeTr=False
     initSwitchSeg=False
     gFactor=G*self.gradient
     vSquare=self.v*self.v
@@ -1066,8 +1069,8 @@ class Tr:
           if previousSig is not None:
             updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
         else:
-          print "FATAL: no more SIGS..."+self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
-          sys.exit()
+          print "No more SIGS for "+self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
+          removeTr=True
     elif (self.atSig==True):
       self.a=0.0
       self.v=0.0
@@ -1077,9 +1080,14 @@ class Tr:
         print "FATAL at STA"
         sys.exit()
       self.inSta=True
+      if stock['accelerationLaw']=='STM1': # replenish stocks
+        print self.name+":t:"+str(t)+":REPLENISH BEFORE"+str(self.coalQty)+"kg, water: "+str(self.waterQty)+"kg"
+        self.waterQty=stock['waterCapacity']
+        self.coalQty=stock['coalCapacity']
+        print self.name+":t:"+str(t)+":REPLENISH AFTER"+str(self.coalQty)+"kg, water: "+str(self.waterQty)+"kg"
       if STAPROGRESS==True:
         print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.nextSTA[1])
-      self.waitSta=t+WAITTIME
+      self.waitSta=t+stock['waitTime']
       self.staBrake=False 
       if not __debug__:
         print self.name+":t:"+str(t)+":IN STA "+self.nextSTA[1]+" vK:"+str(self.vK)+" a:"+str(self.a)
@@ -1269,7 +1277,7 @@ class Tr:
           self.inSta=False
           self.waitSta=0.0
           self.react=True
-          self.waitReact=t+longTail(9.3,71.0,00.0)
+          self.waitReact=t+longTail(9.3,71.0,20.0)
           if not __debug__:
             print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
           if ((self.waitReact-t)>10.0):
@@ -1307,7 +1315,7 @@ class Tr:
         if k is None:
           self.atSig=False
           self.react=True
-          self.waitReact=t+longTail(9.3,71.0,00.0)
+          self.waitReact=t+longTail(9.3,71.0,20.0)
           if not __debug__:
             print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
           if ((self.waitReact-t)>10.0):
@@ -1344,6 +1352,7 @@ class Tr:
     if (initSwitchSeg==True):
       initSwitchSeg=False
       self.switch(self.pathBranch,deltaX)
+    return removeTr
 
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
@@ -1712,7 +1721,11 @@ def stepRT(s):
     if not __debug__:
       print "RT:"+str(t)
     for aT in trs:
-      aT.step()
+      rem=aT.step()
+      if rem:
+        if not __debug__:
+          print "Removing Tr "+str(aT.name)
+#        trs.remove(aT)
     if (t>duration):
       exitCondition=True
       print "EXIT condition True"
@@ -1958,7 +1971,11 @@ def sim():
     if (intT%5==0):
       sys.stdout.flush()
     for aT in trs:
-      aT.step()
+      rem=aT.step()
+      if rem:
+        if not __debug__:
+          print "Removing Tr "+str(aT.name)
+#        trs.remove(aT)
     if (t>duration):
       exitCondition=True
     ncyc=ncyc+1

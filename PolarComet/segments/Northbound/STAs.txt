@@ -1,6 +1,6 @@
 #0.0 E
 0.350 GdN Gare-du-Nord
 #41.7 Cha Chantilly
-#129.3 Amn Amiens
-193.3 LCr Le-Crotoy
+129.3 Amn Amiens
+#193.3 LCr Le-Crotoy
 #500.0 End End
