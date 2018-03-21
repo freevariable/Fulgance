@@ -1,38 +1,38 @@
-# Dist in miles
-0.18 WRL West-Ruislip
-1.66 RLG Ruislip-Gardens
-2.52 SRL South-Ruislip
-4.48 NHO Northolt
-6.15 GRF Greenford
-7.54 PVL Perivale
-9.07 HLA Hanger-Lane
-10.66 NAC North-Acton
-11.81 EAC East-Acton
-13.01 WCI White-City
-13.68 SBU Shepherds-Bush
-14.2 HPA Holland-Park
-14.68 NOT Notting-Hill-Gate X
-15.07 QUW Queensway
-15.54 LAN Lancaster-Gate
-16.27 MBL Marble-Arch
-16.66 BST Bond-Street X
-16.99 OXF Oxford-Circus X
-17.46 TTT Tottenham-Court-Road X
-18.09 HLB Holborn
-18.48 CHL Chancery-Lane
-19.15 SPA Saint-Pauls
-19.59 BNK Bank X
-20.03 LIV Liverpool-Street X
-21.62 BTH Bethnal-Green
-22.97 MIL Mile-End
-24.98 STR Stratford X
-26.17 LEY Leyton
-27.32 LYS Leytonstone
-28.57 SNR Snaresbrook
-29.63 SWO South-Woodford
-30.98 WOO Woodford
-32.42 BHH Buckhurst-Hill
-33.77 LOU Loughton
-35.30 DBD Debden
-37.94 THB Theydon-Bois
-40.63 EPP Epping
+0 Dist in miles    
+0.203796 WRL West-Ruislip     
+1.87945 RLG Ruislip-Gardens     
+2.85314 SRL South-Ruislip     
+5.07226 NHO Northolt     
+6.96303 GRF Greenford     
+8.53679 PVL Perivale     
+10.2691 HLA Hanger-Lane     
+12.0693 NAC North-Acton     
+13.3713 EAC East-Acton     
+14.7299 WCI White-City     
+15.4885 SBU Shepherds-Bush     
+16.0772 HPA Holland-Park     
+16.6207 NOT Notting-Hill-Gate X    
+17.0623 QUW Queensway     
+17.5944 LAN Lancaster-Gate     
+18.4209 MBL Marble-Arch     
+18.8625 BST Bond-Street X    
+19.2361 OXF Oxford-Circus X    
+19.7682 TTT Tottenham-Court-Road X    
+20.4815 HLB Holborn     
+20.9231 CHL Chancery-Lane     
+21.6816 SPA Saint-Pauls     
+22.1798 BNK Bank X    
+22.678 LIV Liverpool-Street X    
+24.4782 BTH Bethnal-Green     
+26.0066 MIL Mile-End     
+28.2824 STR Stratford X    
+29.6297 LEY Leyton     
+30.9317 LYS Leytonstone     
+32.347 SNR Snaresbrook     
+33.5471 SWO South-Woodford     
+35.0756 WOO Woodford     
+36.7059 BHH Buckhurst-Hill     
+38.2344 LOU Loughton     
+39.9667 DBD Debden     
+42.9557 THB Theydon-Bois     
+46.0013 EPP Epping     

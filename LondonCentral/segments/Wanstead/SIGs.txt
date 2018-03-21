@@ -1,15 +1,11 @@
-#Name Type Verb:Noun Verb:Noun  
-#1: 3 colors carre (VL,A,S) 
-#2: feu de heurtoir (always red)
-#3: avertissement (always yellow, always before
-0.0 EBranch 2 Reverse:Wanstead Forward:Hainault Default:Wanstead 
-0.04 HAI-100 5
-0.24 HAI+100
-1.34 FLP+100
-2.15 BRK+100
-3.3 NEW+100
-4.31 GAH+100
-5.12 RED+100
-5.98 WAN+100
-6.84 PreTruce 6
-6.93 Truce 4C Main:WestRuislip Branch:Wanstead BranchOrientation:Left
+0.0 EBranch 2 Reverse:Wanstead Forward:Hainault Default:Wanstead  
+0.045288 HAI-100 5     
+0.271728 HAI+100      
+1.51715 FLP+100      
+2.43423 BRK+100      
+3.73626 NEW+100      
+4.87978 GAH+100      
+5.79686 RED+100      
+6.77056 WAN+100      
+7.74425 PreTruce 6     
+7.84615 Truce 4C Main:WestRuislip Branch:Wanstead BranchOrientation:Left  

@@ -38,6 +38,7 @@ WEIGHT=143000.0   #in kg
 PAXWEIGHT=75.0   #in kg
 MAXPAX=698
 UNITS='metric'
+MPH=1.60934  #mph to kmh
 POWER=2000000.0 #in W
 VMX=80.0   #km/h  max speed
 VMX2=(VMX*VMX)/12.96  # VMX squared, in m/s
@@ -62,6 +63,7 @@ stas={}
 srvs={}
 sigs={}
 trss={}
+conf=[]
 trs=[]
 remlist=[]
 segs={}
@@ -72,6 +74,20 @@ exitCondition=False
 projectDir='ParisLine1/'
 schedulesDir='schedules/'
 segmentsDir='segments/'
+
+def initConfig():
+  f=open(projectDir+"routeConfig.txt","r")
+  ssf=f.readlines()
+  ss={}
+  f.close()
+  cnt=0
+  for s in ssf:
+    if (s[0]!='#'):
+      s=s.rstrip().split(" ")
+#      ss.append(s)
+      ss[s[0]]=s[1]
+      cnt=cnt+1  
+  return ss
 
 def initSRVs():
   f=open(projectDir+"services.txt","r")
@@ -101,6 +117,7 @@ def initSEGs():
 
 def initTIVs():
   global segs
+  global conf
   gts={}
   for se in segs:
     f=open(projectDir+segmentsDir+se+"/TIVs.txt","r")
@@ -111,6 +128,11 @@ def initTIVs():
     for t in tsf:
       if (t[0]!='#'):
         t=t.rstrip().split(" ")
+        if conf['units']=='imperial':
+#          print t
+          t[0]=str(float(t[0])*MPH)  #mileposts=>pK
+          t[1]=str(float(t[1])*MPH)  #mph=>kmh
+#          print t
         ts.append(t)
         cnt=cnt+1  
     gts[se]=ts
@@ -148,6 +170,7 @@ def initSchedule():
 
 def initGRDs():
   global segs
+  global conf
   gts={}
   for se in segs:
     f=open(projectDir+segmentsDir+se+"/GRDs.txt","r")
@@ -158,6 +181,8 @@ def initGRDs():
     for s in ssf:
       if (s[0]!='#'):
         s=s.rstrip().split(" ")
+        if conf['units']=='imperial':
+          s[0]=str(float(s[0])*MPH) #miles=>pK
         ss.append(s)
         cnt=cnt+1  
     gts[se]=ss
@@ -165,6 +190,7 @@ def initGRDs():
 
 def initSTAs():
   global segs
+  global conf
   gts={}
   for se in segs:
     f=open(projectDir+segmentsDir+se+"/STAs.txt","r")
@@ -175,6 +201,8 @@ def initSTAs():
     for s in ssf:
       if (s[0]!='#'):
         s=s.rstrip().split(" ")
+        if conf['units']=='imperial':
+          s[0]=str(float(s[0])*MPH) #milepost=>pK
         ss.append(s)
         cnt=cnt+1  
     gts[se]=ss
@@ -182,6 +210,7 @@ def initSTAs():
 
 def initSIGs():
   global segs
+  global conf
   gts={}
   for se in segs:
     f=open(projectDir+segmentsDir+se+"/SIGs.txt","r")
@@ -193,6 +222,8 @@ def initSIGs():
       redisSIG=""
       if (s[0]!='#'):
         s=s.rstrip().split(" ")
+        if conf['units']=='imperial':
+          s[0]=str(float(s[0])*MPH) #mile=>pK
         if (len(s)<=2):
           s.append('1')   # this is a type 1 sig by default
           redisSIG="green"
@@ -384,8 +415,8 @@ def initSIGs():
           if not __debug__:
             print "  (switch has no prev)"
       else: #not a type 2
-        if (cnt==len(ss)-1): 
-          print "SIG "+str(s)+" has not succ and is not a type 2" 
+        if ((s[2]!='4C') and (cnt==len(ss)-1)): 
+          print "INFO: SIG "+str(s)+" has not succ and is neither a type 2 nor a type 4C" 
           r.set("sig:"+se+":"+s[1],"red")
       prevs=s
       cnt=cnt+1
@@ -404,12 +435,14 @@ def initAll():
   global jumpseat
   global r
   global stock
+  global conf
   global hasServices
   global srvs
   stock={}
   r.set('realtime:',REALTIME)
   if multi:
     r.set('multi:',numCores)
+  conf=initConfig()
   segs=initSEGs()
   tivs=initTIVs()
   stas=initSTAs()
@@ -418,6 +451,7 @@ def initAll():
   grds=initGRDs()
   stockraw=initStock()
   cnt=0
+  conf['units']='metric'
   stock['acceleration']=ACC
   stock['waitTime']=10.0 # at stations, in secs
   stock['k']=0.25
@@ -439,8 +473,13 @@ def initAll():
   stock['decelerationLaw']=DLAW
   stock['emergency']=EMR
   stock['maxPax']=MAXPAX
-  stock['units']=UNITS
   stock['paxWeight']=PAXWEIGHT
+  for aa in conf:
+    if (aa[0]!="#"):
+      if (aa[0]=='units'):
+        conf['units']=aa[1]
+      if (aa[0]=='speedLine'):
+        maxLine=float(aa[1])
   for aa in stockraw:
     if (aa[0]!="#"):
       if (aa[0]=='acceleration'):
@@ -469,8 +508,12 @@ def initAll():
         stock['power']=float(aa[1])
       if (aa[0]=='maxSpeed'):
         stock['maxSpeed']=float(aa[1])
+        if conf['units']=='imperial':
+          stock['maxSpeed']=float(stock['maxSpeed'])*MPH
       if (aa[0]=='criticalSpeed'):
         stock['criticalSpeed']=float(aa[1])
+        if conf['units']=='imperial':
+          stock['criticalSpeed']=float(stock['criticalSpeed'])*MPH
       if (aa[0]=='airFactor'):
         stock['airFactor']=float(aa[1])
       if (aa[0]=='length'):
@@ -483,8 +526,6 @@ def initAll():
         stock['paxWeight']=float(aa[1])
       if (aa[0]=='decelerationLaw'):
         stock['decelerationLaw']=aa[1]
-      if (aa[0]=='units'):
-        stock['units']=aa[1]
       if (aa[0]=='templateName'):
         stock['templateName']=aa[1]
       if (aa[0]=='emergency'):
@@ -741,7 +782,7 @@ class Tr:
     updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
 
   def dumpstate(self):
-    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':stock['units'],'react':self.react})
+    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':conf['units'],'react':self.react})
 #    print r.hgetall(self.name)
 
   def __init__(self,name,initSegment,service,initPos):

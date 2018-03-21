@@ -1,9 +1,2 @@
 #name segment xPos(SigName)
-MAIN1 Epping 1200
-#E501 EastboundMain PoM-140
-#E502 EastboundMain Geo+10
-#E503 EastboundMain Tui-140
-#E504 EastboundMain StP-140
-#E505 WestboundMain StM-140
-#E506 WestboundMain 1370
-#E507 WestboundMain LaD-100
+MAIN1 Epping WRL+100 MainMission

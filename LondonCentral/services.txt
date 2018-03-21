@@ -1,0 +1,5 @@
+#MissionName + list of {sig:branch} pairs. Branches set to Main may be omitted.
+#Allowed branch names: Left,Right,Main
+#Allowed signal names: 4C signals found in SIGs.txt
+MainMission NAC+10:Main LEY+10:Main
+BranchMission NAC+10:Left LEY+10:Right

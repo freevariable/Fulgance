@@ -1,37 +1,37 @@
-0.26 EPP Epping
-2.95 THB Theydon-Bois
-5.59 DBD Debden
-7.12 LOU Loughton
-8.47 BHH Buckhurst-Hill
-9.91 WOO Woodford
-11.26 SWO South-Woodford
-12.31 SNR Snaresbrook
-13.56 LYS Leytonstone
-14.71 LEY Leyton
-15.91 STR Stratford X
-17.92 MIL Mile-End
-19.27 BTH Bethnal-Green
-20.87 LIV Liverpool-Street X
-21.31 BNK Bank X
-21.74 SPA Saint-Pauls
-22.41 CHL Chancery-Lane
-22.8 HLB Holborn
-23.42 TTT Tottenham-Court-Road X
-23.89 OXF Oxford-Circus X
-24.23 BST Bond-Street X
-24.62 MBL Marble-Arch
-25.34 LAN Lancaster-Gate
-25.82 QUW Queensway
-26.21 NOT Notting-Hill-Gate X
-26.68 HPA Holland-Park
-27.2 SBU Shepherds-Bush
-27.87 WCI White-City
-29.07 EAC East-Acton
-30.22 NAC North-Acton
-31.81 HLA Hanger-Lane
-33.35 PVL Perivale
-34.74 GRF Greenford
-36.41 NHO Northolt
-38.37 SRL South-Ruislip
-39.23 RLG Ruislip-Gardens
-40.72 WRL West-Ruislip
+0.294372 EPP Epping     
+3.33999 THB Theydon-Bois     
+6.329 DBD Debden     
+8.06126 LOU Loughton     
+9.58973 BHH Buckhurst-Hill     
+11.2201 WOO Woodford     
+12.7486 SWO South-Woodford     
+13.9374 SNR Snaresbrook     
+15.3526 LYS Leytonstone     
+16.6547 LEY Leyton     
+18.0133 STR Stratford X    
+20.289 MIL Mile-End     
+21.8175 BTH Bethnal-Green     
+23.629 LIV Liverpool-Street X    
+24.1272 BNK Bank X    
+24.614 SPA Saint-Pauls     
+25.3726 CHL Chancery-Lane     
+25.8142 HLB Holborn     
+26.5161 TTT Tottenham-Court-Road X    
+27.0483 OXF Oxford-Circus X    
+27.4332 BST Bond-Street X    
+27.8748 MBL Marble-Arch     
+28.6899 LAN Lancaster-Gate     
+29.2334 QUW Queensway     
+29.675 NOT Notting-Hill-Gate X    
+30.2071 HPA Holland-Park     
+30.7958 SBU Shepherds-Bush     
+31.5544 WCI White-City     
+32.9131 EAC East-Acton     
+34.2151 NAC North-Acton     
+36.0153 HLA Hanger-Lane     
+37.7589 PVL Perivale     
+39.3326 GRF Greenford     
+41.2234 NHO Northolt     
+43.4425 SRL South-Ruislip     
+44.4162 RLG Ruislip-Gardens     
+46.1032 WRL West-Ruislip     

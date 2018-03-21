@@ -1,7 +1,7 @@
-0.18 HAI Hainault
-1.28 FLP Fairlop
-2.09 BRK Barkingside
-3.24 NEW Newbury-Park
-4.25 GAH Gants-Hill
-5.06 RED Redbridge
-5.92 WAN Wanstead
+0.203796 HAI Hainault     
+1.44922 FLP Fairlop     
+2.3663 BRK Barkingside     
+3.66833 NEW Newbury-Park     
+4.81185 GAH Gants-Hill     
+5.72893 RED Redbridge     
+6.70262 WAN Wanstead     

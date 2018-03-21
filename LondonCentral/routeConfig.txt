@@ -1,0 +1,11 @@
+units imperial
+genre realistic #realistic or fancy
+author freevariable
+version 1.0.0
+electrification yes:630V:DC:FourthRail
+gauge 1435 #mm, even if metric is imperial
+epoch 1997
+axleLoad 30.0 #tons,even if metric is imperial
+lineSpeed 100 #kmh, even if metric is imperial
+simPowerOutages no  #requires substations
+simPowerConsumption no  #requires substations

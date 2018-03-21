@@ -1,13 +1,10 @@
-#Name Type Verb:Noun Verb:Noun  
-#1: 3 colors carre (VL,A,S) 
-#2: feu de heurtoir (always red)
-#3: avertissement (always yellow, always before
-1.07 WAN+100   
-1.93 RED+100
-3.6 GAH+100
-4.7 NEB+100
-5.85 BRK+100
-6.66 FLP+100
-7.5 HAI-200     
-7.76 HAI+100 3    
-7.94 EBranch 2 Reverse:Wanstead Forward:Hainault Default:Wanstead 
+0.0 River 4D Main:Epping Branch:Hainault BranchOrientation:Right
+1.21145 WAN+100      
+2.18515 RED+100      
+4.07592 GAH+100      
+5.32134 NEB+100      
+6.62337 BRK+100      
+7.54045 FLP+100      
+8.4915 HAI-200      
+8.78587 HAI+100 3     
+8.98967 EBranch 2 Reverse:Wanstead Forward:Hainault Default:Wanstead  

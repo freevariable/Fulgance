@@ -1,0 +1,11 @@
+units metric
+genre realistic #realistic or fancy
+author freevariable
+version 1.0.0
+electrification yes:750V:DC:GuideBars
+gauge 1435 #mm, even if metric is imperial
+epoch 2012 
+axleLoad 30.0 #tons,even if metric is imperial
+lineSpeed 70 #kmh, even if metric is imperial
+simPowerOutages no  #requires substations
+simPowerConsumption no  #requires substations

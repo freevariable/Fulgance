@@ -3,7 +3,7 @@
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle engines wear and tear
 - handle gauge & electrification
-- handle imperial units
+- handle imperial units for weight and pressure
 
 **UX**
 - Implement real time notifications (slack?)

@@ -31,6 +31,7 @@ Fulgence will let you perform various tasks:
 #### Layout
 - routes will support both on-track signals and electronic signals (only on-track for now) for trains separation
 - Routes are located in (Fulgence folder)/(routeName)/ 
+- The global parameters such as gauge, electrification, imperial or metric units... are located in (routeName)/routeConfig.txt. Only units must be set for now.
 - Routes are made of segments located in (routeName)/segments/(segmentName)/. For example: ParisLine1/segments/WestboundMain/ for the default route
 - A segment is a set of contiguous blocks where each block is under control of a signal
 - Blocks are not explicitely delimited or managed in Fulgence. In fact, signals define blocks.
@@ -89,7 +90,7 @@ Fulgence will run fine without options, but there are several things you may wis
 ### Control room
 The control room is displayed as an HTML dashboard by calling *tools/room.py* **after** or **while** you run mp.py in realtime. It will not work otherwise, because it polls redis for live information and redis will be empty.
 
-*room.py* also generates one HTML file per segment you wish to monitor.
+*room.py* also generates one HTML file per segment you wish to monitor. It is called *segmentName.html*
 
 For stations to appear on the dashboard, they must be succeded by a signal named (station trigram)+(whatever) in (routeName)/segments/(routeSegment)/SIGs.txt
 
@@ -103,4 +104,6 @@ Here are two  examples:
 
 *tools/room.py --route=LondonCentral --segments=WestRuislip,Epping,Hainault,Wanstead,Acton,EalingBroadway > dashboard.html* 
 
-In the first example, this will produce three files: dashboard.html, WestboundMain.html and EastboundMain.html
+The first example will produce three HTML files: dashboard.html, WestboundMain.html and EastboundMain.html
+
+In the second example, seven HTML files will be produced.
