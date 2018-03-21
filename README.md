@@ -101,6 +101,6 @@ Here are two  examples:
 
 *tools/room.py --route=ParisLine1 --segments=WestboundMain,EastboundMain > dashboard.html* 
 
-*tools/room.py --route=LondonCentral --segments=WestRuislip,Epping > dashboard.html* 
+*tools/room.py --route=LondonCentral --segments=WestRuislip,Epping,Hainault,Wanstead,Acton,EalingBroadway > dashboard.html* 
 
 In the first example, this will produce three files: dashboard.html, WestboundMain.html and EastboundMain.html

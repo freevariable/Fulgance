@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
 #  limitations under the License.
 
 import redis,random,math,sys
-import time,datetime,getopt
+import time,datetime,getopt,copy
 
 live=[]
 hasTime=False
@@ -62,7 +62,8 @@ stas={}
 srvs={}
 sigs={}
 trss={}
-trs={}
+trs=[]
+remlist=[]
 segs={}
 ncyc=0
 t=0.0
@@ -382,6 +383,10 @@ def initSIGs():
         else:
           if not __debug__:
             print "  (switch has no prev)"
+      else: #not a type 2
+        if (cnt==len(ss)-1): 
+          print "SIG "+str(s)+" has not succ and is not a type 2" 
+          r.set("sig:"+se+":"+s[1],"red")
       prevs=s
       cnt=cnt+1
     gts[se]=ss
@@ -954,6 +959,9 @@ class Tr:
     if ((self.sigBrake==True) and (self.vK<=0.7)):
       self.a=-0.00004#-gFactor
     if ((self.atSig==False) and (self.x>=(self.nSIGx))): # abeam signal
+      if (self.SIGcnt==(len(sigs[self.segment])-1)): #no more sigs
+        if (sigs[self.segment][self.SIGcnt][2]!='2'):
+          removeTr=True
       if (self.sigSpotted==True):
         self.sigSpotted=False
       if (self.sigBrake==True):
@@ -1070,7 +1078,6 @@ class Tr:
             updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
         else:
           print "No more SIGS for "+self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
-          removeTr=True
     elif (self.atSig==True):
       self.a=0.0
       self.v=0.0
@@ -1352,7 +1359,10 @@ class Tr:
     if (initSwitchSeg==True):
       initSwitchSeg=False
       self.switch(self.pathBranch,deltaX)
-    return removeTr
+    if removeTr==True:
+      return self
+    else:
+      return None
 
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
@@ -1712,8 +1722,22 @@ def stepRT(s):
   global t
   global cycles
   global live
+  global remlist
   ccc=0
   sys.stdout.flush()
+  if len(remlist)>0:
+    newlist={}
+    for tr in trs:
+      found=False
+      for rm in remlist:
+        if rm.name==tr.name:
+          found=True
+      if found==False:
+        newlist.append(tr)
+    trs=newlist
+    if len(trs)<1:
+      print str(t)+":INFO: Simulation ended. All services have run their schedule. Bye Bye!"
+      sys.exit(1)
   while (ccc<cycles):
     t=ncyc/CYCLE
     r.set("elapsed",int(t))
@@ -1721,11 +1745,11 @@ def stepRT(s):
     if not __debug__:
       print "RT:"+str(t)
     for aT in trs:
-      rem=aT.step()
-      if rem:
-        if not __debug__:
-          print "Removing Tr "+str(aT.name)
-#        trs.remove(aT)
+      rem=aT.step() 
+      if rem is not None:
+#        if not __debug__:
+        print "Removing Tr "+str(aT.name)
+        remlist.append(rem)
     if (t>duration):
       exitCondition=True
       print "EXIT condition True"
@@ -1947,6 +1971,7 @@ def sim():
   global t
   global exitCondition
   global ncyc
+  global remlist
   for aT in trs:
     if not __debug__:
       print aT.name+" has been initialized"
@@ -1972,10 +1997,23 @@ def sim():
       sys.stdout.flush()
     for aT in trs:
       rem=aT.step()
-      if rem:
-        if not __debug__:
-          print "Removing Tr "+str(aT.name)
-#        trs.remove(aT)
+      if rem is not None:
+#        if not __debug__:
+        print "Removing Tr "+str(aT.name)
+        remlist.append(rem)
+    if len(remlist)>0:
+      newlist={}
+      for tr in trs:
+        found=False
+        for rm in remlist:
+          if rm.name==tr.name:
+            found=True
+        if found==False:
+          newlist.append(tr)
+      trs=newlist
+      if len(trs)<1:
+        print str(t)+":INFO: Simulation ended. All services have run their schedule. Bye Bye!"
+        sys.exit(1)
     if (t>duration):
       exitCondition=True
     ncyc=ncyc+1

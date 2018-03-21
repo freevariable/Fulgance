@@ -1,0 +1,10 @@
+#Name Type Verb:Noun Verb:Noun  
+#1: 3 colors carre (VL,A,S) 
+#2: feu de heurtoir (always red)
+#3: avertissement (always yellow, always before
+0.0 WBranch 2 Reverse:Epping Forward:WestActon Default:Epping 
+0.04 EAB-100 5    
+0.24 EAB+100
+1.2 WAC+100
+2.02 PreZorg 6
+2.22 Zorg 4C Main:Epping Branch:WestActon BranchOrientation:Right
