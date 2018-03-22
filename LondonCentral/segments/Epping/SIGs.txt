@@ -7,8 +7,8 @@
 7.03096 GRF+100      
 8.60472 PVL+100      
 10.337 HLA+100      
-11.8881 PreZorg 6     
-12.0579 Zorg 4C Main:Epping Branch:WestActon BranchOrientation:Right  
+10.8881 PreZorg 6     
+11.2579 Zorg 4C Main:Epping Branch:WestActon BranchOrientation:Right  
 12.1372 NAC+100      
 13.4392 EAC+100      
 14.7979 WCI+100      
@@ -29,7 +29,8 @@
 24.5461 BTH+100      
 26.0746 MIL+100      
 28.3503 STR+100      
-29.641 River 4D Main:Epping Branch:Hainault BranchOrientation:Right  
+29.641 LEY+100
+29.65 River 4D Main:Epping Branch:Hainault BranchOrientation:Right  
 30.9996 LYS+100      
 32.4149 SNR+100      
 33.615 SWO+100      

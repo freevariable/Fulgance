@@ -1,3 +1,6 @@
+##What's new in build 124
+- Lots of bug fixing in preparation for release ALPHA TWO
+
 ##What's new in build 123
 - Bugs fixing
 - Imperial units support in Control Room

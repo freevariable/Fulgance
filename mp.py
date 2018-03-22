@@ -568,6 +568,7 @@ def initAll():
     cnt=cnt+1 
 
 class Tr:
+  initSitchSeg=False
   facingSig={}
   trip=0
   BDtiv=0.0  #breaking distance for next TIV
@@ -640,9 +641,9 @@ class Tr:
       for i in t:
         yield i
 
-  def switch(self,newSegment,initPos):
+  def switch(self,name,newSegment,initPos):
     if not __debug__:
-      print "SWITCHING..."+self.name+"from pos "+str(self.x)+" in segment "+self.segment+" to pos "+str(initPos)+" in segment "+newSegment
+      print "SWITCHING..."+self.name+" "+name+" from pos "+str(self.x)+" in segment "+self.segment+" to pos "+str(initPos)+" in segment "+newSegment
     self.x=initPos
     self.segment=newSegment
     self.GRDcnt=findMyGRDcnt(initPos,newSegment)
@@ -794,6 +795,7 @@ class Tr:
     global srvs
     if not __debug__:
       print "init..."+name+" at pos "+str(initPos)+"with service "+str(service)
+    self.initSwitchSeg=False
     self.pax=stock['maxPax']
     self.startingPhase=True
     self.critVk=50.0
@@ -928,7 +930,7 @@ class Tr:
     global stock
     global live
     removeTr=False
-    initSwitchSeg=False
+    self.initSwitchSeg=False
     gFactor=G*self.gradient
     vSquare=self.v*self.v
     v2factor=(stock['airFactor']*vSquare)
@@ -1008,7 +1010,7 @@ class Tr:
       self.facingSig['type']=sigs[self.segment][self.SIGcnt][2]
       self.facingSig['name']=sigs[self.segment][self.SIGcnt][1]
       if (self.SIGcnt==(len(sigs[self.segment])-1)): #no more sigs
-        if (sigs[self.segment][self.SIGcnt][2]!='2'):
+        if ((sigs[self.segment][self.SIGcnt][2]!='2') and (sigs[self.segment][self.SIGcnt][2]!='4C')):
           removeTr=True
       if (self.sigSpotted==True):
         self.sigSpotted=False
@@ -1076,6 +1078,21 @@ class Tr:
         if self.nextSIG[2]=='6':  #sig type 6
           print str(self.name)+":ABEAM sig 6, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
           print attemptLock4C(self.facingSig,self.name)
+        if self.nextSIG[2]=='4C':  #sig type 4C 
+          print str(self.name)+":ABEAM sig 4C, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
+          kPeer=getSigPeer(self.facingSig)
+          kMainPos=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":mainPosition")
+          if kMainPos==kPeer['seg']:
+            kPeerX=1000.0*float(sigs[kPeer['seg']][kPeer['cnt']][0])
+            print "facing:"+str(self.facingSig)
+            print "kPeer:"+str(kPeer)
+            print "kPeerX:"+str(kPeerX)
+            deltaX=kPeerX+self.x-self.nSIGx
+#          kBranch=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":mainPosition")
+            kBranch=kPeer['seg']
+            self.pathBranch=kBranch
+            print str(self.name)+"initSwitchSeg SET"
+            self.initSwitchSeg=True
         if self.nextSIG[2]=='4D':  #sig type 4D 
           print str(self.name)+":ABEAM sig 4D, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
           self.pathCnt=self.pathCnt+1
@@ -1091,17 +1108,21 @@ class Tr:
           deltaX=-self.nSIGx+self.x
           found=False
           for asv in self.service:
+            print str(self.name)+":asv:"+str(asv)
             asp=asv.split(":")
+            print "asp:"+str(asp)+" asp0:"+str(asp[0])
             if asp[0]==self.facingSig['name']:
               found=True
               if asp[1]=='Main':
                 self.pathBranch=kMain
               elif asp[1]=='Right':
                 self.pathBranch=kBranch
-                initSwitchSeg=True
+                print str(self.name)+"initSwitchSeg SET"
+                self.initSwitchSeg=True
               elif asp[1]=='Left':
                 self.pathBranch=kBranch
-                initSwitchSeg=True
+                print str(self.name)+"initSwitchSeg SET"
+                self.initSwitchSeg=True
               else:
                 print "FATAL... unknown branch..."+asp[1]
                 sys.exit()
@@ -1140,7 +1161,7 @@ class Tr:
       self.vK=0.0
     if (self.x>=(self.nSTAx)):
       if ((self.vK<0.0) or (self.vK>4.0)):
-        print "FATAL at STA"
+        print str(t)+":"+str(self.name)+":FATAL at STA"
         sys.exit()
       self.inSta=True
       if stock['accelerationLaw']=='STM1': # replenish stocks
@@ -1412,9 +1433,10 @@ class Tr:
 #
 # STAGE 6 : switches segment after passing a 4D sig
 #
-    if (initSwitchSeg==True):
-      initSwitchSeg=False
-      self.switch(self.pathBranch,deltaX)
+    if (self.initSwitchSeg==True):
+      self.initSwitchSeg=False
+      print "calling SWITCH "+self.name
+      self.switch(self.name,self.pathBranch,deltaX)
     if removeTr==True:
       return self
     else:
@@ -1617,7 +1639,7 @@ def updateSIGbyTrOccupationWrapper(aSig,name,state):
     print "sig 4C UPDATE in order:"+str(aSig)+" "+state+","+str(sig)+" "+state
     updateSIGbyTrOccupation(aSig,name,state) #The order is important! First update aSig, then peer sig
     updateSIGbyTrOccupation(sig,name,state)
-  if aSig['type']=='6':
+  elif aSig['type']=='6':
     sig=getSigPeer(aSig)
     peerState=state
     kPeer=r.get("sig:"+sig['seg']+":"+sig['name'])
@@ -1626,7 +1648,7 @@ def updateSIGbyTrOccupationWrapper(aSig,name,state):
     print "sig 6 UPDATE in order:"+str(aSig)+" "+state+","+str(sig)+" "+peerState
     updateSIGbyTrOccupation(aSig,name,state) #The order is important! First update aSig, then peer sig
     updateSIGbyTrOccupation(sig,name,peerState)
-  if aSig['type']=='4D':
+  elif aSig['type']=='4D':
     kMain=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPosition")
     kBranch=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":branchPosition")
     sig1={}
@@ -1637,7 +1659,11 @@ def updateSIGbyTrOccupationWrapper(aSig,name,state):
     sig2['name']=aSig['name']
     sig1['seg']=kMain
     sig2['seg']=kBranch
-    kCnt=int(r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPrevSig"))
+    kCnt=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPrevSig")
+    if ((kMain is None) or (kBranch is None) or (kCnt is None)):
+      print "FATAL: "+str(aSig)+" is misconfigured..."+str(kMain)+" "+str(kBranch)+" "+str(kCnt)+"..."
+      sys.exit()
+    kCnt=int(kCnt)
     sig1['cnt']=kCnt+1
     sig2['cnt']=0  #the diverging branch of a 4D always starts a segment
     updateSIGbyTrOccupation(sig1,name,state)
@@ -1656,7 +1682,7 @@ def updateSIGbyTrOccupation(aSig,name,state):
   sigAlreadyLocked=None
   if (aSig['type']=='4C'):
     sigAlreadyLocked=r.get(redisSIG+":isLocked")  # only useful for types 6 and 4C
-  if (aSig['type']=='6'):
+  elif (aSig['type']=='6'):
     peerSig=getSigPeer(aSig)
     convSig=findSuccSig(aSig)
     convPeerSig=getSigPeer(convSig)
@@ -1726,7 +1752,10 @@ def updateSIGbyTrOccupation(aSig,name,state):
                 updateSIGbyTrOccupationWrapper(previousPreviousSig,name,"green")
             else:
               updateSIGbyTrOccupationWrapper(previousPreviousSig,name,"green")
-    if (state=="yellow"):
+    elif (state=="yellow"):
+      if sigAlreadyOccupied is not None:
+        if sigAlreadyOccupied==name:
+          r.delete(redisSIG+":isOccupied")
       previousSig=findPrevSig(aSig)
       if previousSig is not None:
         redisSIGm1="sig:"+previousSig['seg']+":"+sigs[previousSig['seg']][previousSig['cnt']][1]
@@ -1737,7 +1766,7 @@ def updateSIGbyTrOccupation(aSig,name,state):
           if km1==name:
             r.delete(redisSIGm1+":isOccupied")
             updateSIGbyTrOccupationWrapper(previousSig,name,"green")
-    if (state=="green"):
+    elif (state=="green"):
       if sigAlreadyOccupied is not None:
         if sigAlreadyOccupied==name:
           r.delete(redisSIG+":isOccupied")

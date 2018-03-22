@@ -21,7 +21,7 @@ randId=random.randint(10000000,100000000)
 dash={}
 html={}
 svcs={}
-projectDir="../ParisLine1/"
+projectDir="../LondonCentral/"
 segmentsDir="segments/"
 smallSTAsvg="BSicon_HST.svg"
 trackSvg="BSicon_STR.svg"
@@ -35,6 +35,19 @@ r=redis.StrictRedis(host='localhost', port=6379, db=0)
 
 #dash[0]={'x':0.2,'type':'STA','cnt':0}
 #dash[1]={'x':1.012,'type':'SIG','cnt':3}
+
+def initConfig():
+  f=open(projectDir+"routeConfig.txt","r")
+  ssf=f.readlines()
+  ss=[]
+  f.close()
+  cnt=0
+  for s in ssf:
+    if (s[0]!='#'):
+      s=s.rstrip().split(" ")
+      ss.append(s)
+      cnt=cnt+1
+  return ss
 
 def initHEAD():
   f=open("html/ctrlRoom.html.head","r")
@@ -120,8 +133,13 @@ def buildDashboard(zdump):
   global sigs
   global stas
   global svcs
+  global conf
   cells=[]
   html=[]
+  if conf['units']=='imperial':
+    unitFactor=MPH
+  else:
+    unitFactor=1.0
   line="<body onload=\"populate()\">"
   html.append(line)
   firstSIG=True
@@ -133,7 +151,7 @@ def buildDashboard(zdump):
         if (a[1]==rx.group(1)):
           if len(s)>2:
             if ((s[2]=='1') or (s[2]=='3') or (s[2]=='5')):
-              cell['PK']=float(a[0])
+              cell['PK']=float(a[0])*unitFactor
               cell['name']=a[2]
               cell['type']='STA'
               if len(a)>3:
@@ -141,7 +159,7 @@ def buildDashboard(zdump):
                   cell['size']='X'
               cells.append(cell)
           else:
-            cell['PK']=float(a[0])
+            cell['PK']=float(a[0])*unitFactor
             cell['name']=a[2]
             cell['type']='STA'
             if len(a)>3:
@@ -149,7 +167,7 @@ def buildDashboard(zdump):
                 cell['size']='X'
             cells.append(cell)
     else:
-      cell['PK']=float(s[0])
+      cell['PK']=float(s[0])*unitFactor
       cell['type']='SIG'
       if len(s)>2:
         if (s[2]=='2'):
@@ -218,6 +236,13 @@ except getopt.GetoptError as err:
 
 segmentsList=[]
 found=False
+conf={}
+
+confraw=initConfig()
+for aa in confraw:
+  if (aa[0]!="#"):
+    if (aa[0]=='units'):
+      conf['units']=aa[1]
 
 for o, a in opts:
   if o in ("--segments"):

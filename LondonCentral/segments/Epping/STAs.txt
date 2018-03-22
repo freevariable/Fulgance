@@ -18,7 +18,7 @@
 18.8625 BST Bond-Street X    
 19.2361 OXF Oxford-Circus X    
 19.7682 TTT Tottenham-Court-Road X    
-20.4815 HLB Holborn     
+20.4815 HLB Holborn X
 20.9231 CHL Chancery-Lane     
 21.6816 SPA Saint-Pauls     
 22.1798 BNK Bank X    
