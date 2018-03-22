@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import re,sys,redis,copy,json,getopt,random
+MPH=1.60934
 
 ICONSTABEGIN="https://en.wikipedia.org/wiki/File:BSicon_KBHFa.svg"
 ICONSTAEND="https://en.wikipedia.org/wiki/File:BSicon_KBHFe.svg"
@@ -153,11 +154,12 @@ def buildDashboard(zdump):
       if len(s)>2:
         if (s[2]=='2'):
           if firstSIG==True:
-            firstSIG=False
+#            firstSIG=False
             cell['type']='SIG2A'
           else:
             cell['type']='SIG2E'
       cells.append(cell)
+    firstSIG=False
   for v in svcs:
     found=False
     oldc={}

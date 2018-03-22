@@ -1,3 +1,7 @@
+##What's new in build 123
+- Bugs fixing
+- Imperial units support in Control Room
+
 ##What's new in build 122
 - Imperial units are now supported for distances and speeds. Units are set in (routeDirectory)/routeConfig.txt
 - routeConfig.txt set in PolarComet,ParisLine1, TestTrack and LondonCentral

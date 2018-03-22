@@ -1,2 +1,3 @@
 #name segment xPos(SigName)
-MAIN1 Epping WRL+100 MainMission
+MAIN1 Epping MBL+100 MainMission
+MAIN2 WestRuislip WOO+100 MainMission

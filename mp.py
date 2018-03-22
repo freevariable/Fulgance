@@ -63,7 +63,7 @@ stas={}
 srvs={}
 sigs={}
 trss={}
-conf=[]
+conf={}
 trs=[]
 remlist=[]
 segs={}
@@ -78,14 +78,13 @@ segmentsDir='segments/'
 def initConfig():
   f=open(projectDir+"routeConfig.txt","r")
   ssf=f.readlines()
-  ss={}
+  ss=[]
   f.close()
   cnt=0
   for s in ssf:
     if (s[0]!='#'):
       s=s.rstrip().split(" ")
-#      ss.append(s)
-      ss[s[0]]=s[1]
+      ss.append(s)
       cnt=cnt+1  
   return ss
 
@@ -442,7 +441,18 @@ def initAll():
   r.set('realtime:',REALTIME)
   if multi:
     r.set('multi:',numCores)
-  conf=initConfig()
+  confraw=initConfig()
+  conf['units']='metric'
+  for aa in confraw:
+    if (aa[0]!="#"):
+      if (aa[0]=='units'):
+        conf['units']=aa[1]
+      if (aa[0]=='speedLine'):
+        maxLine=float(aa[1])
+  if not __debug__:
+    print "routeConfig details:"
+    print confraw
+    print conf
   segs=initSEGs()
   tivs=initTIVs()
   stas=initSTAs()
@@ -451,7 +461,6 @@ def initAll():
   grds=initGRDs()
   stockraw=initStock()
   cnt=0
-  conf['units']='metric'
   stock['acceleration']=ACC
   stock['waitTime']=10.0 # at stations, in secs
   stock['k']=0.25
@@ -474,12 +483,6 @@ def initAll():
   stock['emergency']=EMR
   stock['maxPax']=MAXPAX
   stock['paxWeight']=PAXWEIGHT
-  for aa in conf:
-    if (aa[0]!="#"):
-      if (aa[0]=='units'):
-        conf['units']=aa[1]
-      if (aa[0]=='speedLine'):
-        maxLine=float(aa[1])
   for aa in stockraw:
     if (aa[0]!="#"):
       if (aa[0]=='acceleration'):
@@ -1000,6 +1003,10 @@ class Tr:
     if ((self.sigBrake==True) and (self.vK<=0.7)):
       self.a=-0.00004#-gFactor
     if ((self.atSig==False) and (self.x>=(self.nSIGx))): # abeam signal
+      self.facingSig['seg']=self.segment
+      self.facingSig['cnt']=self.SIGcnt
+      self.facingSig['type']=sigs[self.segment][self.SIGcnt][2]
+      self.facingSig['name']=sigs[self.segment][self.SIGcnt][1]
       if (self.SIGcnt==(len(sigs[self.segment])-1)): #no more sigs
         if (sigs[self.segment][self.SIGcnt][2]!='2'):
           removeTr=True
@@ -1067,10 +1074,10 @@ class Tr:
           if checkSig['type']=='6':
             attemptLock4C(checkSig,self.name)
         if self.nextSIG[2]=='6':  #sig type 6
-          print "ABEAM sig 6"
+          print str(self.name)+":ABEAM sig 6, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
           print attemptLock4C(self.facingSig,self.name)
         if self.nextSIG[2]=='4D':  #sig type 4D 
-          print "ABEAM sig 4D"
+          print str(self.name)+":ABEAM sig 4D, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
           self.pathCnt=self.pathCnt+1
           kMain=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":mainPosition")
           kBranch=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":branchPosition")
@@ -1101,12 +1108,20 @@ class Tr:
           if found==False:  #By default, assume we take the Main branch
             self.pathBranch=kMain
         if (self.SIGcnt<len(sigs[self.segment])-1):
+          if not __debug__:
+            print str(self.name)+":SIG increase notification,segment:"+self.segment+" SIGcnt:"+str(self.SIGcnt)
+            print "..self.nextSIG before:"+str(self.nextSIG)
+            print "..self.facingSig before:"+str(self.facingSig)
           self.SIGcnt=self.SIGcnt+1 
           self.nextSIG=sigs[self.segment][self.SIGcnt] 
           self.facingSig['seg']=self.segment
           self.facingSig['cnt']=self.SIGcnt
           self.facingSig['type']=sigs[self.segment][self.SIGcnt][2]
           self.facingSig['name']=sigs[self.segment][self.SIGcnt][1]
+          if not __debug__:
+            print str(self.name)+":SIG increase notification,segment:"+self.segment+" SIGcnt:"+str(self.SIGcnt)
+            print "..self.nextSIG after:"+str(self.nextSIG)
+            print "..self.facingSig after:"+str(self.facingSig)
           if not __debug__:
             print self.name+":t:"+str(t)+"next SIG ("+self.nextSIG[1]+") at PK"+self.nextSIG[0]
           self.nSIGx=1000.0*float(self.nextSIG[0])
@@ -1445,35 +1460,40 @@ def findMySIGcnt(x,seg):
 
 def attemptLock4C(aSig,name):  # aSig is a type 6
   convSig=findSuccSig(aSig)
-  convPeerSig=getSigPeer(convSig)
-  redisConvSIG="sig:"+convSig['seg']+":"+sigs[convSig['seg']][convSig['cnt']][1]
-  redisConvPeerSIG="sig:"+convPeerSig['seg']+":"+sigs[convPeerSig['seg']][convPeerSig['cnt']][1]
-  convAlreadyOccupied=r.get(redisConvSIG+":isOccupied") 
-  if convAlreadyOccupied is not None:
-    if convAlreadyOccupied!=name:
-      return False
-#  kConv=r.get(redisConvSIG)
-#  kConvPeer=r.get(redisConvPeerSIG)
-  convAlreadyLocked=r.get(redisConvSIG+":isLocked") 
-  convPeerAlreadyLocked=r.get(redisConvPeerSIG+":isLocked")
-  if (convAlreadyLocked!=convPeerAlreadyLocked):
-    print "FATAL isLocked inconsistency..."+str(convAlreadyLocked)+" "+str(convPeerAlreadyLocked)+" "+redisConvSIG+" "+redisConvPeerSIG
-    sys.exit()
-  if convAlreadyLocked is None:
-    r.set(redisConvSIG+":isLocked",name) 
-    r.set(redisConvPeerSIG+":isLocked",name) 
-    peerSig=getSigPeer(aSig)
-    redisPeerSIG="sig:"+peerSig['seg']+":"+sigs[peerSig['seg']][peerSig['cnt']][1]
-    if (r.get(redisPeerSIG)=="green"):
-      r.set(redisPeerSIG,"yellow")
-    if (r.get(redisConvSIG)=="red"):
-      r.set(redisConvSIG,"yellow")   
-    if (r.get(redisConvPeerSIG)!="red"):
-      r.set(redisConvPeerSIG,"red")   
-    return True
+  if 'type' in convSig:
+    print "in attemptLock4C, convSig:"+str(convSig)
+    convPeerSig=getSigPeer(convSig)
+    print "in attemptLock4C, convPeerSig:"+str(convPeerSig)
+    redisConvSIG="sig:"+convSig['seg']+":"+sigs[convSig['seg']][convSig['cnt']][1]
+    redisConvPeerSIG="sig:"+convPeerSig['seg']+":"+sigs[convPeerSig['seg']][convPeerSig['cnt']][1]
+    convAlreadyOccupied=r.get(redisConvSIG+":isOccupied") 
+    if convAlreadyOccupied is not None:
+      if convAlreadyOccupied!=name:
+        return False
+  #  kConv=r.get(redisConvSIG)
+  #  kConvPeer=r.get(redisConvPeerSIG)
+    convAlreadyLocked=r.get(redisConvSIG+":isLocked") 
+    convPeerAlreadyLocked=r.get(redisConvPeerSIG+":isLocked")
+    if (convAlreadyLocked!=convPeerAlreadyLocked):
+      print "FATAL isLocked inconsistency..."+str(convAlreadyLocked)+" "+str(convPeerAlreadyLocked)+" "+redisConvSIG+" "+redisConvPeerSIG
+      sys.exit()
+    if convAlreadyLocked is None:
+      r.set(redisConvSIG+":isLocked",name) 
+      r.set(redisConvPeerSIG+":isLocked",name) 
+      peerSig=getSigPeer(aSig)
+      redisPeerSIG="sig:"+peerSig['seg']+":"+sigs[peerSig['seg']][peerSig['cnt']][1]
+      if (r.get(redisPeerSIG)=="green"):
+        r.set(redisPeerSIG,"yellow")
+      if (r.get(redisConvSIG)=="red"):
+        r.set(redisConvSIG,"yellow")   
+      if (r.get(redisConvPeerSIG)!="red"):
+        r.set(redisConvPeerSIG,"red")   
+      return True
+    else:
+      return (convAlreadyLocked==name)
   else:
-    return (convAlreadyLocked==name)
-
+    return False
+ 
 def findSuccSig(aSig):
   global sigs
   succSig={}
