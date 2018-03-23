@@ -1,6 +1,8 @@
 0.0 WBranch 2 Reverse:EalingBroadway Forward:WestActon Default:EalingBroadway  
 0.045288 EAB-100 5     
 0.271728 EAB+100      
+0.75 750
 1.35864 WAC+100      
+1.75 1750
 2.28704 PreZorg 6     
 2.51348 Zorg 4C Main:Epping Branch:WestActon BranchOrientation:Right  

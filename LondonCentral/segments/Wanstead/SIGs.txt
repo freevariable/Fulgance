@@ -1,11 +1,19 @@
 0.0 EBranch 2 Reverse:Wanstead Forward:Hainault Default:Wanstead  
 0.045288 HAI-100 5     
 0.271728 HAI+100      
+0.95 950
 1.51715 FLP+100      
+1.9 1900
 2.43423 BRK+100      
+2.9 2900
+3.3 3300
 3.73626 NEW+100      
+4.2 4200
 4.87978 GAH+100      
+5.15 5150
 5.79686 RED+100      
+6.2 6200
 6.77056 WAN+100      
+7.1 7100
 7.74425 PreTruce 6     
 7.84615 Truce 4C Main:WestRuislip Branch:Wanstead BranchOrientation:Left  

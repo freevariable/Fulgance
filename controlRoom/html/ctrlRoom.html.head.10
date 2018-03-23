@@ -47,8 +47,8 @@ function pickSrv(svc) {
       kspeed=Number(sss[i]['v'])*3.6
       line=line+'Speed: '+Number(kspeed/unitFactor).toFixed(1)+" "+speedU;
       line=line+'<img src=\"'+aspectSource+'\"><br>';
-      if (sss[i]['maxVk']>sss[i]['nextTIV']) {
-        line=line+'Max speed: '+Number(sss[i]['maxVk']/unitFactor).toFixed(0)+" "+speedU+" >>> <span class=\"yellowCol\">"+sss[i]['nextTIV']+"</span><br>";
+      if (sss[i]['maxVk']>(sss[i]['nextTIV']*unitFactor)) {
+        line=line+'Max speed: '+Number(sss[i]['maxVk']/unitFactor).toFixed(0)+" "+speedU+" >>> <span class=\"yellowCol\">"+(sss[i]['nextTIV']*unitFactor)+"</span><br>";
       } else {
         line=line+'Max speed: '+Number(sss[i]['maxVk']/unitFactor).toFixed(0)+" "+speedU+"<br>";
       }

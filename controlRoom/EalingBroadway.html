@@ -48,7 +48,7 @@ function pickSrv(svc) {
       line=line+'Speed: '+Number(kspeed/unitFactor).toFixed(1)+" "+speedU;
       line=line+'<img src=\"'+aspectSource+'\"><br>';
       if (sss[i]['maxVk']>(sss[i]['nextTIV']*unitFactor)) {
-        line=line+'Max speed: '+Number(sss[i]['maxVk']/unitFactor).toFixed(0)+" "+speedU+" >>> <span class=\"yellowCol\">"+(sss[i]['nextTIV']*unitFactor)+"</span><br>";
+        line=line+'Max speed: '+Number(sss[i]['maxVk']/unitFactor).toFixed(0)+" "+speedU+" >>> <span class=\"yellowCol\">"+(sss[i]['nextTIV'])+"</span><br>";
       } else {
         line=line+'Max speed: '+Number(sss[i]['maxVk']/unitFactor).toFixed(0)+" "+speedU+"<br>";
       }
@@ -145,4 +145,4 @@ function showSrv(svc) {
 }
 </style>
 </head>
-<body onload="populate()"><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">West-Acton</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Ealing-Broadway</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BottomEnd.svg"></div><div class="divTableCell"></div></div><div id="SrvWrapper" style="display: none;">[]</div></div></body></html>
+<body onload="populate()"><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_HST.svg"></div><div class="divTableCell">West-Acton</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_STR.svg"></div><div class="divTableCell"></div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BSicon_BHF.svg"></div><div class="divTableCell">Ealing-Broadway</div></div><div class="divTableRow"><div class="divTableCell"></div><div class="divTableCell"><img width="11px" src="BottomEnd.svg"></div><div class="divTableCell"></div></div><div id="SrvWrapper" style="display: none;">[]</div></div></body></html>

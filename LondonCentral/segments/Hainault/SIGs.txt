@@ -1,10 +1,19 @@
 0.0 River 4D Main:Epping Branch:Hainault BranchOrientation:Right
+0.5 500
 1.21145 WAN+100      
+1.7 1700
 2.18515 RED+100      
+2.75 2750
+3.2 3200
 4.07592 GAH+100      
+4.6 4600
 5.32134 NEB+100      
+5.8 5800
+6.2 6200
 6.62337 BRK+100      
+7.0 7000
 7.54045 FLP+100      
+7.9 7900
 8.4915 HAI-200      
 8.78587 HAI+100 3     
 8.98967 EBranch 2 Reverse:Wanstead Forward:Hainault Default:Wanstead  

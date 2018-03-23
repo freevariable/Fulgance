@@ -1,5 +1,7 @@
 0.0 Cash 4D Main:WestRuislip Branch:EalingBroadway BranchOrientation:Left
+0.7 700
 1.20013 WAC+100      
+1.55 1550
 1.99267 EAB-200      
 2.28704 EAB+100 3     
 2.49084 WBranch 2 Reverse:WestActon Forward:EalingBroadway Default:WestActon  

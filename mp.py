@@ -1151,7 +1151,9 @@ class Tr:
           p['cnt']=self.SIGcnt
           p['type']=sigs[self.segment][self.SIGcnt][2]
           previousSig=findPrevSig(p)
+          print str(self.name)+":previousSig of "+str(p)+" is "+str(previousSig)
           if previousSig is not None:
+            print "off we go"
             updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
         else:
           print "No more SIGS for "+self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
@@ -1482,8 +1484,8 @@ def findMySIGcnt(x,seg):
 
 def attemptLock4C(aSig,name):  # aSig is a type 6
   convSig=findSuccSig(aSig)
+  print str(name)+":in attemptLock4C, convSig:"+str(convSig)
   if 'type' in convSig:
-    print "in attemptLock4C, convSig:"+str(convSig)
     convPeerSig=getSigPeer(convSig)
     print "in attemptLock4C, convPeerSig:"+str(convPeerSig)
     redisConvSIG="sig:"+convSig['seg']+":"+sigs[convSig['seg']][convSig['cnt']][1]
@@ -1533,7 +1535,7 @@ def findPrevSig(aSig):
     if ((aSig['type']=='2') and (aSig['cnt']==0)):
       print "FATAL ERROR. Service must be reversed before invoking prevSIG"
       sys.exit()
-    if ((aSig['type']=='4D') or (aSig['type']=='4C')):
+    elif ((aSig['type']=='4D') or (aSig['type']=='4C')):
       kMain=r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPosition")
       kPrevCnt=int(r.get("switch:"+sigs[aSig['seg']][aSig['cnt']][1]+":mainPrevSig"))
       prevSig['seg']=kMain
@@ -1621,12 +1623,13 @@ def getSigPeer(aSig):
       peerSeg=kMain
     peerStr="sig:"+peerSeg+":"+sigs[peerSeg][kBranchPrevCnt][1]
     kPeer=r.get(peerStr)
-    print "6 has the following 4C: "+kMain+" "+kBranch
+    print str(aSig)+":6 has the following 4C: "+kMain+" "+kBranch
     print "6 has the following peer in other branch mainCnt="+str(kMainPrevCnt)+" branchCnt="+str(kBranchPrevCnt)+" string: "+peerStr+" color="+kPeer
     sig['name']=sigs[peerSeg][kBranchPrevCnt][1]
     sig['seg']=peerSeg
     sig['cnt']=kBranchPrevCnt
     sig['type']=aSig['type']
+    print "the peerSig of "+str(aSig)+" is "+str(sig)
   else:
     print "FATAL..."+str(aSig)+" is neither atype 6 nor a type 4C..."
     sys.exit()
