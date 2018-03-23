@@ -4,6 +4,6 @@
 #Type 3: avertissement (A or C, always before type 2).Verb:Noun=n/a
 0.0 Buffer
 0.3 Begin
-200.0 PreWarn
-201.0 Warn
-202.0 End
+325.0 PreWarn
+326.0 Warn
+327.0 End

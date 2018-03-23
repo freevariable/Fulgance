@@ -1,5 +1,14 @@
 #Atlantic A1
+k 0.25
+units metric
 timbre 18.0
+driveAxles 2
+deadFrontAxles 2
+deadRearAxles 1
+frontSurface 10.0
+wheelsDiameter 1.90
+pistonsLength 0.72
+expansion Simple
 waitTime 300.0
 templateName A1
 #acceleration 0.30
