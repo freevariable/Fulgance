@@ -1,7 +1,9 @@
+**Known issues**
+- Stations/signals following a 4C must be within breaking distance of the junction otherwise they are not caught in time by trains coming from the branch. Same issue with stations/signals following a 4D on the diverging branch: they are not caught in time by trains coming from the main line and diverging.
+
 **Realism**
 - handle time of day
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
-- handle engines wear and tear
 - handle gauge & electrification
 - handle imperial units for weight and pressure
 - on steam engines, implement weight variations according to pax or freight load
@@ -20,11 +22,11 @@
 - Implement TVM (electronic signals)
 
 **Train services**
-- Implement wait at 4C for peer to pass
+- Implement wait at siding for a given (or any) service name to pass
 - Use entry and exit portals. Spawn/destroy according to time of the day.
 
 **Pax**
-- Implement dynamic variations
+- Implement dynamic variations (depends on time of day implementation)
 
 **POIs/ZOIs**
 - Implement boundaries, tunnels, water and coal points, substations

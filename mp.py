@@ -1375,9 +1375,9 @@ class Tr:
       self.vK=0.0
       if (t>self.sigPoll):
         if (self.sigToPoll['type']=='4C'):  #type 4C
-          print "attempting to unlock 4C"
-          print "sigToPoll: "+str(self.sigToPoll)
-          checkSig=findPrevSig(self.facingSig)  #to get the type 6
+          print str(self.name)+":in sigPoll, attempting to unlock 4C"
+          print "sigToPoll: "+str(self.sigToPoll)+" and facing:"+str(self.facingSig)+" and nextSIG:"+str(self.nextSIG)
+          checkSig=findPrevSig(self.sigToPoll)  #to get the type 6
           print "checkSig: "+str(checkSig)
           print attemptLock4C(checkSig,self.name)
         k=r.get(self.sigToPoll['longName']+":isOccupied")

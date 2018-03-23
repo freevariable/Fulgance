@@ -27,7 +27,7 @@ Fulgence will let you perform various tasks:
 - [x] get detailed statistics for data crunching and rendering
 - [x] access the control room
 
-##What works as of today (build #124)?
+##What works as of today (build #125)?
 Since the simulator is in ALPHA, only a subset of features are currently usable:
 - you may run the sim in realtime (or not) on the *ParisLine1* route, with any schedule (small, medium, default, large)
 - you may run the control room for *ParisLine1*
