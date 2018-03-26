@@ -465,10 +465,13 @@ def initAll():
   stock['waitTime']=10.0 # at stations, in secs
   stock['k']=0.25
   stock['timbre']=18.0
+  stock['cylinders']=2
   stock['accelerationLaw']=ALAW
   stock['weight']=WEIGHT   # whole train for EMUs, carriages only for pushed/pulled trains.
-  stock['engineWeight']=0.0  # always 0 for EMUs, never 0 for push/pull
-  stock['tenderWeight']=0.0  # always 0 for EMUs, not including water and coal
+  stock['tenderAxleLoad']=0.0  # always 0 for EMUs, in kg, including full water and coal
+  stock['driveAxleLoad']=0.0  # always 0 for EMUs, in kg
+  stock['deadFrontAxleLoad']=0.0  # always 0 for EMUs, in kg
+  stock['deadRearAxleLoad']=0.0  # always 0 for EMUs, in kg
   stock['carriagesWeight']=0.0  # always 0 for EMUs
   stock['waterCapacity']=0.0  # max kg of water in tender
   stock['coalCapacity']=0.0  # max kg of coal in tender
@@ -497,6 +500,10 @@ def initAll():
         stock['deadFrontAxles']=int(aa[1])
       if (aa[0]=='deadRearAxles'):
         stock['deadRearAxles']=int(aa[1])
+      if (aa[0]=='tenderAxles'):
+        stock['tenderAxles']=int(aa[1])
+      if (aa[0]=='cylinders'):
+        stock['cylinders']=int(aa[1])
       if (aa[0]=='wheelsDiameter'):
         stock['wheelsDiameter']=float(aa[1])
       if (aa[0]=='frontSurface'):
@@ -517,10 +524,8 @@ def initAll():
         stock['waterCapacity']=float(aa[1])
       if (aa[0]=='coalCapacity'):
         stock['coalCapacity']=float(aa[1])
-      if (aa[0]=='coalCapacity'):
-        stock['engineWeight']=float(aa[1])
-      if (aa[0]=='tenderWeight'):
-        stock['tenderWeight']=float(aa[1])
+      if (aa[0]=='tenderAxleLoad'):
+        stock['tenderAxleLoad']=float(aa[1])
       if (aa[0]=='carriagesWeight'):
         stock['carriagesWeight']=float(aa[1])
       if (aa[0]=='power'):
@@ -624,8 +629,8 @@ class Tr:
   vK=0.0
   critVk=0.0
   startingPhase=True
-  engineWeight=0.0
   tenderWeight=0.0
+  engineWeight=0.0
   carriagesWeight=0.0
   timbre=18.0
   tgtVk=110.0
@@ -771,7 +776,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],(stock['tenderWeight']+self.coalQty+self.waterQty),stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['k'],self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)+self.aGaussFactor
       self.a=live[0]
 #      self.vapor=live[1]
 #      self.coal=live[2]
@@ -827,14 +832,13 @@ class Tr:
         print str(self.name)+":FATAL: service "+str(service)+" not found in services.txt"
         sys.exit()
     if (stock['accelerationLaw']=='STM1'):
-      self.m=stock['engineWeight']+stock['tenderWeight']+stock['carriagesWeight']+stock['waterCapacity']+stock['coalCapacity']
       self.timbre=18.0
       self.waterQty=stock['waterCapacity']
       self.coalQty=stock['coalCapacity']
-      self.engineWeight=stock['engineWeight']
-      self.tenderWeight=stock['tenderWeight']
+      self.tenderWeight=stock['tenderAxles']*stock['tenderAxleLoad']+self.coalQty+self.waterQty-stock['waterCapacity']-stock['coalCapacity']
+      self.m=self.engineWeight+stock['carriagesWeight']+self.tenderWeight
       self.carriagesWeight=stock['carriagesWeight']
-      rForIndicated=rollingResistance(stock['engineWeight']/1000.0,(stock['tenderWeight']+stock['waterCapacity']+stock['waterCapacity'])/1000.0,stock['carriagesWeight']/1000.0,2.0,1000.0,self.tgtVk,0.0,1.90,10.0,2,stock['k'],True)
+      rForIndicated=rollingResistance(self.engineWeight/1000.0,self.tenderWeight/1000.0,stock['carriagesWeight']/1000.0,2.0,1000.0,self.tgtVk,0.0,1.90,10.0,2,stock['k'],True)
       self.indicatedPower=indicatedPowerInHorsePower(rForIndicated,self.tgtVk)
       self.vapor=hourlyVaporConsumptionInKg(self.indicatedPower,self.timbre,'simpleExpansion')/3600.0
       self.coal=hourlyCoalConsumptionInKg(self.vapor)
@@ -901,7 +905,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],(stock['tenderWeight']+self.coalQty+self.waterQty),stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['k'],self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)+self.aGaussFactor
       self.a=live[0]
 #      self.vapor=live[1]
 #      self.coal=live[2]
@@ -955,9 +959,11 @@ class Tr:
       self.aGaussFactor=aGauss()
       if (stock['accelerationLaw']=='STM1'):
         if not __debug__:
-          print self.name+":"+str(t)+":PK:"+str(self.PK)+":updating coal and water weight before: "+str(self.waterQty)+" "+str(self.coalQty)
+          print self.name+":"+str(t)+":PK:"+str(self.PK)+":updating coal and water weight before: "+str(self.waterQty)+" "+str(self.coalQty)+" "+str(self.tenderWeight)
         self.waterQty=self.waterQty-self.vapor
         self.coalQty=self.coalQty-self.coal
+        self.tenderWeight=stock['tenderAxles']*stock['tenderAxleLoad']+self.coalQty+self.waterQty-stock['waterCapacity']-stock['coalCapacity']
+        self.m=self.engineWeight+stock['carriagesWeight']+self.tenderWeight
         if ((self.coalQty<=0.0) or (self.waterQty<=0.0)):
           print self.name+":"+str(t)+":FATAL run out of resources! coal="+str(self.coalQty)+"kg, water: "+str(self.waterQty)+"kg"
           sys.exit()
@@ -1281,7 +1287,7 @@ class Tr:
           if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)
           elif (stock['accelerationLaw']=='STM1'):
-            getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],(stock['tenderWeight']+self.coalQty+self.waterQty),stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['k'],self.startingPhase)
+            getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)
             self.a=live[0]
 #            self.vapor=live[1]
 #            self.coal=live[2]
@@ -1309,7 +1315,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],(stock['tenderWeight']+self.coalQty+self.waterQty),stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['k'],self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)+aGauss()
           self.a=live[0]
 #          self.vapor=live[1]
 #          self.coal=live[2]
@@ -1379,7 +1385,7 @@ class Tr:
           self.inSta=False
           self.waitSta=0.0
           self.react=True
-          self.waitReact=t+longTail(9.3,71.0,20.0)
+          self.waitReact=t+longTail(9.3,71.0,30.0)
           if not __debug__:
             print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
           if ((self.waitReact-t)>10.0):
@@ -1417,7 +1423,7 @@ class Tr:
         if k is None:
           self.atSig=False
           self.react=True
-          self.waitReact=t+longTail(9.3,71.0,20.0)
+          self.waitReact=t+longTail(9.3,71.0,30.0)
           if not __debug__:
             print self.name+":t:"+str(t)+":OUT SIG, a:"+str(self.a)+", reaction:"+str(self.waitReact-t)
           if ((self.waitReact-t)>10.0):
@@ -1437,7 +1443,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,stock['engineWeight'],(stock['tenderWeight']+self.coalQty+self.waterQty),stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['k'],self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)+aGauss()
           self.a=live[0]
 #          self.vapor=live[1]
 #          self.coal=live[2]
@@ -1998,20 +2004,7 @@ def checkAdherence(tra,P):
   # if False, need to increase ea (number of essieux accouples) or poids par essieux (depends on railroad specs) or reduce cylinders volume or number of cylinders
   return (P*1000.0*ADHESIVEFACTOR)>(tra/G)
 
-def labrijn(iP,m,mL,mT):
-  # iP : indicatedPowerInHorsepower
-  # m : masse remorque (t)
-  # mL : masse loco (t)
-  # mt : masse tender (t) including coal and water
-  N=iP/(m+mL+mT)
-  N2=N*N
-  N3=N*N*N
-  a=0.07*(-0.0534091*N2+1.29053*N-0.0816667)
-  vKPoint=-0.0874126*N3+2.08625*N2-17.19*N+55.6667
-  maxVk=0.150117*N3-4.15879*N2+37.5113*N+28.9238
-  return [a,vKPoint,maxVk,N]
-
-def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW,Dm,Sm2,ea,l,k,starting):
+def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW,Dm,Sm2,ea,l,nCyl,k,starting):
   global live
   r=rollingResistance(locoW/1000.0,tenderW/1000.0,payloadW/1000.0,grd,curv,vK,0.0,Dm,Sm2,ea,k,True)
   cP=cylinderPressureInKgCm2(timbre,'simpleExpansion')
@@ -2022,9 +2015,9 @@ def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW
   tEff=0.0
   rLTremorque=strahl(vK,vvK,mRemorque,k,starting)+sanzin(locoW/1000.0,tenderW/1000.0,vK,Dm,Sm2,ea)
   if (vK<=critVk):
-    tEff=tractiveEffortAtStart(timbre,d,l,Dm,ea,'simpleExpansion')
+    tEff=tractiveEffortAtStart(timbre,d,l,Dm,nCyl,'simpleExpansion')
   else:
-    tEff=tractiveEffortAtStart(timbre,d,l,Dm,ea,'simpleExpansion')*critVk/vK
+    tEff=tractiveEffortAtStart(timbre,d,l,Dm,nCyl,'simpleExpansion')*critVk/vK
   acc=(tEff-rLTremorque)/(1000.0*(mRemorque+(locoW/1000.0)+(tenderW/1000.0)))
   live=[]
   live.append(acc)
@@ -2194,7 +2187,6 @@ else:
 #iP=indicatedPowerInHorsePower(r,110.0)
 #print iP
 #print "***"
-#print labrijn(iP,250.0,99.0,48.0)
 
 #hC=hourlyVaporConsumptionInKg(iP,18.0,'simpleExpansion')
 #print hC

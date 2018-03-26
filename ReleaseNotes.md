@@ -1,4 +1,5 @@
-## What's new in build 129
+## What's new in build 129 (ALPHA TWO)
+- LondonCentral under medium load (schedules/medium.txt) now stable!
 - Added several parameters to the steam engines rollingStock.txt file
 - Extended the PolarComet northbound segment to Newhaven
 

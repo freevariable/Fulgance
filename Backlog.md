@@ -1,5 +1,6 @@
 **Known issues**
 - Stations/signals following a 4C must be within breaking distance of the junction otherwise they are not caught in time by trains coming from the branch. Same issue with stations/signals following a 4D on the diverging branch: they are not caught in time by trains coming from the main line and diverging.
+- Some services do not show up in the control room
 
 **Realism**
 - handle time of day

@@ -27,11 +27,11 @@ Fulgence will let you perform various tasks:
 - [x] get detailed statistics for data crunching and rendering
 - [x] access the control room
 
-### What works as of today (build 125)?
+### What works as of today (build ALPHA TWO)?
 Since the simulator is in ALPHA, only a subset of features are currently usable:
-- you may run the sim in realtime (or not) on the *ParisLine1* route, with any schedule (small, medium, default, large)
-- you may run the control room for *ParisLine1*
-- you may run an Atlantic steam engine in the *PolarComet* route
+- you may run the sim on the *ParisLine1* and *LondonCentral* routes, with any schedule (small, medium, default, large)
+- you may run the control room for the *ParisLine1* and *LondonCentral* routes
+- you may run an Atlantic steam engine in the *PolarComet* route until it runs out of resources (coal or water)
 
 The *LondonCentral* route will be fully usable in the upcoming ALPHA TWO release. Check out our release notes :)
 
