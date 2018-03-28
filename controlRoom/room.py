@@ -33,9 +33,6 @@ endTrackSvg="BottomEnd.svg"
 
 r=redis.StrictRedis(host='localhost', port=6379, db=0)
 
-#dash[0]={'x':0.2,'type':'STA','cnt':0}
-#dash[1]={'x':1.012,'type':'SIG','cnt':3}
-
 def initConfig():
   f=open(projectDir+"routeConfig.txt","r")
   ssf=f.readlines()
@@ -184,7 +181,6 @@ def buildDashboard(zdump):
     for c in cells:
       if float(v['x']/1000.0)<c['PK']:
         if (found==False):
-#          print v['name']+'__'+str(v['PK'])+"__"+str(c['PK'])
           oldc['service']=v['name']
           found=True
       oldc=c
@@ -247,7 +243,6 @@ for aa in confraw:
 for o, a in opts:
   if o in ("--segments"):
     segmentsList = a.split(',')
-#    print segmentsList
     found=True
   elif o in ("--route"):
     projectDir = "../"+a+'/'

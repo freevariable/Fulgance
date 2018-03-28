@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
 #  limitations under the License.
 
 import redis,random,math,sys
-import time,datetime,getopt,copy
+import time,datetime,getopt
 
 live=[]
 hasTime=False
@@ -486,6 +486,7 @@ def initAll():
   stock['emergency']=EMR
   stock['maxPax']=MAXPAX
   stock['paxWeight']=PAXWEIGHT
+  stock['criticalSpeed']=0.0
   for aa in stockraw:
     if (aa[0]!="#"):
       if (aa[0]=='acceleration'):
@@ -498,6 +499,12 @@ def initAll():
         stock['driveAxles']=int(aa[1])
       if (aa[0]=='deadFrontAxles'):
         stock['deadFrontAxles']=int(aa[1])
+      if (aa[0]=='deadFrontAxleLoad'):
+        stock['deadFrontAxleLoad']=float(aa[1])
+      if (aa[0]=='deadRearAxleLoad'):
+        stock['deadRearAxleLoad']=float(aa[1])
+      if (aa[0]=='driveAxleLoad'):
+        stock['driveAxleLoad']=float(aa[1])
       if (aa[0]=='deadRearAxles'):
         stock['deadRearAxles']=int(aa[1])
       if (aa[0]=='tenderAxles'):
@@ -512,6 +519,10 @@ def initAll():
         stock['pistonsLength']=float(aa[1])
       if (aa[0]=='waitTime'):
         stock['waitTime']=float(aa[1])
+      if (aa[0]=='indicatedGrade'):
+        stock['indicatedGrade']=float(aa[1])
+      if (aa[0]=='indicatedCurve'):
+        stock['indicatedCurve']=float(aa[1])
       if (aa[0]=='k'):
         stock['k']=float(aa[1])
       if (aa[0]=='timbre'):
@@ -776,7 +787,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+self.aGaussFactor
       self.a=live[0]
 #      self.vapor=live[1]
 #      self.coal=live[2]
@@ -819,8 +830,8 @@ class Tr:
     self.initSwitchSeg=False
     self.pax=stock['maxPax']
     self.startingPhase=True
-    self.critVk=50.0
-    self.tgtVk=110.0
+    self.critVk=stock['criticalSpeed']
+    self.tgtVk=stock['maxSpeed']
     self.m=stock['weight']+self.pax*PAXWEIGHT
     if service is not None:
       found=False
@@ -835,12 +846,13 @@ class Tr:
       self.timbre=18.0
       self.waterQty=stock['waterCapacity']
       self.coalQty=stock['coalCapacity']
+      self.engineWeight=stock['driveAxleLoad']*stock['driveAxles']+stock['deadRearAxleLoad']*stock['deadRearAxles']+stock['deadFrontAxleLoad']*stock['deadFrontAxles']
       self.tenderWeight=stock['tenderAxles']*stock['tenderAxleLoad']+self.coalQty+self.waterQty-stock['waterCapacity']-stock['coalCapacity']
       self.m=self.engineWeight+stock['carriagesWeight']+self.tenderWeight
       self.carriagesWeight=stock['carriagesWeight']
-      rForIndicated=rollingResistance(self.engineWeight/1000.0,self.tenderWeight/1000.0,stock['carriagesWeight']/1000.0,2.0,1000.0,self.tgtVk,0.0,1.90,10.0,2,stock['k'],True)
+      rForIndicated=rollingResistance(self.engineWeight/1000.0,self.tenderWeight/1000.0,stock['carriagesWeight']/1000.0,stock['indicatedGrade'],stock['indicatedCurve'],self.tgtVk,0.0,stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['k'],True)
       self.indicatedPower=indicatedPowerInHorsePower(rForIndicated,self.tgtVk)
-      self.vapor=hourlyVaporConsumptionInKg(self.indicatedPower,self.timbre,'simpleExpansion')/3600.0
+      self.vapor=hourlyVaporConsumptionInKg(self.indicatedPower,self.timbre,stock['expansion'])/3600.0
       self.coal=hourlyCoalConsumptionInKg(self.vapor)
     gFactor=G*self.gradient
     v2factor=0.0
@@ -905,7 +917,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+self.aGaussFactor
       self.a=live[0]
 #      self.vapor=live[1]
 #      self.coal=live[2]
@@ -1287,7 +1299,7 @@ class Tr:
           if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)
           elif (stock['accelerationLaw']=='STM1'):
-            getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)
+            getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)
             self.a=live[0]
 #            self.vapor=live[1]
 #            self.coal=live[2]
@@ -1315,7 +1327,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+aGauss()
           self.a=live[0]
 #          self.vapor=live[1]
 #          self.coal=live[2]
@@ -1443,7 +1455,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['k'],self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+aGauss()
           self.a=live[0]
 #          self.vapor=live[1]
 #          self.coal=live[2]
@@ -1983,11 +1995,12 @@ def cylinderPressureInKgCm2(Pr,tp):
 #    return 3.4+(Pr-12.0)*0.11
     return 3.94+(Pr-12.0)*0.11
 
-def cylinderDiameterInCm(r,Dm,cP,l):
+def cylinderDiameterInCm(n,r,Dm,cP,l):
   # r:rolling resistance
   # cP : cylinderPressurInKgCm2
   # piston course in m
-  return math.pow(((r/G)*Dm)/(cP*l),0.5)
+  # n: nb of cylinders
+  return math.pow(((r/G)*Dm*2)/(cP*l*n),0.5)
 
 def tractiveEffortAtStart(Pr,d,l,Dm,n,tp):
   # Pr : timbre in kg/cm2
@@ -2004,21 +2017,20 @@ def checkAdherence(tra,P):
   # if False, need to increase ea (number of essieux accouples) or poids par essieux (depends on railroad specs) or reduce cylinders volume or number of cylinders
   return (P*1000.0*ADHESIVEFACTOR)>(tra/G)
 
-def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW,Dm,Sm2,ea,l,nCyl,k,starting):
+def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW,Dm,Sm2,ea,l,nCyl,exp,k,starting):
   global live
   r=rollingResistance(locoW/1000.0,tenderW/1000.0,payloadW/1000.0,grd,curv,vK,0.0,Dm,Sm2,ea,k,True)
-  cP=cylinderPressureInKgCm2(timbre,'simpleExpansion')
-  d=cylinderDiameterInCm(r,Dm,cP,l)
+  cP=cylinderPressureInKgCm2(timbre,exp)
+  d=cylinderDiameterInCm(nCyl,r,Dm,cP,l)
   vMaxReached=False
-  mRemorque=payloadW/1000.0
   acc=0.0
   tEff=0.0
-  rLTremorque=strahl(vK,vvK,mRemorque,k,starting)+sanzin(locoW/1000.0,tenderW/1000.0,vK,Dm,Sm2,ea)
+  rLTremorque=strahl(vK,vvK,payloadW/1000.0,k,starting)+sanzin(locoW/1000.0,tenderW/1000.0,vK,Dm,Sm2,ea)
   if (vK<=critVk):
-    tEff=tractiveEffortAtStart(timbre,d,l,Dm,nCyl,'simpleExpansion')
+    tEff=tractiveEffortAtStart(timbre,d,l,Dm,nCyl,exp)
   else:
-    tEff=tractiveEffortAtStart(timbre,d,l,Dm,nCyl,'simpleExpansion')*critVk/vK
-  acc=(tEff-rLTremorque)/(1000.0*(mRemorque+(locoW/1000.0)+(tenderW/1000.0)))
+    tEff=tractiveEffortAtStart(timbre,d,l,Dm,nCyl,exp)*critVk/vK
+  acc=(tEff-rLTremorque)/(payloadW+locoW+tenderW)
   live=[]
   live.append(acc)
 #  live.append(hV)
@@ -2031,19 +2043,29 @@ def plot(law):
   v=0.0
   vMaxReached=False
   if law=='STM1':
-    r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
-#    r=rollingResistance(99.0,48.0,250.0,0.0,999999.0,80.0,0.0,1.90,10.0,2,0.25)
-    cP=cylinderPressureInKgCm2(18.0,'simpleExpansion')
-    d=cylinderDiameterInCm(r,1.90,cP,0.72)
-    criticalSpeed=50.0
-    mRemorque=250.0
+    print stock
+    locoW=(stock['driveAxleLoad']*stock['driveAxles']+stock['deadRearAxleLoad']*stock['deadRearAxles']+stock['deadFrontAxleLoad']*stock['deadFrontAxles'])/1000.0
+    tenderW=(stock['tenderAxles']*stock['tenderAxleLoad'])/1000.0
+    payloadW=(stock['carriagesWeight'])/1000.0
+    r=rollingResistance(locoW,tenderW,payloadW,stock['indicatedGrade'],stock['indicatedCurve'],stock['maxSpeed'],0.0,stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['k'],True)
+    print str(locoW)+","+str(tenderW)+","+str(payloadW)+","+str(stock['indicatedGrade'])+","+str(stock['indicatedCurve'])+","+str(stock['maxSpeed'])
+    print "locoW:"+str(locoW)+" tenderW:"+str(tenderW)+" payloadW:"+str(payloadW)
+#    print r
+#    print rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
+    cP=cylinderPressureInKgCm2(stock['timbre'],stock['expansion'])
+    d=cylinderDiameterInCm(stock['cylinders'],r,stock['wheelsDiameter'],cP,stock['pistonsLength'])
+    criticalSpeed=stock['criticalSpeed']
+    tra=tractiveEffortAtStart(stock['timbre'],d,stock['pistonsLength'],stock['wheelsDiameter'],stock['cylinders'],stock['expansion'])
+    if checkAdherence(tra,stock['driveAxleLoad']*stock['driveAxles'])==False:
+      print "FATAL: adherence failed."
+      sys.exit()
     while vMaxReached==False:
-      rLTremorque=strahl(v,0.0,mRemorque,0.25,True)+sanzin(99.0,48.0,v,1.90,10.0,2)
+      rLTremorque=strahl(v,0.0,payloadW,stock['k'],True)+sanzin(locoW,tenderW,v,stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'])
       if (v<=criticalSpeed):
-        tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')
+        tEff=tra
       else:
-        tEff=tractiveEffortAtStart(18.0,d,0.72,1.90,2,'simpleExpansion')*criticalSpeed/v
-      acc=(tEff-rLTremorque)/(1000.0*(mRemorque+99.0+48.0))
+        tEff=tra*criticalSpeed/v
+      acc=(tEff-rLTremorque)/(1000.0*(payloadW+locoW+tenderW))
       if (acc<=0.0):
         acc=0.0
       else: 
@@ -2180,7 +2202,7 @@ else:
 #print gradeR(99.0,48.0,250.0,2.0,1000.0)
 #print rollingResistance(p,P,m,i,c,Vk,VVk,Dm,S,ea,k)
 
-#r=rollingResistance(99.0,48.0,250.0,8.0,999999999.9,80.0,0.0,1.90,10.0,2,0.25)
+#r=rollingResistance(99.0,48.0,250.0,8.0,999999999.9,80.0,0.0,1.90,10.0,2,0.25,True)
 #iP=indicatedPowerInHorsePower(r,80.0)
 #print iP
 #r=rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)

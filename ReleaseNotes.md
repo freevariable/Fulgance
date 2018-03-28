@@ -1,5 +1,9 @@
+## What's new in build 130
+- Added the last missing parameters to the steam engines rollingStock.txt file
+- New steam engine: Decapod Est 150-001 (temporarily located in PolarComet/rollingStock.txt)
+
 ## What's new in build 129 (ALPHA TWO)
-- LondonCentral under medium load (schedules/medium.txt) now stable!
+- LondonCentral now stable under medium load (schedules/medium.txt)!
 - Added several parameters to the steam engines rollingStock.txt file
 - Extended the PolarComet northbound segment to Newhaven
 

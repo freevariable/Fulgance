@@ -1,0 +1,180 @@
+VEHICLE:MAIN1
+VEHICLE:MAIN2
+VEHICLE:MAIN3
+VEHICLE:MAIN4
+VEHICLE:MAIN6
+VEHICLE:MAIN7
+VEHICLE:MAIN8
+VEHICLE:MAIN9
+VEHICLE:MAIN11
+VEHICLE:MAIN12
+VEHICLE:MAIN13
+VEHICLE:MAIN15
+VEHICLE:MAIN16
+VEHICLE:MAIN17
+VEHICLE:MAIN18
+VEHICLE:MAIN19
+VEHICLE:MAIN20
+VEHICLE:MAIN21
+VEHICLE:BRCH1
+VEHICLE:BRCH2
+VEHICLE:BRCH3
+VEHICLE:BRCH4
+**Epping
+[{'nextSTA': 'East-Acton', 'atSig': 'False', 'name': 'MAIN1', 'sigBrake': 'False', 'v': 3.899612826458267, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '40.2335', 'inSta': 'False', 'advSIGcol': 'yellow', 'maxVk': 88.5137, 'staBrake': 'True', 'units': 'imperial', 'x': 21512.104512553047, 'segment': 'Epping', 'nextSIG': 'EAC+100', 'maxPax': 930.0}, {'nextSTA': 'Queensway', 'atSig': 'False', 'name': 'MAIN2', 'sigBrake': 'False', 'v': 17.863983590318103, 'coasting': 'True', 'pax': 930.0, 'nextTIV': '24.1401', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 64.3736, 'staBrake': 'False', 'units': 'imperial', 'x': 27254.891445229463, 'segment': 'Epping', 'nextSIG': 'QUW+100', 'maxPax': 930.0}, {'nextSTA': 'Bethnal-Green', 'atSig': 'False', 'name': 'MAIN3', 'sigBrake': 'False', 'v': 20.499214826295848, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '64.3736', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 80.467, 'staBrake': 'False', 'units': 'imperial', 'x': 38425.1870650584, 'segment': 'Epping', 'nextSIG': '24150', 'maxPax': 930.0}, {'nextSTA': 'Theydon-Bois', 'atSig': 'False', 'name': 'MAIN7', 'sigBrake': 'False', 'v': 1.3217854766795072, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '40.2335', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 96.5604, 'staBrake': 'True', 'units': 'imperial', 'x': 69129.50790575169, 'segment': 'Epping', 'nextSIG': 'THB+100', 'maxPax': 930.0}, {'nextSTA': 'Marble-Arch', 'atSig': 'False', 'name': 'MAIN15', 'sigBrake': 'False', 'v': 0.41248359031844106, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '24.1401', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 64.3736, 'staBrake': 'True', 'units': 'imperial', 'x': 29645.403150470625, 'segment': 'Epping', 'nextSIG': 'MBL+100', 'maxPax': 930.0}, {'nextSTA': 'Greenford', 'atSig': 'False', 'name': 'MAIN20', 'sigBrake': 'False', 'v': 19.139175259057872, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '72.4203', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 96.5604, 'staBrake': 'False', 'units': 'imperial', 'x': 8938.885086288321, 'segment': 'Epping', 'nextSIG': '6000', 'maxPax': 930.0}, {'nextSTA': 'North-Acton', 'atSig': 'False', 'name': 'MAIN21', 'sigBrake': 'False', 'v': 18.505056033236063, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '88.5137', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 72.4203, 'staBrake': 'False', 'units': 'imperial', 'x': 17142.125292847326, 'segment': 'Epping', 'nextSIG': 'PreZorg', 'maxPax': 930.0}, {'nextSTA': 'Tottenham-Court-Road', 'atSig': 'False', 'name': 'BRCH1', 'sigBrake': 'False', 'v': 13.796227023114156, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '24.1401', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 64.3736, 'staBrake': 'False', 'units': 'imperial', 'x': 31121.350053517173, 'segment': 'Epping', 'nextSIG': 'TTT+100', 'maxPax': 930.0}]
+---
+VEHICLE:MAIN1
+VEHICLE:MAIN2
+VEHICLE:MAIN3
+VEHICLE:MAIN4
+VEHICLE:MAIN6
+VEHICLE:MAIN7
+VEHICLE:MAIN8
+VEHICLE:MAIN9
+VEHICLE:MAIN11
+VEHICLE:MAIN12
+VEHICLE:MAIN13
+VEHICLE:MAIN15
+VEHICLE:MAIN16
+VEHICLE:MAIN17
+VEHICLE:MAIN18
+VEHICLE:MAIN19
+VEHICLE:MAIN20
+VEHICLE:MAIN21
+VEHICLE:BRCH1
+VEHICLE:BRCH2
+VEHICLE:BRCH3
+VEHICLE:BRCH4
+**WestRuislip
+[{'nextSTA': 'Debden', 'atSig': 'False', 'name': 'MAIN8', 'sigBrake': 'False', 'v': 19.9645200623139, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '72.4203', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 96.5604, 'staBrake': 'False', 'units': 'imperial', 'x': 6528.187166995341, 'segment': 'WestRuislip', 'nextSIG': '4500', 'maxPax': 930.0}, {'nextSTA': 'Woodford', 'atSig': 'False', 'name': 'MAIN9', 'sigBrake': 'False', 'v': 19.901376686210266, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '72.4203', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 96.5604, 'staBrake': 'False', 'units': 'imperial', 'x': 16543.486630540963, 'segment': 'WestRuislip', 'nextSIG': '10800', 'maxPax': 930.0}, {'nextSTA': 'Stratford', 'atSig': 'False', 'name': 'MAIN11', 'sigBrake': 'False', 'v': 0.0, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '80.467', 'inSta': 'True', 'advSIGcol': 'green', 'maxVk': 72.4203, 'staBrake': 'False', 'units': 'imperial', 'x': 26803.07616587155, 'segment': 'WestRuislip', 'nextSIG': 'LEY+100', 'maxPax': 930.0}, {'nextSTA': 'Bank', 'atSig': 'False', 'name': 'MAIN12', 'sigBrake': 'False', 'v': 6.701340383032116, 'coasting': 'True', 'pax': 930.0, 'nextTIV': '48.2802', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 24.1401, 'staBrake': 'False', 'units': 'imperial', 'x': 38377.4928107166, 'segment': 'WestRuislip', 'nextSIG': 'BNK+100', 'maxPax': 930.0}, {'nextSTA': 'Lancaster-Gate', 'atSig': 'False', 'name': 'MAIN13', 'sigBrake': 'False', 'v': 17.863983590318103, 'coasting': 'True', 'pax': 930.0, 'nextTIV': '40.2335', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 64.3736, 'staBrake': 'False', 'units': 'imperial', 'x': 45786.36773620523, 'segment': 'WestRuislip', 'nextSIG': 'LAN+100', 'maxPax': 930.0}, {'nextSTA': 'Northolt', 'atSig': 'False', 'name': 'MAIN17', 'sigBrake': 'False', 'v': 20.639026645962712, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '64.3736', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 96.5604, 'staBrake': 'False', 'units': 'imperial', 'x': 66115.25471595785, 'segment': 'WestRuislip', 'nextSIG': 'NHO+100', 'maxPax': 930.0}, {'nextSTA': 'Bethnal-Green', 'atSig': 'False', 'name': 'MAIN18', 'sigBrake': 'False', 'v': 20.141737759142632, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '64.3736', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 80.467, 'staBrake': 'False', 'units': 'imperial', 'x': 33950.12375015548, 'segment': 'WestRuislip', 'nextSIG': '21450', 'maxPax': 930.0}, {'nextSTA': 'West-Ruislip', 'atSig': 'False', 'name': 'MAIN19', 'sigBrake': 'False', 'v': 0.0, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '32.1868', 'inSta': 'True', 'advSIGcol': 'green', 'maxVk': 32.1868, 'staBrake': 'False', 'units': 'imperial', 'x': 74195.7248535733, 'segment': 'WestRuislip', 'nextSIG': 'WRL+100', 'maxPax': 930.0}, {'nextSTA': 'Mile-End', 'atSig': 'False', 'name': 'BRCH2', 'sigBrake': 'False', 'v': 20.643786903829835, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '64.3736', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 80.467, 'staBrake': 'False', 'units': 'imperial', 'x': 31905.053933116887, 'segment': 'WestRuislip', 'nextSIG': '19900', 'maxPax': 930.0}, {'nextSTA': 'North-Acton', 'atSig': 'False', 'name': 'BRCH3', 'sigBrake': 'False', 'v': 19.502819857679118, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '96.5604', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 72.4203, 'staBrake': 'False', 'units': 'imperial', 'x': 53873.86676307754, 'segment': 'WestRuislip', 'nextSIG': '33500', 'maxPax': 930.0}]
+---
+VEHICLE:MAIN1
+VEHICLE:MAIN2
+VEHICLE:MAIN3
+VEHICLE:MAIN4
+VEHICLE:MAIN6
+VEHICLE:MAIN7
+VEHICLE:MAIN8
+VEHICLE:MAIN9
+VEHICLE:MAIN11
+VEHICLE:MAIN12
+VEHICLE:MAIN13
+VEHICLE:MAIN15
+VEHICLE:MAIN16
+VEHICLE:MAIN17
+VEHICLE:MAIN18
+VEHICLE:MAIN19
+VEHICLE:MAIN20
+VEHICLE:MAIN21
+VEHICLE:BRCH1
+VEHICLE:BRCH2
+VEHICLE:BRCH3
+VEHICLE:BRCH4
+**EalingBroadway
+[]
+---
+VEHICLE:MAIN1
+VEHICLE:MAIN2
+VEHICLE:MAIN3
+VEHICLE:MAIN4
+VEHICLE:MAIN6
+VEHICLE:MAIN7
+VEHICLE:MAIN8
+VEHICLE:MAIN9
+VEHICLE:MAIN11
+VEHICLE:MAIN12
+VEHICLE:MAIN13
+VEHICLE:MAIN15
+VEHICLE:MAIN16
+VEHICLE:MAIN17
+VEHICLE:MAIN18
+VEHICLE:MAIN19
+VEHICLE:MAIN20
+VEHICLE:MAIN21
+VEHICLE:BRCH1
+VEHICLE:BRCH2
+VEHICLE:BRCH3
+VEHICLE:BRCH4
+**WestActon
+[{'nextSTA': 'West-Acton', 'atSig': 'False', 'name': 'MAIN16', 'sigBrake': 'False', 'v': 11.61315809318952, 'coasting': 'True', 'pax': 930.0, 'nextTIV': '64.3736', 'inSta': 'False', 'advSIGcol': 'yellow', 'maxVk': 64.3736, 'staBrake': 'False', 'units': 'imperial', 'x': 2229.926778871303, 'segment': 'WestActon', 'nextSIG': '1750', 'maxPax': 930.0}]
+---
+VEHICLE:MAIN1
+VEHICLE:MAIN2
+VEHICLE:MAIN3
+VEHICLE:MAIN4
+VEHICLE:MAIN6
+VEHICLE:MAIN7
+VEHICLE:MAIN8
+VEHICLE:MAIN9
+VEHICLE:MAIN11
+VEHICLE:MAIN12
+VEHICLE:MAIN13
+VEHICLE:MAIN15
+VEHICLE:MAIN16
+VEHICLE:MAIN17
+VEHICLE:MAIN18
+VEHICLE:MAIN19
+VEHICLE:MAIN20
+VEHICLE:MAIN21
+VEHICLE:BRCH1
+VEHICLE:BRCH2
+VEHICLE:BRCH3
+VEHICLE:BRCH4
+**Hainault
+[{'nextSTA': 'Redbridge', 'atSig': 'False', 'name': 'BRCH4', 'sigBrake': 'False', 'v': 11.288576233948355, 'coasting': 'False', 'pax': 930.0, 'nextTIV': '64.3736', 'inSta': 'False', 'advSIGcol': 'green', 'maxVk': 112.6538, 'staBrake': 'False', 'units': 'imperial', 'x': 1922.1450603552166, 'segment': 'Hainault', 'nextSIG': 'WAN+100', 'maxPax': 930.0}]
+---
+VEHICLE:MAIN1
+VEHICLE:MAIN2
+VEHICLE:MAIN3
+VEHICLE:MAIN4
+VEHICLE:MAIN6
+VEHICLE:MAIN7
+VEHICLE:MAIN8
+VEHICLE:MAIN9
+VEHICLE:MAIN11
+VEHICLE:MAIN12
+VEHICLE:MAIN13
+VEHICLE:MAIN15
+VEHICLE:MAIN16
+VEHICLE:MAIN17
+VEHICLE:MAIN18
+VEHICLE:MAIN19
+VEHICLE:MAIN20
+VEHICLE:MAIN21
+VEHICLE:BRCH1
+VEHICLE:BRCH2
+VEHICLE:BRCH3
+VEHICLE:BRCH4
+**Wanstead
+[]
+---
+<html><head><title>Fulgence control room</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<style type="text/css">
+* {
+  font-size:12px;
+  font-family: Tahoma;
+}
+a:visited, a:link {
+  color:#AA0000;
+}
+</style>
+<script>  function resizeIframe(obj) {
+auxH=obj.contentWindow.document.body.scrollHeight+60;
+    obj.style.height = auxH + 'px';
+  }
+</script></head>
+<body>This sim has been running for <a href="" onClick="window.location.reload()">0:22:24</a>. (Click on the timestamp to refresh this page. It is updated every 20 to 30 seconds.)<br>
+<p><b>20</b> services are currently operating on the line.
+Live traffic congestion: 
+<b>0.0%</b></p>
+<p>Click on a train service name below to show its live status</p>
+</p><p><b>Powered by <a href="https://github.com/freevariable/Fulgence">Fulgence</a>, your precision simulator!</b></p><p>
+<div style="display: inline-block;white-space: nowrap;">
+<iframe src="Epping.html?q=39118847" scrolling="no" frameborder="0" onload="resizeIframe(this)"></iframe>
+<iframe src="WestRuislip.html?q=39118847" scrolling="no" frameborder="0" onload="resizeIframe(this)"></iframe>
+<iframe src="EalingBroadway.html?q=39118847" scrolling="no" frameborder="0" onload="resizeIframe(this)"></iframe>
+<iframe src="WestActon.html?q=39118847" scrolling="no" frameborder="0" onload="resizeIframe(this)"></iframe>
+<iframe src="Hainault.html?q=39118847" scrolling="no" frameborder="0" onload="resizeIframe(this)"></iframe>
+<iframe src="Wanstead.html?q=39118847" scrolling="no" frameborder="0" onload="resizeIframe(this)"></iframe>
+</div></p></body></html>

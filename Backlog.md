@@ -1,12 +1,11 @@
 **Known issues**
 - Stations/signals following a 4C must be within breaking distance of the junction otherwise they are not caught in time by trains coming from the branch. Same issue with stations/signals following a 4D on the diverging branch: they are not caught in time by trains coming from the main line and diverging.
-- Some services do not show up in the control room
 
 **Realism**
 - handle time of day
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle gauge & electrification
-- handle imperial units for weight and pressure
+- handle imperial units in rollingStock.txt 
 - on steam engines, implement weight variations according to pax or freight load
 - on electrified routes, implement power outages and power consumption (real time)
 
