@@ -1,0 +1,9 @@
+#PK Name Type Verb:Noun Verb:Noun...
+#Type 1: 3 colors carre (VL,A,S). Verb:Noun=n/a.
+#Type 2: feu de heurtoir (always red). Verb:Noun=Reverse:(a segment)
+#Type 3: avertissement (A or C, always before type 2).Verb:Noun=n/a
+0.0 SurfaceBuffer
+0.91 NMO+100
+319.32 WMB+100 
+727.47 KBW+100
+729.61 DeepBuffer

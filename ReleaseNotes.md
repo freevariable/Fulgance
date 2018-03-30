@@ -1,3 +1,6 @@
+## What's new in build 131
+- Started implementation of tracks radius of curvature
+
 ## What's new in build 130
 - Added the last missing parameters to the steam engines rollingStock.txt file
 - New steam engine: Decapod Est 150-001 (temporarily located in PolarComet/rollingStock.txt)

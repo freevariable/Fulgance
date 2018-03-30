@@ -1,7 +1,12 @@
+Wear&tear ticks (t,inc,curv)
+Modulated by braking syst, admission sys, mechanics with various sensitivity coeff
+Consummed by servicing & maintenance
+
 **Known issues**
 - Stations/signals following a 4C must be within breaking distance of the junction otherwise they are not caught in time by trains coming from the branch. Same issue with stations/signals following a 4D on the diverging branch: they are not caught in time by trains coming from the main line and diverging.
 
 **Realism**
+- handle tracks curvature
 - handle time of day
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle gauge & electrification

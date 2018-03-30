@@ -1,0 +1,8 @@
+units metric
+genre fancy #realistic or fancy
+author freevariable
+version 1.0.0
+electrification no
+gauge 1435 #mm, even if metric is imperial
+axleLoad 35.0 #tons,even if metric is imperial
+lineSpeed 70.0 #kmh, even if metric is imperial

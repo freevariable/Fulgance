@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -166,6 +166,26 @@ def initSchedule():
         else:
           ts.append(t)
     return ts
+
+def initCRVs():
+  global segs
+  global conf
+  gts={}
+  for se in segs:
+    f=open(projectDir+segmentsDir+se+"/CRVs.txt","r")
+    ssf=f.readlines()
+    ss=[]
+    f.close()
+    cnt=0
+    for s in ssf:
+      if (s[0]!='#'):
+        s=s.rstrip().split(" ")
+        if conf['units']=='imperial':
+          s[0]=str(float(s[0])*MPH) #miles=>pK
+        ss.append(s)
+        cnt=cnt+1  
+    gts[se]=ss
+  return gts
 
 def initGRDs():
   global segs
@@ -429,6 +449,7 @@ def initAll():
   global sigs
   global trss
   global grds
+  global crvs
   global trs
   global segs
   global jumpseat
@@ -459,6 +480,7 @@ def initAll():
   sigs=initSIGs()
   trss=initSchedule()
   grds=initGRDs()
+  crvs=initCRVs() 
   stockraw=initStock()
   cnt=0
   stock['acceleration']=ACC
@@ -682,6 +704,10 @@ class Tr:
     self.nextGRD=grds[newSegment][self.GRDcnt]
     self.nGRDx=1000.0*float(self.nextGRD[0])
     self.transitionGRDx=self.nGRDx+stock['length']
+    self.CRVcnt=findMyCRVcnt(initPos,newSegment)
+    self.nextCRV=crvs[newSegment][self.CRVcnt]
+    self.nCRVx=1000.0*float(self.nextCRV[0])
+    self.transitionCRVx=self.nCRVx+stock['length']
     self.TIVcnt=findMyTIVcnt(initPos,newSegment)
     self.STAcnt=findMySTAcnt(initPos,newSegment)
     self.SIGcnt=findMySIGcnt(initPos,newSegment)
@@ -748,6 +774,10 @@ class Tr:
     self.nextGRD=grds[initSegment][self.GRDcnt]
     self.nGRDx=1000.0*float(self.nextGRD[0])
     self.transitionGRDx=self.nGRDx+stock['length']
+    self.CRVcnt=findMyCRVcnt(initPos,initSegment)
+    self.nextCRV=crvs[initSegment][self.CRVcnt]
+    self.nCRVx=1000.0*float(self.nextCRV[0])
+    self.transitionCRVx=self.nCRVx+stock['length']
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
@@ -870,6 +900,7 @@ class Tr:
     self.DBrt=0.0  #for next realtime event (sig or tvm)
 #    self.gradient=math.atan(self.grade/100.0)
     self.GRDcnt=findMyGRDcnt(initPos,initSegment)
+    self.CRVcnt=findMyCRVcnt(initPos,initSegment)
     self.TIVcnt=findMyTIVcnt(initPos,initSegment)
     self.STAcnt=findMySTAcnt(initPos,initSegment)
     self.SIGcnt=findMySIGcnt(initPos,initSegment)
@@ -879,10 +910,13 @@ class Tr:
     self.nextSTA=stas[initSegment][self.STAcnt]
     self.nextSIG=sigs[initSegment][self.SIGcnt]
     self.nextGRD=grds[initSegment][self.GRDcnt]
+    self.nextCRV=crvs[initSegment][self.CRVcnt]
     self.nSTAx=1000.0*float(self.nextSTA[0])
     self.nSIGx=1000.0*float(self.nextSIG[0])
     self.nGRDx=1000.0*float(self.nextGRD[0])
+    self.nCRVx=1000.0*float(self.nextCRV[0])
     self.transitionGRDx=self.nGRDx+stock['length']
+    self.transitionCRVx=self.nCRVx+stock['length']
     self.nextTIV=tivs[initSegment][self.TIVcnt]
     if not __debug__:
       print self.name+":t:"+str(t)+" MyGRDcnt is:"+str(self.GRDcnt)
@@ -1141,25 +1175,26 @@ class Tr:
             sys.exit()
           deltaX=-self.nSIGx+self.x
           found=False
-          for asv in self.service:
-            print str(self.name)+":asv:"+str(asv)
-            asp=asv.split(":")
-            print "asp:"+str(asp)+" asp0:"+str(asp[0])
-            if asp[0]==self.facingSig['name']:
-              found=True
-              if asp[1]=='Main':
-                self.pathBranch=kMain
-              elif asp[1]=='Right':
-                self.pathBranch=kBranch
-                print str(self.name)+"initSwitchSeg SET"
-                self.initSwitchSeg=True
-              elif asp[1]=='Left':
-                self.pathBranch=kBranch
-                print str(self.name)+"initSwitchSeg SET"
-                self.initSwitchSeg=True
-              else:
-                print "FATAL... unknown branch..."+asp[1]
-                sys.exit()
+          if self.service is not None:
+            for asv in self.service:
+              print str(self.name)+":asv:"+str(asv)
+              asp=asv.split(":")
+              print "asp:"+str(asp)+" asp0:"+str(asp[0])
+              if asp[0]==self.facingSig['name']:
+                found=True
+                if asp[1]=='Main':
+                  self.pathBranch=kMain
+                elif asp[1]=='Right':
+                  self.pathBranch=kBranch
+                  print str(self.name)+"initSwitchSeg SET"
+                  self.initSwitchSeg=True
+                elif asp[1]=='Left':
+                  self.pathBranch=kBranch
+                  print str(self.name)+"initSwitchSeg SET"
+                  self.initSwitchSeg=True
+                else:
+                  print "FATAL... unknown branch..."+asp[1]
+                  sys.exit()
           if found==False:  #By default, assume we take the Main branch
             self.pathBranch=kMain
         if (self.SIGcnt<len(sigs[self.segment])-1):
@@ -1480,6 +1515,19 @@ class Tr:
 
 def aGauss():
   return random.gauss(0.0,ACCSIGMA)
+
+def findMyCRVcnt(x,seg):
+  global crvs
+  xK=x/1000.0
+  cnt=0
+  for ast in crvs[seg]:
+    if float(ast[0])>=xK:
+      if cnt>0:
+        return (cnt-1)
+      else:
+        return cnt
+    cnt=cnt+1
+  return cnt-1
 
 def findMyGRDcnt(x,seg):
   global grds
@@ -2054,6 +2102,7 @@ def plot(law):
 #    print rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
     cP=cylinderPressureInKgCm2(stock['timbre'],stock['expansion'])
     d=cylinderDiameterInCm(stock['cylinders'],r,stock['wheelsDiameter'],cP,stock['pistonsLength'])
+    print d
     criticalSpeed=stock['criticalSpeed']
     tra=tractiveEffortAtStart(stock['timbre'],d,stock['pistonsLength'],stock['wheelsDiameter'],stock['cylinders'],stock['expansion'])
     if checkAdherence(tra,stock['driveAxleLoad']*stock['driveAxles'])==False:
