@@ -1,3 +1,8 @@
+## What's new in build 132
+- Steam engines copied to locoLib/
+- New steam engine: AulderKraak Consolidation
+- New (undocumented) route: TheCorkScrew
+
 ## What's new in build 131
 - Started implementation of tracks radius of curvature
 

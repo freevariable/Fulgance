@@ -5,6 +5,14 @@ Consummed by servicing & maintenance
 **Known issues**
 - Stations/signals following a 4C must be within breaking distance of the junction otherwise they are not caught in time by trains coming from the branch. Same issue with stations/signals following a 4D on the diverging branch: they are not caught in time by trains coming from the main line and diverging.
 
+**Documentation**
+- Routes designers guide
+- Scenarios designers guide
+- Control room guide
+- API guide
+- PolarComet operating manual
+- TheCorkScrew operating manual
+
 **Realism**
 - handle tracks curvature
 - handle time of day
