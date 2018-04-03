@@ -3,7 +3,9 @@
 #2: feu de heurtoir (always red).
 #3: avertissement (A or C, always
 0.0 E 2 Reverse:EastboundMain Forward:WestboundMain Default:WestboundMain 
-0.1 990 5    
+0.001 990 5    
+0.09 PreFontenayEntry4C 6
+0.1 FontenayEntry4C 4C Main:WestboundMain Branch:FontenayEntry BranchOrientation:Right
 0.21 ChV+10 1    
 1.012 Ber-140     
 1.162 Ber+10     

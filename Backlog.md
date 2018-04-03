@@ -14,7 +14,6 @@ Consummed by servicing & maintenance
 - TheCorkScrew operating manual
 
 **Realism**
-- handle tracks curvature
 - handle time of day
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle gauge & electrification

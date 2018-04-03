@@ -74,5 +74,7 @@
 16.1 2590     
 16.52 2632     
 16.725 ChV-140     
-16.875 ChV+10 3    
+16.865 Chv+10 
+16.870 FontenayExit4D 4D Main:EastboundMain Branch:FontenayExit BranchOrientation:Right
+16.880 16880 3
 16.975 E 2 Reverse:WestboundMain Forward:EastboundMain Default:WestboundMain 

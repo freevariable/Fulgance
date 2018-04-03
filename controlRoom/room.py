@@ -55,9 +55,9 @@ def initHEAD():
     ss.append(s)
   return ss
 
-def initSchedule(seg):
+def initSchedule(seg,sFile):
   global segs
-  f=open(projectDir+"/schedules/default.txt","r")
+  f=open(projectDir+"/schedules/"+sFile,"r")
   ssf=f.readlines()
   ss=[]
   f.close()
@@ -224,7 +224,7 @@ def buildDashboard(zdump):
   return html
 
 try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "route=", "segments="])
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "schedule=", "route=", "segments="])
 except getopt.GetoptError as err:
   print(err) # will print something like "option -a not recognized"
   usage()
@@ -233,6 +233,7 @@ except getopt.GetoptError as err:
 segmentsList=[]
 found=False
 conf={}
+scheduleFile=""
 
 confraw=initConfig()
 for aa in confraw:
@@ -246,6 +247,8 @@ for o, a in opts:
     found=True
   elif o in ("--route"):
     projectDir = "../"+a+'/'
+  elif o in ("--schedule"):
+    scheduleFile = a
   else:
     assert False, "option unknown"
     sys.exit(2)
@@ -261,7 +264,7 @@ sCnt=0
 for seg in segmentsList:
   stas=initSTAs(seg)
   sigs=initSIGs(seg)
-  sched=initSchedule(seg)
+  sched=initSchedule(seg,scheduleFile)
   svcs={}
   cells={}
   svcs=getState(seg)

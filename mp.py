@@ -817,7 +817,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+self.aGaussFactor
       self.a=live[0]
 #      self.vapor=live[1]
 #      self.coal=live[2]
@@ -951,7 +951,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+self.aGaussFactor
       self.a=live[0]
 #      self.vapor=live[1]
 #      self.coal=live[2]
@@ -1035,6 +1035,23 @@ class Tr:
         self.transitionGRDx=sys.maxsize
       if not __debug__:
         print self.name+":t:"+str(t)+":next GRD change is at x:"+str(self.nGRDx)
+    if (self.x>=(self.nCRVx)):
+      if not __debug__:
+        print self.name+":"+str(t)+":PASSING BY CRV "+self.segment+":"+" vK:"+str(self.vK)+" at x:"+str(self.nCRVx)+" with CRV:"+self.nextCRV[1]
+      self.transitionCRVx=self.nCRVx+stock['length']
+      if (self.CRVcnt<len(crvs[self.segment])-1):
+        self.CRVcnt=self.CRVcnt+1 
+        self.nextCRV=crvs[self.segment][self.CRVcnt] 
+        self.nCRVx=1000.0*float(self.nextCRV[0])
+        if not __debug__:
+          print self.name+":t:"+str(t)+"next CRV (value "+self.nextCRV[1]+") at x:"+str(self.nCRVx)+" with transition at x:"+str(self.transitionCRVx)
+      else:
+        if not __debug__:
+          print self.name+":t:"+str(t)+":no more CRVS on segment "+self.segment
+        self.nCRVx=sys.maxsize
+        self.transitionCRVx=sys.maxsize
+      if not __debug__:
+        print self.name+":t:"+str(t)+":next CRV change is at x:"+str(self.nCRVx)
     if (ncyc%5==0):  # perform grade calculations every 5 cycles
       if (self.x>=(self.transitionGRDx-stock['length'])):
         if (self.x<=self.transitionGRDx):
@@ -1301,14 +1318,14 @@ class Tr:
             print self.name+":t:"+str(t)+"  BDtiv: "+str(self.BDtiv)
       else:
         self.nTIVx=sys.maxsize
-      if ((self.staBrake==False) and (self.sigBrake==False) and (self.maxVk>self.vK)):
-        if not __debug__:
-          print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
-        self.a=10.0 #any arbitrary value as long as it is positive
-      if (self.maxVk<self.vK):
-        if not __debug__:
-          print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
-        self.a=-10.0  #any arbitrary value as long as it is neg
+    if ((self.staBrake==False) and (self.sigBrake==False) and (self.maxVk>self.vK)):
+#      if not __debug__:
+#        print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to acc" 
+      self.a=10.0 #any arbitrary value as long as it is positive
+    if (self.maxVk<self.vK):
+#      if not __debug__:
+#        print self.name+":t:"+str(t)+":vK:"+str(self.vK)+" maxVk:"+str(self.maxVk)+" =>ready to dcc"
+      self.a=-10.0  #any arbitrary value as long as it is neg
 #
 # STAGE 2 : other acc updates
 #
@@ -1334,7 +1351,7 @@ class Tr:
           if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)
           elif (stock['accelerationLaw']=='STM1'):
-            getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)
+            getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)
             self.a=live[0]
 #            self.vapor=live[1]
 #            self.coal=live[2]
@@ -1362,7 +1379,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+aGauss()
           self.a=live[0]
 #          self.vapor=live[1]
 #          self.coal=live[2]
@@ -1416,7 +1433,7 @@ class Tr:
         self.power=0.0
       if not __debug__:
         if (realTime==False):
-          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" factors:"+str(factors)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)+" sigBrake?"+str(self.sigBrake)+" staBrake?"+str(self.staBrake)
+          print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" factors:"+str(factors)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)+" sigBrake?"+str(self.sigBrake)+" staBrake?"+str(self.staBrake)+" curv?"+self.nextCRV[1]
         if TPROGRESS==True:
           print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
 #
@@ -1490,7 +1507,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          getLiveDataForSTM(self.vK,0.0,self.grade,9999999.9,self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+aGauss()
           self.a=live[0]
 #          self.vapor=live[1]
 #          self.coal=live[2]
@@ -2067,7 +2084,10 @@ def checkAdherence(tra,P):
 
 def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW,Dm,Sm2,ea,l,nCyl,exp,k,starting):
   global live
-  r=rollingResistance(locoW/1000.0,tenderW/1000.0,payloadW/1000.0,grd,curv,vK,0.0,Dm,Sm2,ea,k,True)
+  localCurv=abs(float(curv))
+  if localCurv==0.0:
+    localCurv=99999999.9 
+  r=rollingResistance(locoW/1000.0,tenderW/1000.0,payloadW/1000.0,grd,localCurv,vK,0.0,Dm,Sm2,ea,k,True)
   cP=cylinderPressureInKgCm2(timbre,exp)
   d=cylinderDiameterInCm(nCyl,r,Dm,cP,l)
   vMaxReached=False

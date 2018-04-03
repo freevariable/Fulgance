@@ -1,0 +1,2 @@
+#PK curve (positive or negative radius in meters)
+0.0 0.0

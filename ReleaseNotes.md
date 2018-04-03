@@ -1,3 +1,8 @@
+## What's new in build 134
+- Ended implementation of tracks radius of curvature
+- Bug fixing
+- Modified ParisLine1 (added switches and signalling to Fontenay Workshop)
+
 ## What's new in build 132
 - Steam engines copied to locoLib/
 - New steam engine: AulderKraak Consolidation

@@ -1,2 +1,4 @@
 WestboundMain
 EastboundMain
+FontenayExit
+FontenayEntry
