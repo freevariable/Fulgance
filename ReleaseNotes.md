@@ -1,3 +1,7 @@
+## What's new in build 136
+- Bug fixing in steam engine calculations and TheCorkScrew route
+- Updated AulderKraak Consolidation
+
 ## What's new in build 135
 - Buffed AulderKraak Consolidation
 - Completed TheCorkSscrew upward and downward segments

@@ -1,4 +1,4 @@
-729.2 NMO NarrowMouth
-411.44 WMB Whomb-Halt
-242.1 FRN Furnace-Halt
 2.17 KBW Karabasan-Warehouse
+242.1 FRN Furnace-Halt
+411.44 WMB Whomb-Halt
+729.2 NMO NarrowMouth

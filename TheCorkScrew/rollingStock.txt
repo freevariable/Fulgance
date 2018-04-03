@@ -20,7 +20,7 @@ expansion simpleExpansion
 waitTime 300.0
 templateName Helmut
 accelerationLaw STM1
-carriagesWeight 630000.0
+carriagesWeight 680000.0
 waterCapacity 160000.0
 coalCapacity 26000.0
 maxSpeed 55.0

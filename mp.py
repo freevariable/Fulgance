@@ -817,7 +817,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.cylinderDiameter,self.startingPhase)+self.aGaussFactor
       self.a=live[0]
 #      self.vapor=live[1]
 #      self.coal=live[2]
@@ -881,6 +881,8 @@ class Tr:
       self.m=self.engineWeight+stock['carriagesWeight']+self.tenderWeight
       self.carriagesWeight=stock['carriagesWeight']
       rForIndicated=rollingResistance(self.engineWeight/1000.0,self.tenderWeight/1000.0,stock['carriagesWeight']/1000.0,stock['indicatedGrade'],stock['indicatedCurve'],self.tgtVk,0.0,stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['k'],True)
+      self.cylinderPressure=cylinderPressureInKgCm2(stock['timbre'],stock['expansion'])
+      self.cylinderDiameter=cylinderDiameterInCm(stock['cylinders'],rForIndicated,stock['wheelsDiameter'],self.cylinderPressure,stock['pistonsLength'])
       self.indicatedPower=indicatedPowerInHorsePower(rForIndicated,self.tgtVk)
       self.vapor=hourlyVaporConsumptionInKg(self.indicatedPower,self.timbre,stock['expansion'])/3600.0
       self.coal=hourlyCoalConsumptionInKg(self.vapor)
@@ -951,7 +953,7 @@ class Tr:
     if (stock['accelerationLaw']=='EMU1'):
       self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+self.aGaussFactor
     elif (stock['accelerationLaw']=='STM1'):
-      getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+self.aGaussFactor
+      getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.cylinderDiameter,self.startingPhase)+self.aGaussFactor
       self.a=live[0]
 #      self.vapor=live[1]
 #      self.coal=live[2]
@@ -1351,7 +1353,7 @@ class Tr:
           if (stock['accelerationLaw']=='EMU1'):
             self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)
           elif (stock['accelerationLaw']=='STM1'):
-            getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)
+            getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.cylinderDiameter,self.startingPhase)
             self.a=live[0]
 #            self.vapor=live[1]
 #            self.coal=live[2]
@@ -1379,7 +1381,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.cylinderDiameter,self.startingPhase)+aGauss()
           self.a=live[0]
 #          self.vapor=live[1]
 #          self.coal=live[2]
@@ -1507,7 +1509,7 @@ class Tr:
         if (stock['accelerationLaw']=='EMU1'):
           self.a=getAccForEMU(stock['power'],stock['acceleration'],stock['railFactor'],stock['airFactor'],self.vK,self.m)+aGauss()
         elif (stock['accelerationLaw']=='STM1'):
-          getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.startingPhase)+aGauss()
+          getLiveDataForSTM(self.vK,0.0,self.grade,self.nextCRV[1],self.critVk,self.tgtVk,self.timbre,self.engineWeight,self.tenderWeight,stock['carriagesWeight'],stock['wheelsDiameter'],stock['frontSurface'],stock['driveAxles'],stock['pistonsLength'],stock['cylinders'],stock['expansion'],stock['k'],self.cylinderDiameter,self.startingPhase)+aGauss()
           self.a=live[0]
 #          self.vapor=live[1]
 #          self.coal=live[2]
@@ -2082,14 +2084,19 @@ def checkAdherence(tra,P):
   # if False, need to increase ea (number of essieux accouples) or poids par essieux (depends on railroad specs) or reduce cylinders volume or number of cylinders
   return (P*1000.0*ADHESIVEFACTOR)>(tra/G)
 
-def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW,Dm,Sm2,ea,l,nCyl,exp,k,starting):
+def getLiveDataForSTM(vK,vvK,grd,curv,critVk,maxVk,timbre,locoW,tenderW,payloadW,Dm,Sm2,ea,l,nCyl,exp,k,d,starting):
   global live
   localCurv=abs(float(curv))
   if localCurv==0.0:
     localCurv=99999999.9 
-  r=rollingResistance(locoW/1000.0,tenderW/1000.0,payloadW/1000.0,grd,localCurv,vK,0.0,Dm,Sm2,ea,k,True)
-  cP=cylinderPressureInKgCm2(timbre,exp)
-  d=cylinderDiameterInCm(nCyl,r,Dm,cP,l)
+#  r=rollingResistance(locoW/1000.0,tenderW/1000.0,payloadW/1000.0,grd,localCurv,vK,0.0,Dm,Sm2,ea,k,True)
+#  cP=cylinderPressureInKgCm2(timbre,exp)
+# d=cylinderDiameterInCm(nCyl,r,Dm,cP,l)
+#    print r
+#    print rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
+#    cP=cylinderPressureInKgCm2(stock['timbre'],stock['expansion'])
+#    d=cylinderDiameterInCm(stock['cylinders'],r,stock['wheelsDiameter'],cP,stock['pistonsLength'])
+
   vMaxReached=False
   acc=0.0
   tEff=0.0
