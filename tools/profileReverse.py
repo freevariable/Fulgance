@@ -37,11 +37,11 @@ def reverse():
         prev[1]=0.0
       else:
         prev[1]=-1.0*float(oldRow[1])
-      prev[2]=float(curRow[2])
+      #prev[2]=float(curRow[2])
     else:
       prev[0]=lenkm-float(curRow[0])
       prev[1]=0.0
-      prev[2]=float(curRow[2])
+      #prev[2]=float(curRow[2])
     #print str(lenkm-curX)+" "+str(curGRD)+" "+str(curZ)
     reversedProfile.append(prev)
     cntLines=cntLines+1
