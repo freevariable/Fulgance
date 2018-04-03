@@ -1920,7 +1920,7 @@ def stepRT(s):
   ccc=0
   sys.stdout.flush()
   if len(remlist)>0:
-    newlist={}
+    newlist=[]
     for tr in trs:
       found=False
       for rm in remlist:
@@ -2130,6 +2130,7 @@ def plot(law):
     cP=cylinderPressureInKgCm2(stock['timbre'],stock['expansion'])
     d=cylinderDiameterInCm(stock['cylinders'],r,stock['wheelsDiameter'],cP,stock['pistonsLength'])
     print d
+    sys.exit()
     criticalSpeed=stock['criticalSpeed']
     tra=tractiveEffortAtStart(stock['timbre'],d,stock['pistonsLength'],stock['wheelsDiameter'],stock['cylinders'],stock['expansion'])
     if checkAdherence(tra,stock['driveAxleLoad']*stock['driveAxles'])==False:
@@ -2202,7 +2203,7 @@ def sim():
         print "Removing Tr "+str(aT.name)
         remlist.append(rem)
     if len(remlist)>0:
-      newlist={}
+      newlist=[]
       for tr in trs:
         found=False
         for rm in remlist:

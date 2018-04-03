@@ -21,7 +21,7 @@ randId=random.randint(10000000,100000000)
 dash={}
 html={}
 svcs={}
-projectDir="../LondonCentral/"
+projectDir=""
 segmentsDir="segments/"
 smallSTAsvg="BSicon_HST.svg"
 trackSvg="BSicon_STR.svg"
@@ -234,13 +234,6 @@ segmentsList=[]
 found=False
 conf={}
 scheduleFile=""
-
-confraw=initConfig()
-for aa in confraw:
-  if (aa[0]!="#"):
-    if (aa[0]=='units'):
-      conf['units']=aa[1]
-
 for o, a in opts:
   if o in ("--segments"):
     segmentsList = a.split(',')
@@ -252,10 +245,15 @@ for o, a in opts:
   else:
     assert False, "option unknown"
     sys.exit(2)
-
 if found==False:
   print "ERROR. Segment list needed."
   sys.exit(2)
+
+confraw=initConfig()
+for aa in confraw:
+  if (aa[0]!="#"):
+    if (aa[0]=='units'):
+      conf['units']=aa[1]
 
 head=initHEAD()
 iframes=[]
@@ -304,7 +302,7 @@ print "<p><b>"+str(svcCnt)+"</b> services are currently operating on the line."
 print "Live traffic congestion: "
 if headwaycnt>0.8*float(len(stas)):
   headwaycnt=0.8*float(len(stas))
-congestion=125.0*float(headwaycnt)/float(len(stas))
+congestion=125.0*float(headwaycnt)/float(1.0+len(stas))
 print "<b>"+str(congestion)+"%</b></p>"
 print "<p>Click on a train service name below to show its live status</p>"
 print "</p><p><b>Powered by <a href=\"https://github.com/freevariable/Fulgence\">Fulgence</a>, your precision simulator!</b></p><p>"

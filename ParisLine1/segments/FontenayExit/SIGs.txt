@@ -1,4 +1,5 @@
 0.0 FontenayExit4D 4D Main:EastboundMain Branch:FontenayExit BranchOrientation:Right
-0.2 200
-0.5 500
+0.15 150 
+0.3 300
+0.45 450
 0.77 FontenayWorkshopBuffer

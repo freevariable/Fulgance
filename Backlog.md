@@ -24,21 +24,14 @@ Consummed by servicing & maintenance
 **UX**
 - Implement real time notifications (slack?)
 
-**API**
-- Implement REST API to get info and push actions (hold a train for regulation?)
-
-**Control Room**
-- Implement info board in stations
-
 **Signalling**
 - Implement TVM (electronic signals)
 
-**Train services**
+**Traffic manager**
 - Implement wait at siding for a given (or any) service name to pass
 - Use entry and exit portals. Spawn/destroy according to time of the day.
-
-**Pax**
 - Implement dynamic variations (depends on time of day implementation)
+- Implement REST API to get info and push actions (hold a train for regulation?)
 
 **POIs/ZOIs**
 - Implement boundaries, tunnels, water and coal points, substations
