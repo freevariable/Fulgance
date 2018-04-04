@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
 #  limitations under the License.
 
 import redis,random,math,sys
-import time,datetime,getopt,flask
+import time,datetime,getopt,flask,json
 from concurrent.futures import ThreadPoolExecutor
 
 live=[]
@@ -2218,12 +2218,22 @@ def sim():
 
   if (realTime==True):
     cycles=CYCLEPP
-#    scheduler(SYNCPERIOD,stepRT,'none')
     executor.submit(scheduler,SYNCPERIOD,stepRT,'none')
-    return "statted"
+    return "started realtime sim"
   else:
     cycles=CYCLE
-  
+    executor.submit(noRT)
+    return "started accelerated sim"
+
+def noRT():
+  global cycles
+  global executor
+  global trs
+  global t
+  global exitCondition
+  global ncyc
+  global remlist
+  global r 
   while (exitCondition==False):
     t=ncyc/CYCLE
     intT=int(t)
@@ -2282,21 +2292,30 @@ def v1stop():
 @app.route("/v1/list/schedules", methods=["POST","GET"])
 def v1listschedules():
   global trs 
-  retStr=""
+  retObj=[]
   for aT in trs:
-    retStr=retStr+aT.name+" " 
-  return retStr
+    retObj.append(aT.name) 
+  return json.dumps(retObj) 
 
 @app.route("/v1/describe/schedule/<sc>", methods=["POST","GET"])
 def v1describeschedule(sc):
   global trs 
   global t
-  retStr=""
+  retItem={}
   for aT in trs:
     if aT.name==sc:
-      retStr=aT.name+":t:"+str(t)+" State update PK:"+str(aT.PK)+" vK:"+str(aT.vK)+" a:"+str(aT.a)+" inSta?"+str(aT.inSta)+" STA:"+str(aT.nextSTA)+" atSig?"+str(aT.atSig)+" SIG:"+str(aT.nextSIG)+" sigBrake?"+str(aT.sigBrake)+" staBrake?"+str(aT.staBrake)
+      retItem['name']=aT.name
+      retItem['time']=t
+      retItem['vK']=aT.vK
+      retItem['PK']=aT.PK
+      retItem['a']=aT.a
+      retItem['segment']=aT.segment
+      retItem['isInStation']=aT.inSta
+      retItem['isAtSignal']=aT.atSig
+      retItem['aheadStation']=aT.nextSTA
+      retItem['aheadSignal']=aT.nextSIG
       break
-  return retStr
+  return json.dumps(retItem)
 
 try:
   opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])

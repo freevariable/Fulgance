@@ -1,3 +1,6 @@
+## What's new in build 139
+- Started implementation of the traffic manager, located in directory trafficManager/ 
+
 ## What's new in build 138
 - Started implementation of the REST API (see README)
 

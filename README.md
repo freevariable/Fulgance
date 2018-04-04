@@ -34,7 +34,7 @@ Since the simulator is in ALPHA, only a subset of features are currently usable:
 - you may run the control room for the *ParisLine1* and *LondonCentral* routes
 - you may run an Atlantic steam engine in the *PolarComet* route until it runs out of resources (coal or water)
 - you may run a Consolidation steam engine in *TheCorkScrew* route, upward or downward segment.
-- two API verbs are currently supported: v1/list/schedules and v1/describe/schedule/<scheduleID>
+- two API verbs are currently supported: v1/list/schedules and v1/describe/schedule/*scheduleName*
 
 ### Notes for route designers
 #### Layout
@@ -99,7 +99,7 @@ Fulgence will run fine without options, but there are several things you may wis
 
 ### API
 - use curl to dump the list of currently active schedules on the route: curl http://127.0.0.1:4999/v1/list/schedules
-- based on the list of schedules, get live data on a specific schedule: curl http://127.0.0.1:4999/v1/describe/schedule/<scheduleName>
+- based on the list of schedules, get live data on a specific schedule: curl http://127.0.0.1:4999/v1/describe/schedule/*scheduleName*
 
 Exemple on *ParisLine1*, using the default schedule.txt :
 curl http://127.0.0.1:4999/v1/describe/schedule/E500
