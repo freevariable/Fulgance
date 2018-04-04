@@ -1,7 +1,3 @@
-Wear&tear ticks (t,inc,curv)
-Modulated by braking syst, admission sys, mechanics with various sensitivity coeff
-Consummed by servicing & maintenance
-
 **Known issues**
 - Stations/signals following a 4C must be within breaking distance of the junction otherwise they are not caught in time by trains coming from the branch. Same issue with stations/signals following a 4D on the diverging branch: they are not caught in time by trains coming from the main line and diverging.
 
@@ -14,7 +10,8 @@ Consummed by servicing & maintenance
 - TheCorkScrew operating manual
 
 **Realism**
-- handle time of day
+- check constraints on steam engine parameters (cylinder diameter, etc)
+- wear and tear: implement ticks (t,inc,curv), servicing, breakdown by category (braking sys, admission sys, mechanics)
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle gauge & electrification
 - handle imperial units in rollingStock.txt 
@@ -25,13 +22,15 @@ Consummed by servicing & maintenance
 - Implement real time notifications (slack?)
 
 **Signalling**
-- Implement TVM (electronic signals)
+- Implement electronic signals
 
 **Traffic manager**
+- Support single track route operations
 - Implement wait at siding for a given (or any) service name to pass
 - Use entry and exit portals. Spawn/destroy according to time of the day.
 - Implement dynamic variations (depends on time of day implementation)
 - Implement REST API to get info and push actions (hold a train for regulation?)
+- Handle time of day
 
 **POIs/ZOIs**
 - Implement boundaries, tunnels, water and coal points, substations

@@ -1917,6 +1917,7 @@ def stepRT(s):
   global cycles
   global live
   global remlist
+  global r
   ccc=0
   sys.stdout.flush()
   if len(remlist)>0:
@@ -1926,12 +1927,29 @@ def stepRT(s):
       for rm in remlist:
         if rm.name==tr.name:
           found=True
+          #state=r.hgetall('state:'+rm.name)
+          for key in r.scan_iter('state:'+rm.name):
+            r.delete(key)
+          p={}
+          p['seg']=rm.segment
+          p['cnt']=rm.SIGcnt
+          p['type']=sigs[rm.segment][rm.SIGcnt][2]
+          previousSig=findPrevSig(p)
+          if previousSig is None:
+            print "FATAL: no previousSig"
+            sys.exit()
+          previousPreviousSig=findPrevSig(previousSig)
+          updateSIGbyTrOccupationWrapper(p,rm.name,"green")
+          updateSIGbyTrOccupationWrapper(previousSig,rm.name,"green")
+          if previousPreviousSig is not None:
+            updateSIGbyTrOccupationWrapper(previousPreviousSig,rm.name,"green")
       if found==False:
         newlist.append(tr)
     trs=newlist
     if len(trs)<1:
       print str(t)+":INFO: Simulation ended. All services have run their schedule. Bye Bye!"
       sys.exit(1)
+  remlist=[]
   while (ccc<cycles):
     t=ncyc/CYCLE
     r.set("elapsed",int(t))
@@ -2173,6 +2191,7 @@ def sim():
   global exitCondition
   global ncyc
   global remlist
+  global r
   for aT in trs:
     if not __debug__:
       print aT.name+" has been initialized"
@@ -2209,12 +2228,29 @@ def sim():
         for rm in remlist:
           if rm.name==tr.name:
             found=True
+            #state=r.hgetall('state:'+rm.name)
+            for key in r.scan_iter('state:'+rm.name):
+              r.delete(key)
+            p={}
+            p['seg']=rm.segment
+            p['cnt']=rm.SIGcnt
+            p['type']=sigs[rm.segment][rm.SIGcnt][2]
+            previousSig=findPrevSig(p)
+            if previousSig is None:
+              print "FATAL: no previousSig"
+              sys.exit()
+            previousPreviousSig=findPrevSig(previousSig)
+            updateSIGbyTrOccupationWrapper(p,rm.name,"green")
+            updateSIGbyTrOccupationWrapper(previousSig,rm.name,"green")
+            if previousPreviousSig is not None:
+              updateSIGbyTrOccupationWrapper(previousPreviousSig,rm.name,"green")
         if found==False:
           newlist.append(tr)
       trs=newlist
       if len(trs)<1:
         print str(t)+":INFO: Simulation ended. All services have run their schedule. Bye Bye!"
         sys.exit(1)
+    remlist=[]
     if (t>duration):
       exitCondition=True
     ncyc=ncyc+1

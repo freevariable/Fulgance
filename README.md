@@ -18,40 +18,41 @@ Fulgence will let you perform various tasks:
 - [x] define rolling stock (EMUs and steam engines!)
 - [ ] distribute train services over mutiple simulation engines if you have a busy train schedule (only single sim engine for now)
 - [x] run schedules in real-time or accelerated time
-- [ ] trainspot at a platform instantly, check out its real-time information board
-- [ ] takes peak hours passengers flow into account
-- [x] use aspect signals for train separation
-- [x] use headway timers for trains separation
-- [ ] use electronic signals for trains separation
+- [ ] scale train services according to passengers peaks (TRAFFIC MANAGER feature)
+- [x] use aspect signals for train separation and route branches
+- [ ] use aspect signals for trains overtaking and single track operations (TRAFFIC MANAGER feature)
+- [x] use headway timers for trains separation (TRAFFIC MANAGER feature)
+- [ ] use electronic signals for trains separation and route branches 
 - [x] calculate power consumption (only EMUs for now, coal and water are in alpha!)
 - [x] get detailed statistics for data crunching and rendering
 - [x] access the control room
+- [ ] get/change sim behavior thru an API (TRAFFIC MANAGER feature)
 
 ### What works as of today (build ALPHA TWO)?
 Since the simulator is in ALPHA, only a subset of features are currently usable:
 - you may run the sim on the *ParisLine1* and *LondonCentral* routes, with any schedule (small, medium, default, large)
 - you may run the control room for the *ParisLine1* and *LondonCentral* routes
 - you may run an Atlantic steam engine in the *PolarComet* route until it runs out of resources (coal or water)
-
-The *LondonCentral* route will be fully usable in the upcoming ALPHA TWO release. Check out our release notes :)
+- you may run a Consolidation steam engine in *TheCorkScrew* route, upward or downward segment.
 
 ### Notes for route designers
 #### Layout
-- routes will support both on-track signals and electronic signals (only on-track for now) for trains separation
+- routes will support both on-track signals and electronic signals (only on-track for now)
 - Routes are located in (Fulgence folder)/(routeName)/ 
 - The global parameters such as gauge, electrification, imperial or metric units... are located in (routeName)/routeConfig.txt. Only units must be set for now.
 - Routes are made of segments located in (routeName)/segments/(segmentName)/. For example: ParisLine1/segments/WestboundMain/ for the default route
 - A segment is a set of contiguous blocks where each block is under control of a signal
 - Blocks are not explicitely delimited or managed in Fulgence. In fact, signals define blocks.
 - Blocks are unidirectional, except the ones protected by a **reversing signal** 
-- Consequently, segments are unidirectional. It means that single track routes are not supported. (We hope to support them on the long term though)
+- Consequently, segments are unidirectional. It means that single track routes are not supported yet.
 - In each segment, you need to describe the location of signals (SIGs), stations (STAs), speed limits (TIVs) and grades (GRDs). 
 - All route and schedule data are kept in simple text files. Lines beginning with a hash are ignored, as one would expect.
 - Schedules are kept in the (routeName)/schedules directory. You may name them whatever.txt The default shedule is default.txt
 - Services are kept in (routeName)/services.txt This file is **optional**. Use it only if you have branches on your line to provide pathfinding information.
 - Markers are not supported yet. In the pipe: tunnels (provide weather protection), country boundaries (with imperial/metric unit changes), points of interest (landmarks), areas of interest, platform names, substations (for line sectioning).
 - Weather is not supported yet
-- Only passenger stations are available at the moment. Water points and fuel stations (coal or diesel) will be added later.
+- Steam engines replenish water and coal at stations
+
 #### Signalling guide
 The following on-track signals are implemented:
 - [x]  *Type 1*: this is the usual 3-aspect signal. The possible states are: VL (green, all clear), A (yellow, prepare to stop at next signal) and C (red, impassable stop).
