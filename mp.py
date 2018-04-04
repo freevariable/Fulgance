@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,8 @@
 #  limitations under the License.
 
 import redis,random,math,sys
-import time,datetime,getopt
+import time,datetime,getopt,flask
+from concurrent.futures import ThreadPoolExecutor
 
 live=[]
 hasTime=False
@@ -128,10 +129,8 @@ def initTIVs():
       if (t[0]!='#'):
         t=t.rstrip().split(" ")
         if conf['units']=='imperial':
-#          print t
           t[0]=str(float(t[0])*MPH)  #mileposts=>pK
           t[1]=str(float(t[1])*MPH)  #mph=>kmh
-#          print t
         ts.append(t)
         cnt=cnt+1  
     gts[se]=ts
@@ -162,7 +161,8 @@ def initSchedule():
         t=t.rstrip().split(" ")
         if t[0]=='Time':
           hasTime=True
-          startTime=datetime.datetime.strptime(t[1],"%jd%Hh%Mm%Ss")
+          auxT="001d"+t[1]
+          startTime=datetime.datetime.strptime(auxT,"%jd%Hh%Mm%Ss")
         else:
           ts.append(t)
     return ts
@@ -435,7 +435,8 @@ def initSIGs():
             print "  (switch has no prev)"
       else: #not a type 2
         if ((s[2]!='4C') and (cnt==len(ss)-1)): 
-          print "INFO: SIG "+str(s)+" has not succ and is neither a type 2 nor a type 4C" 
+          if not __debug__:
+            print "INFO: SIG "+str(s)+" has not succ and is neither a type 2 nor a type 4C" 
           r.set("sig:"+se+":"+s[1],"red")
       prevs=s
       cnt=cnt+1
@@ -597,7 +598,8 @@ def initAll():
   if hasServices==True:
     srvs=initSRVs()
   else:
-    print "INFO: no services found..."
+    if not __debug__:
+      print "INFO: no services found..."
   for aa in trss:
     if ((aa[0]!="#") and (cnt==0)):
       found=False
@@ -849,7 +851,6 @@ class Tr:
 
   def dumpstate(self):
     r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':conf['units'],'react':self.react})
-#    print r.hgetall(self.name)
 
   def __init__(self,name,initSegment,service,initPos):
     global r
@@ -1163,25 +1164,28 @@ class Tr:
           if checkSig['type']=='6':
             attemptLock4C(checkSig,self.name)
         if self.nextSIG[2]=='6':  #sig type 6
-          print str(self.name)+":ABEAM sig 6, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
-          print attemptLock4C(self.facingSig,self.name)
+          if not __debug__:
+            print str(self.name)+":ABEAM sig 6, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
+          attemptLock4C(self.facingSig,self.name)
         if self.nextSIG[2]=='4C':  #sig type 4C 
-          print str(self.name)+":ABEAM sig 4C, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
+          if not __debug__:
+            print str(self.name)+":ABEAM sig 4C, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
           kPeer=getSigPeer(self.facingSig)
           kMainPos=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":mainPosition")
           if kMainPos==kPeer['seg']:
             kPeerX=1000.0*float(sigs[kPeer['seg']][kPeer['cnt']][0])
-            print "facing:"+str(self.facingSig)
-            print "kPeer:"+str(kPeer)
-            print "kPeerX:"+str(kPeerX)
+#            print "facing:"+str(self.facingSig)
+#            print "kPeer:"+str(kPeer)
+#            print "kPeerX:"+str(kPeerX)
             deltaX=kPeerX+self.x-self.nSIGx
 #          kBranch=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":mainPosition")
             kBranch=kPeer['seg']
             self.pathBranch=kBranch
-            print str(self.name)+"initSwitchSeg SET"
+#            print str(self.name)+"initSwitchSeg SET"
             self.initSwitchSeg=True
         if self.nextSIG[2]=='4D':  #sig type 4D 
-          print str(self.name)+":ABEAM sig 4D, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
+          if not __debug__:
+            print str(self.name)+":ABEAM sig 4D, facing:"+str(self.facingSig)+" nextSIG:"+str(self.nextSIG)
           self.pathCnt=self.pathCnt+1
           kMain=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":mainPosition")
           kBranch=r.get("switch:"+sigs[self.segment][self.facingSig['cnt']][1]+":branchPosition")
@@ -1196,20 +1200,20 @@ class Tr:
           found=False
           if self.service is not None:
             for asv in self.service:
-              print str(self.name)+":asv:"+str(asv)
+#              print str(self.name)+":asv:"+str(asv)
               asp=asv.split(":")
-              print "asp:"+str(asp)+" asp0:"+str(asp[0])
+#              print "asp:"+str(asp)+" asp0:"+str(asp[0])
               if asp[0]==self.facingSig['name']:
                 found=True
                 if asp[1]=='Main':
                   self.pathBranch=kMain
                 elif asp[1]=='Right':
                   self.pathBranch=kBranch
-                  print str(self.name)+"initSwitchSeg SET"
+#                  print str(self.name)+"initSwitchSeg SET"
                   self.initSwitchSeg=True
                 elif asp[1]=='Left':
                   self.pathBranch=kBranch
-                  print str(self.name)+"initSwitchSeg SET"
+#                  print str(self.name)+"initSwitchSeg SET"
                   self.initSwitchSeg=True
                 else:
                   print "FATAL... unknown branch..."+asp[1]
@@ -1239,12 +1243,13 @@ class Tr:
           p['cnt']=self.SIGcnt
           p['type']=sigs[self.segment][self.SIGcnt][2]
           previousSig=findPrevSig(p)
-          print str(self.name)+":previousSig of "+str(p)+" is "+str(previousSig)
+          if not __debug__:
+            print str(self.name)+":previousSig of "+str(p)+" is "+str(previousSig)
           if previousSig is not None:
-            print "off we go"
             updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
         else:
-          print "No more SIGS for "+self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
+          if not __debug__:
+            print "No more SIGS for "+self.name+":t:"+str(t)+":PASSING BY SIG "+self.segment+":"+self.nextSIG[1]+" vK:"+str(self.vK)
     elif (self.atSig==True):
       self.a=0.0
       self.v=0.0
@@ -1255,12 +1260,14 @@ class Tr:
         sys.exit()
       self.inSta=True
       if stock['accelerationLaw']=='STM1': # replenish stocks
-        print self.name+":t:"+str(t)+":REPLENISH BEFORE"+str(self.coalQty)+"kg, water: "+str(self.waterQty)+"kg"
+        if not __debug__:
+          print self.name+":t:"+str(t)+":REPLENISH BEFORE"+str(self.coalQty)+"kg, water: "+str(self.waterQty)+"kg"
         self.waterQty=stock['waterCapacity']
         self.coalQty=stock['coalCapacity']
-        print self.name+":t:"+str(t)+":REPLENISH AFTER"+str(self.coalQty)+"kg, water: "+str(self.waterQty)+"kg"
-      if STAPROGRESS==True:
-        print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.nextSTA[1])
+        if not __debug__:
+          print self.name+":t:"+str(t)+":REPLENISH AFTER"+str(self.coalQty)+"kg, water: "+str(self.waterQty)+"kg"
+#      if STAPROGRESS==True:
+#        print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.nextSTA[1])
       self.waitSta=t+stock['waitTime']
       self.staBrake=False 
       if not __debug__:
@@ -1436,8 +1443,9 @@ class Tr:
       if not __debug__:
         if (realTime==False):
           print self.name+":t:"+str(t)+" State update PK:"+str(self.PK)+" vK:"+str(self.vK)+" maxVk:"+str(auxMaxVk)+" aF:"+str(self.aFull)+" a:"+str(self.a)+" power: "+str(self.power)+" v2factor: "+str(v2factor)+" gFactor:"+str(gFactor)+" factors:"+str(factors)+" vSquare:"+str(vSquare)+" inSta?"+str(self.inSta)+" STA:"+str(self.nextSTA)+" atSig?"+str(self.atSig)+" SIG:"+str(self.nextSIG)+" sigBrake?"+str(self.sigBrake)+" staBrake?"+str(self.staBrake)+" curv?"+self.nextCRV[1]
-        if TPROGRESS==True:
-          print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
+#        if TPROGRESS==True:
+#          print str(self.name)+','+str(self.trip)+","+str(t)+','+str(self.PK)+","+str(self.vK)+","+str(self.aFull)+","+str(self.power)
+
 #
 # STAGE 5 : manage phases when train is stopped
 #
@@ -1454,22 +1462,25 @@ class Tr:
           self.waitReact=t+longTail(9.3,71.0,30.0)
           if not __debug__:
             print self.name+":t:"+str(t)+":OUT STA, a:"+str(self.a)+" vK:"+str(self.vK)+", reaction: "+str(self.waitReact-t)
-          if ((self.waitReact-t)>10.0):
-            print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
+            if ((self.waitReact-t)>10.0):
+              print self.name+":t:"+str(t)+":REACTION BURST:"+str(self.waitReact-t)
         else:
           self.waitSta=self.waitSta+2.0
-          print self.name+":t:"+str(t)+":waiting for headway "+"headway:"+self.segment+":"+self.nextSTA[1]
+          if not __debug__:
+            print self.name+":t:"+str(t)+":waiting for headway "+"headway:"+self.segment+":"+self.nextSTA[1]
     if (self.atSig==True):
       self.a=0.0
       self.v=0.0
       self.vK=0.0
       if (t>self.sigPoll):
         if (self.sigToPoll['type']=='4C'):  #type 4C
-          print str(self.name)+":in sigPoll, attempting to unlock 4C"
-          print "sigToPoll: "+str(self.sigToPoll)+" and facing:"+str(self.facingSig)+" and nextSIG:"+str(self.nextSIG)
+          if not __debug__:
+            print str(self.name)+":in sigPoll, attempting to unlock 4C"
+            print "sigToPoll: "+str(self.sigToPoll)+" and facing:"+str(self.facingSig)+" and nextSIG:"+str(self.nextSIG)
           checkSig=findPrevSig(self.sigToPoll)  #to get the type 6
-          print "checkSig: "+str(checkSig)
-          print attemptLock4C(checkSig,self.name)
+          if not __debug__:
+            print "checkSig: "+str(checkSig)
+          attemptLock4C(checkSig,self.name)
         k=r.get(self.sigToPoll['longName']+":isOccupied")
         if (k==self.name):
           k=None
@@ -1525,7 +1536,7 @@ class Tr:
 #
     if (self.initSwitchSeg==True):
       self.initSwitchSeg=False
-      print "calling SWITCH "+self.name
+#      print "calling SWITCH "+self.name
       self.switch(self.name,self.pathBranch,deltaX)
     if removeTr==True:
       return self
@@ -1585,10 +1596,11 @@ def findMySIGcnt(x,seg):
 
 def attemptLock4C(aSig,name):  # aSig is a type 6
   convSig=findSuccSig(aSig)
-  print str(name)+":in attemptLock4C, convSig:"+str(convSig)
+  if not __debug__:
+    print str(name)+":in attemptLock4C, convSig:"+str(convSig)
   if 'type' in convSig:
     convPeerSig=getSigPeer(convSig)
-    print "in attemptLock4C, convPeerSig:"+str(convPeerSig)
+#    print "in attemptLock4C, convPeerSig:"+str(convPeerSig)
     redisConvSIG="sig:"+convSig['seg']+":"+sigs[convSig['seg']][convSig['cnt']][1]
     redisConvPeerSIG="sig:"+convPeerSig['seg']+":"+sigs[convPeerSig['seg']][convPeerSig['cnt']][1]
     convAlreadyOccupied=r.get(redisConvSIG+":isOccupied") 
@@ -1724,13 +1736,15 @@ def getSigPeer(aSig):
       peerSeg=kMain
     peerStr="sig:"+peerSeg+":"+sigs[peerSeg][kBranchPrevCnt][1]
     kPeer=r.get(peerStr)
-    print str(aSig)+":6 has the following 4C: "+kMain+" "+kBranch
-    print "6 has the following peer in other branch mainCnt="+str(kMainPrevCnt)+" branchCnt="+str(kBranchPrevCnt)+" string: "+peerStr+" color="+kPeer
+    if not __debug__:
+      print str(aSig)+":6 has the following 4C: "+kMain+" "+kBranch
+      print "6 has the following peer in other branch mainCnt="+str(kMainPrevCnt)+" branchCnt="+str(kBranchPrevCnt)+" string: "+peerStr+" color="+kPeer
     sig['name']=sigs[peerSeg][kBranchPrevCnt][1]
     sig['seg']=peerSeg
     sig['cnt']=kBranchPrevCnt
     sig['type']=aSig['type']
-    print "the peerSig of "+str(aSig)+" is "+str(sig)
+    if not __debug__:
+      print "the peerSig of "+str(aSig)+" is "+str(sig)
   else:
     print "FATAL..."+str(aSig)+" is neither atype 6 nor a type 4C..."
     sys.exit()
@@ -1740,7 +1754,8 @@ def updateSIGbyTrOccupationWrapper(aSig,name,state):
   global sigs
   if aSig['type']=='4C':
     sig=getSigPeer(aSig)
-    print "sig 4C UPDATE in order:"+str(aSig)+" "+state+","+str(sig)+" "+state
+    if not __debug__:
+      print "sig 4C UPDATE in order:"+str(aSig)+" "+state+","+str(sig)+" "+state
     updateSIGbyTrOccupation(aSig,name,state) #The order is important! First update aSig, then peer sig
     updateSIGbyTrOccupation(sig,name,state)
   elif aSig['type']=='6':
@@ -1749,7 +1764,8 @@ def updateSIGbyTrOccupationWrapper(aSig,name,state):
     kPeer=r.get("sig:"+sig['seg']+":"+sig['name'])
     if ((kPeer=="green") and (state=="red")):
       peerState="yellow"
-    print "sig 6 UPDATE in order:"+str(aSig)+" "+state+","+str(sig)+" "+peerState
+    if not __debug__:
+      print "sig 6 UPDATE in order:"+str(aSig)+" "+state+","+str(sig)+" "+peerState
     updateSIGbyTrOccupation(aSig,name,state) #The order is important! First update aSig, then peer sig
     updateSIGbyTrOccupation(sig,name,peerState)
   elif aSig['type']=='4D':
@@ -1959,8 +1975,8 @@ def stepRT(s):
     for aT in trs:
       rem=aT.step() 
       if rem is not None:
-#        if not __debug__:
-        print "Removing Tr "+str(aT.name)
+        if not __debug__:
+          print "Removing Tr "+str(aT.name)
         remlist.append(rem)
     if (t>duration):
       exitCondition=True
@@ -2147,8 +2163,6 @@ def plot(law):
 #    print rollingResistance(99.0,48.0,250.0,2.0,1000.0,110.0,0.0,1.90,10.0,2,0.25,True)
     cP=cylinderPressureInKgCm2(stock['timbre'],stock['expansion'])
     d=cylinderDiameterInCm(stock['cylinders'],r,stock['wheelsDiameter'],cP,stock['pistonsLength'])
-    print d
-    sys.exit()
     criticalSpeed=stock['criticalSpeed']
     tra=tractiveEffortAtStart(stock['timbre'],d,stock['pistonsLength'],stock['wheelsDiameter'],stock['cylinders'],stock['expansion'])
     if checkAdherence(tra,stock['driveAxleLoad']*stock['driveAxles'])==False:
@@ -2186,6 +2200,7 @@ def plot(law):
   
 def sim():
   global cycles
+  global executor
   global trs
   global t
   global exitCondition
@@ -2195,16 +2210,17 @@ def sim():
   for aT in trs:
     if not __debug__:
       print aT.name+" has been initialized"
-
-  if (DUMPDATA==True):
-    if (TPROGRESS==True):
-      print "service,trip,t,x,v,a,P"
-    if (STAPROGRESS==True):
-      print "service,trip,time,station"
+#  if (DUMPDATA==True):
+#    if (TPROGRESS==True):
+#      print "service,trip,t,x,v,a,P"
+#    if (STAPROGRESS==True):
+#      print "service,trip,time,station"
 
   if (realTime==True):
     cycles=CYCLEPP
-    scheduler(SYNCPERIOD,stepRT,'none')
+#    scheduler(SYNCPERIOD,stepRT,'none')
+    executor.submit(scheduler,SYNCPERIOD,stepRT,'none')
+    return "statted"
   else:
     cycles=CYCLE
   
@@ -2218,8 +2234,8 @@ def sim():
     for aT in trs:
       rem=aT.step()
       if rem is not None:
-#        if not __debug__:
-        print "Removing Tr "+str(aT.name)
+        if not __debug__:
+          print "Removing Tr "+str(aT.name)
         remlist.append(rem)
     if len(remlist)>0:
       newlist=[]
@@ -2254,6 +2270,33 @@ def sim():
     if (t>duration):
       exitCondition=True
     ncyc=ncyc+1
+
+executor=ThreadPoolExecutor(2)
+app=flask.Flask(__name__)
+
+@app.route("/v1/stop", methods=["POST","GET"])
+def v1stop():
+  sys.exit()
+  return "stopped"
+
+@app.route("/v1/list/schedules", methods=["POST","GET"])
+def v1listschedules():
+  global trs 
+  retStr=""
+  for aT in trs:
+    retStr=retStr+aT.name+" " 
+  return retStr
+
+@app.route("/v1/describe/schedule/<sc>", methods=["POST","GET"])
+def v1describeschedule(sc):
+  global trs 
+  global t
+  retStr=""
+  for aT in trs:
+    if aT.name==sc:
+      retStr=aT.name+":t:"+str(t)+" State update PK:"+str(aT.PK)+" vK:"+str(aT.vK)+" a:"+str(aT.a)+" inSta?"+str(aT.inSta)+" STA:"+str(aT.nextSTA)+" atSig?"+str(aT.atSig)+" SIG:"+str(aT.nextSIG)+" sigBrake?"+str(aT.sigBrake)+" staBrake?"+str(aT.staBrake)
+      break
+  return retStr
 
 try:
   opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])
@@ -2304,6 +2347,9 @@ if plotCurves==False:
   r.flushdb()
   initAll()
   sim()
+  if __name__=="__main__":
+#    app.debug = True;
+    app.run(host='127.0.0.1',port=4999,threaded=True)
 else:
   r=redis.StrictRedis(host='localhost', port=6379, db=1)
   r.flushdb()

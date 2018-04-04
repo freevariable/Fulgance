@@ -1,5 +1,5 @@
 # Start time
-Time 001d09h42m53s
+Time 09h42m53s
 #name segment xPos(SigName)
 E500 WestboundMain ChV+10
 #E501 WestboundMain Ber+10

@@ -1,35 +1,59 @@
-E500 WestboundMain ChV+10 ExitMission
-E502 WestboundMain StM-140 ExitMission
-E503 WestboundMain PoV-140 ExitMission
-E505 WestboundMain Nat+10 ExitMission
-E507 WestboundMain 1465 ExitMission
-E509 WestboundMain 1588 ExitMission
-E511 WestboundMain StP-140 ExitMission
-E513 WestboundMain Cha+10 ExitMission
-E515 WestboundMain PaR+10 ExitMission
-E516 WestboundMain Con-140 ExitMission
-E518 WestboundMain ChE+10 ExitMission
-E519 WestboundMain 2120 ExitMission
-E521 WestboundMain CDE+10 ExitMission
-E523 WestboundMain PoM+10 ExitMission
-E525 WestboundMain 2420 ExitMission
-E526 WestboundMain 2525 ExitMission
-E527 WestboundMain LaD-100 ExitMission
-E550 EastboundMain 1057 ExitMission
-E552 EastboundMain PoN+10 ExitMission
-E554 EastboundMain Sab+10 ExitMission
-E555 EastboundMain PoM-140 ExitMission
-E557 EastboundMain CDE-140 ExitMission
-E559 EastboundMain Fra-140 ExitMission
-E560 EastboundMain ChE-140 ExitMission
-E561 EastboundMain Con-140 ExitMission
-E563 EastboundMain PaR-140 ExitMission
-E565 EastboundMain HoV+10 ExitMission
-E567 EastboundMain 2020 ExitMission
-E569 EastboundMain 2112 ExitMission
-E570 EastboundMain 2181 ExitMission
-E571 EastboundMain ReD-140 ExitMission
-E572 EastboundMain Nat-140 ExitMission
-E574 EastboundMain PoV+10 ExitMission
-E576 EastboundMain Ber+10 ExitMission
-E577 EastboundMain ChV-140 ExitMission
+# Start time
+Time 09h42m53s
+#name segment xPos(SigName)
+E500 WestboundMain ChV+10
+#E501 WestboundMain Ber+10
+E502 WestboundMain StM-140
+E503 WestboundMain PoV-140
+#E504 WestboundMain 1295
+E505 WestboundMain Nat+10
+#E506 WestboundMain ReD+10
+E507 WestboundMain 1465
+#E508 WestboundMain 1540
+E509 WestboundMain 1588
+#E510 WestboundMain 1630
+E511 WestboundMain StP-140
+#E512 WestboundMain 1710
+E513 WestboundMain Cha+10
+#E514 WestboundMain LoR-140
+E515 WestboundMain PaR+10
+E516 WestboundMain Con-140
+#E517 WestboundMain 2000
+E518 WestboundMain ChE+10
+E519 WestboundMain 2120
+#E520 WestboundMain Geo+10
+E521 WestboundMain CDE+10
+#E522 WestboundMain Arg-90
+E523 WestboundMain PoM+10
+#E524 WestboundMain Sab-140
+E525 WestboundMain 2420
+E526 WestboundMain 2525
+E527 WestboundMain LaD-100
+E550 EastboundMain 1057
+#E551 EastboundMain 1130
+E552 EastboundMain PoN+10
+#E553 EastboundMain 1232
+E554 EastboundMain Sab+10
+E555 EastboundMain PoM-140
+#E556 EastboundMain Arg-140
+E557 EastboundMain CDE-140
+#E558 EastboundMain Geo+10
+E559 EastboundMain Fra-140
+E560 EastboundMain ChE-140
+E561 EastboundMain Con-140
+#E562 EastboundMain Tui-140
+E563 EastboundMain PaR-140
+#E564 EastboundMain Cha-140
+E565 EastboundMain HoV+10
+#E566 EastboundMain 1953
+E567 EastboundMain 2020
+#E568 EastboundMain Bas+10
+E569 EastboundMain 2112
+E570 EastboundMain 2181
+E571 EastboundMain ReD-140
+E572 EastboundMain Nat-140
+#E573 EastboundMain 2390
+E574 EastboundMain PoV+10
+#E575 EastboundMain StM+10
+E576 EastboundMain Ber+10
+E577 EastboundMain ChV-140

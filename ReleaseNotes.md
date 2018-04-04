@@ -1,5 +1,9 @@
+## What's new in build 138
+- Started implementation of the REST API (see README)
+
 ## What's new in build 137
 - Bug fixing in preparation for ALPHA 3: traffic manager
+- Created trafficManager directory
 
 ## What's new in build 136
 - Bug fixing in steam engine calculations, TheCorkScrew route and the control room

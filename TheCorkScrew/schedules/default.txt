@@ -1,2 +1,3 @@
 #name segment xPos(SigName)
+Time 07h40m20s
 Helmut Upward KBW-100

@@ -16,7 +16,7 @@ Fulgence will let you perform various tasks:
 - [x] define realistic (eg: Paris Metro Line 1) or fancy routes (eg: The Polar Comet)
 - [x] define realistic or fancy schedules
 - [x] define rolling stock (EMUs and steam engines!)
-- [ ] distribute train services over mutiple simulation engines if you have a busy train schedule (only single sim engine for now)
+- [x] inquire simulation state through REST API (see below supported verbs)
 - [x] run schedules in real-time or accelerated time
 - [ ] scale train services according to passengers peaks (TRAFFIC MANAGER feature)
 - [x] use aspect signals for train separation and route branches
@@ -34,6 +34,7 @@ Since the simulator is in ALPHA, only a subset of features are currently usable:
 - you may run the control room for the *ParisLine1* and *LondonCentral* routes
 - you may run an Atlantic steam engine in the *PolarComet* route until it runs out of resources (coal or water)
 - you may run a Consolidation steam engine in *TheCorkScrew* route, upward or downward segment.
+- two API verbs are currently supported: v1/list/schedules and v1/describe/schedule/<scheduleID>
 
 ### Notes for route designers
 #### Layout
@@ -45,7 +46,7 @@ Since the simulator is in ALPHA, only a subset of features are currently usable:
 - Blocks are not explicitely delimited or managed in Fulgence. In fact, signals define blocks.
 - Blocks are unidirectional, except the ones protected by a **reversing signal** 
 - Consequently, segments are unidirectional. It means that single track routes are not supported yet.
-- In each segment, you need to describe the location of signals (SIGs), stations (STAs), speed limits (TIVs) and grades (GRDs). 
+- In each segment, you need to describe the location of signals (SIGs), stations (STAs), speed limits (TIVs), radius of curvature (CRVs) and grades (GRDs). 
 - All route and schedule data are kept in simple text files. Lines beginning with a hash are ignored, as one would expect.
 - Schedules are kept in the (routeName)/schedules directory. You may name them whatever.txt The default shedule is default.txt
 - Services are kept in (routeName)/services.txt This file is **optional**. Use it only if you have branches on your line to provide pathfinding information.
@@ -95,6 +96,13 @@ Fulgence will run fine without options, but there are several things you may wis
 - Enable real time: *mp.py --realtime*
 #### Examples
 - Run in real time for 1 hour: *mp.py --realtime --duration=3600*
+
+### API
+- use curl to dump the list of currently active schedules on the route: curl http://127.0.0.1:4999/v1/list/schedules
+- based on the list of schedules, get live data on a specific schedule: curl http://127.0.0.1:4999/v1/describe/schedule/<scheduleName>
+
+Exemple on *ParisLine1*, using the default schedule.txt :
+curl http://127.0.0.1:4999/v1/describe/schedule/E500
 
 ### Control room
 The control room is displayed as an HTML dashboard by calling *tools/room.py* **after** or **while** you run mp.py in realtime. It will not work otherwise, because it polls redis for live information and redis will be empty.

@@ -8,7 +8,7 @@ driveAxles 4
 deadFrontAxles 1
 deadRearAxles 0
 tenderAxles 8
-tenderAxleLoad 22500.0
+tenderAxleLoad 21000.0
 driveAxleLoad 22500.0
 deadFrontAxleLoad 15500.0
 deadRearAxleLoad 20000.0
@@ -21,8 +21,8 @@ waitTime 300.0
 templateName Helmut
 accelerationLaw STM1
 carriagesWeight 330000.0
-waterCapacity 120000.0
-coalCapacity 22000.0
+waterCapacity 110000.0
+coalCapacity 19000.0
 maxSpeed 35.0
 criticalSpeed 18.0
 length 350.0
