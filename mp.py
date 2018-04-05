@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,11 +13,12 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-import redis,random,math,sys
+import redis,random,math,sys,uuid
 import time,datetime,getopt,flask,json
 from concurrent.futures import ThreadPoolExecutor
 
 live=[]
+schedOrders=[]
 hasTime=False
 hasServices=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
@@ -620,7 +621,8 @@ def initAll():
           aT=Tr(aa[0],aa[1],aa[3],aPos)
         else:
           aT=Tr(aa[0],aa[1],None,aPos)
-        trs.append(aT)
+        if aT is not None:
+          trs.append(aT)
     cnt=cnt+1 
 
 class Tr:
@@ -983,8 +985,8 @@ class Tr:
     sigAlreadyOccupied=r.get("sig:"+previousSig['seg']+":"+previousSig['name']+":isOccupied")
     if sigAlreadyOccupied is not None:
       if sigAlreadyOccupied!=self.name:
-        print "FATAL: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share the same signal block"
-        sys.exit()
+        print "IGNORED: "+str(self.name)+" and "+str(sigAlreadyOccupied)+" share the same signal block"
+        return None
     else:
       if (sigs[self.segment][self.SIGcnt][2]=='2'):
         print "FATAL: "+str(self.name)+" is facing a Type 2 signal. It should rather face the next signal (a type 5)"
@@ -1970,6 +1972,7 @@ def stepRT(s):
     t=ncyc/CYCLE
     r.set("elapsed",int(t))
     r.set("elapsedHuman",str(datetime.timedelta(seconds=int(t))))
+    checkOrders()
     if not __debug__:
       print "RT:"+str(t)
     for aT in trs:
@@ -2225,6 +2228,12 @@ def sim():
     executor.submit(noRT)
     return "started accelerated sim"
 
+def checkOrders():
+  global schedOrders
+  global t
+  global trs
+  return True
+
 def noRT():
   global cycles
   global executor
@@ -2239,6 +2248,7 @@ def noRT():
     intT=int(t)
     r.set("elapsed",intT)
     r.set("elapsedHuman",str(datetime.timedelta(seconds=intT)))
+    checkOrders()
     if (intT%5==0):
       sys.stdout.flush()
     for aT in trs:
@@ -2281,15 +2291,39 @@ def noRT():
       exitCondition=True
     ncyc=ncyc+1
 
-executor=ThreadPoolExecutor(2)
+executor=ThreadPoolExecutor(max_workers=5)
 app=flask.Flask(__name__)
 
-@app.route("/v1/stop", methods=["POST","GET"])
-def v1stop():
-  sys.exit()
-  return "stopped"
+@app.route("/v1/new/schedule/<sc>/<srv>/<seg>/<tm>/<x>", methods=["POST"])
+def v1newschedule(sc,srv,seg,tm,x):
+  global schedOrders
+  found=False
+  for so in schedOrders:
+    if so['name']==sc:
+      so['service']=srv
+      so['segment']=seg
+      so['time']=int(tm)
+      so['x']=float(x) 
+      so['id']=str(uuid.uuid4())
+      found=True   # there must be only one order per schedule => overriding the previous one
+      break
+  if found==False:
+    so={}
+    so['name']=sc
+    so['service']=srv
+    so['segment']=seg
+    so['time']=int(tm)
+    so['x']=float(x) 
+    so['id']=str(uuid.uuid4())
+    schedOrders.append(so)
+  return json.dumps(so['id'])
 
-@app.route("/v1/list/schedules", methods=["POST","GET"])
+@app.route("/v1/list/schedule/orders", methods=["GET"])
+def v1listschedorders():
+  global schedOrders 
+  return json.dumps(schedOrders) 
+
+@app.route("/v1/list/schedules", methods=["GET"])
 def v1listschedules():
   global trs 
   retObj=[]
@@ -2297,7 +2331,7 @@ def v1listschedules():
     retObj.append(aT.name) 
   return json.dumps(retObj) 
 
-@app.route("/v1/describe/schedule/<sc>", methods=["POST","GET"])
+@app.route("/v1/describe/schedule/<sc>", methods=["GET"])
 def v1describeschedule(sc):
   global trs 
   global t
@@ -2314,6 +2348,7 @@ def v1describeschedule(sc):
       retItem['isAtSignal']=aT.atSig
       retItem['aheadStation']=aT.nextSTA
       retItem['aheadSignal']=aT.nextSIG
+      retItem['service']=aT.service
       break
   return json.dumps(retItem)
 

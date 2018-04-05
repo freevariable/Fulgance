@@ -65,18 +65,12 @@ The following on-track signals are implemented:
 
 Junction signals can manage only two legs, no less, no more. One leg is the main segment (left or right), the other one to the diverging/converging segment (left or right).Junction signals must have a unique name in both segments so that the engine may perform the segments stitching properly.
 
-### Requirements
+### Installation 
 
-#### Simulator
-- Python 2.7
-- curl or wget (if you wish to use the optional API)
-- A redis server running on your localhost (apt-get install redis-server in Ubuntu). Redis is used for signal aspects real-time management.
+sudo apt-get update
+sudo apt-get install -y redis-server python curl python-redis
 
-#### Control room
-- redis for getting the real-time state of a train.
-
-#### Traffic manager 
-- redis for getting the real-time state of a train.
+Then: clone Fulgence from GitHub and... voila!
 
 ### Let's get started
 To run the simulation in single simulation engine mode, simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route, the Paris Metro line 1, located in ParisLine1/schedules/default.txt

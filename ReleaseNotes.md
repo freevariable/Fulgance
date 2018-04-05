@@ -1,11 +1,15 @@
+## What's new in build 140 
+- Continued implementation of the simulator REST API (see README) in preparation for ALPHA 3: traffic manager  
+- Fixed bugs in multithreading. Should be fine, now
+
 ## What's new in build 139
-- Started implementation of the traffic manager, located in directory trafficManager/ 
+- Skeleton implementation of the traffic manager, located in directory trafficManager/ 
 
 ## What's new in build 138
-- Started implementation of the REST API (see README)
+- Started implementation of the simulator REST API (see README) in preparation for ALPHA 3: traffic manager
 
 ## What's new in build 137
-- Bug fixing in preparation for ALPHA 3: traffic manager
+- Bug fixing in the simulator, in preparation for ALPHA 3: traffic manager
 - Created trafficManager directory
 
 ## What's new in build 136
