@@ -1,17 +1,14 @@
 ## FAQ 
-**Fulgence** is a precision, highly customizable (text-based, REST API centric) railroad simulator made of three core components: the train physics simulator itself, the control room (showing enroute trains progress) and the traffic manager (the brain, providing path information to the simulator). **A demo of the control room is [available here](http://fulgence.lovethosetrains.com/controlRoom.html)**
+**Fulgence** is a precision, highly customizable, text-based, REST API friendly railroad simulator made of three core components: 
+- mp.py, the train engine simulator itself. Sims are complex beast, you should check out our *tutorials below*
+- room.py, the control room (showing enroute trains progress). **A demo of the control room is [available here](http://fulgence.lovethosetrains.com/controlRoom.html)** 
+- tm.py, the traffic manager (the brain, providing path information to the simulator)
 
 Here is a sample of what you can get in the control room:
 
 ![alt text](https://github.com/freevariable/Fulgence/blob/master/capture.png "Paris metro demo")
 
-The steam engine is giving promising results!! Here are the characteristic curves of a 147tons Atlantic (including tender) with two cylinders (not compounded) and a 250t payload:
-
-![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.png "Atlantic")
-
-![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.a.png "Atlantic")
-
-### What's this?
+### Main features
 Fulgence will let you perform various tasks:
 - [x] define realistic (eg: Paris Metro Line 1) or fancy routes (eg: The Polar Comet) with grades and curves
 - [x] define realistic or fancy schedules on these routes
@@ -34,6 +31,12 @@ Since the simulator is in ALPHA, only a subset of features are currently usable:
 - you may run vanilla or custom steam engines in the *PolarComet* route until it runs out of resources (coal or water)
 - you may run vanilla or custom steam engines in *TheCorkScrew* route, upward or downward segments.
 - two API verbs are currently supported: v1/list/schedules and v1/describe/schedule/*scheduleName*
+
+The steam engine is giving promising results!! Here are the characteristic curves of a 147tons Atlantic (including tender) with two cylinders (not compounded) and a 250t payload:
+
+![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.png "Atlantic")
+
+![alt text](https://github.com/freevariable/Fulgence/blob/master/250t.a.png "Atlantic")
 
 ### Notes for route designers
 #### Layout
