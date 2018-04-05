@@ -53,6 +53,12 @@ Since the simulator is in ALPHA, only a subset of features are currently usable:
 - Weather is not supported yet
 - Steam engines fully replenish water and coal at all stations on their way
 
+#### Signals placement
+- *Main branches* must start by a type 1 or type 2 (succeeded by a type 5) and terminate by a type 1 or type 2 (preceded by a type 3) signal. See for example: LondonCentral/segments/Epping/SIGs.txt
+- *Sidings must* start with a type 4D signal and terminate with a type 4C signal (preceded by a type 6 signal)
+- *Secondary branches* and *garages* diverging from a main branch must start with a 4C signal and terminate with a type 1 or type 2 signal (preceded by a type 3). See for exemple: ParisLine1/segments/FontenayExit/SIGs.txt
+- *Secondary branches* and *garages* converging towards a main branch must start with a type 1 or 2 signal (succeeded by a type 5) and terminate with a type 4C signal (preceded by a type 6). See for exemple: LondonCentral/segments/WestActon/SIGs.txt
+
 #### Signalling guide
 The following on-track signals are implemented:
 - [x]  *Type 1*: this is the usual 3-aspect signal. The possible states are: VL (green, all clear), A (yellow, prepare to stop at next signal) and C (red, impassable stop).
@@ -68,28 +74,41 @@ Junction signals can manage only two legs, no less, no more. One leg is the main
 ### Installation 
 
 sudo apt-get update
+
 sudo apt-get install -y redis-server python curl python-redis
 
 Then: clone Fulgence from GitHub and... voila!
 
 ### Let's get started
-To run the simulation in single simulation engine mode, simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route, the Paris Metro line 1, located in ParisLine1/schedules/default.txt
+Simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route, the Paris Metro line 1, located in ParisLine1/schedules/default.txt
 
 By default, 35 train services are run in parallel. The sim will not stop until you hit CTRL+C
-
-### Parameters
-To adjust simulation precision, you may set the CYCLE variable to your wishing. I recommend to keep the default value to get the best trade off between precision and speed of execution though. 
-
-To run the sim in debug mode, modify the first line to add the -O option to python
 
 ### Command line options
 Fulgence will run fine without options, but there are several things you may wish to change:
 - Enable real time: *mp.py --realtime* otherwise it will run as fast as possible on your CPU. Also, without realtime you won't be able to use the control room.
-- Set a given duration (in seconds) using *mp.py --duration=seconds*, otherwise the sim will go on forever.
+- Set a given duration (in seconds) using *mp.py --duration=seconds*, otherwise the sim will go on forever or until all schedules have despawned
 - Pick a non-default route (the TestTrack route for instance) with *mp.py --route=TestTrack*
 - Choose a non-default schedule: *mp.py --schedule=myschedule.txt*
-#### Examples
-- Run in real time for 1 hour: *mp.py --realtime --duration=3600*
+
+## Tutorials
+
+### Tutorial 1: run the small schedule of the LondonCentral route for 1 hour 
+- mp.py --route=LondonCentral --schedule=small.txt --duration=3600
+
+### Tutorial 2: see real time trains progress in the control room
+In this tutorial, we suppose that you have a web server up and running, with the document root located in /var/www/html
+
+To use the control room, we must restart the sim in realtime mode: 
+mp.py --realtime --route=LondonCentral --schedule=small.txt --duration=3600
+
+While the sim is running in background, we then run room.py at regular intervals, say every minute: 
+controlRoom/room.py --route=LondonCentral --schedule=small.txt --segments=Epping,WestRuislip > /var/www/html/controlRoom.html
+
+After every room.py execution, need to copy the generated files controlRoom/Epping.html and controlRoom/WestRuislip.html to /var/www/html
+
+We also need to copy all the svg files located in controlRoom/html/ to the web server:
+cd controlRoom/html && cp *.svg /var/www/html/
 
 ### API
 - use curl to dump the list of currently active schedules on the route: curl http://127.0.0.1:4999/v1/list/schedules
@@ -107,13 +126,14 @@ For stations to appear on the dashboard, they must be succeded by a signal named
 
 #### Options
 - You must provide the route name using *--route*
-- You must provide a segments list using *--segments*
+- You must provide a segments list using *--segments*  Segment names are separated by a comma
+- You must provide a schedule name using *--schedule*
 
 Here are two  examples:
 
-*tools/room.py --route=ParisLine1 --segments=WestboundMain,EastboundMain > dashboard.html* 
+*controlRoom/room.py --route=ParisLine1 --schedule=large.txt --segments=WestboundMain,EastboundMain > dashboard.html* 
 
-*tools/room.py --route=LondonCentral --segments=WestRuislip,Epping,Hainault,Wanstead,Acton,EalingBroadway > dashboard.html* 
+*controlRoom/room.py --route=LondonCentral --schedule=default.txt --segments=WestRuislip,Epping,Hainault,Wanstead,Acton,EalingBroadway > dashboard.html* 
 
 The first example will produce three HTML files: dashboard.html, WestboundMain.html and EastboundMain.html
 
