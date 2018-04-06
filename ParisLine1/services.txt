@@ -1,4 +1,6 @@
 #MissionName + list of {sig:branch} pairs. Branches set to Main may be omitted.
 #Allowed branch names: Left,Right,Main
 #Allowed signal names: 4D signals found in SIGs.txt
-ExitMission FontenayExit4D:Right
+#Mission type (- or +), Mission name, load, optional space separated list of Segment:Branch
+- ExitMission OneOff FontenayExit4D:Right
++ MainMission TpH:1-11

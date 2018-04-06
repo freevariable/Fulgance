@@ -11,6 +11,7 @@
 
 **Realism**
 - check constraints on steam engine parameters (cylinder diameter, etc)
+- support compound steam engines
 - wear and tear: implement ticks (t,inc,curv), servicing, breakdown by category (braking sys, admission sys, mechanics)
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle gauge & electrification

@@ -593,14 +593,14 @@ def initAll():
     print "rollingStock details:"
     print stock
   hasServices=False
-  for aa in trss:
-    if len(aa)>3:
-      hasServices=True
-  if hasServices==True:
-    srvs=initSRVs()
-  else:
-    if not __debug__:
-      print "INFO: no services found..."
+#  for aa in trss:
+#    if len(aa)>3:
+#      hasServices=True
+#  if hasServices==True:
+#    srvs=initSRVs()
+#  else:
+#    if not __debug__:
+#      print "INFO: no services found..."
   for aa in trss:
     if ((aa[0]!="#") and (cnt==0)):
       found=False
@@ -2396,18 +2396,21 @@ for o, a in opts:
     assert False, "option unknown"
     sys.exit(2)
 
+r=redis.StrictRedis(host='localhost', port=6379, db=0)
+try:
+  answ=r.client_list()
+except redis.ConnectionError:
+  print "FATAL: cannot connect to redis."
+  sys.exit()
+
+r.flushdb()
+initAll()
+
 if plotCurves==False:
-  r=redis.StrictRedis(host='localhost', port=6379, db=0)
-  r.flushdb()
-  initAll()
   sim()
   if __name__=="__main__":
-#    app.debug = True;
     app.run(host='127.0.0.1',port=4999,threaded=True)
 else:
-  r=redis.StrictRedis(host='localhost', port=6379, db=1)
-  r.flushdb()
-  initAll()
   plot(stock['accelerationLaw'])
 
 #print strahl(110.0,0.0,250.0,0.25,True)

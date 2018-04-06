@@ -1,0 +1,2 @@
+Map1:Upward
+Map2:Downward

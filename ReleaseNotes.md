@@ -1,3 +1,6 @@
+## What's new in build 141 
+- Traffic manager improvement and interfacing to the sim via the REST API
+
 ## What's new in build 140 
 - Continued implementation of the simulator REST API (see README) in preparation for ALPHA 3: traffic manager  
 - Fixed bugs in multithreading. Should be fine, now

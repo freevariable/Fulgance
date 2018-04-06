@@ -1,5 +1,5 @@
 #MissionName + list of {sig:branch} pairs. Branches set to Main may be omitted.
 #Allowed branch names: Left,Right,Main
 #Allowed signal names: 4D signals found in SIGs.txt
-MainMission Cash:Main River:Main
-BranchMission Cash:Left River:Right
++ MainMission TpH:1-5 Cash:Main River:Main
++ BranchMission TpH:1-3 Cash:Left River:Right

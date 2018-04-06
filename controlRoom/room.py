@@ -231,22 +231,32 @@ except getopt.GetoptError as err:
   sys.exit(2)
 
 segmentsList=[]
-found=False
+foundSeg=False
+foundSch=False
+foundRte=False
 conf={}
 scheduleFile=""
 for o, a in opts:
   if o in ("--segments"):
     segmentsList = a.split(',')
-    found=True
+    foundSeg=True
   elif o in ("--route"):
     projectDir = "../"+a+'/'
+    foundRte=True
   elif o in ("--schedule"):
     scheduleFile = a
+    foundSch=True
   else:
     assert False, "option unknown"
     sys.exit(2)
-if found==False:
+if foundSeg==False:
   print "ERROR. Segment list needed."
+  sys.exit(2)
+if foundRte==False:
+  print "ERROR. Route name needed."
+  sys.exit(2)
+if foundSch==False:
+  print "ERROR. Schdule needed."
   sys.exit(2)
 
 confraw=initConfig()

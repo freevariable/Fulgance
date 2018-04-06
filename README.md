@@ -2,7 +2,7 @@
 **Fulgence** is a precision, highly customizable, text-based, REST API friendly railroad simulator made of three core components: 
 - mp.py, the train engine simulator itself. Sims are complex beast, you should check out our *tutorials below*
 - room.py, the control room (showing enroute trains progress). **A demo of the control room is [available here](http://fulgence.lovethosetrains.com/controlRoom.html)** 
-- tm.py, the traffic manager (the brain, providing path information to the simulator)
+- tr.py, the traffic manager (the brain, providing path information to the simulator)
 
 Here is a sample of what you can get in the control room:
 
@@ -99,19 +99,27 @@ Fulgence will run fine without options, but there are several things you may wis
 ### Tutorial 1: run the small schedule of the LondonCentral route for 1 hour 
 - mp.py --route=LondonCentral --schedule=small.txt --duration=3600
 
-### Tutorial 2: see real time trains progress in the control room
+Since mp.py is a daemon, from that point nothing will seem to happen but the sim will actually have started. To know what is going on, you have two options: either run the control room, or use the API. This is the purpose of the next tutorial.
+
+### Tutorial 2: see real time trains progress
 In this tutorial, we suppose that you have a web server up and running, with the document root located in /var/www/html
 
-To use the control room, we must restart the sim in realtime mode: 
+To use the control room, we must *restart the sim in realtime mode*: 
 mp.py --realtime --route=LondonCentral --schedule=small.txt --duration=3600
 
 While the sim is running in background, we then run room.py at regular intervals, say every minute: 
 controlRoom/room.py --route=LondonCentral --schedule=small.txt --segments=Epping,WestRuislip > /var/www/html/controlRoom.html
 
-After every room.py execution, need to copy the generated files controlRoom/Epping.html and controlRoom/WestRuislip.html to /var/www/html
+After every room.py execution, we need to copy the generated files controlRoom/Epping.html and controlRoom/WestRuislip.html to the web server, in /var/www/html
 
 We also need to copy all the svg files located in controlRoom/html/ to the web server:
 cd controlRoom/html && cp *.svg /var/www/html/
+
+Point your browser to http://yourwebserver/controlRoom.html and see the trains progress and the stations on the various segments of the line.
+
+You may also want to probe the sim with an API call:
+- curl http://127.0.0.1:4999/v1/list/schedules
+This will bring up a JSON list of all trains currently running on the line.
 
 ### API
 - use curl to dump the list of currently active schedules on the route: curl http://127.0.0.1:4999/v1/list/schedules
