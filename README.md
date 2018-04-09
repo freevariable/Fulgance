@@ -56,13 +56,7 @@ The steam engine is giving promising results!! Here are the characteristic curve
 - Weather is not supported yet
 - Steam engines fully replenish water and coal at all stations on their way
 
-#### Signals placement
-- *Main branches* must start by a type 1 or type 2 (succeeded by a type 5) and terminate by a type 1 or type 2 (preceded by a type 3) signal. See for example: LondonCentral/segments/Epping/SIGs.txt
-- *Sidings must* start with a type 4D signal and terminate with a type 4C signal (preceded by a type 6 signal)
-- *Secondary branches* and *garages* diverging from a main branch must start with a 4C signal and terminate with a type 1 or type 2 signal (preceded by a type 3). See for exemple: ParisLine1/segments/FontenayExit/SIGs.txt
-- *Secondary branches* and *garages* converging towards a main branch must start with a type 1 or 2 signal (succeeded by a type 5) and terminate with a type 4C signal (preceded by a type 6). See for exemple: LondonCentral/segments/WestActon/SIGs.txt
-
-#### Signalling guide
+#### Signal types
 The following on-track signals are implemented:
 - [x]  *Type 1*: this is the usual 3-aspect signal. The possible states are: VL (green, all clear), A (yellow, prepare to stop at next signal) and C (red, impassable stop).
 - [x] *Type 2*: this is a buffer signal that allows reversing to a segment which is different from the origin segment. As far as the origin segment is concerned, its only possible state is C (red, impassable) and it is preceded by a type 3 signal. As for the first signal in the reversed direction, it is controlled by a type 5 signal.
@@ -74,28 +68,20 @@ The following on-track signals are implemented:
 
 Junction signals can manage only two legs, no less, no more. One leg is the main segment (left or right), the other one to the diverging/converging segment (left or right).Junction signals must have a unique name in both segments so that the engine may perform the segments stitching properly.
 
-### Installation 
+#### Signals placement
+- *Main branches* must start by a type 1 or type 2 (succeeded by a type 5) and terminate by a type 1 or type 2 (preceded by a type 3) signal. See for example: LondonCentral/segments/Epping/SIGs.txt
+- *Sidings must* start with a type 4D signal and terminate with a type 4C signal (preceded by a type 6 signal)
+- *Secondary branches* and *garages* diverging from a main branch must start with a 4C signal and terminate with a type 1 or type 2 signal (preceded by a type 3). See for exemple: ParisLine1/segments/FontenayExit/SIGs.txt
+- *Secondary branches* and *garages* converging towards a main branch must start with a type 1 or 2 signal (succeeded by a type 5) and terminate with a type 4C signal (preceded by a type 6). See for exemple: LondonCentral/segments/WestActon/SIGs.txt
 
+### Installation 
 sudo apt-get update
 
 sudo apt-get install -y redis-server python curl python-redis
 
 Then: clone Fulgence from GitHub and... voila!
 
-### Let's get started
-Simply run mp.py without arguments. What happens then is that the engine (mp.py) starts the default schedule of the default route, the Paris Metro line 1, located in ParisLine1/schedules/default.txt
-
-By default, 35 train services are run in parallel. The sim will not stop until you hit CTRL+C
-
-### Command line options
-Fulgence will run fine without options, but there are several things you may wish to change:
-- Enable real time: *mp.py --realtime* otherwise it will run as fast as possible on your CPU. Also, without realtime you won't be able to use the control room.
-- Set a given duration (in seconds) using *mp.py --duration=seconds*, otherwise the sim will go on forever or until all schedules have despawned
-- Pick a non-default route (the TestTrack route for instance) with *mp.py --route=TestTrack*
-- Choose a non-default schedule: *mp.py --schedule=myschedule.txt*
-
 ## Tutorials
-
 ### Tutorial 1: run the small schedule of the LondonCentral route for 1 hour 
 - mp.py --route=LondonCentral --schedule=small.txt --duration=3600
 
@@ -128,14 +114,14 @@ This will bring up a JSON list of all trains currently running on the line.
 Exemple on *ParisLine1*, using the default schedule.txt :
 curl http://127.0.0.1:4999/v1/describe/schedule/E500
 
-### Control room
+### Control room (controlRoom/room.py)
 The control room is displayed as an HTML dashboard by calling *tools/room.py* **after** or **while** you run mp.py in realtime. It will not work otherwise, because it polls redis for live information and redis will be empty.
 
 *room.py* also generates one HTML file per segment you wish to monitor. It is called *segmentName.html*
 
 For stations to appear on the dashboard, they must be succeded by a signal named (station trigram)+(whatever) in (routeName)/segments/(routeSegment)/SIGs.txt
 
-#### Options
+#### Control room options
 - You must provide the route name using *--route*
 - You must provide a segments list using *--segments*  Segment names are separated by a comma
 - You must provide a schedule name using *--schedule*
@@ -149,3 +135,6 @@ Here are two  examples:
 The first example will produce three HTML files: dashboard.html, WestboundMain.html and EastboundMain.html
 
 In the second example, seven HTML files will be produced.
+
+### Traffic manager (trafficManager/tr.py)
+To be completed

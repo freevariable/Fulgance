@@ -488,7 +488,7 @@ def initAll():
   stock['acceleration']=ACC
   stock['waitTime']=10.0 # at stations, in secs
   stock['k']=0.25
-  stock['timbre']=18.0
+#  stock['timbre']=18.0
   stock['cylinders']=2
   stock['accelerationLaw']=ALAW
   stock['weight']=WEIGHT   # whole train for EMUs, carriages only for pushed/pulled trains.
@@ -626,6 +626,7 @@ def initAll():
     cnt=cnt+1 
 
 class Tr:
+  global stock
   initSitchSeg=False
   facingSig={}
   trip=0
@@ -634,6 +635,10 @@ class Tr:
   DBrt=0.0  #for next realtime event (sig or tvm)
   vapor=0.0  #consumption in kg per second
   coal=0.0  #consumption in kg per second
+  consumptionCutOff=1.0
+  brakeWear=0.0
+  admissionWear=0.0
+  mechWear=0.0
   waterQty=0.0
   coalQty=0.0
   indicatedPower=0.0  #in horsepower. n/a for EMUs
@@ -669,7 +674,6 @@ class Tr:
   tenderWeight=0.0
   engineWeight=0.0
   carriagesWeight=0.0
-  timbre=18.0
   tgtVk=110.0
   deltaBDtiv=0.0
   deltaBDsta=0.0
@@ -852,7 +856,7 @@ class Tr:
     updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
 
   def dumpstate(self):
-    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':conf['units'],'react':self.react})
+    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':conf['units'],'react':self.react,'mechWear':self.mechWear,'admissionWear':self.admissionWear,'brakeWear':self.brakeWear})
 
   def __init__(self,name,initSegment,service,initPos):
     global r
@@ -860,6 +864,7 @@ class Tr:
     global srvs
     if not __debug__:
       print "init..."+name+" at pos "+str(initPos)+"with service "+str(service)
+    self.maxSquareSpeed=stock['maxSpeed']*stock['maxSpeed']
     self.initSwitchSeg=False
     self.pax=stock['maxPax']
     self.startingPhase=True
@@ -876,7 +881,8 @@ class Tr:
         print str(self.name)+":FATAL: service "+str(service)+" not found in services.txt"
         sys.exit()
     if (stock['accelerationLaw']=='STM1'):
-      self.timbre=18.0
+      self.timbre=stock['timbre']
+      self.maxTimbre=stock['timbre']
       self.waterQty=stock['waterCapacity']
       self.coalQty=stock['coalCapacity']
       self.engineWeight=stock['driveAxleLoad']*stock['driveAxles']+stock['deadRearAxleLoad']*stock['deadRearAxles']+stock['deadFrontAxleLoad']*stock['deadFrontAxles']
@@ -1008,11 +1014,18 @@ class Tr:
     mv=self.m*self.v
     if (ncyc%CYCLE==0):
       self.aGaussFactor=aGauss()
+      self.consumptionCutOff=1.0
       if (stock['accelerationLaw']=='STM1'):
+        if gFactor<-0.05:
+          self.consumptionCutOff=1.0-gFactor+(gFactor/-0.05)
+        elif gFactor<0.0:
+          self.consumptionCutOff=1.0-gFactor
+        if self.consumptionCutOff>4.5:
+            self.consumptionCutOff=4.5
         if not __debug__:
           print self.name+":"+str(t)+":PK:"+str(self.PK)+":updating coal and water weight before: "+str(self.waterQty)+" "+str(self.coalQty)+" "+str(self.tenderWeight)
-        self.waterQty=self.waterQty-self.vapor
-        self.coalQty=self.coalQty-self.coal
+        self.waterQty=self.waterQty-(self.vapor/self.consumptionCutOff)
+        self.coalQty=self.coalQty-(self.coal/self.consumptionCutOff)
         self.tenderWeight=stock['tenderAxles']*stock['tenderAxleLoad']+self.coalQty+self.waterQty-stock['waterCapacity']-stock['coalCapacity']
         self.m=self.engineWeight+stock['carriagesWeight']+self.tenderWeight
         if ((self.coalQty<=0.0) or (self.waterQty<=0.0)):
@@ -1414,6 +1427,8 @@ class Tr:
             sys.exit()
           elif ((self.v==0.0) or (self.inSta==True) or (self.atSig==True) or (self.react==True)):   # train is stopped at sig or sta
              self.aFull=0.0
+             self.a=0.0
+             self.v=0.0
           else:
             print "FATAL neg speed. aF: "+str(self.aFull)+" vK:"+str(self.vK)+" v:"+str(self.v)
             sys.exit()
@@ -1421,10 +1436,10 @@ class Tr:
       self.aFull=self.a
       if (self.aFull>0.0):
         self.aFull=0.0 
-#      if (self.v<0.0):
-#        self.v=0.0
-#        self.a=0.0
-#        self.aFull=0.0
+    if ((self.inSta==True) or (self.atSig==True) or (self.react==True)):
+      self.v=0.0
+      self.a=0.0
+      self.aFull=0.0 
     self.v=self.v+(self.aFull/CYCLE)
     if (self.v<0.0):
       self.v=0.0
@@ -1433,6 +1448,20 @@ class Tr:
     self.vK=self.v*3.6
     self.x=self.x+(self.v/CYCLE)
     self.PK=self.x/1000.0
+    if (self.a<0):
+      self.brakeWear=self.brakeWear+(self.a*self.a)
+    wearV=self.v-(0.5*stock['maxSpeed'])
+    if wearV>0:
+      wearV=(wearV*wearV)/self.maxSquareSpeed
+    else:
+      wearV=0.0
+    if (float(self.nextCRV[0])>0.0):
+      self.mechWear=self.mechWear+self.v+(750.0/float(self.nextCRV[0]))
+    else:
+      self.mechWear=self.mechWear+self.v
+#    self.mechWear=self.mechWear+wearV+self.v
+    self.admissionWear=self.admissionWear+(1.0/(self.consumptionCutOff))
+
 # 
 # STAGE 4 : perform coarse grain calculations
 #
@@ -2349,6 +2378,9 @@ def v1describeschedule(sc):
       retItem['aheadStation']=aT.nextSTA
       retItem['aheadSignal']=aT.nextSIG
       retItem['service']=aT.service
+      retItem['brakeWear']=aT.brakeWear
+      retItem['admissionWear']=aT.admissionWear
+      retItem['mechanicalWear']=aT.mechWear
       break
   return json.dumps(retItem)
 

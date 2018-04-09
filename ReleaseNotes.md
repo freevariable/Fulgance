@@ -1,3 +1,7 @@
+## What's new in build 142
+- Implement steam engine coal & water consumption cut off in slopes
+- Started implementation of wear and tear
+
 ## What's new in build 141 
 - Traffic manager improvement and interfacing to the sim via the REST API
 
