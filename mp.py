@@ -1,4 +1,4 @@
-#!/usr/bin/python -O
+#!/usr/bin/python
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,14 +16,13 @@
 import redis,random,math,sys,uuid
 import time,datetime,getopt,flask,json
 from concurrent.futures import ThreadPoolExecutor
-from shutil import copyfile
-from subprocess import call
+#from shutil import copyfile
+#from subprocess import call
 import cPickle as pickle
 
 live=[]
 schedOrders=[]
 saveOrder={}
-redisDump="/var/lib/redis/dump.rdb"
 hasTime=False
 hasServices=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
@@ -861,6 +860,7 @@ class Tr:
     updateSIGbyTrOccupationWrapper(previousSig,self.name,"red")
 
   def dumpstate(self):
+    global r
     r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':conf['units'],'react':self.react,'mechWear':self.mechWear,'admissionWear':self.admissionWear,'brakeWear':self.brakeWear})
 
   def __init__(self,name,initSegment,service,initPos):
@@ -1972,7 +1972,6 @@ def stepRT(s):
   global remlist
   global r
   global simID
-  global redisDump
   ccc=0
   t=ncyc/CYCLE
   if (t>duration):
@@ -1988,11 +1987,18 @@ def stepRT(s):
     checkOrders()
     sys.stdout.flush()
     if ((intT>0) and (intT%900==0)): 
+      glo={}
+      glo['simID']=simID
+      glo['t']=t
+      glo['ncyc']=ncyc
+      glo['route']=projectDir
+      glo['schedule']=scheduleName
       pickName=simID+"."+str(intT)+".trains"
       pickle.dump(trs,open(pickName,"wb"))
-      pickName=simID+"."+str(intT)+".redis"
+      pickName=simID+"."+str(intT)+".globals"
+      pickle.dump(glo,open(pickName,"wb"))
       r.save()
-      copyfile(redisDump,pickName)
+#      copyfile(redisDump,pickName)
   if len(remlist)>0:
     newlist=[]
     for tr in trs:
@@ -2275,24 +2281,28 @@ def sim():
     return "started realtime sim"
   else:
     cycles=CYCLE
-    executor.submit(noRT)
+    noRT()
+    #executor.submit(noRT)
     return "started accelerated sim"
 
 def simSave():
   global saveOrder
   global r
-  global redisDump
   global t
   global simID
   global ncyc
   pickName=saveOrder['name']+".trains"
   pickle.dump(trs,open(pickName,"wb"))
-  r.set("elapsed",t)
-  r.set("simID",simID)
-  r.set("ncyc",ncyc)
+  glo={}
+  glo['time']=t
+  glo['simID']=simID
+  glo['ncyc']=ncyc
+  glo['route']=projectDir
+  glo['schedule']=scheduleName
   r.save()
-  pickName=saveOrder['name']+".redis"
-  copyfile(redisDump,pickName)
+  pickName=saveOrder['name']+".globals"
+  pickle.dump(glo,open(pickName,"wb"))
+#  copyfile(redisDump,pickName)
   saveOrder={}
   return True
 
@@ -2316,7 +2326,6 @@ def noRT():
   global remlist
   global r 
   global simID
-  global redisDump
   while (exitCondition==False):
     t=ncyc/CYCLE
     intT=int(t)
@@ -2328,9 +2337,16 @@ def noRT():
       if ((intT>0) and (intT%900==0)):
         pickName=simID+"."+str(intT)+".trains"
         pickle.dump(trs,open(pickName,"wb"))
-        pickName=simID+"."+str(intT)+".redis"
+        pickName=simID+"."+str(intT)+".globals"
+        glo={}
+        glo['simID']=simID
+        glo['time']=t
+        glo['ncyc']=ncyc
+        glo['route']=projectDir
+        glo['schedule']=scheduleName
+        pickle.dump(glo,open(pickName,"wb"))
         r.save()
-        copyfile(redisDump,pickName)
+#        copyfile(redisDump,pickName)
     for aT in trs:
       rem=aT.step()
       if rem is not None:
@@ -2458,7 +2474,7 @@ def v1describeschedule(sc):
   return json.dumps(retItem)
 
 try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=","load="])
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=","resume="])
 except getopt.GetoptError as err:
   print(err)
   usage()
@@ -2487,7 +2503,7 @@ for o, a in opts:
     core = int(a)
   elif o in ("--route"):
     projectDir = a+'/'
-  elif o in ("--load"):
+  elif o in ("--resume"):
     loadName = a
     loadSim=True
   elif o in ("--schedule"):
@@ -2510,16 +2526,20 @@ except redis.ConnectionError:
 if plotCurves==False:
   r.flushdb()
   if loadSim==True:
-    pickName=loadName+'.redis'
+    pickName=loadName+'.globals'
+    glo=pickle.load(open(pickName,"rb"))
+    t=glo['time']
+    simID=glo['simID']
+    ncyc=glo['ncyc']
+    projectDir=glo['route']
+    scheduleName=glo['schedule']
     initAll()
-    call(["sudo","service","redis-server","stop"])
-    call(["sudo","cp",pickName,redisDump])
-    call(["sudo","service","redis-server","start"])
-    t=float(r.get("elapsed"))
-    simID=r.get("simID")
-    ncyc=int(r.get("ncyc"))
     pickName=loadName+'.trains'
     trs=pickle.load(open(pickName,"rb"))
+    r.set('elapsed',t)
+    r.set('simID',simID)
+    for aT in trs:
+      aT.dumpstate()
   else:
     initAll()
   sid={}

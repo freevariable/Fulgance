@@ -119,7 +119,7 @@ You may schedule a sim save under name "myName" at (simulation) time t=55 second
 - curl http://127.0.0.1:4999/v1/save/myName/55
 To restore the sim:
 - kill the running mp.py
-- restart mp.py with the load=simName option: ./mp.py --load=myName 
+- restart mp.py with the resume=simName option: ./mp.py --resume=myName 
 
 ### API
 - get a status of a runnin sim: curl http://127.0.0.1:4999/v1/describe/status
