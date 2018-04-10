@@ -1,3 +1,8 @@
+## What's new in build 143
+- Optimized wear and tear tick calculations
+- Implemented sim save feature (sim load not implemented yet)
+- Two new API verbs: v1/describe/status and /v1/save/saveName/saveTime
+
 ## What's new in build 142
 - Implement steam engine coal & water consumption cut off in slopes
 - Started implementation of wear and tear

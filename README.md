@@ -21,6 +21,8 @@ Fulgence will let you perform various tasks:
 - [x] set headway timers for trains separation
 - [ ] place electronic signals for trains separation and route branches 
 - [x] calculate live power, water and coal consumption
+- [x] calculate wear and tear
+- [ ] identify servicing thresholds for brakes, vapor engine and moving parts. Implement breakdowns!
 - [x] oversee all trains progress in the control room of your route
 - [ ] update train schedules in realtime depending on time of the day/congestion (TRAFFIC MANAGER feature)
 
@@ -30,7 +32,7 @@ Since the simulator is in ALPHA, only a subset of features are currently usable:
 - you may run the control room for the *ParisLine1* and *LondonCentral* routes
 - you may run vanilla or custom steam engines in the *PolarComet* route until it runs out of resources (coal or water)
 - you may run vanilla or custom steam engines in *TheCorkScrew* route, upward or downward segments.
-- two API verbs are currently supported: v1/list/schedules and v1/describe/schedule/*scheduleName*
+- four API verbs are currently supported: v1/list/schedules, v1/describe/schedule/*scheduleName*, v1/save/*saveName*/*time* and v1/describe/status
 
 The steam engine is giving promising results!! Here are the characteristic curves of a 147tons Atlantic (including tender) with two cylinders (not compounded) and a 250t payload:
 
@@ -104,12 +106,17 @@ cd controlRoom/html && cp *.svg /var/www/html/
 Point your browser to http://yourwebserver/controlRoom.html and see the trains progress and the stations on the various segments of the line.
 
 You may also want to probe the sim with an API call:
+- curl http://127.0.0.1:4999/v1/describe/status
+Returns usefull data about the running sim: its ID, the current time, the route name, etc
+
 - curl http://127.0.0.1:4999/v1/list/schedules
 This will bring up a JSON list of all trains currently running on the line.
 
 ### API
+- get a status of a runnin sim: curl http://127.0.0.1:4999/v1/describe/status
 - use curl to dump the list of currently active schedules on the route: curl http://127.0.0.1:4999/v1/list/schedules
 - based on the list of schedules, get live data on a specific schedule: curl http://127.0.0.1:4999/v1/describe/schedule/scheduleName
+- save the sim in file *mySaveName.pickle* after 3 minutes (180 seconds) by calling curl http://127.0.0.1:4999/v1/save/mySaveName/180
 
 Exemple on *ParisLine1*, using the default schedule.txt :
 curl http://127.0.0.1:4999/v1/describe/schedule/E500

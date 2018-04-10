@@ -16,9 +16,11 @@
 import redis,random,math,sys,uuid
 import time,datetime,getopt,flask,json
 from concurrent.futures import ThreadPoolExecutor
+import cPickle as pickle
 
 live=[]
 schedOrders=[]
+saveOrder={}
 hasTime=False
 hasServices=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
@@ -460,6 +462,8 @@ def initAll():
   global conf
   global hasServices
   global srvs
+  global simID
+  simID=str(uuid.uuid4())
   stock={}
   r.set('realtime:',REALTIME)
   if multi:
@@ -1451,14 +1455,15 @@ class Tr:
     if (self.a<0):
       self.brakeWear=self.brakeWear+(self.a*self.a)
     wearV=self.v-(0.5*stock['maxSpeed'])
+    # source: https://books.google.fr/books?id=XRAAAAAAMAAJ&pg=PA218&lpg=PA218&dq=locomotive+vapeur+consommation+en+descente&source=bl&ots=GJLYUcBVHy&sig=U9sx-4ZghgfdOBYMje3cZJRqwm0&hl=fr&sa=X&ved=0ahUKEwidiPGtla3aAhXCbFAKHVusA6cQ6AEIeTAM#v=onepage&q=locomotive%20vapeur%20consommation%20en%20descente&f=false
     if wearV>0:
       wearV=(wearV*wearV)/self.maxSquareSpeed
     else:
       wearV=0.0
     if (float(self.nextCRV[0])>0.0):
-      self.mechWear=self.mechWear+self.v+(750.0/float(self.nextCRV[0]))
+      self.mechWear=self.mechWear+0.1*self.v*(750.0/float(self.nextCRV[0]))
     else:
-      self.mechWear=self.mechWear+self.v
+      self.mechWear=self.mechWear+0.1*self.v
 #    self.mechWear=self.mechWear+wearV+self.v
     self.admissionWear=self.admissionWear+(1.0/(self.consumptionCutOff))
 
@@ -1965,8 +1970,24 @@ def stepRT(s):
   global live
   global remlist
   global r
+  global simID
   ccc=0
-  sys.stdout.flush()
+  t=ncyc/CYCLE
+  if (t>duration):
+    exitCondition=True
+    print "EXIT condition True"
+    sys.exit()
+  intT=int(t)
+  r.set("elapsed",intT)
+  r.set("elapsedHuman",str(datetime.timedelta(seconds=intT)))
+  if not __debug__:
+    print "RT:"+str(t)
+  if (intT%6==0):
+    checkOrders()
+    sys.stdout.flush()
+    if (intT%900==0): 
+      pickName=simID+"."+str(intT)+".pickle"
+      pickle.dump(trs,open(pickName,"wb"))
   if len(remlist)>0:
     newlist=[]
     for tr in trs:
@@ -1999,21 +2020,16 @@ def stepRT(s):
   remlist=[]
   while (ccc<cycles):
     t=ncyc/CYCLE
-    r.set("elapsed",int(t))
-    r.set("elapsedHuman",str(datetime.timedelta(seconds=int(t))))
-    checkOrders()
-    if not __debug__:
-      print "RT:"+str(t)
+#    r.set("elapsed",int(t))
+#    r.set("elapsedHuman",str(datetime.timedelta(seconds=int(t))))
+#    if not __debug__:
+#      print "RT:"+str(t)
     for aT in trs:
       rem=aT.step() 
       if rem is not None:
         if not __debug__:
           print "Removing Tr "+str(aT.name)
         remlist.append(rem)
-    if (t>duration):
-      exitCondition=True
-      print "EXIT condition True"
-      sys.exit()
     ncyc=ncyc+1
     ccc=ccc+1
   for aT in trs:
@@ -2257,10 +2273,21 @@ def sim():
     executor.submit(noRT)
     return "started accelerated sim"
 
+def simSave():
+  global saveOrder
+  pickName=saveOrder['name']+".pickle"
+  pickle.dump(trs,open(pickName,"wb"))
+  saveOrder={}
+  return True
+
 def checkOrders():
   global schedOrders
+  global saveOrder
   global t
   global trs
+  if 'time' in saveOrder:
+    if saveOrder['time']<=int(t): 
+      simSave()
   return True
 
 def noRT():
@@ -2272,14 +2299,18 @@ def noRT():
   global ncyc
   global remlist
   global r 
+  global simID
   while (exitCondition==False):
     t=ncyc/CYCLE
     intT=int(t)
     r.set("elapsed",intT)
     r.set("elapsedHuman",str(datetime.timedelta(seconds=intT)))
-    checkOrders()
-    if (intT%5==0):
+    if (intT%6==0):
       sys.stdout.flush()
+      checkOrders()
+      if (intT%900==0):
+        pickName=simID+"."+str(intT)+".pickle"
+        pickle.dump(trs,open(pickName,"wb"))
     for aT in trs:
       rem=aT.step()
       if rem is not None:
@@ -2323,7 +2354,27 @@ def noRT():
 executor=ThreadPoolExecutor(max_workers=5)
 app=flask.Flask(__name__)
 
-@app.route("/v1/new/schedule/<sc>/<srv>/<seg>/<tm>/<x>", methods=["POST"])
+@app.route("/v1/describe/status", methods=["GET"])
+def v1now():
+  global t 
+  global simID
+  global realTime
+  global projectDir
+  status={}
+  status['t']=t
+  status['simID']=simID
+  status['realTime']=realTime
+  status['routeName']=projectDir.rstrip('/')
+  return json.dumps(str(status))
+
+@app.route("/v1/save/<sname>/<tm>", methods=["POST","GET"])
+def v1simsave(sname,tm):
+  global saveOrder
+  saveOrder['name']=sname
+  saveOrder['time']=int(tm)
+  return '[]'
+
+@app.route("/v1/new/schedule/<sc>/<srv>/<seg>/<tm>/<x>", methods=["POST","GET"])
 def v1newschedule(sc,srv,seg,tm,x):
   global schedOrders
   found=False
@@ -2381,6 +2432,8 @@ def v1describeschedule(sc):
       retItem['brakeWear']=aT.brakeWear
       retItem['admissionWear']=aT.admissionWear
       retItem['mechanicalWear']=aT.mechWear
+      retItem['consumptionCutOff']=aT.consumptionCutOff
+      retItem['gFactor']=G*aT.gradient
       break
   return json.dumps(retItem)
 

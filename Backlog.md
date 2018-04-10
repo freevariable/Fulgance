@@ -12,7 +12,7 @@
 **Realism**
 - check constraints on steam engine parameters (cylinder diameter, etc)
 - support compound steam engines
-- wear and tear: implement ticks (t,inc,curv), servicing, breakdown by category (braking sys, admission sys, mechanics)
+- wear and tear: implement servicing threshold and breakdown chance by category (braking sys, admission sys, mechanical sys)
 - handle weather (adhesive power in ramps/at start + Vk in strahl)
 - handle gauge & electrification
 - handle imperial units in rollingStock.txt 
@@ -21,6 +21,7 @@
 
 **UX**
 - Implement real time notifications (slack?)
+- Implement sim load from cPickle file (into both redis and class instances)
 
 **Signalling**
 - Implement electronic signals
