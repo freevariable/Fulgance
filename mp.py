@@ -16,11 +16,13 @@
 import redis,random,math,sys,uuid
 import time,datetime,getopt,flask,json
 from concurrent.futures import ThreadPoolExecutor
+from shutil import copyfile
 import cPickle as pickle
 
 live=[]
 schedOrders=[]
 saveOrder={}
+redisDump="/var/lib/redis/dump.rdb"
 hasTime=False
 hasServices=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
@@ -1971,6 +1973,7 @@ def stepRT(s):
   global remlist
   global r
   global simID
+  global redisDump
   ccc=0
   t=ncyc/CYCLE
   if (t>duration):
@@ -1985,9 +1988,12 @@ def stepRT(s):
   if (intT%6==0):
     checkOrders()
     sys.stdout.flush()
-    if (intT%900==0): 
-      pickName=simID+"."+str(intT)+".pickle"
+    if ((intT>0) and (intT%900==0)): 
+      pickName=simID+"."+str(intT)+".trains"
       pickle.dump(trs,open(pickName,"wb"))
+      pickName=simID+"."+str(intT)+".redis"
+      r.save()
+      copyfile(redisDump,pickName)
   if len(remlist)>0:
     newlist=[]
     for tr in trs:
@@ -2275,8 +2281,13 @@ def sim():
 
 def simSave():
   global saveOrder
-  pickName=saveOrder['name']+".pickle"
+  global r
+  global redisDump
+  pickName=saveOrder['name']+".trains"
   pickle.dump(trs,open(pickName,"wb"))
+  r.save()
+  pickName=saveOrder['name']+".redis"
+  copyfile(redisDump,pickName)
   saveOrder={}
   return True
 
@@ -2300,6 +2311,7 @@ def noRT():
   global remlist
   global r 
   global simID
+  global redisDump
   while (exitCondition==False):
     t=ncyc/CYCLE
     intT=int(t)
@@ -2308,9 +2320,12 @@ def noRT():
     if (intT%6==0):
       sys.stdout.flush()
       checkOrders()
-      if (intT%900==0):
-        pickName=simID+"."+str(intT)+".pickle"
+      if ((intT>0) and (intT%900==0)):
+        pickName=simID+"."+str(intT)+".trains"
         pickle.dump(trs,open(pickName,"wb"))
+        pickName=simID+"."+str(intT)+".redis"
+        r.save()
+        copyfile(redisDump,pickName)
     for aT in trs:
       rem=aT.step()
       if rem is not None:
