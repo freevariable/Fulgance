@@ -13,6 +13,7 @@ Fulgence will let you perform various tasks:
 - [x] define realistic (eg: Paris Metro Line 1) or fancy routes (eg: The Polar Comet) with grades and curves
 - [x] define realistic or fancy schedules on these routes
 - [x] define your own rolling stock (EMUs and steam engines)
+- [x] save sim, restore and resume at a later time
 - [x] get live simulation JSON data through a REST API (see below supported verbs)
 - [x] run schedules in real-time or accelerated time
 - [ ] scale train services according to passengers peaks (TRAFFIC MANAGER feature)
@@ -111,6 +112,14 @@ Returns usefull data about the running sim: its ID, the current time, the route 
 
 - curl http://127.0.0.1:4999/v1/list/schedules
 This will bring up a JSON list of all trains currently running on the line.
+
+### Save and restore sim
+By default, the sim is saved to file every 15 minutes
+You may schedule a sim save under name "myName" at (simulation) time t=55 seconds by issuing:
+- curl http://127.0.0.1:4999/v1/save/myName/55
+To restore the sim:
+- kill the running mp.py
+- restart mp.py with the load=simName option: ./mp.py --load=myName 
 
 ### API
 - get a status of a runnin sim: curl http://127.0.0.1:4999/v1/describe/status

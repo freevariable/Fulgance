@@ -1,3 +1,6 @@
+## What's new in build 144
+- Implemented sim load and resume feature
+
 ## What's new in build 143
 - Optimized wear and tear tick calculations
 - Implemented sim save feature (sim load not implemented yet)

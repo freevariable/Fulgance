@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python -O
 #Copyright 2018 freevariable (https://github.com/freevariable)
 
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,7 @@ import redis,random,math,sys,uuid
 import time,datetime,getopt,flask,json
 from concurrent.futures import ThreadPoolExecutor
 from shutil import copyfile
+from subprocess import call
 import cPickle as pickle
 
 live=[]
@@ -449,7 +450,6 @@ def initSIGs():
   return gts
 
 def initAll():
-  random.seed()
   global tivs
   global stas
   global sigs
@@ -465,11 +465,10 @@ def initAll():
   global hasServices
   global srvs
   global simID
+  random.seed()
   simID=str(uuid.uuid4())
   stock={}
   r.set('realtime:',REALTIME)
-  if multi:
-    r.set('multi:',numCores)
   confraw=initConfig()
   conf['units']='metric'
   for aa in confraw:
@@ -1981,7 +1980,7 @@ def stepRT(s):
     print "EXIT condition True"
     sys.exit()
   intT=int(t)
-  r.set("elapsed",intT)
+  r.set("elapsed",t)
   r.set("elapsedHuman",str(datetime.timedelta(seconds=intT)))
   if not __debug__:
     print "RT:"+str(t)
@@ -2283,8 +2282,14 @@ def simSave():
   global saveOrder
   global r
   global redisDump
+  global t
+  global simID
+  global ncyc
   pickName=saveOrder['name']+".trains"
   pickle.dump(trs,open(pickName,"wb"))
+  r.set("elapsed",t)
+  r.set("simID",simID)
+  r.set("ncyc",ncyc)
   r.save()
   pickName=saveOrder['name']+".redis"
   copyfile(redisDump,pickName)
@@ -2315,7 +2320,7 @@ def noRT():
   while (exitCondition==False):
     t=ncyc/CYCLE
     intT=int(t)
-    r.set("elapsed",intT)
+    r.set("elapsed",t)
     r.set("elapsedHuman",str(datetime.timedelta(seconds=intT)))
     if (intT%6==0):
       sys.stdout.flush()
@@ -2453,25 +2458,23 @@ def v1describeschedule(sc):
   return json.dumps(retItem)
 
 try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=","cores="])
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=","load="])
 except getopt.GetoptError as err:
   print(err)
   usage()
   sys.exit(2)
 duration = sys.maxsize 
-multi = MULTICORE
-numCores= CORES
 realTime=REALTIME
 core=1
 scheduleName="default.txt"
 stockName="rollingStock.txt"
 plotCurves=False
+loadSim=False
+loadName=''
 
 serviceList=[]
 for o, a in opts:
-  if o == "-m":
-    multi = True
-  elif o in ("-h", "--help"):
+  if o in ("-h", "--help"):
     usage()
     sys.exit()
   elif o in ("--duration"):
@@ -2480,12 +2483,13 @@ for o, a in opts:
     realTime=True
   elif o in ("--plot"):
     plotCurves=True
-  elif o in ("--cores"):
-    numCores = int(a)
   elif o in ("--core"):
     core = int(a)
   elif o in ("--route"):
     projectDir = a+'/'
+  elif o in ("--load"):
+    loadName = a
+    loadSim=True
   elif o in ("--schedule"):
     scheduleName = a
   elif o in ("--services"):
@@ -2503,14 +2507,30 @@ except redis.ConnectionError:
   print "FATAL: cannot connect to redis."
   sys.exit()
 
-r.flushdb()
-initAll()
-
 if plotCurves==False:
+  r.flushdb()
+  if loadSim==True:
+    pickName=loadName+'.redis'
+    initAll()
+    call(["sudo","service","redis-server","stop"])
+    call(["sudo","cp",pickName,redisDump])
+    call(["sudo","service","redis-server","start"])
+    t=float(r.get("elapsed"))
+    simID=r.get("simID")
+    ncyc=int(r.get("ncyc"))
+    pickName=loadName+'.trains'
+    trs=pickle.load(open(pickName,"rb"))
+  else:
+    initAll()
+  sid={}
+  sid['simID']=simID
+  print json.dumps(sid) 
   sim()
   if __name__=="__main__":
     app.run(host='127.0.0.1',port=4999,threaded=True)
 else:
+  initAll()
+  r.flushdb()
   plot(stock['accelerationLaw'])
 
 #print strahl(110.0,0.0,250.0,0.25,True)
