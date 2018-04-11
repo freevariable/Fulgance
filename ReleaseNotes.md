@@ -1,3 +1,6 @@
+## What's new in build 145
+- Improved sim load and resume feature 
+
 ## What's new in build 144
 - Implemented sim load and resume feature
 

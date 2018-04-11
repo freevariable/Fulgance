@@ -114,12 +114,16 @@ Returns usefull data about the running sim: its ID, the current time, the route 
 This will bring up a JSON list of all trains currently running on the line.
 
 ### Save and restore sim
-By default, the sim is saved to file every 15 minutes
-You may schedule a sim save under name "myName" at (simulation) time t=55 seconds by issuing:
+By default, the sim is saved to a file in the *saves* subdirectory every 15 minutes
+You may want to schedule a specific sim save under name "myName" at (simulation) time t=55 seconds by issuing:
 - curl http://127.0.0.1:4999/v1/save/myName/55
+
+myName will be saved in the *saves* subdirectory.
 To restore the sim:
 - kill the running mp.py
 - restart mp.py with the resume=simName option: ./mp.py --resume=myName 
+
+You may start the sim in accelerated time and resume in realtime or the opposite: all combinations are possible. :)
 
 ### API
 - get a status of a runnin sim: curl http://127.0.0.1:4999/v1/describe/status

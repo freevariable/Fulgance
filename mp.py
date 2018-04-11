@@ -16,13 +16,13 @@
 import redis,random,math,sys,uuid
 import time,datetime,getopt,flask,json
 from concurrent.futures import ThreadPoolExecutor
-#from shutil import copyfile
-#from subprocess import call
 import cPickle as pickle
 
 live=[]
 schedOrders=[]
 saveOrder={}
+version="143"
+minVersion="143"
 hasTime=False
 hasServices=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
@@ -1972,6 +1972,10 @@ def stepRT(s):
   global remlist
   global r
   global simID
+  global version
+  global minVersion
+  global schedOrders
+  global saveOrder
   ccc=0
   t=ncyc/CYCLE
   if (t>duration):
@@ -1993,12 +1997,15 @@ def stepRT(s):
       glo['ncyc']=ncyc
       glo['route']=projectDir
       glo['schedule']=scheduleName
-      pickName=simID+"."+str(intT)+".trains"
+      glo['schedOrders']=schedOrders
+      glo['saveOrder']=saveOrder
+      glo['minVersion']=minVersion
+      glo['version']=version
+      pickName='saves/'+simID+"."+str(intT)+".trains"
       pickle.dump(trs,open(pickName,"wb"))
-      pickName=simID+"."+str(intT)+".globals"
+      pickName='saves/'+simID+"."+str(intT)+".globals"
       pickle.dump(glo,open(pickName,"wb"))
       r.save()
-#      copyfile(redisDump,pickName)
   if len(remlist)>0:
     newlist=[]
     for tr in trs:
@@ -2281,8 +2288,8 @@ def sim():
     return "started realtime sim"
   else:
     cycles=CYCLE
-    noRT()
-    #executor.submit(noRT)
+    #noRT()
+    executor.submit(noRT)
     return "started accelerated sim"
 
 def simSave():
@@ -2291,7 +2298,11 @@ def simSave():
   global t
   global simID
   global ncyc
-  pickName=saveOrder['name']+".trains"
+  global schedOrders
+  global saveOrder
+  global minVersion
+  global version
+  pickName='saves/'+saveOrder['name']+".trains"
   pickle.dump(trs,open(pickName,"wb"))
   glo={}
   glo['time']=t
@@ -2299,10 +2310,13 @@ def simSave():
   glo['ncyc']=ncyc
   glo['route']=projectDir
   glo['schedule']=scheduleName
+  glo['schedOrders']=schedOrders
+  glo['saveOrder']=saveOrder
+  glo['minVersion']=minVersion
+  glo['version']=version
   r.save()
-  pickName=saveOrder['name']+".globals"
+  pickName='saves/'+saveOrder['name']+".globals"
   pickle.dump(glo,open(pickName,"wb"))
-#  copyfile(redisDump,pickName)
   saveOrder={}
   return True
 
@@ -2326,6 +2340,10 @@ def noRT():
   global remlist
   global r 
   global simID
+  global minVersion
+  global version
+  global schedOrders
+  global saveOrder
   while (exitCondition==False):
     t=ncyc/CYCLE
     intT=int(t)
@@ -2335,18 +2353,21 @@ def noRT():
       sys.stdout.flush()
       checkOrders()
       if ((intT>0) and (intT%900==0)):
-        pickName=simID+"."+str(intT)+".trains"
+        pickName='saves/'+simID+"."+str(intT)+".trains"
         pickle.dump(trs,open(pickName,"wb"))
-        pickName=simID+"."+str(intT)+".globals"
+        pickName='saves/'+simID+"."+str(intT)+".globals"
         glo={}
         glo['simID']=simID
         glo['time']=t
         glo['ncyc']=ncyc
         glo['route']=projectDir
         glo['schedule']=scheduleName
+        glo['schedOrders']=schedOrders
+        glo['saveOrder']=saveOrder
+        glo['minVersion']=minVersion
+        glo['version']=version
         pickle.dump(glo,open(pickName,"wb"))
         r.save()
-#        copyfile(redisDump,pickName)
     for aT in trs:
       rem=aT.step()
       if rem is not None:
@@ -2526,15 +2547,20 @@ except redis.ConnectionError:
 if plotCurves==False:
   r.flushdb()
   if loadSim==True:
-    pickName=loadName+'.globals'
+    pickName='saves/'+loadName+'.globals'
     glo=pickle.load(open(pickName,"rb"))
     t=glo['time']
     simID=glo['simID']
     ncyc=glo['ncyc']
     projectDir=glo['route']
     scheduleName=glo['schedule']
+    schedOrders=glo['schedOrders']
+    saveOrder=glo['saveOrder']
+    if glo['minVersion']<version:
+      print "FATAL: saved version incompatible with current engine."
+      sys.exit()
     initAll()
-    pickName=loadName+'.trains'
+    pickName='saves/'+loadName+'.trains'
     trs=pickle.load(open(pickName,"rb"))
     r.set('elapsed',t)
     r.set('simID',simID)
