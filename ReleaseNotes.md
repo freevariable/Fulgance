@@ -1,3 +1,6 @@
+## What's new in build 148
+- Started implementation of the downScale feature of the traffic manager (in prep for ALPHA 3)
+
 ## What's new in build 147
 - More traffic manager updates (in prep for ALPHA 3)
 

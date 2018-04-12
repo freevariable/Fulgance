@@ -1996,7 +1996,6 @@ def stepRT(s):
       glo['route']=projectDir
       glo['schedule']=scheduleName
       glo['schedOrders']=schedOrders
-      glo['minVersion']=minVersion
       glo['version']=version
       pickName='saves/'+simID+"."+str(intT)+".trains"
       pickle.dump(trs,open(pickName,"wb"))
@@ -2307,7 +2306,6 @@ def simSave():
   glo['route']=projectDir
   glo['schedule']=scheduleName
   glo['schedOrders']=schedOrders
-  glo['minVersion']=minVersion
   glo['version']=version
   r.save()
   pickName='saves/'+saveOrder['name']+".globals"
@@ -2357,7 +2355,6 @@ def noRT():
         glo['route']=projectDir
         glo['schedule']=scheduleName
         glo['schedOrders']=schedOrders
-        glo['minVersion']=minVersion
         glo['version']=version
         pickle.dump(glo,open(pickName,"wb"))
         r.save()
@@ -2559,7 +2556,7 @@ if plotCurves==False:
     projectDir=glo['route']
     scheduleName=glo['schedule']
     schedOrders=glo['schedOrders']
-    if glo['minVersion']<version:
+    if glo['version']<minVersion:
       print "FATAL: saved version incompatible with current engine."
       sys.exit()
     initAll()
@@ -2572,6 +2569,7 @@ if plotCurves==False:
   else:
     initAll()
     simID=str(uuid.uuid4())
+    r.set('simID',simID)
   sid={}
   sid['simID']=simID
   print json.dumps(sid) 

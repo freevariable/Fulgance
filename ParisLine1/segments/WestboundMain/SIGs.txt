@@ -1,7 +1,3 @@
-#Name Type Verb:Noun Verb:Noun...  
-#1: 3 colors carre (VL,A,S). Verb:Noun=n/a.
-#2: feu de heurtoir (always red).
-#3: avertissement (A or C, always
 0.0 E 2 Reverse:EastboundMain Forward:WestboundMain Default:WestboundMain 
 0.001 990 5    
 0.09 PreFontenayEntry4C 6
