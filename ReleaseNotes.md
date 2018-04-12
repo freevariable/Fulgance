@@ -1,3 +1,9 @@
+## What's new in build 147
+- More traffic manager updates (in prep for ALPHA 3)
+
+## What's new in build 146
+- Traffic manager update (in prep for ALPHA 3)
+
 ## What's new in build 145
 - Improved sim load and resume feature 
 

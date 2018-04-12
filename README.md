@@ -34,6 +34,7 @@ Since the simulator is in ALPHA, only a subset of features are currently usable:
 - you may run vanilla or custom steam engines in the *PolarComet* route until it runs out of resources (coal or water)
 - you may run vanilla or custom steam engines in *TheCorkScrew* route, upward or downward segments.
 - four API verbs are currently supported: v1/list/schedules, v1/describe/schedule/*scheduleName*, v1/save/*saveName*/*time* and v1/describe/status
+- you may save a running sim, stop it and resume later one
 
 The steam engine is giving promising results!! Here are the characteristic curves of a 147tons Atlantic (including tender) with two cylinders (not compounded) and a 250t payload:
 
@@ -71,11 +72,13 @@ The following on-track signals are implemented:
 
 Junction signals can manage only two legs, no less, no more. One leg is the main segment (left or right), the other one to the diverging/converging segment (left or right).Junction signals must have a unique name in both segments so that the engine may perform the segments stitching properly.
 
-#### Signals placement
-- *Main branches* must start by a type 1 or type 2 (succeeded by a type 5) and terminate by a type 1 or type 2 (preceded by a type 3) signal. See for example: LondonCentral/segments/Epping/SIGs.txt
+#### Signals placement per segment type
+- *Main branches* must start by a type 2 (succeeded by a type 5) and terminate by a type 2 (preceded by a type 3) signal. See for example: LondonCentral/segments/Epping/SIGs.txt
 - *Sidings must* start with a type 4D signal and terminate with a type 4C signal (preceded by a type 6 signal)
-- *Secondary branches* and *garages* diverging from a main branch must start with a 4C signal and terminate with a type 1 or type 2 signal (preceded by a type 3). See for exemple: ParisLine1/segments/FontenayExit/SIGs.txt
-- *Secondary branches* and *garages* converging towards a main branch must start with a type 1 or 2 signal (succeeded by a type 5) and terminate with a type 4C signal (preceded by a type 6). See for exemple: LondonCentral/segments/WestActon/SIGs.txt
+- *Secondary branches* diverging from a main branch must start with a 4C signal and terminate with a type 2 signal (preceded by a type 3). See for exemple: LondonCentral/segments/Hainault/SIGs.txt
+- *Exit to a garage* must start with a 4C signal and terminate with a type 1 signal. See for exemple: ParisLine1/segments/FontenayExit/SIGs.txt
+- *Secondary branches* converging towards a main branch must start with a type 2 signal (succeeded by a type 5) and terminate with a type 4C signal (preceded by a type 6). See for exemple: LondonCentral/segments/WestActon/SIGs.txt
+- *Entry from a garage* must start with a type 2 signal (succeeded by a type 5) and terminate by a type 4C (preceded by a type 6 signal)
 
 ### Installation 
 sudo apt-get update
@@ -86,7 +89,7 @@ Then: clone Fulgence from GitHub and... voila!
 
 ## Tutorials
 ### Tutorial 1: run the small schedule of the LondonCentral route for 1 hour 
-- mp.py --route=LondonCentral --schedule=small.txt --duration=3600
+- mp.py --route=LondonCentral --schedule=tr.txt --duration=3600
 
 Since mp.py is a daemon, from that point nothing will seem to happen but the sim will actually have started. To know what is going on, you have two options: either run the control room, or use the API. This is the purpose of the next tutorial.
 
@@ -94,10 +97,10 @@ Since mp.py is a daemon, from that point nothing will seem to happen but the sim
 In this tutorial, we suppose that you have a web server up and running, with the document root located in /var/www/html
 
 To use the control room, we must *restart the sim in realtime mode*: 
-mp.py --realtime --route=LondonCentral --schedule=small.txt --duration=3600
+mp.py --realtime --route=LondonCentral --schedule=tr.txt --duration=3600
 
 While the sim is running in background, we then run room.py at regular intervals, say every minute: 
-controlRoom/room.py --route=LondonCentral --schedule=small.txt --segments=Epping,WestRuislip > /var/www/html/controlRoom.html
+controlRoom/room.py --route=LondonCentral --schedule=tr.txt --segments=Epping,WestRuislip > /var/www/html/controlRoom.html
 
 After every room.py execution, we need to copy the generated files controlRoom/Epping.html and controlRoom/WestRuislip.html to the web server, in /var/www/html
 
@@ -156,5 +159,5 @@ The first example will produce three HTML files: dashboard.html, WestboundMain.h
 
 In the second example, seven HTML files will be produced.
 
-### Traffic manager (trafficManager/tr.py)
+### Traffic manager (tr.py)
 To be completed

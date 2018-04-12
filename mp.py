@@ -18,11 +18,12 @@ import time,datetime,getopt,flask,json
 from concurrent.futures import ThreadPoolExecutor
 import cPickle as pickle
 
+redisDB=0
 live=[]
 schedOrders=[]
 saveOrder={}
-version="143"
-minVersion="143"
+version="146"
+minVersion="146"
 hasTime=False
 hasServices=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
@@ -77,7 +78,7 @@ ncyc=0
 t=0.0
 maxLine=160.0    # max speed allowed on a line, km/h
 exitCondition=False
-projectDir='ParisLine1/'
+projectDir='/'
 schedulesDir='schedules/'
 segmentsDir='segments/'
 
@@ -463,9 +464,7 @@ def initAll():
   global conf
   global hasServices
   global srvs
-  global simID
   random.seed()
-  simID=str(uuid.uuid4())
   stock={}
   r.set('realtime:',REALTIME)
   confraw=initConfig()
@@ -1975,7 +1974,6 @@ def stepRT(s):
   global version
   global minVersion
   global schedOrders
-  global saveOrder
   ccc=0
   t=ncyc/CYCLE
   if (t>duration):
@@ -1998,7 +1996,6 @@ def stepRT(s):
       glo['route']=projectDir
       glo['schedule']=scheduleName
       glo['schedOrders']=schedOrders
-      glo['saveOrder']=saveOrder
       glo['minVersion']=minVersion
       glo['version']=version
       pickName='saves/'+simID+"."+str(intT)+".trains"
@@ -2299,7 +2296,6 @@ def simSave():
   global simID
   global ncyc
   global schedOrders
-  global saveOrder
   global minVersion
   global version
   pickName='saves/'+saveOrder['name']+".trains"
@@ -2311,7 +2307,6 @@ def simSave():
   glo['route']=projectDir
   glo['schedule']=scheduleName
   glo['schedOrders']=schedOrders
-  glo['saveOrder']=saveOrder
   glo['minVersion']=minVersion
   glo['version']=version
   r.save()
@@ -2343,7 +2338,6 @@ def noRT():
   global minVersion
   global version
   global schedOrders
-  global saveOrder
   while (exitCondition==False):
     t=ncyc/CYCLE
     intT=int(t)
@@ -2363,7 +2357,6 @@ def noRT():
         glo['route']=projectDir
         glo['schedule']=scheduleName
         glo['schedOrders']=schedOrders
-        glo['saveOrder']=saveOrder
         glo['minVersion']=minVersion
         glo['version']=version
         pickle.dump(glo,open(pickName,"wb"))
@@ -2412,16 +2405,17 @@ executor=ThreadPoolExecutor(max_workers=5)
 app=flask.Flask(__name__)
 
 @app.route("/v1/describe/status", methods=["GET"])
-def v1now():
+def v1status():
   global t 
   global simID
   global realTime
   global projectDir
+  global routeName
   status={}
   status['t']=t
   status['simID']=simID
   status['realTime']=realTime
-  status['routeName']=projectDir.rstrip('/')
+  status['routeName']=routeName
   return json.dumps(str(status))
 
 @app.route("/v1/save/<sname>/<tm>", methods=["POST","GET"])
@@ -2495,7 +2489,7 @@ def v1describeschedule(sc):
   return json.dumps(retItem)
 
 try:
-  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=","resume="])
+  opts, args = getopt.getopt(sys.argv[1:], "h:m", ["help", "plot", "realtime", "core=","duration=", "route=", "schedule=", "services=", "instance=", "resume="])
 except getopt.GetoptError as err:
   print(err)
   usage()
@@ -2508,6 +2502,7 @@ stockName="rollingStock.txt"
 plotCurves=False
 loadSim=False
 loadName=''
+foundRte=False
 
 serviceList=[]
 for o, a in opts:
@@ -2524,6 +2519,10 @@ for o, a in opts:
     core = int(a)
   elif o in ("--route"):
     projectDir = a+'/'
+    routeName=a
+    foundRte=True
+  elif o in ("--instance"):
+    redisDB = int(a)
   elif o in ("--resume"):
     loadName = a
     loadSim=True
@@ -2537,7 +2536,11 @@ for o, a in opts:
     assert False, "option unknown"
     sys.exit(2)
 
-r=redis.StrictRedis(host='localhost', port=6379, db=0)
+if foundRte==False:
+  print "FATAL: route name missing."
+  sys.exit()
+
+r=redis.StrictRedis(host='localhost', port=6379, db=redisDB)
 try:
   answ=r.client_list()
 except redis.ConnectionError:
@@ -2546,6 +2549,7 @@ except redis.ConnectionError:
 
 if plotCurves==False:
   r.flushdb()
+  r.set("routeName",routeName)
   if loadSim==True:
     pickName='saves/'+loadName+'.globals'
     glo=pickle.load(open(pickName,"rb"))
@@ -2555,7 +2559,6 @@ if plotCurves==False:
     projectDir=glo['route']
     scheduleName=glo['schedule']
     schedOrders=glo['schedOrders']
-    saveOrder=glo['saveOrder']
     if glo['minVersion']<version:
       print "FATAL: saved version incompatible with current engine."
       sys.exit()
@@ -2568,6 +2571,7 @@ if plotCurves==False:
       aT.dumpstate()
   else:
     initAll()
+    simID=str(uuid.uuid4())
   sid={}
   sid['simID']=simID
   print json.dumps(sid) 
@@ -2577,6 +2581,7 @@ if plotCurves==False:
 else:
   initAll()
   r.flushdb()
+  r.set("routeName",routeName)
   plot(stock['accelerationLaw'])
 
 #print strahl(110.0,0.0,250.0,0.25,True)
