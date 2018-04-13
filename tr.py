@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import re,sys,redis,json,getopt,random,urllib2
-import time
+import time,uuid
 MPH=1.60934
 WAKEINTERVAL=3
 
@@ -400,9 +400,11 @@ def getState():
       ll.append(s1)
   return ll
 
-def getSegExits(seg):
+def getSegExits(seg,sig):
   sis=initSIGs(seg)
   exits=[]
+  cntEx=0
+  exPos=-1
   for si in sis:
     if len(si)>4:
       if si[2]=='4D':
@@ -417,7 +419,19 @@ def getSegExits(seg):
               bro=si[5].split(":")
               if bro[0]=='BranchOrientation':
                 order['direction']=bro[1]
-              exits.append(order)
+              exPos=cntEx
+              cnt=0    
+              sigPos=-1
+              for si2 in sis:
+                if si2[1]==sig:
+                  sigPos=cnt
+                cnt=cnt+1
+              if sigPos>0:
+#                print "sch sig pos is:"+str(sigPos)
+#                print "div sig pos is:"+str(exPos)
+                if ((sigPos>exPos) or (sigPos<(exPos-2))):  #train must not be too close to div
+                  exits.append(order)
+    cntEx=cntEx+1
   return exits
 
 def getReverseSeg(seg):
@@ -438,13 +452,13 @@ def getExitsForSched(sname):
   if l is not None:
     sseg=l['segment']
 #    print sname+" is in seg: "+sseg
-    exits=getSegExits(sseg)
+    exits=getSegExits(sseg,l['nextSIG'])
     if len(exits)>0:
       return exits
     else:
       altSeg=getReverseSeg(sseg)
       if altSeg is not None:
-        exits=getSegExits(altSeg)
+        exits=getSegExits(altSeg,l['nextSIG'])
         if len(exits)>0:
           return exits
   return None
@@ -465,11 +479,18 @@ candidatesQty=downScaleQty*2
 liveScheds=getState()
 candidatesQty=min(candidatesQty,len(liveScheds))
 candidatesQty=max(candidatesQty,8)
+selected=[]
 maps=initMAPs()
 simID=r.get("simID")
 #exits=r.lrange(simID+":exits",0,-1)
 loopPick=True
 cnt=0
+scalingEvent={}
+scalingEvent['type']='downScale'
+scalingEvent['desired']=downScaleQty
+scalingEvent['id']=str(uuid.uuid4())
+scalingEvent['time']=r.get("elapsed")
+scalingEvent['simID']=simID
 while loopPick==True:
 #  print "ITERATION "+str(cnt)
   for m in maps:
@@ -484,8 +505,27 @@ while loopPick==True:
 
 print alreadyPicked
 
+cnt=0
 for a in alreadyPicked:
-  print getExitsForSched(a)
+  exits=getExitsForSched(a)
+  if exits is not None:
+    cnt=cnt+1
+    candidate={}
+    candidate['name']=a
+#    candidate['order']=exits[0]['name']+':'+exits[0]['direction']
+    candidate['sigName']=exits[0]['name']
+    candidate['sigDir']=exits[0]['direction']
+    if cnt<=downScaleQty:
+      selected.append(candidate)
+print selected
+scalingEvent['set']=len(selected)
+print scalingEvent
+
+for e in selected:
+  rs=urllib2.urlopen('http://127.0.0.1:4999/v1/update/schedule/'+e['name']+'/'+e['sigName']+'/'+e['sigDir']+'/'+scalingEvent['time'])
+  sched=json.loads(rs.read())
+  print "RES:"
+  print sched
 
 def mainLoop():
   global liveScheds

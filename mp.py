@@ -22,7 +22,7 @@ redisDB=0
 live=[]
 schedOrders=[]
 saveOrder={}
-version="146"
+version="148"
 minVersion="146"
 hasTime=False
 hasServices=False
@@ -2321,6 +2321,11 @@ def checkOrders():
   if 'time' in saveOrder:
     if saveOrder['time']<=int(t): 
       simSave()
+  if len(schedOrders)>0:
+    for s in schedOrders:
+      if 'time' in s:
+        if int(s['time'])<=int(t):
+          nop=''
   return True
 
 def noRT():
@@ -2422,28 +2427,61 @@ def v1simsave(sname,tm):
   saveOrder['time']=int(tm)
   return '[]'
 
-@app.route("/v1/new/schedule/<sc>/<srv>/<seg>/<tm>/<x>", methods=["POST","GET"])
-def v1newschedule(sc,srv,seg,tm,x):
+@app.route("/v1/update/schedule/<sc>/<signame>/<sigdir>/<tm>", methods=["POST","GET"])
+def v1updatechedule(sc,signame,sigdir,tm):
   global schedOrders
   found=False
   for so in schedOrders:
     if so['name']==sc:
-      so['service']=srv
-      so['segment']=seg
+      so['service']='UPDATE'
+      so['sigDir']=sigdir
+      so['sigName']=signame
       so['time']=int(tm)
-      so['x']=float(x) 
       so['id']=str(uuid.uuid4())
+      found=True   # there must be only one order per schedule => overriding the previous one
+      return json.dumps(so['id']) 
+  found=False
+  for t in trs:
+    if t.name==sc:
+      found=True
+      break
+  if found==False:
+    return '[]'
+  else:
+    so={}
+    so['name']=sc
+    so['service']='UPDATE'
+    so['sigDir']=sigdir
+    so['sigName']=signame
+    so['time']=float(tm)
+    so['id']=str(uuid.uuid4())
+    schedOrders.append(so)
+  return json.dumps(so['id'])
+
+@app.route("/v1/new/schedule/<sc>/<srv>/<tm>", methods=["POST","GET"])
+def v1newschedule(sc,srv,tm):
+  global schedOrders
+  found=False
+  for so in schedOrders:
+    if so['name']==sc:
+      newso={}
+      newso['name']=sc
+      newso['service']=srv
+      newso['time']=int(tm)
+      newso['id']=str(uuid.uuid4())
       found=True   # there must be only one order per schedule => overriding the previous one
       break
   if found==False:
     so={}
     so['name']=sc
     so['service']=srv
-    so['segment']=seg
     so['time']=int(tm)
-    so['x']=float(x) 
     so['id']=str(uuid.uuid4())
     schedOrders.append(so)
+  else:
+    schedOrders.remove(so)
+    schedOrders.append(newso)
+    return json.dumps(newso['id'])
   return json.dumps(so['id'])
 
 @app.route("/v1/list/schedule/orders", methods=["GET"])
