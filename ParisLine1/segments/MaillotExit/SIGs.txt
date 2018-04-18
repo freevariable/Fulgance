@@ -1,0 +1,5 @@
+0.0 MaillotExit4D 4D Main:WestboundMain Branch:MaillotExit BranchOrientation:Left
+0.15 150 
+0.3 300
+0.45 450
+0.77 MaillotWorkshopBuffer

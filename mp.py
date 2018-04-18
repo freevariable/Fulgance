@@ -860,7 +860,7 @@ class Tr:
 
   def dumpstate(self):
     global r
-    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':conf['units'],'react':self.react,'mechWear':self.mechWear,'admissionWear':self.admissionWear,'brakeWear':self.brakeWear})
+    r.hmset("state:"+self.name,{'t':t,'coasting':self.coasting,'x':self.x,'segment':self.segment,'gradient':self.gradient,'TIV':self.TIVcnt,'SIG':self.SIGcnt,'STA':self.STAcnt,'aFull':self.aFull,'v':self.v,'staBrake':self.staBrake,'sigBrake':self.sigBrake,'inSta':self.inSta,'atSig':self.atSig,'sigSpotted':self.sigSpotted,'maxVk':self.maxVk,'a':self.a,'nextSTA':self.nextSTA[2],'maxPax':stock['maxPax'],'pax':self.pax,'nextSIG':self.nextSIG[1],'nextTIV':self.nextTIV[1],'nTIVtype':self.nTIVtype,'advSIGcol':self.advSIGcol,'redisSIG':self.redisSIG,'units':conf['units'],'react':self.react,'mechWear':self.mechWear,'admissionWear':self.admissionWear,'brakeWear':self.brakeWear,'service':self.service})
 
   def __init__(self,name,initSegment,service,initPos):
     global r
@@ -2325,7 +2325,24 @@ def checkOrders():
     for s in schedOrders:
       if 'time' in s:
         if int(s['time'])<=int(t):
-          nop=''
+          if s['service']=='UPDATE':
+            found=False
+            for aT in trs:
+              if aT.name==s['name']:
+                print "<<<<"+aT.name
+                if aT.service is None:
+                  item=s['sigName']+':'+s['sigDir']
+                  aT.service=[]
+                  aT.service.append(item)
+                  print aT.service
+                for asv in aT.service:
+                  asp=asv.split(":") 
+                  print asv
+                  print "asp:"+str(asp)+" asp0:"+str(asp[0])
+                  if asp[0]==s['sigName']:
+                    asp[1]=s['sigDir']
+                  print asv
+    schedOrders[:]=[s for s in schedOrders if (s['service']!='UPDATE')] 
   return True
 
 def noRT():

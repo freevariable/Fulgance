@@ -84,7 +84,7 @@ Junction signals can manage only two legs, no less, no more. One leg is the main
 ## Installation 
 sudo apt-get update
 
-sudo apt-get install -y redis-server python curl python-redis
+sudo apt-get install -y redis-server python curl python-redis python-flask
 
 Then: clone Fulgence from GitHub and... voila!
 

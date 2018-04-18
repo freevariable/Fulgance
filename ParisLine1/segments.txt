@@ -2,3 +2,5 @@ WestboundMain
 EastboundMain
 FontenayExit
 FontenayEntry
+MaillotExit
+MaillotEntry

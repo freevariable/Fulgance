@@ -1,0 +1,5 @@
+0.0 MaillotWorkshopBuffer
+0.3 300
+0.5 500
+0.65 PreMaillotEntry4C 6
+0.77 MaillotEntry4C 4C Main:WestboundMain Branch:MaillotEntry BranchOrientation:Left

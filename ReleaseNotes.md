@@ -1,3 +1,7 @@
+## What's new in build 149
+- Finished raw implementation of the downScale feature of the traffic manager (in prep for ALPHA 3)
+- Modified ParisLine1 (added switches and signalling to Maillot Workshop) 
+
 ## What's new in build 148
 - Started implementation of the downScale feature of the traffic manager (in prep for ALPHA 3)
 
