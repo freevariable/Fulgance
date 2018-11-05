@@ -27,6 +27,7 @@ minVersion="146"
 hasTime=False
 hasServices=False
 startTime=datetime.datetime.strptime("001d06h30m00s","%jd%Hh%Mm%Ss")
+SAVEFREQ=7200  # Save sim to saves/ dir every SAVEFREQ seconds
 CLOCKHEADWAY=35  # in secs
 ADHESIVEFACTOR=0.25
 G=9.81  # N/kg
@@ -2366,7 +2367,7 @@ def noRT():
     if (intT%6==0):
       sys.stdout.flush()
       checkOrders()
-      if ((intT>0) and (intT%900==0)):
+      if ((intT>0) and (intT%SAVEFREQ==0)):
         pickName='saves/'+simID+"."+str(intT)+".trains"
         pickle.dump(trs,open(pickName,"wb"))
         pickName='saves/'+simID+"."+str(intT)+".globals"
